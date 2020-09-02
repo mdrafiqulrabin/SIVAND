@@ -1,8 +1,16 @@
-# $Id: MyDD.py,v 1.1 2001/11/05 19:53:33 zeller Exp $
-# Template for adapting delta debugging.  Areas to customize are
-# tagged with `FIXME'.
-
 import DD
+import helper as hp
+
+g_model = None
+g_original_method_name = None
+g_predicted_method_name = None
+g_all_methods = []
+
+
+def deltas_to_code(d):
+    s = "".join([c[1] for c in d])
+    # s = str(s.replace('"', '\\"'))
+    return s
 
 
 class MyDD(DD.DD):
@@ -10,30 +18,49 @@ class MyDD(DD.DD):
         DD.DD.__init__(self)
 
     def _test(self, deltas):
-        # FIXME: Set up a test function that takes a set of deltas and
-        # returns either self.PASS, self.FAIL, or self.UNRESOLVED.
-        if c == []:
+        if not deltas:
             return self.PASS
-        return self.UNRESOLVED
+
+        src = deltas_to_code(deltas)
+        predicted_method_name = hp.prediction_with_hc33(g_model, src)
+        if predicted_method_name == g_predicted_method_name:
+            g_all_methods.append(src)
+            return self.FAIL
+        return self.PASS
 
 
 if __name__ == '__main__':
-    deltas = [1]
-    # FIXME: Insert your deltas here
+    # TODO: modify here
+    model_file = 'SVM_HC33.model'
+    java_file = 'data/test.java'
 
+    # load model
+    g_model = hp.load_model_hc33(model_file)
+    assert g_model is not None
+
+    # read file
+    method_name, method_body = hp.load_method(java_file)
+    method_body = str(method_body.replace('"', '\"').replace('\r', '').replace('\n', ''))
+    assert len(method_name.strip()) > 0
+
+    # set global method_name
+    g_original_method_name = method_name
+    g_predicted_method_name = hp.prediction_with_hc33(g_model, method_body)
+    g_all_methods.append(method_body)
+
+    # create deltas
+    data = list(method_body)  # ['a',...,'z']
+    deltas = list(zip(range(len(data)), data))  # [('a',0), ..., ('z',n)]
+
+    # run ddmin
     mydd = MyDD()
+    print("Simplifying failure-inducing input...")
+    c = mydd.ddmin(deltas)  # Invoke DDMIN
+    print("The 1-minimal failure-inducing input is", c)
+    print("Removing any element will make the failure go away.")
+    javaCode = deltas_to_code(c)
+    g_all_methods.append(javaCode)
 
-    # print("Simplifying failure-inducing input...")
-    # c = mydd.ddmin(deltas)  # Invoke DDMIN
-    # print("The 1-minimal failure-inducing input is", c)
-    # print("Removing any element will make the failure go away.")
-    # print()
-
-    print("Isolating the failure-inducing difference...")
-    (c, c1, c2) = mydd.dd(deltas)  # Invoke DD
-    print("The 1-minimal failure-inducing difference is", c)
-    print(c1, "passes,", c2, "fails")
-
-# Local Variables:
-# mode: python
-# End:
+    # save all simplified code
+    output_file = java_file.replace(".java", ".txt")
+    hp.save_simplified_code(g_all_methods, output_file)
