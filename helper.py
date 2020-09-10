@@ -1,11 +1,21 @@
 import ast
 import subprocess
 import _pickle as pk
+import javalang
 
 # For handcrafted
-HC33_TARGETS = ["equals", "main", "setUp", "onCreate", "toString", "run", "hashCode", "init", "execute", "get", "close"]
+HC33_TARGETS = ["equals", "main", "setUp", "onCreate", "toString", "run", "hashCode", "init", "execute", "get"]
 LABELS2INDEX = {m: i for i, m in enumerate(HC33_TARGETS)}
 INDEX2LABELS = {i: m for i, m in enumerate(HC33_TARGETS)}
+
+
+def is_parsable(src):
+    try:
+        tree = javalang.parse.parse("class Test { " + src + " }")
+        assert tree is not None
+    except:
+        return False
+    return True
 
 
 def load_method(java_file):
@@ -50,3 +60,14 @@ def save_simplified_code(all_methods, output_file):
         for jCode in all_methods:
             print(jCode)
             f.write(jCode + "\n")
+        f.write("\n")
+
+
+def single_line_body(body):
+    try:
+        body = str(body)
+        body = ' '.join(body.split())
+        body = body.replace('"', '\"').replace('\r', '').replace('\n', '')
+        return body
+    except:
+        return ""
