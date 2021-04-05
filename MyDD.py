@@ -11,7 +11,6 @@ g_cnt_dict = {}
 
 def deltas_to_code(d):
     s = "".join([c[1] for c in d])
-    # s = str(s.replace('"', '\\"'))
     return s
 
 
@@ -19,11 +18,11 @@ class MyDD(DD.DD):
     def __init__(self):
         DD.DD.__init__(self)
 
-    def _test(self, deltas):
-        if not deltas:
+    def _test(self, _deltas):
+        if not _deltas:
             return self.PASS
 
-        src = deltas_to_code(deltas)
+        src = deltas_to_code(_deltas)
         if hp.is_parsable(src):
             predicted_method_name = hp.prediction_with_hc33(g_model, src)
             if predicted_method_name == g_predicted_method_name:
@@ -34,9 +33,9 @@ class MyDD(DD.DD):
 
 
 if __name__ == '__main__':
-    # TODO: modify here
+    # TODO: modify (if)
     model_file = 'SVM_HC33.model'
-    test_file = '/scratch/rabin/deployment/root-dd/data_selection/test.result'
+    test_file = 'data/path.txt'
 
     # load model
     g_model = hp.load_model_hc33(model_file)
@@ -46,7 +45,7 @@ if __name__ == '__main__':
     df = pd.read_csv(test_file)
     file_list = df["path"].tolist()
     for idx, java_file in enumerate(file_list):
-        print("\nStart: {}\n".format(java_file))
+        print("\nStart: {}-{}\n".format(idx, java_file))
         g_all_data.clear()
 
         # method_name and method_body
@@ -78,7 +77,7 @@ if __name__ == '__main__':
 
         # print/save all simplified code
         g_cnt_dict[method_name] = g_cnt_dict.get(method_name, 0) + 1
-        output_file = "data/{}_{}.dd".format(method_name, g_cnt_dict[method_name])
+        output_file = "data/simplified/{}_{}.txt".format(method_name, g_cnt_dict[method_name])
         hp.save_simplified_code(g_all_data, output_file)
 
-        print("\nDone: {}\n".format(java_file))
+        print("\nDone: {}-{}\n".format(idx, java_file))
