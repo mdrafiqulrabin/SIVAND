@@ -1,6 +1,7 @@
 # dd_java
 ---
 
-- update "test_file" in "MyDD.py" file to get path of test files, i.e. java_file = '.../test.result'.
-- (if) add code for model (mention in "model_file"), i.e. "load_model_hc33()" and "prediction_with_hc33()" in "helper.py".
-- run "MyDD.py", output (simplified codes) will be saved as  "data/<method>_n.dd".
+Steps:
+- Path of test java files, i.e. test_file = 'data/path.txt'.
+- Code for load/predict model (i.e. load_model_hc33/prediction_with_hc33) in "helper.py".
+- Run "MyDD.py", output (simplified codes) will be saved as "data/simplified/method_n.txt".
