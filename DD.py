@@ -852,11 +852,10 @@ if __name__ == '__main__':
     # Test the outcome cache
     oc_test()
 
-
     # Define our own DD class, with its own test method
     class MyDD(DD):
         def _test_a(self, c):
-            "Test the configuration C.  Return PASS, FAIL, or UNRESOLVED."
+            """Test the configuration C.  Return PASS, FAIL, or UNRESOLVED."""
 
             # Just a sample
             # if 2 in c and not 3 in c:

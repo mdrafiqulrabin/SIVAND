@@ -1,57 +1,121 @@
-import ast
+import pandas as pd
 import subprocess
-import _pickle as pk
 import javalang
+from datetime import datetime
+import json
 
-# For handcrafted
-HC33_TARGETS = ["equals", "main", "setUp", "onCreate", "toString", "run", "hashCode", "init", "execute", "get"]
-LABELS2INDEX = {m: i for i, m in enumerate(HC33_TARGETS)}
-INDEX2LABELS = {i: m for i, m in enumerate(HC33_TARGETS)}
+###############################################################
+
+g_test_file = "data/selected_file/mn_c2x/c2x_jl_test_correct_prediction_samefile.txt"
+g_simp_file = "data/tmp/sm_test.java"
+
+g_deltas_types = ["token", "char"]
+g_deltas_type = g_deltas_types[0]
+
+JAR_LOAD_JAVA_METHOD = "others/LoadJavaMethod/target/jar/LoadJavaMethod.jar"
+
+###############################################################
 
 
-def is_parsable(src):
+def get_file_list():
+    file_list = []
     try:
-        tree = javalang.parse.parse("class Test { " + src + " }")
+        df = pd.read_csv(g_test_file)
+        file_list = df["path"].tolist()[:1000]
+    except Exception:
+        pass
+    return file_list
+
+
+def get_current_time():
+    return str(datetime.now())
+
+
+def get_char_deltas(program):
+    data = list(program)  # ['a',...,'z']
+    deltas = list(zip(range(len(data)), data))  # [('a',0), ..., ('z',n)]
+    return deltas
+
+
+def get_token_deltas(program):
+    token, tokens = "", []
+    for c in program:
+        if not c.isalpha():
+            tokens.append(token)
+            tokens.append(c)
+            token = ""
+        else:
+            token = token + c
+    tokens.append(token)
+    tokens = [token for token in tokens if len(token) != 0]
+    deltas = list(zip(range(len(tokens)), tokens))
+    return deltas
+
+
+def deltas_to_code(d):
+    return "".join([c[1] for c in d])
+
+
+def is_parsable(code):
+    try:
+        # TODO: check whether <code> is parsable
+        #  [this one is for JAVA program]
+        tree = javalang.parse.parse("class Test { " + code + " }")
         assert tree is not None
-    except:
+    except Exception:
         return False
     return True
 
 
-def load_method(java_file):
+def get_json_data(time, score, loss, code, tokens=None, n_pass=None):
+    score, loss = str(round(float(score), 4)), str(round(float(loss), 4))
+    data = {'time': time, 'score': score, 'loss': loss, 'code': code}
+    if tokens:
+        data['n_tokens'] = len(tokens)
+    if n_pass:
+        data['n_pass'] = n_pass
+    j_data = json.dumps(data)
+    return j_data
+
+
+###############################################################
+
+
+def load_model_M(model_path=""):
+    model = None
+    # TODO: load target model from <model_path>
+    #  Example: check <others/DD-Models/dd-M/dd_M.py>
+    return model
+
+
+def prediction_with_M(model, file_path):
+    pred, score, loss = None, None, None
+    # TODO: preprocess <file_path> and evaluate with <model>
+    #  and get predicted name, score, and loss
+    #  Example: check <others/DD-Models/dd-M/sm_helper.py>
+    return pred, score, loss
+
+
+###############################################################
+
+
+def load_method(file_path):
     try:
-        cmd = ['java', '-jar', 'models/LoadJavaMethod.jar', java_file]
-        # subprocess.call(cmd)
-        content = subprocess.check_output(cmd, encoding="utf-8")
-        content = ' '.join(str(content).split())
-        content = ast.literal_eval(str(content))
-        return content[0], content[1]
-    except:
+        # TODO: extract name and body from method
+        #  [this one is for JAVA program]
+        cmd = ['java', '-jar', JAR_LOAD_JAVA_METHOD, file_path]
+        contents = subprocess.check_output(cmd, encoding="utf-8", close_fds=True)
+        contents = contents.split()
+        method_name = contents[0]
+        method_body = " ".join(contents[1:])
+        return method_name, method_body
+    except Exception:
         return "", ""
 
 
-def load_model_hc33(mod):
-    try:
-        with open("models/HC33/" + mod, 'rb') as f:
-            clf = pk.load(f)
-            return clf
-    except:
-        return None
-
-
-def prediction_with_hc33(g_model, src):
-    if len(src.strip()) < 1:
-        return ""
-    try:
-        cmd = ['java', '-jar', 'models/HC33/Features_HC33.jar', src]
-        y_test = subprocess.check_output(cmd, encoding="utf-8")  # 0,...,1
-        y_test = [int(y) for y in y_test.split(',')]  # [0,...,1]
-        assert sum(y_test) > 0
-        y_pred = g_model.predict([y_test])
-        y_pred = INDEX2LABELS[y_pred[0]]
-        return y_pred
-    except:
-        return ""
+def store_method(sm_file, method_body):
+    with open(sm_file, "w") as f:
+        f.write(method_body + "\n")
 
 
 def save_simplified_code(all_methods, output_file):
@@ -61,13 +125,3 @@ def save_simplified_code(all_methods, output_file):
             print(jCode)
             f.write(jCode + "\n")
         f.write("\n")
-
-
-def single_line_body(body):
-    try:
-        body = str(body)
-        body = ' '.join(body.split())
-        body = body.replace('"', '\"').replace('\r', '').replace('\n', '')
-        return body
-    except:
-        return ""
