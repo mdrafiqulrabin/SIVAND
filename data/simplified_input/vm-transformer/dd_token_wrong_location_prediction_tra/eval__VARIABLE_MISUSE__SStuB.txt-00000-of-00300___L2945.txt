@@ -1,0 +1,55 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def get_diskfile(", "self", ",", "account", ",", "container", ",", "obj", ",", "**kwargs", ")", ":", "#NEWLINE#", "#INDENT#", "return", "DiskFile", "(", "self", ",", "kwargs", ",", "container", ",", "obj", ")"], "error_location": [20], "repair_targets": [4], "repair_candidates": [6, 22, 8, 24, 2, 18, 4, 20], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "openstack/swift/swift/obj/mem_diskfile.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 2945, "results": {"model": "transformer", "prob": {"loc": [[0.024178823456168175, 4.990436082152883e-06, 3.6645687373493274e-07, 6.169951660695006e-08, 9.218701393365336e-07, 4.617828608388663e-08, 3.040289300315635e-07, 2.7316767514662388e-08, 2.4216599285864504e-06, 1.3537179377465236e-08, 6.491717385870288e-07, 1.0133117456234686e-08, 4.132941811008095e-08, 8.017878627697428e-08, 3.812589710605607e-08, 2.695163203725315e-09, 1.0388247595471967e-08, 4.5829938954966565e-08, 0.6935936808586121, 5.464770538310404e-07, 0.2819148302078247, 7.75261867147492e-07, 0.00023823449737392366, 2.7504349020546215e-08, 6.296737410593778e-05, 3.6018196425402493e-08]], "pointer": [[0.0, 0.0, 7.781312660881667e-07, 0.0, 0.9989995360374451, 0.0, 0.0002647833607625216, 0.0, 0.0007230050396174192, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.348472652462078e-06, 0.0, 2.2689864636049606e-06, 0.0, 3.1622460028302157e-06, 0.0, 1.55654163336294e-07, 0.0]], "target": [0.9989995360374451]}, "loss": [1.2661502361297607, 0.0010009647812694311], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [18]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:36:23.724643", "n_pass": [1, 1, 1], "n_token": 26, "loss": [0.36586883664131165, 0.0010009647812694311], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_diskfile(", "self", ",", "account", ",", "container", ",", "obj", ",", "**kwargs", ")", ":", "#NEWLINE#", "#INDENT#", "return", "DiskFile", "(", "self", ",", "kwargs", ",", "container", ",", "obj", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [4], "repair_candidates": [6, 22, 8, 24, 2, 18, 4, 20]}}
+{"prediction": {"error_location": 0.6935936808586121, "repair_targets": [0.9989995360374451], "repair_candidates": [7.781312660881667e-07, 0.9989995360374451, 0.0002647833607625216, 0.0007230050396174192, 6.348472652462078e-06, 2.2689864636049606e-06, 3.1622460028302157e-06, 1.55654163336294e-07], "target_probs": 0.9989995360374451}}
+
+
+{"result": {"time": "2021-02-21 05:36:23.782406", "n_pass": [23, 2, 2], "n_token": 23, "loss": [0.01917293854057789, 0.00023433331807609648], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_diskfile(", "self", ",", "account", ",", "container", ",", "obj", ":", "#NEWLINE#", "#INDENT#", "return", "DiskFile", "(", "self", ",", "kwargs", ",", "container", ",", "obj", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [6, 19, 8, 21, 2, 15, 4, 17]}}
+{"prediction": {"error_location": 0.9810097813606262, "repair_targets": [0.9997656941413879], "repair_candidates": [2.676441113180772e-07, 0.9997656941413879, 0.00012487921048887074, 2.55651721090544e-05, 2.2353024178300984e-06, 7.886668026912957e-05, 2.416281631667516e-06, 1.5525637309110607e-07], "target_probs": 0.9997656941413879}}
+
+
+{"result": {"time": "2021-02-21 05:36:23.837036", "n_pass": [24, 3, 3], "n_token": 20, "loss": [0.029768584296107292, 0.0006441163714043796], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_diskfile(", "self", ",", "account", ",", "container", ",", "obj", "return", "DiskFile", "(", "self", ",", "kwargs", ",", "container", ",", "obj", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [6, 16, 8, 18, 2, 12, 4, 14]}}
+{"prediction": {"error_location": 0.9706701636314392, "repair_targets": [0.9993560910224915], "repair_candidates": [2.1496548185950815e-07, 0.9993560910224915, 0.00028379139257594943, 3.250752342864871e-05, 3.133430482193944e-06, 0.00032284410553984344, 1.2015681249977206e-06, 1.9434183684552409e-07], "target_probs": 0.9993560910224915}}
+
+
+{"result": {"time": "2021-02-21 05:36:23.945745", "n_pass": [44, 5, 4], "n_token": 18, "loss": [0.07407847046852112, 0.006750848609954119], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_diskfile(", "self", ",", "account", ",", "container", ",", "obj", "return", "self", ",", "kwargs", ",", "container", ",", "obj", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [4], "repair_candidates": [6, 14, 8, 16, 2, 10, 4, 12]}}
+{"prediction": {"error_location": 0.928598940372467, "repair_targets": [0.9932718873023987], "repair_candidates": [2.662168981260038e-06, 0.9932718873023987, 0.0014459366211667657, 0.000654006318654865, 0.00017487609875388443, 0.00439214613288641, 3.0699629860464483e-05, 2.783615855150856e-05], "target_probs": 0.9932718873023987}}
+
+
+{"result": {"time": "2021-02-21 05:36:24.109439", "n_pass": [52, 8, 5], "n_token": 17, "loss": [0.46313929557800293, 0.07420274615287781], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_diskfile(", "self", "account", ",", "container", ",", "obj", "return", "self", ",", "kwargs", ",", "container", ",", "obj", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [3], "repair_candidates": [5, 13, 7, 15, 2, 9, 3, 11]}}
+{"prediction": {"error_location": 0.6293049454689026, "repair_targets": [0.9284834265708923], "repair_candidates": [3.160352207487449e-05, 0.9284834265708923, 0.012608456425368786, 0.0053994422778487206, 0.002169880783185363, 0.04987291619181633, 0.0005697726155631244, 0.0008643862092867494], "target_probs": 0.9284834265708923}}
+
+
+{"result": {"time": "2021-02-21 05:36:24.383417", "n_pass": [82, 13, 6], "n_token": 16, "loss": [0.5030570030212402, 0.09249389916658401], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_diskfile(", "self", "account", ",", "container", ",", "obj", "return", "self", "kwargs", ",", "container", ",", "obj", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [3], "repair_candidates": [5, 12, 7, 14, 2, 9, 3, 10]}}
+{"prediction": {"error_location": 0.6046793460845947, "repair_targets": [0.9116547703742981], "repair_candidates": [2.4685328753548674e-05, 0.9116547703742981, 0.004355310928076506, 0.0025485341902822256, 0.0008303493377752602, 0.0800597220659256, 0.0002146889310097322, 0.00031186806154437363], "target_probs": 0.9116547703742981}}
+
+
+{"result": {"time": "2021-02-21 05:36:24.546508", "n_pass": [88, 16, 7], "n_token": 15, "loss": [0.21981866657733917, 0.4516586661338806], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_diskfile(", "self", "account", ",", "container", ",", "obj", "return", "self", "kwargs", ",", "container", ",", "obj"]}}
+{"position": {"error_location": 9, "repair_targets": [3], "repair_candidates": [5, 12, 7, 14, 2, 9, 3, 10]}}
+{"prediction": {"error_location": 0.8026643991470337, "repair_targets": [0.6365714073181152], "repair_candidates": [0.00011214124970138073, 0.6365714073181152, 0.12540660798549652, 0.0010984631953760982, 0.00010930703138001263, 0.23581264913082123, 0.0008677364094182849, 2.1692563677788712e-05], "target_probs": 0.6365714073181152}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def get_diskfile(', 'self', 'account', ',', 'container', ',', 'obj', 'return', 'self', 'kwargs', ',', 'container', ',', 'obj']

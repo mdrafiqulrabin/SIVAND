@@ -1,0 +1,103 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "(", "reboot", "=", "dict", "(", "type", "=", "'NOT_A_TYPE'", ")", ")", "#NEWLINE#", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", ".", "req", ",", "FAKE_UUID", ",", "body", "=", "body", ")"], "error_location": [29], "repair_targets": [2, 21, 25, 35], "repair_candidates": [2, 21, 25, 35, 7, 29, 41, 43], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "openstack/nova/nova/tests/unit/api/openstack/compute/test_server_actions.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 139, "results": {"model": "rnn", "prob": {"loc": [[9.497654536971822e-05, 2.7619391218536293e-08, 3.0488781277426824e-08, 9.480327113620124e-12, 4.366557896512413e-12, 1.8008815549919177e-09, 3.652952940136345e-10, 1.704386964895832e-09, 2.802163223680765e-10, 3.0429623265604278e-09, 4.4643524987897365e-10, 1.0336550282374901e-08, 1.8224841080716203e-10, 2.008400334929661e-09, 9.891760743840905e-10, 1.7775259042451808e-09, 7.180004368834147e-10, 2.527792197781764e-08, 2.5000940206965083e-10, 3.711484175550339e-10, 4.428210687024148e-09, 3.307858431611521e-09, 2.1874764152829407e-11, 1.5064216540849884e-09, 8.424277768426247e-12, 3.1676329399488168e-06, 8.40221295317356e-12, 2.394223042045951e-09, 7.034731464017341e-09, 0.999863862991333, 1.4924772813174059e-06, 8.948222074423029e-08, 3.033653883655063e-10, 1.1952103751156073e-09, 1.0341429795834856e-10, 3.4505432267906144e-05, 1.2925955444886839e-11, 9.575398252081868e-10, 7.114660943718931e-11, 9.642991960490122e-10, 7.446806365996039e-11, 9.793706956529036e-10, 3.0325894573302037e-10, 1.7885405441120383e-06, 1.2424897222196307e-10]], "pointer": [[0.0, 0.0, 0.7298919558525085, 0.0, 0.0, 0.0, 0.0, 1.1145734788442496e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0002979542186949402, 0.0, 0.0, 0.0, 0.2697799503803253, 0.0, 0.0, 0.0, 8.074166544247419e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 2.220320766355144e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 9.806792604649672e-07, 0.0, 1.4926281437510625e-05, 0.0]], "target": [0.9999720454216003]}, "loss": [0.00013612773909699172, 2.7954969482379965e-05], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 09:55:16.702471", "n_pass": [1, 1, 1], "n_token": 45, "loss": [0.00013612773909699172, 2.7954969482379965e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "(", "reboot", "=", "dict", "(", "type", "=", "'NOT_A_TYPE'", ")", ")", "#NEWLINE#", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", ".", "req", ",", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [2, 21, 25, 35], "repair_candidates": [2, 21, 25, 35, 7, 29, 41, 43]}}
+{"prediction": {"error_location": 0.999863862991333, "repair_targets": [0.7298919558525085, 0.0002979542186949402, 0.2697799503803253, 2.220320766355144e-06], "repair_candidates": [0.7298919558525085, 1.1145734788442496e-05, 0.0002979542186949402, 0.2697799503803253, 8.074166544247419e-07, 2.220320766355144e-06, 9.806792604649672e-07, 1.4926281437510625e-05], "target_probs": 0.9999720454216003}}
+
+
+{"result": {"time": "2021-02-11 09:55:16.774170", "n_pass": [22, 2, 2], "n_token": 40, "loss": [8.821098163025454e-05, 2.0861843950115144e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "type", "=", "'NOT_A_TYPE'", ")", ")", "#NEWLINE#", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", ".", "req", ",", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [2, 16, 20, 30], "repair_candidates": [2, 16, 20, 30, 7, 24, 36, 38]}}
+{"prediction": {"error_location": 0.9999116659164429, "repair_targets": [0.7260376811027527, 0.00032742464100010693, 0.27361205220222473, 1.9999811229354236e-06], "repair_candidates": [0.7260376811027527, 7.824689419066999e-06, 0.00032742464100010693, 0.27361205220222473, 5.233757747191703e-07, 1.9999811229354236e-06, 7.675229767301062e-07, 1.1733508472389076e-05], "target_probs": 0.9999791383743286}}
+
+
+{"result": {"time": "2021-02-11 09:55:16.839946", "n_pass": [23, 3, 3], "n_token": 34, "loss": [1.4424220353248529e-05, 1.2278632311790716e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", ".", "req", ",", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 10, 14, 24], "repair_candidates": [2, 10, 14, 24, 7, 18, 30, 32]}}
+{"prediction": {"error_location": 0.9999856948852539, "repair_targets": [0.7373676896095276, 0.00032168306643143296, 0.26229697465896606, 1.343138706033642e-06], "repair_candidates": [0.7373676896095276, 1.2328659977356438e-06, 0.00032168306643143296, 0.26229697465896606, 3.4138298588004545e-07, 1.343138706033642e-06, 5.34056312062603e-07, 1.0321824447601102e-05], "target_probs": 0.9999877214431763}}
+
+
+{"result": {"time": "2021-02-11 09:55:16.968199", "n_pass": [47, 5, 4], "n_token": 31, "loss": [2.4914430468925275e-05, 1.657022767176386e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 10, 14, 24], "repair_candidates": [2, 10, 14, 24, 7, 18, 27, 29]}}
+{"prediction": {"error_location": 0.9999750852584839, "repair_targets": [0.768724262714386, 0.0005577128031291068, 0.23069952428340912, 1.877614749901113e-06], "repair_candidates": [0.768724262714386, 1.0413450581836514e-06, 0.0005577128031291068, 0.23069952428340912, 3.278328790656815e-07, 1.877614749901113e-06, 9.696051392893423e-07, 1.4310161532193888e-05], "target_probs": 0.9999834299087524}}
+
+
+{"result": {"time": "2021-02-11 09:55:17.030791", "n_pass": [50, 6, 5], "n_token": 29, "loss": [7.521823135903105e-05, 0.00010353863035561517], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [0, 8, 12, 22], "repair_candidates": [0, 8, 12, 22, 5, 16, 25, 27]}}
+{"prediction": {"error_location": 0.999924898147583, "repair_targets": [0.0008195570553652942, 0.007111182436347008, 0.9919441938400269, 2.14923893508967e-05], "repair_candidates": [0.0008195570553652942, 8.755565431783907e-06, 0.007111182436347008, 0.9919441938400269, 2.1343230400816537e-06, 2.14923893508967e-05, 4.963368155586068e-06, 8.774051093496382e-05], "target_probs": 0.9998964667320251}}
+
+
+{"result": {"time": "2021-02-11 09:55:17.091511", "n_pass": [52, 7, 6], "n_token": 26, "loss": [4.386805812828243e-05, 0.00022390010417439044], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "body", "=", "dict", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [0, 5, 9, 19], "repair_candidates": [0, 5, 9, 19, 2, 13, 22, 24]}}
+{"prediction": {"error_location": 0.9999561309814453, "repair_targets": [0.0005441780085675418, 0.005765493493527174, 0.9934490323066711, 1.7414109606761485e-05], "repair_candidates": [0.0005441780085675418, 0.00010840125469258055, 0.005765493493527174, 0.9934490323066711, 2.1750277028331766e-06, 1.7414109606761485e-05, 4.5224551286082715e-06, 0.00010879657202167436], "target_probs": 0.9997761249542236}}
+
+
+{"result": {"time": "2021-02-11 09:55:17.215434", "n_pass": [81, 9, 7], "n_token": 25, "loss": [3.8265450712060556e-05, 0.00013107919949106872], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "body", "dict", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [0, 4, 8, 18], "repair_candidates": [0, 4, 8, 18, 2, 12, 21, 23]}}
+{"prediction": {"error_location": 0.9999616146087646, "repair_targets": [0.00029088868177495897, 0.0009880670113489032, 0.9985730648040771, 1.6915340893319808e-05], "repair_candidates": [0.00029088868177495897, 6.453030073316768e-05, 0.0009880670113489032, 0.9985730648040771, 1.3049245808360865e-06, 1.6915340893319808e-05, 2.1862815628992394e-06, 6.30397698841989e-05], "target_probs": 0.9998689293861389}}
+
+
+{"result": {"time": "2021-02-11 09:55:17.275628", "n_pass": [82, 10, 8], "n_token": 24, "loss": [4.875540980719961e-05, 0.00019021650950890034], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "body", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [0, 3, 7, 17], "repair_candidates": [0, 3, 7, 17, 2, 11, 20, 22]}}
+{"prediction": {"error_location": 0.9999512434005737, "repair_targets": [0.0002246879885205999, 0.0004950169823132455, 0.9990744590759277, 1.5608133253408596e-05], "repair_candidates": [0.0002246879885205999, 0.00013016239972785115, 0.0004950169823132455, 0.9990744590759277, 1.4904088629918988e-06, 1.5608133253408596e-05, 2.7391204184823437e-06, 5.5721473472658545e-05], "target_probs": 0.9998098015785217}}
+
+
+{"result": {"time": "2021-02-11 09:55:17.335564", "n_pass": [84, 11, 9], "n_token": 23, "loss": [5.066266385256313e-05, 0.0005928843165747821], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "body", "self", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [0, 3, 6, 16], "repair_candidates": [0, 3, 6, 16, 2, 10, 19, 21]}}
+{"prediction": {"error_location": 0.9999492168426514, "repair_targets": [0.0004136042553000152, 0.00062938331393525, 0.9983351826667786, 2.9121918487362564e-05], "repair_candidates": [0.0004136042553000152, 0.0004981367965228856, 0.00062938331393525, 0.9983351826667786, 8.153959242918063e-06, 2.9121918487362564e-05, 5.119937213748926e-06, 8.136400720104575e-05], "target_probs": 0.9994072914123535}}
+
+
+{"result": {"time": "2021-02-11 09:55:17.394974", "n_pass": [85, 12, 10], "n_token": 22, "loss": [1.6212332411669195e-05, 0.0008280128240585327], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "body", "self", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [0, 3, 5, 15], "repair_candidates": [0, 3, 5, 15, 2, 9, 18, 20]}}
+{"prediction": {"error_location": 0.9999837875366211, "repair_targets": [0.00020304133067838848, 0.0031449159141629934, 0.9958059787750244, 1.8400891349301673e-05], "repair_candidates": [0.00020304133067838848, 0.0007410836406052113, 0.0031449159141629934, 0.9958059787750244, 4.459237516130088e-06, 1.8400891349301673e-05, 3.35886443281197e-06, 7.865311636123806e-05], "target_probs": 0.9991723299026489}}
+
+
+{"result": {"time": "2021-02-11 09:55:17.454048", "n_pass": [86, 13, 11], "n_token": 21, "loss": [3.361645576660521e-05, 0.008333020843565464], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "body", "self", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [0, 3, 4, 14], "repair_candidates": [0, 3, 4, 14, 2, 8, 17, 19]}}
+{"prediction": {"error_location": 0.9999665021896362, "repair_targets": [0.0005188601207919419, 0.008299944922327995, 0.982858419418335, 2.435785972920712e-05], "repair_candidates": [0.0005188601207919419, 0.008136262185871601, 0.008299944922327995, 0.982858419418335, 5.663617685058853e-06, 2.435785972920712e-05, 5.075826720712939e-06, 0.00015149422688409686], "target_probs": 0.991701602935791}}
+
+
+{"result": {"time": "2021-02-11 09:55:17.514520", "n_pass": [88, 14, 12], "n_token": 19, "loss": [0.09335412085056305, 0.1022646352648735], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "body", "self", "self", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 6, "repair_targets": [0, 3, 4, 12], "repair_candidates": [0, 3, 4, 12, 2, 6, 15, 17]}}
+{"prediction": {"error_location": 0.9108707904815674, "repair_targets": [0.010667756199836731, 0.11013248562812805, 0.7817633152008057, 0.00022703803551848978], "repair_candidates": [0.010667756199836731, 0.0965539887547493, 0.11013248562812805, 0.7817633152008057, 0.00020374781161081046, 0.00022703803551848978, 2.9398375772871077e-05, 0.00042227940866723657], "target_probs": 0.9027906060218811}}
+
+
+{"result": {"time": "2021-02-11 09:55:17.742445", "n_pass": [97, 18, 13], "n_token": 18, "loss": [0.012179291807115078, 0.021170515567064285], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "body", "self", "self", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 5, "repair_targets": [0, 2, 3, 11], "repair_candidates": [0, 2, 3, 11, 1, 5, 14, 16]}}
+{"prediction": {"error_location": 0.9878947138786316, "repair_targets": [0.002944852691143751, 0.1840234249830246, 0.7919999361038208, 8.38104315334931e-05], "repair_candidates": [0.002944852691143751, 0.02053683064877987, 0.1840234249830246, 0.7919999361038208, 0.00018126427312381566, 8.38104315334931e-05, 1.737963430059608e-05, 0.0002124868769897148], "target_probs": 0.9790520071983337}}
+
+
+{"result": {"time": "2021-02-11 09:55:17.798967", "n_pass": [102, 19, 14], "n_token": 16, "loss": [0.6358484029769897, 0.05755075067281723], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "body", "self", "self", ",", "body", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 5, "repair_targets": [0, 2, 3, 9], "repair_candidates": [0, 2, 3, 9, 1, 5, 12, 14]}}
+{"prediction": {"error_location": 0.5294861197471619, "repair_targets": [0.025738580152392387, 0.04298878461122513, 0.8741393089294434, 0.00120727124158293], "repair_candidates": [0.025738580152392387, 0.048591598868370056, 0.04298878461122513, 0.8741393089294434, 0.003474612720310688, 0.00120727124158293, 0.0004941357765346766, 0.003365655429661274], "target_probs": 0.9440739750862122}}
+
+
+{"result": {"time": "2021-02-11 09:55:18.190891", "n_pass": [132, 26, 15], "n_token": 15, "loss": [0.5707024335861206, 0.04698246717453003], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "body", "self", "self", ",", "body", ".", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body"]}}
+{"position": {"error_location": 5, "repair_targets": [0, 2, 3, 9], "repair_candidates": [0, 2, 3, 9, 1, 5, 12, 14]}}
+{"prediction": {"error_location": 0.5651283860206604, "repair_targets": [0.024011697620153427, 0.034869465976953506, 0.8939539194107056, 0.0012690417934209108], "repair_candidates": [0.024011697620153427, 0.04047404229640961, 0.034869465976953506, 0.8939539194107056, 0.0031954834703356028, 0.0012690417934209108, 0.000738604343496263, 0.00148762296885252], "target_probs": 0.9541041254997253}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'body', 'self', 'self', ',', 'body', '.', '_action_reboot', ',', 'self', 'FAKE_UUID', ',', 'body', '=', 'body']

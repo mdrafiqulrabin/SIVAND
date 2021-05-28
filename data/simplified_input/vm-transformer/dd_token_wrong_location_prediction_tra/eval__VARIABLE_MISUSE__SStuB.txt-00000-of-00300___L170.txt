@@ -1,0 +1,61 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def group_exists(", "self", ",", "group_name", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Returns :data:`True` if the given group exist, :data:`False` otherwise.\\n\\n        :param group_name: Name of the group to verify.\\n        :type group_name: :class:`str`\\n        :return: Whether the group exists or not.\\n        :rtype: :class:`bool`\\n\\n        Example:\\n        ::\\n\\n            class MySampleRole(Role):\\n                def provision(self):\\n                    with self.using(UserRole) as role:\\n                        if role.group_exists('usersgroup'):\\n                            pass\\n        \"", "#NEWLINE#", "values", "=", "self", ".", "__first_values_from", "(", "'group'", ")", "#NEWLINE#", "return", "(", "group_name", "in", "group_name", ")"], "error_location": [24], "repair_targets": [11], "repair_candidates": [4, 22, 24, 11, 2, 13], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "python-provy/provy/provy/more/debian/users/user.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 170, "results": {"model": "transformer", "prob": {"loc": [[5.203580076340586e-05, 5.454646512248473e-09, 2.7077289299626273e-09, 4.719555857235491e-10, 5.825806503878539e-10, 4.063052116975996e-10, 5.349518050756785e-10, 3.191535924429445e-10, 3.1112479259576276e-10, 1.3384712227448858e-09, 3.4793851133585463e-10, 9.942013434738328e-09, 9.889921104289101e-10, 2.8895459358579956e-09, 1.8565288195659946e-10, 1.3684007919845254e-11, 1.4770578093958875e-09, 4.977114258508664e-07, 1.899553865314374e-07, 3.0700164188601775e-08, 1.3880704363700147e-09, 3.882489885143059e-10, 0.5080277323722839, 1.6542649916573282e-08, 0.4919176995754242, 1.733266685732815e-06]], "pointer": [[0.0, 0.0, 1.2943451110913884e-05, 0.0, 4.1874358203131123e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9999765157699585, 0.0, 1.0091517651744653e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0599014161071239e-10, 0.0, 1.6472848085591352e-10, 0.0]], "target": [0.9999765157699585]}, "loss": [0.7094438672065735, 2.3484506527893245e-05], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [22]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:31:08.446296", "n_pass": [1, 1, 1], "n_token": 26, "loss": [0.6772192120552063, 2.3484506527893245e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def group_exists(", "self", ",", "group_name", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Returns :data:`True` if the given group exist, :data:`False` otherwise.\\n\\n        :param group_name: Name of the group to verify.\\n        :type group_name: :class:`str`\\n        :return: Whether the group exists or not.\\n        :rtype: :class:`bool`\\n\\n        Example:\\n        ::\\n\\n            class MySampleRole(Role):\\n                def provision(self):\\n                    with self.using(UserRole) as role:\\n                        if role.group_exists('usersgroup'):\\n                            pass\\n        \"", "#NEWLINE#", "values", "=", "self", ".", "__first_values_from", "(", "'group'", ")", "#NEWLINE#", "return", "(", "group_name", "in", "group_name", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [11], "repair_candidates": [4, 22, 24, 11, 2, 13]}}
+{"prediction": {"error_location": 0.5080277323722839, "repair_targets": [0.9999765157699585], "repair_candidates": [1.2943451110913884e-05, 4.1874358203131123e-07, 0.9999765157699585, 1.0091517651744653e-05, 2.0599014161071239e-10, 1.6472848085591352e-10], "target_probs": 0.9999765157699585}}
+
+
+{"result": {"time": "2021-02-21 05:31:08.557084", "n_pass": [25, 3, 2], "n_token": 23, "loss": [0.6001065969467163, 0.00010276368993800133], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def group_exists(", "self", ",", "group_name", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Returns :data:`True` if the given group exist, :data:`False` otherwise.\\n\\n        :param group_name: Name of the group to verify.\\n        :type group_name: :class:`str`\\n        :return: Whether the group exists or not.\\n        :rtype: :class:`bool`\\n\\n        Example:\\n        ::\\n\\n            class MySampleRole(Role):\\n                def provision(self):\\n                    with self.using(UserRole) as role:\\n                        if role.group_exists('usersgroup'):\\n                            pass\\n        \"", "#NEWLINE#", "values", "=", "self", ".", ")", "#NEWLINE#", "return", "(", "group_name", "in", "group_name", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [11], "repair_candidates": [4, 19, 21, 11, 2, 13]}}
+{"prediction": {"error_location": 0.5487531423568726, "repair_targets": [0.9998972415924072], "repair_candidates": [5.1831895689247176e-05, 4.74367107017315e-06, 0.9998972415924072, 4.615324723999947e-05, 1.1939993438403462e-09, 6.746372904764542e-10], "target_probs": 0.9998972415924072}}
+
+
+{"result": {"time": "2021-02-21 05:31:08.666804", "n_pass": [30, 5, 3], "n_token": 20, "loss": [0.45437413454055786, 0.00010884400398936123], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def group_exists(", "self", ",", "group_name", ")", "\"\\n        Returns :data:`True` if the given group exist, :data:`False` otherwise.\\n\\n        :param group_name: Name of the group to verify.\\n        :type group_name: :class:`str`\\n        :return: Whether the group exists or not.\\n        :rtype: :class:`bool`\\n\\n        Example:\\n        ::\\n\\n            class MySampleRole(Role):\\n                def provision(self):\\n                    with self.using(UserRole) as role:\\n                        if role.group_exists('usersgroup'):\\n                            pass\\n        \"", "#NEWLINE#", "values", "=", "self", ".", ")", "#NEWLINE#", "return", "(", "group_name", "in", "group_name", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [8], "repair_candidates": [4, 16, 18, 8, 2, 10]}}
+{"prediction": {"error_location": 0.6348451375961304, "repair_targets": [0.9998911619186401], "repair_candidates": [6.708304863423109e-05, 6.658569304818229e-07, 0.9998911619186401, 4.1103594412561506e-05, 2.654799269308228e-09, 7.537153123848839e-10], "target_probs": 0.9998911619186401}}
+
+
+{"result": {"time": "2021-02-21 05:31:08.942907", "n_pass": [57, 10, 4], "n_token": 19, "loss": [0.40344804525375366, 0.0011491222539916635], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def group_exists(", "self", ",", "group_name", ")", "\"\\n        Returns :data:`True` if the given group exist, :data:`False` otherwise.\\n\\n        :param group_name: Name of the group to verify.\\n        :type group_name: :class:`str`\\n        :return: Whether the group exists or not.\\n        :rtype: :class:`bool`\\n\\n        Example:\\n        ::\\n\\n            class MySampleRole(Role):\\n                def provision(self):\\n                    with self.using(UserRole) as role:\\n                        if role.group_exists('usersgroup'):\\n                            pass\\n        \"", "#NEWLINE#", "values", "=", "self", ".", ")", "#NEWLINE#", "return", "(", "group_name", "in", "group_name", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [7], "repair_candidates": [3, 15, 17, 7, 1, 9]}}
+{"prediction": {"error_location": 0.668012797832489, "repair_targets": [0.9988515377044678], "repair_candidates": [0.0008664877968840301, 3.1947031402523862e-06, 0.9988515377044678, 0.0002787392004393041, 2.024109546638897e-09, 2.9999408512892956e-10], "target_probs": 0.9988515377044678}}
+
+
+{"result": {"time": "2021-02-21 05:31:08.997736", "n_pass": [58, 11, 5], "n_token": 18, "loss": [0.4667961597442627, 0.00011885872663697228], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "\"\\n        Returns :data:`True` if the given group exist, :data:`False` otherwise.\\n\\n        :param group_name: Name of the group to verify.\\n        :type group_name: :class:`str`\\n        :return: Whether the group exists or not.\\n        :rtype: :class:`bool`\\n\\n        Example:\\n        ::\\n\\n            class MySampleRole(Role):\\n                def provision(self):\\n                    with self.using(UserRole) as role:\\n                        if role.group_exists('usersgroup'):\\n                            pass\\n        \"", "#NEWLINE#", "values", "=", "self", ".", ")", "#NEWLINE#", "return", "(", "group_name", "in", "group_name", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [6], "repair_candidates": [2, 14, 16, 6, 0, 8]}}
+{"prediction": {"error_location": 0.6270079016685486, "repair_targets": [0.9998811483383179], "repair_candidates": [2.8971211577299982e-05, 1.6895035059860675e-07, 0.9998811483383179, 8.976733806775883e-05, 3.5859653024772342e-09, 3.449212304662552e-10], "target_probs": 0.9998811483383179}}
+
+
+{"result": {"time": "2021-02-21 05:31:09.052179", "n_pass": [59, 12, 6], "n_token": 17, "loss": [0.11500664055347443, 0.0011302060447633266], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "group_name", ")", "\"\\n        Returns :data:`True` if the given group exist, :data:`False` otherwise.\\n\\n        :param group_name: Name of the group to verify.\\n        :type group_name: :class:`str`\\n        :return: Whether the group exists or not.\\n        :rtype: :class:`bool`\\n\\n        Example:\\n        ::\\n\\n            class MySampleRole(Role):\\n                def provision(self):\\n                    with self.using(UserRole) as role:\\n                        if role.group_exists('usersgroup'):\\n                            pass\\n        \"", "#NEWLINE#", "values", "=", "self", ".", ")", "#NEWLINE#", "return", "(", "group_name", "in", "group_name", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [5], "repair_candidates": [1, 13, 15, 5, 0, 7]}}
+{"prediction": {"error_location": 0.8913601040840149, "repair_targets": [0.9988704323768616], "repair_candidates": [0.00010327610652893782, 9.33408155106008e-05, 0.9988704323768616, 0.0009328440064564347, 3.0831163400080186e-08, 3.345657617614961e-08], "target_probs": 0.9988704323768616}}
+
+
+{"result": {"time": "2021-02-21 05:31:09.106557", "n_pass": [61, 13, 7], "n_token": 15, "loss": [0.41635143756866455, 0.028408363461494446], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "group_name", ")", "values", "=", "self", ".", ")", "#NEWLINE#", "return", "(", "group_name", "in", "group_name", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [1, 11, 13, 3, 0, 5]}}
+{"prediction": {"error_location": 0.659448504447937, "repair_targets": [0.9719913601875305], "repair_candidates": [0.0027881658170372248, 0.0004562557442113757, 0.9719913601875305, 0.024764128029346466, 2.3663540460461263e-08, 5.214667453401489e-08], "target_probs": 0.9719913601875305}}
+
+
+{"result": {"time": "2021-02-21 05:31:09.160764", "n_pass": [64, 14, 8], "n_token": 13, "loss": [0.6256839632987976, 0.19496093690395355], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "group_name", ")", "values", "=", "self", ".", "return", "(", "group_name", "in", "group_name", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [3], "repair_candidates": [1, 9, 11, 3, 0, 5]}}
+{"prediction": {"error_location": 0.5348954200744629, "repair_targets": [0.8228667974472046], "repair_candidates": [0.02258429490029812, 0.007538138423115015, 0.8228667974472046, 0.14700931310653687, 2.941171928227959e-08, 1.4038099607205368e-06], "target_probs": 0.8228667974472046}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'group_name', ')', 'values', '=', 'self', '.', 'return', '(', 'group_name', 'in', 'group_name', ')']

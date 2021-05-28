@@ -1,0 +1,91 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def strategy(", "self", ",", "opponent", ")", ":", "#NEWLINE#", "#INDENT#", "'This is the actual strategy'", "#NEWLINE#", "if", "(", "len", "(", "self", ".", "history", ")", "==", "0", ")", ":", "#NEWLINE#", "#INDENT#", "return", "C", "#NEWLINE#", "#UNINDENT#", "if", "(", "self", ".", "history", "[", "(", "-", "1", ")", "]", "==", "D", ")", ":", "#NEWLINE#", "#INDENT#", "return", "D", "#NEWLINE#", "#UNINDENT#", "return", "C"], "error_location": [31], "repair_targets": [4], "repair_candidates": [4, 2, 15, 31], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "Axelrod-Python/Axelrod/axelrod/strategies/titfortat.py", "license": "mit", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00002-of-00300", "js_count": 8196, "results": {"model": "rnn", "prob": {"loc": [[0.15022163093090057, 1.931372480612481e-06, 2.194869239247055e-06, 6.955022779919773e-09, 3.025162129688397e-07, 3.6138523284989787e-09, 1.518314185489089e-08, 3.90003435768449e-07, 8.484276463605056e-07, 2.645344565621599e-08, 2.2025269572623074e-06, 6.768714033711376e-09, 1.3088168770991615e-07, 6.183631921885535e-05, 3.2966995604510885e-06, 0.017551714554429054, 8.594822134000424e-07, 5.1409442676231265e-06, 6.615720735680952e-07, 2.991509404637327e-07, 9.61661044129869e-06, 2.696131673474156e-07, 2.3557694817100128e-07, 8.224279213209229e-07, 1.8498582221582183e-07, 6.806354804211878e-07, 0.08890218287706375, 7.782867214700673e-06, 3.0517294362653047e-06, 7.209073373815045e-07, 2.5841122806014027e-06, 0.009604713879525661, 6.627238349210529e-07, 1.1780667819039081e-06, 5.49191625509593e-09, 8.524717145519389e-07, 2.332276380911935e-06, 2.6292516849935055e-05, 3.6963399452361045e-07, 8.539053055756085e-07, 3.5955056887360115e-07, 0.02140636369585991, 8.825584814076137e-07, 3.4383168667773134e-07, 1.8068454892272712e-06, 1.4289854277649283e-07, 2.4467283310514176e-06, 0.365957111120224, 4.37663175034686e-06, 3.8232224142120685e-07, 8.249120583059266e-06, 0.34619858860969543]], "pointer": [[0.0, 0.0, 0.006445583421736956, 0.0, 0.9492133855819702, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.011296934448182583, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.033044129610061646, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9492133855819702]}, "loss": [4.645501136779785, 0.05212165415287018], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [47]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 11:44:16.175672", "n_pass": [1, 1, 1], "n_token": 52, "loss": [1.0052391290664673, 0.05212165415287018], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def strategy(", "self", ",", "opponent", ")", ":", "#NEWLINE#", "#INDENT#", "'This is the actual strategy'", "#NEWLINE#", "if", "(", "len", "(", "self", ".", "history", ")", "==", "0", ")", ":", "#NEWLINE#", "#INDENT#", "return", "C", "#NEWLINE#", "#UNINDENT#", "if", "(", "self", ".", "history", "[", "(", "-", "1", ")", "]", "==", "D", ")", ":", "#NEWLINE#", "#INDENT#", "return", "D", "#NEWLINE#", "#UNINDENT#", "return", "C"]}}
+{"position": {"error_location": 47, "repair_targets": [4], "repair_candidates": [4, 2, 15, 31]}}
+{"prediction": {"error_location": 0.365957111120224, "repair_targets": [0.9492133855819702], "repair_candidates": [0.006445583421736956, 0.9492133855819702, 0.011296934448182583, 0.033044129610061646], "target_probs": 0.9492133855819702}}
+
+
+{"result": {"time": "2021-02-21 11:44:16.393800", "n_pass": [24, 4, 2], "n_token": 45, "loss": [0.6304132342338562, 0.05253875255584717], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def strategy(", "self", ",", "opponent", ")", ":", "#NEWLINE#", "#INDENT#", "'This is the actual strategy'", "#NEWLINE#", "if", "(", "len", "(", "self", ".", "history", ")", "==", "0", ")", ":", "#NEWLINE#", "self", ".", "history", "[", "(", "-", "1", ")", "]", "==", "D", ")", ":", "#NEWLINE#", "#INDENT#", "return", "D", "#NEWLINE#", "#UNINDENT#", "return", "C"]}}
+{"position": {"error_location": 40, "repair_targets": [4], "repair_candidates": [4, 2, 15, 24]}}
+{"prediction": {"error_location": 0.5323717594146729, "repair_targets": [0.9488175511360168], "repair_candidates": [0.006082078441977501, 0.9488175511360168, 0.0069961282424628735, 0.03810422122478485], "target_probs": 0.9488175511360168}}
+
+
+{"result": {"time": "2021-02-21 11:44:16.597907", "n_pass": [31, 7, 3], "n_token": 39, "loss": [0.89452064037323, 0.007351352833211422], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def strategy(", "self", ",", "opponent", ")", ":", "#NEWLINE#", "#INDENT#", "'This is the actual strategy'", "#NEWLINE#", "if", "(", "len", "(", "self", ".", "history", "self", ".", "history", "[", "(", "-", "1", ")", "]", "==", "D", ")", ":", "#NEWLINE#", "#INDENT#", "return", "D", "#NEWLINE#", "#UNINDENT#", "return", "C"]}}
+{"position": {"error_location": 34, "repair_targets": [4], "repair_candidates": [4, 2, 15, 18]}}
+{"prediction": {"error_location": 0.40880346298217773, "repair_targets": [0.9926756024360657], "repair_candidates": [0.005157956853508949, 0.9926756024360657, 0.0009110010578297079, 0.0012555542634800076], "target_probs": 0.9926756024360657}}
+
+
+{"result": {"time": "2021-02-21 11:44:16.730575", "n_pass": [36, 9, 4], "n_token": 33, "loss": [0.8902032375335693, 0.6477864980697632], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def strategy(", "self", ",", "opponent", ")", "(", "len", "(", "self", ".", "history", "self", ".", "history", "[", "(", "-", "1", ")", "]", "==", "D", ")", ":", "#NEWLINE#", "#INDENT#", "return", "D", "#NEWLINE#", "#UNINDENT#", "return", "C"]}}
+{"position": {"error_location": 28, "repair_targets": [4], "repair_candidates": [4, 2, 9, 12]}}
+{"prediction": {"error_location": 0.4105722904205322, "repair_targets": [0.5232025980949402], "repair_candidates": [0.04579556733369827, 0.5232025980949402, 0.3717404007911682, 0.05926145240664482], "target_probs": 0.5232025980949402}}
+
+
+{"result": {"time": "2021-02-21 11:44:16.856051", "n_pass": [52, 11, 5], "n_token": 30, "loss": [0.6728430390357971, 0.22500605881214142], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def strategy(", "self", ",", "opponent", ")", "self", ".", "history", "self", ".", "history", "[", "(", "-", "1", ")", "]", "==", "D", ")", ":", "#NEWLINE#", "#INDENT#", "return", "D", "#NEWLINE#", "#UNINDENT#", "return", "C"]}}
+{"position": {"error_location": 25, "repair_targets": [4], "repair_candidates": [4, 2, 6, 9]}}
+{"prediction": {"error_location": 0.5102558135986328, "repair_targets": [0.7985113859176636], "repair_candidates": [0.13189862668514252, 0.7985113859176636, 0.006052013952285051, 0.06353792548179626], "target_probs": 0.7985113859176636}}
+
+
+{"result": {"time": "2021-02-21 11:44:16.917828", "n_pass": [54, 12, 6], "n_token": 27, "loss": [0.48717182874679565, 0.5564699769020081], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def strategy(", "self", ",", "opponent", ")", "self", ".", "history", "self", ".", "history", "1", ")", "]", "==", "D", ")", ":", "#NEWLINE#", "#INDENT#", "return", "D", "#NEWLINE#", "#UNINDENT#", "return", "C"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [4, 2, 6, 9]}}
+{"prediction": {"error_location": 0.6143614649772644, "repair_targets": [0.5732290148735046], "repair_candidates": [0.3158808946609497, 0.5732290148735046, 0.012919171713292599, 0.09797085076570511], "target_probs": 0.5732290148735046}}
+
+
+{"result": {"time": "2021-02-21 11:44:16.978423", "n_pass": [55, 13, 7], "n_token": 24, "loss": [0.6115062236785889, 0.23677794635295868], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def strategy(", "self", ",", "opponent", ")", "self", ".", "history", "self", ".", "history", "==", "D", ")", ":", "#NEWLINE#", "#INDENT#", "return", "D", "#NEWLINE#", "#UNINDENT#", "return", "C"]}}
+{"position": {"error_location": 19, "repair_targets": [4], "repair_candidates": [4, 2, 6, 9]}}
+{"prediction": {"error_location": 0.5425330996513367, "repair_targets": [0.7891665101051331], "repair_candidates": [0.15487827360630035, 0.7891665101051331, 0.006752399727702141, 0.04920283332467079], "target_probs": 0.7891665101051331}}
+
+
+{"result": {"time": "2021-02-21 11:44:17.043274", "n_pass": [56, 14, 8], "n_token": 20, "loss": [0.6867672801017761, 0.030915595591068268], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def strategy(", "self", ",", "opponent", ")", "self", ".", "history", "self", ".", "history", "#NEWLINE#", "#INDENT#", "return", "D", "#NEWLINE#", "#UNINDENT#", "return", "C"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [4, 2, 6, 9]}}
+{"prediction": {"error_location": 0.503200113773346, "repair_targets": [0.9695574045181274], "repair_candidates": [0.01769557222723961, 0.9695574045181274, 0.0022724911104887724, 0.010474490001797676], "target_probs": 0.9695574045181274}}
+
+
+{"result": {"time": "2021-02-21 11:44:17.102163", "n_pass": [58, 15, 9], "n_token": 16, "loss": [0.8309854865074158, 0.019048180431127548], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def strategy(", "self", ",", "opponent", ")", "self", ".", "history", "self", ".", "history", "#NEWLINE#", "#INDENT#", "return", "D"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [4, 2, 6, 9]}}
+{"prediction": {"error_location": 0.4356197714805603, "repair_targets": [0.9811320900917053], "repair_candidates": [0.011984817683696747, 0.9811320900917053, 0.0011834072647616267, 0.005699656438082457], "target_probs": 0.9811320900917053}}
+
+
+{"result": {"time": "2021-02-21 11:44:17.158471", "n_pass": [74, 16, 10], "n_token": 15, "loss": [0.7634893655776978, 0.04358807951211929], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def strategy(", "self", ",", "opponent", ")", "self", ".", "history", "self", ".", "history", "#NEWLINE#", "#INDENT#", "return", "D"]}}
+{"position": {"error_location": 14, "repair_targets": [3], "repair_candidates": [3, 1, 5, 8]}}
+{"prediction": {"error_location": 0.4660373628139496, "repair_targets": [0.9573482275009155], "repair_candidates": [0.024249348789453506, 0.9573482275009155, 0.001212297473102808, 0.017190009355545044], "target_probs": 0.9573482275009155}}
+
+
+{"result": {"time": "2021-02-21 11:44:17.268786", "n_pass": [77, 18, 11], "n_token": 14, "loss": [0.33587130904197693, 0.036143768578767776], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def strategy(", "self", "opponent", ")", "self", ".", "history", "self", ".", "history", "#NEWLINE#", "#INDENT#", "return", "D"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [2, 1, 4, 7]}}
+{"prediction": {"error_location": 0.7147150635719299, "repair_targets": [0.9645016193389893], "repair_candidates": [0.012514515779912472, 0.9645016193389893, 0.0015198170440271497, 0.02146410010755062], "target_probs": 0.9645016193389893}}
+
+
+{"result": {"time": "2021-02-21 11:44:17.599894", "n_pass": [101, 24, 12], "n_token": 13, "loss": [0.1436360627412796, 0.056483194231987], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def strategy(", "self", "opponent", ")", "self", ".", "self", ".", "history", "#NEWLINE#", "#INDENT#", "return", "D"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [2, 1, 4, 6]}}
+{"prediction": {"error_location": 0.8662028312683105, "repair_targets": [0.9450823664665222], "repair_candidates": [0.012586342170834541, 0.9450823664665222, 0.003904252080246806, 0.03842698782682419], "target_probs": 0.9450823664665222}}
+
+
+{"result": {"time": "2021-02-21 11:44:17.709155", "n_pass": [103, 26, 13], "n_token": 12, "loss": [0.6781484484672546, 0.03799783065915108], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def strategy(", "self", "opponent", ")", "self", ".", "self", ".", "#NEWLINE#", "#INDENT#", "return", "D"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [2, 1, 4, 6]}}
+{"prediction": {"error_location": 0.5075559020042419, "repair_targets": [0.9627150297164917], "repair_candidates": [0.012060850858688354, 0.9627150297164917, 0.002921030391007662, 0.022303076460957527], "target_probs": 0.9627150297164917}}
+
+
+
+
+Minimal simplified tokens:
+
+['def strategy(', 'self', 'opponent', ')', 'self', '.', 'self', '.', '#NEWLINE#', '#INDENT#', 'return', 'D']

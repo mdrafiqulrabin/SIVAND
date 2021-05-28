@@ -1,0 +1,181 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "=", "StringIO", ".", "StringIO", "(", "'foo|1|2|3|4|5|0|1|ACGTACGT|@@@@hhhh|1\\n'", ".", "replace", "(", "'|'", ",", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", "StringIO", ".", "StringIO", "(", "''", ")", "#NEWLINE#", "ngsutils", ".", "fastq", ".", "fromqseq", ".", "read_illumina_export", "(", "ngsutils", ".", "fastq", ".", "fromqseq", ".", "qseq_reader", "(", "fileobj", "=", "qseq", ")", ",", "solexa_quals", "=", "True", ",", "out", "=", "qseq", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "out", ".", "getvalue", "(", ")", ",", "'@foo:1:2:3:4:5 #0/1\\nACGTACGT\\n+\\n$$$$IIII\\n'", ")"], "error_location": [59], "repair_targets": [23, 57, 66], "repair_candidates": [2, 62, 7, 50, 59, 23, 57, 66], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "ngsutils/ngsutils/ngsutils/fastq/t/test_fromqseq.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00014-of-00300", "js_count": 45704, "results": {"model": "rnn", "prob": {"loc": [[0.026787417009472847, 9.20365096135356e-07, 1.907724467287153e-08, 2.5276206128133083e-10, 4.397603947658979e-10, 6.567795907130858e-08, 9.767092912227326e-09, 9.297617253878343e-08, 2.0440358294848693e-09, 7.184391748182861e-09, 3.6630021238437394e-09, 5.751976325796271e-11, 6.143480169029658e-10, 3.24406716767367e-11, 6.737458591032919e-09, 6.742234548440251e-11, 1.2669666704656635e-10, 1.6127835067436536e-08, 1.7652874995111034e-10, 2.0736811379151732e-08, 1.2700659968167827e-10, 1.1780345587908414e-09, 7.920804456773567e-09, 3.195916065124038e-08, 3.344259535964511e-09, 2.444414270996731e-08, 1.4424698768777944e-08, 6.356680737340525e-10, 3.578621488031786e-08, 4.6682325205438246e-07, 1.5929666474789883e-08, 1.5213883486353552e-08, 1.0830089713920188e-08, 5.261127977718161e-09, 2.00484850942928e-09, 4.839130429701299e-09, 3.864439435119493e-09, 2.780007779534799e-09, 6.389622719815691e-10, 5.17935902499822e-11, 1.9545571205981105e-07, 3.244607083008333e-10, 6.848895894862039e-10, 7.946934776903447e-10, 3.509168511328653e-09, 5.19751131022872e-10, 9.874602255877107e-07, 1.1003620237204359e-08, 1.6750568931911403e-08, 8.590678390874018e-08, 0.6804046034812927, 1.0448076182001387e-06, 1.4432934847263823e-07, 4.434164964095544e-07, 1.2912157387745538e-07, 1.8204425941803493e-05, 1.1236601871189578e-08, 4.213559634536068e-08, 1.188392730000487e-06, 0.2927781343460083, 2.0772220068465685e-06, 1.7292643761379622e-08, 3.7326433499629275e-08, 1.175897379468438e-09, 5.025817539916488e-09, 1.8291270720283137e-08, 9.665859579399694e-07, 2.9683813185243935e-09, 2.9047910743429384e-08, 8.61115196926221e-08, 1.7271992192036123e-06, 6.06657621915474e-08, 4.6193711078501565e-09, 4.682563599089917e-07]], "pointer": [[0.0, 0.0, 1.2094827980035916e-05, 0.0, 0.0, 0.0, 0.0, 0.0009356014197692275, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9921227097511292, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.069856575166341e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.006924161221832037, 0.0, 1.1618506050581345e-06, 0.0, 0.0, 6.269710297601705e-07, 0.0, 0.0, 0.0, 6.050938736734679e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9990474581718445]}, "loss": [1.2283401489257812, 0.0009529957897029817], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [50]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 13:03:17.678220", "n_pass": [1, 1, 1], "n_token": 74, "loss": [0.3850677013397217, 0.0009529957897029817], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "=", "StringIO", ".", "StringIO", "(", "'foo|1|2|3|4|5|0|1|ACGTACGT|@@@@hhhh|1\\n'", ".", "replace", "(", "'|'", ",", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", "StringIO", ".", "StringIO", "(", "''", ")", "#NEWLINE#", "ngsutils", ".", "fastq", ".", "fromqseq", ".", "read_illumina_export", "(", "ngsutils", ".", "fastq", ".", "fromqseq", ".", "qseq_reader", "(", "fileobj", "=", "qseq", ")", ",", "solexa_quals", "=", "True", ",", "out", "=", "qseq", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "out", ".", "getvalue", "(", ")", ",", "'@foo:1:2:3:4:5 #0/1\\nACGTACGT\\n+\\n$$$$IIII\\n'", ")"]}}
+{"position": {"error_location": 50, "repair_targets": [23, 57, 66], "repair_candidates": [2, 62, 7, 50, 59, 23, 57, 66]}}
+{"prediction": {"error_location": 0.6804046034812927, "repair_targets": [0.9921227097511292, 0.006924161221832037, 6.050938736734679e-07], "repair_candidates": [1.2094827980035916e-05, 0.0009356014197692275, 0.9921227097511292, 3.069856575166341e-06, 0.006924161221832037, 1.1618506050581345e-06, 6.269710297601705e-07, 6.050938736734679e-07], "target_probs": 0.9990474581718445}}
+
+
+{"result": {"time": "2021-02-21 13:03:17.762461", "n_pass": [21, 2, 2], "n_token": 65, "loss": [0.02924530953168869, 0.0031164519023150206], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "=", ",", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", "StringIO", ".", "StringIO", "(", "''", ")", "#NEWLINE#", "ngsutils", ".", "fastq", ".", "fromqseq", ".", "read_illumina_export", "(", "ngsutils", ".", "fastq", ".", "fromqseq", ".", "qseq_reader", "(", "fileobj", "=", "qseq", ")", ",", "solexa_quals", "=", "True", ",", "out", "=", "qseq", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "out", ".", "getvalue", "(", ")", ",", "'@foo:1:2:3:4:5 #0/1\\nACGTACGT\\n+\\n$$$$IIII\\n'", ")"]}}
+{"position": {"error_location": 41, "repair_targets": [14, 48, 57], "repair_candidates": [2, 53, 7, 41, 50, 14, 48, 57]}}
+{"prediction": {"error_location": 0.971178412437439, "repair_targets": [0.993174135684967, 0.0037136543542146683, 5.872324777556059e-07], "repair_candidates": [3.272065441706218e-05, 0.003074919106438756, 0.993174135684967, 1.4985271263867617e-06, 0.0037136543542146683, 1.8115342754754238e-06, 5.973361680844391e-07, 5.872324777556059e-07], "target_probs": 0.9968883991241455}}
+
+
+{"result": {"time": "2021-02-21 13:03:17.918757", "n_pass": [24, 4, 3], "n_token": 56, "loss": [0.022859856486320496, 0.008055741898715496], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "=", ",", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", "StringIO", ".", "StringIO", "(", "''", ")", "#NEWLINE#", "ngsutils", ".", "fastq", ".", ".", "qseq_reader", "(", "fileobj", "=", "qseq", ")", ",", "solexa_quals", "=", "True", ",", "out", "=", "qseq", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "out", ".", "getvalue", "(", ")", ",", "'@foo:1:2:3:4:5 #0/1\\nACGTACGT\\n+\\n$$$$IIII\\n'", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [14, 39, 48], "repair_candidates": [2, 44, 7, 32, 41, 14, 39, 48]}}
+{"prediction": {"error_location": 0.977399468421936, "repair_targets": [0.9749524593353271, 0.017021967098116875, 2.2034910216461867e-06], "repair_candidates": [8.741000056033954e-05, 0.007911663502454758, 0.9749524593353271, 1.3079272321192548e-05, 0.017021967098116875, 8.543919648218434e-06, 2.525264335417887e-06, 2.2034910216461867e-06], "target_probs": 0.9919766187667847}}
+
+
+{"result": {"time": "2021-02-21 13:03:18.070171", "n_pass": [43, 6, 4], "n_token": 51, "loss": [0.015507590025663376, 0.01793353632092476], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "=", ",", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", "StringIO", ".", "StringIO", "(", "''", ")", "#NEWLINE#", "ngsutils", ".", "fastq", "=", "qseq", ")", ",", "solexa_quals", "=", "True", ",", "out", "=", "qseq", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "out", ".", "getvalue", "(", ")", ",", "'@foo:1:2:3:4:5 #0/1\\nACGTACGT\\n+\\n$$$$IIII\\n'", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [14, 34, 43], "repair_candidates": [2, 39, 7, 27, 36, 14, 34, 43]}}
+{"prediction": {"error_location": 0.9846119284629822, "repair_targets": [0.9314820766448975, 0.05073830857872963, 5.949190835963236e-06], "repair_candidates": [0.00019728332699742168, 0.017540987581014633, 0.9314820766448975, 1.0506550097488798e-05, 0.05073830857872963, 1.8462285879650153e-05, 6.374556960508926e-06, 5.949190835963236e-06], "target_probs": 0.9822263121604919}}
+
+
+{"result": {"time": "2021-02-21 13:03:18.143787", "n_pass": [48, 7, 5], "n_token": 46, "loss": [0.038288459181785583, 0.020521441474556923], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "=", ",", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", "StringIO", ".", "StringIO", "(", "''", ")", "#NEWLINE#", "ngsutils", ".", "fastq", "=", "qseq", ")", ",", "solexa_quals", "=", "True", ",", "out", "=", "qseq", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "out", ".", "getvalue"]}}
+{"position": {"error_location": 27, "repair_targets": [14, 34, 43], "repair_candidates": [2, 39, 7, 27, 36, 14, 34, 43]}}
+{"prediction": {"error_location": 0.9624350666999817, "repair_targets": [0.7109907269477844, 0.2686936855316162, 3.23388735523622e-06], "repair_candidates": [0.001974061829969287, 0.018239231780171394, 0.7109907269477844, 4.005135269835591e-05, 0.2686936855316162, 3.550445399014279e-05, 2.3458083887817338e-05, 3.23388735523622e-06], "target_probs": 0.9796876907348633}}
+
+
+{"result": {"time": "2021-02-21 13:03:18.285216", "n_pass": [53, 9, 6], "n_token": 41, "loss": [0.0764271467924118, 0.015663770958781242], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "=", ",", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "ngsutils", ".", "fastq", "=", "qseq", ")", ",", "solexa_quals", "=", "True", ",", "out", "=", "qseq", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "out", ".", "getvalue"]}}
+{"position": {"error_location": 22, "repair_targets": [14, 29, 38], "repair_candidates": [2, 34, 7, 22, 31, 14, 29, 38]}}
+{"prediction": {"error_location": 0.9264205098152161, "repair_targets": [0.6070215106010437, 0.3774346113204956, 2.163558519896469e-06], "repair_candidates": [0.0022091795690357685, 0.013268629088997841, 0.6070215106010437, 2.3845252144383267e-05, 0.3774346113204956, 1.9524914023349993e-05, 2.0505827706074342e-05, 2.163558519896469e-06], "target_probs": 0.9844582676887512}}
+
+
+{"result": {"time": "2021-02-21 13:03:18.561713", "n_pass": [82, 13, 7], "n_token": 39, "loss": [0.23326575756072998, 0.0221217293292284], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "=", ",", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ")", ",", "solexa_quals", "=", "True", ",", "out", "=", "qseq", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "out", ".", "getvalue"]}}
+{"position": {"error_location": 20, "repair_targets": [14, 27, 36], "repair_candidates": [2, 32, 7, 20, 29, 14, 27, 36]}}
+{"prediction": {"error_location": 0.7919430732727051, "repair_targets": [0.2928794324398041, 0.6852390170097351, 2.733064775384264e-06], "repair_candidates": [0.015864675864577293, 0.005862003192305565, 0.2928794324398041, 4.6215791371650994e-05, 0.6852390170097351, 2.063949614239391e-05, 8.523586438968778e-05, 2.733064775384264e-06], "target_probs": 0.9781211614608765}}
+
+
+{"result": {"time": "2021-02-21 13:03:18.766372", "n_pass": [86, 16, 8], "n_token": 36, "loss": [0.6055085062980652, 0.05755700170993805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "=", ",", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ")", ",", "solexa_quals", "out", "=", "qseq", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "out", ".", "getvalue"]}}
+{"position": {"error_location": 20, "repair_targets": [14, 24, 33], "repair_candidates": [2, 29, 7, 20, 26, 14, 24, 33]}}
+{"prediction": {"error_location": 0.545796811580658, "repair_targets": [0.7973006963729858, 0.1467616707086563, 5.742288976762211e-06], "repair_candidates": [0.04562573507428169, 0.01015722006559372, 0.7973006963729858, 7.747234485577792e-05, 0.1467616707086563, 1.3985663827043027e-05, 5.74579717067536e-05, 5.742288976762211e-06], "target_probs": 0.9440680742263794}}
+
+
+{"result": {"time": "2021-02-21 13:03:19.034953", "n_pass": [95, 20, 9], "n_token": 34, "loss": [0.4589993953704834, 0.03334870561957359], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ")", ",", "solexa_quals", "out", "=", "qseq", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "out", ".", "getvalue"]}}
+{"position": {"error_location": 18, "repair_targets": [12, 22, 31], "repair_candidates": [2, 27, 7, 18, 24, 12, 22, 31]}}
+{"prediction": {"error_location": 0.6319155693054199, "repair_targets": [0.7067025899887085, 0.2604925334453583, 6.072251835576026e-06], "repair_candidates": [0.02665163017809391, 0.00601342273876071, 0.7067025899887085, 5.3627441957360134e-05, 0.2604925334453583, 1.866105776571203e-05, 6.145954102976248e-05, 6.072251835576026e-06], "target_probs": 0.9672012329101562}}
+
+
+{"result": {"time": "2021-02-21 13:03:19.428076", "n_pass": [105, 26, 10], "n_token": 31, "loss": [0.5707927346229553, 0.0769689753651619], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ")", ",", "solexa_quals", "out", "=", "qseq", ")", "#NEWLINE#", "self", "out", ".", "getvalue"]}}
+{"position": {"error_location": 18, "repair_targets": [12, 22, 28], "repair_candidates": [2, 27, 7, 18, 24, 12, 22, 28]}}
+{"prediction": {"error_location": 0.5650773048400879, "repair_targets": [0.6824281215667725, 0.24345232546329498, 3.810031194007024e-05], "repair_candidates": [0.07042895257472992, 0.003279635449871421, 0.6824281215667725, 3.595968155423179e-05, 0.24345232546329498, 1.0062051842396613e-05, 0.0003267829306423664, 3.810031194007024e-05], "target_probs": 0.9259185791015625}}
+
+
+{"result": {"time": "2021-02-21 13:03:20.008442", "n_pass": [150, 35, 11], "n_token": 30, "loss": [0.5084313154220581, 0.058631520718336105], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def testQseqSolexa(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ")", ",", "solexa_quals", "out", "=", "qseq", ")", "#NEWLINE#", "self", "out", ".", "getvalue"]}}
+{"position": {"error_location": 17, "repair_targets": [11, 21, 27], "repair_candidates": [1, 26, 6, 17, 23, 11, 21, 27]}}
+{"prediction": {"error_location": 0.6014382243156433, "repair_targets": [0.792793333530426, 0.15021400153636932, 4.6898483560653403e-05], "repair_candidates": [0.05469450354576111, 0.0016276690876111388, 0.792793333530426, 4.494673339650035e-05, 0.15021400153636932, 1.2558821254060604e-05, 0.0005661008763127029, 4.6898483560653403e-05], "target_probs": 0.94305419921875}}
+
+
+{"result": {"time": "2021-02-21 13:03:20.072221", "n_pass": [152, 36, 12], "n_token": 29, "loss": [0.738987147808075, 0.03401177376508713], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def testQseqSolexa(", "self", ":", "#NEWLINE#", "#INDENT#", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ")", ",", "solexa_quals", "out", "=", "qseq", ")", "#NEWLINE#", "self", "out", ".", "getvalue"]}}
+{"position": {"error_location": 16, "repair_targets": [10, 20, 26], "repair_candidates": [1, 25, 5, 16, 22, 10, 20, 26]}}
+{"prediction": {"error_location": 0.4775974154472351, "repair_targets": [0.7291513681411743, 0.2373550534248352, 5.3717656555818394e-05], "repair_candidates": [0.02809927798807621, 0.004700280725955963, 0.7291513681411743, 4.3852563976543024e-05, 0.2373550534248352, 1.014717054204084e-05, 0.000586329959332943, 5.3717656555818394e-05], "target_probs": 0.9665601253509521}}
+
+
+{"result": {"time": "2021-02-21 13:03:20.199625", "n_pass": [154, 38, 13], "n_token": 28, "loss": [0.5216858386993408, 0.006738787051290274], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def testQseqSolexa(", "self", ":", "#INDENT#", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ")", ",", "solexa_quals", "out", "=", "qseq", ")", "#NEWLINE#", "self", "out", ".", "getvalue"]}}
+{"position": {"error_location": 15, "repair_targets": [9, 19, 25], "repair_candidates": [1, 24, 4, 15, 21, 9, 19, 25]}}
+{"prediction": {"error_location": 0.5935190916061401, "repair_targets": [0.8557061553001404, 0.13755588233470917, 2.1829837351106107e-05], "repair_candidates": [0.006266559939831495, 0.00015371805056929588, 0.8557061553001404, 2.3223696189234033e-05, 0.13755588233470917, 9.26496613828931e-06, 0.00026330491527915, 2.1829837351106107e-05], "target_probs": 0.9932838678359985}}
+
+
+{"result": {"time": "2021-02-21 13:03:20.263132", "n_pass": [155, 39, 14], "n_token": 27, "loss": [0.8259921073913574, 0.01097842212766409], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def testQseqSolexa(", "self", ":", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ")", ",", "solexa_quals", "out", "=", "qseq", ")", "#NEWLINE#", "self", "out", ".", "getvalue"]}}
+{"position": {"error_location": 14, "repair_targets": [8, 18, 24], "repair_candidates": [1, 23, 3, 14, 20, 8, 18, 24]}}
+{"prediction": {"error_location": 0.43780040740966797, "repair_targets": [0.7794649004936218, 0.20959502458572388, 2.1708130589104258e-05], "repair_candidates": [0.0071262577548623085, 0.0034272109623998404, 0.7794649004936218, 2.1058467609691434e-05, 0.20959502458572388, 1.2495638657128438e-05, 0.0003312946355435997, 2.1708130589104258e-05], "target_probs": 0.989081621170044}}
+
+
+{"result": {"time": "2021-02-21 13:03:20.892090", "n_pass": [168, 49, 15], "n_token": 26, "loss": [0.48411911725997925, 0.008385672233998775], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def testQseqSolexa(", "self", ":", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ",", "solexa_quals", "out", "=", "qseq", ")", "#NEWLINE#", "self", "out", ".", "getvalue"]}}
+{"position": {"error_location": 14, "repair_targets": [8, 17, 23], "repair_candidates": [1, 22, 3, 14, 19, 8, 17, 23]}}
+{"prediction": {"error_location": 0.6162397265434265, "repair_targets": [0.5751941800117493, 0.4164479076862335, 7.309564807655988e-06], "repair_candidates": [0.006858854088932276, 0.0013647708110511303, 0.5751941800117493, 1.0872655366256367e-05, 0.4164479076862335, 1.0645208021742292e-05, 0.00010539931827224791, 7.309564807655988e-06], "target_probs": 0.9916493892669678}}
+
+
+{"result": {"time": "2021-02-21 13:03:21.015987", "n_pass": [170, 51, 16], "n_token": 25, "loss": [0.5681188106536865, 0.004643415566533804], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def testQseqSolexa(", "self", ":", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "=", "qseq", ")", "#NEWLINE#", "self", "out", ".", "getvalue"]}}
+{"position": {"error_location": 14, "repair_targets": [8, 16, 22], "repair_candidates": [1, 21, 3, 14, 18, 8, 16, 22]}}
+{"prediction": {"error_location": 0.5665902495384216, "repair_targets": [0.3257209062576294, 0.669639527797699, 6.903793746459996e-06], "repair_candidates": [0.003247884102165699, 0.0012445425381883979, 0.3257209062576294, 9.652003427618183e-06, 0.669639527797699, 8.454978342342656e-06, 0.00012212480942253023, 6.903793746459996e-06], "target_probs": 0.9953673481941223}}
+
+
+{"result": {"time": "2021-02-21 13:03:21.077273", "n_pass": [172, 52, 17], "n_token": 24, "loss": [0.055745746940374374, 0.0037260842509567738], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def testQseqSolexa(", "self", ":", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "qseq", ")", "#NEWLINE#", "self", "out", ".", "getvalue"]}}
+{"position": {"error_location": 14, "repair_targets": [8, 16, 21], "repair_candidates": [1, 20, 3, 14, 17, 8, 16, 21]}}
+{"prediction": {"error_location": 0.9457794427871704, "repair_targets": [0.9962702989578247, 6.7598898567666765e-06, 3.796723603954888e-06], "repair_candidates": [0.00285284873098135, 0.0007953612366691232, 0.9962702989578247, 3.326311116325087e-06, 6.7598898567666765e-06, 4.562525191431632e-06, 6.300979293882847e-05, 3.796723603954888e-06], "target_probs": 0.99628084897995}}
+
+
+{"result": {"time": "2021-02-21 13:03:21.199253", "n_pass": [176, 54, 18], "n_token": 22, "loss": [0.06029897183179855, 0.001366714364849031], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def testQseqSolexa(", "self", ":", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "qseq", ")", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 14, "repair_targets": [8, 16, 21], "repair_candidates": [1, 20, 3, 14, 17, 8, 16, 21]}}
+{"prediction": {"error_location": 0.9414827823638916, "repair_targets": [0.9986270666122437, 5.692243121302454e-06, 1.4754850781173445e-06], "repair_candidates": [0.0010306569747626781, 0.0003185045497957617, 0.9986270666122437, 2.7659277748171007e-06, 5.692243121302454e-06, 2.588104962342186e-06, 1.132030229200609e-05, 1.4754850781173445e-06], "target_probs": 0.9986342191696167}}
+
+
+{"result": {"time": "2021-02-21 13:03:21.258795", "n_pass": [177, 55, 19], "n_token": 21, "loss": [0.1609037220478058, 0.0074366796761751175], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ":", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "qseq", ")", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 13, "repair_targets": [7, 15, 20], "repair_candidates": [0, 19, 2, 13, 16, 7, 15, 20]}}
+{"prediction": {"error_location": 0.8513741493225098, "repair_targets": [0.9925122261047363, 6.881017179694027e-05, 9.90631633612793e-06], "repair_candidates": [0.0045015448704361916, 0.002774823922663927, 0.9925122261047363, 4.3410367652541026e-05, 6.881017179694027e-05, 2.2824226107331924e-05, 6.648671114817262e-05, 9.90631633612793e-06], "target_probs": 0.9925909042358398}}
+
+
+{"result": {"time": "2021-02-21 13:03:21.318708", "n_pass": [179, 56, 20], "n_token": 20, "loss": [0.12146791070699692, 0.04160736873745918], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "qseq", "'\\t'", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "qseq", ")", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 12, "repair_targets": [6, 14, 19], "repair_candidates": [0, 18, 1, 12, 15, 6, 14, 19]}}
+{"prediction": {"error_location": 0.8856194615364075, "repair_targets": [0.9592230319976807, 1.853363028203603e-05, 4.74335820399574e-06], "repair_candidates": [0.002587636699900031, 0.038106054067611694, 0.9592230319976807, 1.417696967109805e-05, 1.853363028203603e-05, 8.310685188916977e-06, 3.7436428101500496e-05, 4.74335820399574e-06], "target_probs": 0.9592463374137878}}
+
+
+{"result": {"time": "2021-02-21 13:03:21.377483", "n_pass": [181, 57, 21], "n_token": 19, "loss": [0.5749720335006714, 0.04579002782702446], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "qseq", ")", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "qseq", ")", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 11, "repair_targets": [5, 13, 18], "repair_candidates": [0, 17, 1, 11, 14, 5, 13, 18]}}
+{"prediction": {"error_location": 0.5627206563949585, "repair_targets": [0.9552074670791626, 2.6833622541744262e-05, 8.207490282075014e-06], "repair_candidates": [0.00319113046862185, 0.04149267077445984, 0.9552074670791626, 1.389323460898595e-05, 2.6833622541744262e-05, 1.0318864951841533e-05, 4.952394374413416e-05, 8.207490282075014e-06], "target_probs": 0.9552425146102905}}
+
+
+{"result": {"time": "2021-02-21 13:03:21.436405", "n_pass": [182, 58, 22], "n_token": 18, "loss": [0.22206102311611176, 0.031333599239587784], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "qseq", ")", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "qseq", ")", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 10, "repair_targets": [4, 12, 17], "repair_candidates": [0, 16, 1, 10, 13, 4, 12, 17]}}
+{"prediction": {"error_location": 0.800866425037384, "repair_targets": [0.9691229462623596, 2.0010120351798832e-05, 9.26623306440888e-06], "repair_candidates": [0.005528331734240055, 0.02523825690150261, 0.9691229462623596, 1.3277253856358584e-05, 2.0010120351798832e-05, 1.0870539881580044e-05, 5.7010543969227e-05, 9.26623306440888e-06], "target_probs": 0.9691522121429443}}
+
+
+{"result": {"time": "2021-02-21 13:03:21.496326", "n_pass": [183, 59, 23], "n_token": 17, "loss": [0.05357066169381142, 0.028376905247569084], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "qseq", "#NEWLINE#", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "qseq", ")", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 9, "repair_targets": [3, 11, 16], "repair_candidates": [0, 15, 1, 9, 12, 3, 11, 16]}}
+{"prediction": {"error_location": 0.9478389620780945, "repair_targets": [0.9719926118850708, 2.269737706228625e-05, 6.610064701817464e-06], "repair_candidates": [0.005776830017566681, 0.022109443321824074, 0.9719926118850708, 2.7768857762566768e-05, 2.269737706228625e-05, 1.2636945029953495e-05, 5.1361472287680954e-05, 6.610064701817464e-06], "target_probs": 0.9720219373703003}}
+
+
+{"result": {"time": "2021-02-21 13:03:21.553572", "n_pass": [184, 60, 24], "n_token": 16, "loss": [0.16676107048988342, 0.1464533656835556], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "qseq", "out", "=", ")", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "qseq", ")", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 8, "repair_targets": [2, 10, 15], "repair_candidates": [0, 14, 1, 8, 11, 2, 10, 15]}}
+{"prediction": {"error_location": 0.8464019298553467, "repair_targets": [0.8637184500694275, 3.6701199860544875e-05, 1.0851678780454677e-05], "repair_candidates": [0.004840460605919361, 0.13129375874996185, 0.8637184500694275, 1.9172399333911017e-05, 3.6701199860544875e-05, 1.4859146176604554e-05, 6.578133616130799e-05, 1.0851678780454677e-05], "target_probs": 0.8637660145759583}}
+
+
+{"result": {"time": "2021-02-21 13:03:21.667285", "n_pass": [187, 62, 25], "n_token": 15, "loss": [0.1252688467502594, 0.5416628122329712], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "qseq", "out", "=", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "qseq", ")", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 7, "repair_targets": [2, 9, 14], "repair_candidates": [0, 13, 1, 7, 10, 2, 9, 14]}}
+{"prediction": {"error_location": 0.8822596669197083, "repair_targets": [0.5812577605247498, 0.0004131631867494434, 0.00010915422171819955], "repair_candidates": [0.029055381193757057, 0.388135701417923, 0.5812577605247498, 0.0002928439062088728, 0.0004131631867494434, 0.00018359367095399648, 0.0005524067673832178, 0.00010915422171819955], "target_probs": 0.5817800760269165}}
+
+
+{"result": {"time": "2021-02-21 13:03:22.064903", "n_pass": [205, 69, 26], "n_token": 14, "loss": [0.13201302289962769, 0.40312695503234863], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "qseq", "out", "=", "#NEWLINE#", "fastq", "=", "qseq", ",", "out", "qseq", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 7, "repair_targets": [2, 9, 13], "repair_candidates": [0, 12, 1, 7, 10, 2, 9, 13]}}
+{"prediction": {"error_location": 0.8763296604156494, "repair_targets": [0.6673078536987305, 0.0005115550011396408, 0.00040782816358841956], "repair_candidates": [0.021831750869750977, 0.3088759481906891, 0.6673078536987305, 0.0002987076877616346, 0.0005115550011396408, 0.0002854753111023456, 0.000480905786389485, 0.00040782816358841956], "target_probs": 0.6682272553443909}}
+
+
+{"result": {"time": "2021-02-21 13:03:22.178964", "n_pass": [212, 71, 27], "n_token": 13, "loss": [0.46500831842422485, 0.40844112634658813], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "qseq", "out", "=", "fastq", "=", "qseq", ",", "out", "qseq", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 6, "repair_targets": [2, 8, 12], "repair_candidates": [0, 11, 1, 6, 9, 2, 8, 12]}}
+{"prediction": {"error_location": 0.6281298995018005, "repair_targets": [0.6641575694084167, 0.00022388227807823569, 0.0003041556919924915], "repair_candidates": [0.02196323685348034, 0.312942773103714, 0.6641575694084167, 2.654027775861323e-05, 0.00022388227807823569, 6.881426088511944e-05, 0.00031304065487347543, 0.0003041556919924915], "target_probs": 0.6646856069564819}}
+
+
+{"result": {"time": "2021-02-21 13:03:22.234108", "n_pass": [213, 72, 28], "n_token": 12, "loss": [0.5293996334075928, 0.3147432208061218], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "qseq", "out", "=", "=", "qseq", ",", "out", "qseq", "#NEWLINE#", "self", "out"]}}
+{"position": {"error_location": 5, "repair_targets": [2, 7, 11], "repair_candidates": [0, 10, 1, 5, 8, 2, 7, 11]}}
+{"prediction": {"error_location": 0.5889585018157959, "repair_targets": [0.7289994359016418, 0.0006270971498452127, 0.0003497308352962136], "repair_candidates": [0.01281214039772749, 0.256790429353714, 0.7289994359016418, 5.9284349845256656e-05, 0.0006270971498452127, 6.839633715571836e-05, 0.0002935654774773866, 0.0003497308352962136], "target_probs": 0.7299762964248657}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'qseq', 'out', '=', '=', 'qseq', ',', 'out', 'qseq', '#NEWLINE#', 'self', 'out']

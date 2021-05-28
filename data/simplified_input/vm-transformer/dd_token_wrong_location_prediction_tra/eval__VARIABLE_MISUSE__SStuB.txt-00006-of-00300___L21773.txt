@@ -1,0 +1,139 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "chan", "=", "get_conn", "(", ")", ".", "channel", "(", ")", "#NEWLINE#", "foo", "=", "Exchange", "(", "'foo'", ",", "'topic'", ")", "#NEWLINE#", "bar", "=", "Exchange", "(", "'bar'", ",", "'topic'", ")", "#NEWLINE#", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", ")", "#NEWLINE#", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"], "error_location": [42], "repair_targets": [26], "repair_candidates": [2, 45, 26, 17, 35, 42, 7, 37, 51], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "celery/kombu/kombu/tests/test_entities.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00006-of-00300", "js_count": 21773, "results": {"model": "transformer", "prob": {"loc": [[0.020137138664722443, 2.0539150114018412e-07, 1.204613681693445e-06, 4.843995426995207e-09, 7.47441841753016e-09, 6.8863212909775484e-09, 5.756908727505561e-09, 3.6250813906235635e-08, 2.9599400708235635e-09, 6.387793072271108e-10, 6.0555893632852076e-09, 3.6646363721359876e-09, 5.498648203428047e-09, 3.2935225657837464e-09, 2.3346833799564592e-08, 1.6692359494641096e-08, 2.1969865926507737e-09, 1.5621488103079173e-07, 9.819853818981983e-10, 1.2917246827726103e-08, 1.6752164100353184e-08, 4.395157020553597e-07, 1.8929251055510576e-08, 5.23486164638598e-07, 1.2448580832824518e-08, 3.6245060286432818e-09, 4.910756388198934e-07, 2.8093185555633227e-09, 2.604369910841342e-07, 6.705397481709952e-08, 1.073483986147039e-06, 8.494916414747422e-08, 2.645232598297298e-06, 7.952019842605296e-08, 1.8645982535758776e-08, 9.207997919702393e-08, 1.3200034842952846e-08, 0.00012475214316509664, 2.45827198597226e-08, 3.9233878368349906e-08, 6.567603350049467e-09, 1.7421719178400963e-08, 0.09991825371980667, 1.487094323238125e-07, 9.759608587955881e-08, 4.0961899117064604e-07, 2.215739769440006e-08, 4.298693845328216e-09, 1.1605145289195207e-08, 2.5591059511498315e-06, 1.718858584354166e-07, 0.8798086643218994, 1.2989372066840588e-07]], "pointer": [[0.0, 0.0, 1.1057144320147927e-06, 0.0, 0.0, 0.0, 0.0, 0.0009248348651453853, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0035458833444863558, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.993740975856781, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0009512199321761727, 0.0, 0.0007372283725999296, 0.0, 0.0, 0.0, 0.0, 5.061441333964467e-05, 0.0, 0.0, 1.0699993424623244e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 4.808997255167924e-05, 0.0]], "target": [0.993740975856781]}, "loss": [2.303402900695801, 0.00627869414165616], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [51]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:19:11.513047", "n_pass": [1, 1, 1], "n_token": 53, "loss": [0.1280508041381836, 0.00627869414165616], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "chan", "=", "get_conn", "(", ")", ".", "channel", "(", ")", "#NEWLINE#", "foo", "=", "Exchange", "(", "'foo'", ",", "'topic'", ")", "#NEWLINE#", "bar", "=", "Exchange", "(", "'bar'", ",", "'topic'", ")", "#NEWLINE#", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", ")", "#NEWLINE#", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 51, "repair_targets": [26], "repair_candidates": [2, 45, 26, 17, 35, 42, 7, 37, 51]}}
+{"prediction": {"error_location": 0.8798086643218994, "repair_targets": [0.993740975856781], "repair_candidates": [1.1057144320147927e-06, 0.0009248348651453853, 0.0035458833444863558, 0.993740975856781, 0.0009512199321761727, 0.0007372283725999296, 5.061441333964467e-05, 1.0699993424623244e-07, 4.808997255167924e-05], "target_probs": 0.993740975856781}}
+
+
+{"result": {"time": "2021-02-21 06:19:11.570345", "n_pass": [23, 2, 2], "n_token": 46, "loss": [0.4991922378540039, 0.006238028407096863], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "chan", "=", "get_conn", "(", ")", ".", "channel", "(", ")", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "=", "Exchange", "(", "'bar'", ",", "'topic'", ")", "#NEWLINE#", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", ")", "#NEWLINE#", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 44, "repair_targets": [19], "repair_candidates": [2, 38, 19, 17, 28, 35, 7, 30, 44]}}
+{"prediction": {"error_location": 0.6070208549499512, "repair_targets": [0.9937813878059387], "repair_candidates": [6.49723801871005e-07, 0.004081497434526682, 0.0007847124361433089, 0.9937813878059387, 5.456940198200755e-05, 0.00073152658296749, 0.00015577624435536563, 8.217583058467426e-08, 0.0004097780620213598], "target_probs": 0.9937813878059387}}
+
+
+{"result": {"time": "2021-02-21 06:19:11.630530", "n_pass": [46, 3, 3], "n_token": 43, "loss": [0.12997478246688843, 0.005801606457680464], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "chan", "=", "get_conn", "(", ")", ".", "channel", "(", ")", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "=", ",", "'topic'", ")", "#NEWLINE#", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", ")", "#NEWLINE#", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 41, "repair_targets": [19], "repair_candidates": [2, 35, 19, 17, 25, 32, 7, 27, 41]}}
+{"prediction": {"error_location": 0.8781175017356873, "repair_targets": [0.994215190410614], "repair_candidates": [1.5199807421595324e-06, 0.0039643701165914536, 0.0009789790492504835, 0.994215190410614, 2.225897515018005e-05, 0.00030449769110418856, 0.000133622030261904, 1.9273571183475724e-07, 0.00037938851164653897], "target_probs": 0.994215190410614}}
+
+
+{"result": {"time": "2021-02-21 06:19:11.687109", "n_pass": [47, 4, 4], "n_token": 40, "loss": [0.027086932212114334, 0.006864870898425579], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "chan", "=", "get_conn", "(", ")", ".", "channel", "(", ")", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "=", "#NEWLINE#", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", ")", "#NEWLINE#", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 38, "repair_targets": [19], "repair_candidates": [2, 32, 19, 17, 22, 29, 7, 24, 38]}}
+{"prediction": {"error_location": 0.9732766151428223, "repair_targets": [0.9931586384773254], "repair_candidates": [2.1534826828428777e-06, 0.00481815729290247, 0.001519315759651363, 0.9931586384773254, 2.0076986402273178e-05, 0.0002744021767284721, 0.0001045919707394205, 1.71384613167902e-07, 0.00010244276927551255], "target_probs": 0.9931586384773254}}
+
+
+{"result": {"time": "2021-02-21 06:19:11.743794", "n_pass": [54, 5, 5], "n_token": 37, "loss": [0.05080624297261238, 0.006631978787481785], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", "#INDENT#", "chan", "=", "get_conn", "(", ")", ".", "channel", "(", ")", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "=", "#NEWLINE#", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", ")", "#NEWLINE#", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [16], "repair_candidates": [2, 29, 16, 14, 19, 26, 4, 21, 35]}}
+{"prediction": {"error_location": 0.950462818145752, "repair_targets": [0.9933899641036987], "repair_candidates": [2.5333877147204475e-06, 0.002877724589779973, 0.00260440562851727, 0.9933899641036987, 4.6697361540282145e-05, 0.0008346578106284142, 8.771994907874614e-05, 1.6602299979240343e-07, 0.00015625324158463627], "target_probs": 0.9933899641036987}}
+
+
+{"result": {"time": "2021-02-21 06:19:11.800070", "n_pass": [56, 6, 6], "n_token": 34, "loss": [0.049445442855358124, 0.005382813513278961], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", "#INDENT#", "chan", "=", ".", "channel", "(", ")", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "=", "#NEWLINE#", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", ")", "#NEWLINE#", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [13], "repair_candidates": [2, 26, 13, 11, 16, 23, 4, 18, 32]}}
+{"prediction": {"error_location": 0.9517570734024048, "repair_targets": [0.9946316480636597], "repair_candidates": [2.691281224542763e-06, 0.0027437943499535322, 0.001228872686624527, 0.9946316480636597, 4.40264047938399e-05, 0.001223121420480311, 4.315163823775947e-05, 2.1805750805015123e-07, 8.249780512414873e-05], "target_probs": 0.9946316480636597}}
+
+
+{"result": {"time": "2021-02-21 06:19:11.856878", "n_pass": [57, 7, 7], "n_token": 31, "loss": [0.0763857290148735, 0.0019067215034738183], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", "#INDENT#", "chan", "=", ")", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "=", "#NEWLINE#", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", ")", "#NEWLINE#", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [10], "repair_candidates": [2, 23, 10, 8, 13, 20, 4, 15, 29]}}
+{"prediction": {"error_location": 0.9264587759971619, "repair_targets": [0.9980950951576233], "repair_candidates": [7.024571004876634e-07, 0.0009568716632202268, 4.817210719920695e-05, 0.9980950951576233, 2.1541720343520865e-05, 0.0008518665563315153, 1.0654754987626802e-05, 6.660602736019428e-08, 1.5011105460871477e-05], "target_probs": 0.9980950951576233}}
+
+
+{"result": {"time": "2021-02-21 06:19:11.913754", "n_pass": [86, 8, 8], "n_token": 29, "loss": [0.07588309049606323, 0.00048291421262547374], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", "#INDENT#", "chan", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "=", "#NEWLINE#", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", ")", "#NEWLINE#", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [8], "repair_candidates": [2, 21, 8, 6, 11, 18, 4, 13, 27]}}
+{"prediction": {"error_location": 0.9269245862960815, "repair_targets": [0.9995172023773193], "repair_candidates": [9.145120998255152e-07, 0.0001428587274858728, 3.88807020499371e-05, 0.9995172023773193, 5.0550272135296836e-05, 0.00017805407696869224, 6.06570829404518e-05, 6.331762136824182e-08, 1.0855569598788861e-05], "target_probs": 0.9995172023773193}}
+
+
+{"result": {"time": "2021-02-21 06:19:11.973459", "n_pass": [89, 9, 9], "n_token": 27, "loss": [0.4856550395488739, 0.026392528787255287], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", "#INDENT#", "chan", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", ")", "#NEWLINE#", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [8], "repair_candidates": [2, 19, 8, 6, 9, 16, 4, 11, 25]}}
+{"prediction": {"error_location": 0.6152939796447754, "repair_targets": [0.9739527106285095], "repair_candidates": [2.4091779778245836e-05, 0.012569296173751354, 0.0033867035526782274, 0.9739527106285095, 0.0034160236828029156, 0.004976570140570402, 0.0010269611375406384, 2.040029357885942e-06, 0.0006455467664636672], "target_probs": 0.9739527106285095}}
+
+
+{"result": {"time": "2021-02-21 06:19:12.085224", "n_pass": [94, 11, 10], "n_token": 25, "loss": [0.33680832386016846, 0.01534819696098566], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", "#INDENT#", "chan", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", "self", ".", "assertIn", "(", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [8], "repair_candidates": [2, 17, 8, 6, 9, 16, 4, 11, 23]}}
+{"prediction": {"error_location": 0.7140457034111023, "repair_targets": [0.9847689867019653], "repair_candidates": [1.3398329429037403e-05, 6.761555596312974e-06, 0.000969105341937393, 0.9847689867019653, 0.0003089051169808954, 1.7095254634114099e-06, 0.013922503218054771, 7.803654625604395e-06, 8.12154212326277e-07], "target_probs": 0.9847689867019653}}
+
+
+{"result": {"time": "2021-02-21 06:19:12.140683", "n_pass": [96, 12, 11], "n_token": 23, "loss": [0.07459086924791336, 0.0025022912304848433], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_unbind_from(", "self", "#INDENT#", "chan", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", "self", ".", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [8], "repair_candidates": [2, 17, 8, 6, 9, 16, 4, 11, 21]}}
+{"prediction": {"error_location": 0.9281232357025146, "repair_targets": [0.9975008368492126], "repair_candidates": [5.4756717872805893e-05, 4.772395914187655e-05, 0.0006431874935515225, 0.9975008368492126, 0.0003871686349157244, 1.5485296898987144e-05, 0.0013334802351891994, 1.5304436601581983e-05, 2.0270238110242644e-06], "target_probs": 0.9975008368492126}}
+
+
+{"result": {"time": "2021-02-21 06:19:12.252954", "n_pass": [99, 14, 12], "n_token": 22, "loss": [0.2622895836830139, 0.08893411606550217], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_unbind_from(", "self", "#INDENT#", "chan", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", "self", ".", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [7], "repair_candidates": [1, 16, 7, 5, 8, 15, 3, 10, 20]}}
+{"prediction": {"error_location": 0.7692882418632507, "repair_targets": [0.914905846118927], "repair_candidates": [0.025818319991230965, 0.007065755780786276, 0.010521657764911652, 0.914905846118927, 0.033721569925546646, 0.0001424601359758526, 0.0050789774395525455, 0.0027132888790220022, 3.225664113415405e-05], "target_probs": 0.914905846118927}}
+
+
+{"result": {"time": "2021-02-21 06:19:12.311773", "n_pass": [100, 15, 13], "n_token": 21, "loss": [0.024829931557178497, 0.2332654744386673], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "#INDENT#", "chan", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", "self", ".", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [6], "repair_candidates": [0, 15, 6, 4, 7, 14, 2, 9, 19]}}
+{"prediction": {"error_location": 0.9754756689071655, "repair_targets": [0.7919433116912842], "repair_candidates": [0.002018329920247197, 0.0003575869195628911, 0.1381167322397232, 0.7919433116912842, 0.045063652098178864, 9.301695536123589e-05, 0.022357158362865448, 4.9799218686530367e-05, 3.8543848290828464e-07], "target_probs": 0.7919433116912842}}
+
+
+{"result": {"time": "2021-02-21 06:19:12.368022", "n_pass": [102, 16, 14], "n_token": 20, "loss": [0.03350628912448883, 0.027984226122498512], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "chan", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "foo", "(", "chan", ")", ".", "unbind_from", "(", "foo", "self", ".", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [5], "repair_candidates": [0, 14, 5, 3, 6, 13, 1, 8, 18]}}
+{"prediction": {"error_location": 0.9670489430427551, "repair_targets": [0.9724037051200867], "repair_candidates": [0.0008487115264870226, 0.002216215478256345, 0.005540831945836544, 0.9724037051200867, 0.009436883963644505, 3.3553728826518636e-06, 0.009476426988840103, 7.279813144123182e-05, 1.032059458339063e-06], "target_probs": 0.9724037051200867}}
+
+
+{"result": {"time": "2021-02-21 06:19:12.424259", "n_pass": [108, 17, 15], "n_token": 18, "loss": [0.5547095537185669, 0.24730412662029266], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "chan", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "foo", "(", "chan", ")", "(", "foo", "self", ".", "'exchange_unbind'", ",", "chan", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [0, 12, 5, 3, 6, 11, 1, 8, 16]}}
+{"prediction": {"error_location": 0.5742390155792236, "repair_targets": [0.780903160572052], "repair_candidates": [0.004925359506160021, 0.008523066528141499, 0.024422934278845787, 0.780903160572052, 0.1174248531460762, 1.3138838767190464e-05, 0.06223319098353386, 0.0014722537016496062, 8.203281322494149e-05], "target_probs": 0.780903160572052}}
+
+
+{"result": {"time": "2021-02-21 06:19:12.762668", "n_pass": [142, 23, 16], "n_token": 17, "loss": [0.16675159335136414, 0.0764557272195816], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "chan", "#NEWLINE#", "foo", "#NEWLINE#", "bar", "foo", "(", "chan", ")", "(", "foo", "self", ".", "'exchange_unbind'", ",", "chan"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [0, 12, 5, 3, 6, 11, 1, 8, 16]}}
+{"prediction": {"error_location": 0.8464098572731018, "repair_targets": [0.9263939261436462], "repair_candidates": [0.0034783827140927315, 0.0018153457203879952, 0.005862316582351923, 0.9263939261436462, 0.046966321766376495, 1.6137861166498624e-05, 0.01500498317182064, 0.0003917501016985625, 7.09157029632479e-05], "target_probs": 0.9263939261436462}}
+
+
+{"result": {"time": "2021-02-21 06:19:12.817820", "n_pass": [145, 24, 17], "n_token": 16, "loss": [0.6684297919273376, 0.11630354076623917], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "chan", "foo", "#NEWLINE#", "bar", "foo", "(", "chan", ")", "(", "foo", "self", ".", "'exchange_unbind'", ",", "chan"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [0, 11, 4, 2, 5, 10, 1, 7, 15]}}
+{"prediction": {"error_location": 0.5125126838684082, "repair_targets": [0.8902049660682678], "repair_candidates": [0.006468144245445728, 0.00850170012563467, 0.029904164373874664, 0.8902049660682678, 0.05649396777153015, 0.00018064431787934154, 0.004480496048927307, 0.0013015797594562173, 0.0024643621873110533], "target_probs": 0.8902049660682678}}
+
+
+{"result": {"time": "2021-02-21 06:19:12.929110", "n_pass": [150, 26, 18], "n_token": 15, "loss": [0.05314899981021881, 0.258184015750885], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "chan", "foo", "#NEWLINE#", "bar", "foo", "chan", ")", "(", "foo", "self", ".", "'exchange_unbind'", ",", "chan"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [0, 10, 4, 2, 5, 9, 1, 6, 14]}}
+{"prediction": {"error_location": 0.948238730430603, "repair_targets": [0.7724530696868896], "repair_candidates": [0.0006565067451447248, 0.0025626961141824722, 0.043714579194784164, 0.7724530696868896, 0.17428021132946014, 0.00020957917149644345, 0.0011564941378310323, 0.004964510910212994, 2.2738863663107622e-06], "target_probs": 0.7724530696868896}}
+
+
+{"result": {"time": "2021-02-21 06:19:12.987361", "n_pass": [152, 27, 19], "n_token": 14, "loss": [0.2349090725183487, 0.10727030783891678], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "chan", "foo", "#NEWLINE#", "bar", "foo", "chan", "(", "foo", "self", ".", "'exchange_unbind'", ",", "chan"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [0, 9, 4, 2, 5, 8, 1, 6, 13]}}
+{"prediction": {"error_location": 0.7906427383422852, "repair_targets": [0.8982828259468079], "repair_candidates": [0.00717981206253171, 0.006322188768535852, 0.053450435400009155, 0.8982828259468079, 0.009511188603937626, 0.00043815496610477567, 0.001301681506447494, 0.023150943219661713, 0.0003626987454481423], "target_probs": 0.8982828259468079}}
+
+
+{"result": {"time": "2021-02-21 06:19:13.042997", "n_pass": [153, 28, 20], "n_token": 13, "loss": [0.03499772399663925, 0.5877528190612793], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "chan", "foo", "#NEWLINE#", "bar", "foo", "chan", "foo", "self", ".", "'exchange_unbind'", ",", "chan"]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [0, 8, 4, 2, 5, 7, 1, 6, 12]}}
+{"prediction": {"error_location": 0.9656076431274414, "repair_targets": [0.555574357509613], "repair_candidates": [0.049369893968105316, 0.026290997862815857, 0.2372039258480072, 0.555574357509613, 0.07573963701725006, 0.0005122670554555953, 0.0023540938273072243, 0.0517754927277565, 0.001179282320663333], "target_probs": 0.555574357509613}}
+
+
+{"result": {"time": "2021-02-21 06:19:13.098432", "n_pass": [156, 29, 21], "n_token": 12, "loss": [0.43568065762519836, 0.44134676456451416], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "chan", "foo", "#NEWLINE#", "bar", "foo", "chan", "foo", "self", "'exchange_unbind'", ",", "chan"]}}
+{"position": {"error_location": 11, "repair_targets": [4], "repair_candidates": [0, 8, 4, 2, 5, 7, 1, 6, 11]}}
+{"prediction": {"error_location": 0.6468242406845093, "repair_targets": [0.643169641494751], "repair_candidates": [0.003843712154775858, 0.013706142082810402, 0.1352691352367401, 0.643169641494751, 0.07057981193065643, 0.0007452477584592998, 0.04956813156604767, 0.0814533457159996, 0.00166481698397547], "target_probs": 0.643169641494751}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'chan', 'foo', '#NEWLINE#', 'bar', 'foo', 'chan', 'foo', 'self', "'exchange_unbind'", ',', 'chan']

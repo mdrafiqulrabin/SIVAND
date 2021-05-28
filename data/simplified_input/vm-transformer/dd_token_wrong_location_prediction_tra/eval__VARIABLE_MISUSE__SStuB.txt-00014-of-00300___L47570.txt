@@ -1,0 +1,91 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def up(", "iface", ",", "iface_type", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Start up a network interface\\n\\n    CLI Example:\\n\\n    .. code-block:: bash\\n\\n        salt '*' ip.up eth0\\n    \"", "#NEWLINE#", "if", "(", "iface", "not in", "[", "'slave'", "]", ")", ":", "#NEWLINE#", "#INDENT#", "return", "__salt__", "[", "'cmd.run'", "]", "(", "'ifup {0}'", ".", "format", "(", "iface", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"], "error_location": [13], "repair_targets": [4], "repair_candidates": [4, 2, 13, 32], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "saltstack/salt/salt/modules/rh_ip.py", "license": "apache-2.0", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00014-of-00300", "js_count": 47570, "results": {"model": "transformer", "prob": {"loc": [[0.3430003225803375, 1.8965898561873473e-05, 4.557682404993102e-05, 1.5406524767058727e-07, 9.303747356170788e-05, 1.663031383714042e-07, 6.625717787756003e-07, 9.70098199104541e-07, 7.807546467120119e-07, 1.3043023727732361e-06, 2.674790039236541e-06, 2.1684943476429908e-06, 1.4500949419016251e-06, 0.28581807017326355, 5.5548534874105826e-05, 0.00017701757315080613, 6.867775482533034e-06, 4.345198249211535e-05, 8.04516275820788e-06, 1.3141830095264595e-05, 7.268040008057142e-06, 7.462734856744646e-07, 4.088964544735063e-07, 3.6148617255093995e-06, 4.175969479547348e-06, 1.595817411725875e-05, 8.957912314144778e-07, 1.165507455880288e-06, 4.174030436843168e-06, 2.2727574560121866e-06, 1.8699891768392263e-07, 6.466054855991388e-06, 0.3706097900867462, 1.402207726641791e-05, 1.1600323887250852e-05, 1.856439439507085e-06, 1.0227232678516884e-06, 1.7220190784428269e-06, 2.228280936833471e-05]], "pointer": [[0.0, 0.0, 0.0007977713248692453, 0.0, 0.9982129335403442, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00044028658885508776, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0005490212352015078, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9982129335403442]}, "loss": [1.2523998022079468, 0.001788665191270411], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [32]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:14:45.018095", "n_pass": [1, 1, 1], "n_token": 39, "loss": [0.9926055669784546, 0.001788665191270411], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def up(", "iface", ",", "iface_type", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Start up a network interface\\n\\n    CLI Example:\\n\\n    .. code-block:: bash\\n\\n        salt '*' ip.up eth0\\n    \"", "#NEWLINE#", "if", "(", "iface", "not in", "[", "'slave'", "]", ")", ":", "#NEWLINE#", "#INDENT#", "return", "__salt__", "[", "'cmd.run'", "]", "(", "'ifup {0}'", ".", "format", "(", "iface", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"]}}
+{"position": {"error_location": 32, "repair_targets": [4], "repair_candidates": [4, 2, 13, 32]}}
+{"prediction": {"error_location": 0.3706097900867462, "repair_targets": [0.9982129335403442], "repair_candidates": [0.0007977713248692453, 0.9982129335403442, 0.00044028658885508776, 0.0005490212352015078], "target_probs": 0.9982129335403442}}
+
+
+{"result": {"time": "2021-02-21 07:14:45.075170", "n_pass": [10, 2, 2], "n_token": 29, "loss": [0.5283890962600708, 0.000398655713070184], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def up(", "iface", ",", "iface_type", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Start up a network interface\\n\\n    CLI Example:\\n\\n    .. code-block:: bash\\n\\n        salt '*' ip.up eth0\\n    \"", "#NEWLINE#", "if", "(", "iface", "not in", "[", "'slave'", "]", ")", ".", "format", "(", "iface", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [4, 2, 13, 22]}}
+{"prediction": {"error_location": 0.5895540118217468, "repair_targets": [0.999601423740387], "repair_candidates": [0.00026894756592810154, 0.999601423740387, 5.2398769184947014e-05, 7.721756992395967e-05], "target_probs": 0.999601423740387}}
+
+
+{"result": {"time": "2021-02-21 07:14:45.136397", "n_pass": [20, 3, 3], "n_token": 24, "loss": [0.3894481062889099, 0.00014711508993059397], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def up(", "iface", ",", "iface_type", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Start up a network interface\\n\\n    CLI Example:\\n\\n    .. code-block:: bash\\n\\n        salt '*' ip.up eth0\\n    \"", "#NEWLINE#", "if", "(", "iface", "not in", "[", "'slave'", "]", ")", ".", "format", "(", "iface", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [4, 2, 13, 22]}}
+{"prediction": {"error_location": 0.6774306893348694, "repair_targets": [0.9998528957366943], "repair_candidates": [8.088804315775633e-05, 0.9998528957366943, 2.674511051736772e-05, 3.945704156649299e-05], "target_probs": 0.9998528957366943}}
+
+
+{"result": {"time": "2021-02-21 07:14:45.192593", "n_pass": [24, 4, 4], "n_token": 19, "loss": [0.001492816023528576, 1.406679530191468e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def up(", "iface", ",", "iface_type", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Start up a network interface\\n\\n    CLI Example:\\n\\n    .. code-block:: bash\\n\\n        salt '*' ip.up eth0\\n    \"", "#NEWLINE#", "if", "(", "iface", ".", "format", "(", "iface", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [4], "repair_candidates": [4, 2, 13, 17]}}
+{"prediction": {"error_location": 0.9985082745552063, "repair_targets": [0.999985933303833], "repair_candidates": [1.4064821698411833e-05, 0.999985933303833, 1.3693599143493884e-08, 2.6254864948782597e-08], "target_probs": 0.999985933303833}}
+
+
+{"result": {"time": "2021-02-21 07:14:45.248994", "n_pass": [39, 5, 5], "n_token": 17, "loss": [0.004056321922689676, 0.05752770975232124], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["iface", ",", "iface_type", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Start up a network interface\\n\\n    CLI Example:\\n\\n    .. code-block:: bash\\n\\n        salt '*' ip.up eth0\\n    \"", "#NEWLINE#", "if", "(", "iface", ".", "format", "(", "iface", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [2], "repair_candidates": [2, 0, 11, 15]}}
+{"prediction": {"error_location": 0.995951771736145, "repair_targets": [0.9440957307815552], "repair_candidates": [0.05590388923883438, 0.9440957307815552, 1.4068161746649821e-08, 3.254220644066663e-07], "target_probs": 0.9440957307815552}}
+
+
+{"result": {"time": "2021-02-21 07:14:45.305544", "n_pass": [41, 6, 6], "n_token": 15, "loss": [0.0006100462633185089, 0.3502861261367798], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["iface", ",", "iface_type", ")", "#INDENT#", "\"\\n    Start up a network interface\\n\\n    CLI Example:\\n\\n    .. code-block:: bash\\n\\n        salt '*' ip.up eth0\\n    \"", "#NEWLINE#", "if", "(", "iface", ".", "format", "(", "iface", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [2, 0, 9, 13]}}
+{"prediction": {"error_location": 0.9993900060653687, "repair_targets": [0.7044864892959595], "repair_candidates": [0.2955124080181122, 0.7044864892959595, 5.7856393453903365e-08, 1.035930949910835e-06], "target_probs": 0.7044864892959595}}
+
+
+{"result": {"time": "2021-02-21 07:14:45.361230", "n_pass": [42, 7, 7], "n_token": 13, "loss": [0.00010716341057559475, 0.505967378616333], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["iface", ",", "iface_type", ")", "#NEWLINE#", "if", "(", "iface", ".", "format", "(", "iface", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [2, 0, 7, 11]}}
+{"prediction": {"error_location": 0.9998928308486938, "repair_targets": [0.6029220223426819], "repair_candidates": [0.3970722556114197, 0.6029220223426819, 2.988691903738072e-06, 2.6417378649057355e-06], "target_probs": 0.6029220223426819}}
+
+
+{"result": {"time": "2021-02-21 07:14:45.472896", "n_pass": [58, 9, 8], "n_token": 12, "loss": [0.00029059001826681197, 0.2563698887825012], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["iface", ",", "iface_type", ")", "if", "(", "iface", ".", "format", "(", "iface", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [2, 0, 6, 10]}}
+{"prediction": {"error_location": 0.9997093081474304, "repair_targets": [0.7738556861877441], "repair_candidates": [0.2261315882205963, 0.7738556861877441, 9.002390470413957e-06, 3.6642288705479586e-06], "target_probs": 0.7738556861877441}}
+
+
+{"result": {"time": "2021-02-21 07:14:45.809695", "n_pass": [75, 15, 9], "n_token": 11, "loss": [0.7633219361305237, 0.06793886423110962], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["iface", ",", "iface_type", ")", "if", "(", "iface", "format", "(", "iface", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [2, 0, 6, 9]}}
+{"prediction": {"error_location": 0.46611544489860535, "repair_targets": [0.9343175888061523], "repair_candidates": [0.0211641788482666, 0.9343175888061523, 0.04181765392422676, 0.0027004615403711796], "target_probs": 0.9343175888061523}}
+
+
+{"result": {"time": "2021-02-21 07:14:45.865659", "n_pass": [76, 16, 10], "n_token": 10, "loss": [0.013676157221198082, 0.06338333338499069], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["iface", ",", "iface_type", ")", "if", "(", "iface", "(", "iface", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [2, 0, 6, 8]}}
+{"prediction": {"error_location": 0.9864169359207153, "repair_targets": [0.9385836124420166], "repair_candidates": [0.03105683997273445, 0.9385836124420166, 0.02888500690460205, 0.0014745228691026568], "target_probs": 0.9385836124420166}}
+
+
+{"result": {"time": "2021-02-21 07:14:45.921744", "n_pass": [77, 17, 11], "n_token": 9, "loss": [0.15890192985534668, 0.17814655601978302], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["iface", ",", "iface_type", ")", "if", "(", "iface", "iface", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [2, 0, 6, 7]}}
+{"prediction": {"error_location": 0.8530800938606262, "repair_targets": [0.8368197679519653], "repair_candidates": [0.1510169506072998, 0.8368197679519653, 0.010143951512873173, 0.0020193199161440134], "target_probs": 0.8368197679519653}}
+
+
+{"result": {"time": "2021-02-21 07:14:46.204274", "n_pass": [85, 22, 12], "n_token": 8, "loss": [0.13340605795383453, 0.6571314930915833], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["iface", ",", "iface_type", ")", "if", "iface", "iface", ")"]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [2, 0, 5, 6]}}
+{"prediction": {"error_location": 0.8751096725463867, "repair_targets": [0.5183360576629639], "repair_candidates": [0.2888779640197754, 0.5183360576629639, 0.16798244416713715, 0.024803562089800835], "target_probs": 0.5183360576629639}}
+
+
+{"result": {"time": "2021-02-21 07:14:46.259763", "n_pass": [88, 23, 13], "n_token": 7, "loss": [0.6847537755966187, 0.16147524118423462], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["iface", ",", "iface_type", ")", "if", "iface", "iface"]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [2, 0, 5, 6]}}
+{"prediction": {"error_location": 0.504214346408844, "repair_targets": [0.8508875966072083], "repair_candidates": [0.028280848637223244, 0.8508875966072083, 0.10609198361635208, 0.014739648438990116], "target_probs": 0.8508875966072083}}
+
+
+
+
+Minimal simplified tokens:
+
+['iface', ',', 'iface_type', ')', 'if', 'iface', 'iface']

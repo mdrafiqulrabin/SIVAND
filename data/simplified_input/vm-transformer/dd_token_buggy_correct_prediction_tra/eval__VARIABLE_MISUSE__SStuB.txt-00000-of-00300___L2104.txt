@@ -1,0 +1,61 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def generalShutdownCall(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "logger", ".", "debug", "(", "'Executor shutting down.  Killing running jobs:'", ")", "#NEWLINE#", "for", "subprocID", "in", "self", ".", "current_running_job_pids", ":", "#NEWLINE#", "#INDENT#", "os", ".", "kill", "(", "self", ",", "signal", ".", "SIGTERM", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "unregister_with_server", "(", ")"], "error_location": [27], "repair_targets": [15], "repair_candidates": [15, 2, 17, 27, 35], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "Mouse-Imaging-Centre/pydpiper/pydpiper/pipeline_executor.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 2104, "results": {"model": "transformer", "prob": {"loc": [[0.00030518241692334414, 2.439452728708602e-08, 4.437695793058083e-07, 6.834160459767702e-10, 1.2142309380180905e-09, 1.0696009633548442e-09, 1.137670291306847e-09, 6.538551367007983e-10, 2.5922039514902906e-10, 4.6081447685475396e-11, 1.872084043341715e-09, 2.0757854102271267e-08, 5.838695305016017e-09, 5.5991682401668186e-09, 4.5902254219853944e-10, 1.4059102682040248e-07, 1.2877357513652044e-10, 0.0001502937957411632, 1.058426790656597e-09, 4.4571759477696204e-11, 2.151995692756259e-09, 4.738738290654965e-09, 8.741541934753627e-10, 1.3333091575251643e-10, 3.078177435167362e-10, 1.0865808947047029e-10, 1.1448427761351354e-09, 0.9995393753051758, 2.1832272878441472e-08, 3.879483301716391e-06, 2.0603778239092208e-08, 7.642095289916995e-10, 5.718528655052069e-07, 1.3560156553182878e-08, 2.3022419526341764e-09, 1.3538602239293596e-08, 2.8450844458127733e-10, 8.353062685984014e-11, 3.424872829782544e-08, 8.192881928437146e-09]], "pointer": [[0.0, 0.0, 1.2507914107118268e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9999841451644897, 0.0, 2.5325570618406346e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.1310366971883923e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.88201590844983e-06, 0.0, 0.0, 0.0, 0.0]], "target": [0.9999841451644897]}, "loss": [0.00046075694262981415, 1.585496102052275e-05], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:34:24.525533", "n_pass": [1, 1, 1], "n_token": 40, "loss": [0.00046075694262981415, 1.585496102052275e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generalShutdownCall(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "logger", ".", "debug", "(", "'Executor shutting down.  Killing running jobs:'", ")", "#NEWLINE#", "for", "subprocID", "in", "self", ".", "current_running_job_pids", ":", "#NEWLINE#", "#INDENT#", "os", ".", "kill", "(", "self", ",", "signal", ".", "SIGTERM", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "unregister_with_server", "(", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [15], "repair_candidates": [15, 2, 17, 27, 35]}}
+{"prediction": {"error_location": 0.9995393753051758, "repair_targets": [0.9999841451644897], "repair_candidates": [1.2507914107118268e-05, 0.9999841451644897, 2.5325570618406346e-07, 1.1310366971883923e-06, 1.88201590844983e-06], "target_probs": 0.9999841451644897}}
+
+
+{"result": {"time": "2021-02-11 11:34:24.581352", "n_pass": [21, 2, 2], "n_token": 35, "loss": [0.0001736728590913117, 2.3841887468734058e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generalShutdownCall(", "self", ")", ":", "(", "'Executor shutting down.  Killing running jobs:'", ")", "#NEWLINE#", "for", "subprocID", "in", "self", ".", "current_running_job_pids", ":", "#NEWLINE#", "#INDENT#", "os", ".", "kill", "(", "self", ",", "signal", ".", "SIGTERM", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "unregister_with_server", "(", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [10], "repair_candidates": [10, 2, 12, 22, 30]}}
+{"prediction": {"error_location": 0.9998263716697693, "repair_targets": [0.999997615814209], "repair_candidates": [1.9451458683761302e-06, 0.999997615814209, 8.151695141123128e-08, 6.40483435176975e-08, 3.0124030558909e-07], "target_probs": 0.999997615814209}}
+
+
+{"result": {"time": "2021-02-11 11:34:24.638246", "n_pass": [22, 3, 3], "n_token": 30, "loss": [0.0018894692184403539, 6.198902156029362e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generalShutdownCall(", "self", ")", ":", "subprocID", "in", "self", ".", "current_running_job_pids", ":", "#NEWLINE#", "#INDENT#", "os", ".", "kill", "(", "self", ",", "signal", ".", "SIGTERM", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "unregister_with_server", "(", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [5], "repair_candidates": [5, 2, 7, 17, 25]}}
+{"prediction": {"error_location": 0.9981123208999634, "repair_targets": [0.9999938011169434], "repair_candidates": [5.151344794285251e-06, 0.9999938011169434, 5.203829118727299e-07, 1.0351157442300973e-07, 5.312587063599494e-07], "target_probs": 0.9999938011169434}}
+
+
+{"result": {"time": "2021-02-11 11:34:24.693342", "n_pass": [24, 4, 4], "n_token": 25, "loss": [0.0019801310263574123, 2.0265599687263602e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generalShutdownCall(", "self", ")", ":", "subprocID", "in", "self", ".", "current_running_job_pids", "kill", "(", "self", ",", "signal", ".", "SIGTERM", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "unregister_with_server", "(", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [5], "repair_candidates": [5, 2, 7, 12, 20]}}
+{"prediction": {"error_location": 0.9980218410491943, "repair_targets": [0.9999979734420776], "repair_candidates": [1.6030838878577924e-06, 0.9999979734420776, 3.6810146752941364e-07, 4.4469629756349605e-08, 7.077010621969748e-08], "target_probs": 0.9999979734420776}}
+
+
+{"result": {"time": "2021-02-11 11:34:24.748160", "n_pass": [26, 5, 5], "n_token": 20, "loss": [0.00020990552729927003, 9.536747711536009e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generalShutdownCall(", "self", ")", ":", "subprocID", "in", "self", ".", "current_running_job_pids", "kill", "(", "self", ",", "signal", "self", ".", "unregister_with_server", "(", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [5], "repair_candidates": [5, 2, 7, 12, 15]}}
+{"prediction": {"error_location": 0.9997901320457458, "repair_targets": [0.9999990463256836], "repair_candidates": [4.525977601588238e-07, 0.9999990463256836, 3.4325464071116585e-07, 1.2432950313723268e-07, 3.8857045581153216e-08], "target_probs": 0.9999990463256836}}
+
+
+{"result": {"time": "2021-02-11 11:34:24.803209", "n_pass": [40, 6, 6], "n_token": 17, "loss": [0.01067463867366314, 1.9073504518019035e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generalShutdownCall(", "self", ")", ":", "subprocID", "in", "self", ".", "current_running_job_pids", "kill", "(", "self", ",", "signal", "self", "."]}}
+{"position": {"error_location": 12, "repair_targets": [5], "repair_candidates": [5, 2, 7, 12, 15]}}
+{"prediction": {"error_location": 0.989382266998291, "repair_targets": [0.9999980926513672], "repair_candidates": [1.1488859854580369e-06, 0.9999980926513672, 5.768774826719891e-07, 7.801702395227039e-08, 7.053078832086612e-08], "target_probs": 0.9999980926513672}}
+
+
+{"result": {"time": "2021-02-11 11:34:24.857634", "n_pass": [41, 7, 7], "n_token": 15, "loss": [0.018591199070215225, 0.004991091787815094], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "subprocID", "in", "self", ".", "current_running_job_pids", "kill", "(", "self", ",", "signal", "self", "."]}}
+{"position": {"error_location": 10, "repair_targets": [3], "repair_candidates": [3, 0, 5, 10, 13]}}
+{"prediction": {"error_location": 0.9815805554389954, "repair_targets": [0.9950213432312012], "repair_candidates": [0.004804418422281742, 0.9950213432312012, 0.00011583690502448007, 5.499060716829263e-05, 3.3517972042318434e-06], "target_probs": 0.9950213432312012}}
+
+
+{"result": {"time": "2021-02-11 11:34:24.912547", "n_pass": [45, 8, 8], "n_token": 12, "loss": [0.07568240910768509, 0.006917445454746485], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "subprocID", "in", "self", "(", "self", ",", "signal", "self", "."]}}
+{"position": {"error_location": 7, "repair_targets": [3], "repair_candidates": [3, 0, 5, 7, 10]}}
+{"prediction": {"error_location": 0.927110493183136, "repair_targets": [0.9931064248085022], "repair_candidates": [0.005139666143804789, 0.9931064248085022, 0.001672224490903318, 5.3281291911844164e-05, 2.8403790565789677e-05], "target_probs": 0.9931064248085022}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ')', ':', 'subprocID', 'in', 'self', '(', 'self', ',', 'signal', 'self', '.']

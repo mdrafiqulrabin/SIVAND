@@ -1,0 +1,67 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def _extension_to_export_function(", "extension", ",", "extensions_map", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Simple function that wraps the extensions map indexing and raises\\n    a user friendly ``ValueError``\\n\\n    Parameters\\n    ----------\\n    extension : `str`\\n        The string extension with period prefix e.g '.jpg'\\n    extensions_map : `dict` of `str` -> `callable`\\n        The extension map that maps extensions to export callables.\\n\\n    Returns\\n    -------\\n    mapping_callable : `callable`\\n        The callable that performs exporting.\\n\\n    Raises\\n    ------\\n    ValueError\\n        If ``extensions_map`` does not contain ``extension``. More friendly\\n        than the ``KeyError`` that would be raised.\\n    \"", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "extension", "[", "extension", "]", "#NEWLINE#", "#UNINDENT#", "except", "KeyError", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "'The output file extension ({}) provided is not currently supported.'", ".", "format", "(", "extension", ")", ")"], "error_location": [16], "repair_targets": [4], "repair_candidates": [4, 2, 16, 18, 34], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "menpo/menpo/menpo/io/output/base.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00006-of-00300", "js_count": 19595, "results": {"model": "transformer", "prob": {"loc": [[0.0010560565860942006, 6.408654940059932e-08, 3.112299111762695e-07, 8.459044020803219e-10, 1.0511215577935218e-06, 6.535184060574295e-10, 2.5437016937246426e-09, 3.267847992205475e-09, 2.5575865869598147e-09, 3.3879219429877594e-09, 5.810399272832001e-09, 1.2203912547192886e-08, 2.602555504438442e-08, 1.7100495242061697e-08, 8.498459713734974e-09, 2.533369292123666e-09, 0.36046093702316284, 2.4774206508482166e-07, 0.6138141751289368, 2.4882782057034092e-08, 4.7730839725090846e-08, 4.24300017343171e-09, 2.7594246887474583e-09, 3.1103955522304716e-10, 4.140333853541733e-09, 1.1228519447570307e-08, 4.436248257633224e-09, 2.3546271599172997e-09, 2.9157110059685465e-10, 1.251831194259978e-09, 1.5711526302197854e-08, 8.746765978173698e-09, 9.689947733093618e-10, 6.381989692272327e-08, 0.024666745215654373, 5.932646374162687e-08, 4.100341755020054e-08]], "pointer": [[0.0, 0.0, 3.646504046628252e-05, 0.0, 0.9999597072601318, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.1384810250092414e-07, 0.0, 2.03552815492003e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5080413454124937e-06, 0.0, 0.0]], "target": [0.9999597072601318]}, "loss": [1.0203715562820435, 4.0293551137438044e-05], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [18]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:11:16.331607", "n_pass": [1, 1, 1], "n_token": 37, "loss": [0.4880629777908325, 4.0293551137438044e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _extension_to_export_function(", "extension", ",", "extensions_map", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Simple function that wraps the extensions map indexing and raises\\n    a user friendly ``ValueError``\\n\\n    Parameters\\n    ----------\\n    extension : `str`\\n        The string extension with period prefix e.g '.jpg'\\n    extensions_map : `dict` of `str` -> `callable`\\n        The extension map that maps extensions to export callables.\\n\\n    Returns\\n    -------\\n    mapping_callable : `callable`\\n        The callable that performs exporting.\\n\\n    Raises\\n    ------\\n    ValueError\\n        If ``extensions_map`` does not contain ``extension``. More friendly\\n        than the ``KeyError`` that would be raised.\\n    \"", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "extension", "[", "extension", "]", "#NEWLINE#", "#UNINDENT#", "except", "KeyError", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "'The output file extension ({}) provided is not currently supported.'", ".", "format", "(", "extension", ")", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [4], "repair_candidates": [4, 2, 16, 18, 34]}}
+{"prediction": {"error_location": 0.6138141751289368, "repair_targets": [0.9999597072601318], "repair_candidates": [3.646504046628252e-05, 0.9999597072601318, 1.1384810250092414e-07, 2.03552815492003e-07, 3.5080413454124937e-06], "target_probs": 0.9999597072601318}}
+
+
+{"result": {"time": "2021-02-21 06:11:16.391211", "n_pass": [22, 2, 2], "n_token": 33, "loss": [0.24207644164562225, 6.198902156029362e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _extension_to_export_function(", "extension", ",", "extensions_map", ")", ":", "#NEWLINE#", ":", "#NEWLINE#", "#INDENT#", "return", "extension", "[", "extension", "]", "#NEWLINE#", "#UNINDENT#", "except", "KeyError", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "'The output file extension ({}) provided is not currently supported.'", ".", "format", "(", "extension", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [4, 2, 12, 14, 30]}}
+{"prediction": {"error_location": 0.7849961519241333, "repair_targets": [0.9999938011169434], "repair_candidates": [4.4776315917260945e-06, 0.9999938011169434, 1.0100367120458031e-07, 7.079154329403536e-08, 1.549968374092714e-06], "target_probs": 0.9999938011169434}}
+
+
+{"result": {"time": "2021-02-21 06:11:16.446549", "n_pass": [25, 3, 3], "n_token": 28, "loss": [0.25716984272003174, 6.55653229841846e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _extension_to_export_function(", "extension", ",", "extensions_map", ")", ":", "#NEWLINE#", ":", "#NEWLINE#", "#INDENT#", "return", "extension", "[", "extension", "]", "#NEWLINE#", "#UNINDENT#", "raise", "ValueError", "(", "'The output file extension ({}) provided is not currently supported.'", ".", "format", "(", "extension", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [4, 2, 12, 14, 25]}}
+{"prediction": {"error_location": 0.773236870765686, "repair_targets": [0.9999934434890747], "repair_candidates": [4.8632919060764834e-06, 0.9999934434890747, 9.511443010978837e-08, 2.0544678136502625e-07, 1.2640990689760656e-06], "target_probs": 0.9999934434890747}}
+
+
+{"result": {"time": "2021-02-21 06:11:16.501615", "n_pass": [26, 4, 4], "n_token": 23, "loss": [0.15101249516010284, 3.314073182991706e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _extension_to_export_function(", "extension", ",", "extensions_map", ")", ":", "#NEWLINE#", ":", "#NEWLINE#", "#INDENT#", "return", "extension", "[", "extension", "]", "#NEWLINE#", "#UNINDENT#", "format", "(", "extension", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [4, 2, 12, 14, 20]}}
+{"prediction": {"error_location": 0.8598371148109436, "repair_targets": [0.9999668598175049], "repair_candidates": [1.8357708540861495e-05, 0.9999668598175049, 3.723426402757468e-07, 4.926495194013114e-07, 1.394177434121957e-05], "target_probs": 0.9999668598175049}}
+
+
+{"result": {"time": "2021-02-21 06:11:16.556972", "n_pass": [42, 5, 5], "n_token": 20, "loss": [0.19717292487621307, 3.099446303167497e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _extension_to_export_function(", "extension", ",", "extensions_map", ")", ":", "#NEWLINE#", ":", "#NEWLINE#", "#INDENT#", "return", "extension", "[", "extension", "]", "#NEWLINE#", "extension", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [4, 2, 12, 14, 17]}}
+{"prediction": {"error_location": 0.8210486173629761, "repair_targets": [0.9999969005584717], "repair_candidates": [2.75346678790811e-06, 0.9999969005584717, 7.759931008877174e-08, 5.7432018252256967e-08, 2.632521614032157e-07], "target_probs": 0.9999969005584717}}
+
+
+{"result": {"time": "2021-02-21 06:11:16.612688", "n_pass": [44, 6, 6], "n_token": 18, "loss": [0.3884075880050659, 0.000666780979372561], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["extension", ",", "extensions_map", ")", ":", "#NEWLINE#", ":", "#NEWLINE#", "#INDENT#", "return", "extension", "[", "extension", "]", "#NEWLINE#", "extension", ")", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [2, 0, 10, 12, 15]}}
+{"prediction": {"error_location": 0.6781359314918518, "repair_targets": [0.9993334412574768], "repair_candidates": [0.0006653980235569179, 0.9993334412574768, 1.8939719126365162e-08, 2.767079010368434e-08, 1.0982512321788818e-06], "target_probs": 0.9993334412574768}}
+
+
+{"result": {"time": "2021-02-21 06:11:16.667892", "n_pass": [47, 7, 7], "n_token": 16, "loss": [0.27167320251464844, 0.00012684673129115254], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["extension", ",", "extensions_map", ")", ":", "#NEWLINE#", "#INDENT#", "return", "extension", "[", "extension", "]", "#NEWLINE#", "extension", ")", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [2, 0, 8, 10, 13]}}
+{"prediction": {"error_location": 0.7621031999588013, "repair_targets": [0.999873161315918], "repair_candidates": [0.00012639530177693814, 0.999873161315918, 2.1527677418475832e-09, 2.2037223157411745e-09, 5.206790092415758e-07], "target_probs": 0.999873161315918}}
+
+
+{"result": {"time": "2021-02-21 06:11:16.722587", "n_pass": [48, 8, 8], "n_token": 14, "loss": [0.07001058757305145, 0.00035626080352813005], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["extension", ",", "extensions_map", ")", "#INDENT#", "return", "extension", "[", "extension", "]", "#NEWLINE#", "extension", ")", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [2, 0, 6, 8, 11]}}
+{"prediction": {"error_location": 0.9323838353157043, "repair_targets": [0.9996438026428223], "repair_candidates": [0.00029754952993243933, 0.9996438026428223, 5.23561830050312e-05, 1.014690553802211e-08, 6.259927886276273e-06], "target_probs": 0.9996438026428223}}
+
+
+{"result": {"time": "2021-02-21 06:11:16.837294", "n_pass": [67, 10, 9], "n_token": 13, "loss": [0.2699165344238281, 0.004511444363743067], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["extension", ",", "extensions_map", ")", "return", "extension", "[", "extension", "]", "#NEWLINE#", "extension", ")", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [2, 0, 5, 7, 10]}}
+{"prediction": {"error_location": 0.7634431719779968, "repair_targets": [0.9954987168312073], "repair_candidates": [0.004154922440648079, 0.9954987168312073, 0.00028595144976861775, 1.402525776939001e-05, 4.627772432286292e-05], "target_probs": 0.9954987168312073}}
+
+
+
+
+Minimal simplified tokens:
+
+['extension', ',', 'extensions_map', ')', 'return', 'extension', '[', 'extension', ']', '#NEWLINE#', 'extension', ')', ')']

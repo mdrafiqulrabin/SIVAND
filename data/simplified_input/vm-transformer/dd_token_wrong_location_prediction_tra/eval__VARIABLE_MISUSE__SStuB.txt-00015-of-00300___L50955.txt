@@ -1,0 +1,181 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "(", "'the first argument to .%s must be a dictionary'", "%", "pos_kwargs", ")", ")", "#NEWLINE#", "#UNINDENT#", "if", "kw_kwargs", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "kw_kwargs"], "error_location": [37], "repair_targets": [6, 53], "repair_candidates": [4, 43, 67, 2, 13, 25, 37, 59, 6, 53], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "pydata/xarray/xarray/core/utils.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00015-of-00300", "js_count": 50955, "results": {"model": "transformer", "prob": {"loc": [[0.1835993081331253, 2.0596382910298416e-06, 2.206068529631011e-06, 8.224932201983393e-08, 1.7949199900613166e-05, 9.58959915919877e-08, 8.529570186510682e-05, 9.78779652882622e-08, 2.0575620851559506e-07, 3.760367519589636e-07, 7.387565688077302e-07, 6.515116410810151e-07, 3.877480139635736e-06, 0.0645587295293808, 0.00012490074732340872, 2.7993361072731204e-05, 6.474054771388182e-06, 1.0867549463000614e-05, 1.0721127182478085e-05, 1.4831636008239002e-06, 5.09986307406507e-07, 2.0188401776977116e-06, 1.934432020789245e-06, 7.951396128191845e-07, 3.527695753291482e-06, 0.03252601623535156, 5.198178314458346e-07, 6.457692052208586e-07, 2.3386852262774482e-05, 1.797982463358494e-06, 4.712101997483842e-07, 7.67338860896416e-07, 3.3744512961675355e-07, 2.7272463398730906e-07, 1.6301921732519986e-06, 7.356424248428084e-06, 1.0480004675628152e-05, 0.06258142739534378, 2.621414569148328e-05, 5.646038061968284e-06, 4.937089215673041e-06, 1.4048037883185316e-05, 4.679257472162135e-06, 0.07969343662261963, 2.7022964786738157e-05, 1.4649388504039962e-05, 6.3305760704679415e-06, 6.201805717864772e-06, 1.5799189441167982e-06, 1.7181149303269194e-07, 2.004876250794041e-06, 1.5485637050005607e-05, 5.928135578869842e-06, 0.0702827125787735, 6.600471806450514e-06, 2.338422973480192e-06, 1.0916603514488088e-06, 5.147946353645239e-07, 6.120250191088417e-07, 0.03363513574004173, 9.238182201443124e-07, 7.89571970472025e-07, 1.214255121340102e-06, 2.9654263471456943e-06, 1.156974349214579e-06, 6.22443110387394e-07, 6.904821816533513e-07, 0.4726162850856781]], "pointer": [[0.0, 0.0, 0.033432502299547195, 0.0, 0.03719114512205124, 0.0, 0.4302642047405243, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.012194078415632248, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.038999371230602264, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.08321577310562134, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0033132482785731554, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.287515789270401, 0.0, 0.0, 0.0, 0.0, 0.0, 0.07303392142057419, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.000839988817460835]], "target": [0.7177799940109253]}, "loss": [2.771286725997925, 0.3315921723842621], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [67]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:20:55.061759", "n_pass": [1, 1, 1], "n_token": 68, "loss": [0.7494714856147766, 0.3315921723842621], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "(", "'the first argument to .%s must be a dictionary'", "%", "pos_kwargs", ")", ")", "#NEWLINE#", "#UNINDENT#", "if", "kw_kwargs", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 67, "repair_targets": [6, 53], "repair_candidates": [4, 43, 67, 2, 13, 25, 37, 59, 6, 53]}}
+{"prediction": {"error_location": 0.4726162850856781, "repair_targets": [0.4302642047405243, 0.287515789270401], "repair_candidates": [0.033432502299547195, 0.03719114512205124, 0.4302642047405243, 0.012194078415632248, 0.038999371230602264, 0.08321577310562134, 0.0033132482785731554, 0.287515789270401, 0.07303392142057419, 0.000839988817460835], "target_probs": 0.7177799940109253}}
+
+
+{"result": {"time": "2021-02-21 07:20:55.176011", "n_pass": [46, 3, 2], "n_token": 64, "loss": [0.8007274270057678, 0.4108446538448334], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "(", "'the first argument to .%s must be a dictionary'", "%", "pos_kwargs", ")", ")", "#NEWLINE#", "#UNINDENT#", "if", "kw_kwargs", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 63, "repair_targets": [6, 49], "repair_candidates": [4, 39, 63, 2, 9, 21, 33, 55, 6, 49]}}
+{"prediction": {"error_location": 0.4490022361278534, "repair_targets": [0.4795009195804596, 0.18358901143074036], "repair_candidates": [0.06878041476011276, 0.03739745542407036, 0.4795009195804596, 0.03723008930683136, 0.06904754042625427, 0.05954904481768608, 0.003243133658543229, 0.18358901143074036, 0.060926128178834915, 0.0007362331380136311], "target_probs": 0.6630899310112}}
+
+
+{"result": {"time": "2021-02-21 07:20:55.404029", "n_pass": [51, 7, 3], "n_token": 60, "loss": [1.0502288341522217, 0.4504070281982422], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", ")", ")", "#NEWLINE#", "#UNINDENT#", "if", "kw_kwargs", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 59, "repair_targets": [6, 45], "repair_candidates": [4, 35, 59, 2, 9, 21, 29, 51, 6, 45]}}
+{"prediction": {"error_location": 0.3498576879501343, "repair_targets": [0.5661843419075012, 0.07118434458971024], "repair_candidates": [0.0704665407538414, 0.06703159213066101, 0.5661843419075012, 0.05634799227118492, 0.021136807277798653, 0.03259153664112091, 0.0025202352553606033, 0.07118434458971024, 0.11127224564552307, 0.0012643970549106598], "target_probs": 0.6373686790466309}}
+
+
+{"result": {"time": "2021-02-21 07:20:55.746351", "n_pass": [95, 13, 4], "n_token": 58, "loss": [0.9242557883262634, 0.47241637110710144], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "if", "kw_kwargs", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 57, "repair_targets": [6, 43], "repair_candidates": [4, 33, 57, 2, 9, 21, 29, 49, 6, 43]}}
+{"prediction": {"error_location": 0.39682668447494507, "repair_targets": [0.5659023523330688, 0.0575915202498436], "repair_candidates": [0.07163766026496887, 0.06454559415578842, 0.5659023523330688, 0.044292423874139786, 0.013695064932107925, 0.050466541200876236, 0.0018431280041113496, 0.0575915202498436, 0.1289372742176056, 0.001088472781702876], "target_probs": 0.6234938502311707}}
+
+
+{"result": {"time": "2021-02-21 07:20:55.803391", "n_pass": [96, 14, 5], "n_token": 56, "loss": [0.8681402206420898, 0.4983181953430176], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 55, "repair_targets": [6, 41], "repair_candidates": [4, 31, 55, 2, 9, 21, 29, 47, 6, 41]}}
+{"prediction": {"error_location": 0.41973137855529785, "repair_targets": [0.5213783979415894, 0.08617319911718369], "repair_candidates": [0.08988483995199203, 0.12679308652877808, 0.5213783979415894, 0.04061825945973396, 0.014106049202382565, 0.022885264828801155, 0.002266854979097843, 0.08617319911718369, 0.09444434195756912, 0.0014496874064207077], "target_probs": 0.6075515747070312}}
+
+
+{"result": {"time": "2021-02-21 07:20:55.919866", "n_pass": [99, 16, 6], "n_token": 54, "loss": [0.9215133190155029, 0.5091796517372131], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "ValueError", "(", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 53, "repair_targets": [6, 39], "repair_candidates": [4, 31, 53, 2, 9, 21, 29, 45, 6, 39]}}
+{"prediction": {"error_location": 0.39791643619537354, "repair_targets": [0.4668010473251343, 0.13418735563755035], "repair_candidates": [0.10617274045944214, 0.1315978765487671, 0.4668010473251343, 0.04072306677699089, 0.014675150625407696, 0.021827828139066696, 0.0031687510199844837, 0.13418735563755035, 0.07929027825593948, 0.0015558830928057432], "target_probs": 0.6009883880615234}}
+
+
+{"result": {"time": "2021-02-21 07:20:55.976624", "n_pass": [100, 17, 7], "n_token": 52, "loss": [1.0230334997177124, 0.49851179122924805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 51, "repair_targets": [6, 37], "repair_candidates": [4, 31, 51, 2, 9, 21, 29, 43, 6, 37]}}
+{"prediction": {"error_location": 0.35950273275375366, "repair_targets": [0.498455673456192, 0.1089782863855362], "repair_candidates": [0.11619576811790466, 0.15217158198356628, 0.498455673456192, 0.045297566801309586, 0.010323980823159218, 0.0073041110299527645, 0.0033197952434420586, 0.1089782863855362, 0.05686947703361511, 0.0010837913723662496], "target_probs": 0.6074339747428894}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.089171", "n_pass": [103, 19, 8], "n_token": 50, "loss": [0.9219619631767273, 0.31009092926979065], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", "#NEWLINE#", "#UNINDENT#", "return", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 49, "repair_targets": [6, 37], "repair_candidates": [4, 31, 49, 2, 9, 21, 29, 41, 6, 37]}}
+{"prediction": {"error_location": 0.39773792028427124, "repair_targets": [0.6850120425224304, 0.04836822673678398], "repair_candidates": [0.07824375480413437, 0.09783433377742767, 0.6850120425224304, 0.04391656816005707, 0.008954208344221115, 0.007887843064963818, 0.0021790978498756886, 0.04836822673678398, 0.02695835940539837, 0.0006456277915276587], "target_probs": 0.7333802580833435}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.145393", "n_pass": [104, 20, 9], "n_token": 47, "loss": [0.7765328288078308, 0.36543601751327515], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 46, "repair_targets": [6, 37], "repair_candidates": [4, 31, 46, 2, 9, 21, 29, 38, 6, 37]}}
+{"prediction": {"error_location": 0.45999813079833984, "repair_targets": [0.6411038637161255, 0.05279018357396126], "repair_candidates": [0.10507400333881378, 0.1215629130601883, 0.6411038637161255, 0.047264933586120605, 0.006252271588891745, 0.006225627847015858, 0.0016359445871785283, 0.05279018357396126, 0.017474550753831863, 0.000615758472122252], "target_probs": 0.6938940286636353}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.201778", "n_pass": [106, 21, 10], "n_token": 44, "loss": [0.7031555771827698, 0.34843334555625916], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 43, "repair_targets": [6, 37], "repair_candidates": [4, 31, 43, 2, 9, 21, 29, 38, 6, 37]}}
+{"prediction": {"error_location": 0.49502071738243103, "repair_targets": [0.6332191228866577, 0.07257384061813354], "repair_candidates": [0.0994919165968895, 0.10798908025026321, 0.6332191228866577, 0.05354152247309685, 0.01022512186318636, 0.01041374634951353, 0.0016036691376939416, 0.07257384061813354, 0.010271374136209488, 0.0006705629639327526], "target_probs": 0.7057929635047913}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.316218", "n_pass": [113, 23, 11], "n_token": 42, "loss": [0.6358602643013, 0.37480661273002625], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 41, "repair_targets": [6, 35], "repair_candidates": [4, 29, 41, 2, 9, 19, 27, 36, 6, 35]}}
+{"prediction": {"error_location": 0.5294798016548157, "repair_targets": [0.6514109373092651, 0.03601127862930298], "repair_candidates": [0.1335134506225586, 0.08398114144802094, 0.6514109373092651, 0.05714714154601097, 0.008707140572369099, 0.01151989959180355, 0.0020491171162575483, 0.03601127862930298, 0.015233010984957218, 0.00042684157961048186], "target_probs": 0.6874222159385681}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.372622", "n_pass": [114, 24, 12], "n_token": 40, "loss": [0.9707825183868408, 0.11183244735002518], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "#NEWLINE#", "#INDENT#", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 39, "repair_targets": [6, 33], "repair_candidates": [4, 27, 39, 2, 9, 17, 25, 34, 6, 33]}}
+{"prediction": {"error_location": 0.37878650426864624, "repair_targets": [0.8125268220901489, 0.0816672295331955], "repair_candidates": [0.012594001367688179, 0.0673389732837677, 0.8125268220901489, 0.0030735100153833628, 0.004992180969566107, 0.010650040581822395, 0.0020598273258656263, 0.0816672295331955, 0.0048255459405481815, 0.00027184601640328765], "target_probs": 0.8941940665245056}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.429129", "n_pass": [115, 25, 13], "n_token": 38, "loss": [0.8399229049682617, 0.13469302654266357], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "if", "(", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 37, "repair_targets": [6, 31], "repair_candidates": [4, 25, 37, 2, 9, 15, 23, 32, 6, 31]}}
+{"prediction": {"error_location": 0.4317438304424286, "repair_targets": [0.796425998210907, 0.07755814492702484], "repair_candidates": [0.014070744626224041, 0.10113974660634995, 0.796425998210907, 0.002818193519487977, 0.0011872501345351338, 0.001660938491113484, 0.0006674290052615106, 0.07755814492702484, 0.004387615714222193, 8.382647502003238e-05], "target_probs": 0.873984158039093}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.485376", "n_pass": [116, 26, 14], "n_token": 36, "loss": [0.5688002705574036, 0.22119025886058807], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "not", "is_dict_like", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 35, "repair_targets": [6, 29], "repair_candidates": [4, 23, 35, 2, 9, 13, 21, 30, 6, 29]}}
+{"prediction": {"error_location": 0.566204309463501, "repair_targets": [0.6936779618263245, 0.1078861877322197], "repair_candidates": [0.042226772755384445, 0.10063190013170242, 0.6936779618263245, 0.01595917157828808, 0.013745706528425217, 0.005306478589773178, 0.00025430682580918074, 0.1078861877322197, 0.02017245627939701, 0.00013908099208492786], "target_probs": 0.8015641570091248}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.541432", "n_pass": [117, 27, 15], "n_token": 34, "loss": [0.4661717116832733, 0.5546456575393677], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 33, "repair_targets": [6, 27], "repair_candidates": [4, 21, 33, 2, 9, 11, 19, 28, 6, 27]}}
+{"prediction": {"error_location": 0.6273994445800781, "repair_targets": [0.5085175037384033, 0.06575821340084076], "repair_candidates": [0.04060785472393036, 0.051369428634643555, 0.5085175037384033, 0.01723148487508297, 0.22626741230487823, 0.037329815328121185, 0.0001805328211048618, 0.06575821340084076, 0.05239212512969971, 0.00034567361581139266], "target_probs": 0.5742757320404053}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.600396", "n_pass": [119, 28, 16], "n_token": 32, "loss": [0.5030635595321655, 0.5064129829406738], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", ":", "#NEWLINE#", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 31, "repair_targets": [6, 25], "repair_candidates": [4, 19, 31, 2, 9, 11, 17, 26, 6, 25]}}
+{"prediction": {"error_location": 0.6046754121780396, "repair_targets": [0.5179596543312073, 0.08469381183385849], "repair_candidates": [0.06317507475614548, 0.11446329206228256, 0.5179596543312073, 0.023736409842967987, 0.08148083835840225, 0.05609741434454918, 0.00027580789173953235, 0.08469381183385849, 0.05739602446556091, 0.0007217191741801798], "target_probs": 0.602653443813324}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.656193", "n_pass": [120, 29, 17], "n_token": 30, "loss": [0.5346769690513611, 0.5269277691841125], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "(", "'cannot specify both keyword and positional arguments to .%s'", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 29, "repair_targets": [6, 23], "repair_candidates": [4, 17, 29, 2, 9, 11, 15, 24, 6, 23]}}
+{"prediction": {"error_location": 0.5858585238456726, "repair_targets": [0.5725784301757812, 0.017837658524513245], "repair_candidates": [0.06647616624832153, 0.14991413056850433, 0.5725784301757812, 0.011786221526563168, 0.08984547108411789, 0.0703049823641777, 0.00036335104960016906, 0.017837658524513245, 0.02010541595518589, 0.0007881069323047996], "target_probs": 0.5904160737991333}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.823140", "n_pass": [125, 32, 18], "n_token": 28, "loss": [0.3443470001220703, 0.45858240127563477], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def combine_pos_and_kw_args(", "pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 27, "repair_targets": [6, 21], "repair_candidates": [4, 17, 27, 2, 9, 11, 15, 22, 6, 21]}}
+{"prediction": {"error_location": 0.7086830139160156, "repair_targets": [0.6257435083389282, 0.006435719784349203], "repair_candidates": [0.042502280324697495, 0.09999919682741165, 0.6257435083389282, 0.027860449627041817, 0.0924801453948021, 0.07309172302484512, 0.00014085983275435865, 0.006435719784349203, 0.03138960897922516, 0.00035644962918013334], "target_probs": 0.6321792006492615}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.878955", "n_pass": [129, 33, 19], "n_token": 26, "loss": [0.05161343142390251, 0.5594887733459473], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "#INDENT#", "raise", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 25, "repair_targets": [4, 19], "repair_candidates": [2, 15, 25, 0, 7, 9, 13, 20, 4, 19]}}
+{"prediction": {"error_location": 0.9496959447860718, "repair_targets": [0.5648560523986816, 0.006645058281719685], "repair_candidates": [0.012923979200422764, 0.03403666615486145, 0.5648560523986816, 0.09643281996250153, 0.14854373037815094, 0.0969376266002655, 2.5380149963893928e-05, 0.006645058281719685, 0.0394759401679039, 0.00012265428085811436], "target_probs": 0.5715011358261108}}
+
+
+{"result": {"time": "2021-02-21 07:20:56.937465", "n_pass": [135, 34, 20], "n_token": 24, "loss": [0.7268062233924866, 0.39561179280281067], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "%", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 23, "repair_targets": [4, 17], "repair_candidates": [2, 13, 23, 0, 7, 9, 11, 18, 4, 17]}}
+{"prediction": {"error_location": 0.4834505617618561, "repair_targets": [0.6644474267959595, 0.008820564486086369], "repair_candidates": [0.012873479165136814, 0.04893491789698601, 0.6644474267959595, 0.11780234426259995, 0.02590998448431492, 0.11441279202699661, 4.286898547434248e-05, 0.008820564486086369, 0.006527040619403124, 0.00022860427270643413], "target_probs": 0.6732680201530457}}
+
+
+{"result": {"time": "2021-02-21 07:20:57.049284", "n_pass": [169, 36, 21], "n_token": 23, "loss": [0.25964227318763733, 0.5017750859260559], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "pos_kwargs", "if", "kw_kwargs", ":", "#NEWLINE#", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 22, "repair_targets": [4, 16], "repair_candidates": [2, 12, 22, 0, 7, 9, 10, 17, 4, 16]}}
+{"prediction": {"error_location": 0.7713273763656616, "repair_targets": [0.5991114974021912, 0.006343460641801357], "repair_candidates": [0.013024312444031239, 0.03351983800530434, 0.5991114974021912, 0.20751099288463593, 0.06319583207368851, 0.06826162338256836, 4.295984035707079e-05, 0.006343460641801357, 0.008781444281339645, 0.0002081140992231667], "target_probs": 0.6054549813270569}}
+
+
+{"result": {"time": "2021-02-21 07:20:57.105024", "n_pass": [170, 37, 22], "n_token": 22, "loss": [0.07871919870376587, 0.42613452672958374], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "pos_kwargs", "kw_kwargs", ":", "#NEWLINE#", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 21, "repair_targets": [4, 15], "repair_candidates": [2, 11, 21, 0, 7, 9, 10, 16, 4, 15]}}
+{"prediction": {"error_location": 0.924299418926239, "repair_targets": [0.6420813202857971, 0.010947187431156635], "repair_candidates": [0.048368245363235474, 0.034860238432884216, 0.6420813202857971, 0.11088978499174118, 0.06701464205980301, 0.05736732482910156, 0.00017120304983109236, 0.010947187431156635, 0.02729986049234867, 0.0010002608178183436], "target_probs": 0.6530284881591797}}
+
+
+{"result": {"time": "2021-02-21 07:20:57.161751", "n_pass": [172, 38, 23], "n_token": 21, "loss": [0.23001903295516968, 0.6230149865150452], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "pos_kwargs", "kw_kwargs", "#NEWLINE#", "%", "func_name", "pos_kwargs", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 20, "repair_targets": [4, 14], "repair_candidates": [2, 11, 20, 0, 7, 9, 10, 15, 4, 14]}}
+{"prediction": {"error_location": 0.7945184111595154, "repair_targets": [0.5248637199401855, 0.011461283080279827], "repair_candidates": [0.07672859728336334, 0.2749670743942261, 0.5248637199401855, 0.015975631773471832, 0.02433115243911743, 0.015796219930052757, 0.03580006957054138, 0.011461283080279827, 0.013838032260537148, 0.006238226778805256], "target_probs": 0.5363249778747559}}
+
+
+{"result": {"time": "2021-02-21 07:20:57.332402", "n_pass": [177, 41, 24], "n_token": 20, "loss": [0.5089778304100037, 0.5284844636917114], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["pos_kwargs", ",", "kw_kwargs", ",", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "pos_kwargs", "kw_kwargs", "#NEWLINE#", "%", "func_name", "pos_kwargs", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 19, "repair_targets": [4, 14], "repair_candidates": [2, 11, 19, 0, 7, 9, 10, 15, 4, 14]}}
+{"prediction": {"error_location": 0.6011096835136414, "repair_targets": [0.5770856142044067, 0.012412064708769321], "repair_candidates": [0.06201494485139847, 0.21522021293640137, 0.5770856142044067, 0.021235624328255653, 0.03074399009346962, 0.018867110833525658, 0.04114058241248131, 0.012412064708769321, 0.01749297045171261, 0.003786942455917597], "target_probs": 0.5894976854324341}}
+
+
+{"result": {"time": "2021-02-21 07:20:57.500072", "n_pass": [183, 44, 25], "n_token": 19, "loss": [0.31780552864074707, 0.5886578559875488], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["pos_kwargs", ",", "kw_kwargs", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "pos_kwargs", "kw_kwargs", "#NEWLINE#", "%", "func_name", "pos_kwargs", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 18, "repair_targets": [3, 13], "repair_candidates": [2, 10, 18, 0, 6, 8, 9, 14, 3, 13]}}
+{"prediction": {"error_location": 0.7277442812919617, "repair_targets": [0.5458626747131348, 0.00920910481363535], "repair_candidates": [0.08202379941940308, 0.19747956097126007, 0.5458626747131348, 0.0317232646048069, 0.06151807680726051, 0.04478355497121811, 0.0006989400135353208, 0.00920910481363535, 0.023868916556239128, 0.0028321153949946165], "target_probs": 0.5550717711448669}}
+
+
+{"result": {"time": "2021-02-21 07:20:57.782964", "n_pass": [193, 49, 26], "n_token": 18, "loss": [0.4072616398334503, 0.6384856104850769], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["pos_kwargs", ",", "kw_kwargs", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "pos_kwargs", "kw_kwargs", "#NEWLINE#", "func_name", "pos_kwargs", "#UNINDENT#", "#INDENT#", "return", "kw_kwargs"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 12], "repair_candidates": [2, 10, 17, 0, 6, 8, 9, 13, 3, 12]}}
+{"prediction": {"error_location": 0.6654700636863708, "repair_targets": [0.45882928371429443, 0.06926225870847702], "repair_candidates": [0.031747933477163315, 0.036390289664268494, 0.45882928371429443, 0.06743909418582916, 0.06996122002601624, 0.04681187495589256, 2.8494490834418684e-05, 0.06926225870847702, 0.21925151348114014, 0.0002779548813123256], "target_probs": 0.528091549873352}}
+
+
+{"result": {"time": "2021-02-21 07:20:57.839629", "n_pass": [196, 50, 27], "n_token": 16, "loss": [0.7534578442573547, 0.07310784608125687], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["pos_kwargs", ",", "kw_kwargs", "func_name", ")", "(", "pos_kwargs", "(", "pos_kwargs", "pos_kwargs", "kw_kwargs", "#NEWLINE#", "func_name", "pos_kwargs", "return", "kw_kwargs"]}}
+{"position": {"error_location": 15, "repair_targets": [3, 12], "repair_candidates": [2, 10, 15, 0, 6, 8, 9, 13, 3, 12]}}
+{"prediction": {"error_location": 0.47073596715927124, "repair_targets": [0.900870680809021, 0.028629902750253677], "repair_candidates": [0.011489791795611382, 0.027065493166446686, 0.900870680809021, 0.012026721611618996, 0.011522344313561916, 0.007740927394479513, 0.00014463176194112748, 0.028629902750253677, 0.0004661707498598844, 4.331316449679434e-05], "target_probs": 0.9295005798339844}}
+
+
+{"result": {"time": "2021-02-21 07:20:57.955008", "n_pass": [202, 52, 28], "n_token": 15, "loss": [0.8244946002960205, 0.06967834383249283], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["pos_kwargs", ",", "kw_kwargs", "func_name", "(", "pos_kwargs", "(", "pos_kwargs", "pos_kwargs", "kw_kwargs", "#NEWLINE#", "func_name", "pos_kwargs", "return", "kw_kwargs"]}}
+{"position": {"error_location": 14, "repair_targets": [3, 11], "repair_candidates": [2, 9, 14, 0, 5, 7, 8, 12, 3, 11]}}
+{"prediction": {"error_location": 0.4384565055370331, "repair_targets": [0.9262372851371765, 0.006456510163843632], "repair_candidates": [0.013536142185330391, 0.013121673837304115, 0.9262372851371765, 0.010726413689553738, 0.014091208577156067, 0.015169131569564342, 8.627076749689877e-05, 0.006456510163843632, 0.0005486286827363074, 2.6758436433738098e-05], "target_probs": 0.9326937794685364}}
+
+
+
+
+Minimal simplified tokens:
+
+['pos_kwargs', ',', 'kw_kwargs', 'func_name', '(', 'pos_kwargs', '(', 'pos_kwargs', 'pos_kwargs', 'kw_kwargs', '#NEWLINE#', 'func_name', 'pos_kwargs', 'return', 'kw_kwargs']

@@ -1,0 +1,85 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#NEWLINE#", "#INDENT#", "'return origin,target seqpos for sequence k; raise KeyError if\\n        not in this edge'", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "k", "=", "k", ".", "path", "#NEWLINE#", "#UNINDENT#", "except", "AttributeError", ":", "#NEWLINE#", "#INDENT#", "raise", "TypeError", "(", "'k not a valid sequence: it has no path attribute'", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "self", ".", "origin", ".", "getSeqPos", "(", "k", ".", "path", ")", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")", ")"], "error_location": [53], "repair_targets": [4, 15, 17, 42], "repair_candidates": [4, 15, 17, 42, 2, 36, 47, 53], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "cjlee112/pygr/pygr/sequence.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00005-of-00300", "js_count": 18089, "results": {"model": "transformer", "prob": {"loc": [[0.2178851068019867, 1.4736298226125655e-06, 5.960197540844092e-06, 1.0287843110745598e-07, 8.46687635203125e-06, 7.90034775377535e-08, 1.4139205006813427e-07, 1.490388399361109e-07, 1.1045469250348106e-07, 2.008187584578991e-05, 1.4231886780180503e-07, 9.043430537758468e-08, 4.1626648794590437e-07, 3.735717939434835e-07, 2.1687733919861785e-07, 0.00017342511273454875, 4.877834314243046e-08, 0.07569697499275208, 6.626491426686698e-07, 1.124716675349191e-07, 5.955399160484376e-07, 1.6197016350361082e-07, 4.0058040440271725e-07, 5.502785072053484e-08, 2.0958756863365124e-07, 1.926672439367394e-07, 1.482803497765417e-07, 9.244099885563628e-08, 3.9402202389737795e-08, 1.0523524451855337e-06, 4.431609340826981e-06, 1.1669740160868969e-06, 4.676167577599699e-07, 2.949683448605356e-07, 1.2299011586947017e-08, 8.226398051647266e-08, 0.012942856177687645, 2.583028333447146e-07, 3.001556478920975e-07, 7.096520562299702e-07, 4.895417760053533e-08, 1.245497173840704e-06, 0.35633599758148193, 1.8997975530510303e-06, 1.3695903078314586e-07, 4.3887658307539823e-07, 2.545894233207946e-07, 0.004939778707921505, 5.892492822567874e-07, 6.968362953330143e-08, 8.277097549580503e-07, 4.093282868211645e-08, 7.641467618668685e-07, 0.3319678008556366, 8.798673434284865e-07, 1.3950456434486114e-07, 7.058641244839237e-07, 7.4181133413731e-07]], "pointer": [[0.0, 0.0, 0.17714987695217133, 0.0, 0.108737051486969, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.051503174006938934, 0.0, 0.03306623920798302, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.035057518631219864, 0.0, 0.0, 0.0, 0.0, 0.0, 0.45440125465393066, 0.0, 0.0, 0.0, 0.0, 0.026408465579152107, 0.0, 0.0, 0.0, 0.0, 0.0, 0.11367642134428024, 0.0, 0.0, 0.0, 0.0]], "target": [0.6477077007293701]}, "loss": [1.1027172803878784, 0.4343157708644867], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [42]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:08:56.153355", "n_pass": [1, 1, 1], "n_token": 58, "loss": [1.0318812131881714, 0.4343157708644867], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#NEWLINE#", "#INDENT#", "'return origin,target seqpos for sequence k; raise KeyError if\\n        not in this edge'", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "k", "=", "k", ".", "path", "#NEWLINE#", "#UNINDENT#", "except", "AttributeError", ":", "#NEWLINE#", "#INDENT#", "raise", "TypeError", "(", "'k not a valid sequence: it has no path attribute'", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "self", ".", "origin", ".", "getSeqPos", "(", "k", ".", "path", ")", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")", ")"]}}
+{"position": {"error_location": 42, "repair_targets": [4, 15, 17, 42], "repair_candidates": [4, 15, 17, 42, 2, 36, 47, 53]}}
+{"prediction": {"error_location": 0.35633599758148193, "repair_targets": [0.108737051486969, 0.051503174006938934, 0.03306623920798302, 0.45440125465393066], "repair_candidates": [0.17714987695217133, 0.108737051486969, 0.051503174006938934, 0.03306623920798302, 0.035057518631219864, 0.45440125465393066, 0.026408465579152107, 0.11367642134428024], "target_probs": 0.6477077007293701}}
+
+
+{"result": {"time": "2021-02-21 06:08:56.213092", "n_pass": [21, 2, 2], "n_token": 51, "loss": [0.6480892300605774, 0.5896057486534119], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "path", "#NEWLINE#", "#UNINDENT#", "except", "AttributeError", ":", "#NEWLINE#", "#INDENT#", "raise", "TypeError", "(", "'k not a valid sequence: it has no path attribute'", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "self", ".", "origin", ".", "getSeqPos", "(", "k", ".", "path", ")", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [4, 8, 10, 35], "repair_candidates": [4, 8, 10, 35, 2, 29, 40, 46]}}
+{"prediction": {"error_location": 0.523044228553772, "repair_targets": [0.10120176523923874, 0.05616014078259468, 0.07279732078313828, 0.3243866562843323], "repair_candidates": [0.21388231217861176, 0.10120176523923874, 0.05616014078259468, 0.07279732078313828, 0.015084940940141678, 0.3243866562843323, 0.06831154227256775, 0.14817525446414948], "target_probs": 0.5545458793640137}}
+
+
+{"result": {"time": "2021-02-21 06:08:56.269103", "n_pass": [23, 3, 3], "n_token": 44, "loss": [0.7624172568321228, 0.3390309512615204], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "path", "#NEWLINE#", "TypeError", "(", "'k not a valid sequence: it has no path attribute'", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "self", ".", "origin", ".", "getSeqPos", "(", "k", ".", "path", ")", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [4, 8, 10, 28], "repair_candidates": [4, 8, 10, 28, 2, 22, 33, 39]}}
+{"prediction": {"error_location": 0.46653732657432556, "repair_targets": [0.07288804650306702, 0.04988629370927811, 0.06332645565271378, 0.5263596177101135], "repair_candidates": [0.1376098096370697, 0.07288804650306702, 0.04988629370927811, 0.06332645565271378, 0.006860232446342707, 0.5263596177101135, 0.0379299633204937, 0.10513954609632492], "target_probs": 0.7124603986740112}}
+
+
+{"result": {"time": "2021-02-21 06:08:56.381844", "n_pass": [42, 5, 4], "n_token": 40, "loss": [0.7133921980857849, 0.5193387866020203], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "'k not a valid sequence: it has no path attribute'", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "self", ".", "origin", ".", "getSeqPos", "(", "k", ".", "path", ")", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [4, 8, 10, 24], "repair_candidates": [4, 8, 10, 24, 2, 18, 29, 35]}}
+{"prediction": {"error_location": 0.4899792969226837, "repair_targets": [0.1454373300075531, 0.06136460602283478, 0.05952059105038643, 0.3285912573337555], "repair_candidates": [0.16198953986167908, 0.1454373300075531, 0.06136460602283478, 0.05952059105038643, 0.017124392092227936, 0.3285912573337555, 0.11883612722158432, 0.10713616013526917], "target_probs": 0.5949137806892395}}
+
+
+{"result": {"time": "2021-02-21 06:08:56.608046", "n_pass": [76, 9, 5], "n_token": 38, "loss": [0.6723384261131287, 0.5590147972106934], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "#NEWLINE#", "#UNINDENT#", "return", "(", "self", ".", "origin", ".", "getSeqPos", "(", "k", ".", "path", ")", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [4, 8, 10, 22], "repair_candidates": [4, 8, 10, 22, 2, 16, 27, 33]}}
+{"prediction": {"error_location": 0.5105133652687073, "repair_targets": [0.09714341163635254, 0.13784508407115936, 0.023379554972052574, 0.3134040832519531], "repair_candidates": [0.21289527416229248, 0.09714341163635254, 0.13784508407115936, 0.023379554972052574, 0.01265345886349678, 0.3134040832519531, 0.08379802107810974, 0.11888111382722855], "target_probs": 0.5717720985412598}}
+
+
+{"result": {"time": "2021-02-21 06:08:57.337020", "n_pass": [131, 22, 6], "n_token": 37, "loss": [0.7129859924316406, 0.547853410243988], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "#NEWLINE#", "#UNINDENT#", "(", "self", ".", "origin", ".", "getSeqPos", "(", "k", ".", "path", ")", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [4, 8, 10, 21], "repair_candidates": [4, 8, 10, 21, 2, 15, 26, 32]}}
+{"prediction": {"error_location": 0.49017831683158875, "repair_targets": [0.09500261396169662, 0.16188237071037292, 0.0214826837182045, 0.2998219132423401], "repair_candidates": [0.16909638047218323, 0.09500261396169662, 0.16188237071037292, 0.0214826837182045, 0.023759761825203896, 0.2998219132423401, 0.08832898736000061, 0.14062531292438507], "target_probs": 0.5781896114349365}}
+
+
+{"result": {"time": "2021-02-21 06:08:57.562709", "n_pass": [136, 26, 7], "n_token": 36, "loss": [0.8148199915885925, 0.6228063106536865], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "#NEWLINE#", "#UNINDENT#", "(", "self", ".", "origin", ".", "(", "k", ".", "path", ")", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [4, 8, 10, 20], "repair_candidates": [4, 8, 10, 20, 2, 15, 25, 31]}}
+{"prediction": {"error_location": 0.4427190124988556, "repair_targets": [0.07968243211507797, 0.20793716609477997, 0.016663167625665665, 0.23215414583683014], "repair_candidates": [0.15167191624641418, 0.07968243211507797, 0.20793716609477997, 0.016663167625665665, 0.04766789823770523, 0.23215414583683014, 0.11955176293849945, 0.1446714550256729], "target_probs": 0.536436915397644}}
+
+
+{"result": {"time": "2021-02-21 06:08:57.784894", "n_pass": [141, 30, 8], "n_token": 35, "loss": [0.9286069869995117, 0.6032232642173767], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "#NEWLINE#", "#UNINDENT#", "(", "self", ".", "origin", ".", "(", "k", ".", "path", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [4, 8, 10, 20], "repair_candidates": [4, 8, 10, 20, 2, 15, 24, 30]}}
+{"prediction": {"error_location": 0.39510378241539, "repair_targets": [0.09355315566062927, 0.21021465957164764, 0.020640453323721886, 0.22263725101947784], "repair_candidates": [0.15692539513111115, 0.09355315566062927, 0.21021465957164764, 0.020640453323721886, 0.05157306417822838, 0.22263725101947784, 0.11231455206871033, 0.13214144110679626], "target_probs": 0.5470455288887024}}
+
+
+{"result": {"time": "2021-02-21 06:08:59.073827", "n_pass": [171, 53, 9], "n_token": 34, "loss": [0.9602190852165222, 0.5623275637626648], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "#NEWLINE#", "#UNINDENT#", "(", "self", ".", ".", "(", "k", ".", "path", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [4, 8, 10, 19], "repair_candidates": [4, 8, 10, 19, 2, 15, 23, 29]}}
+{"prediction": {"error_location": 0.382809042930603, "repair_targets": [0.12003006786108017, 0.22255875170230865, 0.0208909772336483, 0.2064012587070465], "repair_candidates": [0.21003931760787964, 0.12003006786108017, 0.22255875170230865, 0.0208909772336483, 0.003678412875160575, 0.2064012587070465, 0.09835949540138245, 0.1180417388677597], "target_probs": 0.5698810815811157}}
+
+
+{"result": {"time": "2021-02-21 06:08:59.800779", "n_pass": [187, 66, 10], "n_token": 33, "loss": [0.9822521209716797, 0.5768567323684692], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "#NEWLINE#", "#UNINDENT#", "(", "self", ".", ".", "(", "k", ".", "path", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [4, 8, 10, 19], "repair_candidates": [4, 8, 10, 19, 2, 15, 23, 29]}}
+{"prediction": {"error_location": 0.37446680665016174, "repair_targets": [0.12136886268854141, 0.21514731645584106, 0.02074841782450676, 0.20439644157886505], "repair_candidates": [0.2263198345899582, 0.12136886268854141, 0.21514731645584106, 0.02074841782450676, 0.004028525203466415, 0.20439644157886505, 0.09578723460435867, 0.11220336705446243], "target_probs": 0.5616610646247864}}
+
+
+{"result": {"time": "2021-02-21 06:09:00.474642", "n_pass": [203, 78, 11], "n_token": 32, "loss": [1.0082396268844604, 0.4919968247413635], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "#NEWLINE#", "#UNINDENT#", "self", ".", ".", "(", "k", ".", "path", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 8, 10, 18], "repair_candidates": [4, 8, 10, 18, 2, 14, 22, 28]}}
+{"prediction": {"error_location": 0.3648606836795807, "repair_targets": [0.13992643356323242, 0.2513864040374756, 0.02048647031188011, 0.19960498809814453], "repair_candidates": [0.2242152839899063, 0.13992643356323242, 0.2513864040374756, 0.02048647031188011, 0.0006089573143981397, 0.19960498809814453, 0.07713130116462708, 0.08664017915725708], "target_probs": 0.611404299736023}}
+
+
+{"result": {"time": "2021-02-21 06:09:01.259713", "n_pass": [221, 92, 12], "n_token": 31, "loss": [1.0046546459197998, 0.6719008684158325], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __getitem__(", "self", ",", "k", ")", ":", "#INDENT#", "k", "=", "k", ".", "#NEWLINE#", "#UNINDENT#", "self", ".", ".", "(", "k", ".", "path", ",", "self", ".", "target", ".", "getSeqPos", "(", "self", ".", "path"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 8, 10, 18], "repair_candidates": [4, 8, 10, 18, 2, 14, 22, 28]}}
+{"prediction": {"error_location": 0.3661710321903229, "repair_targets": [0.15381841361522675, 0.18517588078975677, 0.026283003389835358, 0.14545954763889313], "repair_candidates": [0.26207008957862854, 0.15381841361522675, 0.18517588078975677, 0.026283003389835358, 0.0008095492958091199, 0.14545954763889313, 0.10357946902513504, 0.1228039562702179], "target_probs": 0.5107368230819702}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def __getitem__(', 'self', ',', 'k', ')', ':', '#INDENT#', 'k', '=', 'k', '.', '#NEWLINE#', '#UNINDENT#', 'self', '.', '.', '(', 'k', '.', 'path', ',', 'self', '.', 'target', '.', 'getSeqPos', '(', 'self', '.', 'path']

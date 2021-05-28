@@ -1,0 +1,151 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def _parse_domainname(", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "=", "_read_file", "(", "_DEB_RESOLV_FILE", ")", "#NEWLINE#", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "re", ".", "compile", "(", "contents", ")", "#NEWLINE#", "for", "item", "in", "contents", ":", "#NEWLINE#", "#INDENT#", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "#NEWLINE#", "#INDENT#", "return", "match", ".", "group", "(", "'domain_name'", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "''"], "error_location": [25], "repair_targets": [15], "repair_candidates": [19, 37, 29, 41, 8, 25, 31, 15, 35, 39, 45, 50], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "saltstack/salt/salt/modules/debian_ip.py", "license": "apache-2.0", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 147, "results": {"model": "transformer", "prob": {"loc": [[0.15864573419094086, 1.2450069561964483e-06, 4.290457411570969e-08, 4.070266967914904e-08, 4.25779163037987e-08, 3.638029255625952e-08, 2.3196060183749978e-08, 3.067538756340582e-08, 2.889227346258849e-07, 6.90972044026239e-08, 1.0699024954874403e-07, 1.5830359245683212e-07, 5.228732220530219e-07, 2.1928407534232974e-07, 6.542092023664736e-08, 1.2121219015170936e-06, 2.0833466507497178e-08, 1.2070820503140567e-06, 2.3566683182707493e-07, 1.60209353339269e-07, 3.0594691224905546e-08, 1.8087384034970455e-08, 1.563425833239762e-08, 1.821256390144299e-08, 3.1477208040087135e-07, 0.1793166995048523, 5.605190381174907e-06, 1.5287407677533338e-06, 6.105581462634291e-08, 4.363691004982684e-06, 2.802508625165956e-08, 0.6602360606193542, 2.8990476153012423e-07, 8.290241737540782e-08, 3.70952797368318e-08, 1.291250555368606e-07, 1.7958988962618605e-08, 1.1819504379673162e-06, 2.1061802968347365e-08, 4.889985802947194e-07, 2.048568603640888e-08, 0.000638002878986299, 1.6995909390971065e-07, 1.1890617770404788e-06, 3.811758233496221e-07, 0.0011297869496047497, 8.445189791927987e-07, 1.2866880751971621e-06, 2.959001790259208e-07, 1.1143972855620632e-08, 4.2569087099764147e-07, 7.895364007026728e-08, 6.907556304724949e-09, 7.295461301737305e-08, 3.733648327397532e-06, 2.3758430245379714e-07, 4.84700137803884e-07, 1.0790406435035038e-07, 1.2923136694098503e-07, 1.5158643407175987e-07, 4.2537863009783905e-06]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 9.099628368858248e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9997114539146423, 0.0, 0.0, 0.0, 1.5677074770792387e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 5.395000243879622e-06, 0.0, 0.0, 0.0, 1.589386556588579e-05, 0.0, 2.2929766885226854e-07, 0.0, 0.0, 0.0, 1.1458615517767612e-05, 0.0, 7.61154751671711e-07, 0.0, 0.0001476615434512496, 0.0, 2.4675753707015247e-07, 0.0, 0.0, 0.0, 3.087148314762089e-08, 0.0, 0.0, 0.0, 0.0, 1.451295048582324e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9997114539146423]}, "loss": [1.7186018228530884, 0.0002885877329390496], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [31]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:31:04.775112", "n_pass": [1, 1, 1], "n_token": 61, "loss": [0.4151579439640045, 0.0002885877329390496], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _parse_domainname(", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "=", "_read_file", "(", "_DEB_RESOLV_FILE", ")", "#NEWLINE#", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "re", ".", "compile", "(", "contents", ")", "#NEWLINE#", "for", "item", "in", "contents", ":", "#NEWLINE#", "#INDENT#", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "#NEWLINE#", "#INDENT#", "return", "match", ".", "group", "(", "'domain_name'", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "''"]}}
+{"position": {"error_location": 31, "repair_targets": [15], "repair_candidates": [19, 37, 29, 41, 8, 25, 31, 15, 35, 39, 45, 50]}}
+{"prediction": {"error_location": 0.6602360606193542, "repair_targets": [0.9997114539146423], "repair_candidates": [9.099628368858248e-05, 0.9997114539146423, 1.5677074770792387e-05, 5.395000243879622e-06, 1.589386556588579e-05, 2.2929766885226854e-07, 1.1458615517767612e-05, 7.61154751671711e-07, 0.0001476615434512496, 2.4675753707015247e-07, 3.087148314762089e-08, 1.451295048582324e-07], "target_probs": 0.9997114539146423}}
+
+
+{"result": {"time": "2021-02-21 05:31:04.886966", "n_pass": [27, 3, 2], "n_token": 53, "loss": [0.46967464685440063, 0.0005533437943086028], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _parse_domainname(", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "=", "_read_file", "(", "_DEB_RESOLV_FILE", ")", "#NEWLINE#", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "re", ".", "compile", "(", "contents", ")", "#NEWLINE#", "for", "item", "in", "contents", ":", "#NEWLINE#", "#INDENT#", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "#NEWLINE#", "#INDENT#", "return", "match", ".", "group"]}}
+{"position": {"error_location": 31, "repair_targets": [15], "repair_candidates": [19, 37, 29, 41, 8, 25, 31, 15, 35, 39, 45, 50]}}
+{"prediction": {"error_location": 0.6252055764198303, "repair_targets": [0.9994468092918396], "repair_candidates": [0.00013157390640117228, 0.9994468092918396, 2.1840030967723578e-05, 1.1226567039557267e-05, 3.999412729172036e-05, 3.572599780454766e-07, 7.23288394510746e-05, 3.0194723876775242e-06, 0.0002690044930204749, 6.581929028470768e-07, 1.3487119758792687e-06, 1.9249721390224295e-06], "target_probs": 0.9994468092918396}}
+
+
+{"result": {"time": "2021-02-21 05:31:05.000629", "n_pass": [48, 5, 3], "n_token": 50, "loss": [0.2749474048614502, 0.0006730436580255628], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [":", "#NEWLINE#", "#INDENT#", "'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "=", "_read_file", "(", "_DEB_RESOLV_FILE", ")", "#NEWLINE#", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "re", ".", "compile", "(", "contents", ")", "#NEWLINE#", "for", "item", "in", "contents", ":", "#NEWLINE#", "#INDENT#", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "#NEWLINE#", "#INDENT#", "return", "match", ".", "group"]}}
+{"position": {"error_location": 28, "repair_targets": [12], "repair_candidates": [16, 34, 26, 38, 5, 22, 28, 12, 32, 36, 42, 47]}}
+{"prediction": {"error_location": 0.7596120834350586, "repair_targets": [0.9993271827697754], "repair_candidates": [0.0001646176096983254, 0.9993271827697754, 2.6179746782872826e-05, 2.511112370484625e-06, 1.7417214621673338e-05, 3.313759577849851e-07, 0.00010987943824147806, 6.7051050791633315e-06, 0.00034095998853445053, 2.431499979138607e-07, 6.771716130060668e-07, 3.201364279448171e-06], "target_probs": 0.9993271827697754}}
+
+
+{"result": {"time": "2021-02-21 05:31:05.111104", "n_pass": [51, 7, 4], "n_token": 46, "loss": [0.6617678999900818, 0.0005588304484263062], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [":", "#NEWLINE#", "#INDENT#", "'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", ")", "#NEWLINE#", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "re", ".", "compile", "(", "contents", ")", "#NEWLINE#", "for", "item", "in", "contents", ":", "#NEWLINE#", "#INDENT#", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "#NEWLINE#", "#INDENT#", "return", "match", ".", "group"]}}
+{"position": {"error_location": 24, "repair_targets": [8], "repair_candidates": [12, 30, 22, 34, 5, 18, 24, 8, 28, 32, 38, 43]}}
+{"prediction": {"error_location": 0.5159383416175842, "repair_targets": [0.9994413256645203], "repair_candidates": [2.1805675714858808e-05, 0.9994413256645203, 6.143454083940014e-05, 7.249531336128712e-06, 2.281776505697053e-05, 1.6270701053144876e-06, 0.00012532238906715065, 1.2176034942967817e-05, 0.00029401021311059594, 7.044182552817801e-07, 8.704752758603718e-07, 1.0560728696873412e-05], "target_probs": 0.9994413256645203}}
+
+
+{"result": {"time": "2021-02-21 05:31:05.166785", "n_pass": [54, 8, 5], "n_token": 42, "loss": [0.2152075171470642, 0.000529011944308877], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [":", "#NEWLINE#", "#INDENT#", "'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", ")", "#NEWLINE#", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "#NEWLINE#", "for", "item", "in", "contents", ":", "#NEWLINE#", "#INDENT#", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "#NEWLINE#", "#INDENT#", "return", "match", ".", "group"]}}
+{"position": {"error_location": 20, "repair_targets": [8], "repair_candidates": [12, 26, 18, 30, 5, 14, 20, 8, 24, 28, 34, 39]}}
+{"prediction": {"error_location": 0.8063740134239197, "repair_targets": [0.999471127986908], "repair_candidates": [1.9536051695467904e-05, 0.999471127986908, 4.4838634494226426e-05, 1.7095720977522433e-05, 3.592948996811174e-05, 2.337923888262594e-06, 3.0850485927658156e-05, 8.12122925708536e-06, 0.00036159882438369095, 1.742632889545348e-06, 1.1942039463974652e-06, 5.589096417679684e-06], "target_probs": 0.999471127986908}}
+
+
+{"result": {"time": "2021-02-21 05:31:05.222140", "n_pass": [62, 9, 6], "n_token": 39, "loss": [0.17018143832683563, 0.00011170533980475739], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", ")", "#NEWLINE#", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "#NEWLINE#", "for", "item", "in", "contents", ":", "#NEWLINE#", "#INDENT#", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "#NEWLINE#", "#INDENT#", "return", "match", ".", "group"]}}
+{"position": {"error_location": 17, "repair_targets": [5], "repair_candidates": [9, 23, 15, 27, 2, 11, 17, 5, 21, 25, 31, 36]}}
+{"prediction": {"error_location": 0.8435116410255432, "repair_targets": [0.9998883008956909], "repair_candidates": [3.264423412474571e-06, 0.9998883008956909, 7.162338533817092e-06, 5.430695750874293e-07, 8.033847734623123e-06, 6.639650251827334e-08, 7.143353741412284e-06, 2.1081466456962517e-06, 8.225074998335913e-05, 4.134340656491986e-07, 1.8121848199825763e-07, 5.435509251583426e-07], "target_probs": 0.9998883008956909}}
+
+
+{"result": {"time": "2021-02-21 05:31:05.335510", "n_pass": [95, 11, 7], "n_token": 37, "loss": [0.3763960599899292, 0.006468428764492273], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "#NEWLINE#", "for", "item", "in", "contents", ":", "#NEWLINE#", "#INDENT#", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "#NEWLINE#", "#INDENT#", "return", "match", ".", "group"]}}
+{"position": {"error_location": 15, "repair_targets": [3], "repair_candidates": [7, 21, 13, 25, 2, 9, 15, 3, 19, 23, 29, 34]}}
+{"prediction": {"error_location": 0.6863304972648621, "repair_targets": [0.9935524463653564], "repair_candidates": [0.00023593389778397977, 0.9935524463653564, 0.0009612212888896465, 0.00013222693814896047, 0.0011432621395215392, 6.044851033948362e-06, 0.0011934021022170782, 0.0002380859077675268, 0.002414380433037877, 3.251610178267583e-05, 4.0742499550106004e-05, 4.9780930567067116e-05], "target_probs": 0.9935524463653564}}
+
+
+{"result": {"time": "2021-02-21 05:31:05.445488", "n_pass": [99, 13, 8], "n_token": 35, "loss": [0.5529789924621582, 0.00399516336619854], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "in", "contents", ":", "#NEWLINE#", "#INDENT#", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "#NEWLINE#", "#INDENT#", "return", "match", ".", "group"]}}
+{"position": {"error_location": 13, "repair_targets": [3], "repair_candidates": [7, 19, 11, 23, 2, 9, 13, 3, 17, 21, 27, 32]}}
+{"prediction": {"error_location": 0.5752336382865906, "repair_targets": [0.996012806892395], "repair_candidates": [0.0004929329734295607, 0.996012806892395, 0.0007351781823672354, 0.0004698745906352997, 0.00013222535199020058, 2.4759776351857e-05, 0.0005649844533763826, 0.00011122265277663246, 0.0013865935616195202, 4.5852226321585476e-05, 7.566631211375352e-06, 1.5873498341534287e-05], "target_probs": 0.996012806892395}}
+
+
+{"result": {"time": "2021-02-21 05:31:05.501007", "n_pass": [102, 14, 9], "n_token": 33, "loss": [0.6134594678878784, 0.12141071259975433], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "in", "contents", ":", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "#NEWLINE#", "#INDENT#", "return", "match", ".", "group"]}}
+{"position": {"error_location": 13, "repair_targets": [3], "repair_candidates": [7, 17, 11, 21, 2, 9, 13, 3, 15, 19, 25, 30]}}
+{"prediction": {"error_location": 0.5414744019508362, "repair_targets": [0.8856701254844666], "repair_candidates": [0.0028779434505850077, 0.8856701254844666, 0.03067193180322647, 0.010546454228460789, 0.008250271901488304, 2.824315924954135e-05, 0.0036870751064270735, 0.0025134077295660973, 0.054261114448308945, 0.0008212242973968387, 0.0005750696291215718, 9.71464833128266e-05], "target_probs": 0.8856701254844666}}
+
+
+{"result": {"time": "2021-02-21 05:31:05.613248", "n_pass": [109, 16, 10], "n_token": 31, "loss": [0.7166178822517395, 0.20678545534610748], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "in", "contents", ":", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "return", "match", ".", "group"]}}
+{"position": {"error_location": 13, "repair_targets": [3], "repair_candidates": [7, 17, 11, 21, 2, 9, 13, 3, 15, 19, 25, 28]}}
+{"prediction": {"error_location": 0.4884013235569, "repair_targets": [0.8131940960884094], "repair_candidates": [0.0031852913089096546, 0.8131940960884094, 0.07993362843990326, 0.011040391400456429, 0.015035083517432213, 4.5053100620862097e-05, 0.005698326509445906, 0.019395282492041588, 0.051431309431791306, 0.0008185265469364822, 7.96585954958573e-05, 0.0001433887518942356], "target_probs": 0.8131940960884094}}
+
+
+{"result": {"time": "2021-02-21 05:31:05.887848", "n_pass": [156, 21, 11], "n_token": 30, "loss": [0.701426088809967, 0.21263617277145386], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "in", "contents", ":", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "match", ".", "group"]}}
+{"position": {"error_location": 13, "repair_targets": [3], "repair_candidates": [7, 17, 11, 21, 2, 9, 13, 3, 15, 19, 25, 27]}}
+{"prediction": {"error_location": 0.49587762355804443, "repair_targets": [0.8084502220153809], "repair_candidates": [0.0030627066735178232, 0.8084502220153809, 0.06339848786592484, 0.010810400359332561, 0.011768754571676254, 3.707359792315401e-05, 0.008216992020606995, 0.009185939095914364, 0.08418336510658264, 0.000410703505622223, 0.00013536318147089332, 0.000340015918482095], "target_probs": 0.8084502220153809}}
+
+
+{"result": {"time": "2021-02-21 05:31:05.999376", "n_pass": [158, 23, 12], "n_token": 29, "loss": [0.7667682766914368, 0.053745247423648834], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "=", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "in", "contents", ":", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "match", "."]}}
+{"position": {"error_location": 13, "repair_targets": [3], "repair_candidates": [7, 17, 11, 21, 2, 9, 13, 3, 15, 19, 25, 27]}}
+{"prediction": {"error_location": 0.4645118713378906, "repair_targets": [0.947673499584198], "repair_candidates": [0.0016315118409693241, 0.947673499584198, 0.015384744852781296, 0.0043970197439193726, 0.0038360559847205877, 1.5418969269376248e-05, 0.0004577304935082793, 0.00024362474505323917, 0.02621690183877945, 0.0001300300209550187, 8.099809747363906e-06, 5.256897566141561e-06], "target_probs": 0.947673499584198}}
+
+
+{"result": {"time": "2021-02-21 05:31:06.163975", "n_pass": [163, 26, 13], "n_token": 28, "loss": [0.6798690557479858, 0.025825316086411476], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "in", "contents", ":", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "match", "."]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [6, 16, 10, 20, 2, 8, 12, 3, 14, 18, 24, 26]}}
+{"prediction": {"error_location": 0.506683349609375, "repair_targets": [0.9745053052902222], "repair_candidates": [0.0008245199569500983, 0.9745053052902222, 0.009905237704515457, 0.006571129430085421, 0.0042542158626019955, 7.019686745479703e-05, 0.000623871514108032, 0.00026310235261917114, 0.0027874973602592945, 0.00018070227815769613, 8.866199095791671e-06, 5.312851953931386e-06], "target_probs": 0.9745053052902222}}
+
+
+{"result": {"time": "2021-02-21 05:31:06.441115", "n_pass": [171, 31, 14], "n_token": 27, "loss": [0.4702739715576172, 0.02780243754386902], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "contents", ":", "match", "=", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "match", "."]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 15, 10, 19, 2, 8, 11, 3, 13, 17, 23, 25]}}
+{"prediction": {"error_location": 0.6248311400413513, "repair_targets": [0.9725804924964905], "repair_candidates": [0.005452069453895092, 0.9725804924964905, 0.00646655447781086, 0.007097313180565834, 0.0026669816579669714, 0.0005830703303217888, 0.0006634755991399288, 0.0001747015630826354, 0.0042480421252548695, 3.295728674856946e-05, 2.1290759832481854e-05, 1.3020888218306936e-05], "target_probs": 0.9725804924964905}}
+
+
+{"result": {"time": "2021-02-21 05:31:06.550785", "n_pass": [175, 33, 15], "n_token": 26, "loss": [0.9783280491828918, 0.2778608798980713], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "contents", ":", "match", "prog", ".", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "match", "."]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 14, 10, 18, 2, 8, 11, 3, 13, 16, 22, 24]}}
+{"prediction": {"error_location": 0.37593913078308105, "repair_targets": [0.7574021816253662], "repair_candidates": [0.0753503367304802, 0.7574021816253662, 0.05551343783736229, 0.02835897170007229, 0.04721122235059738, 0.016133509576320648, 0.0003408494812902063, 0.0014975511003285646, 0.017591889947652817, 0.00012424502347130328, 0.0002930350601673126, 0.00018268967687617987], "target_probs": 0.7574021816253662}}
+
+
+{"result": {"time": "2021-02-21 05:31:06.607785", "n_pass": [177, 34, 16], "n_token": 25, "loss": [0.5917728543281555, 0.09882589429616928], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "contents", ":", "match", "prog", "match", "(", "item", ")", "#NEWLINE#", "if", "match", ":", "match", "."]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 14, 10, 17, 2, 8, 11, 3, 13, 15, 21, 23]}}
+{"prediction": {"error_location": 0.5533454418182373, "repair_targets": [0.9059004187583923], "repair_candidates": [0.01418675109744072, 0.9059004187583923, 0.028249744325876236, 0.014471993781626225, 0.020280787721276283, 0.004478482063859701, 0.009793773293495178, 7.68001627875492e-05, 0.0021858091931790113, 4.304378671804443e-05, 8.692016126587987e-05, 0.0002454031491652131], "target_probs": 0.9059004187583923}}
+
+
+{"result": {"time": "2021-02-21 05:31:06.717702", "n_pass": [181, 36, 17], "n_token": 24, "loss": [0.5969706177711487, 0.13072839379310608], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "contents", ":", "match", "prog", "match", "(", "item", "#NEWLINE#", "if", "match", ":", "match", "."]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 14, 10, 17, 2, 8, 11, 3, 13, 15, 20, 22]}}
+{"prediction": {"error_location": 0.5504767298698425, "repair_targets": [0.8774560689926147], "repair_candidates": [0.016350388526916504, 0.8774560689926147, 0.0385291688144207, 0.01940014958381653, 0.03176997974514961, 0.00440272968262434, 0.010783951729536057, 8.170656656147912e-05, 0.0007309089414775372, 5.8966146752936766e-05, 0.0001360163587378338, 0.0002999392745550722], "target_probs": 0.8774560689926147}}
+
+
+{"result": {"time": "2021-02-21 05:31:06.827886", "n_pass": [183, 38, 18], "n_token": 23, "loss": [0.6674565672874451, 0.30050018429756165], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "contents", ":", "match", "prog", "match", "(", "item", "#NEWLINE#", "match", ":", "match", "."]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 14, 10, 17, 2, 8, 11, 3, 13, 15, 19, 21]}}
+{"prediction": {"error_location": 0.5130117535591125, "repair_targets": [0.7404477596282959], "repair_candidates": [0.05664393678307533, 0.7404477596282959, 0.09800932556390762, 0.0649581253528595, 0.027556324377655983, 0.0031651658937335014, 0.006331197917461395, 8.01695859991014e-05, 0.0010457916650921106, 3.083902629441582e-05, 0.0016724873567000031, 5.887378938496113e-05], "target_probs": 0.7404477596282959}}
+
+
+{"result": {"time": "2021-02-21 05:31:06.883385", "n_pass": [185, 39, 19], "n_token": 22, "loss": [0.5991010069847107, 0.2541942000389099], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "contents", ":", "match", "prog", "match", "(", "item", "#NEWLINE#", "match", "match", "."]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 14, 10, 17, 2, 8, 11, 3, 13, 15, 19, 20]}}
+{"prediction": {"error_location": 0.5493052005767822, "repair_targets": [0.7755411863327026], "repair_candidates": [0.054460566490888596, 0.7755411863327026, 0.10730711370706558, 0.03648824244737625, 0.004483571741729975, 0.0009599211625754833, 0.01725984737277031, 2.950051930383779e-05, 0.002621049527078867, 4.16206330555724e-06, 0.0007049819105304778, 0.00013980896619614214], "target_probs": 0.7755411863327026}}
+
+
+{"result": {"time": "2021-02-21 05:31:06.941004", "n_pass": [187, 40, 20], "n_token": 21, "loss": [0.4836726784706116, 0.17041520774364471], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "contents", ":", "match", "prog", "match", "(", "item", "#NEWLINE#", "match", "match"]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 14, 10, 17, 2, 8, 11, 3, 13, 15, 19, 20]}}
+{"prediction": {"error_location": 0.6165149807929993, "repair_targets": [0.8433145880699158], "repair_candidates": [0.06076817959547043, 0.8433145880699158, 0.062143877148628235, 0.014179757796227932, 0.005763472989201546, 0.0010477607138454914, 0.008177801966667175, 2.1091951566631906e-05, 0.0005780851352028549, 4.731894023279892e-06, 0.0021985790226608515, 0.0018020380521193147], "target_probs": 0.8433145880699158}}
+
+
+{"result": {"time": "2021-02-21 05:31:07.383086", "n_pass": [204, 48, 21], "n_token": 20, "loss": [0.6196653246879578, 0.5872870087623596], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "contents", ":", "match", "prog", "match", "item", "#NEWLINE#", "match", "match"]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 14, 10, 16, 2, 8, 11, 3, 13, 15, 18, 19]}}
+{"prediction": {"error_location": 0.5381244421005249, "repair_targets": [0.5558332204818726], "repair_candidates": [0.16467569768428802, 0.5558332204818726, 0.031698767095804214, 0.19630639255046844, 0.010066360235214233, 0.006780940108001232, 0.012965456582605839, 0.00010625155118759722, 0.004660900682210922, 0.00630088709294796, 0.006009485572576523, 0.004595586098730564], "target_probs": 0.5558332204818726}}
+
+
+{"result": {"time": "2021-02-21 05:31:07.437913", "n_pass": [206, 49, 22], "n_token": 19, "loss": [0.618779182434082, 0.12453117966651917], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "contents", ":", "match", "prog", "match", "item", "match", "match"]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 14, 10, 16, 2, 8, 11, 3, 13, 15, 17, 18]}}
+{"prediction": {"error_location": 0.5386015176773071, "repair_targets": [0.8829107284545898], "repair_candidates": [0.02127085253596306, 0.8829107284545898, 0.020061617717146873, 0.06265608221292496, 0.0007382050971500576, 0.0011675184359773993, 0.004097544588148594, 2.0463909095269628e-05, 0.0011669374071061611, 2.4292630769195966e-06, 0.0020525732543319464, 0.003855030983686447], "target_probs": 0.8829107284545898}}
+
+
+{"result": {"time": "2021-02-21 05:31:07.823989", "n_pass": [221, 56, 23], "n_token": 18, "loss": [0.29195207357406616, 0.06812337785959244], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", "#NEWLINE#", "contents", "pattern", "'domain\\\\s+(?P<domain_name>\\\\S+)'", "#NEWLINE#", "prog", "=", "contents", ")", "item", "contents", "match", "prog", "match", "item", "match", "match"]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 13, 10, 15, 2, 8, 11, 3, 12, 14, 16, 17]}}
+{"prediction": {"error_location": 0.7468042969703674, "repair_targets": [0.9341452121734619], "repair_candidates": [0.002737314673140645, 0.9341452121734619, 0.0015789458993822336, 0.00037645347765646875, 0.0014269634848460555, 0.00011953253851970658, 0.05372164398431778, 4.3088832057947e-07, 0.004271936137229204, 1.4396371625480242e-05, 0.0008043101988732815, 0.0008028399897739291], "target_probs": 0.9341452121734619}}
+
+
+
+
+Minimal simplified tokens:
+
+["'\\n    Parse /etc/resolv.conf and return domainname\\n    '", '#NEWLINE#', 'contents', 'pattern', "'domain\\\\s+(?P<domain_name>\\\\S+)'", '#NEWLINE#', 'prog', '=', 'contents', ')', 'item', 'contents', 'match', 'prog', 'match', 'item', 'match', 'match']

@@ -1,0 +1,145 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def paginate(", "request", ",", "queryset", ",", "results_per_page", "=", "20", ")", ":", "#NEWLINE#", "#INDENT#", "paginator", "=", "Paginator", "(", "request", ",", "results_per_page", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "get", "(", "'page'", ",", "1", ")", ")", ")", "#NEWLINE#", "#UNINDENT#", "except", "InvalidPage", ":", "#NEWLINE#", "#INDENT#", "raise", "Http404", "(", "'Sorry, that page of results does not exist.'", ")", "#NEWLINE#", "#UNINDENT#", "except", "ValueError", ":", "#NEWLINE#", "#INDENT#", "raise", "PermissionDenied", "(", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "page", ",", "paginator", ")"], "error_location": [17], "repair_targets": [4], "repair_candidates": [2, 17, 34, 4, 6, 19, 13, 28, 75, 26, 30, 73], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "mozilla/source/source/utils/pagination.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00018-of-00300", "js_count": 58800, "results": {"model": "transformer", "prob": {"loc": [[0.10360485315322876, 1.9406240880925907e-06, 4.418472144607222e-06, 3.3279926014984085e-07, 1.2071066521457396e-05, 2.417462781068025e-07, 1.492288106419437e-06, 2.2248686946113594e-06, 7.78832418291131e-06, 1.3793768971481768e-07, 5.657003612213884e-07, 8.607912604929879e-07, 5.500291422322334e-07, 1.1006050044670701e-05, 1.4967748711569584e-06, 1.5589212409850006e-07, 4.326074758864706e-06, 0.12270898371934891, 7.257287506945431e-06, 0.07268769294023514, 2.0607278202078305e-05, 2.0011418655485613e-06, 5.86355668019678e-07, 1.958368102350505e-06, 1.0128999292646768e-06, 6.231268230294518e-07, 1.7425563783035614e-06, 5.594756657956168e-07, 4.437723328010179e-05, 1.918138679002368e-07, 1.1866193290188676e-06, 1.76417177044641e-06, 4.2733572058750724e-07, 2.299935431437916e-06, 0.0013273167423903942, 4.904458137389156e-07, 7.172197058480378e-08, 3.966920587572531e-07, 2.987302494261712e-08, 8.332574907399248e-06, 0.00032632314832881093, 4.26535416409024e-06, 0.0015221774810925126, 4.737165909318719e-06, 4.135424660489662e-06, 3.490968765618163e-06, 1.8312375686946325e-06, 9.383403494211962e-07, 2.1152181943762116e-06, 1.2815664831578033e-06, 9.591022944732686e-07, 1.8622655488798046e-06, 1.0077508250105893e-06, 1.2992546771783964e-07, 8.878658945832285e-07, 1.159653675131267e-05, 4.763280230690725e-05, 5.436690571514191e-06, 3.852695499517722e-06, 1.1811997637778404e-06, 2.6865002382692182e-06, 4.866012659476837e-07, 1.1121411489511956e-06, 7.723245971646975e-07, 5.210482640904956e-07, 1.0916390635884454e-07, 3.7936342778266408e-06, 0.00037191170849837363, 3.737413180715521e-06, 7.806627877471328e-07, 3.7467358993126254e-07, 9.36323232281211e-08, 2.59151329373708e-06, 0.0025619002990424633, 3.901959644281305e-06, 0.6946214437484741, 3.4737659007078037e-06]], "pointer": [[0.0, 0.0, 0.0002733209985308349, 0.0, 0.9964081645011902, 0.0, 0.0028322197031229734, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00021922409359831363, 0.0, 0.0, 0.0, 2.0533334463834763e-05, 0.0, 3.2664531318005174e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8.584177703596652e-05, 0.0, 3.598324110498652e-05, 0.0, 1.74378692463506e-05, 0.0, 0.0, 0.0, 4.450796768651344e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0210771253914572e-05, 0.0, 9.879135177470744e-06, 0.0]], "target": [0.9964081645011902]}, "loss": [2.0979397296905518, 0.0035983016714453697], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [75]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:35:11.919745", "n_pass": [1, 1, 1], "n_token": 77, "loss": [0.3643881380558014, 0.0035983016714453697], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def paginate(", "request", ",", "queryset", ",", "results_per_page", "=", "20", ")", ":", "#NEWLINE#", "#INDENT#", "paginator", "=", "Paginator", "(", "request", ",", "results_per_page", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "get", "(", "'page'", ",", "1", ")", ")", ")", "#NEWLINE#", "#UNINDENT#", "except", "InvalidPage", ":", "#NEWLINE#", "#INDENT#", "raise", "Http404", "(", "'Sorry, that page of results does not exist.'", ")", "#NEWLINE#", "#UNINDENT#", "except", "ValueError", ":", "#NEWLINE#", "#INDENT#", "raise", "PermissionDenied", "(", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 75, "repair_targets": [4], "repair_candidates": [2, 17, 34, 4, 6, 19, 13, 28, 75, 26, 30, 73]}}
+{"prediction": {"error_location": 0.6946214437484741, "repair_targets": [0.9964081645011902], "repair_candidates": [0.0002733209985308349, 0.9964081645011902, 0.0028322197031229734, 0.00021922409359831363, 2.0533334463834763e-05, 3.2664531318005174e-05, 8.584177703596652e-05, 3.598324110498652e-05, 1.74378692463506e-05, 4.450796768651344e-05, 2.0210771253914572e-05, 9.879135177470744e-06], "target_probs": 0.9964081645011902}}
+
+
+{"result": {"time": "2021-02-21 07:35:11.977208", "n_pass": [10, 2, 2], "n_token": 58, "loss": [0.19306248426437378, 0.002307034330442548], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def paginate(", "request", ",", "queryset", ",", "results_per_page", "=", "20", ")", ":", "#NEWLINE#", "#INDENT#", "paginator", "=", "Paginator", "(", "request", ",", "results_per_page", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", ")", "#NEWLINE#", "#UNINDENT#", "except", "ValueError", ":", "#NEWLINE#", "#INDENT#", "raise", "PermissionDenied", "(", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 56, "repair_targets": [4], "repair_candidates": [2, 17, 34, 4, 6, 19, 13, 28, 56, 26, 30, 54]}}
+{"prediction": {"error_location": 0.824430525302887, "repair_targets": [0.9976956248283386], "repair_candidates": [0.00017984518490266055, 0.9976956248283386, 0.0017115544760599732, 0.00023776337911840528, 8.885046554496512e-06, 6.278959335759282e-05, 2.5303275833721273e-05, 1.2048186363244895e-05, 1.6357071217498742e-05, 3.416826803004369e-05, 1.4061170077184215e-05, 1.573856593495293e-06], "target_probs": 0.9976956248283386}}
+
+
+{"result": {"time": "2021-02-21 07:35:12.034317", "n_pass": [19, 3, 3], "n_token": 48, "loss": [0.16921022534370422, 0.002241021255031228], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def paginate(", "request", ",", "queryset", ",", "results_per_page", "=", "20", ")", ":", "#NEWLINE#", "#INDENT#", "paginator", "=", "Paginator", "(", "request", ",", "results_per_page", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 46, "repair_targets": [4], "repair_candidates": [2, 17, 34, 4, 6, 19, 13, 28, 46, 26, 30, 44]}}
+{"prediction": {"error_location": 0.8443313241004944, "repair_targets": [0.9977614879608154], "repair_candidates": [0.00011692711996147409, 0.9977614879608154, 0.001901288516819477, 4.746130434796214e-05, 4.280472239770461e-06, 4.971734233549796e-05, 2.8427301003830507e-05, 9.451467121834867e-06, 1.4350939636642579e-05, 5.739144398830831e-05, 7.334414021897828e-06, 1.8228458884550491e-06], "target_probs": 0.9977614879608154}}
+
+
+{"result": {"time": "2021-02-21 07:35:12.091442", "n_pass": [34, 4, 4], "n_token": 43, "loss": [0.08167373389005661, 0.0016287112375721335], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def paginate(", "request", ",", "queryset", ",", "results_per_page", "=", "20", ")", ":", "#NEWLINE#", "#INDENT#", "paginator", "=", "Paginator", "(", "request", ",", "results_per_page", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 41, "repair_targets": [4], "repair_candidates": [2, 17, 34, 4, 6, 19, 13, 28, 41, 26, 30, 39]}}
+{"prediction": {"error_location": 0.9215725660324097, "repair_targets": [0.9983726143836975], "repair_candidates": [0.00010923467198153958, 0.9983726143836975, 0.001040827133692801, 1.181597872346174e-05, 2.610731462482363e-05, 0.0004093486932106316, 3.5308694350533187e-06, 1.8777915329337702e-06, 3.516862307151314e-06, 2.073673931590747e-05, 1.8488528041871177e-07, 2.31958907193075e-07], "target_probs": 0.9983726143836975}}
+
+
+{"result": {"time": "2021-02-21 07:35:12.264067", "n_pass": [67, 7, 5], "n_token": 41, "loss": [0.3676595687866211, 0.0015977862058207393], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def paginate(", "request", ",", "queryset", ",", "results_per_page", "=", ":", "#NEWLINE#", "#INDENT#", "paginator", "=", "Paginator", "(", "request", ",", "results_per_page", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 39, "repair_targets": [4], "repair_candidates": [2, 15, 32, 4, 6, 17, 11, 26, 39, 24, 28, 37]}}
+{"prediction": {"error_location": 0.692352831363678, "repair_targets": [0.9984034895896912], "repair_candidates": [0.0001451970310881734, 0.9984034895896912, 0.0008047391893342137, 4.06270737585146e-05, 9.802033309824765e-05, 0.0004645602311939001, 7.780227861076128e-06, 4.105815605726093e-06, 6.223207947186893e-06, 2.4454750018776394e-05, 3.480931525245978e-07, 4.838513518734544e-07], "target_probs": 0.9984034895896912}}
+
+
+{"result": {"time": "2021-02-21 07:35:12.320251", "n_pass": [68, 8, 6], "n_token": 39, "loss": [0.40260276198387146, 0.0027251983992755413], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def paginate(", "request", ",", "queryset", ",", "results_per_page", "=", "#INDENT#", "paginator", "=", "Paginator", "(", "request", ",", "results_per_page", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 37, "repair_targets": [4], "repair_candidates": [2, 13, 30, 4, 6, 15, 9, 24, 37, 22, 26, 35]}}
+{"prediction": {"error_location": 0.6685775518417358, "repair_targets": [0.9972785115242004], "repair_candidates": [0.00017030216986313462, 0.9972785115242004, 0.0017523281276226044, 6.433991075027734e-05, 0.00014648227079305798, 0.0005331577849574387, 1.070598591468297e-05, 8.272054401459172e-06, 1.2209002306917682e-05, 2.2429918317357078e-05, 2.463704618094198e-07, 8.937515758589143e-07], "target_probs": 0.9972785115242004}}
+
+
+{"result": {"time": "2021-02-21 07:35:12.376915", "n_pass": [70, 9, 7], "n_token": 37, "loss": [0.2910185754299164, 0.00539773516356945], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def paginate(", "request", ",", "queryset", ",", "results_per_page", "=", "#INDENT#", "paginator", "(", "request", ",", "results_per_page", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [4], "repair_candidates": [2, 11, 28, 4, 6, 13, 9, 22, 35, 20, 24, 33]}}
+{"prediction": {"error_location": 0.7475018501281738, "repair_targets": [0.9946168065071106], "repair_candidates": [0.00027208621031604707, 0.9946168065071106, 0.0037464078050106764, 1.0378732440585736e-05, 0.00012573276762850583, 0.001179412705823779, 1.6669462638674304e-05, 7.809668204572517e-06, 1.585844802320935e-05, 6.572794973180862e-06, 5.47687250218587e-07, 1.7545925174999866e-06], "target_probs": 0.9946168065071106}}
+
+
+{"result": {"time": "2021-02-21 07:35:12.433680", "n_pass": [73, 10, 8], "n_token": 35, "loss": [0.12506847083568573, 0.22529937326908112], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def paginate(", "request", ",", "queryset", ",", "results_per_page", "=", "#INDENT#", "paginator", "(", "request", ",", "results_per_page", "try", ":", "#NEWLINE#", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [4], "repair_candidates": [2, 11, 26, 4, 6, 13, 9, 20, 33, 18, 22, 31]}}
+{"prediction": {"error_location": 0.8824365139007568, "repair_targets": [0.7982771992683411], "repair_candidates": [0.0008104325970634818, 0.7982771992683411, 0.13149982690811157, 5.067416714155115e-05, 0.00046113927965052426, 0.06873045861721039, 2.622938518470619e-05, 3.340763578307815e-05, 7.562318205600604e-05, 2.5743853257154115e-05, 4.321581400290597e-06, 4.8950737436825875e-06], "target_probs": 0.7982771992683411}}
+
+
+{"result": {"time": "2021-02-21 07:35:12.489404", "n_pass": [74, 11, 9], "n_token": 32, "loss": [0.18049274384975433, 0.004625092260539532], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def paginate(", "request", ",", "queryset", ",", "results_per_page", "=", "#INDENT#", "paginator", "(", "request", ",", "results_per_page", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 30, "repair_targets": [4], "repair_candidates": [2, 11, 23, 4, 6, 13, 9, 17, 30, 15, 19, 28]}}
+{"prediction": {"error_location": 0.8348587155342102, "repair_targets": [0.9953855872154236], "repair_candidates": [0.000284416921203956, 0.9953855872154236, 0.003996492829173803, 2.10634771065088e-05, 0.00014183984603732824, 9.921272430801764e-05, 1.8816630472429097e-05, 1.2513067304098513e-05, 1.3902937098464463e-05, 2.0323013814049773e-05, 3.1294305244955467e-06, 2.646755092428066e-06], "target_probs": 0.9953855872154236}}
+
+
+{"result": {"time": "2021-02-21 07:35:12.604707", "n_pass": [81, 13, 10], "n_token": 30, "loss": [0.22392717003822327, 0.003253621282055974], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", ",", "results_per_page", "=", "#INDENT#", "paginator", "(", "request", ",", "results_per_page", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [2], "repair_candidates": [0, 9, 21, 2, 4, 11, 7, 15, 28, 13, 17, 26]}}
+{"prediction": {"error_location": 0.7993733286857605, "repair_targets": [0.9967516660690308], "repair_candidates": [2.5494007786619477e-05, 0.9967516660690308, 0.0017453315667808056, 9.47647731663892e-06, 0.0009116244036704302, 0.0003492559480946511, 2.2126481781015173e-05, 3.183505441484158e-06, 7.842471859476063e-06, 0.00017242420290131122, 8.449789561382204e-07, 7.147666565288091e-07], "target_probs": 0.9967516660690308}}
+
+
+{"result": {"time": "2021-02-21 07:35:12.774662", "n_pass": [121, 16, 11], "n_token": 29, "loss": [0.1275017112493515, 0.19415180385112762], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "=", "#INDENT#", "paginator", "(", "request", ",", "results_per_page", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [2], "repair_candidates": [0, 8, 20, 2, 3, 10, 6, 14, 27, 12, 16, 25]}}
+{"prediction": {"error_location": 0.8802919983863831, "repair_targets": [0.8235328793525696], "repair_candidates": [0.00028248410671949387, 0.8235328793525696, 0.10048071295022964, 0.0002299805637449026, 0.014262405224144459, 0.05834027752280235, 0.00010455153096700087, 7.766202179482207e-05, 8.381719817407429e-05, 0.0025839072186499834, 4.691468348028138e-06, 1.659905865381006e-05], "target_probs": 0.8235328793525696}}
+
+
+{"result": {"time": "2021-02-21 07:35:12.889798", "n_pass": [124, 18, 12], "n_token": 28, "loss": [0.24523936212062836, 0.4149436354637146], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "=", "paginator", "(", "request", ",", "results_per_page", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [2], "repair_candidates": [0, 7, 19, 2, 3, 9, 5, 13, 26, 11, 15, 24]}}
+{"prediction": {"error_location": 0.7825173139572144, "repair_targets": [0.6603775024414062], "repair_candidates": [0.0001211276903632097, 0.6603775024414062, 0.26600101590156555, 0.0001621547999093309, 0.00789086427539587, 0.06449601799249649, 9.418943227501586e-05, 2.8369777282932773e-05, 5.546375541598536e-05, 0.0007627034792676568, 2.0044938082719455e-06, 8.49723528517643e-06], "target_probs": 0.6603775024414062}}
+
+
+{"result": {"time": "2021-02-21 07:35:13.002527", "n_pass": [128, 20, 13], "n_token": 27, "loss": [0.05297241732478142, 0.20800799131393433], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "=", "paginator", "(", "request", "results_per_page", "#INDENT#", "page", "=", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [2], "repair_candidates": [0, 7, 18, 2, 3, 8, 5, 12, 25, 10, 14, 23]}}
+{"prediction": {"error_location": 0.9484060406684875, "repair_targets": [0.8122005462646484], "repair_candidates": [2.323493936273735e-05, 0.8122005462646484, 0.17941991984844208, 6.895179103594273e-05, 0.005948479287326336, 0.001606165198609233, 1.3636054063681513e-05, 5.069943654234521e-06, 6.1385530898405705e-06, 0.0007069489802233875, 3.3300705126748653e-07, 5.625341827908414e-07], "target_probs": 0.8122005462646484}}
+
+
+{"result": {"time": "2021-02-21 07:35:13.114997", "n_pass": [132, 22, 14], "n_token": 26, "loss": [0.003507891669869423, 0.26146838068962097], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "=", "paginator", "(", "request", "results_per_page", "#INDENT#", "page", "paginator", ".", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [2], "repair_candidates": [0, 7, 17, 2, 3, 8, 5, 11, 24, 10, 13, 22]}}
+{"prediction": {"error_location": 0.9964982271194458, "repair_targets": [0.7699202299118042], "repair_candidates": [0.0003406507021281868, 0.7699202299118042, 0.21636517345905304, 6.556098378496245e-05, 0.008281322196125984, 0.004548650234937668, 1.8642969052962144e-06, 2.524576757423347e-06, 3.7995444017724367e-06, 0.00046699351514689624, 3.0698190585098928e-06, 1.214064013765892e-07], "target_probs": 0.7699202299118042}}
+
+
+{"result": {"time": "2021-02-21 07:35:13.171404", "n_pass": [134, 23, 15], "n_token": 25, "loss": [0.008167320862412453, 0.35879939794540405], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "=", "paginator", "(", "request", "results_per_page", "#INDENT#", "page", "paginator", "page", "(", "int", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [2], "repair_candidates": [0, 7, 16, 2, 3, 8, 5, 11, 23, 10, 12, 21]}}
+{"prediction": {"error_location": 0.9918660521507263, "repair_targets": [0.698514461517334], "repair_candidates": [0.0001338463625870645, 0.698514461517334, 0.29031017422676086, 5.373227395466529e-05, 0.005218690261244774, 0.004770275671035051, 0.0003325878642499447, 2.998523768837913e-06, 0.00018522464961279184, 0.0004758808936458081, 2.0770839910255745e-06, 7.245249378229346e-08], "target_probs": 0.698514461517334}}
+
+
+{"result": {"time": "2021-02-21 07:35:13.229748", "n_pass": [136, 24, 16], "n_token": 23, "loss": [0.005220234859734774, 0.5251277685165405], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "=", "paginator", "(", "request", "results_per_page", "#INDENT#", "page", "paginator", "page", "(", "request", ".", "GET", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [2], "repair_candidates": [0, 7, 14, 2, 3, 8, 5, 11, 21, 10, 12, 19]}}
+{"prediction": {"error_location": 0.9947933554649353, "repair_targets": [0.5914797782897949], "repair_candidates": [0.0005953449872322381, 0.5914797782897949, 0.3777066469192505, 6.867405318189412e-05, 0.005727498326450586, 0.015376238152384758, 0.0060155815444886684, 2.0455488538573263e-06, 0.0014519315445795655, 0.0015673309098929167, 8.869323210092261e-06, 8.634491877046457e-08], "target_probs": 0.5914797782897949}}
+
+
+{"result": {"time": "2021-02-21 07:35:13.286092", "n_pass": [138, 25, 17], "n_token": 21, "loss": [0.0021588134113699198, 0.4741114377975464], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "=", "paginator", "(", "request", "results_per_page", "#INDENT#", "page", "paginator", "page", "(", "request", ".", "(", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [2], "repair_candidates": [0, 7, 14, 2, 3, 8, 5, 11, 19, 10, 12, 17]}}
+{"prediction": {"error_location": 0.9978433847427368, "repair_targets": [0.6224378943443298], "repair_candidates": [0.0003085046773776412, 0.6224378943443298, 0.34909290075302124, 2.0211531591485254e-05, 0.0012184905353933573, 0.01756979338824749, 0.007214544806629419, 4.050932886912051e-07, 0.0013351298402994871, 0.0007962475065141916, 5.848977252753684e-06, 4.223500127409352e-08], "target_probs": 0.6224378943443298}}
+
+
+{"result": {"time": "2021-02-21 07:35:13.341702", "n_pass": [139, 26, 18], "n_token": 19, "loss": [0.14423438906669617, 0.6838691234588623], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "=", "paginator", "(", "request", "results_per_page", "#INDENT#", "page", "paginator", "page", "(", "request", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [2], "repair_candidates": [0, 7, 14, 2, 3, 8, 5, 11, 17, 10, 12, 15]}}
+{"prediction": {"error_location": 0.8656848073005676, "repair_targets": [0.5046606063842773], "repair_candidates": [0.0007785175694152713, 0.5046606063842773, 0.4628502428531647, 6.815564847784117e-05, 0.0003226137487217784, 0.029726671054959297, 0.00015687532140873373, 5.613044891106256e-07, 5.232492185314186e-05, 0.0013795847771689296, 3.3879703096317826e-06, 4.6531110342584725e-07], "target_probs": 0.5046606063842773}}
+
+
+{"result": {"time": "2021-02-21 07:35:13.567918", "n_pass": [151, 30, 19], "n_token": 18, "loss": [0.0013908008113503456, 0.6104125380516052], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "=", "paginator", "(", "request", "results_per_page", "page", "paginator", "page", "(", "request", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [0, 7, 13, 2, 3, 8, 5, 10, 16, 9, 11, 14]}}
+{"prediction": {"error_location": 0.9986101388931274, "repair_targets": [0.5431267619132996], "repair_candidates": [0.0019755985122174025, 0.5431267619132996, 0.4045729339122772, 7.871773414080963e-05, 0.004371881019324064, 0.029793815687298775, 0.0002730203850660473, 2.184720324294176e-05, 0.00019873921701218933, 0.014783425256609917, 0.0007980944938026369, 5.210449216974666e-06], "target_probs": 0.5431267619132996}}
+
+
+{"result": {"time": "2021-02-21 07:35:13.680489", "n_pass": [162, 32, 20], "n_token": 17, "loss": [0.0016987192211672664, 0.5842671394348145], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "paginator", "(", "request", "results_per_page", "page", "paginator", "page", "(", "request", "page", ",", "paginator", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [2], "repair_candidates": [0, 6, 12, 2, 3, 7, 4, 9, 15, 8, 10, 13]}}
+{"prediction": {"error_location": 0.9983025789260864, "repair_targets": [0.5575143098831177], "repair_candidates": [0.0035562789998948574, 0.5575143098831177, 0.2875949740409851, 6.974918505875394e-05, 0.0010259010596200824, 0.1445244550704956, 0.00012278262875042856, 8.797145710559562e-06, 0.00012862528092227876, 0.004914282821118832, 0.0005243473569862545, 1.555557901156135e-05], "target_probs": 0.5575143098831177}}
+
+
+{"result": {"time": "2021-02-21 07:35:13.963031", "n_pass": [188, 37, 21], "n_token": 16, "loss": [0.004001824650913477, 0.5982152819633484], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "paginator", "(", "request", "results_per_page", "page", "paginator", "page", "(", "request", "page", ",", "paginator"]}}
+{"position": {"error_location": 15, "repair_targets": [2], "repair_candidates": [0, 6, 12, 2, 3, 7, 4, 9, 15, 8, 10, 13]}}
+{"prediction": {"error_location": 0.9960063099861145, "repair_targets": [0.5497919917106628], "repair_candidates": [0.0041675143875181675, 0.5497919917106628, 0.31280282139778137, 5.041691838414408e-05, 0.00023317972954828292, 0.12010052800178528, 0.00042633849079720676, 9.416735338163562e-06, 0.00035653519444167614, 0.002909122034907341, 0.009144003503024578, 8.124618943838868e-06], "target_probs": 0.5497919917106628}}
+
+
+{"result": {"time": "2021-02-21 07:35:14.075171", "n_pass": [194, 39, 22], "n_token": 15, "loss": [0.02195960469543934, 0.4746006727218628], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "queryset", "results_per_page", "paginator", "request", "results_per_page", "page", "paginator", "page", "(", "request", "page", ",", "paginator"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [0, 5, 11, 2, 3, 6, 4, 8, 14, 7, 9, 12]}}
+{"prediction": {"error_location": 0.9782797694206238, "repair_targets": [0.6221334338188171], "repair_candidates": [0.0017585604218766093, 0.6221334338188171, 0.2764650285243988, 0.0001797994482330978, 6.281475361902267e-05, 0.07032939046621323, 0.0012207631953060627, 1.3238555766292848e-05, 0.0013627588050439954, 0.0007018634933046997, 0.025766583159565926, 5.821347258461174e-06], "target_probs": 0.6221334338188171}}
+
+
+
+
+Minimal simplified tokens:
+
+['request', ',', 'queryset', 'results_per_page', 'paginator', 'request', 'results_per_page', 'page', 'paginator', 'page', '(', 'request', 'page', ',', 'paginator']

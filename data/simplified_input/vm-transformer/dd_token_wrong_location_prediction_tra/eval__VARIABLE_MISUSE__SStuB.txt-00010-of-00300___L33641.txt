@@ -1,0 +1,121 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "=", "Mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "mocksignature", "(", "f", ",", "func", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1", ",", "2", ",", "3", ")", ",", "'foo'", ")", "#NEWLINE#", "mock", ".", "return_value", "=", "'bar'", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1", ",", "2", ",", "3", ")", ",", "'bar'", ")"], "error_location": [22], "repair_targets": [7, 41], "repair_candidates": [2, 25, 47, 16, 22, 29, 51, 7, 41], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "calvinchengx/python-mock/tests/testmocksignature.py", "license": "bsd-2-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00010-of-00300", "js_count": 33641, "results": {"model": "transformer", "prob": {"loc": [[6.086224288992526e-07, 7.143842462031813e-11, 2.1105209246918832e-10, 1.2745135676006658e-11, 8.695805360503517e-12, 1.2110198260861793e-11, 9.021018307353579e-12, 8.109905524911198e-10, 9.288701752208084e-12, 3.493509518129323e-12, 1.191967358149526e-11, 9.731226241482815e-12, 8.733336102906275e-12, 2.1296475694043693e-10, 6.288887379607422e-12, 1.0227437820253815e-11, 1.0132090305647878e-10, 1.692982884958505e-12, 7.31405908060978e-12, 3.745767931939703e-11, 0.6048147082328796, 5.2945543782545457e-11, 0.39518144726753235, 5.995055146756911e-11, 3.3283584222054685e-12, 5.687984805380353e-13, 9.890878263987823e-13, 2.5521051201168876e-13, 2.732835008636969e-12, 3.2015780107030878e-06, 5.300111738382185e-11, 4.802831743422331e-11, 1.3983222565960851e-11, 6.092181620287462e-11, 1.846736479016453e-11, 1.457830245410463e-10, 3.321059573180296e-12, 7.1353005968999295e-12, 1.9978314835800148e-10, 2.6377034237357044e-12, 8.786866633608836e-13, 1.2025844209340164e-10, 3.2614371273109732e-12, 3.39191863615515e-13, 2.466425718175569e-12, 3.150705391030684e-11, 2.6289852239624878e-11, 2.5268821757240545e-11, 4.593209059627901e-12, 3.583919727830065e-13, 1.4775673089564845e-12, 5.112995182798841e-08, 1.00901634270123e-10, 9.494487418493236e-10, 1.7098138183069267e-10, 6.453336753864392e-10, 1.0993769783418372e-10, 3.7653252737968046e-10, 7.351878654471289e-12, 1.4850523588627595e-11, 2.4783586294319093e-10, 3.319199429197006e-11]], "pointer": [[0.0, 0.0, 1.072517761713243e-06, 0.0, 0.0, 0.0, 0.0, 0.999998927116394, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.612069308216007e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 4.930652761081511e-11, 0.0, 0.0, 2.2569988544773878e-08, 0.0, 0.0, 0.0, 2.6841071032457364e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.7056489554079235e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 1.6369520183801e-09, 0.0, 0.0, 0.0, 3.090273814621014e-09, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.999998927116394]}, "loss": [0.9284102916717529, 1.0728841743912199e-06], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [20]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:49:17.743917", "n_pass": [1, 1, 1], "n_token": 62, "loss": [0.5028331279754639, 1.0728841743912199e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "=", "Mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "mocksignature", "(", "f", ",", "func", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1", ",", "2", ",", "3", ")", ",", "'foo'", ")", "#NEWLINE#", "mock", ".", "return_value", "=", "'bar'", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1", ",", "2", ",", "3", ")", ",", "'bar'", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [7, 41], "repair_candidates": [2, 25, 47, 16, 22, 29, 51, 7, 41]}}
+{"prediction": {"error_location": 0.6048147082328796, "repair_targets": [0.999998927116394, 1.7056489554079235e-08], "repair_candidates": [1.072517761713243e-06, 0.999998927116394, 7.612069308216007e-10, 4.930652761081511e-11, 2.2569988544773878e-08, 2.6841071032457364e-10, 1.7056489554079235e-08, 1.6369520183801e-09, 3.090273814621014e-09], "target_probs": 0.999998927116394}}
+
+
+{"result": {"time": "2021-02-21 06:49:17.801560", "n_pass": [24, 2, 2], "n_token": 54, "loss": [0.6577969789505005, 1.0728841743912199e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "=", "Mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "mocksignature", "(", "f", ",", "func", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "'foo'", ")", "#NEWLINE#", "mock", ".", "return_value", "=", "'bar'", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1", ",", "2", ",", "3", ")", ",", "'bar'", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [7, 33], "repair_candidates": [2, 25, 39, 16, 22, 29, 43, 7, 33]}}
+{"prediction": {"error_location": 0.5179912447929382, "repair_targets": [0.9999924898147583, 6.449231932492694e-06], "repair_candidates": [1.0615939345370862e-06, 0.9999924898147583, 5.168855898851632e-10, 7.353570530277409e-11, 2.8117570494146094e-08, 1.6144544034979447e-10, 6.449231932492694e-06, 2.5292490324346772e-09, 2.268783161341048e-09], "target_probs": 0.999998927116394}}
+
+
+{"result": {"time": "2021-02-21 06:49:17.857945", "n_pass": [26, 3, 3], "n_token": 46, "loss": [0.5878150463104248, 1.4305124977909145e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "=", "Mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "mocksignature", "(", "f", ",", "func", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "'foo'", ")", "#NEWLINE#", "mock", ".", "return_value", "=", "'bar'", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1"]}}
+{"position": {"error_location": 20, "repair_targets": [7, 33], "repair_candidates": [2, 25, 39, 16, 22, 29, 43, 7, 33]}}
+{"prediction": {"error_location": 0.5555397868156433, "repair_targets": [0.9999697208404541, 2.8833253963966854e-05], "repair_candidates": [1.2828564877054305e-06, 0.9999697208404541, 6.759343085249725e-10, 1.3005778398689216e-10, 9.203198203522334e-08, 4.944345488588908e-10, 2.8833253963966854e-05, 2.5332049347071006e-08, 3.3586711190025653e-09], "target_probs": 0.9999985694885254}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.255053", "n_pass": [86, 10, 4], "n_token": 44, "loss": [0.6764466762542725, 0.0012296246131882071], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "mocksignature", "(", "f", ",", "func", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "'foo'", ")", "#NEWLINE#", "mock", ".", "return_value", "=", "'bar'", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1"]}}
+{"position": {"error_location": 18, "repair_targets": [7, 31], "repair_candidates": [2, 23, 37, 14, 20, 27, 41, 7, 31]}}
+{"prediction": {"error_location": 0.5084202885627747, "repair_targets": [0.9950674772262573, 0.0037036521825939417], "repair_candidates": [0.0011610867222771049, 0.9950674772262573, 3.5241831142229785e-07, 1.6044836570472398e-08, 3.723667759913951e-05, 1.5838621081343263e-08, 0.0037036521825939417, 2.9035651095909998e-05, 1.081286541193549e-06], "target_probs": 0.9987711310386658}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.482329", "n_pass": [91, 14, 5], "n_token": 42, "loss": [0.051152098923921585, 0.0004428413521964103], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "'foo'", ")", "#NEWLINE#", "mock", ".", "return_value", "=", "'bar'", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1"]}}
+{"position": {"error_location": 16, "repair_targets": [7, 29], "repair_candidates": [2, 21, 35, 14, 18, 25, 39, 7, 29]}}
+{"prediction": {"error_location": 0.9501340389251709, "repair_targets": [0.9994465708732605, 0.00011068002640968189], "repair_candidates": [0.00042457663221284747, 0.9994465708732605, 3.126108595097321e-06, 1.1470385530287786e-08, 3.073366087846807e-06, 1.3278581434406078e-07, 0.00011068002640968189, 8.356172656931449e-06, 3.4985555430466775e-06], "target_probs": 0.9995572566986084}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.539133", "n_pass": [95, 15, 6], "n_token": 40, "loss": [0.08673697710037231, 0.002725138794630766], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "'foo'", ")", "#NEWLINE#", "mock", ".", "return_value", "=", "'bar'", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1"]}}
+{"position": {"error_location": 16, "repair_targets": [7, 27], "repair_candidates": [2, 21, 33, 14, 18, 23, 37, 7, 27]}}
+{"prediction": {"error_location": 0.916918158531189, "repair_targets": [0.996264636516571, 0.0010139448568224907], "repair_candidates": [0.002601440530270338, 0.996264636516571, 1.111837900680257e-05, 1.3570551971042732e-07, 3.3628928122197976e-06, 4.850679715673323e-07, 0.0010139448568224907, 8.54385580169037e-05, 1.935349609993864e-05], "target_probs": 0.9972785711288452}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.595470", "n_pass": [97, 16, 7], "n_token": 38, "loss": [0.06601884216070175, 0.0021079329308122396], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "#NEWLINE#", "mock", ".", "return_value", "=", "'bar'", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1"]}}
+{"position": {"error_location": 16, "repair_targets": [7, 25], "repair_candidates": [2, 21, 31, 14, 18, 23, 35, 7, 25]}}
+{"prediction": {"error_location": 0.9361132383346558, "repair_targets": [0.9977462887763977, 0.0001480255596106872], "repair_candidates": [0.0020265623461455107, 0.9977462887763977, 5.043720193498302e-06, 7.809237700939775e-08, 6.506717454612954e-06, 2.0391398791730353e-08, 0.0001480255596106872, 6.538663001265377e-05, 2.139347316187923e-06], "target_probs": 0.997894287109375}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.654867", "n_pass": [99, 17, 8], "n_token": 36, "loss": [0.5459400415420532, 0.00711006298661232], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "#NEWLINE#", "mock", "=", "'bar'", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1"]}}
+{"position": {"error_location": 16, "repair_targets": [7, 25], "repair_candidates": [2, 21, 29, 14, 18, 23, 33, 7, 25]}}
+{"prediction": {"error_location": 0.5792969465255737, "repair_targets": [0.9461368322372437, 0.04677834361791611], "repair_candidates": [0.0066997092217206955, 0.9461368322372437, 5.959952250123024e-05, 1.2041327863698825e-06, 2.7293441235087812e-05, 1.1331021596561186e-06, 0.04677834361791611, 0.00015698264178354293, 0.0001389940589433536], "target_probs": 0.992915153503418}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.710806", "n_pass": [100, 18, 9], "n_token": 34, "loss": [0.1752690076828003, 0.006816079840064049], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "#NEWLINE#", "mock", "#NEWLINE#", "self", ".", "assertEqual", "(", "func", "(", "1"]}}
+{"position": {"error_location": 16, "repair_targets": [7, 25], "repair_candidates": [2, 21, 27, 14, 18, 23, 31, 7, 25]}}
+{"prediction": {"error_location": 0.8392313122749329, "repair_targets": [0.9861527681350708, 0.0070543051697313786], "repair_candidates": [0.006475419737398624, 0.9861527681350708, 2.176347334170714e-05, 5.933994771112339e-07, 4.0818540583131835e-05, 3.374337040895625e-07, 0.0070543051697313786, 0.00024014378141146153, 1.3940662938694004e-05], "target_probs": 0.9932070970535278}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.767066", "n_pass": [102, 19, 10], "n_token": 32, "loss": [0.3476349413394928, 0.032504476606845856], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "#NEWLINE#", "mock", "#NEWLINE#", "self", "(", "func", "(", "1"]}}
+{"position": {"error_location": 16, "repair_targets": [7, 25], "repair_candidates": [2, 21, 27, 14, 18, 23, 29, 7, 25]}}
+{"prediction": {"error_location": 0.7063567638397217, "repair_targets": [0.9553074240684509, 0.01271066814661026], "repair_candidates": [0.0312952995300293, 0.9553074240684509, 0.0001576365320943296, 2.4615233087388333e-06, 0.00012884201714769006, 2.8769152322638547e-06, 0.01271066814661026, 0.0002645971835590899, 0.0001301369338762015], "target_probs": 0.968018114566803}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.823097", "n_pass": [104, 20, 11], "n_token": 30, "loss": [0.3542183041572571, 0.03405444696545601], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "#NEWLINE#", "mock", "#NEWLINE#", "self", "(", "func"]}}
+{"position": {"error_location": 16, "repair_targets": [7, 25], "repair_candidates": [2, 21, 27, 14, 18, 23, 29, 7, 25]}}
+{"prediction": {"error_location": 0.7017217874526978, "repair_targets": [0.9516303539276123, 0.014888550154864788], "repair_candidates": [0.03217409551143646, 0.9516303539276123, 0.0001551560708321631, 4.030664058518596e-06, 0.0001628841710044071, 5.503646207216661e-06, 0.014888550154864788, 0.0008406713604927063, 0.00013882193889003247], "target_probs": 0.9665188789367676}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.878802", "n_pass": [105, 21, 12], "n_token": 29, "loss": [0.5554714798927307, 0.15940852463245392], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_return_value_from_existing_mock(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "#NEWLINE#", "mock", "#NEWLINE#", "self", "(", "func"]}}
+{"position": {"error_location": 15, "repair_targets": [6, 24], "repair_candidates": [1, 20, 26, 13, 17, 22, 28, 6, 24]}}
+{"prediction": {"error_location": 0.5738016366958618, "repair_targets": [0.7973907589912415, 0.055257219821214676], "repair_candidates": [0.14310191571712494, 0.7973907589912415, 0.0009061053860932589, 3.983470014645718e-05, 0.0015364281134679914, 0.00011751696729334071, 0.055257219821214676, 0.0013388280058279634, 0.00031152943847700953], "target_probs": 0.8526479601860046}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.934483", "n_pass": [106, 22, 13], "n_token": 28, "loss": [0.6314965486526489, 0.03215276822447777], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#NEWLINE#", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "#NEWLINE#", "mock", "#NEWLINE#", "self", "(", "func"]}}
+{"position": {"error_location": 14, "repair_targets": [5, 23], "repair_candidates": [0, 19, 25, 12, 16, 21, 27, 5, 23]}}
+{"prediction": {"error_location": 0.53179532289505, "repair_targets": [0.9127912521362305, 0.055567365139722824], "repair_candidates": [0.021596886217594147, 0.9127912521362305, 0.0022214665077626705, 4.299163629184477e-05, 0.004780107643455267, 0.00019333779346197844, 0.055567365139722824, 0.0025729606859385967, 0.00023370505368802696], "target_probs": 0.9683586359024048}}
+
+
+{"result": {"time": "2021-02-21 06:49:18.992531", "n_pass": [108, 23, 14], "n_token": 26, "loss": [0.633466362953186, 0.05316237360239029], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "mock", "(", "return_value", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "#NEWLINE#", "mock", "#NEWLINE#", "self", "(", "func"]}}
+{"position": {"error_location": 12, "repair_targets": [3, 21], "repair_candidates": [0, 17, 23, 10, 14, 19, 25, 3, 21]}}
+{"prediction": {"error_location": 0.5307487845420837, "repair_targets": [0.8952537178993225, 0.05297233536839485], "repair_candidates": [0.037977803498506546, 0.8952537178993225, 0.0019101996440440416, 2.499348920537159e-05, 0.008576852269470692, 0.00014763756189495325, 0.05297233536839485, 0.0028282387647777796, 0.0003081985341850668], "target_probs": 0.9482260346412659}}
+
+
+{"result": {"time": "2021-02-21 06:49:19.048849", "n_pass": [110, 24, 15], "n_token": 24, "loss": [0.5774894952774048, 0.014594622887670994], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "mock", "=", "'foo'", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "#NEWLINE#", "mock", "#NEWLINE#", "self", "(", "func"]}}
+{"position": {"error_location": 10, "repair_targets": [3, 19], "repair_candidates": [0, 15, 21, 8, 12, 17, 23, 3, 19]}}
+{"prediction": {"error_location": 0.5613057613372803, "repair_targets": [0.9739313721656799, 0.011579979211091995], "repair_candidates": [0.009658770635724068, 0.9739313721656799, 0.0007202632259577513, 5.576904186455067e-06, 0.0022528155241161585, 5.236786455498077e-05, 0.011579979211091995, 0.001620869035832584, 0.00017802331421989948], "target_probs": 0.9855113625526428}}
+
+
+{"result": {"time": "2021-02-21 06:49:19.104859", "n_pass": [111, 25, 16], "n_token": 22, "loss": [0.8322235941886902, 0.04488355666399002], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "mock", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "(", "func", "#NEWLINE#", "mock", "#NEWLINE#", "self", "(", "func"]}}
+{"position": {"error_location": 8, "repair_targets": [3, 17], "repair_candidates": [0, 13, 19, 6, 10, 15, 21, 3, 17]}}
+{"prediction": {"error_location": 0.43508076667785645, "repair_targets": [0.9383580088615417, 0.017750782892107964], "repair_candidates": [0.011464931070804596, 0.9383580088615417, 0.022420311346650124, 3.9103706512833014e-05, 0.004261936992406845, 1.9698783944477327e-05, 0.017750782892107964, 0.005433990620076656, 0.00025121052749454975], "target_probs": 0.956108808517456}}
+
+
+{"result": {"time": "2021-02-21 06:49:19.556428", "n_pass": [155, 33, 17], "n_token": 21, "loss": [0.9042183756828308, 0.0875450149178505], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "mock", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "func", "#NEWLINE#", "mock", "#NEWLINE#", "self", "(", "func"]}}
+{"position": {"error_location": 8, "repair_targets": [3, 16], "repair_candidates": [0, 13, 18, 6, 10, 14, 20, 3, 16]}}
+{"prediction": {"error_location": 0.40485823154449463, "repair_targets": [0.878255307674408, 0.03792232275009155], "repair_candidates": [0.020379716530442238, 0.878255307674408, 0.005094239488244057, 2.4881948775146157e-05, 0.04899768903851509, 0.0044851154088974, 0.03792232275009155, 0.004623121581971645, 0.00021764697157777846], "target_probs": 0.9161776304244995}}
+
+
+{"result": {"time": "2021-02-21 06:49:19.670741", "n_pass": [158, 35, 18], "n_token": 20, "loss": [0.8642737865447998, 0.08749745786190033], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "mock", ")", "#NEWLINE#", "func", "=", "f", ",", "func", ")", "#NEWLINE#", "self", "func", "#NEWLINE#", "mock", "self", "(", "func"]}}
+{"position": {"error_location": 8, "repair_targets": [3, 16], "repair_candidates": [0, 13, 17, 6, 10, 14, 19, 3, 16]}}
+{"prediction": {"error_location": 0.4213574230670929, "repair_targets": [0.9133153557777405, 0.002905837493017316], "repair_candidates": [0.020948376506567, 0.9133153557777405, 0.004672474227845669, 8.091231575235724e-05, 0.04756402596831322, 0.005225995555520058, 0.002905837493017316, 0.0052001578733325005, 8.692527626408264e-05], "target_probs": 0.9162212014198303}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ')', '#INDENT#', 'mock', ')', '#NEWLINE#', 'func', '=', 'f', ',', 'func', ')', '#NEWLINE#', 'self', 'func', '#NEWLINE#', 'mock', 'self', '(', 'func']

@@ -1,0 +1,43 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def cleanup_subject(", "subject_str", ")", ":", "#NEWLINE#", "#INDENT#", "\"Returns a cleaned up string.\\n    For instance, 'Re: Re: Re: Birthday party' becomes 'Birthday party'\"", "#NEWLINE#", "cleanup_regexp", "=", "'^((Re:|RE:|fwd:|FWD:)\\\\s+)+'", "#NEWLINE#", "return", "re", ".", "sub", "(", "subject_str", ",", "''", ",", "subject_str", ")"], "error_location": [18], "repair_targets": [9], "repair_candidates": [2, 18, 22, 9], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "khamidou/kite/src/back/kite/headers.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00017-of-00300", "js_count": 56706, "results": {"model": "transformer", "prob": {"loc": [[2.6765990696731023e-05, 2.0154098834268552e-08, 8.449684685274406e-08, 2.163224266382713e-09, 1.6509037470413546e-09, 1.422432505115978e-09, 1.493559720344706e-09, 1.9982222543291073e-09, 1.303913865768891e-09, 9.936190537018774e-09, 2.1153354623493215e-09, 2.4512309959590084e-09, 2.7708304539686424e-09, 1.9751080770902263e-09, 2.2444464342630255e-10, 4.3914050174009844e-10, 3.65561858561847e-10, 7.003324586918325e-10, 0.2613655924797058, 1.1904505470283766e-07, 8.90782757778652e-06, 9.997269216910354e-07, 0.7385966181755066, 7.556958507848321e-07]], "pointer": [[0.0, 0.0, 1.6533910240923433e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.3550129341364254e-10, 0.0, 0.0, 0.0, 7.964435777552126e-10, 0.0]], "target": [1.0]}, "loss": [1.3418350219726562, -0.0], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [22]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:32:48.826485", "n_pass": [1, 1, 1], "n_token": 24, "loss": [0.3030032813549042, -0.0], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def cleanup_subject(", "subject_str", ")", ":", "#NEWLINE#", "#INDENT#", "\"Returns a cleaned up string.\\n    For instance, 'Re: Re: Re: Birthday party' becomes 'Birthday party'\"", "#NEWLINE#", "cleanup_regexp", "=", "'^((Re:|RE:|fwd:|FWD:)\\\\s+)+'", "#NEWLINE#", "return", "re", ".", "sub", "(", "subject_str", ",", "''", ",", "subject_str", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [9], "repair_candidates": [2, 18, 22, 9]}}
+{"prediction": {"error_location": 0.7385966181755066, "repair_targets": [1.0], "repair_candidates": [1.6533910240923433e-08, 1.0, 3.3550129341364254e-10, 7.964435777552126e-10], "target_probs": 1.0}}
+
+
+{"result": {"time": "2021-02-21 07:32:48.882778", "n_pass": [10, 2, 2], "n_token": 18, "loss": [0.07401536405086517, 0.003416646271944046], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def cleanup_subject(", "subject_str", ")", ":", "#NEWLINE#", "#INDENT#", "\"Returns a cleaned up string.\\n    For instance, 'Re: Re: Re: Birthday party' becomes 'Birthday party'\"", "#NEWLINE#", "cleanup_regexp", "=", "'^((Re:|RE:|fwd:|FWD:)\\\\s+)+'", "subject_str", ",", "''", ",", "subject_str", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [9], "repair_candidates": [2, 12, 16, 9]}}
+{"prediction": {"error_location": 0.9286574125289917, "repair_targets": [0.996589183807373], "repair_candidates": [0.003403090639039874, 0.996589183807373, 3.891042069881223e-06, 3.7910019727860345e-06], "target_probs": 0.996589183807373}}
+
+
+{"result": {"time": "2021-02-21 07:32:48.938582", "n_pass": [22, 3, 3], "n_token": 15, "loss": [0.08095554262399673, 0.0019791624508798122], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def cleanup_subject(", "subject_str", "#INDENT#", "\"Returns a cleaned up string.\\n    For instance, 'Re: Re: Re: Birthday party' becomes 'Birthday party'\"", "#NEWLINE#", "cleanup_regexp", "=", "'^((Re:|RE:|fwd:|FWD:)\\\\s+)+'", "subject_str", ",", "''", ",", "subject_str", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [6], "repair_candidates": [2, 9, 13, 6]}}
+{"prediction": {"error_location": 0.9222345948219299, "repair_targets": [0.9980227947235107], "repair_candidates": [0.0019771000370383263, 0.9980227947235107, 1.0641909398145799e-07, 4.91903939803251e-08], "target_probs": 0.9980227947235107}}
+
+
+{"result": {"time": "2021-02-21 07:32:49.108230", "n_pass": [39, 6, 4], "n_token": 14, "loss": [0.22447846829891205, 0.003562171244993806], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def cleanup_subject(", "subject_str", "#INDENT#", "#NEWLINE#", "cleanup_regexp", "=", "'^((Re:|RE:|fwd:|FWD:)\\\\s+)+'", "subject_str", ",", "''", ",", "subject_str", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [5], "repair_candidates": [2, 8, 12, 5]}}
+{"prediction": {"error_location": 0.7989327907562256, "repair_targets": [0.9964441657066345], "repair_candidates": [0.0033466259483247995, 0.9964441657066345, 0.00020885973935946822, 3.349412907027727e-07], "target_probs": 0.9964441657066345}}
+
+
+{"result": {"time": "2021-02-21 07:32:49.491779", "n_pass": [60, 13, 5], "n_token": 13, "loss": [0.17422179877758026, 0.00509263202548027], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def cleanup_subject(", "subject_str", "#INDENT#", "#NEWLINE#", "cleanup_regexp", "=", "subject_str", ",", "''", ",", "subject_str", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [5], "repair_candidates": [2, 7, 11, 5]}}
+{"prediction": {"error_location": 0.8401106595993042, "repair_targets": [0.9949203133583069], "repair_candidates": [0.005046356935054064, 0.9949203133583069, 3.231228402000852e-05, 1.0377855232945876e-06], "target_probs": 0.9949203133583069}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def cleanup_subject(', 'subject_str', '#INDENT#', '#NEWLINE#', 'cleanup_regexp', '=', 'subject_str', ',', "''", ',', 'subject_str', ')']

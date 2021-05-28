@@ -1,0 +1,97 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def get_app(", "self", ",", "app", ",", "global_conf", ",", "**local_conf", ")", ":", "#NEWLINE#", "#INDENT#", "with", "mock", ".", "patch", "(", "'storlet_middleware.storlet_handler.get_logger'", ")", "as", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "return_value", "=", "FakeLogger", "(", ")", "#NEWLINE#", "factory", "=", "storlet_handler", ".", "filter_factory", "(", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "#UNINDENT#", "return", "factory", "(", "app", ")"], "error_location": [39], "repair_targets": [6], "repair_candidates": [2, 42, 21, 25, 39, 4, 49, 6, 33, 47], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "openstack/storlets/tests/unit/swift/storlet_middleware/test_storlet_handler.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00018-of-00300", "js_count": 58368, "results": {"model": "transformer", "prob": {"loc": [[0.18050837516784668, 3.1323704661190277e-06, 1.5159783970375429e-06, 6.838182997626063e-08, 1.6875983419595286e-06, 1.1218592277373318e-07, 3.681806219901773e-06, 8.948926932816903e-08, 1.35732061607996e-05, 2.672640775358559e-08, 7.11760108629278e-08, 1.7960391573978995e-07, 1.0546644801934235e-07, 7.618580433188527e-09, 4.813383384316694e-06, 1.2192832343771443e-07, 2.118225062019974e-08, 2.752402394889941e-07, 0.0047879451885819435, 8.61251464812085e-07, 0.0005715735023841262, 8.732671403777204e-07, 4.659845842525101e-07, 2.1294876262345497e-07, 1.2598761145454773e-07, 6.976830627536401e-05, 2.2707051527959266e-07, 4.954633681109044e-08, 2.0189790461699886e-07, 5.87100294069387e-05, 0.00015602214261889458, 5.303059879224747e-06, 8.694422035659954e-07, 5.898031758988509e-06, 1.9994899957964662e-07, 6.349417276396707e-07, 3.623358395543619e-07, 1.9596106426433835e-07, 2.05192463909043e-06, 0.17102131247520447, 5.9717517615354154e-06, 1.672540747676976e-06, 0.4365231692790985, 3.269403521244385e-07, 3.1517890874965815e-07, 1.9139388029998372e-07, 2.4366533679653912e-08, 9.526023632133729e-07, 1.949821921698458e-07, 0.20624279975891113, 2.7170833618583856e-06]], "pointer": [[0.0, 0.0, 0.0038772812113165855, 0.0, 0.0062268576584756374, 0.0, 0.9538516402244568, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00609463220462203, 0.0, 0.0, 0.0, 0.010833372361958027, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.008303075097501278, 0.0, 0.0, 0.0, 0.0, 0.0, 0.008195103146135807, 0.0, 0.0, 0.0007407359080389142, 0.0, 0.0, 0.0, 0.0, 0.000328663969412446, 0.0, 0.0015486887423321605, 0.0]], "target": [0.9538516402244568]}, "loss": [1.7659670114517212, 0.047247134149074554], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [42]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:34:18.649866", "n_pass": [1, 1, 1], "n_token": 51, "loss": [0.8289138078689575, 0.047247134149074554], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_app(", "self", ",", "app", ",", "global_conf", ",", "**local_conf", ")", ":", "#NEWLINE#", "#INDENT#", "with", "mock", ".", "patch", "(", "'storlet_middleware.storlet_handler.get_logger'", ")", "as", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "return_value", "=", "FakeLogger", "(", ")", "#NEWLINE#", "factory", "=", "storlet_handler", ".", "filter_factory", "(", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "#UNINDENT#", "return", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 42, "repair_targets": [6], "repair_candidates": [2, 42, 21, 25, 39, 4, 49, 6, 33, 47]}}
+{"prediction": {"error_location": 0.4365231692790985, "repair_targets": [0.9538516402244568], "repair_candidates": [0.0038772812113165855, 0.0062268576584756374, 0.9538516402244568, 0.00609463220462203, 0.010833372361958027, 0.008303075097501278, 0.008195103146135807, 0.0007407359080389142, 0.000328663969412446, 0.0015486887423321605], "target_probs": 0.9538516402244568}}
+
+
+{"result": {"time": "2021-02-21 07:34:18.767210", "n_pass": [47, 3, 2], "n_token": 48, "loss": [0.6192725896835327, 0.027586737647652626], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_app(", "self", ",", "app", ",", "global_conf", ",", "**local_conf", "#INDENT#", "with", "mock", ".", "patch", "(", "'storlet_middleware.storlet_handler.get_logger'", ")", "as", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "return_value", "=", "FakeLogger", "(", ")", "#NEWLINE#", "factory", "=", "storlet_handler", ".", "filter_factory", "(", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "#UNINDENT#", "return", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 39, "repair_targets": [6], "repair_candidates": [2, 39, 18, 22, 36, 4, 46, 6, 30, 44]}}
+{"prediction": {"error_location": 0.5383358597755432, "repair_targets": [0.9727903008460999], "repair_candidates": [0.004556631203740835, 0.002511247992515564, 0.9727903008460999, 0.0021063860040158033, 0.00688626104965806, 0.004060996230691671, 0.005637435708194971, 0.00045904863509349525, 0.0001899968192446977, 0.0008017471991479397], "target_probs": 0.9727903008460999}}
+
+
+{"result": {"time": "2021-02-21 07:34:18.823990", "n_pass": [48, 4, 3], "n_token": 45, "loss": [0.9960706233978271, 0.01999938301742077], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_app(", "self", ",", "app", ",", "global_conf", ",", "**local_conf", ".", "patch", "(", "'storlet_middleware.storlet_handler.get_logger'", ")", "as", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "return_value", "=", "FakeLogger", "(", ")", "#NEWLINE#", "factory", "=", "storlet_handler", ".", "filter_factory", "(", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "#UNINDENT#", "return", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 36, "repair_targets": [6], "repair_candidates": [2, 36, 15, 19, 33, 4, 43, 6, 27, 41]}}
+{"prediction": {"error_location": 0.36932775378227234, "repair_targets": [0.9801992774009705], "repair_candidates": [0.003599303076043725, 0.002940792590379715, 0.9801992774009705, 0.0015525578055530787, 0.004660208243876696, 0.0018915223190560937, 0.003946804441511631, 0.000529048906173557, 9.638078336138278e-05, 0.0005842031096108258], "target_probs": 0.9801992774009705}}
+
+
+{"result": {"time": "2021-02-21 07:34:18.993049", "n_pass": [53, 7, 4], "n_token": 42, "loss": [0.8000885844230652, 0.04641413316130638], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_app(", "self", ",", "app", ",", "global_conf", ",", "**local_conf", ".", "patch", "(", "'storlet_middleware.storlet_handler.get_logger'", ")", "as", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "(", ")", "#NEWLINE#", "factory", "=", "storlet_handler", ".", "filter_factory", "(", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "#UNINDENT#", "return", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [6], "repair_candidates": [2, 33, 15, 19, 30, 4, 40, 6, 24, 38]}}
+{"prediction": {"error_location": 0.4492891728878021, "repair_targets": [0.9546465277671814], "repair_candidates": [0.004080749116837978, 0.004039183724671602, 0.9546465277671814, 0.003782782005146146, 0.017438190057873726, 0.0024071382358670235, 0.012396187521517277, 0.0004188104358036071, 0.00021353914053179324, 0.0005768719129264355], "target_probs": 0.9546465277671814}}
+
+
+{"result": {"time": "2021-02-21 07:34:19.049374", "n_pass": [54, 8, 5], "n_token": 39, "loss": [0.8480601906776428, 0.07312336564064026], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_app(", "self", ",", "app", ",", "global_conf", ",", "**local_conf", ".", "patch", "(", "'storlet_middleware.storlet_handler.get_logger'", ")", "as", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "factory", "=", "storlet_handler", ".", "filter_factory", "(", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "#UNINDENT#", "return", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 30, "repair_targets": [6], "repair_candidates": [2, 30, 15, 19, 27, 4, 37, 6, 21, 35]}}
+{"prediction": {"error_location": 0.4282448887825012, "repair_targets": [0.9294861555099487], "repair_candidates": [0.005727320443838835, 0.0031862843316048384, 0.9294861555099487, 0.006551055703312159, 0.03191934525966644, 0.01664033532142639, 0.002548940945416689, 0.00022585854458156973, 0.0030773160979151726, 0.0006373838405124843], "target_probs": 0.9294861555099487}}
+
+
+{"result": {"time": "2021-02-21 07:34:19.276291", "n_pass": [64, 12, 6], "n_token": 36, "loss": [0.48896828293800354, 0.14899536967277527], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_app(", "self", ",", "app", ",", "global_conf", ",", "**local_conf", ".", "patch", "(", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "factory", "=", "storlet_handler", ".", "filter_factory", "(", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "#UNINDENT#", "return", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [6], "repair_candidates": [2, 27, 12, 16, 24, 4, 34, 6, 18, 32]}}
+{"prediction": {"error_location": 0.6132588386535645, "repair_targets": [0.8615731000900269], "repair_candidates": [0.008480651304125786, 0.0031547793187201023, 0.8615731000900269, 0.005758969113230705, 0.030927635729312897, 0.026064015924930573, 0.05720167234539986, 0.000745606143027544, 0.005414681043475866, 0.0006788831087760627], "target_probs": 0.8615731000900269}}
+
+
+{"result": {"time": "2021-02-21 07:34:19.332752", "n_pass": [68, 13, 7], "n_token": 33, "loss": [0.18889440596103668, 0.0815788134932518], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_app(", "self", ",", "app", ",", "global_conf", ",", "**local_conf", ".", "patch", "(", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "factory", "=", "storlet_handler", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "#UNINDENT#", "return", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [6], "repair_candidates": [2, 24, 12, 16, 21, 4, 31, 6, 18, 29]}}
+{"prediction": {"error_location": 0.8278738260269165, "repair_targets": [0.9216600656509399], "repair_candidates": [0.007552251219749451, 0.0006193754379637539, 0.9216600656509399, 0.00571920583024621, 0.010348675772547722, 0.03458617255091667, 0.017593376338481903, 5.241233156993985e-05, 0.001684824819676578, 0.0001836735027609393], "target_probs": 0.9216600656509399}}
+
+
+{"result": {"time": "2021-02-21 07:34:19.559291", "n_pass": [102, 17, 8], "n_token": 31, "loss": [0.1528843492269516, 0.11049053817987442], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_app(", "self", ",", "app", ",", "global_conf", ",", "**local_conf", ".", "patch", "(", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "factory", "=", "storlet_handler", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [6], "repair_candidates": [2, 24, 12, 16, 21, 4, 29, 6, 18, 27]}}
+{"prediction": {"error_location": 0.858228862285614, "repair_targets": [0.8953948020935059], "repair_candidates": [0.01518486812710762, 0.0007874590228311718, 0.8953948020935059, 0.008817559108138084, 0.01500491052865982, 0.03149222210049629, 0.03194711357355118, 0.00011076203372795135, 0.0010167582659050822, 0.00024364734417758882], "target_probs": 0.8953948020935059}}
+
+
+{"result": {"time": "2021-02-21 07:34:19.615677", "n_pass": [105, 18, 9], "n_token": 30, "loss": [0.09105437994003296, 0.06779540330171585], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def get_app(", "self", ",", "app", ",", "global_conf", ",", "**local_conf", ".", "patch", "(", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "factory", "=", "storlet_handler", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [5], "repair_candidates": [1, 23, 11, 15, 20, 3, 28, 5, 17, 26]}}
+{"prediction": {"error_location": 0.9129680395126343, "repair_targets": [0.9344516396522522], "repair_candidates": [0.006136590614914894, 0.0015903502935543656, 0.9344516396522522, 0.00431849155575037, 0.012913343496620655, 0.029525399208068848, 0.010058024898171425, 3.9836744690546766e-05, 0.0008379069622606039, 0.00012834565131925046], "target_probs": 0.9344516396522522}}
+
+
+{"result": {"time": "2021-02-21 07:34:19.671748", "n_pass": [106, 19, 10], "n_token": 29, "loss": [0.28643885254859924, 0.03419463336467743], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "app", ",", "global_conf", ",", "**local_conf", ".", "patch", "(", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "factory", "=", "storlet_handler", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [0, 22, 10, 14, 19, 2, 27, 4, 16, 25]}}
+{"prediction": {"error_location": 0.7509329915046692, "repair_targets": [0.9663833975791931], "repair_candidates": [0.004077390301972628, 0.0008580927969887853, 0.9663833975791931, 0.001769093330949545, 0.012150130234658718, 0.00896109826862812, 0.005353501066565514, 2.9107992304489017e-05, 0.0003957937587983906, 2.2324918973026797e-05], "target_probs": 0.9663833975791931}}
+
+
+{"result": {"time": "2021-02-21 07:34:19.786751", "n_pass": [110, 21, 11], "n_token": 28, "loss": [0.5502173900604248, 0.034989792853593826], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "app", "global_conf", ",", "**local_conf", ".", "patch", "(", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "factory", "=", "storlet_handler", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [3], "repair_candidates": [0, 21, 9, 13, 18, 2, 26, 3, 15, 24]}}
+{"prediction": {"error_location": 0.576824426651001, "repair_targets": [0.9656152725219727], "repair_candidates": [0.0036901102866977453, 0.000940128171350807, 0.9656152725219727, 0.0027621116023510695, 0.014939988031983376, 0.007744812406599522, 0.003999506123363972, 1.5575249562971294e-05, 0.00022747155162505805, 6.511360697913915e-05], "target_probs": 0.9656152725219727}}
+
+
+{"result": {"time": "2021-02-21 07:34:19.898846", "n_pass": [113, 23, 12], "n_token": 26, "loss": [0.47287631034851074, 0.053628139197826385], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "app", "global_conf", ",", "**local_conf", "(", "get_fake_logger", ":", "#NEWLINE#", "#INDENT#", "get_fake_logger", ".", "factory", "=", "storlet_handler", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [3], "repair_candidates": [0, 19, 7, 11, 16, 2, 24, 3, 13, 22]}}
+{"prediction": {"error_location": 0.6232072114944458, "repair_targets": [0.9477844834327698], "repair_candidates": [0.009415403008460999, 0.0014896292705088854, 0.9477844834327698, 0.0038221178110688925, 0.015456301160156727, 0.020191900432109833, 0.0014180766884237528, 1.1694263776007574e-05, 0.00036064162850379944, 4.9727619625627995e-05], "target_probs": 0.9477844834327698}}
+
+
+{"result": {"time": "2021-02-21 07:34:19.954830", "n_pass": [115, 24, 13], "n_token": 24, "loss": [0.8580886125564575, 0.17620408535003662], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "app", "global_conf", ",", "**local_conf", "(", "get_fake_logger", "#INDENT#", "get_fake_logger", ".", "factory", "=", "storlet_handler", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [3], "repair_candidates": [0, 17, 7, 9, 14, 2, 22, 3, 11, 20]}}
+{"prediction": {"error_location": 0.4239717423915863, "repair_targets": [0.838446855545044], "repair_candidates": [0.025181889533996582, 0.004340389743447304, 0.838446855545044, 0.01962161809206009, 0.0604267343878746, 0.04296417534351349, 0.008308713324368, 3.121992995147593e-05, 0.0005318679613992572, 0.00014654223923571408], "target_probs": 0.838446855545044}}
+
+
+{"result": {"time": "2021-02-21 07:34:20.238459", "n_pass": [150, 29, 14], "n_token": 23, "loss": [1.1977499723434448, 0.029841016978025436], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "app", "global_conf", ",", "**local_conf", "(", "get_fake_logger", "#INDENT#", "get_fake_logger", "factory", "=", "storlet_handler", "get_fake_logger", ",", "**", "local_conf", ")", "#NEWLINE#", "factory", "(", "app", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [3], "repair_candidates": [0, 16, 7, 9, 13, 2, 21, 3, 10, 19]}}
+{"prediction": {"error_location": 0.3018726706504822, "repair_targets": [0.9705998301506042], "repair_candidates": [0.002204174641519785, 0.0040091341361403465, 0.9705998301506042, 0.00547432154417038, 0.010851516388356686, 0.0064505236223340034, 0.00018564586935099214, 3.2499236112926155e-05, 1.8754628399619833e-05, 0.000173523832927458], "target_probs": 0.9705998301506042}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ',', 'app', 'global_conf', ',', '**local_conf', '(', 'get_fake_logger', '#INDENT#', 'get_fake_logger', 'factory', '=', 'storlet_handler', 'get_fake_logger', ',', '**', 'local_conf', ')', '#NEWLINE#', 'factory', '(', 'app', ')']

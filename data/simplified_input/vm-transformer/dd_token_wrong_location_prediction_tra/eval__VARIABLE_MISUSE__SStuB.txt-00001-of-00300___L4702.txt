@@ -1,0 +1,145 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", ":", "#NEWLINE#", "#INDENT#", "def mock_env_side_effect(", "k", ",", "d", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "(", "'simple from env'", "if", "(", "k", "==", "'SIMPLE_STRING'", ")", "else", "d", ")", "#NEWLINE#", "#UNINDENT#", "with", "patch", "(", "'os.environ.get'", ",", "side_effect", "=", "mock_env_side_effect", ")", ":", "#NEWLINE#", "#INDENT#", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_STRING'", "]", "==", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]", "==", "1", ")"], "error_location": [47], "repair_targets": [4, 53, 63], "repair_candidates": [4, 53, 63, 40, 47, 2], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "drgarcia1986/simple-settings/tests/test_special_settings.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00001-of-00300", "js_count": 4702, "results": {"model": "transformer", "prob": {"loc": [[0.3562338650226593, 6.398693130904576e-06, 7.446096333296737e-06, 1.6805002189812512e-07, 1.0869357538467739e-05, 1.417993757968361e-07, 1.9623760749709618e-07, 1.8149877689666027e-07, 1.437609569165943e-07, 2.1910811483394355e-05, 3.0190774396032793e-06, 1.6517317646957963e-07, 6.25355005468009e-06, 2.5246611130569363e-06, 5.850816933161695e-07, 1.6015178516681772e-07, 2.101166245438435e-07, 2.716001006319857e-07, 1.7648075356646586e-07, 9.187565552792876e-08, 3.2648318892825046e-07, 1.5036966033221688e-05, 1.3039702935202513e-06, 2.5406745862710522e-06, 0.0003502501640468836, 9.048520723808906e-07, 2.7741227768274257e-06, 3.148333576064033e-07, 4.1863586375257e-07, 0.0008479337557218969, 5.666470883625152e-07, 2.1192501264977182e-07, 1.3593772507647373e-07, 3.520497671161138e-08, 1.825953148681947e-07, 9.264646223527961e-07, 1.0398824770163628e-06, 3.0953259511079523e-07, 1.9533540296379215e-07, 6.407831278920639e-07, 0.005908545106649399, 1.365808373066102e-07, 1.426455469299981e-06, 7.173379685809778e-07, 5.239085112407338e-07, 1.8540350765761104e-06, 4.7409795911335095e-07, 0.025665728375315666, 8.890634148883692e-07, 1.3844797877027304e-06, 8.554712849218049e-07, 2.1435870678487845e-07, 1.8879070466937264e-06, 0.55743408203125, 3.5360859328648075e-05, 3.858086984109832e-06, 5.140207690601528e-07, 1.2712044963336666e-06, 7.3903911470551975e-06, 1.0059545729745878e-06, 8.140644354170945e-07, 4.09467304507416e-07, 1.8580760752229253e-06, 0.05335094779729843, 1.574473935761489e-05, 1.6179633348656353e-06, 6.895723458910652e-07, 2.916422317866818e-06, 3.457049751887098e-05, 1.521899889667111e-06]], "pointer": [[0.0, 0.0, 5.176195190870203e-05, 0.0, 0.000876230129506439, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.015894567593932152, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.013294420205056667, 0.0, 0.0, 0.0, 0.0, 0.0, 0.11914847791194916, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8507345914840698, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9707593321800232]}, "loss": [3.6625986099243164, 0.02967669628560543], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [53]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:39:07.636415", "n_pass": [1, 1, 1], "n_token": 70, "loss": [0.5844109654426575, 0.02967669628560543], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", ":", "#NEWLINE#", "#INDENT#", "def mock_env_side_effect(", "k", ",", "d", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "(", "'simple from env'", "if", "(", "k", "==", "'SIMPLE_STRING'", ")", "else", "d", ")", "#NEWLINE#", "#UNINDENT#", "with", "patch", "(", "'os.environ.get'", ",", "side_effect", "=", "mock_env_side_effect", ")", ":", "#NEWLINE#", "#INDENT#", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_STRING'", "]", "==", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]", "==", "1", ")"]}}
+{"position": {"error_location": 53, "repair_targets": [4, 53, 63], "repair_candidates": [4, 53, 63, 40, 47, 2]}}
+{"prediction": {"error_location": 0.55743408203125, "repair_targets": [0.000876230129506439, 0.11914847791194916, 0.8507345914840698], "repair_candidates": [5.176195190870203e-05, 0.000876230129506439, 0.015894567593932152, 0.013294420205056667, 0.11914847791194916, 0.8507345914840698], "target_probs": 0.9707593321800232}}
+
+
+{"result": {"time": "2021-02-21 05:39:07.698316", "n_pass": [9, 2, 2], "n_token": 53, "loss": [0.29458698630332947, 0.06528782099485397], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", ":", "#NEWLINE#", "#INDENT#", "def mock_env_side_effect(", "k", ",", "d", "=", "None", ")", ":", "patch", "(", "'os.environ.get'", ",", "side_effect", "=", "mock_env_side_effect", ")", ":", "#NEWLINE#", "#INDENT#", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_STRING'", "]", "==", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]", "==", "1", ")"]}}
+{"position": {"error_location": 36, "repair_targets": [4, 36, 46], "repair_candidates": [4, 36, 46, 23, 30, 2]}}
+{"prediction": {"error_location": 0.7448392510414124, "repair_targets": [0.0006558060995303094, 0.022011883556842804, 0.9141300916671753], "repair_candidates": [0.00016358520952053368, 0.0006558060995303094, 0.026742206886410713, 0.036296360194683075, 0.022011883556842804, 0.9141300916671753], "target_probs": 0.9367977976799011}}
+
+
+{"result": {"time": "2021-02-21 05:39:07.871687", "n_pass": [39, 5, 3], "n_token": 49, "loss": [0.4420509934425354, 0.25574880838394165], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", ":", "#NEWLINE#", "#INDENT#", "def mock_env_side_effect(", "k", ",", "d", "=", "None", ")", ":", "patch", "(", "'os.environ.get'", ",", "side_effect", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_STRING'", "]", "==", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]", "==", "1", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [4, 32, 42], "repair_candidates": [4, 32, 42, 23, 26, 2]}}
+{"prediction": {"error_location": 0.6427168846130371, "repair_targets": [0.034068845212459564, 0.04253390058875084, 0.6977337598800659], "repair_candidates": [0.004334740806370974, 0.034068845212459564, 0.013873614370822906, 0.20745517313480377, 0.04253390058875084, 0.6977337598800659], "target_probs": 0.7743364572525024}}
+
+
+{"result": {"time": "2021-02-21 05:39:08.047847", "n_pass": [47, 8, 4], "n_token": 45, "loss": [0.4120396077632904, 0.18828287720680237], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", ":", "#NEWLINE#", "d", "=", "None", ")", ":", "patch", "(", "'os.environ.get'", ",", "side_effect", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_STRING'", "]", "==", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]", "==", "1", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [4, 28, 38], "repair_candidates": [4, 28, 38, 19, 22, 2]}}
+{"prediction": {"error_location": 0.6622980237007141, "repair_targets": [0.05188395828008652, 0.14499518275260925, 0.6315011978149414], "repair_candidates": [0.006773800123482943, 0.05188395828008652, 0.016358070075511932, 0.14848780632019043, 0.14499518275260925, 0.6315011978149414], "target_probs": 0.8283803462982178}}
+
+
+{"result": {"time": "2021-02-21 05:39:08.161764", "n_pass": [49, 10, 5], "n_token": 41, "loss": [0.4807225167751312, 0.11313524842262268], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", ":", "#NEWLINE#", "d", "=", "None", ")", ",", "side_effect", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_STRING'", "]", "==", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]", "==", "1", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [4, 24, 34], "repair_candidates": [4, 24, 34, 15, 18, 2]}}
+{"prediction": {"error_location": 0.6183364391326904, "repair_targets": [0.04729665815830231, 0.2346438616514206, 0.6110893487930298], "repair_candidates": [0.00615856284275651, 0.04729665815830231, 0.02330436371266842, 0.07750716060400009, 0.2346438616514206, 0.6110893487930298], "target_probs": 0.8930298686027527}}
+
+
+{"result": {"time": "2021-02-21 05:39:08.901566", "n_pass": [92, 23, 6], "n_token": 39, "loss": [0.3081323504447937, 0.04911027103662491], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "d", "=", "None", ")", ",", "side_effect", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_STRING'", "]", "==", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]", "==", "1", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [4, 22, 32], "repair_candidates": [4, 22, 32, 13, 16, 2]}}
+{"prediction": {"error_location": 0.7348180413246155, "repair_targets": [0.006854134611785412, 0.1270735263824463, 0.8181484937667847], "repair_candidates": [0.004684728104621172, 0.006854134611785412, 0.010905472561717033, 0.0323336124420166, 0.1270735263824463, 0.8181484937667847], "target_probs": 0.9520761370658875}}
+
+
+{"result": {"time": "2021-02-21 05:39:09.013267", "n_pass": [94, 25, 7], "n_token": 37, "loss": [0.27510306239128113, 0.05788896232843399], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "d", "=", ",", "side_effect", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_STRING'", "]", "==", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]", "==", "1", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [4, 20, 30], "repair_candidates": [4, 20, 30, 11, 14, 2]}}
+{"prediction": {"error_location": 0.7594937682151794, "repair_targets": [0.007060162723064423, 0.09346816688776016, 0.8432263731956482], "repair_candidates": [0.005543102510273457, 0.007060162723064423, 0.014177091419696808, 0.03652505204081535, 0.09346816688776016, 0.8432263731956482], "target_probs": 0.9437547326087952}}
+
+
+{"result": {"time": "2021-02-21 05:39:09.297512", "n_pass": [102, 30, 8], "n_token": 34, "loss": [0.35594454407691956, 0.43891555070877075], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "d", "=", ",", "side_effect", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]", "==", "1", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [4, 20, 27], "repair_candidates": [4, 20, 27, 11, 14, 2]}}
+{"prediction": {"error_location": 0.7005115151405334, "repair_targets": [0.03196711093187332, 0.20135319232940674, 0.4114149212837219], "repair_candidates": [0.016697820276021957, 0.03196711093187332, 0.09060496091842651, 0.24796195328235626, 0.20135319232940674, 0.4114149212837219], "target_probs": 0.6447352170944214}}
+
+
+{"result": {"time": "2021-02-21 05:39:09.468701", "n_pass": [106, 33, 9], "n_token": 31, "loss": [0.5837962627410889, 0.5611306428909302], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "d", "=", ",", "side_effect", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]"]}}
+{"position": {"error_location": 20, "repair_targets": [4, 20, 27], "repair_candidates": [4, 20, 27, 11, 14, 2]}}
+{"prediction": {"error_location": 0.557776927947998, "repair_targets": [0.03165369853377342, 0.29100239276885986, 0.24790754914283752], "repair_candidates": [0.017958585172891617, 0.03165369853377342, 0.08780448138713837, 0.3236733078956604, 0.29100239276885986, 0.24790754914283752], "target_probs": 0.5705636143684387}}
+
+
+{"result": {"time": "2021-02-21 05:39:09.974359", "n_pass": [149, 42, 10], "n_token": 30, "loss": [0.8574541211128235, 0.23037169873714447], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "d", "=", ",", "side_effect", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]"]}}
+{"position": {"error_location": 19, "repair_targets": [3, 19, 26], "repair_candidates": [3, 19, 26, 10, 13, 1]}}
+{"prediction": {"error_location": 0.42424073815345764, "repair_targets": [0.6598076224327087, 0.08839969336986542, 0.04603101313114166], "repair_candidates": [0.19523175060749054, 0.6598076224327087, 0.007504348177462816, 0.0030255604069679976, 0.08839969336986542, 0.04603101313114166], "target_probs": 0.7942383289337158}}
+
+
+{"result": {"time": "2021-02-21 05:39:10.314789", "n_pass": [157, 48, 11], "n_token": 29, "loss": [0.7211549282073975, 0.5119524598121643], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "d", "=", ",", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#NEWLINE#", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]"]}}
+{"position": {"error_location": 18, "repair_targets": [3, 18, 25], "repair_candidates": [3, 18, 25, 9, 12, 1]}}
+{"prediction": {"error_location": 0.48619040846824646, "repair_targets": [0.4809418022632599, 0.1022849828004837, 0.01609751209616661], "repair_candidates": [0.3064049780368805, 0.4809418022632599, 0.08359545469284058, 0.010675327852368355, 0.1022849828004837, 0.01609751209616661], "target_probs": 0.5993242859840393}}
+
+
+{"result": {"time": "2021-02-21 05:39:10.595802", "n_pass": [164, 53, 12], "n_token": 28, "loss": [0.5909759402275085, 0.5443258881568909], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "d", "=", ",", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", "'simple from env'", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 17, 24], "repair_candidates": [3, 17, 24, 9, 12, 1]}}
+{"prediction": {"error_location": 0.55378657579422, "repair_targets": [0.5118891596794128, 0.05759432911872864, 0.010749313980340958], "repair_candidates": [0.27331215143203735, 0.5118891596794128, 0.1370624154806137, 0.00939256977289915, 0.05759432911872864, 0.010749313980340958], "target_probs": 0.5802327990531921}}
+
+
+{"result": {"time": "2021-02-21 05:39:10.877766", "n_pass": [170, 58, 13], "n_token": 27, "loss": [0.454023540019989, 0.5554711222648621], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "d", "=", ",", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", ")", "#NEWLINE#", "assert", "(", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 17, 23], "repair_candidates": [3, 17, 23, 9, 12, 1]}}
+{"prediction": {"error_location": 0.6350677609443665, "repair_targets": [0.5302750468254089, 0.03440842404961586, 0.009118413552641869], "repair_candidates": [0.22984744608402252, 0.5302750468254089, 0.18641385436058044, 0.009936833754181862, 0.03440842404961586, 0.009118413552641869], "target_probs": 0.5738018751144409}}
+
+
+{"result": {"time": "2021-02-21 05:39:11.043967", "n_pass": [173, 61, 14], "n_token": 25, "loss": [0.06169922649860382, 0.4231351912021637], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "d", "=", ",", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", ")", "#NEWLINE#", "settings_dict_to_override", "[", "'SIMPLE_INTEGER'", "]"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 17, 21], "repair_candidates": [3, 17, 21, 9, 12, 1]}}
+{"prediction": {"error_location": 0.9401655197143555, "repair_targets": [0.6429502367973328, 0.0045765764079988, 0.007463268935680389], "repair_candidates": [0.19972510635852814, 0.6429502367973328, 0.1433439999818802, 0.0019408129155635834, 0.0045765764079988, 0.007463268935680389], "target_probs": 0.6549900770187378}}
+
+
+{"result": {"time": "2021-02-21 05:39:11.102893", "n_pass": [175, 62, 15], "n_token": 23, "loss": [0.07961393892765045, 0.38452810049057007], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "d", "=", ",", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", ")", "#NEWLINE#", "settings_dict_to_override", "["]}}
+{"position": {"error_location": 17, "repair_targets": [3, 17, 21], "repair_candidates": [3, 17, 21, 9, 12, 1]}}
+{"prediction": {"error_location": 0.9234728813171387, "repair_targets": [0.6613038778305054, 0.0060234712436795235, 0.013444463722407818], "repair_candidates": [0.22456605732440948, 0.6613038778305054, 0.09361832588911057, 0.0010437413584440947, 0.0060234712436795235, 0.013444463722407818], "target_probs": 0.6807718276977539}}
+
+
+{"result": {"time": "2021-02-21 05:39:11.325519", "n_pass": [181, 66, 16], "n_token": 22, "loss": [0.7713825702667236, 0.3398280441761017], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "=", ",", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", ")", "#NEWLINE#", "settings_dict_to_override", "["]}}
+{"position": {"error_location": 16, "repair_targets": [3, 16, 20], "repair_candidates": [3, 16, 20, 8, 11, 1]}}
+{"prediction": {"error_location": 0.4623733162879944, "repair_targets": [0.634329617023468, 0.045453570783138275, 0.032109543681144714], "repair_candidates": [0.19797447323799133, 0.634329617023468, 0.08325398713350296, 0.006878815591335297, 0.045453570783138275, 0.032109543681144714], "target_probs": 0.7118927240371704}}
+
+
+{"result": {"time": "2021-02-21 05:39:11.495959", "n_pass": [184, 69, 17], "n_token": 21, "loss": [0.45538830757141113, 0.6663599610328674], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "=", ",", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "[", ")", "#NEWLINE#", "settings_dict_to_override", "["]}}
+{"position": {"error_location": 15, "repair_targets": [3, 15, 19], "repair_candidates": [3, 15, 19, 7, 10, 1]}}
+{"prediction": {"error_location": 0.63420170545578, "repair_targets": [0.4118095636367798, 0.07203314453363419, 0.02973187156021595], "repair_candidates": [0.24223163723945618, 0.4118095636367798, 0.2045276165008545, 0.03966618701815605, 0.07203314453363419, 0.02973187156021595], "target_probs": 0.5135746002197266}}
+
+
+{"result": {"time": "2021-02-21 05:39:11.888002", "n_pass": [194, 76, 18], "n_token": 20, "loss": [0.5918452143669128, 0.20051459968090057], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "=", ",", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "assert", "(", "settings_dict_to_override", ")", "#NEWLINE#", "settings_dict_to_override", "["]}}
+{"position": {"error_location": 15, "repair_targets": [3, 15, 18], "repair_candidates": [3, 15, 18, 7, 10, 1]}}
+{"prediction": {"error_location": 0.5533053278923035, "repair_targets": [0.7608461976051331, 0.019715912640094757, 0.037747468799352646], "repair_candidates": [0.09263383597135544, 0.7608461976051331, 0.05968787521123886, 0.029368670657277107, 0.019715912640094757, 0.037747468799352646], "target_probs": 0.8183095455169678}}
+
+
+{"result": {"time": "2021-02-21 05:39:11.943363", "n_pass": [195, 77, 19], "n_token": 19, "loss": [0.19735124707221985, 0.34994402527809143], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_should_override_by_env(", "self", ",", "settings_dict_to_override", ")", "=", ",", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "#NEWLINE#", "settings_dict_to_override", "["]}}
+{"position": {"error_location": 15, "repair_targets": [3, 15, 17], "repair_candidates": [3, 15, 17, 7, 10, 1]}}
+{"prediction": {"error_location": 0.8209022283554077, "repair_targets": [0.6604598760604858, 0.009588833898305893, 0.03467884659767151], "repair_candidates": [0.10996722429990768, 0.6604598760604858, 0.121477872133255, 0.06382730603218079, 0.009588833898305893, 0.03467884659767151], "target_probs": 0.7047275304794312}}
+
+
+{"result": {"time": "2021-02-21 05:39:12.053999", "n_pass": [198, 79, 20], "n_token": 18, "loss": [0.7909284830093384, 0.13446970283985138], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "settings_dict_to_override", ")", "=", ",", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "#NEWLINE#", "settings_dict_to_override", "["]}}
+{"position": {"error_location": 14, "repair_targets": [2, 14, 16], "repair_candidates": [2, 14, 16, 6, 9, 0]}}
+{"prediction": {"error_location": 0.4534236192703247, "repair_targets": [0.8596790432929993, 0.00687324209138751, 0.007627076935023069], "repair_candidates": [0.08467792719602585, 0.8596790432929993, 0.028909791260957718, 0.01223298255354166, 0.00687324209138751, 0.007627076935023069], "target_probs": 0.8741793632507324}}
+
+
+{"result": {"time": "2021-02-21 05:39:12.280142", "n_pass": [204, 83, 21], "n_token": 17, "loss": [0.3820412755012512, 0.368099182844162], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "settings_dict_to_override", ")", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "assert", "(", "settings_dict_to_override", "#NEWLINE#", "settings_dict_to_override", "["]}}
+{"position": {"error_location": 13, "repair_targets": [2, 13, 15], "repair_candidates": [2, 13, 15, 5, 8, 0]}}
+{"prediction": {"error_location": 0.6824669241905212, "repair_targets": [0.6764266490936279, 0.006004660855978727, 0.009617225266993046], "repair_candidates": [0.08220429718494415, 0.6764266490936279, 0.12001275271177292, 0.10573438555002213, 0.006004660855978727, 0.009617225266993046], "target_probs": 0.6920485496520996}}
+
+
+{"result": {"time": "2021-02-21 05:39:12.560420", "n_pass": [211, 88, 22], "n_token": 16, "loss": [0.5303124189376831, 0.4027867317199707], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "settings_dict_to_override", ")", "=", "mock_env_side_effect", "override_settings_by_env", "(", "mock_env_side_effect", ")", "#UNINDENT#", "(", "settings_dict_to_override", "#NEWLINE#", "settings_dict_to_override", "["]}}
+{"position": {"error_location": 12, "repair_targets": [2, 12, 14], "repair_candidates": [2, 12, 14, 5, 8, 0]}}
+{"prediction": {"error_location": 0.588421106338501, "repair_targets": [0.663286030292511, 0.0010702739236876369, 0.004098354373127222], "repair_candidates": [0.031593065708875656, 0.663286030292511, 0.14704734086990356, 0.15290500223636627, 0.0010702739236876369, 0.004098354373127222], "target_probs": 0.668454647064209}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ',', 'settings_dict_to_override', ')', '=', 'mock_env_side_effect', 'override_settings_by_env', '(', 'mock_env_side_effect', ')', '#UNINDENT#', '(', 'settings_dict_to_override', '#NEWLINE#', 'settings_dict_to_override', '[']

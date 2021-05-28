@@ -1,0 +1,145 @@
+
+Original sample:
+
+{"has_bug": false, "bug_kind": 0, "bug_kind_name": "NONE", "source_tokens": ["#NEWLINE#", "def GetLastRequestTimedelta(", "api_query", ",", "from_time", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns how long since the API Query response was last requested.\\n\\n  Args:\\n    api_query: The API Query from which to retrieve the last request timedelta.\\n    from_time: A DateTime object representing the start time to calculate the\\n               timedelta from.\\n\\n  Returns:\\n    A string that describes how long since the API Query response was last\\n    requested in the form of \"HH hours, MM minutes, ss seconds ago\" or None\\n    if the API Query response has never been requested.\\n  '", "#NEWLINE#", "if", "(", "not", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "=", "datetime", ".", "utcnow", "(", ")", "#NEWLINE#", "#UNINDENT#", "if", "api_query", ".", "last_request", ":", "#NEWLINE#", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "last_request", ")", "#NEWLINE#", "return", "FormatTimedelta", "(", "time_delta", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"], "error_location": [0], "repair_targets": [], "repair_candidates": [4, 16, 21, 40, 37, 50, 2, 31, 42], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "googleanalytics/google-analytics-super-proxy/src/controllers/util/models_helper.py", "license": "apache-2.0", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 213, "results": {"model": "transformer", "prob": {"loc": [[0.9741383194923401, 2.60367642113124e-06, 3.573915137167205e-06, 5.74965994815102e-08, 2.8444756026146933e-06, 1.7497994519999338e-07, 5.4026862983391766e-08, 3.101442302977375e-08, 4.9649280242647365e-08, 8.728924427714446e-08, 8.773892545832496e-08, 7.047960366435291e-07, 1.8972475857026438e-07, 1.2283557282444235e-07, 2.754275669758499e-07, 9.128186775342328e-07, 0.0026811445131897926, 2.4449164470752294e-07, 2.8939546155015705e-06, 2.2442525278165704e-06, 1.1817207479225544e-07, 2.922959311035811e-06, 1.383173326985343e-07, 1.4802916666667443e-05, 3.612704801980726e-07, 9.4310017573207e-08, 6.131516784080304e-06, 1.35691016112105e-06, 4.001943807452335e-07, 1.214269644833621e-07, 2.6509493977755483e-07, 0.007122232113033533, 1.4967720289860154e-06, 4.029419642392895e-08, 6.187098620102915e-07, 3.341001786338893e-07, 1.8634531784300634e-07, 1.0541033361732843e-06, 2.110991061954337e-07, 2.0858699656400859e-07, 0.0075507620349526405, 4.7177496753647574e-07, 0.008230658248066902, 3.1328197565017035e-06, 5.6559436245606776e-08, 2.608904594580963e-07, 1.3120217090545339e-06, 1.4722246532983263e-07, 3.107992085915612e-08, 1.99854025595414e-06, 9.992983541451395e-05, 4.1611233427829575e-06, 6.434636361518642e-06, 1.7736406334734056e-06, 2.4319649583048886e-06, 0.00010673215001588687]], "pointer": [[0.0, 0.0, 0.272792249917984, 0.0, 0.0725412666797638, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0004990735906176269, 0.0, 0.0, 0.0, 0.0, 0.5369073748588562, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0023051591124385595, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0891566276550293, 0.0, 0.0, 0.0005117894615978003, 0.0, 0.0015731697203591466, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.023713281378149986, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.0]}, "loss": [0.026201743632555008, 0.0], "acc": [1.0, 0.0, 0.0, 0.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 15:49:09.127442", "n_pass": [1, 1, 1], "n_token": 56, "loss": [0.026201743632555008, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def GetLastRequestTimedelta(", "api_query", ",", "from_time", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns how long since the API Query response was last requested.\\n\\n  Args:\\n    api_query: The API Query from which to retrieve the last request timedelta.\\n    from_time: A DateTime object representing the start time to calculate the\\n               timedelta from.\\n\\n  Returns:\\n    A string that describes how long since the API Query response was last\\n    requested in the form of \"HH hours, MM minutes, ss seconds ago\" or None\\n    if the API Query response has never been requested.\\n  '", "#NEWLINE#", "if", "(", "not", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "=", "datetime", ".", "utcnow", "(", ")", "#NEWLINE#", "#UNINDENT#", "if", "api_query", ".", "last_request", ":", "#NEWLINE#", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "last_request", ")", "#NEWLINE#", "return", "FormatTimedelta", "(", "time_delta", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 16, 21, 40, 37, 50, 2, 31, 42]}}
+{"prediction": {"error_location": 0.9741383194923401, "repair_targets": [], "repair_candidates": [0.272792249917984, 0.0725412666797638, 0.0004990735906176269, 0.5369073748588562, 0.0023051591124385595, 0.0891566276550293, 0.0005117894615978003, 0.0015731697203591466, 0.023713281378149986], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.182796", "n_pass": [21, 2, 2], "n_token": 49, "loss": [0.05614117905497551, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def GetLastRequestTimedelta(", "api_query", ",", "from_time", "=", "None", "(", "not", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "=", "datetime", ".", "utcnow", "(", ")", "#NEWLINE#", "#UNINDENT#", "if", "api_query", ".", "last_request", ":", "#NEWLINE#", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "last_request", ")", "#NEWLINE#", "return", "FormatTimedelta", "(", "time_delta", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 9, 14, 33, 30, 43, 2, 24, 35]}}
+{"prediction": {"error_location": 0.9454059600830078, "repair_targets": [], "repair_candidates": [0.0893574059009552, 0.3607318699359894, 0.0015450350474566221, 0.5056770443916321, 0.0008709939429536462, 0.03062843531370163, 0.0005497356760315597, 0.0007968670106492937, 0.009842616505920887], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.238336", "n_pass": [42, 3, 3], "n_token": 46, "loss": [0.05010668560862541, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def GetLastRequestTimedelta(", "api_query", ",", "from_time", "=", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "=", "datetime", ".", "utcnow", "(", ")", "#NEWLINE#", "#UNINDENT#", "if", "api_query", ".", "last_request", ":", "#NEWLINE#", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "last_request", ")", "#NEWLINE#", "return", "FormatTimedelta", "(", "time_delta", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 6, 11, 30, 27, 40, 2, 21, 32]}}
+{"prediction": {"error_location": 0.9511280655860901, "repair_targets": [], "repair_candidates": [0.08083614706993103, 0.26804548501968384, 0.1291389763355255, 0.49467822909355164, 0.0022456375882029533, 0.019244151189923286, 0.000564561050850898, 0.003102218033745885, 0.0021446270402520895], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.293153", "n_pass": [45, 4, 4], "n_token": 43, "loss": [0.10936255753040314, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def GetLastRequestTimedelta(", "api_query", ",", "from_time", "=", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "utcnow", "(", ")", "#NEWLINE#", "#UNINDENT#", "if", "api_query", ".", "last_request", ":", "#NEWLINE#", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "last_request", ")", "#NEWLINE#", "return", "FormatTimedelta", "(", "time_delta", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 6, 11, 27, 24, 37, 2, 18, 29]}}
+{"prediction": {"error_location": 0.8964053392410278, "repair_targets": [], "repair_candidates": [0.6687816381454468, 0.1440339982509613, 0.07176471501588821, 0.010615957900881767, 0.048819322139024734, 0.01986275240778923, 0.008902464061975479, 0.02124655432999134, 0.0059725446626544], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.350865", "n_pass": [46, 5, 5], "n_token": 40, "loss": [0.08926757425069809, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def GetLastRequestTimedelta(", "api_query", ",", "from_time", "=", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "#NEWLINE#", "#UNINDENT#", "if", "api_query", ".", "last_request", ":", "#NEWLINE#", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "last_request", ")", "#NEWLINE#", "return", "FormatTimedelta", "(", "time_delta", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 6, 11, 24, 21, 34, 2, 15, 26]}}
+{"prediction": {"error_location": 0.9146006107330322, "repair_targets": [], "repair_candidates": [0.7220293879508972, 0.14996971189975739, 0.07400934398174286, 0.018264785408973694, 0.009778163395822048, 0.00869132298976183, 0.0011461445828899741, 0.014735089614987373, 0.0013760216534137726], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.405398", "n_pass": [48, 6, 6], "n_token": 36, "loss": [0.10320690274238586, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def GetLastRequestTimedelta(", "api_query", ",", "from_time", "=", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "#NEWLINE#", "#UNINDENT#", "if", "api_query", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "last_request", ")", "#NEWLINE#", "return", "FormatTimedelta", "(", "time_delta", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 6, 11, 20, 17, 30, 2, 15, 22]}}
+{"prediction": {"error_location": 0.9019401669502258, "repair_targets": [], "repair_candidates": [0.19568932056427002, 0.26641136407852173, 0.45842424035072327, 0.026349276304244995, 0.00975732784718275, 0.03886943683028221, 0.0004536335472948849, 0.0017951808404177427, 0.002250206656754017], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.460071", "n_pass": [51, 7, 7], "n_token": 32, "loss": [0.6440157294273376, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def GetLastRequestTimedelta(", "api_query", ",", "from_time", "=", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "#NEWLINE#", "#UNINDENT#", "if", "api_query", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "FormatTimedelta", "(", "time_delta", ")", "#NEWLINE#", "#UNINDENT#", "return", "None"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 6, 11, 20, 17, 26, 2, 15, 22]}}
+{"prediction": {"error_location": 0.5251792669296265, "repair_targets": [], "repair_candidates": [0.07135269045829773, 0.09149006009101868, 0.7248273491859436, 0.0994265228509903, 0.009196555241942406, 0.0020713796839118004, 0.0003699810476973653, 0.0012447156477719545, 2.0749048417201266e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.515453", "n_pass": [53, 8, 8], "n_token": 28, "loss": [0.2638300657272339, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def GetLastRequestTimedelta(", "api_query", ",", "from_time", "=", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "#NEWLINE#", "#UNINDENT#", "if", "api_query", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "FormatTimedelta", "(", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 6, 11, 20, 17, 26, 2, 15, 22]}}
+{"prediction": {"error_location": 0.7681041359901428, "repair_targets": [], "repair_candidates": [0.046646878123283386, 0.11240488290786743, 0.8006883263587952, 0.023699264973402023, 0.00041574533679522574, 0.012197277508676052, 0.0005572122172452509, 0.003229245776310563, 0.0001612604537513107], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.570639", "n_pass": [79, 9, 9], "n_token": 27, "loss": [0.5115405321121216, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", ",", "from_time", "=", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "#NEWLINE#", "#UNINDENT#", "if", "api_query", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "FormatTimedelta", "(", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [3, 5, 10, 19, 16, 25, 1, 14, 21]}}
+{"prediction": {"error_location": 0.5995712280273438, "repair_targets": [], "repair_candidates": [0.05007246136665344, 0.13735198974609375, 0.7647745013237, 0.03235650435090065, 0.0028365878388285637, 0.004136812407523394, 0.00031403792672790587, 0.008114363998174667, 4.271004945621826e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.625302", "n_pass": [81, 10, 10], "n_token": 26, "loss": [0.6148735880851746, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "=", "from_time", ")", ":", "#NEWLINE#", "#INDENT#", "from_time", "#NEWLINE#", "#UNINDENT#", "if", "api_query", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "FormatTimedelta", "(", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 4, 9, 18, 15, 24, 1, 13, 20]}}
+{"prediction": {"error_location": 0.5407091975212097, "repair_targets": [], "repair_candidates": [0.12441268563270569, 0.13213370740413666, 0.6743981838226318, 0.04149871692061424, 0.005961867049336433, 0.003401230787858367, 0.00042921878048218787, 0.017720496281981468, 4.386936052469537e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.682293", "n_pass": [84, 11, 11], "n_token": 24, "loss": [0.23784597218036652, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "=", "from_time", ")", "#INDENT#", "from_time", "#NEWLINE#", "#UNINDENT#", "if", "api_query", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "FormatTimedelta", "(", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 4, 7, 16, 13, 22, 1, 11, 18]}}
+{"prediction": {"error_location": 0.7883241176605225, "repair_targets": [], "repair_candidates": [0.1283610463142395, 0.14218664169311523, 0.6227195858955383, 0.07183241099119186, 0.00778235774487257, 0.002931533847004175, 0.0002887810405809432, 0.023833272978663445, 6.442538142437115e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.846019", "n_pass": [92, 14, 12], "n_token": 22, "loss": [0.25667646527290344, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "=", "from_time", ")", "#INDENT#", "from_time", "#NEWLINE#", "#UNINDENT#", "if", "api_query", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 4, 7, 16, 13, 20, 1, 11, 18]}}
+{"prediction": {"error_location": 0.7736184000968933, "repair_targets": [], "repair_candidates": [0.352287232875824, 0.21374818682670593, 0.23233920335769653, 0.06124914810061455, 0.0002286704839207232, 0.12656186521053314, 0.0011866636341437697, 1.0805900274135638e-05, 0.012388228438794613], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.900999", "n_pass": [99, 15, 13], "n_token": 20, "loss": [0.0979779064655304, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "=", "from_time", ")", "#INDENT#", "from_time", "if", "api_query", "#INDENT#", "time_delta", "=", "(", "from_time", "-", "api_query", ".", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 4, 7, 14, 11, 18, 1, 9, 16]}}
+{"prediction": {"error_location": 0.9066689610481262, "repair_targets": [], "repair_candidates": [0.14457255601882935, 0.056075699627399445, 0.6238346099853516, 0.03542904183268547, 0.0002531232894398272, 0.13518905639648438, 0.0007588019361719489, 0.0001232344948220998, 0.003763845656067133], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:09.955241", "n_pass": [102, 16, 14], "n_token": 18, "loss": [0.10522515326738358, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "=", "from_time", ")", "#INDENT#", "from_time", "if", "api_query", "#INDENT#", "time_delta", "from_time", "-", "api_query", ".", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 4, 7, 12, 11, 16, 1, 9, 14]}}
+{"prediction": {"error_location": 0.900121808052063, "repair_targets": [], "repair_candidates": [0.21457242965698242, 0.12002753466367722, 0.41846996545791626, 0.06984499841928482, 0.000291759759420529, 0.16421671211719513, 0.0007007293752394617, 8.169414650183171e-05, 0.011794211342930794], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:10.067085", "n_pass": [132, 18, 15], "n_token": 17, "loss": [0.7583754062652588, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "=", "from_time", ")", "#INDENT#", "from_time", "if", "api_query", "#INDENT#", "time_delta", "from_time", "-", "api_query", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 4, 7, 12, 11, 15, 1, 9, 14]}}
+{"prediction": {"error_location": 0.46842676401138306, "repair_targets": [], "repair_candidates": [0.10177147388458252, 0.17906372249126434, 0.5838596224784851, 0.053966034203767776, 0.00012384235742501915, 2.9056087441858836e-05, 0.0806279182434082, 0.0002783467643894255, 0.0002800028014462441], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:10.449333", "n_pass": [148, 25, 16], "n_token": 16, "loss": [0.6883379220962524, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "=", "from_time", ")", "#INDENT#", "from_time", "if", "api_query", "#INDENT#", "time_delta", "from_time", "api_query", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 4, 7, 12, 11, 14, 1, 9, 13]}}
+{"prediction": {"error_location": 0.5024104118347168, "repair_targets": [], "repair_candidates": [0.07338373363018036, 0.17782683670520782, 0.16412900388240814, 0.5833009481430054, 0.00037650478770956397, 0.00022933499712962657, 0.000605609267950058, 9.173687431029975e-05, 5.631542080664076e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:10.558549", "n_pass": [155, 27, 17], "n_token": 15, "loss": [0.48685282468795776, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "from_time", ")", "#INDENT#", "from_time", "if", "api_query", "#INDENT#", "time_delta", "from_time", "api_query", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 11, 10, 13, 1, 8, 12]}}
+{"prediction": {"error_location": 0.6145575046539307, "repair_targets": [], "repair_candidates": [0.05831979960203171, 0.028488604351878166, 0.5062799453735352, 0.4048120081424713, 0.0005936751840636134, 0.0006022215820848942, 0.00037823605816811323, 0.0002751812571659684, 0.0002503416035324335], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:10.669347", "n_pass": [158, 29, 18], "n_token": 14, "loss": [0.32229000329971313, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "from_time", ")", "from_time", "if", "api_query", "#INDENT#", "time_delta", "from_time", "api_query", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 5, 10, 9, 12, 1, 7, 11]}}
+{"prediction": {"error_location": 0.7244879603385925, "repair_targets": [], "repair_candidates": [0.046010155230760574, 0.04824303463101387, 0.5149809122085571, 0.3847120702266693, 0.0020051528699696064, 0.002219370799139142, 0.0003029604267794639, 0.0007014972507022321, 0.0008248200174421072], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:10.724630", "n_pass": [160, 30, 19], "n_token": 13, "loss": [0.1906578242778778, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "from_time", ")", "from_time", "api_query", "#INDENT#", "time_delta", "from_time", "api_query", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 5, 9, 8, 11, 1, 6, 10]}}
+{"prediction": {"error_location": 0.8264153003692627, "repair_targets": [], "repair_candidates": [0.08875984698534012, 0.0538715124130249, 0.3162670433521271, 0.5358549356460571, 0.004605181515216827, 0.000390922388760373, 0.00011539163824636489, 5.7527060562279075e-05, 7.7613971370738e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:10.779754", "n_pass": [162, 31, 20], "n_token": 12, "loss": [0.04357869550585747, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "from_time", ")", "from_time", "api_query", "time_delta", "from_time", "api_query", "time_delta", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 5, 8, 7, 10, 1, 6, 9]}}
+{"prediction": {"error_location": 0.9573572278022766, "repair_targets": [], "repair_candidates": [0.07373936474323273, 0.14582768082618713, 0.08748333901166916, 0.19761954247951508, 0.24564456939697266, 0.11734289675951004, 0.0003486762579996139, 0.089385986328125, 0.04260796681046486], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:10.834709", "n_pass": [167, 32, 21], "n_token": 11, "loss": [0.5963510274887085, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "from_time", ")", "from_time", "api_query", "time_delta", "from_time", "api_query", "time_delta"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 5, 8, 7, 10, 1, 6, 9]}}
+{"prediction": {"error_location": 0.5508179664611816, "repair_targets": [], "repair_candidates": [0.008293460123240948, 0.07896771281957626, 0.03433016315102577, 0.2731221914291382, 0.001419339794665575, 0.0034187466371804476, 0.600340723991394, 7.823126361472532e-05, 2.939777732535731e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:49:10.889653", "n_pass": [172, 33, 22], "n_token": 10, "loss": [0.049106597900390625, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "api_query", "from_time", "from_time", "from_time", "api_query", "time_delta", "from_time", "api_query", "time_delta"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 4, 7, 6, 9, 1, 5, 8]}}
+{"prediction": {"error_location": 0.9520796537399292, "repair_targets": [], "repair_candidates": [0.5160536170005798, 0.14036516845226288, 0.016589758917689323, 0.021695958450436592, 0.1872541904449463, 0.021843982860445976, 0.013520454056560993, 0.07838844507932663, 0.00428845314309001], "target_probs": 0.0}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'api_query', 'from_time', 'from_time', 'from_time', 'api_query', 'time_delta', 'from_time', 'api_query', 'time_delta']

@@ -1,0 +1,139 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "score", ")", ":", "#NEWLINE#", "#INDENT#", "return", "False", "#NEWLINE#", "#UNINDENT#", "if", "(", "rule", ".", "target_type", "==", "Example", ".", "Ranked", ")", ":", "#NEWLINE#", "#INDENT#", "return", "True", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "not", "is_redundant", "(", "rule", ",", "new_rule", ")", ")"], "error_location": [19], "repair_targets": [4, 32, 56], "repair_candidates": [2, 4, 32, 56, 6, 15, 19, 58], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "anzev/hedwig/hedwig/learners/learner.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00001-of-00300", "js_count": 4615, "results": {"model": "transformer", "prob": {"loc": [[0.3085811138153076, 2.607124088171986e-06, 1.8877553884522058e-05, 2.4097264628153425e-08, 1.2925544979225378e-05, 2.4710580248665792e-08, 5.668118319590576e-06, 1.559460827138537e-08, 3.5047008850597194e-08, 5.77611487528884e-08, 4.2790951226834295e-08, 3.0647368021163857e-07, 2.4300129553012084e-07, 1.48896575069557e-07, 1.92013999367191e-07, 0.38912728428840637, 2.9516604627133347e-07, 1.7916356398473e-07, 1.453361875292103e-07, 0.16828478872776031, 5.653355970025586e-07, 2.4798920250646006e-08, 1.5874062953002976e-08, 1.4142868565159006e-07, 6.252430040376566e-08, 3.4916364910486664e-08, 6.441423749947717e-08, 4.100382966498728e-07, 7.980005278795943e-08, 5.832209026834789e-08, 6.083026704573058e-08, 1.9957806784987042e-07, 0.10766333341598511, 2.2875539684719115e-07, 4.747174102703866e-07, 1.0490920487882249e-07, 0.02496863156557083, 3.7804335306645953e-07, 8.126508532768639e-08, 2.85485555195919e-08, 1.1389421388230403e-06, 2.0678353962466645e-07, 8.990593158841875e-08, 1.1014182632607117e-07, 1.5308260117308237e-06, 3.3141247968160314e-07, 2.51183564614621e-07, 1.0287418206189614e-07, 1.9186207111943077e-07, 3.118567803994665e-07, 1.3895161998789263e-07, 6.913601691138638e-09, 4.602545118359558e-07, 7.383723072962312e-07, 1.3186927105834911e-07, 1.7364142195219756e-06, 0.000729841529391706, 3.6299121575211757e-07, 0.0005919546820223331, 2.322572214552565e-07, 1.7416608955045376e-07]], "pointer": [[0.0, 0.0, 0.08660846203565598, 0.0, 0.371391624212265, 0.0, 0.07923583686351776, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1368020474910736, 0.0, 0.0, 0.0, 0.07655858993530273, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.24205058813095093, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00624864874407649, 0.0, 0.0011042050318792462, 0.0, 0.0]], "target": [0.6196908950805664]}, "loss": [1.782097578048706, 0.478534460067749], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [15]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:38:37.278625", "n_pass": [1, 1, 1], "n_token": 61, "loss": [0.9438488483428955, 0.478534460067749], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "score", ")", ":", "#NEWLINE#", "#INDENT#", "return", "False", "#NEWLINE#", "#UNINDENT#", "if", "(", "rule", ".", "target_type", "==", "Example", ".", "Ranked", ")", ":", "#NEWLINE#", "#INDENT#", "return", "True", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "not", "is_redundant", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 32, 56], "repair_candidates": [2, 4, 32, 56, 6, 15, 19, 58]}}
+{"prediction": {"error_location": 0.38912728428840637, "repair_targets": [0.371391624212265, 0.24205058813095093, 0.00624864874407649], "repair_candidates": [0.08660846203565598, 0.371391624212265, 0.07923583686351776, 0.1368020474910736, 0.07655858993530273, 0.24205058813095093, 0.00624864874407649, 0.0011042050318792462], "target_probs": 0.6196908950805664}}
+
+
+{"result": {"time": "2021-02-21 05:38:37.615806", "n_pass": [50, 7, 2], "n_token": 57, "loss": [0.7224787473678589, 0.34803497791290283], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#INDENT#", "return", "False", "#NEWLINE#", "#UNINDENT#", "if", "(", "rule", ".", "target_type", "==", "Example", ".", "Ranked", ")", ":", "#NEWLINE#", "#INDENT#", "return", "True", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "not", "is_redundant", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 28, 52], "repair_candidates": [2, 4, 28, 52, 6, 15, 19, 54]}}
+{"prediction": {"error_location": 0.4855472147464752, "repair_targets": [0.48572826385498047, 0.21656791865825653, 0.0037779936101287603], "repair_candidates": [0.06184467300772667, 0.48572826385498047, 0.07687019556760788, 0.10415243357419968, 0.05031781643629074, 0.21656791865825653, 0.0037779936101287603, 0.0007406901568174362], "target_probs": 0.7060741782188416}}
+
+
+{"result": {"time": "2021-02-21 05:38:37.671304", "n_pass": [52, 8, 3], "n_token": 53, "loss": [0.7265523672103882, 0.19774553179740906], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#INDENT#", "return", "False", "#NEWLINE#", "#UNINDENT#", "if", "(", "rule", ".", "Ranked", ")", ":", "#NEWLINE#", "#INDENT#", "return", "True", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "not", "is_redundant", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 28, 48], "repair_candidates": [2, 4, 28, 48, 6, 15, 19, 50]}}
+{"prediction": {"error_location": 0.4835733473300934, "repair_targets": [0.7678908109664917, 0.04682607203722, 0.005861752666532993], "repair_candidates": [0.13060438632965088, 0.7678908109664917, 0.024338936433196068, 0.01968265511095524, 0.004264910705387592, 0.04682607203722, 0.005861752666532993, 0.0005304664373397827], "target_probs": 0.8205786347389221}}
+
+
+{"result": {"time": "2021-02-21 05:38:37.783096", "n_pass": [54, 10, 4], "n_token": 49, "loss": [0.7987673282623291, 0.20623405277729034], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#INDENT#", "return", "False", "#NEWLINE#", "#UNINDENT#", "if", "(", "rule", ".", "Ranked", ")", ":", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "not", "is_redundant", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 28, 44], "repair_candidates": [2, 4, 28, 44, 6, 15, 19, 46]}}
+{"prediction": {"error_location": 0.4498830735683441, "repair_targets": [0.7706565856933594, 0.03439140319824219, 0.008594656363129616], "repair_candidates": [0.13704121112823486, 0.7706565856933594, 0.02650555595755577, 0.017827888950705528, 0.0042130062356591225, 0.03439140319824219, 0.008594656363129616, 0.000769678212236613], "target_probs": 0.8136426210403442}}
+
+
+{"result": {"time": "2021-02-21 05:38:37.897725", "n_pass": [56, 12, 5], "n_token": 45, "loss": [0.7025619745254517, 0.22082945704460144], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#INDENT#", "return", "False", "#NEWLINE#", "#UNINDENT#", "if", "(", "rule", ".", "Ranked", ")", ":", "#NEWLINE#", "#UNINDENT#", "else", ":", "not", "is_redundant", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 28, 40], "repair_candidates": [2, 4, 28, 40, 6, 15, 19, 42]}}
+{"prediction": {"error_location": 0.49531468749046326, "repair_targets": [0.7691738605499268, 0.014999772422015667, 0.01767982542514801], "repair_candidates": [0.15455585718154907, 0.7691738605499268, 0.022084956988692284, 0.017312627285718918, 0.0034872933756560087, 0.014999772422015667, 0.01767982542514801, 0.0007057965267449617], "target_probs": 0.8018534183502197}}
+
+
+{"result": {"time": "2021-02-21 05:38:38.009543", "n_pass": [65, 14, 6], "n_token": 41, "loss": [0.79352867603302, 0.3369252681732178], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", ".", "Ranked", ")", ":", "#NEWLINE#", "#UNINDENT#", "else", ":", "not", "is_redundant", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 24, 36], "repair_candidates": [2, 4, 24, 36, 6, 15, 19, 38]}}
+{"prediction": {"error_location": 0.45224615931510925, "repair_targets": [0.6516879200935364, 0.010514610446989536, 0.05175963416695595], "repair_candidates": [0.25895342230796814, 0.6516879200935364, 0.015818899497389793, 0.0068368022330105305, 0.003264984115958214, 0.010514610446989536, 0.05175963416695595, 0.0011636835988610983], "target_probs": 0.713962197303772}}
+
+
+{"result": {"time": "2021-02-21 05:38:38.065425", "n_pass": [67, 15, 7], "n_token": 37, "loss": [0.6915050745010376, 0.41040295362472534], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "#NEWLINE#", "#UNINDENT#", "else", ":", "not", "is_redundant", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 24, 32], "repair_candidates": [2, 4, 24, 32, 6, 15, 19, 34]}}
+{"prediction": {"error_location": 0.5008217692375183, "repair_targets": [0.6006059646606445, 0.00835703406482935, 0.0544198639690876], "repair_candidates": [0.319882333278656, 0.6006059646606445, 0.014113884419202805, 0.0011120056733489037, 0.0008909752941690385, 0.00835703406482935, 0.0544198639690876, 0.0006179194315336645], "target_probs": 0.663382887840271}}
+
+
+{"result": {"time": "2021-02-21 05:38:38.290884", "n_pass": [99, 19, 8], "n_token": 35, "loss": [0.7615709900856018, 0.4238334894180298], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "#NEWLINE#", "#UNINDENT#", "not", "is_redundant", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 24, 30], "repair_candidates": [2, 4, 24, 30, 6, 15, 19, 32]}}
+{"prediction": {"error_location": 0.4669322669506073, "repair_targets": [0.5494692325592041, 0.033162444829940796, 0.07190119475126266], "repair_candidates": [0.31444716453552246, 0.5494692325592041, 0.02584090083837509, 0.0027354543562978506, 0.0018676855834200978, 0.033162444829940796, 0.07190119475126266, 0.0005760087515227497], "target_probs": 0.6545328497886658}}
+
+
+{"result": {"time": "2021-02-21 05:38:38.346890", "n_pass": [100, 20, 9], "n_token": 33, "loss": [0.6810715794563293, 0.28838565945625305], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "#NEWLINE#", "#UNINDENT#", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 24, 28], "repair_candidates": [2, 4, 24, 28, 6, 15, 19, 30]}}
+{"prediction": {"error_location": 0.5060743689537048, "repair_targets": [0.6293966770172119, 0.052600547671318054, 0.06747525185346603], "repair_candidates": [0.2267821878194809, 0.6293966770172119, 0.0184863843023777, 0.002743386896327138, 0.0017739576287567616, 0.052600547671318054, 0.06747525185346603, 0.0007415888248942792], "target_probs": 0.7494724988937378}}
+
+
+{"result": {"time": "2021-02-21 05:38:38.458483", "n_pass": [104, 22, 10], "n_token": 32, "loss": [0.5389503240585327, 0.12507376074790955], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def non_redundant(", "self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "#NEWLINE#", "#UNINDENT#", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [3, 23, 27], "repair_candidates": [1, 3, 23, 27, 5, 14, 18, 29]}}
+{"prediction": {"error_location": 0.5833602547645569, "repair_targets": [0.8401638269424438, 0.03284689784049988, 0.009421083144843578], "repair_candidates": [0.10441169142723083, 0.8401638269424438, 0.006849939003586769, 0.0034171342849731445, 0.002458578674122691, 0.03284689784049988, 0.009421083144843578, 0.00043086055666208267], "target_probs": 0.8824318051338196}}
+
+
+{"result": {"time": "2021-02-21 05:38:38.513806", "n_pass": [105, 23, 11], "n_token": 31, "loss": [0.26412513852119446, 0.027060123160481453], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "#NEWLINE#", "#UNINDENT#", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 22, 26], "repair_candidates": [0, 2, 22, 26, 4, 13, 17, 28]}}
+{"prediction": {"error_location": 0.7678775191307068, "repair_targets": [0.7768104076385498, 0.0965571179986, 0.09993519634008408], "repair_candidates": [0.023243483155965805, 0.7768104076385498, 0.002854506252333522, 0.00035788831883110106, 0.00019499198242556304, 0.0965571179986, 0.09993519634008408, 4.64314034616109e-05], "target_probs": 0.9733027219772339}}
+
+
+{"result": {"time": "2021-02-21 05:38:38.571612", "n_pass": [109, 24, 12], "n_token": 29, "loss": [0.239613875746727, 0.029471764340996742], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", "#NEWLINE#", "#INDENT#", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "#NEWLINE#", "#UNINDENT#", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 20, 24], "repair_candidates": [0, 2, 20, 24, 4, 11, 15, 26]}}
+{"prediction": {"error_location": 0.786931574344635, "repair_targets": [0.8561163544654846, 0.057758431881666183, 0.057083483785390854], "repair_candidates": [0.025534633547067642, 0.8561163544654846, 0.00300826714374125, 0.0003700085508171469, 9.531549585517496e-05, 0.057758431881666183, 0.057083483785390854, 3.357292735017836e-05], "target_probs": 0.9709582924842834}}
+
+
+{"result": {"time": "2021-02-21 05:38:38.626754", "n_pass": [110, 25, 13], "n_token": 27, "loss": [0.5624319314956665, 0.05975528433918953], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "score", "<", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "#NEWLINE#", "#UNINDENT#", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 18, 22], "repair_candidates": [0, 2, 18, 22, 4, 9, 13, 24]}}
+{"prediction": {"error_location": 0.5698216557502747, "repair_targets": [0.8356378078460693, 0.09174297749996185, 0.014614254236221313], "repair_candidates": [0.052085328847169876, 0.8356378078460693, 0.005152045749127865, 0.00041773542761802673, 0.0002975103270728141, 0.09174297749996185, 0.014614254236221313, 5.232789408182725e-05], "target_probs": 0.9419950246810913}}
+
+
+{"result": {"time": "2021-02-21 05:38:38.792605", "n_pass": [114, 28, 14], "n_token": 25, "loss": [0.20374426245689392, 0.13059784471988678], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "#NEWLINE#", "#UNINDENT#", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 16, 20], "repair_candidates": [0, 2, 16, 20, 4, 9, 11, 22]}}
+{"prediction": {"error_location": 0.8156709671020508, "repair_targets": [0.6546214818954468, 0.14953793585300446, 0.07341118156909943], "repair_candidates": [0.10854041576385498, 0.6546214818954468, 0.00866981502622366, 0.0013180756941437721, 0.0037921990733593702, 0.14953793585300446, 0.07341118156909943, 0.00010882646893151104], "target_probs": 0.877570629119873}}
+
+
+{"result": {"time": "2021-02-21 05:38:38.905857", "n_pass": [118, 30, 15], "n_token": 23, "loss": [0.43761372566223145, 0.5921813249588013], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "(", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 16, 18], "repair_candidates": [0, 2, 16, 18, 4, 9, 11, 20]}}
+{"prediction": {"error_location": 0.6455751657485962, "repair_targets": [0.49638277292251587, 0.008833864703774452, 0.047902800142765045], "repair_candidates": [0.3903142809867859, 0.49638277292251587, 0.044032786041498184, 0.004687437321990728, 0.007673286367207766, 0.008833864703774452, 0.047902800142765045, 0.00017275138816330582], "target_probs": 0.553119421005249}}
+
+
+{"result": {"time": "2021-02-21 05:38:39.181109", "n_pass": [153, 35, 16], "n_token": 22, "loss": [0.31922340393066406, 0.2821774482727051], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "rule", ",", "new_rule", ")", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 16, 17], "repair_candidates": [0, 2, 16, 17, 4, 9, 11, 19]}}
+{"prediction": {"error_location": 0.7267131805419922, "repair_targets": [0.10798484086990356, 0.2790389955043793, 0.36711597442626953], "repair_candidates": [0.2294386923313141, 0.10798484086990356, 0.0112453019246459, 0.0024634802248328924, 0.0025518452748656273, 0.2790389955043793, 0.36711597442626953, 0.00016087271797005087], "target_probs": 0.7541398406028748}}
+
+
+{"result": {"time": "2021-02-21 05:38:39.239507", "n_pass": [154, 36, 17], "n_token": 21, "loss": [0.11307501792907715, 0.05471670255064964], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "rule", "new_rule", ")", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 16, 17], "repair_candidates": [0, 2, 16, 17, 4, 9, 11, 18]}}
+{"prediction": {"error_location": 0.8930836319923401, "repair_targets": [0.11617596447467804, 0.359224796295166, 0.47135257720947266], "repair_candidates": [0.04806576296687126, 0.11617596447467804, 0.003259404096752405, 0.0009951145621016622, 0.0008671756950207055, 0.359224796295166, 0.47135257720947266, 5.92137330386322e-05], "target_probs": 0.9467533230781555}}
+
+
+{"result": {"time": "2021-02-21 05:38:39.294676", "n_pass": [156, 37, 18], "n_token": 20, "loss": [0.14978429675102234, 0.12051550298929214], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "rule", "new_rule", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 16, 17], "repair_candidates": [0, 2, 16, 17, 4, 9, 11, 18]}}
+{"prediction": {"error_location": 0.860893726348877, "repair_targets": [0.1404852271080017, 0.3204207420349121, 0.425557404756546], "repair_candidates": [0.10656063258647919, 0.1404852271080017, 0.004844755865633488, 0.0004294125537853688, 0.0016003483906388283, 0.3204207420349121, 0.425557404756546, 0.00010147506691282615], "target_probs": 0.8864633440971375}}
+
+
+{"result": {"time": "2021-02-21 05:38:39.349421", "n_pass": [157, 38, 19], "n_token": 19, "loss": [0.1329432725906372, 0.2523666322231293], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "new_rule", ".", "#UNINDENT#", "if", "(", "rule", "rule", "new_rule"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 16, 17], "repair_candidates": [0, 2, 16, 17, 4, 9, 11, 18]}}
+{"prediction": {"error_location": 0.8755148649215698, "repair_targets": [0.5673579573631287, 0.07914252579212189, 0.13045935332775116], "repair_candidates": [0.20992539823055267, 0.5673579573631287, 0.009528574533760548, 0.0002501695416867733, 0.00216927588917315, 0.07914252579212189, 0.13045935332775116, 0.0011667130747810006], "target_probs": 0.7769598364830017}}
+
+
+{"result": {"time": "2021-02-21 05:38:39.791764", "n_pass": [170, 46, 20], "n_token": 18, "loss": [0.1263192892074585, 0.0708211213350296], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "new_rule", "#UNINDENT#", "if", "(", "rule", "rule", "new_rule"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 15, 16], "repair_candidates": [0, 2, 15, 16, 4, 9, 11, 17]}}
+{"prediction": {"error_location": 0.8813334703445435, "repair_targets": [0.6369670033454895, 0.12638628482818604, 0.16827523708343506], "repair_candidates": [0.044688545167446136, 0.6369670033454895, 0.017564620822668076, 0.000615769240539521, 0.001562261488288641, 0.12638628482818604, 0.16827523708343506, 0.003940312657505274], "target_probs": 0.9316285252571106}}
+
+
+{"result": {"time": "2021-02-21 05:38:39.847176", "n_pass": [171, 47, 21], "n_token": 17, "loss": [0.1343253254890442, 0.24056963622570038], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "rule", ",", "new_rule", "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", "#NEWLINE#", "if", "(", "new_rule", ".", "new_rule", "if", "(", "rule", "rule", "new_rule"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 14, 15], "repair_candidates": [0, 2, 14, 15, 4, 9, 11, 16]}}
+{"prediction": {"error_location": 0.8743056654930115, "repair_targets": [0.47124454379081726, 0.12292788177728653, 0.19200749695301056], "repair_candidates": [0.17332051694393158, 0.47124454379081726, 0.021487900987267494, 0.0007276943069882691, 0.002607152098789811, 0.12292788177728653, 0.19200749695301056, 0.015676861628890038], "target_probs": 0.7861799001693726}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ',', 'rule', ',', 'new_rule', "'\\n        Is the rule non-redundant compared to its immediate generalization?\\n        '", '#NEWLINE#', 'if', '(', 'new_rule', '.', 'new_rule', 'if', '(', 'rule', 'rule', 'new_rule']

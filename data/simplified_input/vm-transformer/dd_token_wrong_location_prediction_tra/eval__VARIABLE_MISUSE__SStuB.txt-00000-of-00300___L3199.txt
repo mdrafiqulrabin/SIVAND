@@ -1,0 +1,97 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "classmethod", "#NEWLINE#", "def _get_manual_filterset(", "cls", ",", "included", ",", "defaults", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        manually construct a filter set. included and defaults should both be\\n        arrays of booleans mapping to values in human_readable and whether they should be\\n        included and defaulted, respectively.\\n        '", "#NEWLINE#", "return", "[", "HQUserToggle", "(", "i", ",", "defaults", "[", "i", "]", ")", "for", "i", "in", "range", "(", "cls", ".", "count", ")", "if", "defaults", "[", "i", "]", "]"], "error_location": [37], "repair_targets": [7], "repair_candidates": [5, 32, 7, 20, 24, 28, 39, 9, 22, 37], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "dimagi/commcare-hq/corehq/apps/reports/models.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 3199, "results": {"model": "transformer", "prob": {"loc": [[0.09514142572879791, 3.654651436590939e-06, 6.748234682163456e-08, 6.202339619676422e-08, 8.041057242280658e-08, 9.906203786158585e-07, 1.799181781336756e-08, 6.793357442802517e-06, 1.0510980530398228e-08, 7.476659789062978e-07, 2.989618774762448e-09, 2.0510611875579343e-08, 5.227258625950526e-08, 4.241099560431394e-08, 2.824856721872493e-07, 1.1399387744859268e-07, 1.0838390629430705e-08, 5.117867658555042e-07, 4.8712625044800006e-08, 2.665549914127041e-07, 0.8064078688621521, 9.498945985342289e-08, 0.02708326280117035, 3.5706165135707124e-07, 0.002449572551995516, 1.8829754822036193e-07, 8.391209576075198e-07, 2.849917791536427e-06, 4.2360164798083133e-07, 1.2478337474419732e-08, 1.8579173399757565e-07, 2.2968572466197656e-07, 0.05545392259955406, 7.79617664647958e-07, 1.635413759970561e-08, 3.3331575277628644e-09, 4.197335101707722e-07, 0.011319943703711033, 4.428081297191966e-07, 0.0021232201252132654, 2.4113672836278965e-08, 3.994332331558326e-08]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.00845083873718977, 0.0, 0.9893326759338379, 0.0, 0.00033410280593670905, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.403864414191048e-07, 0.0, 0.0006044304464012384, 0.0, 4.386736236483557e-06, 0.0, 0.0, 0.0, 0.000643004896119237, 0.0, 0.0, 0.0, 0.00041370250983163714, 0.0, 0.0, 0.0, 0.0, 0.00021132145775482059, 0.0, 5.3114549700694624e-06, 0.0, 0.0]], "target": [0.9893326759338379]}, "loss": [4.481189250946045, 0.010724627412855625], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [20]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:37:16.074203", "n_pass": [1, 1, 1], "n_token": 42, "loss": [0.21516551077365875, 0.010724627412855625], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "classmethod", "#NEWLINE#", "def _get_manual_filterset(", "cls", ",", "included", ",", "defaults", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        manually construct a filter set. included and defaults should both be\\n        arrays of booleans mapping to values in human_readable and whether they should be\\n        included and defaulted, respectively.\\n        '", "#NEWLINE#", "return", "[", "HQUserToggle", "(", "i", ",", "defaults", "[", "i", "]", ")", "for", "i", "in", "range", "(", "cls", ".", "count", ")", "if", "defaults", "[", "i", "]", "]"]}}
+{"position": {"error_location": 20, "repair_targets": [7], "repair_candidates": [5, 32, 7, 20, 24, 28, 39, 9, 22, 37]}}
+{"prediction": {"error_location": 0.8064078688621521, "repair_targets": [0.9893326759338379], "repair_candidates": [0.00845083873718977, 0.9893326759338379, 0.00033410280593670905, 2.403864414191048e-07, 0.0006044304464012384, 4.386736236483557e-06, 0.000643004896119237, 0.00041370250983163714, 0.00021132145775482059, 5.3114549700694624e-06], "target_probs": 0.9893326759338379}}
+
+
+{"result": {"time": "2021-02-21 05:37:16.187643", "n_pass": [20, 3, 2], "n_token": 37, "loss": [0.05492541193962097, 0.00016583387332502753], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", ",", "defaults", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        manually construct a filter set. included and defaults should both be\\n        arrays of booleans mapping to values in human_readable and whether they should be\\n        included and defaulted, respectively.\\n        '", "#NEWLINE#", "return", "[", "HQUserToggle", "(", "i", ",", "defaults", "[", "i", "]", ")", "for", "i", "in", "range", "(", "cls", ".", "count", ")", "if", "defaults", "[", "i", "]", "]"]}}
+{"position": {"error_location": 15, "repair_targets": [2], "repair_candidates": [0, 27, 2, 15, 19, 23, 34, 4, 17, 32]}}
+{"prediction": {"error_location": 0.9465557336807251, "repair_targets": [0.9998341798782349], "repair_candidates": [4.807909863302484e-05, 0.9998341798782349, 1.500361213402357e-05, 3.286143908098893e-07, 1.0093181117554195e-05, 7.300685922473349e-08, 7.540006481576711e-05, 5.014258476876421e-06, 1.1673642802634276e-05, 1.7748799052696995e-07], "target_probs": 0.9998341798782349}}
+
+
+{"result": {"time": "2021-02-21 05:37:16.243092", "n_pass": [21, 4, 3], "n_token": 32, "loss": [0.009775741025805473, 0.00013638472591992468], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", ",", "defaults", "#NEWLINE#", "return", "[", "HQUserToggle", "(", "i", ",", "defaults", "[", "i", "]", ")", "for", "i", "in", "range", "(", "cls", ".", "count", ")", "if", "defaults", "[", "i", "]", "]"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [0, 22, 2, 10, 14, 18, 29, 4, 12, 27]}}
+{"prediction": {"error_location": 0.9902719855308533, "repair_targets": [0.9998636245727539], "repair_candidates": [2.311724892933853e-05, 0.9998636245727539, 4.8446385335410014e-05, 2.382653576660232e-07, 1.2799289834219962e-05, 4.180759916039278e-08, 4.2305684473831207e-05, 2.7845460408570943e-06, 6.458968982769875e-06, 1.8957786096507334e-07], "target_probs": 0.9998636245727539}}
+
+
+{"result": {"time": "2021-02-21 05:37:16.353768", "n_pass": [41, 6, 4], "n_token": 30, "loss": [0.004543220158666372, 0.0005003273254260421], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", ",", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "[", "i", "]", ")", "for", "i", "in", "range", "(", "cls", ".", "count", ")", "if", "defaults", "[", "i", "]", "]"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [0, 20, 2, 8, 12, 16, 27, 4, 10, 25]}}
+{"prediction": {"error_location": 0.9954670667648315, "repair_targets": [0.9994997978210449], "repair_candidates": [2.2851636458653957e-05, 0.9994997978210449, 0.00029697571881115437, 6.4350575712524e-07, 6.757679511792958e-05, 1.5996766933312756e-07, 4.377130971988663e-05, 1.0947482223855332e-05, 5.6807330111041665e-05, 4.649297409287101e-07], "target_probs": 0.9994997978210449}}
+
+
+{"result": {"time": "2021-02-21 05:37:16.408992", "n_pass": [47, 7, 5], "n_token": 27, "loss": [0.009285243228077888, 0.001187075162306428], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", ",", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "[", "i", "]", ")", "for", "i", "in", "range", "(", "cls", "if", "defaults", "[", "i", "]", "]"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [0, 20, 2, 8, 12, 16, 24, 4, 10, 22]}}
+{"prediction": {"error_location": 0.9907578229904175, "repair_targets": [0.9988136291503906], "repair_candidates": [3.299481249996461e-05, 0.9988136291503906, 0.0002359714562771842, 1.0689176406231127e-06, 9.989486716222018e-05, 2.801710365929466e-07, 6.358309474308044e-05, 0.0006714730407111347, 8.060353866312653e-05, 5.824782647323445e-07], "target_probs": 0.9988136291503906}}
+
+
+{"result": {"time": "2021-02-21 05:37:16.468010", "n_pass": [81, 8, 6], "n_token": 25, "loss": [0.08857118338346481, 0.004236659966409206], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", ",", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "[", "i", "]", ")", "for", "i", "in", "range", "(", "cls", "if", "defaults", "[", "i"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [0, 20, 2, 8, 12, 16, 24, 4, 10, 22]}}
+{"prediction": {"error_location": 0.9152379631996155, "repair_targets": [0.9957723021507263], "repair_candidates": [0.0001534594048280269, 0.9957723021507263, 0.0010036592138931155, 7.775605809001718e-06, 0.0013717648107558489, 3.0704615028298576e-07, 0.00017390142602380365, 0.0009254345786757767, 0.0005845168489031494, 6.834022769908188e-06], "target_probs": 0.9957723021507263}}
+
+
+{"result": {"time": "2021-02-21 05:37:16.578165", "n_pass": [85, 10, 7], "n_token": 24, "loss": [0.3988226056098938, 0.05878467857837677], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "[", "i", "]", ")", "for", "i", "in", "range", "(", "cls", "if", "defaults", "[", "i"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [0, 19, 2, 7, 11, 15, 23, 3, 9, 21]}}
+{"prediction": {"error_location": 0.6711097955703735, "repair_targets": [0.9429097771644592], "repair_candidates": [0.0011739518959075212, 0.9429097771644592, 0.03200496733188629, 0.00015800661640241742, 0.005237021017819643, 1.1484241440484766e-05, 0.0018408409086987376, 0.00568302720785141, 0.01089575793594122, 8.51833974593319e-05], "target_probs": 0.9429097771644592}}
+
+
+{"result": {"time": "2021-02-21 05:37:16.855677", "n_pass": [93, 15, 8], "n_token": 23, "loss": [0.4015645384788513, 0.11740108579397202], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "i", "]", ")", "for", "i", "in", "range", "(", "cls", "if", "defaults", "[", "i"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [0, 18, 2, 7, 10, 14, 22, 3, 9, 20]}}
+{"prediction": {"error_location": 0.6692720651626587, "repair_targets": [0.8892284631729126], "repair_candidates": [0.0025613210164010525, 0.8892284631729126, 0.08551567792892456, 0.0003773679491132498, 0.0030481787398457527, 0.00010150039452128112, 0.0013618739321827888, 0.004900339059531689, 0.012752984650433064, 0.00015233265003189445], "target_probs": 0.8892284631729126}}
+
+
+{"result": {"time": "2021-02-21 05:37:17.296176", "n_pass": [123, 23, 9], "n_token": 22, "loss": [0.6422855257987976, 0.10223710536956787], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "i", "]", ")", "i", "in", "range", "(", "cls", "if", "defaults", "[", "i"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [0, 17, 2, 7, 10, 13, 21, 3, 9, 19]}}
+{"prediction": {"error_location": 0.5260886549949646, "repair_targets": [0.9028154611587524], "repair_candidates": [0.0030160846654325724, 0.9028154611587524, 0.07847005128860474, 0.0004975353949703276, 0.0053973509930074215, 0.0024964548647403717, 0.0008761638309806585, 0.0021142216864973307, 0.004043834749609232, 0.00027286174008622766], "target_probs": 0.9028154611587524}}
+
+
+{"result": {"time": "2021-02-21 05:37:17.406832", "n_pass": [125, 25, 10], "n_token": 21, "loss": [0.6720505356788635, 0.08307104557752609], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "i", "]", ")", "i", "in", "(", "cls", "if", "defaults", "[", "i"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [0, 16, 2, 7, 10, 13, 20, 3, 9, 18]}}
+{"prediction": {"error_location": 0.5106603503227234, "repair_targets": [0.9202857613563538], "repair_candidates": [0.002035376848652959, 0.9202857613563538, 0.06472643464803696, 0.0006136121228337288, 0.004409998655319214, 0.0018864225130528212, 0.0007579182856716216, 0.0012618048349395394, 0.003762773470953107, 0.00025987016852013767], "target_probs": 0.9202857613563538}}
+
+
+{"result": {"time": "2021-02-21 05:37:17.574113", "n_pass": [130, 28, 11], "n_token": 20, "loss": [1.074870228767395, 0.04229067265987396], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "i", "]", ")", "i", "in", "(", "cls", "if", "defaults", "i"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [0, 16, 2, 7, 10, 13, 19, 3, 9, 18]}}
+{"prediction": {"error_location": 0.3413420617580414, "repair_targets": [0.958591103553772], "repair_candidates": [0.0027728797867894173, 0.958591103553772, 0.024099484086036682, 0.0010309048229828477, 0.006553121376782656, 0.0021029405761510134, 0.0011877280194312334, 0.002363136038184166, 0.0011467838194221258, 0.0001519435172667727], "target_probs": 0.958591103553772}}
+
+
+{"result": {"time": "2021-02-21 05:37:17.905686", "n_pass": [143, 34, 12], "n_token": 19, "loss": [1.0429023504257202, 0.03973637521266937], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "i", ")", "i", "in", "(", "cls", "if", "defaults", "i"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [0, 15, 2, 7, 10, 12, 18, 3, 9, 17]}}
+{"prediction": {"error_location": 0.3524303138256073, "repair_targets": [0.9610427618026733], "repair_candidates": [0.003511464688926935, 0.9610427618026733, 0.017741207033395767, 0.0011091777123510838, 0.0044440412893891335, 0.002391177462413907, 0.002409335458651185, 0.005875066388398409, 0.0013125495752319694, 0.00016317823610734195], "target_probs": 0.9610427618026733}}
+
+
+{"result": {"time": "2021-02-21 05:37:18.127868", "n_pass": [149, 38, 13], "n_token": 18, "loss": [0.4315458834171295, 0.10454720258712769], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "i", ")", "i", "in", "(", "cls", "defaults", "i"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [0, 15, 2, 7, 10, 12, 17, 3, 9, 16]}}
+{"prediction": {"error_location": 0.6495042443275452, "repair_targets": [0.9007322788238525], "repair_candidates": [0.003374772146344185, 0.9007322788238525, 0.06338537484407425, 0.0004261980066075921, 0.017193378880620003, 0.006343849468976259, 0.0015324660344049335, 0.002500829054042697, 0.004460817202925682, 5.008574589737691e-05], "target_probs": 0.9007322788238525}}
+
+
+{"result": {"time": "2021-02-21 05:37:18.515649", "n_pass": [165, 45, 14], "n_token": 17, "loss": [0.6142812371253967, 0.07159755378961563], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "included", "defaults", "#NEWLINE#", "HQUserToggle", "(", "i", ",", "defaults", "i", ")", "i", "(", "cls", "defaults", "i"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [0, 14, 2, 7, 10, 12, 16, 3, 9, 15]}}
+{"prediction": {"error_location": 0.5410295724868774, "repair_targets": [0.9309054613113403], "repair_candidates": [0.0030056198593229055, 0.9309054613113403, 0.04311233386397362, 0.00012733714538626373, 0.01582271233201027, 0.0027245390228927135, 5.392169623519294e-05, 0.0024787369184195995, 0.0017450656741857529, 2.437297735013999e-05], "target_probs": 0.9309054613113403}}
+
+
+
+
+Minimal simplified tokens:
+
+['cls', ',', 'included', 'defaults', '#NEWLINE#', 'HQUserToggle', '(', 'i', ',', 'defaults', 'i', ')', 'i', '(', 'cls', 'defaults', 'i']

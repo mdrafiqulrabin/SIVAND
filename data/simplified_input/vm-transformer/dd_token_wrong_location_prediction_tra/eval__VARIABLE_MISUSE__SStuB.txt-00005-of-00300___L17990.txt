@@ -1,0 +1,91 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def linstep(", "min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns the value of a linear step function.\\n\\n    Returns 0 if x < min, 1 if x > max, and performs a linear\\n    interpolation between 0 and 1 in the interval min to max.\\n\\n    :rtype: float\\n    '", "#NEWLINE#", "if", "(", "min", "<", "min", ")", ":", "#NEWLINE#", "#INDENT#", "return", "0.0", "#NEWLINE#", "#UNINDENT#", "if", "(", "x", ">", "max", ")", ":", "#NEWLINE#", "#INDENT#", "return", "1.0", "#NEWLINE#", "#UNINDENT#", "return", "linmap", "(", "min", ",", "max", ",", "x", ")"], "error_location": [15], "repair_targets": [6, 28, 46], "repair_candidates": [6, 28, 46, 4, 30, 44, 2, 15, 17, 42], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "CountZer0/PipelineConstructionSet/python/maya/site-packages/pymel-1.0.3/pymel/util/mathutils.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00005-of-00300", "js_count": 17990, "results": {"model": "transformer", "prob": {"loc": [[0.0742315873503685, 1.0650312560755992e-06, 6.230178541954956e-07, 1.960217055341218e-08, 7.929720595711842e-07, 2.776301677442916e-08, 2.340831997571513e-06, 1.8980495397613595e-08, 5.63642288398114e-08, 1.5302373412851011e-07, 9.955127211469517e-08, 2.210415601666682e-07, 2.499474760497833e-07, 2.4388936026298325e-07, 2.4640101514705748e-08, 0.15119799971580505, 3.8071894437052833e-07, 0.7519870400428772, 5.7131074981953134e-08, 1.7956041631350672e-07, 3.116621201115777e-07, 3.4718834029945356e-08, 2.3525299042148617e-08, 5.06743731421011e-07, 1.4300972850378457e-07, 4.365569949982273e-08, 5.025909644018611e-08, 1.1172134328774064e-08, 0.019014831632375717, 1.2279090810807247e-07, 0.002857099287211895, 2.8642725524719026e-08, 6.163575108075747e-07, 3.5753643601310614e-07, 4.624454064128258e-08, 1.9079184454540155e-08, 7.995756163836631e-07, 1.1340848971030937e-07, 4.8131582275345863e-08, 3.758641842210864e-09, 2.66274557958468e-09, 1.7010632902270117e-08, 8.705449727131054e-05, 4.201804770787021e-08, 0.0003722457913681865, 4.0878521900822307e-08, 0.00024218267935793847, 6.63221513264034e-08]], "pointer": [[0.0, 0.0, 0.009148369543254375, 0.0, 0.2038261890411377, 0.0, 0.7161479592323303, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0006922761676833034, 0.0, 8.746351340960246e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.057218827307224274, 0.0, 0.0002250286197522655, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.5741893700324e-05, 0.0, 0.0002566845796536654, 0.0, 0.01243013609200716, 0.0]], "target": [0.7857969403266907]}, "loss": [1.889164924621582, 0.24105685949325562], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [17]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:08:53.852689", "n_pass": [1, 1, 1], "n_token": 48, "loss": [0.2850360870361328, 0.24105685949325562], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def linstep(", "min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns the value of a linear step function.\\n\\n    Returns 0 if x < min, 1 if x > max, and performs a linear\\n    interpolation between 0 and 1 in the interval min to max.\\n\\n    :rtype: float\\n    '", "#NEWLINE#", "if", "(", "min", "<", "min", ")", ":", "#NEWLINE#", "#INDENT#", "return", "0.0", "#NEWLINE#", "#UNINDENT#", "if", "(", "x", ">", "max", ")", ":", "#NEWLINE#", "#INDENT#", "return", "1.0", "#NEWLINE#", "#UNINDENT#", "return", "linmap", "(", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [6, 28, 46], "repair_candidates": [6, 28, 46, 4, 30, 44, 2, 15, 17, 42]}}
+{"prediction": {"error_location": 0.7519870400428772, "repair_targets": [0.7161479592323303, 0.057218827307224274, 0.01243013609200716], "repair_candidates": [0.009148369543254375, 0.2038261890411377, 0.7161479592323303, 0.0006922761676833034, 8.746351340960246e-06, 0.057218827307224274, 0.0002250286197522655, 4.5741893700324e-05, 0.0002566845796536654, 0.01243013609200716], "target_probs": 0.7857969403266907}}
+
+
+{"result": {"time": "2021-02-21 06:08:53.909195", "n_pass": [23, 2, 2], "n_token": 42, "loss": [0.7884942293167114, 0.5714519023895264], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def linstep(", "min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns the value of a linear step function.\\n\\n    Returns 0 if x < min, 1 if x > max, and performs a linear\\n    interpolation between 0 and 1 in the interval min to max.\\n\\n    :rtype: float\\n    '", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "if", "(", "x", ">", "max", ")", ":", "#NEWLINE#", "#INDENT#", "return", "1.0", "#NEWLINE#", "#UNINDENT#", "return", "linmap", "(", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [6, 22, 40], "repair_candidates": [6, 22, 40, 4, 24, 38, 2, 15, 17, 36]}}
+{"prediction": {"error_location": 0.4545287489891052, "repair_targets": [0.5109473466873169, 0.03205199912190437, 0.021705621853470802], "repair_candidates": [0.04032233729958534, 0.3937031328678131, 0.5109473466873169, 0.0002809047291520983, 6.980322268645978e-06, 0.03205199912190437, 4.070500654052012e-05, 0.00010873276187339798, 0.0008322725770995021, 0.021705621853470802], "target_probs": 0.564704954624176}}
+
+
+{"result": {"time": "2021-02-21 06:08:54.077629", "n_pass": [47, 5, 3], "n_token": 39, "loss": [0.8811036944389343, 0.6649361252784729], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def linstep(", "min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns the value of a linear step function.\\n\\n    Returns 0 if x < min, 1 if x > max, and performs a linear\\n    interpolation between 0 and 1 in the interval min to max.\\n\\n    :rtype: float\\n    '", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "if", "(", "x", ">", "max", ")", ":", "1.0", "#NEWLINE#", "#UNINDENT#", "return", "linmap", "(", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [6, 22, 37], "repair_candidates": [6, 22, 37, 4, 24, 35, 2, 15, 17, 33]}}
+{"prediction": {"error_location": 0.41432541608810425, "repair_targets": [0.46178150177001953, 0.034254152327775955, 0.018270673230290413], "repair_candidates": [0.06537330150604248, 0.4184388518333435, 0.46178150177001953, 0.00030829966999590397, 8.662948857818265e-06, 0.034254152327775955, 7.898027979535982e-05, 0.00031645031413063407, 0.0011692149564623833, 0.018270673230290413], "target_probs": 0.514306366443634}}
+
+
+{"result": {"time": "2021-02-21 06:08:54.133196", "n_pass": [48, 6, 4], "n_token": 36, "loss": [0.9127679467201233, 0.5909584760665894], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def linstep(", "min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns the value of a linear step function.\\n\\n    Returns 0 if x < min, 1 if x > max, and performs a linear\\n    interpolation between 0 and 1 in the interval min to max.\\n\\n    :rtype: float\\n    '", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "if", "(", "x", ">", "max", ")", ":", "return", "linmap", "(", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [6, 22, 34], "repair_candidates": [6, 22, 34, 4, 24, 32, 2, 15, 17, 30]}}
+{"prediction": {"error_location": 0.4014115631580353, "repair_targets": [0.511555552482605, 0.031090013682842255, 0.011150650680065155], "repair_candidates": [0.06949187815189362, 0.3739734888076782, 0.511555552482605, 0.0011381959775462747, 2.1739346266258508e-05, 0.031090013682842255, 0.00011871696915477514, 0.0005992702208459377, 0.0008604180766269565, 0.011150650680065155], "target_probs": 0.5537962317466736}}
+
+
+{"result": {"time": "2021-02-21 06:08:54.247593", "n_pass": [55, 8, 5], "n_token": 33, "loss": [0.8647280931472778, 0.6797704696655273], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def linstep(", "min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "if", "(", "x", ">", "max", ")", ":", "return", "linmap", "(", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [6, 19, 31], "repair_candidates": [6, 19, 31, 4, 21, 29, 2, 12, 14, 27]}}
+{"prediction": {"error_location": 0.4211660623550415, "repair_targets": [0.4815789461135864, 0.016815051436424255, 0.008339328691363335], "repair_candidates": [0.060870684683322906, 0.4281381070613861, 0.4815789461135864, 0.0014941327972337604, 2.7238675102125853e-05, 0.016815051436424255, 9.001102444017306e-05, 0.0013327592751011252, 0.0013138741487637162, 0.008339328691363335], "target_probs": 0.5067332983016968}}
+
+
+{"result": {"time": "2021-02-21 06:08:54.750686", "n_pass": [97, 17, 6], "n_token": 31, "loss": [0.13691052794456482, 0.07939803600311279], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def linstep(", "min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "x", ">", "max", ")", ":", "return", "linmap", "(", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [6, 17, 29], "repair_candidates": [6, 17, 29, 4, 19, 27, 2, 12, 14, 25]}}
+{"prediction": {"error_location": 0.8720482587814331, "repair_targets": [0.888343870639801, 0.02666918747127056, 0.0086591187864542], "repair_candidates": [0.0005781769868917763, 0.07544706761837006, 0.888343870639801, 1.872228313004598e-05, 8.40096106458077e-07, 0.02666918747127056, 6.398133700713515e-05, 4.861352499574423e-05, 0.00017037657380569726, 0.0086591187864542], "target_probs": 0.9236721992492676}}
+
+
+{"result": {"time": "2021-02-21 06:08:54.806638", "n_pass": [100, 18, 7], "n_token": 29, "loss": [0.16865748167037964, 0.05977882444858551], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def linstep(", "min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "x", ">", "max", ")", "linmap", "(", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [6, 17, 27], "repair_candidates": [6, 17, 27, 4, 19, 25, 2, 12, 14, 23]}}
+{"prediction": {"error_location": 0.84479820728302, "repair_targets": [0.8652748465538025, 0.061025578528642654, 0.015672415494918823], "repair_candidates": [0.0006455687689594924, 0.05679763853549957, 0.8652748465538025, 2.833104917954188e-05, 1.3441251667245524e-06, 0.061025578528642654, 0.00041091255843639374, 5.025206701247953e-05, 9.298149234382436e-05, 0.015672415494918823], "target_probs": 0.9419728517532349}}
+
+
+{"result": {"time": "2021-02-21 06:08:54.864974", "n_pass": [101, 19, 8], "n_token": 27, "loss": [0.30823037028312683, 0.05659407377243042], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def linstep(", "min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "x", ">", "max", ")", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [6, 17, 25], "repair_candidates": [6, 17, 25, 4, 19, 23, 2, 12, 14, 21]}}
+{"prediction": {"error_location": 0.7347460389137268, "repair_targets": [0.8331167697906494, 0.09597394615411758, 0.015886874869465828], "repair_candidates": [0.0025688991881906986, 0.05196838453412056, 0.8331167697906494, 0.00016361408052034676, 1.1662496035569347e-05, 0.09597394615411758, 2.9645296308444813e-05, 0.00018002837896347046, 0.00010015846783062443, 0.015886874869465828], "target_probs": 0.9449775815010071}}
+
+
+{"result": {"time": "2021-02-21 06:08:54.920899", "n_pass": [105, 20, 9], "n_token": 26, "loss": [0.3489931523799896, 0.05104067921638489], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def linstep(", "min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "x", ">", "max", ")", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [5, 16, 24], "repair_candidates": [5, 16, 24, 3, 18, 22, 1, 11, 13, 20]}}
+{"prediction": {"error_location": 0.7053978443145752, "repair_targets": [0.8015812039375305, 0.06630535423755646, 0.08235343545675278], "repair_candidates": [0.01661401428282261, 0.0329875573515892, 0.8015812039375305, 2.2370528313331306e-05, 5.779542675554694e-07, 0.06630535423755646, 2.3612994937138865e-06, 9.448951459489763e-05, 3.8677662814734504e-05, 0.08235343545675278], "target_probs": 0.9502400159835815}}
+
+
+{"result": {"time": "2021-02-21 06:08:54.976257", "n_pass": [106, 21, 10], "n_token": 25, "loss": [0.3595132827758789, 0.0007085925899446011], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["min", ",", "max", ",", "x", ")", ":", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "x", ">", "max", ")", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [4, 15, 23], "repair_candidates": [4, 15, 23, 2, 17, 21, 0, 10, 12, 19]}}
+{"prediction": {"error_location": 0.6980158686637878, "repair_targets": [0.9813446998596191, 0.00981354434043169, 0.008133387193083763], "repair_candidates": [0.0006851519574411213, 2.1168003513594158e-05, 0.9813446998596191, 9.53384358126641e-08, 1.5902079653073997e-08, 0.00981354434043169, 2.208710583317952e-07, 5.198250505600299e-07, 1.1871552487718873e-06, 0.008133387193083763], "target_probs": 0.9992916584014893}}
+
+
+{"result": {"time": "2021-02-21 06:08:55.086671", "n_pass": [110, 23, 11], "n_token": 24, "loss": [0.4469940960407257, 0.00010413473501102999], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["min", ",", "max", "x", ")", ":", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "x", ">", "max", ")", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [3, 14, 22], "repair_candidates": [3, 14, 22, 2, 16, 20, 0, 9, 11, 18]}}
+{"prediction": {"error_location": 0.6395476460456848, "repair_targets": [0.9983003735542297, 0.0007343976176343858, 0.0008611169178038836], "repair_candidates": [0.0001014328736346215, 2.465245415805839e-06, 0.9983003735542297, 1.510912817082044e-08, 5.373163691757554e-09, 0.0007343976176343858, 6.858857659608475e-08, 1.227183901164608e-07, 1.1053109716385734e-07, 0.0008611169178038836], "target_probs": 0.9998958706855774}}
+
+
+{"result": {"time": "2021-02-21 06:08:55.141954", "n_pass": [112, 24, 12], "n_token": 23, "loss": [0.8548447489738464, 1.2755474926962052e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["min", ",", "max", "x", ":", "#NEWLINE#", "if", "(", "min", "<", "min", "#NEWLINE#", "#UNINDENT#", "x", ">", "max", ")", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [3, 13, 21], "repair_candidates": [3, 13, 21, 2, 15, 19, 0, 8, 10, 17]}}
+{"prediction": {"error_location": 0.42534926533699036, "repair_targets": [0.9999407529830933, 1.2809472536901012e-05, 3.3650667319307104e-05], "repair_candidates": [1.132800753111951e-05, 9.59077169682132e-07, 0.9999407529830933, 1.1960754875417479e-07, 5.0840768039961404e-08, 1.2809472536901012e-05, 8.976382304126673e-08, 1.5022077093362896e-07, 3.1676620437792735e-08, 3.3650667319307104e-05], "target_probs": 0.9999872446060181}}
+
+
+{"result": {"time": "2021-02-21 06:08:55.366038", "n_pass": [118, 28, 13], "n_token": 21, "loss": [1.0574921369552612, 0.0002779154747258872], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["min", ",", "max", "x", ":", "#NEWLINE#", "if", "(", "min", "<", "min", "x", ">", "max", ")", "min", ",", "max", ",", "x", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [3, 11, 19], "repair_candidates": [3, 11, 19, 2, 13, 17, 0, 8, 10, 15]}}
+{"prediction": {"error_location": 0.34732580184936523, "repair_targets": [0.9994699358940125, 0.00015853146032895893, 9.366746235173196e-05], "repair_candidates": [0.0001556806091684848, 3.140226908726618e-05, 0.9994699358940125, 1.1465300303825643e-05, 3.638647103798576e-05, 0.00015853146032895893, 1.913528649311047e-05, 1.8926482880488038e-05, 4.788048045156756e-06, 9.366746235173196e-05], "target_probs": 0.9997221231460571}}
+
+
+
+
+Minimal simplified tokens:
+
+['min', ',', 'max', 'x', ':', '#NEWLINE#', 'if', '(', 'min', '<', 'min', 'x', '>', 'max', ')', 'min', ',', 'max', ',', 'x', ')']

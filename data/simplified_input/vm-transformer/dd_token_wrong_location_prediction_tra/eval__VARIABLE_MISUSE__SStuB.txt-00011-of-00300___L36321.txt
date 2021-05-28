@@ -1,0 +1,127 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "guid", "=", "generate_guid", "(", ")", "#NEWLINE#", "guiddata", "=", "struct", ".", "unpack", "(", "(", "'!LBBH'", "+", "(", "'p'", "*", "(", "len", "(", "guid", ")", "-", "8", ")", ")", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "guid", ")", ",", "guid", "[", "2", "]", ")"], "error_location": [48], "repair_targets": [13], "repair_candidates": [7, 28, 36, 45, 48, 2, 39, 13], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "livenson/vcdm/src/tests/test_common.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00011-of-00300", "js_count": 36321, "results": {"model": "transformer", "prob": {"loc": [[0.0047340369783341885, 2.993665404460444e-08, 4.930883790166263e-08, 1.4385966862207056e-09, 1.5828970356679406e-09, 1.6232059030230062e-09, 1.2927067194468123e-09, 8.102187365466307e-09, 8.274111396033845e-10, 3.943660953353856e-10, 4.390822372357661e-09, 1.5883165893626483e-09, 7.000736657047923e-10, 1.0984036862282665e-06, 7.519609934725224e-10, 6.305562738617709e-09, 1.7831036647208975e-09, 5.072741116052271e-10, 1.6721977136313626e-09, 1.0208384360055334e-08, 3.686537297653558e-08, 2.0547130663572943e-09, 1.748041600357908e-09, 1.763371301422012e-06, 1.1588808801477057e-09, 1.2323148057546973e-09, 1.0073296641266438e-09, 1.1976450053907683e-08, 0.0005178904393687844, 3.807151482959625e-09, 1.5173677425650567e-08, 3.340138903240586e-07, 2.0001910172595672e-07, 1.7728062573496572e-07, 6.572075506028341e-08, 1.9624897618086834e-07, 0.024203045293688774, 2.306880588776039e-07, 5.433695093870483e-08, 7.088091535933927e-08, 1.5359042038198822e-08, 1.929076232087823e-09, 2.511742458466415e-08, 1.302577867789978e-08, 4.837774554289354e-07, 0.6534650921821594, 1.6423055626546557e-07, 2.2055820636524004e-07, 0.3169635832309723, 6.409278512364835e-07, 0.00010835320426849648, 2.195906603219555e-07, 1.7577551716385642e-06]], "pointer": [[0.0, 0.0, 2.781149305519648e-05, 0.0, 0.0, 0.0, 0.0, 1.9814733605016954e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9999328851699829, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 9.025557119457517e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.096142336289631e-06, 0.0, 0.0, 5.7491197367198765e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 1.1142603852931643e-06, 0.0, 0.0, 4.6005612830413156e-07, 0.0, 0.0, 0.0, 0.0]], "target": [0.9999328851699829]}, "loss": [1.1489683389663696, 6.711708556395024e-05], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [45]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:54:43.569764", "n_pass": [1, 1, 1], "n_token": 53, "loss": [0.4254661500453949, 6.711708556395024e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "guid", "=", "generate_guid", "(", ")", "#NEWLINE#", "guiddata", "=", "struct", ".", "unpack", "(", "(", "'!LBBH'", "+", "(", "'p'", "*", "(", "len", "(", "guid", ")", "-", "8", ")", ")", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "guid", ")", ",", "guid", "[", "2", "]", ")"]}}
+{"position": {"error_location": 45, "repair_targets": [13], "repair_candidates": [7, 28, 36, 45, 48, 2, 39, 13]}}
+{"prediction": {"error_location": 0.6534650921821594, "repair_targets": [0.9999328851699829], "repair_candidates": [2.781149305519648e-05, 1.9814733605016954e-05, 0.9999328851699829, 9.025557119457517e-06, 3.096142336289631e-06, 5.7491197367198765e-06, 1.1142603852931643e-06, 4.6005612830413156e-07], "target_probs": 0.9999328851699829}}
+
+
+{"result": {"time": "2021-02-21 06:54:43.629292", "n_pass": [23, 2, 2], "n_token": 46, "loss": [0.4610719680786133, 2.6584024453768507e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "guid", "=", "generate_guid", "(", ")", "#NEWLINE#", "guiddata", "=", "struct", ".", "unpack", "(", "len", "(", "guid", ")", "-", "8", ")", ")", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "guid", ")", ",", "guid", "[", "2", "]", ")"]}}
+{"position": {"error_location": 38, "repair_targets": [13], "repair_candidates": [7, 21, 29, 38, 41, 2, 32, 13]}}
+{"prediction": {"error_location": 0.6306073069572449, "repair_targets": [0.9999734163284302], "repair_candidates": [1.0003534043789841e-05, 8.342854926013388e-06, 0.9999734163284302, 5.149971912032925e-06, 2.065847581889102e-07, 7.497056913052802e-07, 1.583870130161813e-06, 5.830672762385802e-07], "target_probs": 0.9999734163284302}}
+
+
+{"result": {"time": "2021-02-21 06:54:43.686308", "n_pass": [45, 3, 3], "n_token": 43, "loss": [0.5892548561096191, 0.0005109423073008657], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "guid", "=", "generate_guid", "(", ")", "#NEWLINE#", "guiddata", "=", "struct", ".", "unpack", "guid", ")", "-", "8", ")", ")", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "guid", ")", ",", "guid", "[", "2", "]", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [13], "repair_candidates": [7, 18, 26, 35, 38, 2, 29, 13]}}
+{"prediction": {"error_location": 0.5547404289245605, "repair_targets": [0.9994891881942749], "repair_candidates": [0.00013925318489782512, 0.00010815158020704985, 0.9994891881942749, 5.2726765716215596e-05, 2.4565151761635207e-06, 5.404644980444573e-06, 0.00014495209325104952, 5.77916216570884e-05], "target_probs": 0.9994891881942749}}
+
+
+{"result": {"time": "2021-02-21 06:54:43.742445", "n_pass": [47, 4, 4], "n_token": 40, "loss": [0.38938891887664795, 0.00022813299437984824], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "guid", "=", "generate_guid", "(", ")", "#NEWLINE#", "guiddata", "=", "struct", ".", "unpack", "guid", ")", "-", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "guid", ")", ",", "guid", "[", "2", "]", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [13], "repair_candidates": [7, 18, 23, 32, 35, 2, 26, 13]}}
+{"prediction": {"error_location": 0.6774707436561584, "repair_targets": [0.9997718930244446], "repair_candidates": [5.907125523663126e-05, 4.43171156803146e-05, 0.9997718930244446, 3.376101449248381e-05, 1.2051293651893502e-06, 1.953454102476826e-06, 6.194169691298157e-05, 2.5848145014606416e-05], "target_probs": 0.9997718930244446}}
+
+
+{"result": {"time": "2021-02-21 06:54:43.854844", "n_pass": [52, 6, 5], "n_token": 36, "loss": [0.43993303179740906, 4.1128048906102777e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "guid", "=", "generate_guid", "(", ")", "#NEWLINE#", "guiddata", "=", "struct", ".", "unpack", "guid", ")", "-", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 32, "repair_targets": [13], "repair_candidates": [7, 18, 23, 32, 35, 2, 26, 13]}}
+{"prediction": {"error_location": 0.6440795660018921, "repair_targets": [0.999958872795105], "repair_candidates": [1.8842931240214966e-05, 1.2505928680184297e-05, 0.999958872795105, 6.026745268172817e-06, 7.169496143433207e-07, 1.631619738873269e-06, 1.0149398121939157e-06, 4.17680865893999e-07], "target_probs": 0.999958872795105}}
+
+
+{"result": {"time": "2021-02-21 06:54:43.911471", "n_pass": [54, 7, 6], "n_token": 33, "loss": [0.4730134606361389, 4.1604907892178744e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", "#INDENT#", "guid", "=", "generate_guid", "(", ")", "#NEWLINE#", "guiddata", "=", "struct", ".", "unpack", "guid", ")", "-", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 29, "repair_targets": [10], "repair_candidates": [4, 15, 20, 29, 32, 2, 23, 10]}}
+{"prediction": {"error_location": 0.6231217384338379, "repair_targets": [0.9999583959579468], "repair_candidates": [1.6412095646956004e-05, 1.7354675946990028e-05, 0.9999583959579468, 5.964236152067315e-06, 1.272797476303822e-07, 1.513726942903304e-06, 2.043358051651012e-07, 8.624375880117441e-08], "target_probs": 0.9999583959579468}}
+
+
+{"result": {"time": "2021-02-21 06:54:43.971613", "n_pass": [56, 8, 7], "n_token": 30, "loss": [0.6215348839759827, 0.00018389723845757544], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", "#INDENT#", "guid", "=", "#NEWLINE#", "guiddata", "=", "struct", ".", "unpack", "guid", ")", "-", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 26, "repair_targets": [7], "repair_candidates": [4, 12, 17, 26, 29, 2, 20, 7]}}
+{"prediction": {"error_location": 0.5371193885803223, "repair_targets": [0.9998161196708679], "repair_candidates": [0.00010979572834912688, 2.5344676032545976e-05, 0.9998161196708679, 3.970451871282421e-05, 1.79808594680253e-07, 8.376937330467626e-06, 2.6974709044225165e-07, 2.0579287252076028e-07], "target_probs": 0.9998161196708679}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.027367", "n_pass": [58, 9, 8], "n_token": 27, "loss": [0.4135640561580658, 0.0007087118574418128], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", "#INDENT#", "guid", "=", "#NEWLINE#", "guiddata", "=", "guid", ")", "-", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 23, "repair_targets": [7], "repair_candidates": [4, 9, 14, 23, 26, 2, 17, 7]}}
+{"prediction": {"error_location": 0.6612891554832458, "repair_targets": [0.9992915391921997], "repair_candidates": [0.00016661967674735934, 0.000472706655273214, 0.9992915391921997, 4.6508474042639136e-05, 1.0890917110373266e-06, 2.0758539903908968e-05, 2.515187134122243e-07, 4.3777251335086476e-07], "target_probs": 0.9992915391921997}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.139101", "n_pass": [85, 11, 9], "n_token": 25, "loss": [0.36969438195228577, 0.0010929116979241371], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", "#INDENT#", "guid", "=", "#NEWLINE#", "guiddata", "=", "guid", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 21, "repair_targets": [7], "repair_candidates": [4, 9, 12, 21, 24, 2, 15, 7]}}
+{"prediction": {"error_location": 0.6909453868865967, "repair_targets": [0.9989076852798462], "repair_candidates": [0.0003565509105101228, 0.0006140686455182731, 0.9989076852798462, 8.69736832100898e-05, 3.5642813145386754e-06, 2.5357750928378664e-05, 1.968283640962909e-06, 3.903074684785679e-06], "target_probs": 0.9989076852798462}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.251373", "n_pass": [89, 13, 10], "n_token": 23, "loss": [0.32293030619621277, 0.0010027546668425202], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testSizeMustReflectTheGuidSize(", "self", "#INDENT#", "guid", "=", "#NEWLINE#", "guiddata", "=", "guid", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 19, "repair_targets": [7], "repair_candidates": [4, 9, 12, 19, 22, 2, 15, 7]}}
+{"prediction": {"error_location": 0.7240242958068848, "repair_targets": [0.9989977478981018], "repair_candidates": [0.000288261566311121, 0.0006341699045151472, 0.9989977478981018, 6.189243867993355e-05, 3.591238282751874e-06, 6.650694558629766e-06, 2.948310793726705e-06, 4.6156669668562245e-06], "target_probs": 0.9989977478981018}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.366071", "n_pass": [93, 15, 11], "n_token": 22, "loss": [0.2781650125980377, 0.012540321797132492], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def testSizeMustReflectTheGuidSize(", "self", "#INDENT#", "guid", "=", "#NEWLINE#", "guiddata", "=", "guid", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 18, "repair_targets": [6], "repair_candidates": [3, 8, 11, 18, 21, 1, 14, 6]}}
+{"prediction": {"error_location": 0.7571718692779541, "repair_targets": [0.9875379800796509], "repair_candidates": [0.0013747109333053231, 0.010897324420511723, 0.9875379800796509, 0.0001598258240846917, 2.4875174858607352e-05, 4.002691639470868e-06, 3.6392842162058514e-07, 9.014412967189855e-07], "target_probs": 0.9875379800796509}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.421567", "n_pass": [94, 16, 12], "n_token": 21, "loss": [0.42344191670417786, 0.0007252342184074223], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "#INDENT#", "guid", "=", "#NEWLINE#", "guiddata", "=", "guid", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 17, "repair_targets": [5], "repair_candidates": [2, 7, 10, 17, 20, 0, 13, 5]}}
+{"prediction": {"error_location": 0.6547892689704895, "repair_targets": [0.9992750287055969], "repair_candidates": [4.6725370339117944e-05, 9.381688869325444e-05, 0.9992750287055969, 0.0005270043620839715, 5.61583656235598e-05, 3.3902614404723863e-07, 3.022829844212538e-07, 6.145044721961312e-07], "target_probs": 0.9992750287055969}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.477486", "n_pass": [96, 17, 13], "n_token": 20, "loss": [0.07615973800420761, 0.0009268047288060188], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "guid", "=", "#NEWLINE#", "guiddata", "=", "guid", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 16, "repair_targets": [4], "repair_candidates": [1, 6, 9, 16, 19, 0, 12, 4]}}
+{"prediction": {"error_location": 0.9266681671142578, "repair_targets": [0.9990736246109009], "repair_candidates": [6.405488966265693e-05, 0.0007752893725410104, 0.9990736246109009, 6.109718378866091e-05, 2.473531276336871e-05, 4.760872513998038e-07, 4.6797771346973605e-07, 2.940078331903351e-07], "target_probs": 0.9990736246109009}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.533882", "n_pass": [98, 18, 14], "n_token": 18, "loss": [0.35629037022590637, 0.01331403385847807], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "guid", "guiddata", "=", "guid", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [1, 4, 7, 14, 17, 0, 10, 2]}}
+{"prediction": {"error_location": 0.7002692818641663, "repair_targets": [0.986774206161499], "repair_candidates": [3.846334948320873e-05, 0.0007196949445642531, 0.986774206161499, 0.012448900379240513, 1.5948464351822622e-05, 1.7064223811757984e-06, 9.594735956852674e-07, 9.088737584761475e-08], "target_probs": 0.986774206161499}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.703500", "n_pass": [125, 21, 15], "n_token": 17, "loss": [0.26252174377441406, 0.04578166827559471], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "guid", "guiddata", "guid", ")", ",", "guid", ")", "#NEWLINE#", "self", ".", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [1, 3, 6, 13, 16, 0, 9, 2]}}
+{"prediction": {"error_location": 0.7691096067428589, "repair_targets": [0.9552505016326904], "repair_candidates": [0.0001432439748896286, 0.0010162494145333767, 0.9552505016326904, 0.043571360409259796, 4.781104962603422e-06, 1.2358010280877352e-05, 1.4098135352469399e-06, 5.9519347672676304e-08], "target_probs": 0.9552505016326904}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.869646", "n_pass": [130, 24, 16], "n_token": 16, "loss": [0.5170981884002686, 0.03161562234163284], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "guid", "guiddata", "guid", ")", ",", "guid", "#NEWLINE#", "self", ".", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [1, 3, 6, 12, 15, 0, 8, 2]}}
+{"prediction": {"error_location": 0.596248209476471, "repair_targets": [0.9688789248466492], "repair_candidates": [0.00014887761790305376, 0.0015897243283689022, 0.9688789248466492, 0.02936101332306862, 5.1875899771403056e-06, 1.165883986686822e-05, 4.607843493431574e-06, 3.5303891365856543e-08], "target_probs": 0.9688789248466492}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.925740", "n_pass": [131, 25, 17], "n_token": 15, "loss": [0.42542681097984314, 0.010889417491853237], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "guid", "guiddata", "guid", ")", ",", "guid", "self", ".", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [1, 3, 6, 11, 14, 0, 7, 2]}}
+{"prediction": {"error_location": 0.6534908413887024, "repair_targets": [0.9891696572303772], "repair_candidates": [0.000702710123732686, 0.000439693802036345, 0.9891696572303772, 0.0020491271279752254, 1.7084919818444178e-05, 0.007621559780091047, 1.2178466590739845e-07, 1.085410517021046e-08], "target_probs": 0.9891696572303772}}
+
+
+{"result": {"time": "2021-02-21 06:54:44.983746", "n_pass": [133, 26, 18], "n_token": 14, "loss": [0.2649984061717987, 0.038979820907115936], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "guid", "guiddata", "guid", ")", ",", "guid", "self", "len", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [1, 3, 6, 10, 13, 0, 7, 2]}}
+{"prediction": {"error_location": 0.7672072052955627, "repair_targets": [0.9617701172828674], "repair_candidates": [0.0007908332627266645, 0.00032614637166261673, 0.9617701172828674, 0.034668028354644775, 0.0019747905898839235, 0.0004699956043623388, 1.0659520910394349e-07, 2.5181085661074576e-08], "target_probs": 0.9617701172828674}}
+
+
+{"result": {"time": "2021-02-21 06:54:45.039051", "n_pass": [134, 27, 19], "n_token": 13, "loss": [0.6149026155471802, 0.02087455987930298], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "guid", "guiddata", "guid", ")", ",", "guid", "self", "(", "guid", ")", ",", "guid"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [1, 3, 6, 9, 12, 0, 7, 2]}}
+{"prediction": {"error_location": 0.5406935811042786, "repair_targets": [0.9793418049812317], "repair_candidates": [0.0013409038074314594, 0.0004180238174740225, 0.9793418049812317, 0.009039456024765968, 0.0003944899362977594, 0.00946476124227047, 5.667291702593502e-07, 3.481403965110985e-08], "target_probs": 0.9793418049812317}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'guid', 'guiddata', 'guid', ')', ',', 'guid', 'self', '(', 'guid', ')', ',', 'guid']

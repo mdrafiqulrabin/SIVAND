@@ -1,0 +1,271 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "#NEWLINE#", "a", "=", "[", "(", "-", "1", ")", ",", "0", ",", "0", ",", "1", ",", "60", ",", "61", ",", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "(", "-", "0.999999", ")", ",", "(", "-", "1e-05", ")", ",", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"], "error_location": [68], "repair_targets": [9], "repair_candidates": [9, 2, 58, 62, 71, 32, 68, 77], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "baz/app-sales-machine/lib/graphy/backends/google_chart_api/util_test.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00001-of-00300", "js_count": 3736, "results": {"model": "transformer", "prob": {"loc": [[0.001609529834240675, 4.574557976866345e-08, 5.3552202672335625e-09, 1.2683472050412092e-09, 2.7876678743155026e-09, 1.7485222159052682e-09, 8.465289025316736e-10, 1.2167995500078632e-09, 3.404801718343009e-10, 7.784466049542971e-08, 1.8125453360440247e-09, 8.605571255593247e-10, 6.675874963946171e-09, 1.2115592973316325e-08, 3.13707374743899e-07, 2.729644066334913e-09, 3.8338372476687255e-09, 3.1690979085396975e-07, 9.310207715884644e-09, 3.3569881452422123e-07, 7.2652222016245105e-09, 3.927210343590559e-07, 5.137712477676359e-09, 9.818456447874269e-08, 5.7493245719797414e-09, 1.0396638572274242e-07, 7.633648380078739e-09, 1.1475261629811939e-07, 9.084670793413352e-09, 4.0400010448138346e-07, 5.2349493628867094e-09, 3.3228557683173676e-09, 7.568220894427213e-07, 2.0136587508545745e-08, 4.162720301792433e-08, 1.9433834097526415e-07, 3.7797701679664897e-07, 1.8455831423125346e-06, 1.2352650458069547e-07, 5.631773802861062e-08, 3.00103977224353e-07, 1.4212262158252997e-06, 2.5256749722757377e-06, 4.828450528293615e-07, 3.293056636266556e-07, 4.637526217265986e-06, 6.262075089580321e-07, 9.988947340389132e-07, 4.02207490424189e-07, 7.496918215110782e-07, 3.0589782795686915e-07, 5.313297606335254e-07, 2.1362851043704723e-07, 9.173501211989787e-07, 1.460066272329641e-07, 5.522784931599745e-07, 7.794099587954406e-08, 7.48418429452613e-08, 4.5289936245751505e-09, 5.515104817277461e-09, 4.998118585675115e-10, 1.1214948969495708e-08, 2.1591429799627804e-07, 6.229891269526888e-09, 8.234015691499508e-10, 4.6471440029449695e-09, 1.0434333397313367e-09, 1.212887070778379e-07, 0.6270568370819092, 4.264607511572649e-08, 4.277266540952951e-08, 8.714602154213935e-05, 1.489165790680147e-09, 5.077950837595324e-10, 1.5150420917819929e-09, 2.06478167896762e-10, 7.578736749280779e-09, 0.37122491002082825, 7.081114006268763e-08, 4.1864161914872966e-08]], "pointer": [[0.0, 0.0, 6.496884452644736e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9999850988388062, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.4254752386477776e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.592889979448955e-08, 0.0, 0.0, 0.0, 3.511718560389454e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 2.103706009393136e-07, 0.0, 0.0, 8.90597036118379e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 1.2897601209260756e-07, 0.0, 0.0]], "target": [0.9999850988388062]}, "loss": [0.46671807765960693, 1.4901272152201273e-05], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 12:05:03.414157", "n_pass": [1, 1, 1], "n_token": 80, "loss": [0.46671807765960693, 1.4901272152201273e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "#NEWLINE#", "a", "=", "[", "(", "-", "1", ")", ",", "0", ",", "0", ",", "1", ",", "60", ",", "61", ",", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "(", "-", "0.999999", ")", ",", "(", "-", "1e-05", ")", ",", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 68, "repair_targets": [9], "repair_candidates": [9, 2, 58, 62, 71, 32, 68, 77]}}
+{"prediction": {"error_location": 0.6270568370819092, "repair_targets": [0.9999850988388062], "repair_candidates": [6.496884452644736e-08, 0.9999850988388062, 1.4254752386477776e-05, 4.592889979448955e-08, 3.511718560389454e-08, 2.103706009393136e-07, 8.90597036118379e-08, 1.2897601209260756e-07], "target_probs": 0.9999850988388062}}
+
+
+{"result": {"time": "2021-02-11 12:05:03.471872", "n_pass": [21, 2, 2], "n_token": 70, "loss": [0.47622472047805786, 0.00027892901562154293], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "#NEWLINE#", "a", ",", "1", ",", "60", ",", "61", ",", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "(", "-", "0.999999", ")", ",", "(", "-", "1e-05", ")", ",", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 58, "repair_targets": [9], "repair_candidates": [9, 2, 48, 52, 61, 22, 58, 67]}}
+{"prediction": {"error_location": 0.6211238503456116, "repair_targets": [0.999721109867096], "repair_candidates": [6.859432915007346e-07, 0.999721109867096, 0.0002716896415222436, 3.9925484429659264e-07, 2.4617511940050463e-07, 7.267889259310323e-07, 2.1437167561089154e-06, 2.999896651090239e-06], "target_probs": 0.999721109867096}}
+
+
+{"result": {"time": "2021-02-11 12:05:03.642885", "n_pass": [42, 5, 3], "n_token": 65, "loss": [0.3370857834815979, 1.561653880344238e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "#NEWLINE#", "a", "61", ",", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "(", "-", "0.999999", ")", ",", "(", "-", "1e-05", ")", ",", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 53, "repair_targets": [9], "repair_candidates": [9, 2, 43, 47, 56, 17, 53, 62]}}
+{"prediction": {"error_location": 0.7138475775718689, "repair_targets": [0.9999843835830688], "repair_candidates": [1.120985402280894e-07, 0.9999843835830688, 1.4550148080161307e-05, 6.336123448136277e-08, 3.2480105716103935e-08, 9.871644834902327e-08, 4.0272755086334655e-07, 3.345434720358753e-07], "target_probs": 0.9999843835830688}}
+
+
+{"result": {"time": "2021-02-11 12:05:03.699270", "n_pass": [44, 6, 4], "n_token": 60, "loss": [0.4805455803871155, 3.039883085875772e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "#NEWLINE#", "a", "61", ",", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "(", "-", "1e-05", ")", ",", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 48, "repair_targets": [9], "repair_candidates": [9, 2, 38, 42, 51, 17, 48, 57]}}
+{"prediction": {"error_location": 0.618445873260498, "repair_targets": [0.9999696016311646], "repair_candidates": [1.1712704406363628e-07, 0.9999696016311646, 2.8778747946489602e-05, 8.288728281513613e-08, 3.2947777839353876e-08, 1.6983103989787196e-07, 3.5028287470595387e-07, 8.261782795671024e-07], "target_probs": 0.9999696016311646}}
+
+
+{"result": {"time": "2021-02-11 12:05:03.755166", "n_pass": [45, 7, 5], "n_token": 55, "loss": [0.7586226463317871, 2.5391900635440834e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "#NEWLINE#", "a", "61", ",", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 43, "repair_targets": [9], "repair_candidates": [9, 2, 33, 37, 46, 17, 43, 52]}}
+{"prediction": {"error_location": 0.468311071395874, "repair_targets": [0.9999746084213257], "repair_candidates": [1.5078809667556925e-07, 0.9999746084213257, 2.3372274881694466e-05, 9.378158694062222e-08, 4.363586469935399e-08, 3.881951897710678e-07, 2.2752257677893795e-07, 1.1914852393601905e-06], "target_probs": 0.9999746084213257}}
+
+
+{"result": {"time": "2021-02-11 12:05:04.484349", "n_pass": [95, 20, 6], "n_token": 53, "loss": [0.855741024017334, 7.081282819854096e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "#INDENT#", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "#NEWLINE#", "a", "61", ",", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 41, "repair_targets": [7], "repair_candidates": [7, 2, 31, 35, 44, 15, 41, 50]}}
+{"prediction": {"error_location": 0.4249681532382965, "repair_targets": [0.9999291896820068], "repair_candidates": [5.105769105284708e-07, 0.9999291896820068, 6.190632848301902e-05, 3.558131993486313e-07, 1.4437071627071418e-07, 2.9563188945758156e-06, 1.2125836974519189e-06, 3.8687389860569965e-06], "target_probs": 0.9999291896820068}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.273378", "n_pass": [159, 34, 7], "n_token": 52, "loss": [0.42317694425582886, 0.0001632108323974535], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "#NEWLINE#", "a", "61", ",", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 40, "repair_targets": [6], "repair_candidates": [6, 2, 30, 34, 43, 14, 40, 49]}}
+{"prediction": {"error_location": 0.6549627780914307, "repair_targets": [0.999836802482605], "repair_candidates": [8.732714036341349e-07, 0.999836802482605, 0.00013551018491853029, 7.899996035121148e-07, 4.4606167648453265e-07, 1.2165655789431185e-05, 4.091928076377371e-06, 9.29687939787982e-06], "target_probs": 0.999836802482605}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.329914", "n_pass": [160, 35, 8], "n_token": 51, "loss": [0.3899824917316437, 0.0006691071321256459], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "61", ",", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 39, "repair_targets": [5], "repair_candidates": [5, 2, 29, 33, 42, 13, 39, 48]}}
+{"prediction": {"error_location": 0.6770685911178589, "repair_targets": [0.9993311166763306], "repair_candidates": [3.697649844980333e-06, 0.9993311166763306, 0.0005783223896287382, 1.660350562815438e-06, 1.1638034038696787e-06, 4.187679223832674e-05, 1.1714172615029383e-05, 3.0443623472820036e-05], "target_probs": 0.9993311166763306}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.385786", "n_pass": [162, 36, 9], "n_token": 50, "loss": [0.7799327969551086, 0.0017754690488800406], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", ",", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 38, "repair_targets": [5], "repair_candidates": [5, 2, 28, 32, 41, 12, 38, 47]}}
+{"prediction": {"error_location": 0.4584368169307709, "repair_targets": [0.9982261061668396], "repair_candidates": [2.0788542315131053e-05, 0.9982261061668396, 0.001362621900625527, 8.051130862440914e-06, 8.222917131206486e-06, 0.00019220091053284705, 6.471176311606541e-05, 0.0001173013006336987], "target_probs": 0.9982261061668396}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.442349", "n_pass": [163, 37, 10], "n_token": 49, "loss": [0.44132018089294434, 0.00044492841698229313], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "61", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 37, "repair_targets": [5], "repair_candidates": [5, 2, 27, 31, 40, 11, 37, 46]}}
+{"prediction": {"error_location": 0.6431868076324463, "repair_targets": [0.9995551705360413], "repair_candidates": [2.5342640128656058e-06, 0.9995551705360413, 0.0003802781575359404, 1.316952420893358e-06, 1.1712145351339132e-06, 2.7648216928355396e-05, 1.126662300521275e-05, 2.0620374925783835e-05], "target_probs": 0.9995551705360413}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.498937", "n_pass": [164, 38, 11], "n_token": 48, "loss": [0.6209219694137573, 0.000564555695746094], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", ",", "62", "]", "#NEWLINE#", "b", "=", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 36, "repair_targets": [5], "repair_candidates": [5, 2, 26, 30, 39, 10, 36, 45]}}
+{"prediction": {"error_location": 0.5374486446380615, "repair_targets": [0.9994356036186218], "repair_candidates": [5.164036792848492e-06, 0.9994356036186218, 0.0004473088774830103, 2.097172455250984e-06, 2.89644754047913e-06, 5.015757051296532e-05, 2.1674230083590373e-05, 3.511719478410669e-05], "target_probs": 0.9994356036186218}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.558186", "n_pass": [165, 39, 12], "n_token": 47, "loss": [0.7942970395088196, 0.0007193887140601873], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "62", "]", "#NEWLINE#", "b", "=", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [5], "repair_candidates": [5, 2, 25, 29, 38, 9, 35, 44]}}
+{"prediction": {"error_location": 0.45189884305000305, "repair_targets": [0.9992808699607849], "repair_candidates": [4.873754733125679e-06, 0.9992808699607849, 0.0006162865902297199, 2.05530272978649e-06, 2.9644522783200955e-06, 3.4666009014472365e-05, 2.0657047571148723e-05, 3.771808769670315e-05], "target_probs": 0.9992808699607849}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.613878", "n_pass": [166, 40, 13], "n_token": 46, "loss": [0.5183342695236206, 0.00033026427263394], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "#NEWLINE#", "b", "=", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 34, "repair_targets": [5], "repair_candidates": [5, 2, 24, 28, 37, 8, 34, 43]}}
+{"prediction": {"error_location": 0.5955116152763367, "repair_targets": [0.9996697902679443], "repair_candidates": [2.9435350370476954e-06, 0.9996697902679443, 0.00027304087416268885, 1.0278762374582584e-06, 1.5296774336093222e-06, 2.108579792547971e-05, 8.501819138473365e-06, 2.2130710931378417e-05], "target_probs": 0.9996697902679443}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.724351", "n_pass": [168, 42, 14], "n_token": 45, "loss": [0.18654638528823853, 8.416530181420967e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "=", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [5], "repair_candidates": [5, 2, 23, 27, 36, 7, 33, 42]}}
+{"prediction": {"error_location": 0.8298199772834778, "repair_targets": [0.9999158382415771], "repair_candidates": [4.622378924068471e-07, 0.9999158382415771, 7.517831545555964e-05, 1.8757316411210923e-07, 2.1730124899477232e-07, 3.46382989846461e-06, 1.0035037121269852e-06, 3.717231720656855e-06], "target_probs": 0.9999158382415771}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.780746", "n_pass": [170, 43, 15], "n_token": 44, "loss": [0.16702155768871307, 6.48519562673755e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "[", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [5], "repair_candidates": [5, 2, 22, 26, 35, 7, 32, 41]}}
+{"prediction": {"error_location": 0.8461812138557434, "repair_targets": [0.9999351501464844], "repair_candidates": [6.477322926912166e-07, 0.9999351501464844, 5.708335083909333e-05, 2.5106507450800564e-07, 2.8785353833882255e-07, 2.503360065020388e-06, 1.7227555417775875e-06, 2.314006678716396e-06], "target_probs": 0.9999351501464844}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.836596", "n_pass": [171, 44, 16], "n_token": 43, "loss": [0.12888866662979126, 9.620652417652309e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "1e-05", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 31, "repair_targets": [5], "repair_candidates": [5, 2, 21, 25, 34, 7, 31, 40]}}
+{"prediction": {"error_location": 0.879071831703186, "repair_targets": [0.9999037981033325], "repair_candidates": [4.914003852718452e-07, 0.9999037981033325, 9.024559403769672e-05, 3.603757647852035e-07, 2.0738023920330306e-07, 1.2214047728775768e-06, 1.4088091120356694e-06, 2.2561750938621117e-06], "target_probs": 0.9999037981033325}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.895268", "n_pass": [172, 45, 17], "n_token": 42, "loss": [0.2979171574115753, 0.0002559154818300158], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", ",", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 30, "repair_targets": [5], "repair_candidates": [5, 2, 20, 24, 33, 7, 30, 39]}}
+{"prediction": {"error_location": 0.7423626780509949, "repair_targets": [0.9997441172599792], "repair_candidates": [4.811762664758135e-06, 0.9997441172599792, 0.00018574135901872069, 3.966875283367699e-06, 2.157548806280829e-06, 2.4755738195381127e-05, 9.563256753608584e-06, 2.4891316570574418e-05], "target_probs": 0.9997441172599792}}
+
+
+{"result": {"time": "2021-02-11 12:05:05.951465", "n_pass": [173, 46, 18], "n_token": 41, "loss": [0.19157588481903076, 6.330213363980874e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "0.99998", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [5], "repair_candidates": [5, 2, 19, 23, 32, 7, 29, 38]}}
+{"prediction": {"error_location": 0.8256568908691406, "repair_targets": [0.9999366998672485], "repair_candidates": [2.5145116069325013e-06, 0.9999366998672485, 4.759453804581426e-05, 1.2833783102905727e-06, 1.1004925681845634e-06, 1.970826133401715e-06, 5.152657195139909e-06, 3.62064088221814e-06], "target_probs": 0.9999366998672485}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.007067", "n_pass": [174, 47, 19], "n_token": 40, "loss": [0.3148493766784668, 7.617763913003728e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", ",", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [5], "repair_candidates": [5, 2, 18, 22, 31, 7, 28, 37]}}
+{"prediction": {"error_location": 0.7298987507820129, "repair_targets": [0.999923825263977], "repair_candidates": [5.178210813028272e-06, 0.999923825263977, 4.699424243881367e-05, 2.788795882224804e-06, 2.493714873708086e-06, 2.9575294320238754e-06, 9.659559509600513e-06, 6.160717930470128e-06], "target_probs": 0.999923825263977}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.062770", "n_pass": [175, 48, 20], "n_token": 39, "loss": [0.13859932124614716, 1.9908149624825455e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "60.00001", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [5], "repair_candidates": [5, 2, 17, 21, 30, 7, 27, 36]}}
+{"prediction": {"error_location": 0.8705768585205078, "repair_targets": [0.999980092048645], "repair_candidates": [2.4508819933544146e-06, 0.999980092048645, 1.0169354027311783e-05, 7.959885124364519e-07, 8.156026751748868e-07, 6.537583772114886e-07, 4.173550223640632e-06, 8.652289125166135e-07], "target_probs": 0.999980092048645}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.119802", "n_pass": [176, 49, 21], "n_token": 38, "loss": [0.42258721590042114, 8.273466664832085e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", ",", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [5], "repair_candidates": [5, 2, 16, 20, 29, 7, 26, 35]}}
+{"prediction": {"error_location": 0.6553490161895752, "repair_targets": [0.9999172687530518], "repair_candidates": [7.790336894686334e-06, 0.9999172687530518, 4.987858119420707e-05, 3.7736188005510485e-06, 3.2340051348000998e-06, 2.0208244677633047e-06, 1.2978181075595785e-05, 3.0832911761535797e-06], "target_probs": 0.9999172687530518}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.175798", "n_pass": [177, 50, 22], "n_token": 37, "loss": [0.32048335671424866, 5.781817526440136e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "60.99999", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [5], "repair_candidates": [5, 2, 15, 19, 28, 7, 25, 34]}}
+{"prediction": {"error_location": 0.7257980704307556, "repair_targets": [0.9999421834945679], "repair_candidates": [5.8673927014751825e-06, 0.9999421834945679, 2.8367214326863177e-05, 3.502069830574328e-06, 2.7046110062656226e-06, 1.084511950466549e-06, 1.5251432159857359e-05, 1.0328334383302717e-06], "target_probs": 0.9999421834945679}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.234001", "n_pass": [178, 51, 23], "n_token": 36, "loss": [0.6015235781669617, 8.333076402777806e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", ",", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [5], "repair_candidates": [5, 2, 14, 18, 27, 7, 24, 33]}}
+{"prediction": {"error_location": 0.5479761362075806, "repair_targets": [0.999916672706604], "repair_candidates": [7.492117674701149e-06, 0.999916672706604, 3.9197086152853444e-05, 7.0146402322279755e-06, 4.26013184551266e-06, 1.6297732372549945e-06, 2.1749447114416398e-05, 1.8830431827154825e-06], "target_probs": 0.999916672706604}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.290068", "n_pass": [179, 52, 24], "n_token": 35, "loss": [0.18356844782829285, 1.9908149624825455e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "61.00001", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [5], "repair_candidates": [5, 2, 13, 17, 26, 7, 23, 32]}}
+{"prediction": {"error_location": 0.8322948813438416, "repair_targets": [0.999980092048645], "repair_candidates": [1.6415355048593483e-06, 0.999980092048645, 8.578314918850083e-06, 1.1906432746400242e-06, 1.0547165629759547e-06, 2.0638606201828225e-07, 7.020338671281934e-06, 2.762056112715072e-07], "target_probs": 0.999980092048645}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.346039", "n_pass": [180, 53, 25], "n_token": 34, "loss": [0.26518696546554565, 0.00012255465844646096], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", ",", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [5], "repair_candidates": [5, 2, 12, 16, 25, 7, 22, 31]}}
+{"prediction": {"error_location": 0.7670624256134033, "repair_targets": [0.9998774528503418], "repair_candidates": [9.040744771482423e-06, 0.9998774528503418, 5.4823878599563614e-05, 6.081152150727576e-06, 7.590031600557268e-06, 1.5591676856274717e-06, 4.097798591828905e-05, 2.4011992536543403e-06], "target_probs": 0.9998774528503418}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.401705", "n_pass": [181, 54, 26], "n_token": 33, "loss": [0.11056966334581375, 3.15909601340536e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "61.99998", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [5], "repair_candidates": [5, 2, 11, 15, 24, 7, 21, 30]}}
+{"prediction": {"error_location": 0.8953238725662231, "repair_targets": [0.999968409538269], "repair_candidates": [2.4353644221264403e-06, 0.999968409538269, 1.4083756468608044e-05, 1.4536067283188459e-06, 2.0139493699389277e-06, 2.9386339406300976e-07, 1.0827955520653632e-05, 5.343717361938616e-07], "target_probs": 0.999968409538269}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.457221", "n_pass": [182, 55, 27], "n_token": 32, "loss": [0.17863152921199799, 0.00016404544294346124], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "]", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [5], "repair_candidates": [5, 2, 10, 14, 23, 7, 20, 29]}}
+{"prediction": {"error_location": 0.8364140391349792, "repair_targets": [0.9998359680175781], "repair_candidates": [1.24467824207386e-05, 0.9998359680175781, 7.30348183424212e-05, 1.0680315426725429e-05, 1.3320241123437881e-05, 2.19582102545246e-06, 4.8563553718850017e-05, 3.8016517009964446e-06], "target_probs": 0.9998359680175781}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.513682", "n_pass": [183, 56, 28], "n_token": 31, "loss": [0.3445875942707062, 0.0003650854923762381], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "#NEWLINE#", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [5], "repair_candidates": [5, 2, 9, 13, 22, 7, 19, 28]}}
+{"prediction": {"error_location": 0.7085123658180237, "repair_targets": [0.9996349811553955], "repair_candidates": [4.5330238208407536e-05, 0.9996349811553955, 2.9098109735059552e-05, 6.263662362471223e-05, 4.312249075155705e-05, 6.504843895527301e-06, 0.00015697814524173737, 2.148221574316267e-05], "target_probs": 0.9996349811553955}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.571837", "n_pass": [184, 57, 29], "n_token": 30, "loss": [0.5258125066757202, 0.00048088666517287493], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", ".", "assertEqual", "(", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [5], "repair_candidates": [5, 2, 8, 12, 21, 7, 18, 27]}}
+{"prediction": {"error_location": 0.5910748839378357, "repair_targets": [0.9995192289352417], "repair_candidates": [4.4979860831517726e-05, 0.9995192289352417, 1.1938424222535104e-06, 0.00029721722239628434, 3.563919017324224e-05, 4.803425213140144e-07, 0.00010029871191363782, 1.0226306130789453e-06], "target_probs": 0.9995192289352417}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.627349", "n_pass": [186, 58, 30], "n_token": 28, "loss": [0.669524073600769, 0.0008155452087521553], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", ".", "self", ".", "simple", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [5, 2, 8, 10, 19, 7, 16, 25]}}
+{"prediction": {"error_location": 0.5119522213935852, "repair_targets": [0.999184787273407], "repair_candidates": [3.284776903456077e-05, 0.999184787273407, 1.1310297622912913e-06, 0.0006665688706561923, 7.075266330502927e-05, 5.636285322907497e-07, 4.216606976115145e-05, 1.209561219184252e-06], "target_probs": 0.999184787273407}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.682930", "n_pass": [188, 59, 31], "n_token": 26, "loss": [0.7326981425285339, 0.00027916752151213586], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", ".", "self", ".", "Encode", "(", "b", ")", ",", "self", ".", "simple", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [5], "repair_candidates": [5, 2, 8, 10, 17, 7, 14, 23]}}
+{"prediction": {"error_location": 0.48061054944992065, "repair_targets": [0.9997208714485168], "repair_candidates": [5.873409918422112e-06, 0.9997208714485168, 2.1526760463075334e-07, 0.00024424222647212446, 2.4942039090092294e-05, 3.341598073802743e-07, 2.9087414077366702e-06, 5.852138542650209e-07], "target_probs": 0.9997208714485168}}
+
+
+{"result": {"time": "2021-02-11 12:05:06.794555", "n_pass": [192, 61, 32], "n_token": 24, "loss": [0.6633537411689758, 0.0001989204902201891], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", ".", "self", ".", "Encode", "(", "b", ")", ",", "self", ".", "Encode", "(", "b", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [5], "repair_candidates": [5, 2, 8, 10, 17, 7, 14, 21]}}
+{"prediction": {"error_location": 0.5151208639144897, "repair_targets": [0.9998010993003845], "repair_candidates": [6.17539581071469e-06, 0.9998010993003845, 9.139651702128049e-09, 0.00017541801207698882, 1.0667858077795245e-05, 6.550207132249852e-08, 6.4670211941120215e-06, 3.806329118560825e-08], "target_probs": 0.9998010993003845}}
+
+
+{"result": {"time": "2021-02-11 12:05:07.300476", "n_pass": [225, 70, 33], "n_token": 23, "loss": [0.7866138815879822, 0.0008207946666516364], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", ".", "self", ".", "Encode", "(", "b", ")", ",", "self", ".", "(", "b", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [5], "repair_candidates": [5, 2, 8, 10, 17, 7, 14, 20]}}
+{"prediction": {"error_location": 0.455384224653244, "repair_targets": [0.9991795420646667], "repair_candidates": [2.946501444966998e-05, 0.9991795420646667, 7.500058529785747e-08, 0.0006722496473230422, 9.114079148275778e-05, 4.5794479319738457e-07, 2.6956357032759115e-05, 2.866528348022257e-08], "target_probs": 0.9991795420646667}}
+
+
+{"result": {"time": "2021-02-11 12:05:07.411795", "n_pass": [228, 72, 34], "n_token": 22, "loss": [0.7186371684074402, 0.00036890158662572503], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", ".", "self", ".", "Encode", "(", "b", ")", ",", "self", ".", "(", "b", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [5], "repair_candidates": [5, 2, 8, 10, 17, 7, 14, 20]}}
+{"prediction": {"error_location": 0.4874160587787628, "repair_targets": [0.9996311664581299], "repair_candidates": [1.1021574209735263e-05, 0.9996311664581299, 3.981047669299187e-08, 0.00030348580912686884, 3.972838385379873e-05, 1.3849604840743268e-07, 1.4558276234311052e-05, 1.2804753701800564e-08], "target_probs": 0.9996311664581299}}
+
+
+{"result": {"time": "2021-02-11 12:05:07.467253", "n_pass": [229, 73, 35], "n_token": 21, "loss": [0.20704472064971924, 0.000349701993400231], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", ".", "self", ".", "Encode", "(", "b", ")", ",", "self", ".", "(", "b"]}}
+{"position": {"error_location": 14, "repair_targets": [5], "repair_candidates": [5, 2, 8, 10, 17, 7, 14, 20]}}
+{"prediction": {"error_location": 0.8129832744598389, "repair_targets": [0.9996503591537476], "repair_candidates": [1.6774927644291893e-05, 0.9996503591537476, 3.8649153566439054e-07, 0.00025552319129928946, 6.086271605454385e-05, 4.383093255455606e-06, 1.158237864729017e-05, 6.982493516716204e-08], "target_probs": 0.9996503591537476}}
+
+
+{"result": {"time": "2021-02-11 12:05:07.522887", "n_pass": [230, 74, 36], "n_token": 20, "loss": [0.15614360570907593, 0.010099154897034168], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def testRoundingError(", "self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", ".", "self", ".", "Encode", "(", "b", ")", ",", "self", ".", "(", "b"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [4, 1, 7, 9, 16, 6, 13, 19]}}
+{"prediction": {"error_location": 0.8554363250732422, "repair_targets": [0.9899516701698303], "repair_candidates": [0.007415278349071741, 0.9899516701698303, 3.4218251130369026e-06, 0.0006191825377754867, 0.0011671006213873625, 3.4441160096321255e-05, 0.0008082315907813609, 6.642626999564527e-07], "target_probs": 0.9899516701698303}}
+
+
+{"result": {"time": "2021-02-11 12:05:07.581309", "n_pass": [231, 75, 37], "n_token": 19, "loss": [0.032724376767873764, 0.0015214926097542048], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", ".", "self", ".", "Encode", "(", "b", ")", ",", "self", ".", "(", "b"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [3, 0, 6, 8, 15, 5, 12, 18]}}
+{"prediction": {"error_location": 0.9678053855895996, "repair_targets": [0.9984796643257141], "repair_candidates": [0.0011222600005567074, 0.9984796643257141, 4.310200893087313e-06, 0.0001219593032146804, 0.0001895590830827132, 1.8801638361765072e-05, 6.296946958173066e-05, 3.009388365171617e-07], "target_probs": 0.9984796643257141}}
+
+
+{"result": {"time": "2021-02-11 12:05:07.636819", "n_pass": [233, 76, 38], "n_token": 18, "loss": [0.007442486006766558, 0.000527103547938168], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", ".", "self", ".", "Encode", "(", "b", ")", ",", "self", ".", "(", "b"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [2, 0, 5, 7, 14, 4, 11, 17]}}
+{"prediction": {"error_location": 0.9925851225852966, "repair_targets": [0.9994730353355408], "repair_candidates": [0.0003754149656742811, 0.9994730353355408, 1.4943999531169538e-06, 4.63505057268776e-05, 7.041840581223369e-05, 5.002113084628945e-06, 2.824885814334266e-05, 4.87241891278245e-08], "target_probs": 0.9994730353355408}}
+
+
+{"result": {"time": "2021-02-11 12:05:07.803244", "n_pass": [239, 79, 39], "n_token": 17, "loss": [0.042356234043836594, 0.0003598383627831936], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", "self", ".", "Encode", "(", "b", ")", ",", "self", ".", "(", "b"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [2, 0, 5, 6, 13, 4, 10, 16]}}
+{"prediction": {"error_location": 0.9585283994674683, "repair_targets": [0.9996402263641357], "repair_candidates": [0.00015421336865983903, 0.9996402263641357, 4.0906728827394545e-05, 9.395676897838712e-05, 4.951825030730106e-05, 1.0685263077903073e-05, 1.056219480233267e-05, 3.685856242441332e-08], "target_probs": 0.9996402263641357}}
+
+
+{"result": {"time": "2021-02-11 12:05:07.858561", "n_pass": [241, 80, 40], "n_token": 16, "loss": [0.6182883977890015, 0.0003802306891884655], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", "self", "Encode", "(", "b", ")", ",", "self", ".", "(", "b"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [2, 0, 5, 6, 12, 4, 9, 15]}}
+{"prediction": {"error_location": 0.5388659834861755, "repair_targets": [0.9996198415756226], "repair_candidates": [2.5777630071388558e-05, 0.9996198415756226, 0.00021459664276335388, 4.3486623326316476e-05, 7.664503937121481e-05, 1.785690437827725e-05, 1.7291606582148233e-06, 9.388555355371864e-08], "target_probs": 0.9996198415756226}}
+
+
+{"result": {"time": "2021-02-11 12:05:07.916051", "n_pass": [242, 81, 41], "n_token": 15, "loss": [0.42453116178512573, 0.0028143753297626972], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", "self", "(", "b", ")", ",", "self", ".", "(", "b"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [2, 0, 5, 6, 11, 4, 8, 14]}}
+{"prediction": {"error_location": 0.6540763974189758, "repair_targets": [0.9971895813941956], "repair_candidates": [7.602860569022596e-05, 0.9971895813941956, 0.0014989908086135983, 0.0003364534059073776, 0.0007890716660767794, 6.131600821390748e-05, 1.0473907423147466e-05, 3.809950067079626e-05], "target_probs": 0.9971895813941956}}
+
+
+{"result": {"time": "2021-02-11 12:05:08.026522", "n_pass": [245, 83, 42], "n_token": 14, "loss": [0.027129163965582848, 0.0034962547942996025], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", "self", "(", "b", ",", "self", ".", "(", "b"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [2, 0, 5, 6, 10, 4, 8, 13]}}
+{"prediction": {"error_location": 0.9732356667518616, "repair_targets": [0.996509850025177], "repair_candidates": [0.00031519774347543716, 0.996509850025177, 0.001414395752362907, 0.0006280899979174137, 0.0010344403563067317, 1.6427120499429293e-05, 4.9382259021513164e-05, 3.222516170353629e-05], "target_probs": 0.996509850025177}}
+
+
+{"result": {"time": "2021-02-11 12:05:08.136745", "n_pass": [248, 85, 43], "n_token": 13, "loss": [0.1033838614821434, 0.024856580421328545], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", "a", "]", "b", "self", "self", "(", "b", ",", "self", "(", "b"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [2, 0, 5, 6, 10, 4, 8, 12]}}
+{"prediction": {"error_location": 0.9017807245254517, "repair_targets": [0.975449800491333], "repair_candidates": [0.00019964179955422878, 0.975449800491333, 0.0028068714309483767, 0.016023416072130203, 0.004896608646959066, 4.2773033783305436e-05, 0.0004562125832308084, 0.0001246572646778077], "target_probs": 0.975449800491333}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', "'Scaling might give us some rounding error.  Make sure that the encoder\\n    deals with it properly.\\n    '", 'a', ']', 'b', 'self', 'self', '(', 'b', ',', 'self', '(', 'b']

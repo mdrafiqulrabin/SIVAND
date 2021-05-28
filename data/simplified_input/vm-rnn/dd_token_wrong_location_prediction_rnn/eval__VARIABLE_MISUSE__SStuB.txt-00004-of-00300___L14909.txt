@@ -1,0 +1,127 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", ":", "#NEWLINE#", "#INDENT#", "for", "addr_type", "in", "(", "socket", ".", "AF_INET", ",", "socket", ".", "AF_INET6", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "socket", ".", "inet_ntop", "(", "addr_type", ",", "socket", ".", "inet_pton", "(", "addr_type", ",", "addr_type", ")", ")", "#NEWLINE#", "#UNINDENT#", "except", "(", "ValueError", ",", "socket", ".", "error", ")", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "True"], "error_location": [38], "repair_targets": [2], "repair_candidates": [2, 8, 30, 36, 38], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "abusesa/abusehelper/abusehelper/bots/vxvault/vxvaultbot.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00004-of-00300", "js_count": 14909, "results": {"model": "rnn", "prob": {"loc": [[0.0013211987679824233, 3.010541815839929e-09, 6.445199574045546e-08, 7.630578391371046e-10, 1.1410365013952983e-10, 8.11736988737266e-09, 1.6184907636329626e-08, 4.342396220380351e-09, 3.393785519278936e-08, 3.475451038070787e-09, 6.006272315062233e-07, 8.474646620015847e-07, 2.1458006926877715e-08, 2.234583407201285e-09, 2.4024342515360786e-09, 3.010653983892553e-07, 3.3508684715854997e-09, 8.312652788333708e-10, 5.759127064131064e-10, 5.0519699534845586e-09, 4.464860126063286e-08, 6.305303834608367e-09, 2.610688397908234e-06, 1.4348691124155266e-08, 1.3401773912846693e-08, 1.2148013706081429e-09, 4.3238008728962996e-09, 6.505964655900698e-09, 4.0787746513615275e-09, 3.434530171375627e-08, 0.2828993797302246, 6.857975165530661e-08, 1.7200646595938451e-07, 2.251667297059612e-09, 4.711300860549272e-08, 4.752222935167083e-07, 0.505765974521637, 0.00012563008931465447, 0.20981387794017792, 5.549930392589886e-06, 2.3304354002107175e-08, 4.610404857885442e-08, 1.9031901388189e-07, 4.016588839306223e-09, 1.250529635399289e-08, 2.487741539880517e-06, 5.1418169277894776e-08, 5.8673675084719434e-05, 2.28148322456434e-09, 3.594924535832433e-08, 7.97716026568196e-09, 6.567292487602572e-09, 5.81265258148278e-09, 5.559141769140297e-08, 4.1898644553839404e-07, 4.6653623186898585e-09, 1.5852597812227032e-07, 6.994083090461345e-10, 1.8183996530751756e-08, 3.2425306883965277e-09, 2.693334166803396e-10, 1.3962033307279853e-08, 4.603383985113396e-08, 1.916565395276848e-08, 6.704987676187102e-09, 2.2862327142547656e-08, 4.999976610520207e-08, 5.997337666485691e-07]], "pointer": [[0.0, 0.0, 0.9996752738952637, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00032383634243160486, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.3850211050557846e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5505871431287233e-07, 0.0, 5.398852636062657e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9996752738952637]}, "loss": [1.5615344047546387, 0.0003247788408771157], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [36]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 11:57:10.543561", "n_pass": [1, 1, 1], "n_token": 68, "loss": [0.681681215763092, 0.0003247788408771157], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", ":", "#NEWLINE#", "#INDENT#", "for", "addr_type", "in", "(", "socket", ".", "AF_INET", ",", "socket", ".", "AF_INET6", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "socket", ".", "inet_ntop", "(", "addr_type", ",", "socket", ".", "inet_pton", "(", "addr_type", ",", "addr_type", ")", ")", "#NEWLINE#", "#UNINDENT#", "except", "(", "ValueError", ",", "socket", ".", "error", ")", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "True"]}}
+{"position": {"error_location": 36, "repair_targets": [2], "repair_candidates": [2, 8, 30, 36, 38]}}
+{"prediction": {"error_location": 0.505765974521637, "repair_targets": [0.9996752738952637], "repair_candidates": [0.9996752738952637, 0.00032383634243160486, 2.3850211050557846e-07, 1.5505871431287233e-07, 5.398852636062657e-07], "target_probs": 0.9996752738952637}}
+
+
+{"result": {"time": "2021-02-21 11:57:10.618635", "n_pass": [11, 2, 2], "n_token": 51, "loss": [0.8633279204368591, 0.0002998563286382705], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", ":", "#NEWLINE#", "#INDENT#", "for", "addr_type", "in", "(", "socket", ".", "AF_INET", ",", "socket", ".", "AF_INET6", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "socket", ".", "inet_ntop", "(", "addr_type", ",", "socket", ".", "inet_pton", "(", "addr_type", ",", "addr_type", ")", ")", "#NEWLINE#", "#UNINDENT#", "except", "(", "ValueError", ",", "socket", ".", "error", ")"]}}
+{"position": {"error_location": 36, "repair_targets": [2], "repair_candidates": [2, 8, 30, 36, 38]}}
+{"prediction": {"error_location": 0.4217562675476074, "repair_targets": [0.9997001886367798], "repair_candidates": [0.9997001886367798, 0.0002991072542499751, 2.1600922650577559e-07, 7.471703611372504e-08, 3.7168820199440233e-07], "target_probs": 0.9997001886367798}}
+
+
+{"result": {"time": "2021-02-21 11:57:10.762333", "n_pass": [25, 4, 3], "n_token": 42, "loss": [0.7345307469367981, 0.00041654438246041536], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", ":", "#NEWLINE#", "#INDENT#", "for", "addr_type", "in", "(", "socket", ".", "AF_INET", ",", "socket", ".", "AF_INET6", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "socket", ".", "inet_ntop", "(", "addr_type", ",", "socket", ".", "inet_pton", "(", "addr_type", ",", "addr_type", ")", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 36, "repair_targets": [2], "repair_candidates": [2, 8, 30, 36, 38]}}
+{"prediction": {"error_location": 0.4797305166721344, "repair_targets": [0.9995835423469543], "repair_candidates": [0.9995835423469543, 0.00041591160697862506, 1.898286399182325e-07, 7.58209921514208e-08, 2.4611821913822496e-07], "target_probs": 0.9995835423469543}}
+
+
+{"result": {"time": "2021-02-21 11:57:10.828501", "n_pass": [28, 5, 4], "n_token": 34, "loss": [0.9176700115203857, 0.00011063233978347853], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", ":", "#NEWLINE#", "#INDENT#", "for", "addr_type", "in", "(", "socket", ".", "AF_INET", ",", "socket", "#NEWLINE#", "#INDENT#", "socket", ".", "inet_ntop", "(", "addr_type", ",", "socket", ".", "inet_pton", "(", "addr_type", ",", "addr_type", ")", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 28, "repair_targets": [2], "repair_candidates": [2, 8, 22, 28, 30]}}
+{"prediction": {"error_location": 0.3994486927986145, "repair_targets": [0.9998893737792969], "repair_candidates": [0.9998893737792969, 0.0001098865395761095, 2.778038208361977e-07, 1.15976284575936e-07, 2.6721659196482506e-07], "target_probs": 0.9998893737792969}}
+
+
+{"result": {"time": "2021-02-21 11:57:10.892728", "n_pass": [41, 6, 5], "n_token": 30, "loss": [0.7029022574424744, 7.40317118470557e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", ":", "#NEWLINE#", "#INDENT#", "for", "addr_type", "in", "(", "socket", ".", "AF_INET", ",", "socket", "inet_ntop", "(", "addr_type", ",", "socket", ".", "inet_pton", "(", "addr_type", ",", "addr_type", ")", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 24, "repair_targets": [2], "repair_candidates": [2, 8, 18, 24, 26]}}
+{"prediction": {"error_location": 0.495146244764328, "repair_targets": [0.999925971031189], "repair_candidates": [0.999925971031189, 7.2364135121461e-05, 4.927858299197396e-07, 4.0588457750345697e-07, 7.569150284325588e-07], "target_probs": 0.999925971031189}}
+
+
+{"result": {"time": "2021-02-21 11:57:10.955031", "n_pass": [46, 7, 6], "n_token": 26, "loss": [0.2755279541015625, 0.009052536450326443], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", "addr_type", "in", "(", "socket", ".", "AF_INET", ",", "socket", "inet_ntop", "(", "addr_type", ",", "socket", ".", "inet_pton", "(", "addr_type", ",", "addr_type", ")", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 20, "repair_targets": [2], "repair_candidates": [2, 4, 14, 20, 22]}}
+{"prediction": {"error_location": 0.759171187877655, "repair_targets": [0.9909883141517639], "repair_candidates": [0.9909883141517639, 0.008929736912250519, 2.6274203264620155e-05, 1.7047423170879483e-05, 3.873924651998095e-05], "target_probs": 0.9909883141517639}}
+
+
+{"result": {"time": "2021-02-21 11:57:11.014773", "n_pass": [48, 8, 7], "n_token": 22, "loss": [0.3341906666755676, 0.004745400045067072], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", "addr_type", "in", "(", "socket", "inet_ntop", "(", "addr_type", ",", "socket", ".", "inet_pton", "(", "addr_type", ",", "addr_type", ")", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [2, 4, 10, 16, 18]}}
+{"prediction": {"error_location": 0.7159172892570496, "repair_targets": [0.9952658414840698], "repair_candidates": [0.9952658414840698, 0.004707583226263523, 4.472205546335317e-06, 7.467191153409658e-06, 1.4609318895963952e-05], "target_probs": 0.9952658414840698}}
+
+
+{"result": {"time": "2021-02-21 11:57:11.074263", "n_pass": [64, 9, 8], "n_token": 20, "loss": [0.26912862062454224, 0.005566804204136133], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", "addr_type", "in", "(", "socket", "addr_type", ",", "socket", ".", "inet_pton", "(", "addr_type", ",", "addr_type", ")", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [2, 4, 8, 14, 16]}}
+{"prediction": {"error_location": 0.7640449404716492, "repair_targets": [0.9944486618041992], "repair_candidates": [0.9944486618041992, 0.005335926078259945, 1.966353738680482e-05, 0.00011587151675485075, 7.995656778803095e-05], "target_probs": 0.9944486618041992}}
+
+
+{"result": {"time": "2021-02-21 11:57:11.134117", "n_pass": [65, 10, 9], "n_token": 18, "loss": [0.5651495456695557, 0.01386379636824131], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", "addr_type", "in", "(", "socket", "addr_type", ",", "inet_pton", "(", "addr_type", ",", "addr_type", ")", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [2, 4, 8, 12, 14]}}
+{"prediction": {"error_location": 0.5682750940322876, "repair_targets": [0.9862318634986877], "repair_candidates": [0.9862318634986877, 0.013175495900213718, 2.5835674023255706e-05, 0.00039903304423205554, 0.00016781679005362093], "target_probs": 0.9862318634986877}}
+
+
+{"result": {"time": "2021-02-21 11:57:11.247219", "n_pass": [68, 12, 10], "n_token": 15, "loss": [0.6680469512939453, 0.00436793640255928], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def i_am_a_name(", "string", ")", "addr_type", "in", "(", "socket", "addr_type", ",", "inet_pton", "(", "addr_type", ",", "addr_type"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [2, 4, 8, 12, 14]}}
+{"prediction": {"error_location": 0.5127089023590088, "repair_targets": [0.9956415891647339], "repair_candidates": [0.9956415891647339, 0.004004094284027815, 6.226944151421776e-06, 0.00018662615912035108, 0.00016146527195814997], "target_probs": 0.9956415891647339}}
+
+
+{"result": {"time": "2021-02-21 11:57:11.471039", "n_pass": [90, 16, 11], "n_token": 14, "loss": [0.9950994253158569, 0.11649063229560852], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def i_am_a_name(", "string", ")", "addr_type", "in", "(", "socket", "addr_type", ",", "inet_pton", "(", "addr_type", ",", "addr_type"]}}
+{"position": {"error_location": 11, "repair_targets": [1], "repair_candidates": [1, 3, 7, 11, 13]}}
+{"prediction": {"error_location": 0.36968669295310974, "repair_targets": [0.8900384306907654], "repair_candidates": [0.8900384306907654, 0.10961084067821503, 2.84972684312379e-05, 0.000203630406758748, 0.0001185379151138477], "target_probs": 0.8900384306907654}}
+
+
+{"result": {"time": "2021-02-21 11:57:11.636651", "n_pass": [95, 19, 12], "n_token": 13, "loss": [0.655296802520752, 0.36509111523628235], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def i_am_a_name(", "string", ")", "addr_type", "in", "socket", "addr_type", ",", "inet_pton", "(", "addr_type", ",", "addr_type"]}}
+{"position": {"error_location": 10, "repair_targets": [1], "repair_candidates": [1, 3, 6, 10, 12]}}
+{"prediction": {"error_location": 0.5192878842353821, "repair_targets": [0.6941334009170532], "repair_candidates": [0.6941334009170532, 0.3054746985435486, 3.784208820434287e-05, 0.00021924568864051253, 0.0001348131481790915], "target_probs": 0.6941334009170532}}
+
+
+{"result": {"time": "2021-02-21 11:57:11.691662", "n_pass": [96, 20, 13], "n_token": 12, "loss": [0.7338261008262634, 0.3630332350730896], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def i_am_a_name(", "string", ")", "addr_type", "in", "addr_type", ",", "inet_pton", "(", "addr_type", ",", "addr_type"]}}
+{"position": {"error_location": 9, "repair_targets": [1], "repair_candidates": [1, 3, 5, 9, 11]}}
+{"prediction": {"error_location": 0.48006874322891235, "repair_targets": [0.6955633163452148], "repair_candidates": [0.6955633163452148, 0.304142028093338, 0.00010288506746292114, 0.0001212682545883581, 7.040690979920328e-05], "target_probs": 0.6955633163452148}}
+
+
+{"result": {"time": "2021-02-21 11:57:11.746120", "n_pass": [98, 21, 14], "n_token": 11, "loss": [0.15012075006961823, 0.08646465837955475], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def i_am_a_name(", "string", ")", "addr_type", "in", "addr_type", "inet_pton", "(", "addr_type", ",", "addr_type"]}}
+{"position": {"error_location": 8, "repair_targets": [1], "repair_candidates": [1, 3, 5, 8, 10]}}
+{"prediction": {"error_location": 0.8606040477752686, "repair_targets": [0.9171679615974426], "repair_candidates": [0.9171679615974426, 0.08278698474168777, 1.5775607607793063e-05, 1.008942854241468e-05, 1.9172388419974595e-05], "target_probs": 0.9171679615974426}}
+
+
+{"result": {"time": "2021-02-21 11:57:11.802075", "n_pass": [99, 22, 15], "n_token": 10, "loss": [0.13003183901309967, 0.07615755498409271], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def i_am_a_name(", "string", ")", "addr_type", "in", "addr_type", "(", "addr_type", ",", "addr_type"]}}
+{"position": {"error_location": 7, "repair_targets": [1], "repair_candidates": [1, 3, 5, 7, 9]}}
+{"prediction": {"error_location": 0.8780674934387207, "repair_targets": [0.9266701936721802], "repair_candidates": [0.9266701936721802, 0.07319270819425583, 7.257745892275125e-05, 2.808435237966478e-05, 3.646901677711867e-05], "target_probs": 0.9266701936721802}}
+
+
+{"result": {"time": "2021-02-21 11:57:12.014683", "n_pass": [107, 26, 16], "n_token": 9, "loss": [0.052888527512550354, 0.003357736626639962], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def i_am_a_name(", "string", ")", "addr_type", "addr_type", "(", "addr_type", ",", "addr_type"]}}
+{"position": {"error_location": 6, "repair_targets": [1], "repair_candidates": [1, 3, 4, 6, 8]}}
+{"prediction": {"error_location": 0.9484856128692627, "repair_targets": [0.9966478943824768], "repair_candidates": [0.9966478943824768, 0.0016248569590970874, 0.0005865399725735188, 0.0007856444572098553, 0.0003551497356966138], "target_probs": 0.9966478943824768}}
+
+
+{"result": {"time": "2021-02-21 11:57:12.122627", "n_pass": [112, 28, 17], "n_token": 8, "loss": [0.06713983416557312, 0.05596364662051201], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["string", ")", "addr_type", "addr_type", "(", "addr_type", ",", "addr_type"]}}
+{"position": {"error_location": 5, "repair_targets": [0], "repair_candidates": [0, 2, 3, 5, 7]}}
+{"prediction": {"error_location": 0.935064435005188, "repair_targets": [0.9455735087394714], "repair_candidates": [0.9455735087394714, 0.018132958561182022, 0.013157435692846775, 0.020052215084433556, 0.0030838928651064634], "target_probs": 0.9455735087394714}}
+
+
+{"result": {"time": "2021-02-21 11:57:12.174679", "n_pass": [114, 29, 18], "n_token": 7, "loss": [0.08747091144323349, 0.23431670665740967], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["string", "addr_type", "addr_type", "(", "addr_type", ",", "addr_type"]}}
+{"position": {"error_location": 4, "repair_targets": [0], "repair_candidates": [0, 1, 2, 4, 6]}}
+{"prediction": {"error_location": 0.9162455201148987, "repair_targets": [0.7911112308502197], "repair_candidates": [0.7911112308502197, 0.047346096485853195, 0.020024094730615616, 0.1045510396361351, 0.03696748614311218], "target_probs": 0.7911112308502197}}
+
+
+{"result": {"time": "2021-02-21 11:57:12.278396", "n_pass": [123, 31, 19], "n_token": 6, "loss": [0.31174489855766296, 0.22414003312587738], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["string", "addr_type", "addr_type", "(", "addr_type", "addr_type"]}}
+{"position": {"error_location": 4, "repair_targets": [0], "repair_candidates": [0, 1, 2, 4, 5]}}
+{"prediction": {"error_location": 0.7321682572364807, "repair_targets": [0.7992032170295715], "repair_candidates": [0.7992032170295715, 0.09359537065029144, 0.029351916164159775, 0.04687846079468727, 0.030971083790063858], "target_probs": 0.7992032170295715}}
+
+
+
+
+Minimal simplified tokens:
+
+['string', 'addr_type', 'addr_type', '(', 'addr_type', 'addr_type']

@@ -1,0 +1,79 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def make_BootModeSetting(", "manageMode", ",", "mode", ",", "pxeBootPolicy", ")", ":", "#NEWLINE#", "#INDENT#", "' Create a BootModeSetting dictionary (only with Gen9 and newer)\\n\\n    Args:\\n        manageMode:\\n           Boolean value indicates whether the boot mode is configured using\\n           the server profile.\\n        mode:\\n            The environment used for server boot operations. Supported values\\n            are: \\'UEFI\\', \\'UEFIOptimized\\', or \\'BIOS\\'.\\n        pxeBootPolicy:\\n            Defines the filtering or priority of the PXE boot options for each\\n            enabled NIC port. This field is required only when the \"mode\" is\\n            set to \"UEFI\" or \"UEFIOptimized\". Possible values are:\\n\\n                \\'Auto\\': No change from current server setting\\n                \\'IPv4\\': Only IPv4 entries will be allowed in the boot order.\\n                \\'IPv6\\': Only IPv6 entries will be allowed in the boot order.\\n                \\'IPv4ThenIPv6\\': both IPv4 and IPv6 entries will be present in\\n                                the boot order with IPV4 entries coming first.\\n                \\'IPv6ThenIPv4\\': both IPv4 and IPv6 entries will be present in\\n                                the boot order with IPv6 entries coming first.\\n\\n    Returns: dict\\n    '", "#NEWLINE#", "return", "{", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", ",", "#NEWLINE#", "'mode'", ":", "mode", ",", "#NEWLINE#", "'pxeBootPolicy'", ":", "pxeBootPolicy", ",", "#NEWLINE#", "#UNINDENT#", "}"], "error_location": [19], "repair_targets": [2], "repair_candidates": [6, 29, 4, 19, 24, 2], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "HewlettPackard/python-hpOneView/hpOneView/common.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00015-of-00300", "js_count": 50023, "results": {"model": "transformer", "prob": {"loc": [[0.003863004269078374, 6.275179202930303e-07, 5.063272396910179e-07, 5.5859857184259454e-08, 3.791318761159346e-07, 6.609545266655914e-08, 1.0449480214447249e-05, 4.023910804562547e-08, 1.5501096584102925e-07, 2.0915837239954271e-07, 1.886009641793862e-07, 4.680767688114429e-06, 1.6681573811183625e-07, 1.8731715556441486e-07, 1.5728921425761655e-05, 8.384842544728599e-07, 1.0902551821345696e-06, 2.831100755429361e-05, 2.3979316665645456e-06, 0.44413113594055176, 9.632326509745326e-06, 3.4051267903123517e-06, 1.7501539332442917e-05, 2.765910039670416e-06, 0.5439419150352478, 5.7380771067983005e-06, 1.5242776498780586e-06, 3.816959178948309e-06, 8.391762662540714e-07, 0.00791532639414072, 1.8077834056384745e-06, 3.294391603958502e-07, 2.1803398908559757e-07, 3.5048658901359886e-05]], "pointer": [[0.0, 0.0, 0.9996508359909058, 0.0, 2.6409032216179185e-05, 0.0, 0.00032242879387922585, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.9163898912211152e-07, 0.0, 0.0, 0.0, 0.0, 1.7390766515745781e-07, 0.0, 0.0, 0.0, 0.0, 3.1011129664193504e-08, 0.0, 0.0, 0.0, 0.0]], "target": [0.9996508359909058]}, "loss": [0.8116354942321777, 0.00034922498161904514], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [24]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:19:00.525186", "n_pass": [1, 1, 1], "n_token": 34, "loss": [0.6089129447937012, 0.00034922498161904514], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def make_BootModeSetting(", "manageMode", ",", "mode", ",", "pxeBootPolicy", ")", ":", "#NEWLINE#", "#INDENT#", "' Create a BootModeSetting dictionary (only with Gen9 and newer)\\n\\n    Args:\\n        manageMode:\\n           Boolean value indicates whether the boot mode is configured using\\n           the server profile.\\n        mode:\\n            The environment used for server boot operations. Supported values\\n            are: \\'UEFI\\', \\'UEFIOptimized\\', or \\'BIOS\\'.\\n        pxeBootPolicy:\\n            Defines the filtering or priority of the PXE boot options for each\\n            enabled NIC port. This field is required only when the \"mode\" is\\n            set to \"UEFI\" or \"UEFIOptimized\". Possible values are:\\n\\n                \\'Auto\\': No change from current server setting\\n                \\'IPv4\\': Only IPv4 entries will be allowed in the boot order.\\n                \\'IPv6\\': Only IPv6 entries will be allowed in the boot order.\\n                \\'IPv4ThenIPv6\\': both IPv4 and IPv6 entries will be present in\\n                                the boot order with IPV4 entries coming first.\\n                \\'IPv6ThenIPv4\\': both IPv4 and IPv6 entries will be present in\\n                                the boot order with IPv6 entries coming first.\\n\\n    Returns: dict\\n    '", "#NEWLINE#", "return", "{", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", ",", "#NEWLINE#", "'mode'", ":", "mode", ",", "#NEWLINE#", "'pxeBootPolicy'", ":", "pxeBootPolicy", ",", "#NEWLINE#", "#UNINDENT#", "}"]}}
+{"position": {"error_location": 24, "repair_targets": [2], "repair_candidates": [6, 29, 4, 19, 24, 2]}}
+{"prediction": {"error_location": 0.5439419150352478, "repair_targets": [0.9996508359909058], "repair_candidates": [0.9996508359909058, 2.6409032216179185e-05, 0.00032242879387922585, 1.9163898912211152e-07, 1.7390766515745781e-07, 3.1011129664193504e-08], "target_probs": 0.9996508359909058}}
+
+
+{"result": {"time": "2021-02-21 07:19:00.640317", "n_pass": [22, 3, 2], "n_token": 30, "loss": [0.5459276437759399, 0.0013979306677356362], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def make_BootModeSetting(", "manageMode", ",", "mode", ",", "pxeBootPolicy", ")", "#NEWLINE#", "return", "{", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", ",", "#NEWLINE#", "'mode'", ":", "mode", ",", "#NEWLINE#", "'pxeBootPolicy'", ":", "pxeBootPolicy", ",", "#NEWLINE#", "#UNINDENT#", "}"]}}
+{"position": {"error_location": 20, "repair_targets": [2], "repair_candidates": [6, 25, 4, 15, 20, 2]}}
+{"prediction": {"error_location": 0.5793041586875916, "repair_targets": [0.9986030459403992], "repair_candidates": [0.9986030459403992, 2.1706606275984086e-05, 0.0013741310685873032, 3.1605520689481637e-07, 2.0733831718189322e-07, 5.645593432745954e-07], "target_probs": 0.9986030459403992}}
+
+
+{"result": {"time": "2021-02-21 07:19:00.751743", "n_pass": [43, 5, 3], "n_token": 28, "loss": [0.539699912071228, 0.001121255336329341], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def make_BootModeSetting(", "manageMode", ",", "mode", ",", "pxeBootPolicy", ")", "{", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", ",", "#NEWLINE#", "'mode'", ":", "mode", ",", "#NEWLINE#", "'pxeBootPolicy'", ":", "pxeBootPolicy", ",", "#NEWLINE#", "#UNINDENT#", "}"]}}
+{"position": {"error_location": 18, "repair_targets": [2], "repair_candidates": [6, 23, 4, 13, 18, 2]}}
+{"prediction": {"error_location": 0.582923173904419, "repair_targets": [0.9988793730735779], "repair_candidates": [0.9988793730735779, 2.5701434424263425e-05, 0.0010944502428174019, 2.179569946747506e-07, 1.566780412076696e-07, 6.852229006426569e-08], "target_probs": 0.9988793730735779}}
+
+
+{"result": {"time": "2021-02-21 07:19:00.862694", "n_pass": [46, 7, 4], "n_token": 26, "loss": [0.11133207380771637, 7.665451266802847e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def make_BootModeSetting(", "manageMode", ",", "mode", ",", "pxeBootPolicy", ")", "{", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", "'mode'", ":", "mode", ",", "#NEWLINE#", "'pxeBootPolicy'", ":", "pxeBootPolicy", ",", "#NEWLINE#", "#UNINDENT#", "}"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [6, 21, 4, 13, 16, 2]}}
+{"prediction": {"error_location": 0.8946416974067688, "repair_targets": [0.9999233484268188], "repair_candidates": [0.9999233484268188, 7.355045454460196e-06, 6.933991971891373e-05, 2.7978570571463024e-08, 1.2214750988448486e-08, 4.18891810127775e-09], "target_probs": 0.9999233484268188}}
+
+
+{"result": {"time": "2021-02-21 07:19:00.976860", "n_pass": [49, 9, 5], "n_token": 24, "loss": [0.22745771706104279, 0.000133761772303842], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def make_BootModeSetting(", "manageMode", ",", "mode", ",", "pxeBootPolicy", ")", "{", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", "'mode'", ":", "mode", ",", ":", "pxeBootPolicy", ",", "#NEWLINE#", "#UNINDENT#", "}"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [6, 19, 4, 13, 16, 2]}}
+{"prediction": {"error_location": 0.7965561151504517, "repair_targets": [0.999866247177124], "repair_candidates": [0.999866247177124, 7.3449950832582545e-06, 0.00012634298764169216, 7.619124886559803e-09, 6.2230101072202615e-09, 3.040290863509654e-08], "target_probs": 0.999866247177124}}
+
+
+{"result": {"time": "2021-02-21 07:19:01.032444", "n_pass": [51, 10, 6], "n_token": 21, "loss": [0.07931523025035858, 0.00013388099614530802], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def make_BootModeSetting(", "manageMode", ",", "mode", ",", "pxeBootPolicy", ")", "{", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", "'mode'", ":", "mode", ",", ":", "pxeBootPolicy", ","]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [6, 19, 4, 13, 16, 2]}}
+{"prediction": {"error_location": 0.923748791217804, "repair_targets": [0.9998661279678345], "repair_candidates": [0.9998661279678345, 1.2027875527564902e-05, 0.00012179449549876153, 4.078738413682004e-08, 6.202295566026805e-09, 1.6859845075600788e-08], "target_probs": 0.9998661279678345}}
+
+
+{"result": {"time": "2021-02-21 07:19:01.087705", "n_pass": [52, 11, 7], "n_token": 19, "loss": [0.19928385317325592, 0.41176095604896545], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["manageMode", ",", "mode", ",", "pxeBootPolicy", ")", "{", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", "'mode'", ":", "mode", ",", ":", "pxeBootPolicy", ","]}}
+{"position": {"error_location": 14, "repair_targets": [0], "repair_candidates": [4, 17, 2, 11, 14, 0]}}
+{"prediction": {"error_location": 0.8193174004554749, "repair_targets": [0.6624826192855835], "repair_candidates": [0.6624826192855835, 0.043277472257614136, 0.2938432991504669, 3.101016045548022e-05, 3.463610482867807e-06, 0.00036208302481099963], "target_probs": 0.6624826192855835}}
+
+
+{"result": {"time": "2021-02-21 07:19:01.369704", "n_pass": [83, 16, 8], "n_token": 18, "loss": [0.1821330338716507, 0.18467748165130615], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["manageMode", ",", "mode", "pxeBootPolicy", ")", "{", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", "'mode'", ":", "mode", ",", ":", "pxeBootPolicy", ","]}}
+{"position": {"error_location": 13, "repair_targets": [0], "repair_candidates": [3, 16, 2, 10, 13, 0]}}
+{"prediction": {"error_location": 0.8334904313087463, "repair_targets": [0.8313723802566528], "repair_candidates": [0.8313723802566528, 0.042869724333286285, 0.1256488710641861, 3.108902456006035e-05, 1.2212865385663463e-06, 7.675785309402272e-05], "target_probs": 0.8313723802566528}}
+
+
+{"result": {"time": "2021-02-21 07:19:01.481061", "n_pass": [86, 18, 9], "n_token": 17, "loss": [0.4928058385848999, 0.2963501214981079], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["manageMode", ",", "mode", "pxeBootPolicy", ")", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", "'mode'", ":", "mode", ",", ":", "pxeBootPolicy", ","]}}
+{"position": {"error_location": 12, "repair_targets": [0], "repair_candidates": [3, 15, 2, 9, 12, 0]}}
+{"prediction": {"error_location": 0.6109098196029663, "repair_targets": [0.7435270547866821], "repair_candidates": [0.7435270547866821, 0.13555073738098145, 0.11999925971031189, 0.0008638239232823253, 5.3417147682921495e-06, 5.3780611779075116e-05], "target_probs": 0.7435270547866821}}
+
+
+{"result": {"time": "2021-02-21 07:19:02.088075", "n_pass": [106, 29, 10], "n_token": 16, "loss": [0.3230626881122589, 0.6564788818359375], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["manageMode", ",", "mode", "pxeBootPolicy", ")", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", "'mode'", ":", "mode", ",", ":", "pxeBootPolicy"]}}
+{"position": {"error_location": 12, "repair_targets": [0], "repair_candidates": [3, 15, 2, 9, 12, 0]}}
+{"prediction": {"error_location": 0.7239284515380859, "repair_targets": [0.5186744332313538], "repair_candidates": [0.5186744332313538, 0.2832527458667755, 0.19696664810180664, 0.0010815428104251623, 6.996743650233839e-06, 1.7646905689616688e-05], "target_probs": 0.5186744332313538}}
+
+
+{"result": {"time": "2021-02-21 07:19:02.198181", "n_pass": [111, 31, 11], "n_token": 15, "loss": [0.4975094795227051, 0.27404463291168213], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["manageMode", ",", "mode", "pxeBootPolicy", "#NEWLINE#", "#INDENT#", "'manageMode'", ":", "mode", "'mode'", ":", "mode", ",", ":", "pxeBootPolicy"]}}
+{"position": {"error_location": 11, "repair_targets": [0], "repair_candidates": [3, 14, 2, 8, 11, 0]}}
+{"prediction": {"error_location": 0.6080431342124939, "repair_targets": [0.7602981328964233], "repair_candidates": [0.7602981328964233, 0.11942479014396667, 0.0965079739689827, 0.023325903341174126, 8.43409143271856e-05, 0.00035889525315724313], "target_probs": 0.7602981328964233}}
+
+
+
+
+Minimal simplified tokens:
+
+['manageMode', ',', 'mode', 'pxeBootPolicy', '#NEWLINE#', '#INDENT#', "'manageMode'", ':', 'mode', "'mode'", ':', 'mode', ',', ':', 'pxeBootPolicy']

@@ -1,0 +1,67 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def server_vnc_console(", "request", ",", "instance_id", ",", "console_type", "=", "'novnc'", ")", ":", "#NEWLINE#", "#INDENT#", "return", "VNCConsole", "(", "novaclient", "(", "request", ")", ".", "servers", ".", "get_vnc_console", "(", "instance_id", ",", "instance_id", ")", "[", "'console'", "]", ")"], "error_location": [27], "repair_targets": [6], "repair_candidates": [6, 2, 18, 4, 25, 27], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "CiscoSystems/avos/openstack_dashboard/api/nova.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 240, "results": {"model": "transformer", "prob": {"loc": [[0.0006672426825389266, 9.403188272472107e-08, 4.946359410951118e-08, 4.596024449909919e-09, 4.734771863468268e-08, 3.4416989258545527e-09, 2.8232588533683156e-07, 1.1667414590021963e-08, 1.329699017560415e-07, 2.2338093597085162e-09, 4.639950201834608e-09, 9.016033253317346e-09, 5.798395097400544e-09, 1.3939187581968326e-08, 7.847592797816105e-09, 2.8020707976139647e-09, 2.7125587109821936e-08, 3.342019994079237e-08, 3.893705070368014e-05, 7.517666489320618e-08, 8.179637411842577e-09, 8.946122176389792e-10, 7.08031722140845e-09, 1.046318698350035e-09, 4.0528938427542016e-08, 0.08680164068937302, 2.407851980024134e-07, 0.9124907851219177, 1.5895535554477647e-08, 8.344518676040025e-08, 1.228755337479015e-07, 1.5214043358469098e-08, 5.4415867367652027e-08]], "pointer": [[0.0, 0.0, 0.002596394857391715, 0.0, 0.0003559975593816489, 0.0, 0.9821047186851501, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.014942729845643044, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.200215962171569e-07, 0.0, 6.966212851011733e-08, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9821047186851501]}, "loss": [0.09157729893922806, 0.018057338893413544], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:38:48.702200", "n_pass": [1, 1, 1], "n_token": 33, "loss": [0.09157729893922806, 0.018057338893413544], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def server_vnc_console(", "request", ",", "instance_id", ",", "console_type", "=", "'novnc'", ")", ":", "#NEWLINE#", "#INDENT#", "return", "VNCConsole", "(", "novaclient", "(", "request", ")", ".", "servers", ".", "get_vnc_console", "(", "instance_id", ",", "instance_id", ")", "[", "'console'", "]", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [6], "repair_candidates": [6, 2, 18, 4, 25, 27]}}
+{"prediction": {"error_location": 0.9124907851219177, "repair_targets": [0.9821047186851501], "repair_candidates": [0.002596394857391715, 0.0003559975593816489, 0.9821047186851501, 0.014942729845643044, 1.200215962171569e-07, 6.966212851011733e-08], "target_probs": 0.9821047186851501}}
+
+
+{"result": {"time": "2021-02-11 11:38:48.757056", "n_pass": [9, 2, 2], "n_token": 25, "loss": [0.1824294775724411, 0.016327328979969025], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def server_vnc_console(", "request", ",", "instance_id", ",", "console_type", "=", "novaclient", "(", "request", ")", ".", "servers", ".", "get_vnc_console", "(", "instance_id", ",", "instance_id", ")", "[", "'console'", "]", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [6], "repair_candidates": [6, 2, 10, 4, 17, 19]}}
+{"prediction": {"error_location": 0.8332434296607971, "repair_targets": [0.983805239200592], "repair_candidates": [0.002012653974816203, 3.4287938888155622e-06, 0.983805239200592, 0.014178606681525707, 6.796474139036945e-08, 3.605768128522868e-08], "target_probs": 0.983805239200592}}
+
+
+{"result": {"time": "2021-02-11 11:38:48.811707", "n_pass": [19, 3, 3], "n_token": 21, "loss": [0.4904995560646057, 0.013670175336301327], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def server_vnc_console(", "request", ",", "instance_id", ",", "console_type", "=", "novaclient", "(", "request", ")", "(", "instance_id", ",", "instance_id", ")", "[", "'console'", "]", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [6], "repair_candidates": [6, 2, 10, 4, 13, 15]}}
+{"prediction": {"error_location": 0.6123204231262207, "repair_targets": [0.9864228367805481], "repair_candidates": [0.0013746862532570958, 0.004008644260466099, 0.9864228367805481, 0.00804054830223322, 0.00012024236639263108, 3.304637721157633e-05], "target_probs": 0.9864228367805481}}
+
+
+{"result": {"time": "2021-02-11 11:38:48.865841", "n_pass": [21, 4, 4], "n_token": 16, "loss": [0.18745535612106323, 0.010236863978207111], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def server_vnc_console(", "request", ",", "instance_id", ",", "console_type", "=", "novaclient", "(", "request", ")", "(", "instance_id", ",", "instance_id"]}}
+{"position": {"error_location": 15, "repair_targets": [6], "repair_candidates": [6, 2, 10, 4, 13, 15]}}
+{"prediction": {"error_location": 0.8290660381317139, "repair_targets": [0.989815354347229], "repair_candidates": [0.0016190728638321161, 0.0018814129289239645, 0.989815354347229, 0.006680998485535383, 2.3455090740753803e-06, 7.638071224391751e-07], "target_probs": 0.989815354347229}}
+
+
+{"result": {"time": "2021-02-11 11:38:48.920724", "n_pass": [34, 5, 5], "n_token": 14, "loss": [0.5713335275650024, 0.06990586966276169], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "instance_id", ",", "console_type", "=", "novaclient", "(", "request", ")", "(", "instance_id", ",", "instance_id"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [4, 0, 8, 2, 11, 13]}}
+{"prediction": {"error_location": 0.5647717714309692, "repair_targets": [0.932481586933136], "repair_candidates": [0.012855714187026024, 7.787051436025649e-05, 0.932481586933136, 0.0545848049223423, 1.7685870545847138e-08, 2.4243350438268862e-08], "target_probs": 0.932481586933136}}
+
+
+{"result": {"time": "2021-02-11 11:38:48.978226", "n_pass": [37, 6, 6], "n_token": 12, "loss": [0.3750303387641907, 0.559840977191925], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", ",", "instance_id", ",", "console_type", "=", "request", ")", "(", "instance_id", ",", "instance_id"]}}
+{"position": {"error_location": 11, "repair_targets": [4], "repair_candidates": [4, 0, 6, 2, 9, 11]}}
+{"prediction": {"error_location": 0.6872684359550476, "repair_targets": [0.5712999105453491], "repair_candidates": [0.013230999000370502, 0.0003495859564282, 0.5712999105453491, 0.4151183068752289, 9.134788570008823e-07, 2.3513497637850378e-07], "target_probs": 0.5712999105453491}}
+
+
+{"result": {"time": "2021-02-11 11:38:49.194512", "n_pass": [63, 10, 7], "n_token": 11, "loss": [0.08889997005462646, 0.3628159463405609], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", "instance_id", ",", "console_type", "=", "request", ")", "(", "instance_id", ",", "instance_id"]}}
+{"position": {"error_location": 10, "repair_targets": [3], "repair_candidates": [3, 0, 5, 1, 8, 10]}}
+{"prediction": {"error_location": 0.9149370789527893, "repair_targets": [0.6957144737243652], "repair_candidates": [0.026715951040387154, 0.04033662751317024, 0.6957144737243652, 0.23005077242851257, 0.005599175579845905, 0.0015830392949283123], "target_probs": 0.6957144737243652}}
+
+
+{"result": {"time": "2021-02-11 11:38:49.248673", "n_pass": [65, 11, 8], "n_token": 10, "loss": [0.10290461778640747, 0.054667532444000244], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", "instance_id", "console_type", "=", "request", ")", "(", "instance_id", ",", "instance_id"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [2, 0, 4, 1, 7, 9]}}
+{"prediction": {"error_location": 0.9022130370140076, "repair_targets": [0.9467998743057251], "repair_candidates": [0.010518703609704971, 0.011897509917616844, 0.9467998743057251, 0.028892936185002327, 0.0016559562645852566, 0.00023493375920224935], "target_probs": 0.9467998743057251}}
+
+
+{"result": {"time": "2021-02-11 11:38:49.303305", "n_pass": [67, 12, 9], "n_token": 9, "loss": [0.18339063227176666, 0.16459564864635468], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", "instance_id", "console_type", "request", ")", "(", "instance_id", ",", "instance_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [2, 0, 3, 1, 6, 8]}}
+{"prediction": {"error_location": 0.8324429392814636, "repair_targets": [0.848236620426178], "repair_candidates": [0.0582503005862236, 0.08507400751113892, 0.848236620426178, 0.0056157722137868404, 0.002500072354450822, 0.00032331267721019685], "target_probs": 0.848236620426178}}
+
+
+
+
+Minimal simplified tokens:
+
+['request', 'instance_id', 'console_type', 'request', ')', '(', 'instance_id', ',', 'instance_id']

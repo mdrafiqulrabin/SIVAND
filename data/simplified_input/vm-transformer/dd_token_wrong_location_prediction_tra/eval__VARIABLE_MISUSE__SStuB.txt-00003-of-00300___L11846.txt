@@ -1,0 +1,67 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def add_namespace_to_cmd(", "cmd", ",", "namespace", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'Add an optional namespace to the command.'", "#NEWLINE#", "return", "(", "(", "[", "'ip'", ",", "'netns'", ",", "'exec'", ",", "namespace", "]", "+", "namespace", ")", "if", "namespace", "else", "cmd", ")"], "error_location": [26], "repair_targets": [2, 31], "repair_candidates": [4, 23, 26, 29, 2, 31], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "openstack/neutron/neutron/agent/linux/ip_lib.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00003-of-00300", "js_count": 11846, "results": {"model": "transformer", "prob": {"loc": [[0.016964571550488472, 1.302465079788817e-06, 9.137744996223773e-07, 5.559583016179204e-08, 4.1336988942930475e-06, 1.8140137569844228e-07, 8.79087309613169e-08, 6.045942058108267e-08, 1.1139273681237682e-07, 1.719466382610335e-07, 1.187898490684347e-07, 3.347362280692323e-07, 1.7238239991002047e-07, 6.684178543991948e-08, 8.069974199997887e-08, 3.106955045950599e-05, 0.0001553733745822683, 1.8174015394833987e-06, 3.6307199025031878e-06, 8.355594900422147e-07, 1.3696740097657312e-06, 2.427453011932812e-07, 1.805246512276426e-07, 0.5401970744132996, 5.7656354357504824e-08, 1.5291441002318606e-07, 0.17789208889007568, 3.566945849797776e-08, 1.2029955769321532e-06, 0.26465681195259094, 1.4491473621092155e-07, 8.53639212436974e-05, 2.2015539968833764e-07]], "pointer": [[0.0, 0.0, 0.9594952464103699, 0.0, 0.00041128561133518815, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.0609661482449155e-06, 0.0, 0.0, 3.888327682943782e-06, 0.0, 0.0, 2.4402527287747944e-06, 0.0, 0.040083035826683044, 0.0]], "target": [0.9995782971382141]}, "loss": [1.7265782356262207, 0.00042179180309176445], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [23]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:54:33.245358", "n_pass": [1, 1, 1], "n_token": 33, "loss": [0.6158213019371033, 0.00042179180309176445], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_namespace_to_cmd(", "cmd", ",", "namespace", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'Add an optional namespace to the command.'", "#NEWLINE#", "return", "(", "(", "[", "'ip'", ",", "'netns'", ",", "'exec'", ",", "namespace", "]", "+", "namespace", ")", "if", "namespace", "else", "cmd", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [2, 31], "repair_candidates": [4, 23, 26, 29, 2, 31]}}
+{"prediction": {"error_location": 0.5401970744132996, "repair_targets": [0.9594952464103699, 0.040083035826683044], "repair_candidates": [0.9594952464103699, 0.00041128561133518815, 4.0609661482449155e-06, 3.888327682943782e-06, 2.4402527287747944e-06, 0.040083035826683044], "target_probs": 0.9995782971382141}}
+
+
+{"result": {"time": "2021-02-21 05:54:33.359238", "n_pass": [22, 3, 2], "n_token": 29, "loss": [0.7179386019706726, 0.0022278190590441227], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_namespace_to_cmd(", "cmd", ",", "namespace", "=", "None", ")", "#NEWLINE#", "return", "(", "(", "[", "'ip'", ",", "'netns'", ",", "'exec'", ",", "namespace", "]", "+", "namespace", ")", "if", "namespace", "else", "cmd", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [2, 27], "repair_candidates": [4, 19, 22, 25, 2, 27]}}
+{"prediction": {"error_location": 0.4877566695213318, "repair_targets": [0.9652253985404968, 0.03254926949739456], "repair_candidates": [0.9652253985404968, 0.0018080732552334666, 0.00037222422542981803, 3.8380057958420366e-05, 6.55075564282015e-06, 0.03254926949739456], "target_probs": 0.9977746605873108}}
+
+
+{"result": {"time": "2021-02-21 05:54:33.414687", "n_pass": [23, 4, 3], "n_token": 25, "loss": [0.460360586643219, 0.0010059168562293053], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_namespace_to_cmd(", "cmd", ",", "namespace", "=", "None", ")", "#NEWLINE#", "return", "(", "(", ",", "'exec'", ",", "namespace", "]", "+", "namespace", ")", "if", "namespace", "else", "cmd", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [2, 23], "repair_candidates": [4, 15, 18, 21, 2, 23]}}
+{"prediction": {"error_location": 0.6310560703277588, "repair_targets": [0.976653516292572, 0.02234104834496975], "repair_candidates": [0.976653516292572, 0.0008808039710856974, 2.683180537133012e-05, 8.451665780739859e-05, 1.3414231943897903e-05, 0.02234104834496975], "target_probs": 0.9989945888519287}}
+
+
+{"result": {"time": "2021-02-21 05:54:33.525806", "n_pass": [42, 6, 4], "n_token": 23, "loss": [0.4737003445625305, 0.00045560247963294387], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_namespace_to_cmd(", "cmd", ",", "namespace", "=", "None", ")", "#NEWLINE#", "return", "(", "(", ",", "namespace", "]", "+", "namespace", ")", "if", "namespace", "else", "cmd", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 21], "repair_candidates": [4, 13, 16, 19, 2, 21]}}
+{"prediction": {"error_location": 0.6226938366889954, "repair_targets": [0.9703755974769592, 0.029168911278247833], "repair_candidates": [0.9703755974769592, 0.0004056850157212466, 1.9403030819376e-05, 1.4409182767849416e-05, 1.5930281733744778e-05, 0.029168911278247833], "target_probs": 0.9995445013046265}}
+
+
+{"result": {"time": "2021-02-21 05:54:33.581293", "n_pass": [43, 7, 5], "n_token": 21, "loss": [0.8727109432220459, 0.0004596574290189892], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_namespace_to_cmd(", "cmd", ",", "namespace", "=", "None", ")", "#NEWLINE#", "return", "(", "(", ",", "namespace", "namespace", ")", "if", "namespace", "else", "cmd", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 19], "repair_candidates": [4, 13, 14, 17, 2, 19]}}
+{"prediction": {"error_location": 0.4178173243999481, "repair_targets": [0.9533731341362, 0.0461672879755497], "repair_candidates": [0.9533731341362, 0.0003372012870386243, 7.094087777659297e-05, 3.333950007800013e-05, 1.8041260773316026e-05, 0.0461672879755497], "target_probs": 0.9995404481887817}}
+
+
+{"result": {"time": "2021-02-21 05:54:33.969069", "n_pass": [78, 14, 6], "n_token": 20, "loss": [0.7187327742576599, 0.00019951665308326483], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_namespace_to_cmd(", "cmd", ",", "namespace", "=", "None", ")", "#NEWLINE#", "return", "(", "(", ",", "namespace", "namespace", ")", "if", "namespace", "cmd", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 18], "repair_candidates": [4, 13, 14, 17, 2, 18]}}
+{"prediction": {"error_location": 0.4873693883419037, "repair_targets": [0.9856117963790894, 0.014188733883202076], "repair_candidates": [0.9856117963790894, 0.00017331924755126238, 1.1121618626930285e-05, 8.345863534486853e-06, 6.660779035883024e-06, 0.014188733883202076], "target_probs": 0.9998005032539368}}
+
+
+{"result": {"time": "2021-02-21 05:54:34.192586", "n_pass": [84, 18, 7], "n_token": 19, "loss": [0.8494876027107239, 4.774445915245451e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_namespace_to_cmd(", "cmd", ",", "namespace", "None", ")", "#NEWLINE#", "return", "(", "(", ",", "namespace", "namespace", ")", "if", "namespace", "cmd", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 17], "repair_candidates": [4, 12, 13, 16, 2, 17]}}
+{"prediction": {"error_location": 0.427634060382843, "repair_targets": [0.9935247898101807, 0.00642747338861227], "repair_candidates": [0.9935247898101807, 3.4266959119122475e-05, 6.985883828747319e-06, 4.021825589006767e-06, 2.5100132461375324e-06, 0.00642747338861227], "target_probs": 0.9999522566795349}}
+
+
+{"result": {"time": "2021-02-21 05:54:34.247576", "n_pass": [85, 19, 8], "n_token": 18, "loss": [0.9337153434753418, 0.00024858227698132396], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_namespace_to_cmd(", "cmd", ",", "namespace", ")", "#NEWLINE#", "return", "(", "(", ",", "namespace", "namespace", ")", "if", "namespace", "cmd", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 16], "repair_candidates": [4, 11, 12, 15, 2, 16]}}
+{"prediction": {"error_location": 0.3930905759334564, "repair_targets": [0.991865336894989, 0.007886097766458988], "repair_candidates": [0.991865336894989, 0.0001866814272943884, 2.463744931446854e-05, 1.9899378457921557e-05, 1.7284080968238413e-05, 0.007886097766458988], "target_probs": 0.9997514486312866}}
+
+
+{"result": {"time": "2021-02-21 05:54:34.357615", "n_pass": [87, 21, 9], "n_token": 17, "loss": [1.0211530923843384, 0.0006521682371385396], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_namespace_to_cmd(", "cmd", ",", "namespace", ")", "return", "(", "(", ",", "namespace", "namespace", ")", "if", "namespace", "cmd", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 15], "repair_candidates": [4, 10, 11, 14, 2, 15]}}
+{"prediction": {"error_location": 0.3601793348789215, "repair_targets": [0.9952711462974548, 0.004076910205185413], "repair_candidates": [0.9952711462974548, 0.0004344864864833653, 0.00011113951040897518, 8.59861247590743e-05, 2.039190621871967e-05, 0.004076910205185413], "target_probs": 0.9993480443954468}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def add_namespace_to_cmd(', 'cmd', ',', 'namespace', ')', 'return', '(', '(', ',', 'namespace', 'namespace', ')', 'if', 'namespace', 'cmd', ')']

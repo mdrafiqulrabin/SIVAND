@@ -1,0 +1,103 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "service_name", "=", "'images'", ",", "host_prefix", "=", "''", ")", ":", "#NEWLINE#", "#INDENT#", "'Preloads PIL to load all modules in the unhardened environment.\\n\\n    Args:\\n      service_name: Service name expected for all calls.\\n      host_prefix: the URL prefix (protocol://host:port) to preprend to\\n        image urls on a call to GetUrlBase.\\n    '", "#NEWLINE#", "super", "(", "ImagesServiceStub", ",", "self", ")", ".", "__init__", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "_blob_stub", "=", "images_blob_stub", ".", "ImagesBlobStub", "(", "service_name", ")", "#NEWLINE#", "Image", ".", "init", "(", ")"], "error_location": [41], "repair_targets": [8], "repair_candidates": [8, 2, 21, 33, 4, 26, 41], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "AppScale/appscale/AppServer/google/appengine/api/images/images_stub.py", "license": "apache-2.0", "note": "license: github_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00017-of-00300", "js_count": 55488, "results": {"model": "rnn", "prob": {"loc": [[0.0162460096180439, 8.082570843725989e-07, 3.174298512931273e-08, 4.125244590369448e-09, 1.6172242212064702e-08, 7.647254496312428e-10, 1.0376088432906272e-08, 9.666076827841152e-10, 3.580482754728109e-08, 6.794091955697468e-09, 6.74613387374734e-09, 2.6614472847796833e-09, 5.768161059904742e-09, 1.273566763160261e-08, 3.1793263577384323e-09, 3.931143854885022e-09, 6.1636433734690854e-09, 4.47227721522836e-09, 2.5301802319965816e-10, 2.5883272414262137e-08, 5.849209311348247e-11, 3.9046605948556135e-09, 1.285215711632759e-09, 2.7326074736322425e-09, 5.252406936051557e-07, 1.602542170076049e-06, 0.014176646247506142, 6.877005489513976e-07, 5.3757357818540186e-06, 1.696791628091887e-06, 0.9440008997917175, 5.187964546848889e-08, 1.6888762388589384e-08, 2.3819334060704023e-08, 1.784514758185196e-10, 1.2775610569448759e-09, 2.815296884506324e-10, 2.9510600629834016e-09, 3.84063580938232e-09, 3.297210504626946e-09, 1.9421270280872704e-07, 0.025549527257680893, 1.84505395850465e-07, 9.006107148934461e-08, 1.5547175991059703e-08, 9.253906974038273e-09, 3.633802236890915e-08, 1.0565371439952287e-06, 1.4350862329592928e-05]], "pointer": [[0.0, 0.0, 8.835004700813442e-05, 0.0, 0.0006011964287608862, 0.0, 0.0, 0.0, 0.9992868304252625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.600083487574011e-05, 0.0, 0.0, 0.0, 0.0, 3.792326879192842e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.2753777102479944e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5235194723572931e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9992868304252625]}, "loss": [3.6671364307403564, 0.0007134240004234016], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [30]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 13:21:40.636167", "n_pass": [1, 1, 1], "n_token": 49, "loss": [0.05762818083167076, 0.0007134240004234016], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "service_name", "=", "'images'", ",", "host_prefix", "=", "''", ")", ":", "#NEWLINE#", "#INDENT#", "'Preloads PIL to load all modules in the unhardened environment.\\n\\n    Args:\\n      service_name: Service name expected for all calls.\\n      host_prefix: the URL prefix (protocol://host:port) to preprend to\\n        image urls on a call to GetUrlBase.\\n    '", "#NEWLINE#", "super", "(", "ImagesServiceStub", ",", "self", ")", ".", "__init__", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "_blob_stub", "=", "images_blob_stub", ".", "ImagesBlobStub", "(", "service_name", ")", "#NEWLINE#", "Image", ".", "init", "(", ")"]}}
+{"position": {"error_location": 30, "repair_targets": [8], "repair_candidates": [8, 2, 21, 33, 4, 26, 41]}}
+{"prediction": {"error_location": 0.9440008997917175, "repair_targets": [0.9992868304252625], "repair_candidates": [8.835004700813442e-05, 0.0006011964287608862, 0.9992868304252625, 1.600083487574011e-05, 3.792326879192842e-06, 2.2753777102479944e-06, 1.5235194723572931e-06], "target_probs": 0.9992868304252625}}
+
+
+{"result": {"time": "2021-02-21 13:21:40.781265", "n_pass": [27, 3, 2], "n_token": 42, "loss": [0.04499809816479683, 0.0007474235026165843], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "service_name", "=", "'images'", ",", "host_prefix", "=", "''", ")", ":", "#NEWLINE#", "#INDENT#", "'Preloads PIL to load all modules in the unhardened environment.\\n\\n    Args:\\n      service_name: Service name expected for all calls.\\n      host_prefix: the URL prefix (protocol://host:port) to preprend to\\n        image urls on a call to GetUrlBase.\\n    '", "#NEWLINE#", "super", "(", "ImagesServiceStub", ",", "self", ")", ".", "__init__", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "_blob_stub", "=", "images_blob_stub", ".", "ImagesBlobStub", "(", "service_name"]}}
+{"position": {"error_location": 30, "repair_targets": [8], "repair_candidates": [8, 2, 21, 33, 4, 26, 41]}}
+{"prediction": {"error_location": 0.9559994339942932, "repair_targets": [0.9992528557777405], "repair_candidates": [7.989981531864032e-05, 0.0006286903517320752, 0.9992528557777405, 2.4896598915802315e-05, 6.622004093514988e-06, 5.0751127673720475e-06, 1.8884430801335839e-06], "target_probs": 0.9992528557777405}}
+
+
+{"result": {"time": "2021-02-21 13:21:40.918736", "n_pass": [51, 5, 3], "n_token": 39, "loss": [0.04589960351586342, 0.0031097554601728916], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "service_name", "=", "'images'", ",", "host_prefix", ":", "#NEWLINE#", "#INDENT#", "'Preloads PIL to load all modules in the unhardened environment.\\n\\n    Args:\\n      service_name: Service name expected for all calls.\\n      host_prefix: the URL prefix (protocol://host:port) to preprend to\\n        image urls on a call to GetUrlBase.\\n    '", "#NEWLINE#", "super", "(", "ImagesServiceStub", ",", "self", ")", ".", "__init__", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "_blob_stub", "=", "images_blob_stub", ".", "ImagesBlobStub", "(", "service_name"]}}
+{"position": {"error_location": 27, "repair_targets": [8], "repair_candidates": [8, 2, 18, 30, 4, 23, 38]}}
+{"prediction": {"error_location": 0.9551378488540649, "repair_targets": [0.9968950748443604], "repair_candidates": [0.0004319419094827026, 0.0025325214955955744, 0.9968950748443604, 8.921275730244815e-05, 1.9629633243312128e-05, 2.1545038180192932e-05, 1.0059317901323084e-05], "target_probs": 0.9968950748443604}}
+
+
+{"result": {"time": "2021-02-21 13:21:41.054261", "n_pass": [53, 7, 4], "n_token": 36, "loss": [0.15754225850105286, 0.005101498682051897], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "service_name", "=", "'images'", ",", "host_prefix", ":", "#NEWLINE#", "#INDENT#", "(", "ImagesServiceStub", ",", "self", ")", ".", "__init__", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "_blob_stub", "=", "images_blob_stub", ".", "ImagesBlobStub", "(", "service_name"]}}
+{"position": {"error_location": 24, "repair_targets": [8], "repair_candidates": [8, 2, 15, 27, 4, 20, 35]}}
+{"prediction": {"error_location": 0.8542407155036926, "repair_targets": [0.9949114918708801], "repair_candidates": [0.0008152303635142744, 0.004011307843029499, 0.9949114918708801, 0.00012646774121094495, 1.7919483070727438e-05, 9.646653779782355e-05, 2.12270697375061e-05], "target_probs": 0.9949114918708801}}
+
+
+{"result": {"time": "2021-02-21 13:21:41.120667", "n_pass": [54, 8, 5], "n_token": 33, "loss": [0.22354154288768768, 0.007861140184104443], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "service_name", "=", "'images'", ",", "host_prefix", ":", "#NEWLINE#", "#INDENT#", "self", ")", ".", "__init__", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "_blob_stub", "=", "images_blob_stub", ".", "ImagesBlobStub", "(", "service_name"]}}
+{"position": {"error_location": 21, "repair_targets": [8], "repair_candidates": [8, 2, 12, 24, 4, 17, 32]}}
+{"prediction": {"error_location": 0.7996817231178284, "repair_targets": [0.9921696782112122], "repair_candidates": [0.005631929263472557, 0.001853216323070228, 0.9921696782112122, 0.0001734982943162322, 2.060338192677591e-05, 0.0001313889806624502, 1.970628545677755e-05], "target_probs": 0.9921696782112122}}
+
+
+{"result": {"time": "2021-02-21 13:21:41.252169", "n_pass": [60, 10, 6], "n_token": 30, "loss": [0.2951578199863434, 0.03488652780652046], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "service_name", "=", "'images'", ",", "host_prefix", ":", "#NEWLINE#", "#INDENT#", "self", ")", ".", "__init__", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "_blob_stub", "ImagesBlobStub", "(", "service_name"]}}
+{"position": {"error_location": 21, "repair_targets": [8], "repair_candidates": [8, 2, 12, 24, 4, 17, 29]}}
+{"prediction": {"error_location": 0.7444139719009399, "repair_targets": [0.9657149910926819], "repair_candidates": [0.030480897054076195, 0.002755714813247323, 0.9657149910926819, 0.0007350111263804138, 4.7037632612045854e-05, 0.00013842595217283815, 0.00012785056605935097], "target_probs": 0.9657149910926819}}
+
+
+{"result": {"time": "2021-02-21 13:21:41.442100", "n_pass": [91, 13, 7], "n_token": 28, "loss": [0.1577545553445816, 0.04606742411851883], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "service_name", "=", "'images'", ",", "host_prefix", ":", "#NEWLINE#", "#INDENT#", "self", ")", ".", "__init__", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "(", "service_name"]}}
+{"position": {"error_location": 21, "repair_targets": [8], "repair_candidates": [8, 2, 12, 24, 4, 17, 27]}}
+{"prediction": {"error_location": 0.8540593981742859, "repair_targets": [0.9549775719642639], "repair_candidates": [0.04269431531429291, 0.0012913496466353536, 0.9549775719642639, 0.0002506771415937692, 2.626273089845199e-05, 1.536329000373371e-05, 0.0007444152724929154], "target_probs": 0.9549775719642639}}
+
+
+{"result": {"time": "2021-02-21 13:21:41.758008", "n_pass": [99, 18, 8], "n_token": 27, "loss": [0.04544804245233536, 0.0034888978116214275], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "service_name", "=", ",", "host_prefix", ":", "#NEWLINE#", "#INDENT#", "self", ")", ".", "__init__", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "(", "service_name"]}}
+{"position": {"error_location": 20, "repair_targets": [7], "repair_candidates": [7, 2, 11, 23, 4, 16, 26]}}
+{"prediction": {"error_location": 0.9555692672729492, "repair_targets": [0.9965171813964844], "repair_candidates": [0.002464833902195096, 0.0006958015146665275, 0.9965171813964844, 7.079774513840675e-05, 4.880098458670545e-06, 4.8362235247623175e-06, 0.0002416974020889029], "target_probs": 0.9965171813964844}}
+
+
+{"result": {"time": "2021-02-21 13:21:42.007459", "n_pass": [105, 22, 9], "n_token": 25, "loss": [0.019237373024225235, 0.0027522137388587], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "service_name", "=", ",", "host_prefix", ":", "#NEWLINE#", "#INDENT#", "self", ")", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "(", "service_name"]}}
+{"position": {"error_location": 18, "repair_targets": [7], "repair_candidates": [7, 2, 11, 21, 4, 14, 24]}}
+{"prediction": {"error_location": 0.9809466004371643, "repair_targets": [0.997251570224762], "repair_candidates": [0.00022209042799659073, 0.0017948532477021217, 0.997251570224762, 0.00010174752969760448, 2.930147275037598e-05, 1.0812551408889703e-05, 0.0005896743386983871], "target_probs": 0.997251570224762}}
+
+
+{"result": {"time": "2021-02-21 13:21:42.190981", "n_pass": [112, 25, 10], "n_token": 24, "loss": [0.45700907707214355, 0.12703533470630646], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "service_name", "=", ",", "host_prefix", ":", "#NEWLINE#", "#INDENT#", "self", ")", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "(", "service_name"]}}
+{"position": {"error_location": 17, "repair_targets": [6], "repair_candidates": [6, 1, 10, 20, 3, 13, 23]}}
+{"prediction": {"error_location": 0.6331745982170105, "repair_targets": [0.880702555179596], "repair_candidates": [0.03753576800227165, 0.03119361214339733, 0.880702555179596, 0.004754373803734779, 0.0009316215291619301, 0.0010119910584762692, 0.04387003555893898], "target_probs": 0.880702555179596}}
+
+
+{"result": {"time": "2021-02-21 13:21:42.376211", "n_pass": [117, 28, 11], "n_token": 23, "loss": [0.5208835601806641, 0.057225655764341354], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "service_name", ",", "host_prefix", ":", "#NEWLINE#", "#INDENT#", "self", ")", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "(", "service_name"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [5, 1, 9, 19, 3, 12, 22]}}
+{"prediction": {"error_location": 0.5939955115318298, "repair_targets": [0.9443809390068054], "repair_candidates": [0.0038202586583793163, 0.0457565002143383, 0.9443809390068054, 0.0004922822117805481, 0.00013374505215324461, 0.00010464184742886573, 0.0053116208873689175], "target_probs": 0.9443809390068054}}
+
+
+{"result": {"time": "2021-02-21 13:21:42.436534", "n_pass": [118, 29, 12], "n_token": 22, "loss": [0.044650789350271225, 0.1671493798494339], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "service_name", "host_prefix", ":", "#NEWLINE#", "#INDENT#", "self", ")", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "(", "service_name"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [4, 1, 8, 18, 3, 11, 21]}}
+{"prediction": {"error_location": 0.9563314914703369, "repair_targets": [0.8460732102394104], "repair_candidates": [0.017898689955472946, 0.13304975628852844, 0.8460732102394104, 0.0011590378126129508, 0.00015896916738711298, 6.714713526889682e-05, 0.0015931271482259035], "target_probs": 0.8460732102394104}}
+
+
+{"result": {"time": "2021-02-21 13:21:42.555393", "n_pass": [121, 31, 13], "n_token": 20, "loss": [0.7299497127532959, 0.605646014213562], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "service_name", "host_prefix", ":", "self", ")", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", ")", "#NEWLINE#", "self", ".", "(", "service_name"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [4, 1, 6, 16, 3, 9, 19]}}
+{"prediction": {"error_location": 0.4819332957267761, "repair_targets": [0.5457217693328857], "repair_candidates": [0.022900518029928207, 0.42282313108444214, 0.5457217693328857, 0.0020418043714016676, 0.0013253805227577686, 0.0007149741868488491, 0.004472415428608656], "target_probs": 0.5457217693328857}}
+
+
+{"result": {"time": "2021-02-21 13:21:43.086289", "n_pass": [154, 40, 14], "n_token": 19, "loss": [0.3781043291091919, 0.504349410533905], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "service_name", "host_prefix", ":", "self", ")", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", "#NEWLINE#", "self", ".", "(", "service_name"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [4, 1, 6, 15, 3, 9, 18]}}
+{"prediction": {"error_location": 0.6851590871810913, "repair_targets": [0.6038983464241028], "repair_candidates": [0.019274111837148666, 0.356992244720459, 0.6038983464241028, 0.001365171978250146, 0.0012385316658765078, 0.00036589702358469367, 0.016865700483322144], "target_probs": 0.6038983464241028}}
+
+
+{"result": {"time": "2021-02-21 13:21:43.317457", "n_pass": [161, 44, 15], "n_token": 18, "loss": [0.9222623109817505, 0.5071417689323425], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", "service_name", "host_prefix", ":", "self", ")", "(", "service_name", ",", "max_request_size", "=", "MAX_REQUEST_SIZE", "#NEWLINE#", "self", ".", "(", "service_name"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [3, 1, 5, 14, 2, 8, 17]}}
+{"prediction": {"error_location": 0.39761847257614136, "repair_targets": [0.6022143959999084], "repair_candidates": [0.02376989834010601, 0.3689379096031189, 0.6022143959999084, 0.00017368292901664972, 0.0005506837042048573, 0.00019918031466659158, 0.004154347814619541], "target_probs": 0.6022143959999084}}
+
+
+
+
+Minimal simplified tokens:
+
+['def __init__(', 'self', 'service_name', 'host_prefix', ':', 'self', ')', '(', 'service_name', ',', 'max_request_size', '=', 'MAX_REQUEST_SIZE', '#NEWLINE#', 'self', '.', '(', 'service_name']

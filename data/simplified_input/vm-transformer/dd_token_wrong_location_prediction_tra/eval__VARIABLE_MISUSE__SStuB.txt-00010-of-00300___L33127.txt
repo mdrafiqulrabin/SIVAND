@@ -1,0 +1,85 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def _bool_fallback(", "a", ",", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", ")", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "a", ",", "bool", ")", "#NEWLINE#", "return", "b", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "a", ",", "bool", ")", "#NEWLINE#", "return", "a"], "error_location": [23], "repair_targets": [4, 29], "repair_candidates": [4, 29, 2, 13, 23, 39, 45], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "beetbox/beets/beets/ui/__init__.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00010-of-00300", "js_count": 33127, "results": {"model": "transformer", "prob": {"loc": [[0.18679136037826538, 3.686606760311406e-06, 9.128286365012173e-06, 5.42420863780535e-08, 2.527932883822359e-05, 6.59140653169743e-08, 1.1853968118202829e-07, 1.1596910098887747e-07, 1.1310370240380507e-07, 1.18539071536361e-06, 4.376924493953993e-07, 5.001398903914378e-07, 6.246838211154682e-07, 0.4037180244922638, 4.435526716406457e-05, 6.799499260523589e-06, 3.1299639431381365e-06, 3.3593837542866822e-06, 3.307641918581794e-06, 6.772121423637145e-07, 2.5041970275196945e-07, 4.2067350136676396e-07, 8.10363076197973e-07, 0.24360795319080353, 2.716672042879509e-06, 4.6039298467803746e-05, 1.4973394172557164e-05, 1.461484316678252e-06, 5.844194674864411e-07, 0.023818541318178177, 5.303402303979965e-07, 2.8195776735628897e-07, 1.0662753311407869e-06, 8.705300160727347e-07, 1.1012352842953987e-06, 6.457322001551802e-07, 2.681616990685143e-07, 3.739147018677613e-07, 7.5408973998492e-07, 0.08482043445110321, 2.3947766294440953e-06, 1.234670799021842e-05, 6.480109959738911e-07, 1.4956644918129314e-06, 3.696194426083821e-07, 0.057050351053476334]], "pointer": [[0.0, 0.0, 0.00404767319560051, 0.0, 0.8581764698028564, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0006513912812806666, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00763278640806675, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1209297776222229, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.008198489435017109, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00036336175980977714]], "target": [0.9791062474250793]}, "loss": [1.4121953248977661, 0.02111511491239071], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [13]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:48:50.495577", "n_pass": [1, 1, 1], "n_token": 46, "loss": [0.9070388078689575, 0.02111511491239071], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _bool_fallback(", "a", ",", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", ")", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "a", ",", "bool", ")", "#NEWLINE#", "return", "b", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "a", ",", "bool", ")", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 29], "repair_candidates": [4, 29, 2, 13, 23, 39, 45]}}
+{"prediction": {"error_location": 0.4037180244922638, "repair_targets": [0.8581764698028564, 0.1209297776222229], "repair_candidates": [0.00404767319560051, 0.8581764698028564, 0.0006513912812806666, 0.00763278640806675, 0.1209297776222229, 0.008198489435017109, 0.00036336175980977714], "target_probs": 0.9791062474250793}}
+
+
+{"result": {"time": "2021-02-21 06:48:50.837703", "n_pass": [50, 7, 2], "n_token": 43, "loss": [0.9765269160270691, 0.020936641842126846], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _bool_fallback(", "a", ",", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", "#INDENT#", "assert", "isinstance", "(", "a", ",", "bool", ")", "#NEWLINE#", "return", "b", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "a", ",", "bool", ")", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 26], "repair_candidates": [4, 26, 2, 13, 20, 36, 42]}}
+{"prediction": {"error_location": 0.3766169250011444, "repair_targets": [0.8495052456855774, 0.1297757476568222], "repair_candidates": [0.00513773038983345, 0.8495052456855774, 0.0006715641357004642, 0.00616821413859725, 0.1297757476568222, 0.008480117656290531, 0.00026123839779756963], "target_probs": 0.9792810082435608}}
+
+
+{"result": {"time": "2021-02-21 06:48:50.894322", "n_pass": [52, 8, 3], "n_token": 40, "loss": [0.767220675945282, 0.0010723854647949338], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _bool_fallback(", "a", ",", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", "#INDENT#", "assert", "isinstance", "(", "a", ",", "return", "b", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "a", ",", "bool", ")", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 23], "repair_candidates": [4, 23, 2, 13, 20, 33, 39]}}
+{"prediction": {"error_location": 0.4643017649650574, "repair_targets": [0.9379302263259888, 0.06099797785282135], "repair_candidates": [0.00037946811062283814, 0.9379302263259888, 4.234360676491633e-05, 0.0001063247982528992, 0.06099797785282135, 0.0005171193624846637, 2.6532041374593973e-05], "target_probs": 0.9989281892776489}}
+
+
+{"result": {"time": "2021-02-21 06:48:50.950559", "n_pass": [54, 9, 4], "n_token": 37, "loss": [0.7822120785713196, 0.001048876321874559], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _bool_fallback(", "a", ",", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", "#INDENT#", "assert", "isinstance", "(", "a", ",", "return", "b", "#NEWLINE#", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "a", ",", "bool", ")", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 23], "repair_candidates": [4, 23, 2, 13, 20, 30, 36]}}
+{"prediction": {"error_location": 0.4573931097984314, "repair_targets": [0.9529128670692444, 0.04603881761431694], "repair_candidates": [0.0005295529845170677, 0.9529128670692444, 3.590848427847959e-05, 4.875582453678362e-05, 0.04603881761431694, 0.0003938341105822474, 4.036749305669218e-05], "target_probs": 0.9989516735076904}}
+
+
+{"result": {"time": "2021-02-21 06:48:51.006940", "n_pass": [55, 10, 5], "n_token": 34, "loss": [0.8227737545967102, 0.00025895610451698303], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _bool_fallback(", "a", ",", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", "#INDENT#", "assert", "isinstance", "(", "a", ",", "return", "b", "#NEWLINE#", "isinstance", "(", "a", ",", "bool", ")", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 23], "repair_candidates": [4, 23, 2, 13, 20, 27, 33]}}
+{"prediction": {"error_location": 0.4392116069793701, "repair_targets": [0.9153485894203186, 0.0843924805521965], "repair_candidates": [0.00014477896911557764, 0.9153485894203186, 2.2456966689787805e-05, 2.0834168026340194e-05, 0.0843924805521965, 4.547351272776723e-05, 2.532464532123413e-05], "target_probs": 0.9997410774230957}}
+
+
+{"result": {"time": "2021-02-21 06:48:51.063097", "n_pass": [57, 11, 6], "n_token": 31, "loss": [0.7927876710891724, 0.0003327088779769838], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _bool_fallback(", "a", ",", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", "#INDENT#", "assert", "isinstance", "(", "a", ",", "return", "b", "#NEWLINE#", "isinstance", "(", "a", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 23], "repair_candidates": [4, 23, 2, 13, 20, 27, 30]}}
+{"prediction": {"error_location": 0.45258134603500366, "repair_targets": [0.8988727927207947, 0.10079457610845566], "repair_candidates": [0.00018880075367633253, 0.8988727927207947, 2.7434756702859886e-05, 3.481004387140274e-05, 0.10079457610845566, 5.097812390886247e-05, 3.0556075216736645e-05], "target_probs": 0.9996673464775085}}
+
+
+{"result": {"time": "2021-02-21 06:48:51.122245", "n_pass": [59, 12, 7], "n_token": 29, "loss": [0.3164524734020233, 0.0160375889390707], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", ",", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", "#INDENT#", "assert", "isinstance", "(", "a", ",", "return", "b", "#NEWLINE#", "isinstance", "(", "a", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 21], "repair_candidates": [2, 21, 0, 11, 18, 25, 28]}}
+{"prediction": {"error_location": 0.7287294864654541, "repair_targets": [0.9777272939682007, 0.0063630384393036366], "repair_candidates": [0.015815965831279755, 0.9777272939682007, 5.833822797285393e-05, 1.9963625163654797e-05, 0.0063630384393036366, 9.617352588975336e-06, 5.750400760007324e-06], "target_probs": 0.9840903282165527}}
+
+
+{"result": {"time": "2021-02-21 06:48:51.289565", "n_pass": [65, 15, 8], "n_token": 26, "loss": [1.0070334672927856, 0.10330318659543991], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", ",", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", "(", "a", ",", "return", "b", "#NEWLINE#", "isinstance", "(", "a", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 18], "repair_candidates": [2, 18, 0, 11, 15, 22, 25]}}
+{"prediction": {"error_location": 0.3653010129928589, "repair_targets": [0.8966968655586243, 0.005156619008630514], "repair_candidates": [0.09715116024017334, 0.8966968655586243, 0.0006866867770440876, 0.00015801041445229203, 0.005156619008630514, 4.657323734136298e-05, 0.0001040865172399208], "target_probs": 0.9018535017967224}}
+
+
+{"result": {"time": "2021-02-21 06:48:51.571420", "n_pass": [98, 20, 9], "n_token": 24, "loss": [0.44128453731536865, 0.03859317675232887], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", ",", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", "(", "a", ",", "return", "b", "#NEWLINE#", "a", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 18], "repair_candidates": [2, 18, 0, 11, 15, 20, 23]}}
+{"prediction": {"error_location": 0.64320969581604, "repair_targets": [0.9615065455436707, 0.0006354789948090911], "repair_candidates": [0.03779461234807968, 0.9615065455436707, 3.317516529932618e-05, 4.40208623331273e-06, 0.0006354789948090911, 2.300987580383662e-05, 2.711201204874669e-06], "target_probs": 0.9621420502662659}}
+
+
+{"result": {"time": "2021-02-21 06:48:51.627202", "n_pass": [102, 21, 10], "n_token": 23, "loss": [0.674296498298645, 0.27414751052856445], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", "(", "a", ",", "return", "b", "#NEWLINE#", "a", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 10, "repair_targets": [1, 17], "repair_candidates": [1, 17, 0, 10, 14, 19, 22]}}
+{"prediction": {"error_location": 0.5095147490501404, "repair_targets": [0.7266319990158081, 0.03358791396021843], "repair_candidates": [0.23859767615795135, 0.7266319990158081, 0.0006050399970263243, 0.0001592270564287901, 0.03358791396021843, 0.0003913705295417458, 2.6867210181080736e-05], "target_probs": 0.760219931602478}}
+
+
+{"result": {"time": "2021-02-21 06:48:52.135451", "n_pass": [114, 30, 11], "n_token": 21, "loss": [0.690290093421936, 0.301434725522995], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", "b", ")", ":", "#NEWLINE#", "#INDENT#", "'Given a boolean or None, return the original value or a fallback.\\n    '", "#NEWLINE#", "if", "(", "a", "is", "None", "(", "a", "b", "#NEWLINE#", "a", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 10, "repair_targets": [1, 15], "repair_candidates": [1, 15, 0, 10, 14, 17, 20]}}
+{"prediction": {"error_location": 0.5014306306838989, "repair_targets": [0.6963460445404053, 0.0434100478887558], "repair_candidates": [0.2597281336784363, 0.6963460445404053, 0.0002850361925084144, 1.1451043974375352e-05, 0.0434100478887558, 0.00019366404740139842, 2.5660780011094175e-05], "target_probs": 0.7397561073303223}}
+
+
+{"result": {"time": "2021-02-21 06:48:52.412544", "n_pass": [124, 35, 12], "n_token": 20, "loss": [0.9613207578659058, 0.30459076166152954], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", "b", ")", ":", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "if", "(", "a", "is", "None", "(", "a", "b", "#NEWLINE#", "a", "#NEWLINE#", "return", "a"]}}
+{"position": {"error_location": 9, "repair_targets": [1, 14], "repair_candidates": [1, 14, 0, 9, 13, 16, 19]}}
+{"prediction": {"error_location": 0.38238751888275146, "repair_targets": [0.6884253621101379, 0.04899970069527626], "repair_candidates": [0.2617028057575226, 0.6884253621101379, 0.0005096844979561865, 1.0919781743723433e-05, 0.04899970069527626, 0.0003251867601647973, 2.6351921405876055e-05], "target_probs": 0.7374250888824463}}
+
+
+
+
+Minimal simplified tokens:
+
+['a', 'b', ')', ':', '#NEWLINE#', '#INDENT#', '#NEWLINE#', 'if', '(', 'a', 'is', 'None', '(', 'a', 'b', '#NEWLINE#', 'a', '#NEWLINE#', 'return', 'a']

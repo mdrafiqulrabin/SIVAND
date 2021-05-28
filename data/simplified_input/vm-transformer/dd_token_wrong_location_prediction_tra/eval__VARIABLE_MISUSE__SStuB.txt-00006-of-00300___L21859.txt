@@ -1,0 +1,49 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "@", "ngjit", "#NEWLINE#", "def _append(", "x", ",", "y", ",", "agg", ")", ":", "#NEWLINE#", "#INDENT#", "agg", "[", "(", "x", ",", "x", ")", "]", "+=", "1"], "error_location": [20], "repair_targets": [10], "repair_candidates": [10, 8, 20, 22, 12, 17], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "bokeh/datashader/datashader/reductions.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00006-of-00300", "js_count": 21859, "results": {"model": "transformer", "prob": {"loc": [[0.0008295834413729608, 1.1358950757767161e-07, 2.5643700496402744e-09, 5.28411359113079e-09, 4.9807233892806835e-09, 1.6571573002721607e-09, 7.170340321493995e-09, 3.756615019057108e-09, 6.704856758688038e-08, 4.778964335372393e-09, 2.0076269890978438e-07, 3.74277631109976e-09, 6.174904001454706e-07, 2.687011502189307e-09, 5.883745046730837e-09, 1.265706028874547e-08, 7.993830486441311e-09, 0.0016064182855188847, 1.1524686760466807e-09, 6.114277972812943e-09, 0.18084292113780975, 5.848484079251648e-07, 0.8167153000831604, 8.307973757837317e-07, 1.1832648283416347e-07, 2.272267238367931e-06, 7.812832905074174e-07]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.657241667402559e-07, 0.0, 0.9995989203453064, 0.0, 0.000400090852053836, 0.0, 0.0, 0.0, 0.0, 1.9014481722479104e-07, 0.0, 0.0, 4.362194605533887e-09, 0.0, 8.88807072385589e-09, 0.0, 0.0, 0.0, 0.0]], "target": [0.9995989203453064]}, "loss": [1.7101263999938965, 0.00040116009768098593], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [22]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:19:13.437339", "n_pass": [1, 1, 1], "n_token": 27, "loss": [0.20246459543704987, 0.00040116009768098593], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "@", "ngjit", "#NEWLINE#", "def _append(", "x", ",", "y", ",", "agg", ")", ":", "#NEWLINE#", "#INDENT#", "agg", "[", "(", "x", ",", "x", ")", "]", "+=", "1"]}}
+{"position": {"error_location": 22, "repair_targets": [10], "repair_candidates": [10, 8, 20, 22, 12, 17]}}
+{"prediction": {"error_location": 0.8167153000831604, "repair_targets": [0.9995989203453064], "repair_candidates": [7.657241667402559e-07, 0.9995989203453064, 0.000400090852053836, 1.9014481722479104e-07, 4.362194605533887e-09, 8.88807072385589e-09], "target_probs": 0.9995989203453064}}
+
+
+{"result": {"time": "2021-02-21 06:19:13.492651", "n_pass": [8, 2, 2], "n_token": 21, "loss": [0.07668774574995041, 1.6212594346143305e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _append(", "x", ",", "y", ",", "agg", ")", ":", "#NEWLINE#", "#INDENT#", "agg", "[", "(", "x", ",", "x", ")", "]", "+=", "1"]}}
+{"position": {"error_location": 16, "repair_targets": [4], "repair_candidates": [4, 2, 14, 16, 6, 11]}}
+{"prediction": {"error_location": 0.9261789917945862, "repair_targets": [0.9999837875366211], "repair_candidates": [1.1259587608947186e-06, 0.9999837875366211, 1.4985277630330529e-05, 5.5990973635289265e-08, 8.463117318058266e-09, 3.690287186941532e-09], "target_probs": 0.9999837875366211}}
+
+
+{"result": {"time": "2021-02-21 06:19:13.547902", "n_pass": [22, 3, 3], "n_token": 17, "loss": [0.03563787415623665, 5.602852525044e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _append(", "x", ",", "y", ",", "agg", ")", ":", "#NEWLINE#", "#INDENT#", "agg", "[", "(", "x", ",", "x"]}}
+{"position": {"error_location": 16, "repair_targets": [4], "repair_candidates": [4, 2, 14, 16, 6, 11]}}
+{"prediction": {"error_location": 0.9649896621704102, "repair_targets": [0.9999943971633911], "repair_candidates": [1.733826934469107e-06, 0.9999943971633911, 3.642127921921201e-06, 7.62894742933895e-08, 4.6740762371655364e-09, 2.4185828895184613e-09], "target_probs": 0.9999943971633911}}
+
+
+{"result": {"time": "2021-02-21 06:19:13.712834", "n_pass": [43, 6, 4], "n_token": 15, "loss": [0.10182162374258041, 9.059946933120955e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _append(", "x", ",", "y", ",", "agg", "#NEWLINE#", "#INDENT#", "agg", "[", "(", "x", ",", "x"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [4, 2, 12, 14, 6, 9]}}
+{"prediction": {"error_location": 0.9031906723976135, "repair_targets": [0.9999909400939941], "repair_candidates": [1.7266636120893963e-07, 0.9999909400939941, 8.900698958314024e-06, 1.685358874681242e-08, 2.1919168702311254e-09, 3.7575023648095396e-10], "target_probs": 0.9999909400939941}}
+
+
+{"result": {"time": "2021-02-21 06:19:13.772264", "n_pass": [44, 7, 5], "n_token": 13, "loss": [0.25900283455848694, 0.10558918118476868], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _append(", "x", ",", "y", ",", "agg", "agg", "[", "(", "x", ",", "x"]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [4, 2, 10, 12, 6, 7]}}
+{"prediction": {"error_location": 0.7718208432197571, "repair_targets": [0.8997942209243774], "repair_candidates": [8.890945537132211e-06, 0.8997942209243774, 0.04019606485962868, 0.06000063940882683, 2.2887782336056262e-07, 2.943745691652566e-08], "target_probs": 0.8997942209243774}}
+
+
+{"result": {"time": "2021-02-21 06:19:13.937003", "n_pass": [63, 10, 6], "n_token": 12, "loss": [0.7141640782356262, 0.05180653929710388], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _append(", "x", ",", "y", ",", "agg", "agg", "(", "x", ",", "x"]}}
+{"position": {"error_location": 11, "repair_targets": [4], "repair_candidates": [4, 2, 9, 11, 6, 7]}}
+{"prediction": {"error_location": 0.4896012246608734, "repair_targets": [0.9495125412940979], "repair_candidates": [0.00011714965512510389, 0.9495125412940979, 0.02487391047179699, 0.02548847533762455, 5.7124593695334624e-06, 2.2117746993899345e-06], "target_probs": 0.9495125412940979}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def _append(', 'x', ',', 'y', ',', 'agg', 'agg', '(', 'x', ',', 'x']

@@ -1,0 +1,145 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def _upload_coordinator_file(", "self", ",", "where", ",", "job_dir", ",", "wf_xml", ",", "hdfs_user", ")", ":", "#NEWLINE#", "#INDENT#", "with", "remote", ".", "get_remote", "(", "where", ")", "as", "r", ":", "#NEWLINE#", "#INDENT#", "h", ".", "put_file_to_hdfs", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "'%s/coordinator.xml'", "%", "job_dir", ")"], "error_location": [31], "repair_targets": [23], "repair_candidates": [2, 8, 33, 4, 20, 23, 10, 39, 6, 31, 37, 47], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "openstack/sahara/sahara/service/edp/oozie/engine.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00015-of-00300", "js_count": 51633, "results": {"model": "rnn", "prob": {"loc": [[0.21928247809410095, 1.8183293377660448e-06, 7.52534219827794e-07, 9.89063386747091e-10, 1.1406165612015684e-07, 6.525030293857981e-09, 2.908409896917874e-06, 2.846364033359805e-09, 8.377882068089093e-07, 3.1023625979287317e-07, 1.7981770952246734e-06, 5.178700348551502e-07, 9.055985117356613e-08, 1.9341058532518218e-07, 1.0534963479358339e-07, 3.985853140875406e-07, 1.5007607316874783e-06, 3.255721026107494e-08, 3.3709179092511476e-07, 8.558806285918763e-08, 0.06258115917444229, 3.130279324636831e-08, 1.4547646287610405e-06, 1.2790566188414232e-06, 4.262890058726043e-07, 2.4763189685472753e-06, 1.3218392780345312e-07, 1.5262647821145947e-06, 5.4635904689348536e-08, 1.224186121362436e-07, 2.6971332772518508e-05, 0.06337592005729675, 9.99427953729537e-08, 0.003564561251550913, 1.3981845370381052e-07, 2.4532679162803106e-05, 2.023878550971858e-06, 0.035870883613824844, 8.789557881527799e-08, 0.004664435051381588, 3.1512131499766838e-06, 7.745628636257607e-07, 1.7763702544471016e-06, 1.5151955778947013e-07, 5.18950037076138e-06, 1.406017986482766e-06, 0.000527230731677264, 0.6100471019744873, 6.092475928198837e-07]], "pointer": [[0.0, 0.0, 0.008728806860744953, 0.0, 0.04823839291930199, 0.0, 0.008211087435483932, 0.0, 0.04883836954832077, 0.0, 0.03382820636034012, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.006590122822672e-05, 0.0, 0.0, 0.8507789373397827, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00019935128511860967, 0.0, 0.001024244469590485, 0.0, 0.0, 0.0, 7.381627801805735e-05, 0.0, 4.603007619152777e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.677807970030699e-06, 0.0]], "target": [0.8507789373397827]}, "loss": [2.758671283721924, 0.1616029590368271], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [47]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 13:13:18.709387", "n_pass": [1, 1, 1], "n_token": 49, "loss": [0.49421900510787964, 0.1616029590368271], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _upload_coordinator_file(", "self", ",", "where", ",", "job_dir", ",", "wf_xml", ",", "hdfs_user", ")", ":", "#NEWLINE#", "#INDENT#", "with", "remote", ".", "get_remote", "(", "where", ")", "as", "r", ":", "#NEWLINE#", "#INDENT#", "h", ".", "put_file_to_hdfs", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 47, "repair_targets": [23], "repair_candidates": [2, 8, 33, 4, 20, 23, 10, 39, 6, 31, 37, 47]}}
+{"prediction": {"error_location": 0.6100471019744873, "repair_targets": [0.8507789373397827], "repair_candidates": [0.008728806860744953, 0.04823839291930199, 0.008211087435483932, 0.04883836954832077, 0.03382820636034012, 3.006590122822672e-05, 0.8507789373397827, 0.00019935128511860967, 0.001024244469590485, 7.381627801805735e-05, 4.603007619152777e-05, 2.677807970030699e-06], "target_probs": 0.8507789373397827}}
+
+
+{"result": {"time": "2021-02-21 13:13:18.781284", "n_pass": [22, 2, 2], "n_token": 43, "loss": [0.40808093547821045, 0.167829230427742], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _upload_coordinator_file(", "self", ",", "where", ",", "job_dir", ",", "wf_xml", ",", "hdfs_user", ")", "get_remote", "(", "where", ")", "as", "r", ":", "#NEWLINE#", "#INDENT#", "h", ".", "put_file_to_hdfs", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 41, "repair_targets": [17], "repair_candidates": [2, 8, 27, 4, 14, 17, 10, 33, 6, 25, 31, 41]}}
+{"prediction": {"error_location": 0.6649250388145447, "repair_targets": [0.8454982042312622], "repair_candidates": [0.013748797588050365, 0.06753910332918167, 0.00886103231459856, 0.04672916978597641, 0.014333429746329784, 8.51990407682024e-05, 0.8454982042312622, 0.0006110077956691384, 0.0023726345971226692, 0.00014343122893478721, 7.409686804749072e-05, 3.903340257238597e-06], "target_probs": 0.8454982042312622}}
+
+
+{"result": {"time": "2021-02-21 13:13:18.988790", "n_pass": [46, 5, 3], "n_token": 40, "loss": [0.3419601619243622, 0.15450677275657654], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _upload_coordinator_file(", "self", ",", "where", ",", "job_dir", ",", "wf_xml", ",", "hdfs_user", ")", "get_remote", "(", "where", ")", "as", "r", ":", "#NEWLINE#", "#INDENT#", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 38, "repair_targets": [17], "repair_candidates": [2, 8, 24, 4, 14, 17, 10, 30, 6, 22, 28, 38]}}
+{"prediction": {"error_location": 0.7103766202926636, "repair_targets": [0.8568376898765564], "repair_candidates": [0.008953648619353771, 0.07822492718696594, 0.00752292200922966, 0.033499930053949356, 0.012382997199892998, 6.259306974243373e-05, 0.8568376898765564, 0.0003213283489458263, 0.0018953194376081228, 0.0001863373618107289, 0.00010892601130763069, 3.425490604058723e-06], "target_probs": 0.8568376898765564}}
+
+
+{"result": {"time": "2021-02-21 13:13:19.056561", "n_pass": [51, 6, 4], "n_token": 37, "loss": [0.30384889245033264, 0.15952610969543457], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _upload_coordinator_file(", "self", ",", "where", ",", "job_dir", ",", "wf_xml", ",", "hdfs_user", ")", "get_remote", "(", "where", ")", "as", "r", ":", "#NEWLINE#", "#INDENT#", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [17], "repair_candidates": [2, 8, 24, 4, 14, 17, 10, 30, 6, 22, 28, 35]}}
+{"prediction": {"error_location": 0.7379724383354187, "repair_targets": [0.8525477051734924], "repair_candidates": [0.02104172855615616, 0.07640671730041504, 0.005627058912068605, 0.027534538879990578, 0.015215512365102768, 4.501453076954931e-05, 0.8525477051734924, 0.00030441529816016555, 0.000909377180505544, 0.00018417995306663215, 0.0001660237176110968, 1.770007838786114e-05], "target_probs": 0.8525477051734924}}
+
+
+{"result": {"time": "2021-02-21 13:13:19.327633", "n_pass": [91, 10, 5], "n_token": 36, "loss": [0.2845911681652069, 0.3608819246292114], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", ",", "job_dir", ",", "wf_xml", ",", "hdfs_user", ")", "get_remote", "(", "where", ")", "as", "r", ":", "#NEWLINE#", "#INDENT#", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 34, "repair_targets": [16], "repair_candidates": [1, 7, 23, 3, 13, 16, 9, 29, 5, 21, 27, 34]}}
+{"prediction": {"error_location": 0.7523218393325806, "repair_targets": [0.69706130027771], "repair_candidates": [0.03281918540596962, 0.18278875946998596, 0.018712416291236877, 0.047098979353904724, 0.01669136993587017, 0.00014784465020056814, 0.69706130027771, 0.0007638877141289413, 0.0027216884773224592, 0.0006369744660332799, 0.0005300937336869538, 2.7530013539944775e-05], "target_probs": 0.69706130027771}}
+
+
+{"result": {"time": "2021-02-21 13:13:19.461271", "n_pass": [95, 12, 6], "n_token": 35, "loss": [0.4121151566505432, 0.30424198508262634], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", ",", "wf_xml", ",", "hdfs_user", ")", "get_remote", "(", "where", ")", "as", "r", ":", "#NEWLINE#", "#INDENT#", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [15], "repair_candidates": [1, 6, 22, 3, 12, 15, 8, 28, 4, 20, 26, 33]}}
+{"prediction": {"error_location": 0.6622479557991028, "repair_targets": [0.7376823425292969], "repair_candidates": [0.05742810294032097, 0.09392379969358444, 0.031006881967186928, 0.04623342305421829, 0.02484603226184845, 0.0002457161608617753, 0.7376823425292969, 0.0016720357816666365, 0.004077424760907888, 0.0017148371553048491, 0.0011167211923748255, 5.266298830974847e-05], "target_probs": 0.7376823425292969}}
+
+
+{"result": {"time": "2021-02-21 13:13:19.531249", "n_pass": [97, 13, 7], "n_token": 34, "loss": [0.11412686109542847, 0.2498827576637268], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", ",", "hdfs_user", ")", "get_remote", "(", "where", ")", "as", "r", ":", "#NEWLINE#", "#INDENT#", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [14], "repair_candidates": [1, 5, 21, 3, 11, 14, 7, 27, 4, 19, 25, 32]}}
+{"prediction": {"error_location": 0.8921447992324829, "repair_targets": [0.7788920998573303], "repair_candidates": [0.08618976175785065, 0.05277986824512482, 0.021457495167851448, 0.034021202474832535, 0.01429852843284607, 0.00018108398944605142, 0.7788920998573303, 0.0012911707162857056, 0.007282616570591927, 0.0024518815334886312, 0.001121218898333609, 3.314874629722908e-05], "target_probs": 0.7788920998573303}}
+
+
+{"result": {"time": "2021-02-21 13:13:19.597097", "n_pass": [99, 14, 8], "n_token": 33, "loss": [0.2624838948249817, 0.3020077049732208], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", ")", "get_remote", "(", "where", ")", "as", "r", ":", "#NEWLINE#", "#INDENT#", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 31, "repair_targets": [13], "repair_candidates": [1, 5, 20, 3, 10, 13, 6, 26, 4, 18, 24, 31]}}
+{"prediction": {"error_location": 0.7691386938095093, "repair_targets": [0.739332377910614], "repair_candidates": [0.1345767229795456, 0.042026013135910034, 0.01819610223174095, 0.03226446360349655, 0.005209416151046753, 0.00032440651557408273, 0.739332377910614, 0.003480551764369011, 0.007764431647956371, 0.01181626133620739, 0.004951536655426025, 5.768176197307184e-05], "target_probs": 0.739332377910614}}
+
+
+{"result": {"time": "2021-02-21 13:13:19.661939", "n_pass": [101, 15, 9], "n_token": 31, "loss": [0.3596268594264984, 0.23122616112232208], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "(", "where", ")", "as", "r", ":", "#NEWLINE#", "#INDENT#", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [11], "repair_candidates": [1, 5, 18, 3, 8, 11, 6, 24, 4, 16, 22, 29]}}
+{"prediction": {"error_location": 0.6979366540908813, "repair_targets": [0.7935599684715271], "repair_candidates": [0.16532191634178162, 0.01784123107790947, 0.0072087571024894714, 0.005057986360043287, 0.004003493115305901, 1.385084124194691e-05, 0.7935599684715271, 0.0008259831229224801, 0.0014099640538915992, 0.0033145661000162363, 0.0014183646999299526, 2.3891108867246658e-05], "target_probs": 0.7935599684715271}}
+
+
+{"result": {"time": "2021-02-21 13:13:19.790081", "n_pass": [105, 17, 10], "n_token": 29, "loss": [0.04980095475912094, 0.3609902560710907], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "(", "where", ")", "as", "r", ":", "(", "job_dir", ",", "wf_xml", ",", "'coordinator.xml'", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [11], "repair_candidates": [1, 5, 16, 3, 8, 11, 6, 22, 4, 14, 20, 27]}}
+{"prediction": {"error_location": 0.9514187574386597, "repair_targets": [0.6969857811927795], "repair_candidates": [0.2703119218349457, 0.01724255084991455, 0.006554791238158941, 0.004400670528411865, 0.003119154367595911, 2.460098585288506e-05, 0.6969857811927795, 4.993127367924899e-05, 0.0004026773676741868, 0.000659401819575578, 0.0002319648046977818, 1.6609545127721503e-05], "target_probs": 0.6969857811927795}}
+
+
+{"result": {"time": "2021-02-21 13:13:19.853407", "n_pass": [108, 18, 11], "n_token": 27, "loss": [0.17993296682834625, 0.41220623254776], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "(", "where", ")", "as", "r", ":", "(", "job_dir", ",", "wf_xml", ",", "job_dir", ",", "hdfs_user", ")", "#NEWLINE#", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [11], "repair_candidates": [1, 5, 16, 3, 8, 11, 6, 20, 4, 14, 18, 25]}}
+{"prediction": {"error_location": 0.8353261947631836, "repair_targets": [0.6621876955032349], "repair_candidates": [0.2905731201171875, 0.025631064549088478, 0.009334051981568336, 0.006207823287695646, 0.004135229159146547, 3.062714313273318e-05, 0.6621876955032349, 7.810882379999384e-05, 0.0011909123277291656, 0.00022504705702885985, 0.0003735194623004645, 3.280693636042997e-05], "target_probs": 0.6621876955032349}}
+
+
+{"result": {"time": "2021-02-21 13:13:19.918040", "n_pass": [111, 19, 12], "n_token": 25, "loss": [0.36856332421302795, 0.5021986961364746], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "(", "where", ")", "as", "r", ":", "(", "job_dir", ",", "wf_xml", ",", "job_dir", ",", "hdfs_user", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [11], "repair_candidates": [1, 5, 16, 3, 8, 11, 6, 20, 4, 14, 18, 23]}}
+{"prediction": {"error_location": 0.691727340221405, "repair_targets": [0.6051985621452332], "repair_candidates": [0.3013008236885071, 0.05198739841580391, 0.015084545128047466, 0.009823462925851345, 0.008957789279520512, 5.507552850758657e-05, 0.6051985621452332, 0.0002353424788452685, 0.005520907696336508, 0.000819966197013855, 0.000999395502731204, 1.677219734119717e-05], "target_probs": 0.6051985621452332}}
+
+
+{"result": {"time": "2021-02-21 13:13:20.409891", "n_pass": [150, 27, 13], "n_token": 24, "loss": [0.3900262415409088, 0.4375360906124115], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "where", ")", "as", "r", ":", "(", "job_dir", ",", "wf_xml", ",", "job_dir", ",", "hdfs_user", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [10], "repair_candidates": [1, 5, 15, 3, 7, 10, 6, 19, 4, 13, 17, 22]}}
+{"prediction": {"error_location": 0.6770391464233398, "repair_targets": [0.6456252336502075], "repair_candidates": [0.11336465924978256, 0.1209690123796463, 0.03555908426642418, 0.048748817294836044, 0.023483525961637497, 0.0008011325844563544, 0.6456252336502075, 0.0003232484741602093, 0.008509217761456966, 0.0013006414519622922, 0.0012956516584381461, 1.980669730983209e-05], "target_probs": 0.6456252336502075}}
+
+
+{"result": {"time": "2021-02-21 13:13:20.471159", "n_pass": [151, 28, 14], "n_token": 23, "loss": [0.2481667846441269, 0.43840426206588745], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "where", "as", "r", ":", "(", "job_dir", ",", "wf_xml", ",", "job_dir", ",", "hdfs_user", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [9], "repair_candidates": [1, 5, 14, 3, 7, 9, 6, 18, 4, 12, 16, 21]}}
+{"prediction": {"error_location": 0.7802298069000244, "repair_targets": [0.6450649499893188], "repair_candidates": [0.09107644855976105, 0.14301471412181854, 0.0398598276078701, 0.054729897528886795, 0.014931656420230865, 0.0038816099986433983, 0.6450649499893188, 0.00039469910552725196, 0.0052056582644581795, 0.0008056416409090161, 0.001015911577269435, 1.891961983346846e-05], "target_probs": 0.6450649499893188}}
+
+
+{"result": {"time": "2021-02-21 13:13:20.650868", "n_pass": [155, 31, 15], "n_token": 22, "loss": [0.2263341248035431, 0.08067628741264343], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "where", "as", "r", ":", "job_dir", ",", "wf_xml", ",", "job_dir", ",", "hdfs_user", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [9], "repair_candidates": [1, 5, 13, 3, 7, 9, 6, 17, 4, 11, 15, 20]}}
+{"prediction": {"error_location": 0.7974516153335571, "repair_targets": [0.922492265701294], "repair_candidates": [0.025773078203201294, 0.026932300999760628, 0.006682291626930237, 0.010470516979694366, 0.0031532628927379847, 0.0015959030715748668, 0.922492265701294, 0.0001094233593903482, 0.0023303921334445477, 0.0002384157123742625, 0.00021765251585748047, 4.442995759745827e-06], "target_probs": 0.922492265701294}}
+
+
+{"result": {"time": "2021-02-21 13:13:20.713677", "n_pass": [157, 32, 16], "n_token": 21, "loss": [0.19261029362678528, 0.09929769486188889], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "where", "as", "r", ":", "job_dir", "wf_xml", ",", "job_dir", ",", "hdfs_user", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [9], "repair_candidates": [1, 5, 12, 3, 7, 9, 6, 16, 4, 11, 14, 19]}}
+{"prediction": {"error_location": 0.824803352355957, "repair_targets": [0.9054731130599976], "repair_candidates": [0.022898146882653236, 0.04653326794505119, 0.009245430119335651, 0.011281153187155724, 0.00121886667329818, 0.0012213853187859058, 0.9054731130599976, 0.0007633159984834492, 0.0010139496298506856, 0.00019275462545920163, 0.00015112871187739074, 7.48761931390618e-06], "target_probs": 0.9054731130599976}}
+
+
+{"result": {"time": "2021-02-21 13:13:20.773052", "n_pass": [159, 33, 17], "n_token": 20, "loss": [0.04185505211353302, 0.17169207334518433], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "where", "as", "r", ":", "job_dir", "wf_xml", "job_dir", ",", "hdfs_user", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [9], "repair_candidates": [1, 5, 12, 3, 7, 9, 6, 15, 4, 11, 13, 18]}}
+{"prediction": {"error_location": 0.9590087532997131, "repair_targets": [0.8422384858131409], "repair_candidates": [0.04886411502957344, 0.054558057337999344, 0.009098075330257416, 0.04201451689004898, 0.0008622004534117877, 0.001107316347770393, 0.8422384858131409, 0.00031038091401569545, 0.00034118207986466587, 0.0002494268410373479, 0.00034332909854128957, 1.2905408766528126e-05], "target_probs": 0.8422384858131409}}
+
+
+{"result": {"time": "2021-02-21 13:13:20.831377", "n_pass": [161, 34, 18], "n_token": 19, "loss": [0.03529684990644455, 0.02964022569358349], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "where", "as", "r", ":", "job_dir", "wf_xml", "job_dir", "hdfs_user", "'%s/coordinator.xml'", "%", "job_dir", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [9], "repair_candidates": [1, 5, 12, 3, 7, 9, 6, 14, 4, 11, 13, 17]}}
+{"prediction": {"error_location": 0.9653189182281494, "repair_targets": [0.9707947373390198], "repair_candidates": [0.008650589734315872, 0.013677974231541157, 0.0020083992276340723, 0.003948927391320467, 0.00012098094157408923, 0.0003044504555873573, 0.9707947373390198, 0.00010948046838166192, 7.013689173618332e-05, 6.556601874763146e-05, 0.0002466724254190922, 2.0769007278431673e-06], "target_probs": 0.9707947373390198}}
+
+
+{"result": {"time": "2021-02-21 13:13:20.890035", "n_pass": [163, 35, 19], "n_token": 18, "loss": [0.05982568487524986, 0.010321232490241528], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "where", "as", "r", ":", "job_dir", "wf_xml", "job_dir", "hdfs_user", "%", "job_dir", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [9], "repair_candidates": [1, 5, 12, 3, 7, 9, 6, 14, 4, 11, 13, 16]}}
+{"prediction": {"error_location": 0.9419286847114563, "repair_targets": [0.9897318482398987], "repair_candidates": [0.0013132657622918487, 0.006671473383903503, 0.0009062294266186655, 0.0008840293739922345, 6.106719956733286e-05, 0.0003632177540566772, 0.9897318482398987, 2.6618256015353836e-05, 1.0279550224367995e-05, 1.664727460592985e-05, 1.4116842976363841e-05, 1.156242092292814e-06], "target_probs": 0.9897318482398987}}
+
+
+{"result": {"time": "2021-02-21 13:13:20.948125", "n_pass": [164, 36, 20], "n_token": 17, "loss": [0.16306963562965393, 0.0065064639784395695], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "where", "as", "r", ":", "job_dir", "wf_xml", "job_dir", "hdfs_user", "job_dir", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [9], "repair_candidates": [1, 5, 12, 3, 7, 9, 6, 14, 4, 11, 13, 15]}}
+{"prediction": {"error_location": 0.8495321273803711, "repair_targets": [0.9935146570205688], "repair_candidates": [0.00034749964834190905, 0.00440375879406929, 0.0006604862865060568, 0.00032648275373503566, 3.1235653295880184e-05, 0.0006822838331572711, 0.9935146570205688, 1.1174895917065442e-05, 3.083262527070474e-06, 4.506384811975295e-06, 1.2042140042467508e-05, 2.849156999218394e-06], "target_probs": 0.9935146570205688}}
+
+
+{"result": {"time": "2021-02-21 13:13:21.005316", "n_pass": [166, 37, 21], "n_token": 16, "loss": [0.39866092801094055, 0.00622201431542635], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", ",", "where", "job_dir", "wf_xml", "hdfs_user", "where", "as", "r", ":", "job_dir", "wf_xml", "job_dir", "hdfs_user", "job_dir"]}}
+{"position": {"error_location": 15, "repair_targets": [9], "repair_candidates": [1, 5, 12, 3, 7, 9, 6, 14, 4, 11, 13, 15]}}
+{"prediction": {"error_location": 0.67121821641922, "repair_targets": [0.9937973022460938], "repair_candidates": [0.0002592559903860092, 0.004366188310086727, 0.00044169521424919367, 0.0002600322768557817, 2.727947685343679e-05, 0.0008282175986096263, 0.9937973022460938, 6.846555606898619e-06, 2.761403266049456e-06, 3.0370772492460674e-06, 4.77561479783617e-06, 2.6068576062243665e-06], "target_probs": 0.9937973022460938}}
+
+
+{"result": {"time": "2021-02-21 13:13:21.120485", "n_pass": [169, 39, 22], "n_token": 15, "loss": [0.44788533449172974, 0.021339714527130127], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "where", "job_dir", "wf_xml", "hdfs_user", "where", "as", "r", ":", "job_dir", "wf_xml", "job_dir", "hdfs_user", "job_dir"]}}
+{"position": {"error_location": 14, "repair_targets": [8], "repair_candidates": [1, 4, 11, 2, 6, 8, 5, 13, 3, 10, 12, 14]}}
+{"prediction": {"error_location": 0.6389780044555664, "repair_targets": [0.9788863658905029], "repair_candidates": [0.00042069784831255674, 0.019317341968417168, 0.0007428833050653338, 0.0001145888672908768, 8.40025495563168e-06, 0.0004946390399709344, 0.9788863658905029, 4.794590040546609e-06, 2.1625467070407467e-06, 2.1102723621879704e-06, 3.786146862694295e-06, 2.208300884376513e-06], "target_probs": 0.9788863658905029}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'self', 'where', 'job_dir', 'wf_xml', 'hdfs_user', 'where', 'as', 'r', ':', 'job_dir', 'wf_xml', 'job_dir', 'hdfs_user', 'job_dir']

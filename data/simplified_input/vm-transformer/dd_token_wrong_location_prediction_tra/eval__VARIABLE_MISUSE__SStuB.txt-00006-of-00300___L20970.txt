@@ -1,0 +1,79 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def CreateChatUsingBlob(", "self", ",", "Blob", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns existing or joins a new chat using given blob.\\n\\n        :Parameters:\\n          Blob : str\\n            A blob identifying the chat.\\n\\n        :return: A chat object\\n        :rtype: `chat.Chat`\\n        '", "#NEWLINE#", "return", "Chat", "(", "self", ",", "chop", "(", "self", ".", "_DoCommand", "(", "(", "'CHAT CREATEUSINGBLOB %s'", "%", "self", ")", ")", ",", "2", ")", "[", "1", "]", ")"], "error_location": [25], "repair_targets": [4], "repair_candidates": [2, 14, 18, 25, 4], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "Skype4Py/Skype4Py/Skype4Py/skype.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00006-of-00300", "js_count": 20970, "results": {"model": "transformer", "prob": {"loc": [[0.0018233086448162794, 2.0389759924910322e-07, 1.7217121239809785e-07, 2.222732931045357e-08, 3.2884470329008764e-06, 2.3192782805381285e-08, 4.197388747684272e-08, 3.2686546802551675e-08, 2.787144914861983e-08, 1.398119735540604e-07, 3.606248455412242e-08, 2.150786926335968e-08, 2.2342676597730815e-09, 4.4740488647221355e-08, 0.9389233589172363, 1.0793091576033476e-07, 7.528119283506385e-08, 8.213356039732389e-08, 1.590373540238943e-05, 3.396089809371006e-08, 4.8192618784526076e-09, 2.1015774009924826e-08, 1.6262181645743112e-07, 9.442642863177753e-07, 1.469031047918179e-07, 0.0592239610850811, 2.4996782599373546e-07, 1.1474862304794442e-07, 1.7600184776256356e-07, 2.646270331752021e-06, 8.50829664500452e-08, 4.1269674966315506e-07, 2.684873834368773e-06, 2.562433962793875e-07, 1.2547380947580677e-06]], "pointer": [[0.0, 0.0, 2.6424920633871807e-06, 0.0, 0.9997482895851135, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.321383676142432e-05, 0.0, 0.0, 0.0, 1.1151608305226546e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.000194621374248527, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9997482895851135]}, "loss": [2.8264288902282715, 0.000251742108957842], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [14]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:17:08.686678", "n_pass": [1, 1, 1], "n_token": 35, "loss": [0.06302130222320557, 0.000251742108957842], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def CreateChatUsingBlob(", "self", ",", "Blob", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns existing or joins a new chat using given blob.\\n\\n        :Parameters:\\n          Blob : str\\n            A blob identifying the chat.\\n\\n        :return: A chat object\\n        :rtype: `chat.Chat`\\n        '", "#NEWLINE#", "return", "Chat", "(", "self", ",", "chop", "(", "self", ".", "_DoCommand", "(", "(", "'CHAT CREATEUSINGBLOB %s'", "%", "self", ")", ")", ",", "2", ")", "[", "1", "]", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [2, 14, 18, 25, 4]}}
+{"prediction": {"error_location": 0.9389233589172363, "repair_targets": [0.9997482895851135], "repair_candidates": [2.6424920633871807e-06, 0.9997482895851135, 4.321383676142432e-05, 1.1151608305226546e-05, 0.000194621374248527], "target_probs": 0.9997482895851135}}
+
+
+{"result": {"time": "2021-02-21 06:17:08.742466", "n_pass": [11, 2, 2], "n_token": 26, "loss": [0.6545032858848572, 1.585496102052275e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def CreateChatUsingBlob(", "self", ",", "Blob", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns existing or joins a new chat using given blob.\\n\\n        :Parameters:\\n          Blob : str\\n            A blob identifying the chat.\\n\\n        :return: A chat object\\n        :rtype: `chat.Chat`\\n        '", "#NEWLINE#", "return", "Chat", "(", "self", ",", "chop", "(", "self", ".", "_DoCommand", "(", "(", "'CHAT CREATEUSINGBLOB %s'", "%", "self"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [2, 14, 18, 25, 4]}}
+{"prediction": {"error_location": 0.5197001099586487, "repair_targets": [0.9999841451644897], "repair_candidates": [2.4503580675627745e-07, 0.9999841451644897, 1.1432429346314166e-05, 4.1615626855673327e-07, 3.7282361518009566e-06], "target_probs": 0.9999841451644897}}
+
+
+{"result": {"time": "2021-02-21 06:17:08.855978", "n_pass": [38, 4, 3], "n_token": 24, "loss": [0.2997487783432007, 0.00014496900257654488], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Blob", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns existing or joins a new chat using given blob.\\n\\n        :Parameters:\\n          Blob : str\\n            A blob identifying the chat.\\n\\n        :return: A chat object\\n        :rtype: `chat.Chat`\\n        '", "#NEWLINE#", "return", "Chat", "(", "self", ",", "chop", "(", "self", ".", "_DoCommand", "(", "(", "'CHAT CREATEUSINGBLOB %s'", "%", "self"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [0, 12, 16, 23, 2]}}
+{"prediction": {"error_location": 0.7410044074058533, "repair_targets": [0.9998550415039062], "repair_candidates": [0.00014424670371226966, 0.9998550415039062, 4.5315448460314656e-07, 4.240328976834462e-08, 1.49109339986353e-07], "target_probs": 0.9998550415039062}}
+
+
+{"result": {"time": "2021-02-21 06:17:09.136520", "n_pass": [45, 9, 4], "n_token": 22, "loss": [0.27447181940078735, 0.00017865108384285122], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Blob", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns existing or joins a new chat using given blob.\\n\\n        :Parameters:\\n          Blob : str\\n            A blob identifying the chat.\\n\\n        :return: A chat object\\n        :rtype: `chat.Chat`\\n        '", "#NEWLINE#", "return", "Chat", "(", "self", ",", "self", ".", "_DoCommand", "(", "(", "'CHAT CREATEUSINGBLOB %s'", "%", "self"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [0, 12, 14, 21, 2]}}
+{"prediction": {"error_location": 0.759973406791687, "repair_targets": [0.9998213648796082], "repair_candidates": [0.00017474246851634234, 0.9998213648796082, 2.3649329250474693e-06, 8.634468429136177e-08, 1.3948700825494598e-06], "target_probs": 0.9998213648796082}}
+
+
+{"result": {"time": "2021-02-21 06:17:09.192231", "n_pass": [47, 10, 5], "n_token": 19, "loss": [0.37023958563804626, 4.7923284000717103e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Blob", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns existing or joins a new chat using given blob.\\n\\n        :Parameters:\\n          Blob : str\\n            A blob identifying the chat.\\n\\n        :return: A chat object\\n        :rtype: `chat.Chat`\\n        '", "#NEWLINE#", "return", "Chat", "(", "self", ",", "self", ".", "'CHAT CREATEUSINGBLOB %s'", "%", "self"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [0, 12, 14, 18, 2]}}
+{"prediction": {"error_location": 0.6905688643455505, "repair_targets": [0.9999520778656006], "repair_candidates": [4.7510060539934784e-05, 0.9999520778656006, 2.2770737473365443e-07, 1.4450865393200729e-08, 1.756648799755567e-07], "target_probs": 0.9999520778656006}}
+
+
+{"result": {"time": "2021-02-21 06:17:09.471562", "n_pass": [75, 15, 6], "n_token": 18, "loss": [0.20920059084892273, 6.449430657085031e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Blob", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns existing or joins a new chat using given blob.\\n\\n        :Parameters:\\n          Blob : str\\n            A blob identifying the chat.\\n\\n        :return: A chat object\\n        :rtype: `chat.Chat`\\n        '", "#NEWLINE#", "return", "Chat", "(", "self", ",", "self", ".", "%", "self"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [0, 12, 14, 17, 2]}}
+{"prediction": {"error_location": 0.8112323880195618, "repair_targets": [0.999935507774353], "repair_candidates": [6.412636139430106e-05, 0.999935507774353, 2.1278565043303388e-07, 2.938065080115848e-08, 1.726092193621298e-07], "target_probs": 0.999935507774353}}
+
+
+{"result": {"time": "2021-02-21 06:17:09.526827", "n_pass": [77, 16, 7], "n_token": 17, "loss": [0.32199159264564514, 0.07265842705965042], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Blob", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns existing or joins a new chat using given blob.\\n\\n        :Parameters:\\n          Blob : str\\n            A blob identifying the chat.\\n\\n        :return: A chat object\\n        :rtype: `chat.Chat`\\n        '", "#NEWLINE#", "return", "Chat", "(", "self", ",", "self", ".", "%", "self"]}}
+{"position": {"error_location": 11, "repair_targets": [1], "repair_candidates": [0, 11, 13, 16, 1]}}
+{"prediction": {"error_location": 0.7247042655944824, "repair_targets": [0.9299184083938599], "repair_candidates": [0.07000453025102615, 0.9299184083938599, 3.8907313864910975e-05, 3.0354772206919733e-06, 3.51766575477086e-05], "target_probs": 0.9299184083938599}}
+
+
+{"result": {"time": "2021-02-21 06:17:09.581932", "n_pass": [79, 17, 8], "n_token": 16, "loss": [0.08803140372037888, 0.10328111052513123], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Blob", ":", "#NEWLINE#", "#INDENT#", "'Returns existing or joins a new chat using given blob.\\n\\n        :Parameters:\\n          Blob : str\\n            A blob identifying the chat.\\n\\n        :return: A chat object\\n        :rtype: `chat.Chat`\\n        '", "#NEWLINE#", "return", "Chat", "(", "self", ",", "self", ".", "%", "self"]}}
+{"position": {"error_location": 10, "repair_targets": [1], "repair_candidates": [0, 10, 12, 15, 1]}}
+{"prediction": {"error_location": 0.9157321453094482, "repair_targets": [0.9018734097480774], "repair_candidates": [0.09777170419692993, 0.9018734097480774, 0.0001641832641325891, 1.1766856914618984e-05, 0.00017899290833156556], "target_probs": 0.9018734097480774}}
+
+
+{"result": {"time": "2021-02-21 06:17:09.636885", "n_pass": [80, 18, 9], "n_token": 15, "loss": [0.360959529876709, 0.22124826908111572], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Blob", "#NEWLINE#", "#INDENT#", "'Returns existing or joins a new chat using given blob.\\n\\n        :Parameters:\\n          Blob : str\\n            A blob identifying the chat.\\n\\n        :return: A chat object\\n        :rtype: `chat.Chat`\\n        '", "#NEWLINE#", "return", "Chat", "(", "self", ",", "self", ".", "%", "self"]}}
+{"position": {"error_location": 9, "repair_targets": [1], "repair_candidates": [0, 9, 11, 14, 1]}}
+{"prediction": {"error_location": 0.6970072388648987, "repair_targets": [0.8015176653862], "repair_candidates": [0.19504961371421814, 0.8015176653862, 0.0017008137656375766, 4.7165412979666144e-05, 0.0016847251681610942], "target_probs": 0.8015176653862}}
+
+
+{"result": {"time": "2021-02-21 06:17:09.803859", "n_pass": [83, 21, 10], "n_token": 14, "loss": [0.7316892743110657, 0.3138626515865326], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Blob", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "return", "Chat", "(", "self", ",", "self", ".", "%", "self"]}}
+{"position": {"error_location": 8, "repair_targets": [1], "repair_candidates": [0, 8, 10, 13, 1]}}
+{"prediction": {"error_location": 0.481095552444458, "repair_targets": [0.7306193709373474], "repair_candidates": [0.2691802978515625, 0.7306193709373474, 0.00016010050603654236, 8.186664672393817e-06, 3.204240056220442e-05], "target_probs": 0.7306193709373474}}
+
+
+{"result": {"time": "2021-02-21 06:17:10.136181", "n_pass": [91, 27, 11], "n_token": 13, "loss": [0.32012757658958435, 0.10041243582963943], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Blob", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "return", "Chat", "(", "self", ",", "self", "%", "self"]}}
+{"position": {"error_location": 8, "repair_targets": [1], "repair_candidates": [0, 8, 10, 12, 1]}}
+{"prediction": {"error_location": 0.7260563969612122, "repair_targets": [0.9044643044471741], "repair_candidates": [0.09010030329227448, 0.9044643044471741, 0.0042495415546, 0.0010906512616202235, 9.515456622466445e-05], "target_probs": 0.9044643044471741}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'Blob', '#NEWLINE#', '#INDENT#', '#NEWLINE#', 'return', 'Chat', '(', 'self', ',', 'self', '%', 'self']

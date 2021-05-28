@@ -1,0 +1,103 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def create_locator(", "address", ")", ":", "#NEWLINE#", "#INDENT#", "'Examines address and returns a locator that has address as the base\\n    URI.'", "#NEWLINE#", "url", "=", "urlparse", ".", "urlparse", "(", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "]", ")", ":", "#NEWLINE#", "#INDENT#", "return", "LocalFileLocator", "(", "address", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "URLLocator", "(", "address", ")"], "error_location": [21], "repair_targets": [9], "repair_candidates": [2, 15, 21, 32, 43, 9], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "ardekantur/pyglet/contrib/layout/layout/locator.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 2054, "results": {"model": "transformer", "prob": {"loc": [[0.0006570264813490212, 1.36085958502008e-07, 3.8604191843205626e-08, 9.67162172571534e-09, 1.5022218136095944e-08, 6.384363260281134e-09, 6.201737789979234e-09, 1.2574578045487783e-09, 4.122589825072964e-09, 7.721799732962609e-08, 8.191651801325861e-09, 9.84920894842034e-11, 9.972689340997931e-10, 2.776313345886905e-10, 5.824905002782543e-09, 0.0009089489467442036, 3.60781911012964e-07, 2.4362618660234148e-06, 3.9698656451037095e-07, 5.205701825161668e-08, 4.486645593715366e-06, 0.8832153677940369, 7.67015171732055e-06, 1.9803051998223964e-07, 1.2237040891704964e-06, 5.109196195007826e-07, 1.5118772580535733e-06, 6.322555350379844e-07, 2.853529963431356e-07, 2.172648017051415e-08, 8.505335324926477e-10, 1.8784088240408892e-07, 0.11123678088188171, 1.9491544662741944e-06, 1.7706112487303471e-07, 9.61368762375514e-09, 8.587822897254682e-09, 1.1295787771814503e-07, 6.257344864479819e-09, 2.7335791408233945e-09, 1.5632549699162723e-09, 5.708303274509774e-11, 7.954926717346211e-10, 0.00395922502502799, 3.897277167652646e-08]], "pointer": [[0.0, 0.0, 1.2409188911988167e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9999967813491821, 0.0, 0.0, 0.0, 0.0, 0.0, 2.9481998353730887e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 3.732456121952055e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.012439611258742e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.578946679132059e-07, 0.0]], "target": [0.9999967813491821]}, "loss": [0.12418601661920547, 3.218656047465629e-06], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:32:36.477888", "n_pass": [1, 1, 1], "n_token": 45, "loss": [0.12418601661920547, 3.218656047465629e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_locator(", "address", ")", ":", "#NEWLINE#", "#INDENT#", "'Examines address and returns a locator that has address as the base\\n    URI.'", "#NEWLINE#", "url", "=", "urlparse", ".", "urlparse", "(", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "]", ")", ":", "#NEWLINE#", "#INDENT#", "return", "LocalFileLocator", "(", "address", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "URLLocator", "(", "address", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [9], "repair_candidates": [2, 15, 21, 32, 43, 9]}}
+{"prediction": {"error_location": 0.8832153677940369, "repair_targets": [0.9999967813491821], "repair_candidates": [1.2409188911988167e-06, 0.9999967813491821, 2.9481998353730887e-07, 3.732456121952055e-08, 1.012439611258742e-06, 7.578946679132059e-07], "target_probs": 0.9999967813491821}}
+
+
+{"result": {"time": "2021-02-11 11:32:36.590223", "n_pass": [26, 3, 2], "n_token": 39, "loss": [0.4255999028682709, 9.536747711536009e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_locator(", "address", ")", ":", "#NEWLINE#", "#INDENT#", "'Examines address and returns a locator that has address as the base\\n    URI.'", "#NEWLINE#", "url", "=", "urlparse", ".", "urlparse", "(", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "]", ")", ":", "#NEWLINE#", "#INDENT#", "return", "LocalFileLocator", "(", "address", "#INDENT#", "return", "URLLocator", "(", "address", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [9], "repair_candidates": [2, 15, 21, 32, 37, 9]}}
+{"prediction": {"error_location": 0.6533776521682739, "repair_targets": [0.9999990463256836], "repair_candidates": [5.126374276187562e-07, 0.9999990463256836, 2.1883964507196652e-07, 2.1559038998475444e-08, 1.3487681371771032e-07, 8.800455475466151e-08], "target_probs": 0.9999990463256836}}
+
+
+{"result": {"time": "2021-02-11 11:32:36.701169", "n_pass": [47, 5, 3], "n_token": 36, "loss": [0.08084537833929062, 3.099446303167497e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_locator(", "address", ")", ":", "#NEWLINE#", "#INDENT#", "'Examines address and returns a locator that has address as the base\\n    URI.'", "#NEWLINE#", "url", "=", "urlparse", ".", "urlparse", "(", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "]", ")", ":", "#NEWLINE#", "#INDENT#", "return", "LocalFileLocator", "(", "address", "(", "address", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [9], "repair_candidates": [2, 15, 21, 32, 34, 9]}}
+{"prediction": {"error_location": 0.9223362803459167, "repair_targets": [0.9999969005584717], "repair_candidates": [1.939720277732704e-06, 0.9999969005584717, 1.1162442206114065e-06, 4.713158574531917e-08, 9.152821434099678e-08, 3.223248157269154e-08], "target_probs": 0.9999969005584717}}
+
+
+{"result": {"time": "2021-02-11 11:32:36.810908", "n_pass": [50, 7, 4], "n_token": 34, "loss": [0.10909911245107651, 1.0728841743912199e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_locator(", "address", ")", "#INDENT#", "'Examines address and returns a locator that has address as the base\\n    URI.'", "#NEWLINE#", "url", "=", "urlparse", ".", "urlparse", "(", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "]", ")", ":", "#NEWLINE#", "#INDENT#", "return", "LocalFileLocator", "(", "address", "(", "address", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [7], "repair_candidates": [2, 13, 19, 30, 32, 7]}}
+{"prediction": {"error_location": 0.8966415524482727, "repair_targets": [0.999998927116394], "repair_candidates": [6.680487558696768e-07, 0.999998927116394, 2.575800692738994e-07, 1.809444860612075e-08, 7.454417527696933e-08, 1.8424954006945882e-08], "target_probs": 0.999998927116394}}
+
+
+{"result": {"time": "2021-02-11 11:32:36.868486", "n_pass": [51, 8, 5], "n_token": 31, "loss": [0.11246074736118317, 2.3365293600363657e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_locator(", "address", ")", "url", "=", "urlparse", ".", "urlparse", "(", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "]", ")", ":", "#NEWLINE#", "#INDENT#", "return", "LocalFileLocator", "(", "address", "(", "address", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [4], "repair_candidates": [2, 10, 16, 27, 29, 4]}}
+{"prediction": {"error_location": 0.8936325311660767, "repair_targets": [0.999976634979248], "repair_candidates": [7.912038199719973e-06, 0.999976634979248, 1.490758586442098e-05, 2.390383713191113e-07, 3.3305838087471784e-07, 6.643544026019299e-08], "target_probs": 0.999976634979248}}
+
+
+{"result": {"time": "2021-02-11 11:32:36.923015", "n_pass": [53, 9, 6], "n_token": 28, "loss": [0.15508291125297546, 0.0008718594908714294], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_locator(", "address", ")", "url", "=", "urlparse", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "]", ")", ":", "#NEWLINE#", "#INDENT#", "return", "LocalFileLocator", "(", "address", "(", "address", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [2, 7, 13, 24, 26, 4]}}
+{"prediction": {"error_location": 0.8563441038131714, "repair_targets": [0.999128520488739], "repair_candidates": [0.000519326888024807, 0.999128520488739, 0.0003301971300970763, 6.422861588362139e-06, 3.888161700160708e-06, 1.1705153156071901e-05], "target_probs": 0.999128520488739}}
+
+
+{"result": {"time": "2021-02-11 11:32:37.031340", "n_pass": [57, 11, 7], "n_token": 25, "loss": [0.13167427480220795, 0.0012216278119012713], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_locator(", "address", ")", "url", "=", "urlparse", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "#NEWLINE#", "#INDENT#", "return", "LocalFileLocator", "(", "address", "(", "address", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [2, 7, 13, 21, 23, 4]}}
+{"prediction": {"error_location": 0.8766264915466309, "repair_targets": [0.9987791180610657], "repair_candidates": [0.0004944736720062792, 0.9987791180610657, 0.0007042225333862007, 4.473915851122001e-06, 4.000376975454856e-06, 1.357549899694277e-05], "target_probs": 0.9987791180610657}}
+
+
+{"result": {"time": "2021-02-11 11:32:37.086004", "n_pass": [58, 12, 8], "n_token": 22, "loss": [0.33715155720710754, 0.002439133357256651], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_locator(", "address", ")", "url", "=", "urlparse", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "LocalFileLocator", "(", "address", "(", "address", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [2, 7, 13, 18, 20, 4]}}
+{"prediction": {"error_location": 0.7138006687164307, "repair_targets": [0.9975638389587402], "repair_candidates": [0.0013526086695492268, 0.9975638389587402, 0.0009851211216300726, 1.4614995052397717e-05, 1.9381488527869806e-05, 6.44910178380087e-05], "target_probs": 0.9975638389587402}}
+
+
+{"result": {"time": "2021-02-11 11:32:37.140199", "n_pass": [61, 13, 9], "n_token": 20, "loss": [0.2743965983390808, 0.001043506315909326], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["address", ")", "url", "=", "urlparse", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "LocalFileLocator", "(", "address", "(", "address", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [0, 5, 11, 16, 18, 2]}}
+{"prediction": {"error_location": 0.7600305676460266, "repair_targets": [0.9989570379257202], "repair_candidates": [0.0010397633304819465, 0.9989570379257202, 1.1328756954753771e-06, 1.3312794067132927e-07, 1.4984094605097198e-06, 4.5426986616803333e-07], "target_probs": 0.9989570379257202}}
+
+
+{"result": {"time": "2021-02-11 11:32:37.360666", "n_pass": [87, 17, 10], "n_token": 19, "loss": [0.2205197960138321, 0.0038162479177117348], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["address", ")", "url", "=", "address", ")", "#NEWLINE#", "if", "(", "not", "address", "[", "0", "LocalFileLocator", "(", "address", "(", "address", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [0, 4, 10, 15, 17, 2]}}
+{"prediction": {"error_location": 0.802101731300354, "repair_targets": [0.9961910247802734], "repair_candidates": [0.003806569380685687, 0.9961910247802734, 1.939409003171022e-06, 8.748885704790155e-08, 7.035869487026503e-08, 3.767378871089022e-07], "target_probs": 0.9961910247802734}}
+
+
+{"result": {"time": "2021-02-11 11:32:37.469688", "n_pass": [90, 19, 11], "n_token": 18, "loss": [0.528663158416748, 0.002265753224492073], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["address", ")", "url", "=", "address", ")", "if", "(", "not", "address", "[", "0", "LocalFileLocator", "(", "address", "(", "address", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [0, 4, 9, 14, 16, 2]}}
+{"prediction": {"error_location": 0.589392364025116, "repair_targets": [0.9977368116378784], "repair_candidates": [0.0021994474809616804, 0.9977368116378784, 6.237689376575872e-05, 3.2057653243100503e-07, 3.8165009641488723e-07, 7.710087288614886e-07], "target_probs": 0.9977368116378784}}
+
+
+{"result": {"time": "2021-02-11 11:32:37.635222", "n_pass": [94, 22, 12], "n_token": 16, "loss": [0.5117854475975037, 0.0007005999214015901], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["address", ")", "url", "=", "address", ")", "if", "(", "not", "address", "[", "0", "address", "(", "address", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [0, 4, 9, 12, 14, 2]}}
+{"prediction": {"error_location": 0.5994244813919067, "repair_targets": [0.9992996454238892], "repair_candidates": [0.0006532148108817637, 0.9992996454238892, 4.703761442215182e-05, 9.112410381817426e-09, 2.9267139822763966e-08, 8.024885289614758e-08], "target_probs": 0.9992996454238892}}
+
+
+{"result": {"time": "2021-02-11 11:32:37.961904", "n_pass": [116, 28, 13], "n_token": 15, "loss": [0.600028395652771, 0.0003231093578506261], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["address", ")", "url", "=", "address", ")", "if", "(", "not", "address", "[", "0", "address", "address", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [0, 4, 9, 12, 13, 2]}}
+{"prediction": {"error_location": 0.5487960577011108, "repair_targets": [0.9996769428253174], "repair_candidates": [0.00026267088833265007, 0.9996769428253174, 6.042265158612281e-05, 2.6445783340989237e-09, 1.337832511438819e-08, 9.087587571343647e-09], "target_probs": 0.9996769428253174}}
+
+
+{"result": {"time": "2021-02-11 11:32:38.016228", "n_pass": [118, 29, 14], "n_token": 14, "loss": [0.08736146241426468, 0.00010789022780954838], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["address", ")", "url", "=", "address", ")", "if", "(", "not", "address", "[", "0", "address", "address"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [0, 4, 9, 12, 13, 2]}}
+{"prediction": {"error_location": 0.9163458347320557, "repair_targets": [0.9998921155929565], "repair_candidates": [9.905621845973656e-05, 0.9998921155929565, 7.292988357221475e-06, 2.3729015197204717e-08, 8.967907092483074e-07, 6.726779702148633e-07], "target_probs": 0.9998921155929565}}
+
+
+{"result": {"time": "2021-02-11 11:32:38.070815", "n_pass": [120, 30, 15], "n_token": 13, "loss": [0.45401352643966675, 0.017099248245358467], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["address", "url", "=", "address", ")", "if", "(", "not", "address", "[", "0", "address", "address"]}}
+{"position": {"error_location": 8, "repair_targets": [1], "repair_candidates": [0, 3, 8, 11, 12, 1]}}
+{"prediction": {"error_location": 0.6350741386413574, "repair_targets": [0.9830461144447327], "repair_candidates": [0.016011396422982216, 0.9830461144447327, 0.0005573609378188848, 3.980411565862596e-05, 0.00020243541803210974, 0.00014281632320489734], "target_probs": 0.9830461144447327}}
+
+
+
+
+Minimal simplified tokens:
+
+['address', 'url', '=', 'address', ')', 'if', '(', 'not', 'address', '[', '0', 'address', 'address']

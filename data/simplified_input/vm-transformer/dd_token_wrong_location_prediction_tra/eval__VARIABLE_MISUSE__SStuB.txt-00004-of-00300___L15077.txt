@@ -1,0 +1,49 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def get_file_list(", "path", ",", "filter_fn", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'Return a list of files in a directory.\\n\\n    If you can specify a predicate (a callable), only file names matching it\\n    will be returned.\\n    '", "#NEWLINE#", "return", "filter", "(", "filter_fn", ",", "os", ".", "listdir", "(", "filter_fn", ")", ")"], "error_location": [22], "repair_targets": [2], "repair_candidates": [4, 16, 22, 2], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "dnanexus/dx-toolkit/src/python/test/coveragereport.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00004-of-00300", "js_count": 15077, "results": {"model": "transformer", "prob": {"loc": [[0.00010303549061063677, 7.74229675926108e-08, 1.0784282977738258e-07, 2.077694993829482e-08, 5.59470265670825e-07, 3.8611990049730593e-08, 2.1799946736678066e-08, 1.023268136890465e-08, 2.2894351303648364e-08, 2.2853948067336205e-08, 1.2844233232556235e-08, 1.747803679563731e-08, 1.4507388179652025e-08, 8.965436393282289e-09, 1.4684262139574855e-10, 3.9060408241198274e-09, 0.6010644435882568, 2.0511456000349426e-07, 1.6143789083322702e-10, 3.582224739062667e-09, 6.54201692817935e-11, 9.152453017691187e-09, 0.3988190293312073, 6.607128852920141e-06, 5.790180694020819e-06]], "pointer": [[0.0, 0.0, 0.9999997615814209, 0.0, 2.7047315143136075e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.183982950043628e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 1.2321055287145555e-08, 0.0, 0.0]], "target": [0.9999997615814209]}, "loss": [0.9192475080490112, 2.3841860752327193e-07], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [16]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:01:47.879318", "n_pass": [1, 1, 1], "n_token": 25, "loss": [0.509053111076355, 2.3841860752327193e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_file_list(", "path", ",", "filter_fn", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'Return a list of files in a directory.\\n\\n    If you can specify a predicate (a callable), only file names matching it\\n    will be returned.\\n    '", "#NEWLINE#", "return", "filter", "(", "filter_fn", ",", "os", ".", "listdir", "(", "filter_fn", ")", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [4, 16, 22, 2]}}
+{"prediction": {"error_location": 0.6010644435882568, "repair_targets": [0.9999997615814209], "repair_candidates": [0.9999997615814209, 2.7047315143136075e-07, 2.183982950043628e-08, 1.2321055287145555e-08], "target_probs": 0.9999997615814209}}
+
+
+{"result": {"time": "2021-02-21 06:01:47.934707", "n_pass": [9, 2, 2], "n_token": 19, "loss": [0.6364400386810303, 7.152560215217818e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_file_list(", "path", ",", "filter_fn", "=", "#NEWLINE#", "return", "filter", "(", "filter_fn", ",", "os", ".", "listdir", "(", "filter_fn", ")", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [4, 10, 16, 2]}}
+{"prediction": {"error_location": 0.529172956943512, "repair_targets": [0.9999992847442627], "repair_candidates": [0.9999992847442627, 3.1262700872503046e-07, 2.09743163281928e-07, 1.687046449205809e-07], "target_probs": 0.9999992847442627}}
+
+
+{"result": {"time": "2021-02-21 06:01:48.046828", "n_pass": [20, 4, 3], "n_token": 16, "loss": [0.11945025622844696, 5.960466182841628e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_file_list(", "path", ",", "filter_fn", "=", "#NEWLINE#", "return", "filter", "(", "filter_fn", ",", "(", "filter_fn", ")", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [4, 10, 13, 2]}}
+{"prediction": {"error_location": 0.8874082565307617, "repair_targets": [0.9999994039535522], "repair_candidates": [0.9999994039535522, 2.133875796062057e-07, 2.2198237559223344e-07, 1.455876486033958e-07], "target_probs": 0.9999994039535522}}
+
+
+{"result": {"time": "2021-02-21 06:01:48.156481", "n_pass": [36, 6, 4], "n_token": 14, "loss": [0.0058282907120883465, 1.3113030945532955e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_file_list(", "path", ",", "filter_fn", "=", "#NEWLINE#", "return", "filter", "(", "filter_fn", ",", "(", "filter_fn"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [4, 10, 13, 2]}}
+{"prediction": {"error_location": 0.9941887855529785, "repair_targets": [0.9999986886978149], "repair_candidates": [0.9999986886978149, 1.285083158109046e-06, 2.526435949334882e-08, 6.109064920600815e-10], "target_probs": 0.9999986886978149}}
+
+
+{"result": {"time": "2021-02-21 06:01:48.319762", "n_pass": [40, 9, 5], "n_token": 13, "loss": [0.40803784132003784, 0.00383748859167099], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_file_list(", "path", "filter_fn", "=", "#NEWLINE#", "return", "filter", "(", "filter_fn", ",", "(", "filter_fn"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [3, 9, 12, 2]}}
+{"prediction": {"error_location": 0.6649536490440369, "repair_targets": [0.9961698651313782], "repair_candidates": [0.9961698651313782, 0.003812081180512905, 1.7983398720389232e-05, 8.05594524422304e-08], "target_probs": 0.9961698651313782}}
+
+
+{"result": {"time": "2021-02-21 06:01:48.923153", "n_pass": [66, 20, 6], "n_token": 12, "loss": [0.30648380517959595, 0.016524918377399445], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_file_list(", "path", "filter_fn", "=", "#NEWLINE#", "return", "filter", "(", "filter_fn", ",", "filter_fn"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [3, 9, 11, 2]}}
+{"prediction": {"error_location": 0.7360304594039917, "repair_targets": [0.9836108684539795], "repair_candidates": [0.9836108684539795, 0.016386542469263077, 2.4476896669511916e-06, 1.3028891032718093e-07], "target_probs": 0.9836108684539795}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def get_file_list(', 'path', 'filter_fn', '=', '#NEWLINE#', 'return', 'filter', '(', 'filter_fn', ',', 'filter_fn']

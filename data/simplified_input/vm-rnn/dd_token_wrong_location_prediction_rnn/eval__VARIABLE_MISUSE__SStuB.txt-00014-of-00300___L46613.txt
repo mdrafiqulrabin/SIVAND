@@ -1,0 +1,163 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def __get__(", "self", ",", "obj", ",", "owner", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "if", "(", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"], "error_location": [15], "repair_targets": [4, 27], "repair_candidates": [2, 23, 45, 4, 27, 6, 15, 37], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "bokeh/bokeh/bokeh/core/properties.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00014-of-00300", "js_count": 46613, "results": {"model": "rnn", "prob": {"loc": [[0.36224862933158875, 4.100019214092754e-05, 1.2669679563259706e-05, 8.051729061264723e-09, 1.0642279448802583e-06, 5.047013473813422e-08, 1.3472617865772918e-06, 9.535198586263505e-08, 4.556613077966176e-07, 2.5708035877869406e-07, 4.872539989264624e-07, 4.954836640536087e-06, 2.6986499506165273e-06, 7.261122050294944e-07, 9.343943929707166e-06, 0.05918695777654648, 3.497565330690122e-06, 9.568001587467734e-06, 4.474657544051297e-06, 1.253070536222367e-06, 2.285603386553703e-06, 3.6557031535267015e-07, 5.80761252422235e-07, 2.8403185297065647e-06, 2.8572657129188883e-08, 6.907466172378918e-07, 1.6772442990031777e-08, 0.004341110587120056, 3.820701692802686e-07, 4.7018787086017255e-07, 4.844234717893414e-05, 1.3296977385834907e-06, 9.714653970149811e-06, 4.318711035011802e-06, 1.2578044561450952e-06, 9.117029549088329e-07, 6.449999091273639e-06, 0.031086120754480362, 1.5389141481136903e-05, 1.6067870092228986e-05, 9.089725949706917e-07, 3.299252853139478e-07, 8.297073463836568e-07, 1.3769370355021238e-07, 4.925147095491411e-06, 0.5428428053855896, 4.8422578402096406e-05, 2.809875695675146e-05, 1.8147525793210662e-07, 2.3409922960127005e-06, 6.196992785589828e-07, 7.701981274976788e-08, 3.0038148679523147e-07, 2.0009203183235513e-07, 2.2462393189925933e-07, 1.5810742937105715e-08, 1.2932727031511604e-06]], "pointer": [[0.0, 0.0, 0.03937305510044098, 0.0, 0.6181402206420898, 0.0, 0.06669066846370697, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.015618289820849895, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00035595669760368764, 0.0, 0.0, 0.0, 0.21395990252494812, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.04414425045251846, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0017176277469843626, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.8321001529693604]}, "loss": [2.827054023742676, 0.18380247056484222], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [45]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 13:04:14.174309", "n_pass": [1, 1, 1], "n_token": 57, "loss": [0.6109355092048645, 0.18380247056484222], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __get__(", "self", ",", "obj", ",", "owner", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "if", "(", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 45, "repair_targets": [4, 27], "repair_candidates": [2, 23, 45, 4, 27, 6, 15, 37]}}
+{"prediction": {"error_location": 0.5428428053855896, "repair_targets": [0.6181402206420898, 0.21395990252494812], "repair_candidates": [0.03937305510044098, 0.6181402206420898, 0.06669066846370697, 0.015618289820849895, 0.00035595669760368764, 0.21395990252494812, 0.04414425045251846, 0.0017176277469843626], "target_probs": 0.8321001529693604}}
+
+
+{"result": {"time": "2021-02-21 13:04:14.477654", "n_pass": [47, 5, 2], "n_token": 54, "loss": [0.7983261942863464, 0.1297542154788971], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __get__(", "self", ",", "obj", ",", "owner", "=", "None", "#INDENT#", "if", "(", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "if", "(", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 42, "repair_targets": [4, 24], "repair_candidates": [2, 20, 42, 4, 24, 6, 12, 34]}}
+{"prediction": {"error_location": 0.4500816762447357, "repair_targets": [0.7937706708908081, 0.08454061299562454], "repair_candidates": [0.0434253066778183, 0.7937706708908081, 0.045545436441898346, 0.006318242289125919, 0.00035219910205341876, 0.08454061299562454, 0.024999169632792473, 0.0010484174126759171], "target_probs": 0.878311276435852}}
+
+
+{"result": {"time": "2021-02-21 13:04:14.552663", "n_pass": [48, 6, 3], "n_token": 51, "loss": [0.5181502103805542, 0.34607967734336853], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __get__(", "self", ",", "obj", ",", "owner", "=", "None", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "if", "(", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 39, "repair_targets": [4, 21], "repair_candidates": [2, 17, 39, 4, 21, 6, 9, 31]}}
+{"prediction": {"error_location": 0.5956213474273682, "repair_targets": [0.600398600101471, 0.10705754160881042], "repair_candidates": [0.04491310566663742, 0.600398600101471, 0.09586308151483536, 0.09883631765842438, 0.0005383659736253321, 0.10705754160881042, 0.05078931525349617, 0.001603623852133751], "target_probs": 0.707456111907959}}
+
+
+{"result": {"time": "2021-02-21 13:04:14.626283", "n_pass": [50, 7, 4], "n_token": 48, "loss": [0.6414088010787964, 0.2303425818681717], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __get__(", "self", ",", "obj", ",", "owner", "=", "None", "owner", "is not", "None", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "if", "(", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "raise", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 36, "repair_targets": [4, 18], "repair_candidates": [2, 14, 36, 4, 18, 6, 9, 28]}}
+{"prediction": {"error_location": 0.5265501141548157, "repair_targets": [0.779754638671875, 0.014506842941045761], "repair_candidates": [0.05579259246587753, 0.779754638671875, 0.07626347988843918, 0.0380900613963604, 0.0008016403298825026, 0.014506842941045761, 0.03315339609980583, 0.0016375076957046986], "target_probs": 0.7942614555358887}}
+
+
+{"result": {"time": "2021-02-21 13:04:14.914914", "n_pass": [58, 11, 5], "n_token": 44, "loss": [0.3552810251712799, 0.19102127850055695], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __get__(", "self", ",", "obj", ",", "owner", "=", "None", "owner", "is not", "None", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "if", "(", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "#UNINDENT#", "else", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 36, "repair_targets": [4, 18], "repair_candidates": [2, 14, 36, 4, 18, 6, 9, 28]}}
+{"prediction": {"error_location": 0.7009764909744263, "repair_targets": [0.8143738508224487, 0.011741166934370995], "repair_candidates": [0.040152210742235184, 0.8143738508224487, 0.06840740889310837, 0.04362116754055023, 0.0007238705293275416, 0.011741166934370995, 0.020334886386990547, 0.0006454430986195803], "target_probs": 0.8261150121688843}}
+
+
+{"result": {"time": "2021-02-21 13:04:15.054237", "n_pass": [66, 13, 6], "n_token": 40, "loss": [0.5010800361633301, 0.2405383288860321], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __get__(", "self", ",", "obj", ",", "owner", "=", "None", "owner", "is not", "None", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "#NEWLINE#", "#INDENT#", "if", "(", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "#UNINDENT#", "else", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [4, 18], "repair_candidates": [2, 14, 32, 4, 18, 6, 9, 24]}}
+{"prediction": {"error_location": 0.6058759093284607, "repair_targets": [0.7609931230545044, 0.02521136775612831], "repair_candidates": [0.04462972655892372, 0.7609931230545044, 0.07005584239959717, 0.04361201450228691, 0.0012142404448240995, 0.02521136775612831, 0.05291072279214859, 0.0013730048667639494], "target_probs": 0.7862045168876648}}
+
+
+{"result": {"time": "2021-02-21 13:04:15.121850", "n_pass": [67, 14, 7], "n_token": 36, "loss": [0.3361622989177704, 0.2162284106016159], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __get__(", "self", ",", "obj", ",", "owner", "=", "None", "owner", "is not", "None", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "owner", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "#UNINDENT#", "else", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [4, 18], "repair_candidates": [2, 14, 28, 4, 18, 6, 9, 20]}}
+{"prediction": {"error_location": 0.7145071029663086, "repair_targets": [0.7099663615226746, 0.0955849438905716], "repair_candidates": [0.04485184699296951, 0.7099663615226746, 0.08305066078901291, 0.05042578652501106, 0.0006716049392707646, 0.0955849438905716, 0.014822397381067276, 0.0006264531402848661], "target_probs": 0.805551290512085}}
+
+
+{"result": {"time": "2021-02-21 13:04:15.322059", "n_pass": [99, 17, 8], "n_token": 34, "loss": [0.2778302729129791, 0.21469032764434814], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __get__(", "self", ",", "obj", ",", "owner", "=", "None", "owner", "is not", "None", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "#UNINDENT#", "else", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [4, 18], "repair_candidates": [2, 14, 26, 4, 18, 6, 9, 20]}}
+{"prediction": {"error_location": 0.7574254274368286, "repair_targets": [0.6751157641410828, 0.13167549669742584], "repair_candidates": [0.04463248327374458, 0.6751157641410828, 0.07504840940237045, 0.03798885643482208, 0.0005602735327556729, 0.13167549669742584, 0.03447575867176056, 0.0005029616877436638], "target_probs": 0.8067912459373474}}
+
+
+{"result": {"time": "2021-02-21 13:04:15.517031", "n_pass": [103, 20, 9], "n_token": 32, "loss": [0.6313356757164001, 0.30633625388145447], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __get__(", "self", ",", "obj", ",", "owner", "=", "None", "owner", "is not", "None", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [4, 18], "repair_candidates": [2, 14, 26, 4, 18, 6, 9, 20]}}
+{"prediction": {"error_location": 0.5318808555603027, "repair_targets": [0.6734392642974854, 0.06269979476928711], "repair_candidates": [0.06779160350561142, 0.6734392642974854, 0.09159574657678604, 0.05906318873167038, 0.0008291888516396284, 0.06269979476928711, 0.04270778223872185, 0.0018734789919108152], "target_probs": 0.7361390590667725}}
+
+
+{"result": {"time": "2021-02-21 13:04:15.711940", "n_pass": [106, 23, 10], "n_token": 31, "loss": [0.2858421206474304, 0.13805589079856873], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __get__(", "self", ",", "obj", ",", "owner", "=", "None", "owner", "is not", "None", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [3, 17], "repair_candidates": [1, 13, 25, 3, 17, 5, 8, 19]}}
+{"prediction": {"error_location": 0.7513812184333801, "repair_targets": [0.8282238245010376, 0.04282616823911667], "repair_candidates": [0.0322418138384819, 0.8282238245010376, 0.053872764110565186, 0.016416873782873154, 0.0006997027667239308, 0.04282616823911667, 0.02318320795893669, 0.002535563427954912], "target_probs": 0.8710500001907349}}
+
+
+{"result": {"time": "2021-02-21 13:04:15.775914", "n_pass": [107, 24, 11], "n_token": 30, "loss": [0.45969444513320923, 0.3084494173526764], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", ",", "owner", "=", "None", "owner", "is not", "None", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [2, 16], "repair_candidates": [0, 12, 24, 2, 16, 4, 7, 18]}}
+{"prediction": {"error_location": 0.6314765810966492, "repair_targets": [0.7112195491790771, 0.023365536704659462], "repair_candidates": [0.020189478993415833, 0.7112195491790771, 0.22011135518550873, 0.014751708135008812, 0.00010300045687472448, 0.023365536704659462, 0.00996987521648407, 0.0002895160287152976], "target_probs": 0.7345851063728333}}
+
+
+{"result": {"time": "2021-02-21 13:04:15.905113", "n_pass": [113, 26, 12], "n_token": 28, "loss": [0.33426210284233093, 0.27936139702796936], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", ",", "owner", "=", "None", "owner", "#INDENT#", "return", "self", ".", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [2, 14], "repair_candidates": [0, 10, 22, 2, 14, 4, 7, 16]}}
+{"prediction": {"error_location": 0.7158661484718323, "repair_targets": [0.7378149628639221, 0.018451591953635216], "repair_candidates": [0.012046565301716328, 0.7378149628639221, 0.1890663504600525, 0.034568704664707184, 3.75083509425167e-05, 0.018451591953635216, 0.007796316873282194, 0.00021804077550768852], "target_probs": 0.7562665343284607}}
+
+
+{"result": {"time": "2021-02-21 13:04:15.970044", "n_pass": [114, 27, 13], "n_token": 26, "loss": [0.35938698053359985, 0.24691279232501984], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", ",", "owner", "=", "None", "owner", "self", ".", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "ValueError", "(", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [2, 12], "repair_candidates": [0, 8, 20, 2, 12, 4, 7, 14]}}
+{"prediction": {"error_location": 0.698104202747345, "repair_targets": [0.7791646122932434, 0.002044178545475006], "repair_candidates": [0.011370928958058357, 0.7791646122932434, 0.17460420727729797, 0.028302475810050964, 7.914080924820155e-05, 0.002044178545475006, 0.004266931675374508, 0.00016752466035541147], "target_probs": 0.7812088131904602}}
+
+
+{"result": {"time": "2021-02-21 13:04:16.215747", "n_pass": [122, 31, 14], "n_token": 24, "loss": [0.5051677823066711, 0.15282738208770752], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", ",", "owner", "=", "None", "owner", "self", ".", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#", "\"both 'obj' and 'owner' are None, don't know what to do\"", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [2, 12], "repair_candidates": [0, 8, 20, 2, 12, 4, 7, 14]}}
+{"prediction": {"error_location": 0.6034042835235596, "repair_targets": [0.8549548983573914, 0.0033229629043489695], "repair_candidates": [0.010600069537758827, 0.8549548983573914, 0.10397756099700928, 0.023916374891996384, 5.2029550715815276e-05, 0.0033229629043489695, 0.0027915984392166138, 0.00038458345807157457], "target_probs": 0.8582778573036194}}
+
+
+{"result": {"time": "2021-02-21 13:04:16.275694", "n_pass": [123, 32, 15], "n_token": 22, "loss": [0.44885504245758057, 0.11507284641265869], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", ",", "owner", "=", "None", "owner", "self", ".", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#"]}}
+{"position": {"error_location": 20, "repair_targets": [2, 12], "repair_candidates": [0, 8, 20, 2, 12, 4, 7, 14]}}
+{"prediction": {"error_location": 0.6383585929870605, "repair_targets": [0.8894628882408142, 0.0018383113201707602], "repair_candidates": [0.013775257393717766, 0.8894628882408142, 0.07350651919841766, 0.019549529999494553, 6.731969187967479e-05, 0.0018383113201707602, 0.0014777855249121785, 0.00032239407300949097], "target_probs": 0.8913012146949768}}
+
+
+{"result": {"time": "2021-02-21 13:04:16.576109", "n_pass": [157, 37, 16], "n_token": 21, "loss": [0.2722177803516388, 0.23638111352920532], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", "owner", "=", "None", "owner", "self", ".", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#"]}}
+{"position": {"error_location": 19, "repair_targets": [2, 11], "repair_candidates": [0, 7, 19, 2, 11, 3, 6, 13]}}
+{"prediction": {"error_location": 0.7616883516311646, "repair_targets": [0.7893722057342529, 0.00010751854279078543], "repair_candidates": [0.01005223486572504, 0.7893722057342529, 0.18693986535072327, 0.013273850083351135, 3.0230234187911265e-05, 0.00010751854279078543, 0.0002083569997921586, 1.572820110595785e-05], "target_probs": 0.7894797325134277}}
+
+
+{"result": {"time": "2021-02-21 13:04:16.697381", "n_pass": [160, 39, 17], "n_token": 20, "loss": [0.3120866119861603, 0.2808983623981476], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", "owner", "=", "owner", "self", ".", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 10], "repair_candidates": [0, 6, 18, 2, 10, 3, 5, 12]}}
+{"prediction": {"error_location": 0.7319180965423584, "repair_targets": [0.755069375038147, 3.568991451174952e-05], "repair_candidates": [0.005502557847648859, 0.755069375038147, 0.23739302158355713, 0.0018601985648274422, 2.1363697669585235e-05, 3.568991451174952e-05, 0.00011124380398541689, 6.470795142377028e-06], "target_probs": 0.7551050782203674}}
+
+
+{"result": {"time": "2021-02-21 13:04:16.756251", "n_pass": [163, 40, 18], "n_token": 19, "loss": [0.22724279761314392, 0.35162609815597534], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", "owner", "=", "owner", "self", "_get", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#"]}}
+{"position": {"error_location": 17, "repair_targets": [2, 9], "repair_candidates": [0, 6, 17, 2, 9, 3, 5, 11]}}
+{"prediction": {"error_location": 0.7967272996902466, "repair_targets": [0.7035287022590637, 1.4400179679796565e-05], "repair_candidates": [0.0030961076263338327, 0.7035287022590637, 0.2922613024711609, 0.0010022093774750829, 4.4312131649348885e-05, 1.4400179679796565e-05, 5.13792438141536e-05, 1.6593793361607823e-06], "target_probs": 0.7035431265830994}}
+
+
+{"result": {"time": "2021-02-21 13:04:16.814381", "n_pass": [164, 41, 19], "n_token": 18, "loss": [0.006382794119417667, 0.23008251190185547], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", "owner", "=", "owner", "self", "(", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#"]}}
+{"position": {"error_location": 16, "repair_targets": [2, 8], "repair_candidates": [0, 6, 16, 2, 8, 3, 5, 10]}}
+{"prediction": {"error_location": 0.9936375617980957, "repair_targets": [0.7944439053535461, 2.411436798865907e-05], "repair_candidates": [0.0047297109849750996, 0.7944439053535461, 0.2002260833978653, 0.0002419583615846932, 0.0002247510274173692, 2.411436798865907e-05, 0.00010696386743802577, 2.514987500035204e-06], "target_probs": 0.7944680452346802}}
+
+
+{"result": {"time": "2021-02-21 13:04:16.872063", "n_pass": [165, 42, 20], "n_token": 17, "loss": [0.670417070388794, 0.39208486676216125], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", "owner", "=", "owner", "self", "obj", ")", "owner", "is not", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#"]}}
+{"position": {"error_location": 15, "repair_targets": [2, 7], "repair_candidates": [0, 6, 15, 2, 7, 3, 5, 9]}}
+{"prediction": {"error_location": 0.5114952325820923, "repair_targets": [0.6739153861999512, 0.0017313749995082617], "repair_candidates": [0.010600265115499496, 0.6739153861999512, 0.2992568016052246, 0.003963896073400974, 0.0074162608943879604, 0.0017313749995082617, 0.0030588654335588217, 5.711818448617123e-05], "target_probs": 0.6756467819213867}}
+
+
+{"result": {"time": "2021-02-21 13:04:16.986708", "n_pass": [169, 44, 21], "n_token": 16, "loss": [0.6193152666091919, 0.3074643015861511], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", "owner", "=", "owner", "self", "obj", ")", "owner", ":", "#NEWLINE#", "#INDENT#", "return", "self", "#NEWLINE#"]}}
+{"position": {"error_location": 14, "repair_targets": [2, 7], "repair_candidates": [0, 6, 14, 2, 7, 3, 5, 9]}}
+{"prediction": {"error_location": 0.5383129119873047, "repair_targets": [0.7346903681755066, 0.0006187795079313219], "repair_candidates": [0.02667909488081932, 0.7346903681755066, 0.23248381912708282, 0.0019165449775755405, 0.0026427709963172674, 0.0006187795079313219, 0.0008978391997516155, 7.071494474075735e-05], "target_probs": 0.7353091239929199}}
+
+
+{"result": {"time": "2021-02-21 13:04:17.159127", "n_pass": [172, 47, 22], "n_token": 15, "loss": [0.5445098280906677, 0.35774901509284973], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", "owner", "=", "owner", "self", "obj", ")", "owner", ":", "#NEWLINE#", "return", "self", "#NEWLINE#"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 7], "repair_candidates": [0, 6, 13, 2, 7, 3, 5, 9]}}
+{"prediction": {"error_location": 0.5801260471343994, "repair_targets": [0.6989336609840393, 0.000314875302137807], "repair_candidates": [0.014737573452293873, 0.6989336609840393, 0.28309574723243713, 0.0010642905253916979, 0.0014057293301448226, 0.000314875302137807, 0.00027677256730385125, 0.00017143113655038178], "target_probs": 0.6992485523223877}}
+
+
+{"result": {"time": "2021-02-21 13:04:17.271368", "n_pass": [175, 49, 23], "n_token": 14, "loss": [0.3521048426628113, 0.32298994064331055], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", "owner", "=", "owner", "self", "obj", ")", "owner", ":", "#NEWLINE#", "return", "self"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 7], "repair_candidates": [0, 6, 13, 2, 7, 3, 5, 9]}}
+{"prediction": {"error_location": 0.7032063007354736, "repair_targets": [0.7237111926078796, 0.0002699354663491249], "repair_candidates": [0.008052128367125988, 0.7237111926078796, 0.26545006036758423, 0.0009405746823176742, 0.0011920217657461762, 0.0002699354663491249, 0.000355518888682127, 2.852673605957534e-05], "target_probs": 0.7239811420440674}}
+
+
+{"result": {"time": "2021-02-21 13:04:17.440481", "n_pass": [184, 52, 24], "n_token": 13, "loss": [0.10728057473897934, 0.3738342225551605], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", "owner", "=", "owner", "self", "obj", "owner", ":", "#NEWLINE#", "return", "self"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 7], "repair_candidates": [0, 6, 12, 2, 7, 3, 5, 8]}}
+{"prediction": {"error_location": 0.8982735872268677, "repair_targets": [0.687900722026825, 0.00019025923393201083], "repair_candidates": [0.005254634190350771, 0.687900722026825, 0.30513983964920044, 0.0005154592799954116, 0.00026604312006384134, 0.00019025923393201083, 0.0007138230139389634, 1.91807521332521e-05], "target_probs": 0.688090980052948}}
+
+
+{"result": {"time": "2021-02-21 13:04:17.495859", "n_pass": [186, 53, 25], "n_token": 12, "loss": [0.20316067337989807, 0.4698375165462494], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "obj", "owner", "=", "owner", "self", "obj", "owner", "#NEWLINE#", "return", "self"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 7], "repair_candidates": [0, 6, 11, 2, 7, 3, 5, 8]}}
+{"prediction": {"error_location": 0.8161470890045166, "repair_targets": [0.6245037317276001, 0.0006001089350320399], "repair_candidates": [0.010413081385195255, 0.6245037317276001, 0.3598977029323578, 0.0014540750999003649, 0.0006085039931349456, 0.0006001089350320399, 0.00246181502006948, 6.101283725001849e-05], "target_probs": 0.6251038312911987}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ',', 'obj', 'owner', '=', 'owner', 'self', 'obj', 'owner', '#NEWLINE#', 'return', 'self']

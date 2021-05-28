@@ -1,0 +1,127 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "app", ".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "#NEWLINE#", "#INDENT#", "'logs detailed message about tasks that raise exceptions\\n\\n    :param task_id: TaskID of the failed task\\n    :param task_name: name of task that failed\\n    '", "#NEWLINE#", "logger", "=", "get_task_logger", "(", "__name__", ")", "#NEWLINE#", "result", "=", "app", ".", "AsyncResult", "(", "task_name", ")", "#NEWLINE#", "excep", "=", "result", ".", "get", "(", "propagate", "=", "False", ")", "#NEWLINE#", "logger", ".", "error", "(", "'#####FAILURE LOG BEGIN#####\\nTask {0} raised exception: {0}\\n\\\\{0}\\n#####FAILURE LOG STOP#####'", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"], "error_location": [29], "repair_targets": [7], "repair_candidates": [32, 53, 7, 23, 34, 55, 16, 43, 9, 29, 51], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "CenterForOpenScience/osf.io/framework/celery_tasks/__init__.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00004-of-00300", "js_count": 13926, "results": {"model": "transformer", "prob": {"loc": [[0.21884691715240479, 7.1764352469472215e-06, 1.89996161026329e-08, 1.5337170111706655e-07, 1.5017182164456244e-08, 1.6514938749878638e-07, 3.2082257916954404e-07, 4.289967819204321e-06, 7.710734450938617e-08, 1.6978069652395789e-06, 7.336291929505023e-08, 5.894764143477005e-08, 7.386248057628109e-08, 6.470390445656449e-08, 2.5940920522771194e-07, 7.853305561411617e-08, 9.300983947468922e-06, 8.359815950598204e-08, 1.3496337203378062e-07, 4.7488083509961143e-07, 0.0002520478155929595, 5.308779691404197e-07, 2.864508417133038e-07, 7.968422721660318e-08, 1.449316187063232e-07, 6.326571622139454e-08, 8.684862251584491e-08, 1.602747268236726e-08, 3.428174863984168e-07, 0.1765502542257309, 1.1517313396325335e-06, 4.5203768195278826e-07, 1.2567960538945044e-06, 6.631719884353515e-08, 1.1099111816292861e-06, 6.288206577664823e-08, 2.023247347437973e-08, 2.2275605715549318e-07, 1.3975764545648417e-07, 3.360415803399519e-07, 3.3850492400233634e-06, 2.691084830530599e-07, 1.5922329055229056e-07, 2.9518687938434596e-07, 8.287176456178713e-08, 2.133883469923603e-08, 2.2417015799192086e-08, 1.5562420685455436e-07, 2.9595949513350206e-07, 4.825797361718287e-08, 3.173492757468921e-07, 0.5691863298416138, 3.51943924670195e-07, 0.0006903627072460949, 2.90745106212853e-07, 0.03443577513098717, 4.990500883650384e-07, 5.123970936438127e-08, 2.3849696617617155e-07, 8.77870547810744e-07]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8988609313964844, 0.0, 0.002005245303735137, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.08412504196166992, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0033329229336231947, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00020313324057497084, 0.0, 0.0, 0.008588523603975773, 0.0, 0.00021129385277163237, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0022664687130600214, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.893611549050547e-05, 0.0, 0.00035322923213243484, 0.0, 4.2473616304050665e-06, 0.0, 0.0, 0.0, 0.0]], "target": [0.8988609313964844]}, "loss": [1.734149694442749, 0.1066269502043724], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [51]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:59:00.934615", "n_pass": [1, 1, 1], "n_token": 60, "loss": [0.5635473728179932, 0.1066269502043724], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "app", ".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "#NEWLINE#", "#INDENT#", "'logs detailed message about tasks that raise exceptions\\n\\n    :param task_id: TaskID of the failed task\\n    :param task_name: name of task that failed\\n    '", "#NEWLINE#", "logger", "=", "get_task_logger", "(", "__name__", ")", "#NEWLINE#", "result", "=", "app", ".", "AsyncResult", "(", "task_name", ")", "#NEWLINE#", "excep", "=", "result", ".", "get", "(", "propagate", "=", "False", ")", "#NEWLINE#", "logger", ".", "error", "(", "'#####FAILURE LOG BEGIN#####\\nTask {0} raised exception: {0}\\n\\\\{0}\\n#####FAILURE LOG STOP#####'", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 51, "repair_targets": [7], "repair_candidates": [32, 53, 7, 23, 34, 55, 16, 43, 9, 29, 51]}}
+{"prediction": {"error_location": 0.5691863298416138, "repair_targets": [0.8988609313964844], "repair_candidates": [0.8988609313964844, 0.002005245303735137, 0.08412504196166992, 0.0033329229336231947, 0.00020313324057497084, 0.008588523603975773, 0.00021129385277163237, 0.0022664687130600214, 4.893611549050547e-05, 0.00035322923213243484, 4.2473616304050665e-06], "target_probs": 0.8988609313964844}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.051036", "n_pass": [44, 3, 2], "n_token": 57, "loss": [0.571647047996521, 0.028767652809619904], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "#NEWLINE#", "#INDENT#", "'logs detailed message about tasks that raise exceptions\\n\\n    :param task_id: TaskID of the failed task\\n    :param task_name: name of task that failed\\n    '", "#NEWLINE#", "logger", "=", "get_task_logger", "(", "__name__", ")", "#NEWLINE#", "result", "=", "app", ".", "AsyncResult", "(", "task_name", ")", "#NEWLINE#", "excep", "=", "result", ".", "get", "(", "propagate", "=", "False", ")", "#NEWLINE#", "logger", ".", "error", "(", "'#####FAILURE LOG BEGIN#####\\nTask {0} raised exception: {0}\\n\\\\{0}\\n#####FAILURE LOG STOP#####'", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 48, "repair_targets": [4], "repair_candidates": [29, 50, 4, 20, 31, 52, 13, 40, 6, 26, 48]}}
+{"prediction": {"error_location": 0.5645948648452759, "repair_targets": [0.9716421961784363], "repair_candidates": [0.9716421961784363, 0.0015603406354784966, 0.019760092720389366, 0.0008903611451387405, 0.00010835750435944647, 0.00449335714802146, 9.948034130502492e-05, 0.0012886690674349666, 5.225349741522223e-05, 0.00010088863200508058, 3.988502612628508e-06], "target_probs": 0.9716421961784363}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.220104", "n_pass": [51, 6, 3], "n_token": 53, "loss": [0.7507067322731018, 0.13750840723514557], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "#NEWLINE#", "#INDENT#", "'logs detailed message about tasks that raise exceptions\\n\\n    :param task_id: TaskID of the failed task\\n    :param task_name: name of task that failed\\n    '", "#NEWLINE#", "logger", "=", "get_task_logger", "(", "__name__", ")", "#NEWLINE#", "result", "(", "task_name", ")", "#NEWLINE#", "excep", "=", "result", ".", "get", "(", "propagate", "=", "False", ")", "#NEWLINE#", "logger", ".", "error", "(", "'#####FAILURE LOG BEGIN#####\\nTask {0} raised exception: {0}\\n\\\\{0}\\n#####FAILURE LOG STOP#####'", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 44, "repair_targets": [4], "repair_candidates": [25, 46, 4, 20, 27, 48, 13, 36, 6, 22, 44]}}
+{"prediction": {"error_location": 0.47203290462493896, "repair_targets": [0.8715270161628723], "repair_candidates": [0.8715270161628723, 0.008257556706666946, 0.10819212347269058, 0.000362384133040905, 0.0005722880596294999, 0.005881654564291239, 0.0008292674319818616, 0.004188653081655502, 0.00010783793550217524, 5.608737046713941e-05, 2.5020510292961262e-05], "target_probs": 0.8715270161628723}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.276511", "n_pass": [54, 7, 4], "n_token": 49, "loss": [0.608272910118103, 0.1385747194290161], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "#NEWLINE#", "#INDENT#", "'logs detailed message about tasks that raise exceptions\\n\\n    :param task_id: TaskID of the failed task\\n    :param task_name: name of task that failed\\n    '", "#NEWLINE#", "logger", "=", "get_task_logger", "(", "__name__", ")", "#NEWLINE#", "result", "(", "task_name", ")", "#NEWLINE#", "excep", "=", "result", ".", "False", ")", "#NEWLINE#", "logger", ".", "error", "(", "'#####FAILURE LOG BEGIN#####\\nTask {0} raised exception: {0}\\n\\\\{0}\\n#####FAILURE LOG STOP#####'", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 40, "repair_targets": [4], "repair_candidates": [25, 42, 4, 20, 27, 44, 13, 32, 6, 22, 40]}}
+{"prediction": {"error_location": 0.5442901253700256, "repair_targets": [0.8705981969833374], "repair_candidates": [0.8705981969833374, 0.006718625780194998, 0.11777272075414658, 0.00045194561243988574, 0.0008530377526767552, 0.0020284815691411495, 0.0005234766285866499, 0.0007887233514338732, 0.00016886240337044, 5.7348806876689196e-05, 3.858689888147637e-05], "target_probs": 0.8705981969833374}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.332761", "n_pass": [56, 8, 5], "n_token": 45, "loss": [0.3495126962661743, 0.07121901959180832], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "#NEWLINE#", "#INDENT#", "'logs detailed message about tasks that raise exceptions\\n\\n    :param task_id: TaskID of the failed task\\n    :param task_name: name of task that failed\\n    '", "#NEWLINE#", "logger", "=", "get_task_logger", "(", "__name__", ")", "#NEWLINE#", "result", "(", "task_name", ")", "#NEWLINE#", "excep", "=", "result", ".", "False", ")", "#NEWLINE#", "logger", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 36, "repair_targets": [4], "repair_candidates": [25, 38, 4, 20, 27, 40, 13, 32, 6, 22, 36]}}
+{"prediction": {"error_location": 0.7050315737724304, "repair_targets": [0.9312579035758972], "repair_candidates": [0.9312579035758972, 0.0048460569232702255, 0.06055664271116257, 0.00035614630905911326, 0.0003088889643549919, 0.0008637868450023234, 0.0006239008507691324, 0.0010410884860903025, 2.751509236986749e-05, 4.529533180175349e-05, 7.287023618118837e-05], "target_probs": 0.9312579035758972}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.503522", "n_pass": [63, 11, 6], "n_token": 41, "loss": [0.3444576859474182, 0.03081859089434147], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "logger", "=", "get_task_logger", "(", "__name__", ")", "#NEWLINE#", "result", "(", "task_name", ")", "#NEWLINE#", "excep", "=", "result", ".", "False", ")", "#NEWLINE#", "logger", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [4], "repair_candidates": [21, 34, 4, 16, 23, 36, 9, 28, 6, 18, 32]}}
+{"prediction": {"error_location": 0.7086045742034912, "repair_targets": [0.969651460647583], "repair_candidates": [0.969651460647583, 0.005647383630275726, 0.0211190078407526, 0.0002962162543553859, 0.00024822790874168277, 0.000820427609141916, 0.0016342727467417717, 0.00030851797782815993, 4.1800860344665125e-05, 5.916804002481513e-05, 0.00017359733465127647], "target_probs": 0.969651460647583}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.671290", "n_pass": [98, 14, 7], "n_token": 39, "loss": [0.19541066884994507, 0.011222454719245434], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "logger", "=", "__name__", ")", "#NEWLINE#", "result", "(", "task_name", ")", "#NEWLINE#", "excep", "=", "result", ".", "False", ")", "#NEWLINE#", "logger", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 30, "repair_targets": [4], "repair_candidates": [19, 32, 4, 14, 21, 34, 9, 26, 6, 16, 30]}}
+{"prediction": {"error_location": 0.8224968314170837, "repair_targets": [0.9888402819633484], "repair_candidates": [0.9888402819633484, 0.0027633560821413994, 0.006075152661651373, 0.0002342302759643644, 0.00032200614805333316, 0.0007995025371201336, 0.0006146535743027925, 0.0002106610481860116, 2.0853334717685357e-05, 5.686945587513037e-05, 6.258019857341424e-05], "target_probs": 0.9888402819633484}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.729934", "n_pass": [99, 15, 8], "n_token": 37, "loss": [0.23098227381706238, 0.014702647924423218], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "logger", "=", "#NEWLINE#", "result", "(", "task_name", ")", "#NEWLINE#", "excep", "=", "result", ".", "False", ")", "#NEWLINE#", "logger", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [4], "repair_candidates": [17, 30, 4, 12, 19, 32, 9, 24, 6, 14, 28]}}
+{"prediction": {"error_location": 0.7937535047531128, "repair_targets": [0.985404908657074], "repair_candidates": [0.985404908657074, 0.0018973055994138122, 0.00961877778172493, 0.0004084806132595986, 0.00016993256576824933, 0.0015382891288027167, 0.0006832579965703189, 0.00012809273903258145, 1.5574054486933164e-05, 9.297959331888705e-05, 4.256100146449171e-05], "target_probs": 0.985404908657074}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.786434", "n_pass": [102, 16, 9], "n_token": 35, "loss": [0.14911772310733795, 0.00205101165920496], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "logger", "=", "#NEWLINE#", "result", "(", "task_name", "excep", "=", "result", ".", "False", ")", "#NEWLINE#", "logger", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [4], "repair_candidates": [15, 28, 4, 12, 17, 30, 9, 22, 6, 14, 26]}}
+{"prediction": {"error_location": 0.8614677786827087, "repair_targets": [0.997951090335846], "repair_candidates": [0.997951090335846, 0.00023698406585026532, 0.0006290915771387517, 9.467598829360213e-06, 0.00018640852067619562, 0.0009152159909717739, 1.8814371287589893e-05, 1.4805586033617146e-05, 5.484742814587662e-06, 1.0090525393025018e-05, 2.2566780899069272e-05], "target_probs": 0.997951090335846}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.841999", "n_pass": [105, 17, 10], "n_token": 33, "loss": [0.20708948373794556, 0.0072512635961174965], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "logger", "=", "#NEWLINE#", "result", "(", "task_name", "excep", "=", "result", ".", "#NEWLINE#", "logger", ".", "format", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [4], "repair_candidates": [15, 26, 4, 12, 17, 28, 9, 20, 6, 14, 24]}}
+{"prediction": {"error_location": 0.8129467964172363, "repair_targets": [0.9927749633789062], "repair_candidates": [0.9927749633789062, 0.0002052391937468201, 0.0032936253119260073, 6.851282705611084e-06, 0.00015923399769235402, 0.003247420769184828, 1.0023715731222183e-05, 0.00027398898964747787, 3.679172550619114e-06, 4.396084023028379e-06, 2.064162617898546e-05], "target_probs": 0.9927749633789062}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.897551", "n_pass": [107, 18, 11], "n_token": 31, "loss": [0.36278897523880005, 0.024320347234606743], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "logger", "=", "#NEWLINE#", "result", "(", "task_name", "excep", "=", "result", ".", "#NEWLINE#", "logger", "(", "task_name", ",", "excep", ",", "result", ".", "traceback", ")", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [15, 24, 4, 12, 17, 26, 9, 20, 6, 14, 22]}}
+{"prediction": {"error_location": 0.6957332491874695, "repair_targets": [0.9759730100631714], "repair_candidates": [0.9759730100631714, 0.00020151300122961402, 0.019165372475981712, 2.3502670956077054e-05, 0.00042780162766575813, 0.0040429141372442245, 5.0318994908593595e-05, 8.424209954682738e-05, 1.333205659648229e-06, 9.439374366593256e-07, 2.9097915103193372e-05], "target_probs": 0.9759730100631714}}
+
+
+{"result": {"time": "2021-02-21 05:59:01.953257", "n_pass": [111, 19, 12], "n_token": 29, "loss": [0.49282383918762207, 0.10669392347335815], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "logger", "=", "#NEWLINE#", "result", "(", "task_name", "excep", "=", "result", ".", "#NEWLINE#", "logger", "(", "task_name", ",", "excep", ",", "result", ")", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [15, 24, 4, 12, 17, 26, 9, 20, 6, 14, 22]}}
+{"prediction": {"error_location": 0.6108989119529724, "repair_targets": [0.8988007307052612], "repair_candidates": [0.8988007307052612, 0.0007503757369704545, 0.09967441856861115, 3.726327122421935e-06, 0.00014135439414530993, 0.00045572224189527333, 1.42642038554186e-05, 0.00014779453340452164, 8.022600468393648e-07, 6.31237980996957e-07, 1.0225030564470217e-05], "target_probs": 0.8988007307052612}}
+
+
+{"result": {"time": "2021-02-21 05:59:02.009174", "n_pass": [112, 20, 13], "n_token": 27, "loss": [0.5771917104721069, 0.08832073956727982], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "def error_handler(", "task_id", ",", "task_name", ")", ":", "logger", "=", "#NEWLINE#", "result", "(", "task_name", "excep", "=", "result", ".", "#NEWLINE#", "logger", "(", "task_name", ",", "excep", ",", "result"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [15, 24, 4, 12, 17, 26, 9, 20, 6, 14, 22]}}
+{"prediction": {"error_location": 0.5614729523658752, "repair_targets": [0.9154672026634216], "repair_candidates": [0.9154672026634216, 0.0007424900541082025, 0.08344074338674545, 1.4893971638230141e-06, 7.138318323995918e-05, 9.858858538791537e-05, 1.0219762771157548e-05, 0.00016199155652429909, 3.367291299127828e-07, 3.386188041076821e-07, 5.253739345789654e-06], "target_probs": 0.9154672026634216}}
+
+
+{"result": {"time": "2021-02-21 05:59:02.290543", "n_pass": [152, 25, 14], "n_token": 26, "loss": [0.8466620445251465, 0.5672895312309265], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "task_id", ",", "task_name", ")", ":", "logger", "=", "#NEWLINE#", "result", "(", "task_name", "excep", "=", "result", ".", "#NEWLINE#", "logger", "(", "task_name", ",", "excep", ",", "result"]}}
+{"position": {"error_location": 21, "repair_targets": [3], "repair_candidates": [14, 23, 3, 11, 16, 25, 8, 19, 5, 13, 21]}}
+{"prediction": {"error_location": 0.42884400486946106, "repair_targets": [0.5670603513717651], "repair_candidates": [0.5670603513717651, 0.0006465586484409869, 0.4312348961830139, 8.989964044303633e-07, 5.810294533148408e-05, 0.0001018883049255237, 3.1275078526959987e-06, 0.0008920306572690606, 2.7261899049335625e-07, 1.438032057876626e-07, 1.635250669096422e-06], "target_probs": 0.5670603513717651}}
+
+
+{"result": {"time": "2021-02-21 05:59:02.962760", "n_pass": [173, 37, 15], "n_token": 25, "loss": [0.8625341653823853, 0.3643069267272949], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "task_id", ",", "task_name", ")", ":", "logger", "=", "#NEWLINE#", "result", "(", "task_name", "excep", "=", "result", ".", "#NEWLINE#", "logger", "(", "task_name", ",", "excep", "result"]}}
+{"position": {"error_location": 21, "repair_targets": [3], "repair_candidates": [14, 23, 3, 11, 16, 24, 8, 19, 5, 13, 21]}}
+{"prediction": {"error_location": 0.4220910966396332, "repair_targets": [0.6946779489517212], "repair_candidates": [0.6946779489517212, 0.0006451384979300201, 0.3037911057472229, 6.972337587285438e-07, 6.070395465940237e-05, 8.71139345690608e-05, 4.0896366044762544e-06, 0.000731700740288943, 2.4031132284108025e-07, 1.7690234699330176e-07, 1.0883373988690437e-06], "target_probs": 0.6946779489517212}}
+
+
+{"result": {"time": "2021-02-21 05:59:03.411999", "n_pass": [185, 45, 16], "n_token": 24, "loss": [0.9709643125534058, 0.6544829607009888], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "task_id", ",", "task_name", ")", ":", "logger", "=", "result", "(", "task_name", "excep", "=", "result", ".", "#NEWLINE#", "logger", "(", "task_name", ",", "excep", "result"]}}
+{"position": {"error_location": 20, "repair_targets": [3], "repair_candidates": [13, 22, 3, 10, 15, 23, 8, 18, 5, 12, 20]}}
+{"prediction": {"error_location": 0.37871766090393066, "repair_targets": [0.5197107195854187], "repair_candidates": [0.5197107195854187, 0.00026240391889587045, 0.47978368401527405, 1.9640347090899013e-06, 7.151421596063301e-05, 2.771697472780943e-05, 2.0318182578193955e-05, 0.00011911438923561946, 1.7945959029930236e-07, 1.9467785250526504e-07, 2.236591853943537e-06], "target_probs": 0.5197107195854187}}
+
+
+{"result": {"time": "2021-02-21 05:59:04.150528", "n_pass": [209, 58, 17], "n_token": 23, "loss": [0.3426859974861145, 0.09095054119825363], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "task_id", ",", "task_name", ")", ":", "logger", "result", "(", "task_name", "excep", "=", "result", ".", "#NEWLINE#", "logger", "(", "task_name", ",", "excep", "result"]}}
+{"position": {"error_location": 19, "repair_targets": [3], "repair_candidates": [12, 21, 3, 9, 14, 22, 8, 17, 5, 11, 19]}}
+{"prediction": {"error_location": 0.7098610997200012, "repair_targets": [0.9130628705024719], "repair_candidates": [0.9130628705024719, 0.0011035797651857138, 0.08336446434259415, 1.2007546956738224e-06, 0.00031719054095447063, 6.958255835343152e-05, 5.058266469859518e-05, 0.0020275989081710577, 6.284071787376888e-07, 4.3896466195292305e-07, 1.7986960756388726e-06], "target_probs": 0.9130628705024719}}
+
+
+{"result": {"time": "2021-02-21 05:59:04.261899", "n_pass": [214, 60, 18], "n_token": 22, "loss": [0.25097787380218506, 0.4572344422340393], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "task_id", ",", "task_name", ")", ":", "logger", "result", "(", "task_name", "excep", "result", ".", "#NEWLINE#", "logger", "(", "task_name", ",", "excep", "result"]}}
+{"position": {"error_location": 18, "repair_targets": [3], "repair_candidates": [12, 20, 3, 9, 13, 21, 8, 16, 5, 11, 18]}}
+{"prediction": {"error_location": 0.7780395746231079, "repair_targets": [0.6330319046974182], "repair_candidates": [0.6330319046974182, 0.001470640185289085, 0.3389433026313782, 8.518545655533671e-05, 3.5047396522713825e-05, 9.952655818779022e-05, 0.0006231394945643842, 0.025553524494171143, 3.0033727398404153e-06, 5.443737336463528e-07, 0.00015411314961966127], "target_probs": 0.6330319046974182}}
+
+
+{"result": {"time": "2021-02-21 05:59:04.317558", "n_pass": [216, 61, 19], "n_token": 21, "loss": [0.5664470791816711, 0.3154630959033966], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "task", "#NEWLINE#", "task_id", ",", "task_name", ")", ":", "logger", "result", "(", "task_name", "excep", "result", "#NEWLINE#", "logger", "(", "task_name", ",", "excep", "result"]}}
+{"position": {"error_location": 17, "repair_targets": [3], "repair_candidates": [12, 19, 3, 9, 13, 20, 8, 15, 5, 11, 17]}}
+{"prediction": {"error_location": 0.567538321018219, "repair_targets": [0.7294510006904602], "repair_candidates": [0.7294510006904602, 0.012084057554602623, 0.23872075974941254, 0.00038631295319646597, 0.0003487391222734004, 0.0003430408251006156, 0.0029372198041528463, 0.01550677977502346, 8.495318616041914e-05, 7.145828476495808e-06, 0.00012998846068512648], "target_probs": 0.7294510006904602}}
+
+
+
+
+Minimal simplified tokens:
+
+['.', 'task', '#NEWLINE#', 'task_id', ',', 'task_name', ')', ':', 'logger', 'result', '(', 'task_name', 'excep', 'result', '#NEWLINE#', 'logger', '(', 'task_name', ',', 'excep', 'result']

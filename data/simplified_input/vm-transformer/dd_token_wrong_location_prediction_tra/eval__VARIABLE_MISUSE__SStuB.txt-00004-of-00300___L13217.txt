@@ -1,0 +1,115 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def parse_args(", "args", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Parse command line parameters\\n\\n    :param args: command line parameters as list of strings\\n    :return: command line parameters as :obj:`argparse.Namespace`\\n    '", "#NEWLINE#", "parser", "=", "argparse", ".", "ArgumentParser", "(", "description", "=", "\"A demo application for PyScaffold's unit testing\"", ")", "#NEWLINE#", "version", "=", "demoapp", ".", "__version__", "#NEWLINE#", "parser", ".", "add_argument", "(", "'-v'", ",", "'--version'", ",", "action", "=", "'version'", ",", "version", "=", "'demoapp {ver}'", ".", "format", "(", "ver", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"], "error_location": [56], "repair_targets": [2], "repair_candidates": [2, 50, 60, 9, 26, 52, 20, 38, 46, 56], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "blue-yonder/pyscaffold/tests/demoapp/runner.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00004-of-00300", "js_count": 13217, "results": {"model": "transformer", "prob": {"loc": [[0.18728439509868622, 2.133350108124432e-06, 1.1030709856640897e-06, 5.294073801564991e-08, 1.3872663373604155e-07, 1.3901016870931926e-07, 1.2572964180890267e-07, 3.4917073321594216e-07, 1.9810933338249015e-07, 3.3871315281430725e-06, 3.2852301501407055e-07, 4.6596451852565224e-07, 1.5786928031502612e-07, 8.777025328754462e-08, 1.524688286735909e-07, 2.439315949231968e-07, 7.382975582004292e-07, 2.1099513105582446e-05, 2.543666141718859e-06, 2.5948065740521997e-07, 6.926954938535346e-06, 2.1676916261981205e-08, 4.644319687940879e-06, 2.412677417851228e-07, 9.126313926799412e-08, 6.103358174414097e-08, 7.510599253635064e-09, 4.574269141244258e-08, 2.605504967334582e-08, 2.3340800225923886e-07, 9.852730727288872e-06, 4.293562767543335e-07, 5.086626970296493e-06, 2.9142606194909604e-07, 1.9068083929596469e-06, 1.011401081996155e-06, 1.9393517050048104e-06, 1.4235490652936278e-07, 4.309678843128495e-06, 1.1220184603644157e-07, 1.4301539863481594e-07, 2.553391595938592e-07, 1.0424411556186897e-08, 1.0724656362981477e-07, 1.7918907246894378e-08, 1.25493158975587e-07, 0.4748147428035736, 1.314888095294009e-06, 6.928477773726627e-07, 2.652857062912517e-07, 1.536576093030817e-07, 3.8482639297399146e-08, 7.843809726182371e-07, 3.093198017722898e-07, 1.2206307964390817e-08, 1.6321692442033964e-07, 0.3377402424812317, 1.8055743566947058e-06, 6.6097305762014e-07, 5.643397344101686e-06, 7.701639697188511e-05]], "pointer": [[0.0, 0.0, 0.9946975708007812, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001731034368276596, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.002026080386713147, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001795497810235247, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00016617744404356927, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.8667072911048308e-05, 0.0, 0.0, 0.0, 0.0011551481438800693, 0.0, 7.65905588195892e-06, 0.0, 0.0, 0.0, 7.103952611942077e-06, 0.0, 0.0, 0.0, 1.1055382174163242e-06]], "target": [0.9946975708007812]}, "loss": [1.0854783058166504, 0.005316536873579025], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [46]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:57:14.090847", "n_pass": [1, 1, 1], "n_token": 61, "loss": [0.7448306083679199, 0.005316536873579025], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Parse command line parameters\\n\\n    :param args: command line parameters as list of strings\\n    :return: command line parameters as :obj:`argparse.Namespace`\\n    '", "#NEWLINE#", "parser", "=", "argparse", ".", "ArgumentParser", "(", "description", "=", "\"A demo application for PyScaffold's unit testing\"", ")", "#NEWLINE#", "version", "=", "demoapp", ".", "__version__", "#NEWLINE#", "parser", ".", "add_argument", "(", "'-v'", ",", "'--version'", ",", "action", "=", "'version'", ",", "version", "=", "'demoapp {ver}'", ".", "format", "(", "ver", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 46, "repair_targets": [2], "repair_candidates": [2, 50, 60, 9, 26, 52, 20, 38, 46, 56]}}
+{"prediction": {"error_location": 0.4748147428035736, "repair_targets": [0.9946975708007812], "repair_candidates": [0.9946975708007812, 0.001731034368276596, 0.002026080386713147, 0.0001795497810235247, 0.00016617744404356927, 2.8667072911048308e-05, 0.0011551481438800693, 7.65905588195892e-06, 7.103952611942077e-06, 1.1055382174163242e-06], "target_probs": 0.9946975708007812}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.148080", "n_pass": [24, 2, 2], "n_token": 53, "loss": [0.2436341643333435, 0.002267067553475499], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Parse command line parameters\\n\\n    :param args: command line parameters as list of strings\\n    :return: command line parameters as :obj:`argparse.Namespace`\\n    '", "#NEWLINE#", "parser", "=", "argparse", ".", "ArgumentParser", "(", "description", "=", "\"A demo application for PyScaffold's unit testing\"", ")", "#NEWLINE#", "version", "=", "demoapp", ".", "__version__", "#NEWLINE#", "parser", ".", "add_argument", ",", "version", "=", "'demoapp {ver}'", ".", "format", "(", "ver", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 38, "repair_targets": [2], "repair_candidates": [2, 42, 52, 9, 26, 44, 20, 30, 38, 48]}}
+{"prediction": {"error_location": 0.7837743163108826, "repair_targets": [0.9977355003356934], "repair_candidates": [0.9977355003356934, 0.0005422304384410381, 0.0015665356768295169, 3.991224730270915e-05, 6.116164877312258e-05, 1.157180122390855e-06, 5.135901665198617e-05, 9.549245305606746e-07, 3.334965015255875e-07, 7.490115763175709e-07], "target_probs": 0.9977355003356934}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.205054", "n_pass": [47, 3, 3], "n_token": 49, "loss": [0.20930473506450653, 0.0005375995533540845], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Parse command line parameters\\n\\n    :param args: command line parameters as list of strings\\n    :return: command line parameters as :obj:`argparse.Namespace`\\n    '", "#NEWLINE#", "parser", "=", "argparse", ".", "ArgumentParser", "(", "description", "=", "\"A demo application for PyScaffold's unit testing\"", ")", "#NEWLINE#", "version", "=", "demoapp", ".", "__version__", "#NEWLINE#", "parser", ".", "add_argument", ",", "version", "=", "'demoapp {ver}'", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 34, "repair_targets": [2], "repair_candidates": [2, 38, 48, 9, 26, 40, 20, 30, 34, 44]}}
+{"prediction": {"error_location": 0.8111479878425598, "repair_targets": [0.9994625449180603], "repair_candidates": [0.9994625449180603, 0.0002609573130030185, 0.00019687200256157666, 3.578893301892094e-05, 1.1953279681620188e-05, 3.207337329058646e-07, 3.043029755644966e-05, 3.3465568094470655e-07, 1.3224931194599776e-07, 6.800937057960255e-07], "target_probs": 0.9994625449180603}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.261323", "n_pass": [53, 4, 4], "n_token": 46, "loss": [0.47351354360580444, 0.0010253677610307932], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "#INDENT#", "'\\n    Parse command line parameters\\n\\n    :param args: command line parameters as list of strings\\n    :return: command line parameters as :obj:`argparse.Namespace`\\n    '", "#NEWLINE#", "parser", "=", "argparse", ".", "ArgumentParser", "(", "description", "=", "\"A demo application for PyScaffold's unit testing\"", ")", "#NEWLINE#", "version", "=", "demoapp", ".", "__version__", "#NEWLINE#", "parser", ".", "add_argument", ",", "version", "=", "'demoapp {ver}'", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 31, "repair_targets": [2], "repair_candidates": [2, 35, 45, 6, 23, 37, 17, 27, 31, 41]}}
+{"prediction": {"error_location": 0.6228101849555969, "repair_targets": [0.9989751577377319], "repair_candidates": [0.9989751577377319, 0.0006918878643773496, 0.00013215628860052675, 0.000184951612027362, 9.351578569294361e-07, 5.451513516163686e-07, 1.343039457424311e-05, 2.2410894473523513e-07, 1.8536667312218924e-07, 5.800959002044692e-07], "target_probs": 0.9989751577377319}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.376601", "n_pass": [56, 6, 5], "n_token": 42, "loss": [0.25950536131858826, 0.001294496702030301], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "#INDENT#", "'\\n    Parse command line parameters\\n\\n    :param args: command line parameters as list of strings\\n    :return: command line parameters as :obj:`argparse.Namespace`\\n    '", "#NEWLINE#", "parser", "=", "argparse", ".", "\"A demo application for PyScaffold's unit testing\"", ")", "#NEWLINE#", "version", "=", "demoapp", ".", "__version__", "#NEWLINE#", "parser", ".", "add_argument", ",", "version", "=", "'demoapp {ver}'", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 27, "repair_targets": [2], "repair_candidates": [2, 31, 41, 6, 19, 33, 13, 23, 27, 37]}}
+{"prediction": {"error_location": 0.7714330554008484, "repair_targets": [0.9987063407897949], "repair_candidates": [0.9987063407897949, 0.0005542674916796386, 0.00037464790511876345, 0.000337910489179194, 2.824640205290052e-06, 6.578972602255817e-07, 1.981667992367875e-05, 6.354115953399742e-07, 2.2413851183955558e-06, 7.711156513323658e-07], "target_probs": 0.9987063407897949}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.432876", "n_pass": [58, 7, 6], "n_token": 38, "loss": [0.16044192016124725, 0.0007722974987700582], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "#INDENT#", "'\\n    Parse command line parameters\\n\\n    :param args: command line parameters as list of strings\\n    :return: command line parameters as :obj:`argparse.Namespace`\\n    '", "#NEWLINE#", "parser", "=", "argparse", ".", "\"A demo application for PyScaffold's unit testing\"", ")", "#NEWLINE#", "version", "#NEWLINE#", "parser", ".", "add_argument", ",", "version", "=", "'demoapp {ver}'", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 23, "repair_targets": [2], "repair_candidates": [2, 27, 37, 6, 15, 29, 13, 19, 23, 33]}}
+{"prediction": {"error_location": 0.8517673015594482, "repair_targets": [0.9992280006408691], "repair_candidates": [0.9992280006408691, 0.0004034168377984315, 6.142166239442304e-05, 0.00029652711236849427, 7.487432753805479e-07, 1.2174734820291633e-07, 8.918216735764872e-06, 3.410472686482535e-07, 2.0913616083362285e-07, 2.9005900614720304e-07], "target_probs": 0.9992280006408691}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.489051", "n_pass": [66, 8, 7], "n_token": 35, "loss": [0.05419903248548508, 0.000570519536267966], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "parser", "=", "argparse", ".", "\"A demo application for PyScaffold's unit testing\"", ")", "#NEWLINE#", "version", "#NEWLINE#", "parser", ".", "add_argument", ",", "version", "=", "'demoapp {ver}'", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 20, "repair_targets": [2], "repair_candidates": [2, 24, 34, 3, 12, 26, 10, 16, 20, 30]}}
+{"prediction": {"error_location": 0.9472436904907227, "repair_targets": [0.9994296431541443], "repair_candidates": [0.9994296431541443, 0.0004985430859960616, 3.895705594914034e-05, 2.8009639208903536e-05, 8.480656674692e-07, 4.969686528966122e-08, 3.5084797218587482e-06, 1.9449541355243127e-07, 2.3465793219656916e-07, 4.728957492261543e-08], "target_probs": 0.9994296431541443}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.545381", "n_pass": [95, 9, 8], "n_token": 33, "loss": [0.04550943896174431, 0.0010500696953386068], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "parser", "=", "\"A demo application for PyScaffold's unit testing\"", ")", "#NEWLINE#", "version", "#NEWLINE#", "parser", ".", "add_argument", ",", "version", "=", "'demoapp {ver}'", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 18, "repair_targets": [2], "repair_candidates": [2, 22, 32, 3, 10, 24, 8, 14, 18, 28]}}
+{"prediction": {"error_location": 0.9555105566978455, "repair_targets": [0.9989504814147949], "repair_candidates": [0.9989504814147949, 0.0007990654557943344, 5.377710112952627e-05, 0.00018419825937598944, 1.5535015336354263e-06, 9.972031733695985e-08, 9.791510819923133e-06, 8.724015856387268e-07, 1.4295531514108006e-07, 4.8404512398292354e-08], "target_probs": 0.9989504814147949}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.601161", "n_pass": [96, 10, 9], "n_token": 31, "loss": [0.22765520215034485, 0.00047707013436593115], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "parser", "=", "#NEWLINE#", "version", "#NEWLINE#", "parser", ".", "add_argument", ",", "version", "=", "'demoapp {ver}'", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [2, 20, 30, 3, 8, 22, 6, 12, 16, 26]}}
+{"prediction": {"error_location": 0.7963988780975342, "repair_targets": [0.9995230436325073], "repair_candidates": [0.9995230436325073, 0.00035439018392935395, 4.1611710912548006e-05, 7.027802348602563e-05, 2.4970786398625933e-06, 1.6938842861691228e-07, 7.133624421840068e-06, 4.304846754621394e-07, 4.256966974480747e-07, 3.9761470560506496e-08], "target_probs": 0.9995230436325073}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.659979", "n_pass": [99, 11, 10], "n_token": 29, "loss": [0.015956448391079903, 0.005962708964943886], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "parser", "=", "#NEWLINE#", "version", "#NEWLINE#", "parser", ",", "version", "=", "'demoapp {ver}'", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [2, 18, 28, 3, 8, 20, 6, 10, 14, 24]}}
+{"prediction": {"error_location": 0.9841701984405518, "repair_targets": [0.9940550327301025], "repair_candidates": [0.9940550327301025, 0.0051667033694684505, 0.0006845523603260517, 8.639473526272923e-05, 5.9409344430605415e-06, 1.7385380246537352e-08, 1.2354930731817149e-06, 1.658029624707069e-08, 1.987166520223127e-08, 3.668942127887931e-08], "target_probs": 0.9940550327301025}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.715669", "n_pass": [101, 12, 11], "n_token": 27, "loss": [0.023081909865140915, 0.0011805705726146698], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "parser", "=", "#NEWLINE#", "version", "#NEWLINE#", "parser", ",", "version", "=", "version", ")", ")", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [2, 16, 26, 3, 8, 18, 6, 10, 12, 22]}}
+{"prediction": {"error_location": 0.9771824479103088, "repair_targets": [0.9988201260566711], "repair_candidates": [0.9988201260566711, 0.0008828340214677155, 0.00017010960436891764, 0.00012269632134120911, 2.7466674055176554e-06, 4.645477602593928e-08, 1.2982184216525638e-06, 1.9934120132347743e-08, 2.939303023197226e-08, 2.5079504695213473e-08], "target_probs": 0.9988201260566711}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.771746", "n_pass": [103, 13, 12], "n_token": 25, "loss": [0.05886112526059151, 0.001186836394481361], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "parser", "=", "#NEWLINE#", "version", "#NEWLINE#", "parser", ",", "version", "=", "version", "#NEWLINE#", "opts", "=", "parser", ".", "parse_args", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [2, 14, 24, 3, 8, 16, 6, 10, 12, 20]}}
+{"prediction": {"error_location": 0.9428377151489258, "repair_targets": [0.9988138675689697], "repair_candidates": [0.9988138675689697, 0.0009213550947606564, 8.234255074057728e-05, 0.00017971190391108394, 8.537547273590462e-07, 1.027530149855238e-08, 1.7277054666919867e-06, 1.7816137898307716e-08, 2.2025520962642986e-08, 2.7337272001659585e-08], "target_probs": 0.9988138675689697}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.827635", "n_pass": [106, 14, 13], "n_token": 23, "loss": [0.044813234359025955, 0.009701970964670181], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "parser", "=", "#NEWLINE#", "version", "#NEWLINE#", "parser", ",", "version", "=", "version", "#NEWLINE#", "opts", "=", "parser", "(", "version", ")", "#NEWLINE#", "return", "opts"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [2, 14, 22, 3, 8, 16, 6, 10, 12, 18]}}
+{"prediction": {"error_location": 0.9561760425567627, "repair_targets": [0.9903449416160583], "repair_candidates": [0.9903449416160583, 0.008523127064108849, 8.829015132505447e-05, 0.001037823036313057, 1.8532008425609092e-06, 1.5209408843475103e-08, 3.8032028442103183e-06, 1.9024476216600306e-08, 6.74873845696311e-08, 5.841526729000179e-08], "target_probs": 0.9903449416160583}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.883512", "n_pass": [108, 15, 14], "n_token": 21, "loss": [0.02676166594028473, 0.0054015107452869415], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def parse_args(", "args", "parser", "=", "#NEWLINE#", "version", "#NEWLINE#", "parser", ",", "version", "=", "version", "#NEWLINE#", "opts", "=", "parser", "(", "version", "return", "opts"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [2, 14, 20, 3, 8, 16, 6, 10, 12, 18]}}
+{"prediction": {"error_location": 0.9735932350158691, "repair_targets": [0.9946130514144897], "repair_candidates": [0.9946130514144897, 0.004469859413802624, 0.00012170456466265023, 0.0007852492271922529, 6.295199909800431e-06, 1.056206855309938e-07, 2.134037003997946e-06, 2.4241808205260895e-07, 1.2389613175400882e-06, 1.8343052943237126e-07], "target_probs": 0.9946130514144897}}
+
+
+{"result": {"time": "2021-02-21 05:57:14.939382", "n_pass": [110, 16, 15], "n_token": 20, "loss": [0.5992355346679688, 0.6922418475151062], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def parse_args(", "args", "parser", "=", "#NEWLINE#", "version", "#NEWLINE#", "parser", ",", "version", "=", "version", "#NEWLINE#", "opts", "=", "parser", "(", "version", "return", "opts"]}}
+{"position": {"error_location": 11, "repair_targets": [1], "repair_candidates": [1, 13, 19, 2, 7, 15, 5, 9, 11, 17]}}
+{"prediction": {"error_location": 0.5492313504219055, "repair_targets": [0.5004528760910034], "repair_candidates": [0.5004528760910034, 0.2958351969718933, 0.04163127765059471, 0.1592944711446762, 0.002487107878550887, 2.420525561319664e-05, 0.00017716469301376492, 1.8609925973578356e-05, 7.113268657121807e-05, 7.95739015302388e-06], "target_probs": 0.5004528760910034}}
+
+
+{"result": {"time": "2021-02-21 05:57:15.387489", "n_pass": [155, 24, 16], "n_token": 19, "loss": [0.9508040547370911, 0.6197315454483032], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def parse_args(", "args", "parser", "=", "#NEWLINE#", "version", "#NEWLINE#", "parser", ",", "version", "=", "version", "#NEWLINE#", "opts", "parser", "(", "version", "return", "opts"]}}
+{"position": {"error_location": 11, "repair_targets": [1], "repair_candidates": [1, 13, 18, 2, 7, 14, 5, 9, 11, 16]}}
+{"prediction": {"error_location": 0.3864302337169647, "repair_targets": [0.538088858127594], "repair_candidates": [0.538088858127594, 0.16042862832546234, 0.10324158519506454, 0.16441309452056885, 0.02864733152091503, 0.0007416965672746301, 0.00013936703908257186, 0.00041505772969685495, 0.0038605723530054092, 2.3856102416175418e-05], "target_probs": 0.538088858127594}}
+
+
+{"result": {"time": "2021-02-21 05:57:15.498487", "n_pass": [158, 26, 17], "n_token": 18, "loss": [0.5957168340682983, 0.3666684925556183], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def parse_args(", "args", "parser", "=", "#NEWLINE#", "version", "#NEWLINE#", "parser", ",", "version", "=", "version", "#NEWLINE#", "opts", "parser", "(", "version", "opts"]}}
+{"position": {"error_location": 11, "repair_targets": [1], "repair_candidates": [1, 13, 17, 2, 7, 14, 5, 9, 11, 16]}}
+{"prediction": {"error_location": 0.5511673092842102, "repair_targets": [0.6930393576622009], "repair_candidates": [0.6930393576622009, 0.12597885727882385, 0.07722172141075134, 0.10199160128831863, 9.55567229539156e-05, 1.2054120816173963e-05, 0.0004818474408239126, 9.397357644047588e-05, 1.2310737247389625e-06, 0.001083888579159975], "target_probs": 0.6930393576622009}}
+
+
+
+
+Minimal simplified tokens:
+
+['def parse_args(', 'args', 'parser', '=', '#NEWLINE#', 'version', '#NEWLINE#', 'parser', ',', 'version', '=', 'version', '#NEWLINE#', 'opts', 'parser', '(', 'version', 'opts']

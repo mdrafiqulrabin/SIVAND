@@ -1,0 +1,157 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def write_file(", "content", ",", "output_path", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "=", "os", ".", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", "not", "os", ".", "path", ".", "exists", "(", "output_dir", ")", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "makedirs", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", ",", "'wb'", ")", ".", "write", "(", "output_dir", ")"], "error_location": [54], "repair_targets": [2], "repair_candidates": [11, 31, 41, 54, 2, 4, 19, 47], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "mkdocs/mkdocs/mkdocs/utils/__init__.py", "license": "bsd-2-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00009-of-00300", "js_count": 29841, "results": {"model": "transformer", "prob": {"loc": [[0.0659494623541832, 2.6152285954594845e-06, 6.437306637963047e-06, 1.2620580491784494e-07, 5.154959580977447e-06, 1.3949978949767683e-07, 3.5408834264671896e-07, 3.2177999287341663e-07, 3.0994570465736615e-07, 4.851981998399424e-07, 5.799252562610491e-07, 3.8710663829988334e-06, 6.149955424916698e-07, 5.309534500952395e-08, 8.005933693766565e-08, 2.110005681288385e-08, 2.369807532431878e-07, 6.804145158412211e-08, 9.70031237557123e-07, 0.5934339761734009, 7.07563685864443e-06, 8.121922974169138e-07, 2.7421620529821666e-07, 5.185196414458915e-07, 5.537444280889758e-07, 5.1558739500023876e-08, 8.36024227623966e-08, 5.351705301137599e-09, 9.771607523134662e-08, 6.554861897711817e-08, 6.713106586175854e-07, 0.020982982590794563, 1.4773623036035133e-07, 9.578339899007915e-08, 1.3888858347854693e-06, 1.421042128413319e-07, 1.0914402537309797e-07, 1.1929643051189487e-08, 6.021426912639072e-08, 1.1806477573372831e-08, 3.059133391047908e-08, 0.015921825543045998, 3.805114943133958e-07, 3.2499292501597665e-07, 1.6861568497006374e-07, 4.998532077138407e-08, 1.19095222572696e-08, 0.10265227407217026, 1.6382567480377475e-07, 8.419627306466282e-08, 2.2002192068271142e-08, 5.65548567976748e-08, 8.843407783842849e-08, 9.725298610874233e-08, 0.20102298259735107, 4.3825264128827257e-07]], "pointer": [[0.0, 0.0, 0.9879270195960999, 0.0, 0.0040364558808505535, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0022467237431555986, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00042221532203257084, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.003629946382716298, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00024646773817948997, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0011039025848731399, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00038729471270926297, 0.0]], "target": [0.9879270195960999]}, "loss": [1.604335904121399, 0.012146450579166412], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [19]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:39:38.902489", "n_pass": [1, 1, 1], "n_token": 56, "loss": [0.5218292474746704, 0.012146450579166412], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", ",", "output_path", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "=", "os", ".", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", "not", "os", ".", "path", ".", "exists", "(", "output_dir", ")", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "makedirs", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", ",", "'wb'", ")", ".", "write", "(", "output_dir", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [2], "repair_candidates": [11, 31, 41, 54, 2, 4, 19, 47]}}
+{"prediction": {"error_location": 0.5934339761734009, "repair_targets": [0.9879270195960999], "repair_candidates": [0.9879270195960999, 0.0040364558808505535, 0.0022467237431555986, 0.00042221532203257084, 0.003629946382716298, 0.00024646773817948997, 0.0011039025848731399, 0.00038729471270926297], "target_probs": 0.9879270195960999}}
+
+
+{"result": {"time": "2021-02-21 06:39:39.019847", "n_pass": [46, 3, 2], "n_token": 53, "loss": [0.29611295461654663, 0.006957958918064833], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", ",", "output_path", ")", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "=", "os", ".", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", "not", "os", ".", "path", ".", "exists", "(", "output_dir", ")", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "makedirs", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", ",", "'wb'", ")", ".", "write", "(", "output_dir", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [8, 28, 38, 51, 2, 4, 16, 44]}}
+{"prediction": {"error_location": 0.7437033653259277, "repair_targets": [0.9930661916732788], "repair_candidates": [0.9930661916732788, 0.002026767935603857, 0.0016640047542750835, 0.00011452269973233342, 0.0021002930589020252, 0.00020790292182937264, 0.0006661772495135665, 0.00015417093527503312], "target_probs": 0.9930661916732788}}
+
+
+{"result": {"time": "2021-02-21 06:39:39.076569", "n_pass": [48, 4, 3], "n_token": 50, "loss": [0.2297465056180954, 0.007245679851621389], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", ",", "output_path", ")", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", "not", "os", ".", "path", ".", "exists", "(", "output_dir", ")", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "makedirs", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", ",", "'wb'", ")", ".", "write", "(", "output_dir", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [8, 25, 35, 48, 2, 4, 13, 41]}}
+{"prediction": {"error_location": 0.7947350144386292, "repair_targets": [0.9927805066108704], "repair_candidates": [0.9927805066108704, 0.002079693367704749, 0.0001053110754583031, 0.00017108909378293902, 0.00334489019587636, 0.0003032685490325093, 0.0009295399650000036, 0.0002855285129044205], "target_probs": 0.9927805066108704}}
+
+
+{"result": {"time": "2021-02-21 06:39:39.247548", "n_pass": [52, 7, 4], "n_token": 46, "loss": [0.27656084299087524, 0.0031582466326653957], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", ",", "output_path", ")", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", ".", "exists", "(", "output_dir", ")", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "makedirs", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", ",", "'wb'", ")", ".", "write", "(", "output_dir", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [8, 21, 31, 44, 2, 4, 13, 37]}}
+{"prediction": {"error_location": 0.7583873271942139, "repair_targets": [0.9968467354774475], "repair_candidates": [0.9968467354774475, 0.0013546114787459373, 6.656192272203043e-05, 0.00013474773732014, 0.0004923992673866451, 9.809595940168947e-05, 0.0008752508438192308, 0.00013151965686120093], "target_probs": 0.9968467354774475}}
+
+
+{"result": {"time": "2021-02-21 06:39:39.303927", "n_pass": [54, 8, 5], "n_token": 42, "loss": [0.1987437903881073, 0.0032011191360652447], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", ",", "output_path", ")", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", ".", "exists", "(", "output_dir", "#INDENT#", "os", ".", "makedirs", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", ",", "'wb'", ")", ".", "write", "(", "output_dir", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [8, 21, 27, 40, 2, 4, 13, 33]}}
+{"prediction": {"error_location": 0.819759726524353, "repair_targets": [0.9968039989471436], "repair_candidates": [0.9968039989471436, 0.0012118382146582007, 8.010368765098974e-05, 7.93902509030886e-05, 0.0005645983619615436, 0.000408721505664289, 0.0006630675052292645, 0.00018828613974619657], "target_probs": 0.9968039989471436}}
+
+
+{"result": {"time": "2021-02-21 06:39:39.360477", "n_pass": [55, 9, 6], "n_token": 38, "loss": [0.7427577972412109, 0.0015358792152255774], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", ",", "output_path", ")", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", ".", "exists", "(", "output_dir", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", ",", "'wb'", ")", ".", "write", "(", "output_dir", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [8, 21, 23, 36, 2, 4, 13, 29]}}
+{"prediction": {"error_location": 0.47579988837242126, "repair_targets": [0.9984652996063232], "repair_candidates": [0.9984652996063232, 0.000997686991468072, 3.139384352834895e-05, 0.00013769243378192186, 5.161604690329114e-07, 3.294818816357292e-05, 0.00031880391179583967, 1.5637446267646737e-05], "target_probs": 0.9984652996063232}}
+
+
+{"result": {"time": "2021-02-21 06:39:39.416221", "n_pass": [58, 10, 7], "n_token": 34, "loss": [0.32747215032577515, 0.0022231596522033215], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", ",", "output_path", ")", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", ".", "exists", "(", "output_dir", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", "write", "(", "output_dir", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [8, 21, 23, 32, 2, 4, 13, 29]}}
+{"prediction": {"error_location": 0.7207433581352234, "repair_targets": [0.9977793097496033], "repair_candidates": [0.9977793097496033, 0.001802553073503077, 3.118749737041071e-05, 7.63915668358095e-05, 2.5410326998098753e-07, 1.0966934496536851e-05, 0.00029214646201580763, 7.244366770464694e-06], "target_probs": 0.9977793097496033}}
+
+
+{"result": {"time": "2021-02-21 06:39:39.587528", "n_pass": [89, 13, 8], "n_token": 32, "loss": [0.7237697243690491, 0.0031233876943588257], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", ",", "output_path", ")", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", ".", "exists", "(", "output_dir", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", "output_dir", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [8, 21, 23, 30, 2, 4, 13, 29]}}
+{"prediction": {"error_location": 0.484920859336853, "repair_targets": [0.9968814849853516], "repair_candidates": [0.9968814849853516, 0.001158326049335301, 0.0005872024921700358, 0.00013146843411959708, 3.5095074508717516e-06, 0.0008074765792116523, 0.0003430286596994847, 8.74386532814242e-05], "target_probs": 0.9968814849853516}}
+
+
+{"result": {"time": "2021-02-21 06:39:39.754899", "n_pass": [93, 16, 9], "n_token": 31, "loss": [0.9209546446800232, 0.0036859409883618355], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", ")", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", ".", "exists", "(", "output_dir", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", "output_dir", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [7, 20, 22, 29, 2, 3, 12, 28]}}
+{"prediction": {"error_location": 0.39813873171806335, "repair_targets": [0.9963208436965942], "repair_candidates": [0.9963208436965942, 0.002047034213319421, 0.0003080806927755475, 0.0002530529454816133, 2.4445325834676623e-06, 0.00049698690418154, 0.0004794516135007143, 9.211973519995809e-05], "target_probs": 0.9963208436965942}}
+
+
+{"result": {"time": "2021-02-21 06:39:39.810428", "n_pass": [95, 17, 10], "n_token": 30, "loss": [0.4820573329925537, 0.0012108859373256564], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "if", "(", ".", "exists", "(", "output_dir", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", "output_dir", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [6, 19, 21, 28, 2, 3, 11, 27]}}
+{"prediction": {"error_location": 0.6175117492675781, "repair_targets": [0.9987898468971252], "repair_candidates": [0.9987898468971252, 0.0004901146749034524, 7.31383406673558e-05, 5.647377111017704e-05, 7.660410688004049e-07, 0.0001983010588446632, 0.00029198697302490473, 9.954946290235966e-05], "target_probs": 0.9987898468971252}}
+
+
+{"result": {"time": "2021-02-21 06:39:40.036360", "n_pass": [101, 21, 11], "n_token": 28, "loss": [0.39923661947250366, 0.0005018778028897941], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", ".", "exists", "(", "output_dir", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", "output_dir", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [6, 17, 19, 26, 2, 3, 11, 25]}}
+{"prediction": {"error_location": 0.6708319783210754, "repair_targets": [0.9994982481002808], "repair_candidates": [0.9994982481002808, 0.000201323491637595, 5.6307406339328736e-05, 1.1818623534054495e-05, 1.7050357428161078e-06, 0.0001073501116479747, 7.455764716723934e-05, 4.864850779995322e-05], "target_probs": 0.9994982481002808}}
+
+
+{"result": {"time": "2021-02-21 06:39:40.092733", "n_pass": [102, 22, 12], "n_token": 26, "loss": [0.18825992941856384, 0.0007966949488036335], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "(", "output_dir", "(", "output_dir", ")", "#NEWLINE#", "#UNINDENT#", "open", "(", "output_path", "output_dir", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [6, 15, 17, 24, 2, 3, 11, 23]}}
+{"prediction": {"error_location": 0.8283993005752563, "repair_targets": [0.999203622341156], "repair_candidates": [0.999203622341156, 7.805692439433187e-05, 0.00011096221714979038, 4.648466983780963e-06, 1.823812817747239e-05, 0.0004133328911848366, 3.76608622900676e-05, 0.0001335445704171434], "target_probs": 0.999203622341156}}
+
+
+{"result": {"time": "2021-02-21 06:39:40.148725", "n_pass": [105, 23, 13], "n_token": 24, "loss": [0.1844741851091385, 0.00017107996973209083], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "(", "output_dir", "(", "output_dir", "#UNINDENT#", "open", "(", "output_path", "output_dir", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [6, 15, 17, 22, 2, 3, 11, 21]}}
+{"prediction": {"error_location": 0.8315414786338806, "repair_targets": [0.9998289346694946], "repair_candidates": [0.9998289346694946, 3.776019366341643e-05, 1.7407608538633212e-05, 1.804190674192796e-06, 2.506225655451999e-06, 5.359675924410112e-05, 6.606243914575316e-06, 5.130231875227764e-05], "target_probs": 0.9998289346694946}}
+
+
+{"result": {"time": "2021-02-21 06:39:40.600238", "n_pass": [141, 31, 14], "n_token": 23, "loss": [0.22825303673744202, 0.0008197209099307656], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "(", "output_dir", "(", "output_dir", "#UNINDENT#", "(", "output_path", "output_dir", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [6, 15, 17, 21, 2, 3, 11, 20]}}
+{"prediction": {"error_location": 0.7959228157997131, "repair_targets": [0.9991806149482727], "repair_candidates": [0.9991806149482727, 0.00018313182226847857, 8.376249752473086e-05, 2.2205565983313136e-05, 1.0661420674296096e-05, 0.00024069653591141105, 5.7144272432196885e-05, 0.0002218411536887288], "target_probs": 0.9991806149482727}}
+
+
+{"result": {"time": "2021-02-21 06:39:40.656257", "n_pass": [142, 32, 15], "n_token": 22, "loss": [0.3410612642765045, 0.00019438963499851525], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "(", "output_dir", "(", "output_dir", "#UNINDENT#", "output_path", "output_dir", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [6, 15, 17, 20, 2, 3, 11, 19]}}
+{"prediction": {"error_location": 0.7110153436660767, "repair_targets": [0.9998056292533875], "repair_candidates": [0.9998056292533875, 8.645352500025183e-05, 2.624316039145924e-05, 1.423656385668437e-06, 3.773120056393964e-07, 8.0065965448739e-06, 6.211269919731421e-06, 6.575388397322968e-05], "target_probs": 0.9998056292533875}}
+
+
+{"result": {"time": "2021-02-21 06:39:40.711938", "n_pass": [145, 33, 16], "n_token": 21, "loss": [0.2815745174884796, 0.004031129647046328], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "#NEWLINE#", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "(", "output_dir", "(", "output_dir", "#UNINDENT#", "output_path", "output_dir"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [6, 15, 17, 20, 2, 3, 11, 19]}}
+{"prediction": {"error_location": 0.7545947432518005, "repair_targets": [0.995976984500885], "repair_candidates": [0.995976984500885, 0.0001549644221086055, 0.0009178926120512187, 2.0294677597121336e-05, 2.5059194740606472e-05, 0.0010726995533332229, 3.814760930254124e-05, 0.001793978619389236], "target_probs": 0.995976984500885}}
+
+
+{"result": {"time": "2021-02-21 06:39:40.937864", "n_pass": [151, 37, 17], "n_token": 20, "loss": [0.33318790793418884, 0.0007841084152460098], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "output_dir", "path", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "(", "output_dir", "(", "output_dir", "#UNINDENT#", "output_path", "output_dir"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [5, 14, 16, 19, 2, 3, 10, 18]}}
+{"prediction": {"error_location": 0.716635525226593, "repair_targets": [0.9992161989212036], "repair_candidates": [0.9992161989212036, 9.02348110685125e-05, 0.00022996384359430522, 3.6827298117714236e-06, 1.4518770512950141e-05, 0.00013598320947494358, 1.245324074261589e-05, 0.0002967994660139084], "target_probs": 0.9992161989212036}}
+
+
+{"result": {"time": "2021-02-21 06:39:40.993454", "n_pass": [153, 38, 18], "n_token": 19, "loss": [0.4900972843170166, 0.0022136615589261055], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "output_dir", ".", "dirname", "(", "output_path", ")", "#NEWLINE#", "(", "output_dir", "(", "output_dir", "#UNINDENT#", "output_path", "output_dir"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [5, 13, 15, 18, 2, 3, 9, 17]}}
+{"prediction": {"error_location": 0.6125667691230774, "repair_targets": [0.9977887868881226], "repair_candidates": [0.9977887868881226, 0.00030364925623871386, 0.0002877280057873577, 1.0272723557136487e-05, 2.26936062972527e-05, 0.00041358786984346807, 3.976210791734047e-05, 0.001133547630161047], "target_probs": 0.9977887868881226}}
+
+
+{"result": {"time": "2021-02-21 06:39:41.215881", "n_pass": [158, 42, 19], "n_token": 18, "loss": [0.15457552671432495, 0.0022508781403303146], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "output_dir", ".", "dirname", "(", "output_path", "#NEWLINE#", "(", "output_dir", "(", "output_dir", "#UNINDENT#", "output_path", "output_dir"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [5, 12, 14, 17, 2, 3, 9, 16]}}
+{"prediction": {"error_location": 0.8567788004875183, "repair_targets": [0.9977516531944275], "repair_candidates": [0.9977516531944275, 0.0001295759284403175, 0.0005132236401550472, 1.1882119679285097e-06, 2.7300584406475537e-05, 0.00036424363497644663, 2.2350406652549282e-05, 0.0011905049905180931], "target_probs": 0.9977516531944275}}
+
+
+{"result": {"time": "2021-02-21 06:39:41.330291", "n_pass": [160, 44, 20], "n_token": 17, "loss": [0.1811635047197342, 0.002476955996826291], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "output_dir", ".", "dirname", "(", "output_path", "#NEWLINE#", "output_dir", "(", "output_dir", "#UNINDENT#", "output_path", "output_dir"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [5, 11, 13, 16, 2, 3, 9, 15]}}
+{"prediction": {"error_location": 0.8342989087104797, "repair_targets": [0.9975261092185974], "repair_candidates": [0.9975261092185974, 9.324186248704791e-05, 0.001483533764258027, 1.554511982249096e-06, 1.60775725817075e-05, 0.00024345652491319925, 1.5254593563440721e-05, 0.0006207312690094113], "target_probs": 0.9975261092185974}}
+
+
+{"result": {"time": "2021-02-21 06:39:41.386145", "n_pass": [162, 45, 21], "n_token": 16, "loss": [0.20848025381565094, 0.01553281955420971], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "output_dir", ".", "dirname", "(", "output_path", "#NEWLINE#", "output_dir", "output_dir", "#UNINDENT#", "output_path", "output_dir"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [5, 11, 12, 15, 2, 3, 9, 14]}}
+{"prediction": {"error_location": 0.811816930770874, "repair_targets": [0.9845871925354004], "repair_candidates": [0.9845871925354004, 1.739949220791459e-05, 0.0018941742600873113, 5.803368097190287e-08, 0.003723938250914216, 0.0055274334736168385, 2.0618697362806415e-06, 0.004247856792062521], "target_probs": 0.9845871925354004}}
+
+
+{"result": {"time": "2021-02-21 06:39:41.441812", "n_pass": [164, 46, 22], "n_token": 15, "loss": [0.0875144898891449, 0.00839691236615181], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "output_dir", ".", "dirname", "(", "output_path", "#NEWLINE#", "output_dir", "output_dir", "output_path", "output_dir"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [5, 11, 12, 14, 2, 3, 9, 13]}}
+{"prediction": {"error_location": 0.9162057042121887, "repair_targets": [0.9916382431983948], "repair_candidates": [0.9916382431983948, 0.00047444403753615916, 0.007045666221529245, 9.542703764964244e-07, 0.00082305510295555, 1.677015006862348e-06, 7.141250080167083e-08, 1.5871399227762595e-05], "target_probs": 0.9916382431983948}}
+
+
+{"result": {"time": "2021-02-21 06:39:41.666905", "n_pass": [173, 50, 23], "n_token": 14, "loss": [0.20180174708366394, 0.013942246325314045], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "output_dir", "dirname", "(", "output_path", "#NEWLINE#", "output_dir", "output_dir", "output_path", "output_dir"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [5, 10, 11, 13, 2, 3, 8, 12]}}
+{"prediction": {"error_location": 0.8172569274902344, "repair_targets": [0.9861544966697693], "repair_candidates": [0.9861544966697693, 0.0017599310958757997, 0.011070659384131432, 9.25556287256768e-06, 0.0009506868082098663, 2.5006172563735163e-06, 3.79991547561076e-07, 5.202470129006542e-05], "target_probs": 0.9861544966697693}}
+
+
+{"result": {"time": "2021-02-21 06:39:41.722281", "n_pass": [174, 51, 24], "n_token": 13, "loss": [0.19460801780223846, 0.012560662813484669], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def write_file(", "content", "output_path", "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", "output_dir", "(", "output_path", "#NEWLINE#", "output_dir", "output_dir", "output_path", "output_dir"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [5, 9, 10, 12, 2, 3, 7, 11]}}
+{"prediction": {"error_location": 0.8231572508811951, "repair_targets": [0.9875178933143616], "repair_candidates": [0.9875178933143616, 0.0014549035113304853, 0.003910065162926912, 6.620583008043468e-06, 0.003864369820803404, 0.003175790887326002, 9.457972964810324e-07, 6.940439197933301e-05], "target_probs": 0.9875178933143616}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def write_file(', 'content', 'output_path', "'\\n    Write content to output_path, making sure any parent directories exist.\\n    '", 'output_dir', '(', 'output_path', '#NEWLINE#', 'output_dir', 'output_dir', 'output_path', 'output_dir']

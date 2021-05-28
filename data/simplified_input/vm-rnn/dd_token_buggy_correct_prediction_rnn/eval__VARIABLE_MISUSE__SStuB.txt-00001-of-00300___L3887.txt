@@ -1,0 +1,55 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def _getTestJobStorePath(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "path", "=", "self", ".", "_createTempDir", "(", "purpose", "=", "'jobstore'", ")", "#NEWLINE#", "os", ".", "rmdir", "(", "self", ")", "#NEWLINE#", "return", "path"], "error_location": [22], "repair_targets": [7, 26], "repair_candidates": [2, 9, 22, 7, 26], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "BD2KGenomics/toil/src/toil/test/__init__.py", "license": "apache-2.0", "note": "license: github_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00001-of-00300", "js_count": 3887, "results": {"model": "rnn", "prob": {"loc": [[0.0008971767383627594, 1.3825175726456251e-10, 2.0435715619715467e-10, 1.6650687773012152e-11, 8.248270122468426e-12, 1.4703390727177634e-09, 1.3725655056973096e-09, 9.443792414742802e-10, 6.427341991965818e-11, 3.762590794487153e-10, 1.009685499271662e-12, 1.155166934330154e-11, 2.1280919734745218e-11, 1.214356254441995e-10, 2.5831080330274148e-11, 9.279562007691311e-09, 1.8634552234608748e-11, 8.197725831493585e-11, 1.0796176452831929e-10, 4.2061931715409173e-10, 6.852817757696528e-10, 3.1694058488795918e-09, 0.9990940093994141, 2.133555653927033e-06, 2.378157670790415e-09, 1.5231744754373722e-08, 6.613045115955174e-06]], "pointer": [[0.0, 0.0, 0.0011786100221797824, 0.0, 0.0, 0.0, 0.0, 0.9978329539299011, 0.0, 0.00017386340186931193, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00036397360963746905, 0.0, 0.0, 0.0, 0.00045065651647746563]], "target": [0.9982836246490479]}, "loss": [0.0009064141195267439, 0.0017178499838337302], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 10:48:21.251801", "n_pass": [1, 1, 1], "n_token": 27, "loss": [0.0009064141195267439, 0.0017178499838337302], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _getTestJobStorePath(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "path", "=", "self", ".", "_createTempDir", "(", "purpose", "=", "'jobstore'", ")", "#NEWLINE#", "os", ".", "rmdir", "(", "self", ")", "#NEWLINE#", "return", "path"]}}
+{"position": {"error_location": 22, "repair_targets": [7, 26], "repair_candidates": [2, 9, 22, 7, 26]}}
+{"prediction": {"error_location": 0.9990940093994141, "repair_targets": [0.9978329539299011, 0.00045065651647746563], "repair_candidates": [0.0011786100221797824, 0.9978329539299011, 0.00017386340186931193, 0.00036397360963746905, 0.00045065651647746563], "target_probs": 0.9982836246490479}}
+
+
+{"result": {"time": "2021-02-11 10:48:21.311203", "n_pass": [10, 2, 2], "n_token": 20, "loss": [0.5541134476661682, 0.10699537396430969], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _getTestJobStorePath(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "path", "=", "self", ".", "_createTempDir", "(", "rmdir", "(", "self", ")", "#NEWLINE#", "return", "path"]}}
+{"position": {"error_location": 15, "repair_targets": [7, 19], "repair_candidates": [2, 9, 15, 7, 19]}}
+{"prediction": {"error_location": 0.574581503868103, "repair_targets": [0.8975773453712463, 0.0009525064961053431], "repair_candidates": [0.003979210741817951, 0.8975773453712463, 0.0007449307013303041, 0.09674597531557083, 0.0009525064961053431], "target_probs": 0.8985298275947571}}
+
+
+{"result": {"time": "2021-02-11 10:48:21.369294", "n_pass": [22, 3, 3], "n_token": 17, "loss": [0.04314640909433365, 0.08957075327634811], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _getTestJobStorePath(", "self", "#INDENT#", "path", "=", "self", ".", "_createTempDir", "(", "rmdir", "(", "self", ")", "#NEWLINE#", "return", "path"]}}
+{"position": {"error_location": 12, "repair_targets": [4, 16], "repair_candidates": [2, 6, 12, 4, 16]}}
+{"prediction": {"error_location": 0.9577712416648865, "repair_targets": [0.9136701226234436, 0.0006534573039971292], "repair_candidates": [0.011894124560058117, 0.9136701226234436, 0.00019266028539277613, 0.07358960807323456, 0.0006534573039971292], "target_probs": 0.9143235683441162}}
+
+
+{"result": {"time": "2021-02-11 10:48:21.425895", "n_pass": [40, 4, 4], "n_token": 15, "loss": [0.41534751653671265, 0.07792499661445618], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _getTestJobStorePath(", "self", "#INDENT#", "path", "=", "self", "(", "rmdir", "(", "self", ")", "#NEWLINE#", "return", "path"]}}
+{"position": {"error_location": 10, "repair_targets": [4, 14], "repair_candidates": [2, 6, 10, 4, 14]}}
+{"prediction": {"error_location": 0.6601107716560364, "repair_targets": [0.9224490523338318, 0.0025847824290394783], "repair_candidates": [0.025485383346676826, 0.9224490523338318, 0.002652432769536972, 0.04682830348610878, 0.0025847824290394783], "target_probs": 0.9250338077545166}}
+
+
+{"result": {"time": "2021-02-11 10:48:21.597635", "n_pass": [45, 7, 5], "n_token": 14, "loss": [0.0075340657494962215, 0.1389314830303192], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _getTestJobStorePath(", "self", "#INDENT#", "path", "=", "self", "(", "rmdir", "(", "self", ")", "#NEWLINE#", "return", "path"]}}
+{"position": {"error_location": 9, "repair_targets": [3, 13], "repair_candidates": [1, 5, 9, 3, 13]}}
+{"prediction": {"error_location": 0.9924942255020142, "repair_targets": [0.8696194291114807, 0.0006682479288429022], "repair_candidates": [0.11625063419342041, 0.8696194291114807, 0.0029752340633422136, 0.01048653107136488, 0.0006682479288429022], "target_probs": 0.8702876567840576}}
+
+
+{"result": {"time": "2021-02-11 10:48:21.707843", "n_pass": [50, 9, 6], "n_token": 12, "loss": [0.23243094980716705, 0.19916151463985443], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _getTestJobStorePath(", "self", "#INDENT#", "path", "=", "self", "(", "self", ")", "#NEWLINE#", "return", "path"]}}
+{"position": {"error_location": 7, "repair_targets": [3, 11], "repair_candidates": [1, 5, 7, 3, 11]}}
+{"prediction": {"error_location": 0.7926045060157776, "repair_targets": [0.8170461654663086, 0.002371362643316388], "repair_candidates": [0.16849079728126526, 0.8170461654663086, 0.007009498309344053, 0.005082122515887022, 0.002371362643316388], "target_probs": 0.8194175362586975}}
+
+
+{"result": {"time": "2021-02-11 10:48:21.870789", "n_pass": [68, 12, 7], "n_token": 11, "loss": [1.0010244846343994, 0.04421579837799072], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _getTestJobStorePath(", "self", "#INDENT#", "path", "=", "self", "self", ")", "#NEWLINE#", "return", "path"]}}
+{"position": {"error_location": 6, "repair_targets": [3, 10], "repair_candidates": [1, 5, 6, 3, 10]}}
+{"prediction": {"error_location": 0.36750277876853943, "repair_targets": [0.956610918045044, 0.00013656984083354473], "repair_candidates": [0.037272192537784576, 0.956610918045044, 0.004900811705738306, 0.0010795119451358914, 0.00013656984083354473], "target_probs": 0.9567474722862244}}
+
+
+
+
+Minimal simplified tokens:
+
+['def _getTestJobStorePath(', 'self', '#INDENT#', 'path', '=', 'self', 'self', ')', '#NEWLINE#', 'return', 'path']

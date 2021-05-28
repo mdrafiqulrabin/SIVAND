@@ -1,0 +1,91 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def group_exists(", "self", ",", "group_name", ")", ":", "#NEWLINE#", "#INDENT#", "stmt", "=", "(", "\"\\n                SELECT\\n                    COUNT(*) AS total\\n                FROM\\n                    forums\\n                WHERE\\n                    LOWER(nntp_group_name)=LOWER('%s')\"", "%", "stmt", ")", "#NEWLINE#", "self", ".", "cursor", ".", "execute", "(", "stmt", ")", "#NEWLINE#", "return", "self", ".", "cursor", ".", "fetchone", "(", ")", "[", "0", "]"], "error_location": [14], "repair_targets": [4], "repair_candidates": [4, 2, 17, 27, 9, 14, 23], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "jpm/papercut/storage/phorum_mysql.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 203, "results": {"model": "transformer", "prob": {"loc": [[1.1444203664723318e-05, 7.175572358519844e-10, 3.1134250733089175e-10, 2.3127999515537567e-11, 9.056533301077252e-09, 2.7155246801191524e-11, 8.021998343377135e-11, 5.871807901014492e-11, 5.259490065689931e-11, 6.102622851500428e-09, 1.0430458580179547e-10, 4.769476827370944e-11, 1.4550258775614111e-09, 2.8963651477198482e-09, 0.9999024868011475, 4.2140979594762484e-09, 4.49199219487717e-11, 1.5461177477194e-11, 7.589323267054304e-12, 1.348171465957726e-12, 1.4546805600368362e-11, 6.031573244330568e-12, 1.3908227347592117e-10, 8.609977521700785e-05, 2.4174890977946006e-09, 7.003119611992403e-11, 6.1948150602286756e-12, 2.1696204832721833e-09, 8.663692159516234e-12, 1.165012964571277e-12, 1.920094118423865e-11, 3.6125902616590544e-12, 9.574983028670658e-10, 1.0727461141613048e-09, 9.960510194417793e-10, 7.402770618725185e-10, 3.9277214813893124e-10]], "pointer": [[0.0, 0.0, 6.784199285903014e-06, 0.0, 0.9999932050704956, 0.0, 0.0, 0.0, 0.0, 5.692315951932869e-08, 0.0, 0.0, 0.0, 0.0, 2.4208174354001244e-10, 0.0, 0.0, 1.4847360008118926e-09, 0.0, 0.0, 0.0, 0.0, 0.0, 2.9162643855329407e-08, 0.0, 0.0, 0.0, 6.987599387997534e-10, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9999932050704956]}, "loss": [9.7508447652217e-05, 6.7949526965094265e-06], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:31:32.777488", "n_pass": [1, 1, 1], "n_token": 37, "loss": [9.7508447652217e-05, 6.7949526965094265e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def group_exists(", "self", ",", "group_name", ")", ":", "#NEWLINE#", "#INDENT#", "stmt", "=", "(", "\"\\n                SELECT\\n                    COUNT(*) AS total\\n                FROM\\n                    forums\\n                WHERE\\n                    LOWER(nntp_group_name)=LOWER('%s')\"", "%", "stmt", ")", "#NEWLINE#", "self", ".", "cursor", ".", "execute", "(", "stmt", ")", "#NEWLINE#", "return", "self", ".", "cursor", ".", "fetchone", "(", ")", "[", "0", "]"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [4, 2, 17, 27, 9, 14, 23]}}
+{"prediction": {"error_location": 0.9999024868011475, "repair_targets": [0.9999932050704956], "repair_candidates": [6.784199285903014e-06, 0.9999932050704956, 5.692315951932869e-08, 2.4208174354001244e-10, 1.4847360008118926e-09, 2.9162643855329407e-08, 6.987599387997534e-10], "target_probs": 0.9999932050704956}}
+
+
+{"result": {"time": "2021-02-11 11:31:32.833810", "n_pass": [27, 2, 2], "n_token": 32, "loss": [0.00012337400403339416, 1.23978434203309e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def group_exists(", "self", ",", "group_name", ")", ":", "#NEWLINE#", "#INDENT#", "stmt", "=", "(", "\"\\n                SELECT\\n                    COUNT(*) AS total\\n                FROM\\n                    forums\\n                WHERE\\n                    LOWER(nntp_group_name)=LOWER('%s')\"", "%", "stmt", ")", "#NEWLINE#", "self", ".", "cursor", ".", "execute", "(", "stmt", ")", "#NEWLINE#", "return", "self", ".", "cursor", ".", "fetchone"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [4, 2, 17, 27, 9, 14, 23]}}
+{"prediction": {"error_location": 0.9998766183853149, "repair_targets": [0.9999876022338867], "repair_candidates": [1.219897694682004e-05, 0.9999876022338867, 1.559430984343635e-07, 3.4471850374195867e-10, 9.624069541303015e-09, 5.32318686907729e-08, 2.2792252529768575e-09], "target_probs": 0.9999876022338867}}
+
+
+{"result": {"time": "2021-02-11 11:31:32.890224", "n_pass": [48, 3, 3], "n_token": 30, "loss": [0.00029416524921543896, 8.344653679159819e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", ":", "#NEWLINE#", "#INDENT#", "stmt", "=", "(", "\"\\n                SELECT\\n                    COUNT(*) AS total\\n                FROM\\n                    forums\\n                WHERE\\n                    LOWER(nntp_group_name)=LOWER('%s')\"", "%", "stmt", ")", "#NEWLINE#", "self", ".", "cursor", ".", "execute", "(", "stmt", ")", "#NEWLINE#", "return", "self", ".", "cursor", ".", "fetchone"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [2, 0, 15, 25, 7, 12, 21]}}
+{"prediction": {"error_location": 0.9997058510780334, "repair_targets": [0.9999991655349731], "repair_candidates": [6.310801268227806e-07, 0.9999991655349731, 1.9375126214526972e-07, 2.0142953971458155e-10, 2.088254014154245e-09, 5.776391986955787e-08, 6.134943664193315e-10], "target_probs": 0.9999991655349731}}
+
+
+{"result": {"time": "2021-02-11 11:31:32.945669", "n_pass": [50, 4, 4], "n_token": 28, "loss": [0.0181744284927845, 4.64917320641689e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "#INDENT#", "stmt", "=", "(", "\"\\n                SELECT\\n                    COUNT(*) AS total\\n                FROM\\n                    forums\\n                WHERE\\n                    LOWER(nntp_group_name)=LOWER('%s')\"", "%", "stmt", ")", "#NEWLINE#", "self", ".", "cursor", ".", "execute", "(", "stmt", ")", "#NEWLINE#", "return", "self", ".", "cursor", ".", "fetchone"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [2, 0, 13, 23, 5, 10, 19]}}
+{"prediction": {"error_location": 0.9819897413253784, "repair_targets": [0.9999953508377075], "repair_candidates": [2.7438425149739487e-06, 0.9999953508377075, 1.6447745565528749e-06, 5.862544227852595e-09, 6.321779721929488e-08, 5.830809257645342e-08, 7.168389881684334e-09], "target_probs": 0.9999953508377075}}
+
+
+{"result": {"time": "2021-02-11 11:31:33.000598", "n_pass": [52, 5, 5], "n_token": 26, "loss": [0.6441836953163147, 0.00016774154209997505], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "#INDENT#", "stmt", "\"\\n                SELECT\\n                    COUNT(*) AS total\\n                FROM\\n                    forums\\n                WHERE\\n                    LOWER(nntp_group_name)=LOWER('%s')\"", "%", "stmt", ")", "#NEWLINE#", "self", ".", "cursor", ".", "execute", "(", "stmt", ")", "#NEWLINE#", "return", "self", ".", "cursor", ".", "fetchone"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [2, 0, 11, 21, 5, 8, 17]}}
+{"prediction": {"error_location": 0.5250909328460693, "repair_targets": [0.999832272529602], "repair_candidates": [5.598055213340558e-05, 0.999832272529602, 9.407847392139956e-05, 9.630465683585498e-06, 5.761411557614338e-06, 1.8816546116795507e-06, 3.5655722285810043e-07], "target_probs": 0.999832272529602}}
+
+
+{"result": {"time": "2021-02-11 11:31:33.114743", "n_pass": [56, 7, 6], "n_token": 24, "loss": [0.5228899717330933, 5.889112435397692e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "#INDENT#", "stmt", "\"\\n                SELECT\\n                    COUNT(*) AS total\\n                FROM\\n                    forums\\n                WHERE\\n                    LOWER(nntp_group_name)=LOWER('%s')\"", "%", "stmt", ")", "#NEWLINE#", "self", ".", "execute", "(", "stmt", ")", "#NEWLINE#", "return", "self", ".", "cursor", ".", "fetchone"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [2, 0, 11, 19, 5, 8, 15]}}
+{"prediction": {"error_location": 0.5928048491477966, "repair_targets": [0.9999411106109619], "repair_candidates": [2.0974977815058082e-05, 0.9999411106109619, 3.2162017305381596e-05, 4.43240423919633e-06, 5.701709255845344e-07, 7.640805392838956e-07, 3.2381834103034635e-08], "target_probs": 0.9999411106109619}}
+
+
+{"result": {"time": "2021-02-11 11:31:33.169993", "n_pass": [57, 8, 7], "n_token": 21, "loss": [0.030004378408193588, 0.0005967012839391828], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "#INDENT#", "stmt", "\"\\n                SELECT\\n                    COUNT(*) AS total\\n                FROM\\n                    forums\\n                WHERE\\n                    LOWER(nntp_group_name)=LOWER('%s')\"", "%", "stmt", ")", "#NEWLINE#", "self", "stmt", ")", "#NEWLINE#", "return", "self", ".", "cursor", ".", "fetchone"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [2, 0, 11, 16, 5, 8, 12]}}
+{"prediction": {"error_location": 0.9704411625862122, "repair_targets": [0.9994034767150879], "repair_candidates": [3.919251321349293e-05, 0.9994034767150879, 7.8459175711032e-05, 9.950868843588978e-06, 7.953119347803295e-05, 0.0003890929219778627, 2.8469654012042156e-07], "target_probs": 0.9994034767150879}}
+
+
+{"result": {"time": "2021-02-11 11:31:33.224787", "n_pass": [60, 9, 8], "n_token": 18, "loss": [0.006049062591046095, 7.951575389597565e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "#INDENT#", "stmt", "\"\\n                SELECT\\n                    COUNT(*) AS total\\n                FROM\\n                    forums\\n                WHERE\\n                    LOWER(nntp_group_name)=LOWER('%s')\"", "%", "stmt", ")", "#NEWLINE#", "self", "stmt", ")", "#NEWLINE#", "return", "self", "."]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [2, 0, 11, 16, 5, 8, 12]}}
+{"prediction": {"error_location": 0.9939693212509155, "repair_targets": [0.9999204874038696], "repair_candidates": [9.55424093262991e-06, 0.9999204874038696, 1.171896747109713e-05, 7.797619332450267e-07, 1.383403559884755e-05, 4.373159390524961e-05, 5.896422194950901e-08], "target_probs": 0.9999204874038696}}
+
+
+{"result": {"time": "2021-02-11 11:31:33.500918", "n_pass": [91, 14, 9], "n_token": 17, "loss": [0.1641334444284439, 0.00036961710429750383], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "#INDENT#", "stmt", "%", "stmt", ")", "#NEWLINE#", "self", "stmt", ")", "#NEWLINE#", "return", "self", "."]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [2, 0, 10, 15, 5, 7, 11]}}
+{"prediction": {"error_location": 0.8486287593841553, "repair_targets": [0.9996304512023926], "repair_candidates": [1.1693010492308531e-05, 0.9996304512023926, 0.00010052228753920645, 1.2445127140381373e-05, 1.9561613953555934e-05, 0.00022519327467307448, 1.0490756352510289e-07], "target_probs": 0.9996304512023926}}
+
+
+{"result": {"time": "2021-02-11 11:31:33.555598", "n_pass": [93, 15, 10], "n_token": 16, "loss": [0.03859933465719223, 0.001268654828891158], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "#INDENT#", "stmt", "%", "stmt", "#NEWLINE#", "self", "stmt", ")", "#NEWLINE#", "return", "self", "."]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [2, 0, 9, 14, 5, 7, 10]}}
+{"prediction": {"error_location": 0.9621360301971436, "repair_targets": [0.9987321496009827], "repair_candidates": [4.598574378178455e-05, 0.9987321496009827, 0.00039256777381524444, 1.2212301953695714e-05, 0.00030783715192228556, 0.0005078310496173799, 1.4027449424247607e-06], "target_probs": 0.9987321496009827}}
+
+
+{"result": {"time": "2021-02-11 11:31:33.664454", "n_pass": [97, 17, 11], "n_token": 15, "loss": [0.1422579437494278, 0.0016559953801333904], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "#INDENT#", "stmt", "%", "stmt", "#NEWLINE#", "self", "stmt", "#NEWLINE#", "return", "self", "."]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [2, 0, 9, 13, 5, 7, 10]}}
+{"prediction": {"error_location": 0.8673974871635437, "repair_targets": [0.9983453750610352], "repair_candidates": [5.754783342126757e-05, 0.9983453750610352, 0.0005490370094776154, 3.982628641097108e-06, 1.0634075806592591e-05, 0.0010330966906622052, 2.5802842174016405e-07], "target_probs": 0.9983453750610352}}
+
+
+{"result": {"time": "2021-02-11 11:31:33.719275", "n_pass": [98, 18, 12], "n_token": 13, "loss": [0.1330874115228653, 0.023487914353609085], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "#INDENT#", "stmt", "%", "stmt", "#NEWLINE#", "self", "stmt", "self", "."]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [2, 0, 9, 11, 5, 7, 10]}}
+{"prediction": {"error_location": 0.875388503074646, "repair_targets": [0.9767857789993286], "repair_candidates": [0.0006796835805289447, 0.9767857789993286, 0.002038629725575447, 9.229966963175684e-05, 0.019184231758117676, 0.00011171359801664948, 0.00110774883069098], "target_probs": 0.9767857789993286}}
+
+
+{"result": {"time": "2021-02-11 11:31:34.048194", "n_pass": [114, 24, 13], "n_token": 12, "loss": [0.7214438319206238, 0.041626255959272385], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "group_name", ")", "#INDENT#", "stmt", "%", "stmt", "#NEWLINE#", "self", "stmt", "self"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [2, 0, 9, 11, 5, 7, 10]}}
+{"prediction": {"error_location": 0.48604995012283325, "repair_targets": [0.9592282176017761], "repair_candidates": [0.003261981764808297, 0.9592282176017761, 0.03073466196656227, 0.002044508932158351, 0.002465901430696249, 0.0007125679985620081, 0.0015522018074989319], "target_probs": 0.9592282176017761}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ',', 'group_name', ')', '#INDENT#', 'stmt', '%', 'stmt', '#NEWLINE#', 'self', 'stmt', 'self']

@@ -1,0 +1,163 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_not_builtin(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "for", "meth_name", "in", "(", "'get_code'", ",", "'get_source'", ",", "'is_package'", ")", ":", "#NEWLINE#", "#INDENT#", "method", "=", "getattr", "(", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "BAD_NAME", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertRaises", "(", "builtin_util", ".", "BAD_NAME", ")"], "error_location": [28], "repair_targets": [8], "repair_candidates": [20, 28, 44, 8, 2, 33, 52, 40], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "amrdraz/kodr/app/brython/www/src/Lib/test/test_importlib/builtin/test_loader.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00009-of-00300", "js_count": 30524, "results": {"model": "rnn", "prob": {"loc": [[0.15129859745502472, 3.380179123269045e-07, 3.39275516125781e-07, 4.2985179304899646e-10, 8.116676775138387e-10, 8.301076945826935e-07, 1.374334487991291e-06, 1.0201972600043518e-06, 6.777015642001061e-07, 2.3576699703653503e-08, 2.7250674605738823e-08, 2.472897620009462e-07, 8.508874316248694e-08, 2.014920710280421e-06, 2.6391626306576654e-07, 1.512864059804997e-06, 6.681231639049656e-07, 4.1070407519328e-08, 9.460144667627901e-08, 1.2523096870609152e-07, 8.865685430237136e-08, 1.716873043733358e-08, 7.778249369039258e-07, 1.0701663555323648e-08, 0.5730603933334351, 6.521955242533295e-07, 9.479783784627216e-07, 0.00039007439045235515, 0.27444469928741455, 3.366408307670099e-08, 7.22396364949418e-08, 9.574341675033793e-08, 3.150004346252899e-08, 4.568911663227482e-06, 3.7140539532742878e-09, 4.5020658490102505e-07, 3.8742650754208796e-10, 0.0001703894231468439, 9.895594388353857e-08, 4.673369460306276e-07, 3.982226189691573e-06, 4.930322461405012e-07, 1.7955188695850666e-06, 9.873183444142342e-07, 5.603293473654958e-08, 4.0924728494928786e-08, 0.0005445326678454876, 2.6065638536465485e-08, 3.044895180437379e-08, 2.314184257556917e-06, 9.539324707930064e-08, 1.1606577920986183e-08, 1.3446225466395845e-06, 4.550085197507769e-09, 1.1088587825724971e-07, 2.8496238702047094e-10, 5.368878919398412e-05, 4.6491049232599835e-08, 2.8252783224047562e-08, 8.253749001596589e-06]], "pointer": [[0.0, 0.0, 3.727679313669796e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.999988317489624, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.4392826364637585e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 9.808004364231238e-08, 0.0, 0.0, 0.0, 0.0, 1.2057949305699367e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.8842152864381205e-06, 0.0, 0.0, 0.0, 2.596605781945982e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.1176693348602385e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.999988317489624]}, "loss": [1.293005347251892, 1.1682578588079195e-05], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [24]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:30:37.649804", "n_pass": [1, 1, 1], "n_token": 60, "loss": [0.5567640066146851, 1.1682578588079195e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_not_builtin(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "for", "meth_name", "in", "(", "'get_code'", ",", "'get_source'", ",", "'is_package'", ")", ":", "#NEWLINE#", "#INDENT#", "method", "=", "getattr", "(", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "BAD_NAME", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertRaises", "(", "builtin_util", ".", "BAD_NAME", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [8], "repair_candidates": [20, 28, 44, 8, 2, 33, 52, 40]}}
+{"prediction": {"error_location": 0.5730603933334351, "repair_targets": [0.999988317489624], "repair_candidates": [3.727679313669796e-06, 0.999988317489624, 3.4392826364637585e-07, 9.808004364231238e-08, 1.2057949305699367e-08, 4.8842152864381205e-06, 2.596605781945982e-06, 1.1176693348602385e-08], "target_probs": 0.999988317489624}}
+
+
+{"result": {"time": "2021-02-21 12:30:37.730049", "n_pass": [45, 2, 2], "n_token": 57, "loss": [0.21399462223052979, 0.020551374182105064], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_not_builtin(", "self", "#INDENT#", "for", "meth_name", "in", "(", "'get_code'", ",", "'get_source'", ",", "'is_package'", ")", ":", "#NEWLINE#", "#INDENT#", "method", "=", "getattr", "(", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "BAD_NAME", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertRaises", "(", "builtin_util", ".", "BAD_NAME", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [5], "repair_candidates": [17, 25, 41, 5, 2, 30, 49, 37]}}
+{"prediction": {"error_location": 0.8073527216911316, "repair_targets": [0.9796583652496338], "repair_candidates": [0.020322734490036964, 0.9796583652496338, 9.611543418941437e-07, 2.994535179823288e-07, 3.947224413991535e-08, 1.3280631719680969e-05, 4.340179202699801e-06, 2.47681359866192e-08], "target_probs": 0.9796583652496338}}
+
+
+{"result": {"time": "2021-02-21 12:30:37.885324", "n_pass": [48, 4, 3], "n_token": 53, "loss": [0.3951564133167267, 0.019513092935085297], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_not_builtin(", "self", "#INDENT#", "for", "meth_name", "in", "(", "'get_code'", ")", ":", "#NEWLINE#", "#INDENT#", "method", "=", "getattr", "(", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "BAD_NAME", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertRaises", "(", "builtin_util", ".", "BAD_NAME", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [5], "repair_candidates": [13, 21, 37, 5, 2, 26, 45, 33]}}
+{"prediction": {"error_location": 0.673574686050415, "repair_targets": [0.9806760549545288], "repair_candidates": [0.01930137164890766, 0.9806760549545288, 2.7186185889149783e-06, 2.440071114051534e-07, 2.85378387587798e-08, 1.5697340131737292e-05, 3.955905867769616e-06, 1.9928283023773474e-08], "target_probs": 0.9806760549545288}}
+
+
+{"result": {"time": "2021-02-21 12:30:37.959161", "n_pass": [49, 5, 4], "n_token": 49, "loss": [0.19524073600769043, 0.4398075342178345], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_not_builtin(", "self", "#INDENT#", "for", "meth_name", "in", "(", "'get_code'", "method", "=", "getattr", "(", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "BAD_NAME", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertRaises", "(", "builtin_util", ".", "BAD_NAME", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [5], "repair_candidates": [9, 17, 33, 5, 2, 22, 41, 29]}}
+{"prediction": {"error_location": 0.8226365447044373, "repair_targets": [0.6441603899002075], "repair_candidates": [0.35535338521003723, 0.6441603899002075, 3.1519743060925975e-05, 7.002460733929183e-06, 2.2351987354340963e-06, 0.00036933697992935777, 7.522390660597011e-05, 8.708850032235205e-07], "target_probs": 0.6441603899002075}}
+
+
+{"result": {"time": "2021-02-21 12:30:38.104131", "n_pass": [57, 7, 5], "n_token": 45, "loss": [0.3657025694847107, 0.11986631900072098], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_not_builtin(", "self", "#INDENT#", "for", "meth_name", "in", "(", "'get_code'", "method", "=", "getattr", "(", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "self", ".", "assertRaises", "(", "builtin_util", ".", "BAD_NAME", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [5], "repair_candidates": [9, 17, 33, 5, 2, 22, 37, 29]}}
+{"prediction": {"error_location": 0.6937090754508972, "repair_targets": [0.8870390057563782], "repair_candidates": [0.11202924698591232, 0.8870390057563782, 2.8331411158433184e-05, 4.56391444458859e-06, 2.0903812583128456e-06, 0.0008753524161875248, 1.7653605027589947e-05, 3.715648517754744e-06], "target_probs": 0.8870390057563782}}
+
+
+{"result": {"time": "2021-02-21 12:30:38.174383", "n_pass": [59, 8, 6], "n_token": 41, "loss": [0.27726253867149353, 0.32375431060791016], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_not_builtin(", "self", "#INDENT#", "for", "meth_name", "in", "(", "'get_code'", "method", "=", "getattr", "(", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "self", ".", "assertRaises", "("]}}
+{"position": {"error_location": 13, "repair_targets": [5], "repair_candidates": [9, 17, 33, 5, 2, 22, 37, 29]}}
+{"prediction": {"error_location": 0.7578555345535278, "repair_targets": [0.723427951335907], "repair_candidates": [0.2757264971733093, 0.723427951335907, 2.1049818315077573e-05, 5.786663223261712e-06, 1.4829017800366273e-06, 0.000806917087174952, 6.965299235162092e-06, 3.333942913741339e-06], "target_probs": 0.723427951335907}}
+
+
+{"result": {"time": "2021-02-21 12:30:38.383228", "n_pass": [93, 11, 7], "n_token": 40, "loss": [0.0886874869465828, 0.04184693470597267], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "#INDENT#", "for", "meth_name", "in", "(", "'get_code'", "method", "=", "getattr", "(", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "self", ".", "assertRaises", "("]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [8, 16, 32, 4, 1, 21, 36, 28]}}
+{"prediction": {"error_location": 0.9151316285133362, "repair_targets": [0.9590165615081787], "repair_candidates": [0.04066585376858711, 0.9590165615081787, 1.1980830095126294e-05, 1.831228814808128e-06, 3.339141585456673e-07, 0.0003004800819326192, 2.1561061203101417e-06, 7.487204811695847e-07], "target_probs": 0.9590165615081787}}
+
+
+{"result": {"time": "2021-02-21 12:30:38.520071", "n_pass": [96, 13, 8], "n_token": 38, "loss": [0.38594508171081543, 0.62352454662323], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "(", "'get_code'", "method", "=", "getattr", "(", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "self", ".", "assertRaises", "("]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [6, 14, 30, 2, 1, 19, 34, 26]}}
+{"prediction": {"error_location": 0.6798079013824463, "repair_targets": [0.5360517501831055], "repair_candidates": [0.44308608770370483, 0.5360517501831055, 0.00012685493857134134, 1.791723298083525e-05, 4.571838417177787e-06, 0.020659081637859344, 3.6997462302679196e-05, 1.6765839973231778e-05], "target_probs": 0.5360517501831055}}
+
+
+{"result": {"time": "2021-02-21 12:30:38.587843", "n_pass": [98, 14, 9], "n_token": 36, "loss": [0.15393032133579254, 0.4215845465660095], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "getattr", "(", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "self", ".", "assertRaises", "("]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 12, 28, 2, 1, 17, 32, 24]}}
+{"prediction": {"error_location": 0.8573317527770996, "repair_targets": [0.6560065150260925], "repair_candidates": [0.3368515968322754, 0.6560065150260925, 9.388518810737878e-05, 1.9930281268898398e-05, 2.4134358227456687e-06, 0.006997091695666313, 1.964716830116231e-05, 8.84667406353401e-06], "target_probs": 0.6560065150260925}}
+
+
+{"result": {"time": "2021-02-21 12:30:38.654813", "n_pass": [100, 15, 10], "n_token": 34, "loss": [0.26574432849884033, 0.22491522133350372], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", ".", "BuiltinImporter", ",", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "self", ".", "assertRaises", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 10, 26, 2, 1, 15, 30, 22]}}
+{"prediction": {"error_location": 0.7666351199150085, "repair_targets": [0.7985839247703552], "repair_candidates": [0.183595672249794, 0.7985839247703552, 0.0005647402140311897, 0.0001181882616947405, 5.156332008482423e-06, 0.017058121040463448, 5.1174622058169916e-05, 2.3042770408210345e-05], "target_probs": 0.7985839247703552}}
+
+
+{"result": {"time": "2021-02-21 12:30:38.723189", "n_pass": [102, 16, 11], "n_token": 32, "loss": [0.014472042210400105, 0.38228851556777954], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", ".", "method", ")", "#NEWLINE#", "#UNINDENT#", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "self", ".", "assertRaises", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 8, 24, 2, 1, 13, 28, 20]}}
+{"prediction": {"error_location": 0.9856321811676025, "repair_targets": [0.6822981834411621], "repair_candidates": [0.3099702298641205, 0.6822981834411621, 0.004785304423421621, 0.000305412890156731, 3.7328084090404445e-06, 0.0025798403657972813, 4.4449207052821293e-05, 1.2764578059432097e-05], "target_probs": 0.6822981834411621}}
+
+
+{"result": {"time": "2021-02-21 12:30:38.787630", "n_pass": [104, 17, 12], "n_token": 30, "loss": [0.48106682300567627, 0.420700341463089], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", ".", "method", ")", "with", "self", ".", "assertRaises", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "self", ".", "assertRaises", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 8, 22, 2, 1, 11, 26, 18]}}
+{"prediction": {"error_location": 0.618123471736908, "repair_targets": [0.6565868258476257], "repair_candidates": [0.1827821135520935, 0.6565868258476257, 0.009249525144696236, 0.0008035019272938371, 0.00014311443374026567, 0.1502796709537506, 0.00010551650484558195, 4.962945240549743e-05], "target_probs": 0.6565868258476257}}
+
+
+{"result": {"time": "2021-02-21 12:30:38.851019", "n_pass": [106, 18, 13], "n_token": 28, "loss": [0.28232914209365845, 0.5760640501976013], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", ".", "method", ")", "with", "self", "(", "ImportError", ")", "as", "cm", ":", "#NEWLINE#", "#INDENT#", "method", "(", "builtin_util", ".", "self", ".", "assertRaises", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 8, 20, 2, 1, 11, 24, 16]}}
+{"prediction": {"error_location": 0.754025399684906, "repair_targets": [0.5621064305305481], "repair_candidates": [0.15521575510501862, 0.5621064305305481, 0.003640758106485009, 0.0006702103419229388, 0.001031419262290001, 0.2772676944732666, 4.023147266707383e-05, 2.7506162950885482e-05], "target_probs": 0.5621064305305481}}
+
+
+{"result": {"time": "2021-02-21 12:30:39.036920", "n_pass": [110, 21, 14], "n_token": 26, "loss": [0.3929363489151001, 0.2987675964832306], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", ".", "method", ")", "with", "self", "(", "ImportError", ")", "as", "cm", ":", "method", "(", "builtin_util", ".", "self", ".", "assertRaises", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 8, 18, 2, 1, 11, 22, 16]}}
+{"prediction": {"error_location": 0.6750717759132385, "repair_targets": [0.7417317628860474], "repair_candidates": [0.19428002834320068, 0.7417317628860474, 0.005130074452608824, 0.0009383446886204183, 0.0015786198200657964, 0.055940866470336914, 3.1453233532374725e-05, 0.0003687318821903318], "target_probs": 0.7417317628860474}}
+
+
+{"result": {"time": "2021-02-21 12:30:39.100663", "n_pass": [112, 22, 15], "n_token": 24, "loss": [0.22355897724628448, 0.35370713472366333], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", ".", "method", ")", "with", "self", "(", "ImportError", ")", "as", "cm", ":", "method", "(", "self", ".", "assertRaises", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 8, 18, 2, 1, 11, 20, 16]}}
+{"prediction": {"error_location": 0.7996677160263062, "repair_targets": [0.7020805478096008], "repair_candidates": [0.23339392244815826, 0.7020805478096008, 0.005694124381989241, 0.0009747212752699852, 0.0009664020617492497, 0.056759875267744064, 2.695206057978794e-05, 0.00010343187022954226], "target_probs": 0.7020805478096008}}
+
+
+{"result": {"time": "2021-02-21 12:30:39.400784", "n_pass": [149, 27, 16], "n_token": 23, "loss": [0.29957976937294006, 0.4093964993953705], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", ".", "method", ")", "with", "self", "(", "ImportError", ")", "as", "cm", ":", "method", "(", "self", "assertRaises", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 8, 18, 2, 1, 11, 20, 16]}}
+{"prediction": {"error_location": 0.7411295771598816, "repair_targets": [0.6640508770942688], "repair_candidates": [0.20578055083751678, 0.6640508770942688, 0.006508986931294203, 0.0010469700209796429, 0.0010002694325521588, 0.12140092253684998, 2.3661816157982685e-05, 0.00018774774798657745], "target_probs": 0.6640508770942688}}
+
+
+{"result": {"time": "2021-02-21 12:30:39.463376", "n_pass": [150, 28, 17], "n_token": 22, "loss": [0.409045547246933, 0.4786332845687866], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", ".", "method", ")", "with", "self", "(", "ImportError", ")", "as", "cm", ":", "method", "(", "self", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 8, 18, 2, 1, 11, 20, 16]}}
+{"prediction": {"error_location": 0.6642839908599854, "repair_targets": [0.6196296811103821], "repair_candidates": [0.2055724710226059, 0.6196296811103821, 0.009484270587563515, 0.0014804688980802894, 0.0013410595711320639, 0.1613771766424179, 3.690663288580254e-05, 0.0010779734002426267], "target_probs": 0.6196296811103821}}
+
+
+{"result": {"time": "2021-02-21 12:30:39.761458", "n_pass": [159, 33, 18], "n_token": 21, "loss": [0.36520451307296753, 0.4868720769882202], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", "method", ")", "with", "self", "(", "ImportError", ")", "as", "cm", ":", "method", "(", "self", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 7, 17, 2, 1, 10, 19, 15]}}
+{"prediction": {"error_location": 0.6940546631813049, "repair_targets": [0.6145456433296204], "repair_candidates": [0.061040475964546204, 0.6145456433296204, 0.24296967685222626, 0.001221636775881052, 0.008242793381214142, 0.06899291276931763, 7.42639895179309e-05, 0.002912598429247737], "target_probs": 0.6145456433296204}}
+
+
+{"result": {"time": "2021-02-21 12:30:39.940394", "n_pass": [164, 36, 19], "n_token": 20, "loss": [0.9454894065856934, 0.4703414738178253], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", "method", ")", "with", "self", "ImportError", ")", "as", "cm", ":", "method", "(", "self", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 7, 16, 2, 1, 10, 18, 14]}}
+{"prediction": {"error_location": 0.38848939538002014, "repair_targets": [0.6247888803482056], "repair_candidates": [0.037900909781455994, 0.6247888803482056, 0.2405737191438675, 0.0007530298898927867, 0.0009350040927529335, 0.0890071913599968, 0.00012328854063525796, 0.0059179882518947124], "target_probs": 0.6247888803482056}}
+
+
+{"result": {"time": "2021-02-21 12:30:40.176794", "n_pass": [169, 40, 20], "n_token": 19, "loss": [0.7708901166915894, 0.38508886098861694], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", "method", ")", "with", "self", "ImportError", ")", "as", "cm", "method", "(", "self", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 7, 15, 2, 1, 10, 17, 14]}}
+{"prediction": {"error_location": 0.4626011252403259, "repair_targets": [0.6803901791572571], "repair_candidates": [0.04048251733183861, 0.6803901791572571, 0.27410176396369934, 0.0005574834649451077, 0.0007270011701621115, 0.0007514364551752806, 0.0007536386838182807, 0.002235927153378725], "target_probs": 0.6803901791572571}}
+
+
+{"result": {"time": "2021-02-21 12:30:40.235283", "n_pass": [171, 41, 21], "n_token": 18, "loss": [0.7432079315185547, 0.34395676851272583], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", "method", ")", "with", "self", "ImportError", ")", "as", "cm", "method", "self", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 7, 15, 2, 1, 10, 16, 14]}}
+{"prediction": {"error_location": 0.47558581829071045, "repair_targets": [0.7089595794677734], "repair_candidates": [0.041087474673986435, 0.7089595794677734, 0.24613173305988312, 0.0005224815686233342, 0.00082450732588768, 0.0014058022061362863, 0.0005876558716408908, 0.0004808017110917717], "target_probs": 0.7089595794677734}}
+
+
+{"result": {"time": "2021-02-21 12:30:40.581979", "n_pass": [183, 47, 22], "n_token": 17, "loss": [0.4302382171154022, 0.41498813033103943], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", "method", ")", "self", "ImportError", ")", "as", "cm", "method", "self", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 7, 14, 2, 1, 9, 15, 13]}}
+{"prediction": {"error_location": 0.6503541469573975, "repair_targets": [0.660348117351532], "repair_candidates": [0.03956671059131622, 0.660348117351532, 0.2861023247241974, 0.0015859034610912204, 0.010332670994102955, 0.0012055629631504416, 0.0005800739163532853, 0.0002786099794320762], "target_probs": 0.660348117351532}}
+
+
+{"result": {"time": "2021-02-21 12:30:40.639069", "n_pass": [185, 48, 23], "n_token": 16, "loss": [0.31108683347702026, 0.22903834283351898], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", "method", ")", "self", ")", "as", "cm", "method", "self", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 7, 13, 2, 1, 9, 14, 12]}}
+{"prediction": {"error_location": 0.7326502799987793, "repair_targets": [0.7952980399131775], "repair_candidates": [0.030959514901041985, 0.7952980399131775, 0.13470697402954102, 0.001456510042771697, 0.03160102665424347, 0.005391361657530069, 0.0004361238970886916, 0.00015048512432258576], "target_probs": 0.7952980399131775}}
+
+
+{"result": {"time": "2021-02-21 12:30:40.695903", "n_pass": [186, 49, 24], "n_token": 15, "loss": [0.1848704218864441, 0.4292447865009308], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", "method", ")", "self", "as", "cm", "method", "self", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 7, 12, 2, 1, 9, 13, 11]}}
+{"prediction": {"error_location": 0.8312119245529175, "repair_targets": [0.6510005593299866], "repair_candidates": [0.02939535491168499, 0.6510005593299866, 0.23118455708026886, 0.0014448856236413121, 0.08119282871484756, 0.004624038003385067, 0.0009926094207912683, 0.0001651298807701096], "target_probs": 0.6510005593299866}}
+
+
+{"result": {"time": "2021-02-21 12:30:41.035511", "n_pass": [200, 55, 25], "n_token": 14, "loss": [0.12233851850032806, 0.2902430295944214], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_not_builtin(", "self", "meth_name", "in", "method", "=", "machinery", "method", "self", "as", "cm", "method", "self", "("]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 7, 11, 2, 1, 8, 12, 10]}}
+{"prediction": {"error_location": 0.8848485946655273, "repair_targets": [0.7480817437171936], "repair_candidates": [0.06953106820583344, 0.7480817437171936, 0.17095254361629486, 0.0016107085393741727, 0.0012432301882654428, 0.006734080612659454, 0.001789247733540833, 5.74337100260891e-05], "target_probs": 0.7480817437171936}}
+
+
+
+
+Minimal simplified tokens:
+
+['def test_not_builtin(', 'self', 'meth_name', 'in', 'method', '=', 'machinery', 'method', 'self', 'as', 'cm', 'method', 'self', '(']

@@ -1,0 +1,109 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "post_only", "#NEWLINE#", "def user_logout(", "request", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", ".", "user", ".", "is_authenticated", "(", ")", ":", "#NEWLINE#", "#INDENT#", "redirect_page", "=", "request", ".", "POST", ".", "get", "(", "'current_page'", ",", "'/'", ")", "#NEWLINE#", "logout", "(", "request", ")", "#NEWLINE#", "messages", ".", "success", "(", "request", ",", "'Logged out!'", ")", "#NEWLINE#", "return", "redirect", "(", "request", ")", "#NEWLINE#", "#UNINDENT#", "return", "redirect", "(", "'frontpage'", ")"], "error_location": [53], "repair_targets": [23], "repair_candidates": [23, 5, 13, 25, 38, 45, 53], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "Nikola-K/django_reddit/users/views.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00009-of-00300", "js_count": 30510, "results": {"model": "transformer", "prob": {"loc": [[0.008036240004003048, 9.070792827969854e-08, 7.186829353855728e-09, 7.52059303721353e-09, 1.4155439487240074e-08, 2.8568003074269654e-08, 6.3053491317077714e-09, 7.221401254753346e-09, 5.5749049820974506e-09, 3.6944560743989996e-09, 8.549402252810978e-08, 1.0788873794354004e-08, 3.560177574968293e-08, 9.908328735264149e-08, 9.599098405033146e-09, 1.2190561449187953e-08, 1.603532062688373e-08, 3.4252436442727685e-09, 2.339372606741108e-08, 4.6695447508682264e-07, 8.828346409472942e-08, 2.857906800102228e-08, 2.4395230724394423e-08, 1.3318607443579822e-06, 2.2601739146921318e-08, 4.2073040162904363e-07, 2.2266828381134474e-08, 9.06655017729463e-09, 4.534183517534984e-08, 2.5546762483230623e-09, 2.8178760658192914e-07, 1.0329516953788698e-05, 3.4259842323081102e-06, 1.2932858226122335e-05, 2.260329438286135e-06, 2.0616451479327225e-07, 2.7660993850986415e-07, 1.618052465346409e-07, 0.29031139612197876, 5.502548901858972e-06, 1.5961413737386465e-06, 1.4295933326025079e-08, 2.2263304089165104e-08, 2.9232479548113588e-08, 6.30306189464136e-08, 0.4110662341117859, 5.317341674526688e-06, 3.2441006624139845e-05, 6.664882221230073e-06, 1.9914321001124335e-06, 4.0404547263506174e-08, 1.095104362747179e-08, 1.1708424096923409e-07, 0.290488064289093, 2.965612338812207e-06, 1.4074001910557854e-06, 1.8194145923189353e-07, 1.930646043035722e-08, 1.3406856069764217e-08, 1.870942298864975e-07, 6.272623977565672e-06, 4.439584131432639e-07]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 4.01172146666795e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.5759878553799354e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9998455047607422, 0.0, 7.51381303416565e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8.09555422165431e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.319917257409543e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.1166553071670933e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9998455047607422]}, "loss": [1.2361928224563599, 0.00015450717182829976], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [45]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:40:12.319593", "n_pass": [1, 1, 1], "n_token": 62, "loss": [0.8890010118484497, 0.00015450717182829976], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "post_only", "#NEWLINE#", "def user_logout(", "request", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", ".", "user", ".", "is_authenticated", "(", ")", ":", "#NEWLINE#", "#INDENT#", "redirect_page", "=", "request", ".", "POST", ".", "get", "(", "'current_page'", ",", "'/'", ")", "#NEWLINE#", "logout", "(", "request", ")", "#NEWLINE#", "messages", ".", "success", "(", "request", ",", "'Logged out!'", ")", "#NEWLINE#", "return", "redirect", "(", "request", ")", "#NEWLINE#", "#UNINDENT#", "return", "redirect", "(", "'frontpage'", ")"]}}
+{"position": {"error_location": 45, "repair_targets": [23], "repair_candidates": [23, 5, 13, 25, 38, 45, 53]}}
+{"prediction": {"error_location": 0.4110662341117859, "repair_targets": [0.9998455047607422], "repair_candidates": [4.01172146666795e-05, 2.5759878553799354e-05, 0.9998455047607422, 7.51381303416565e-05, 8.09555422165431e-06, 2.319917257409543e-06, 3.1166553071670933e-06], "target_probs": 0.9998455047607422}}
+
+
+{"result": {"time": "2021-02-21 06:40:12.379597", "n_pass": [22, 2, 2], "n_token": 54, "loss": [0.7228346467018127, 0.0002468533057253808], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "post_only", "#NEWLINE#", "def user_logout(", "request", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", "#INDENT#", "redirect_page", "=", "request", ".", "POST", ".", "get", "(", "'current_page'", ",", "'/'", ")", "#NEWLINE#", "logout", "(", "request", ")", "#NEWLINE#", "messages", ".", "success", "(", "request", ",", "'Logged out!'", ")", "#NEWLINE#", "return", "redirect", "(", "request", ")", "#NEWLINE#", "#UNINDENT#", "return", "redirect", "(", "'frontpage'", ")"]}}
+{"position": {"error_location": 37, "repair_targets": [15], "repair_candidates": [15, 5, 13, 17, 30, 37, 45]}}
+{"prediction": {"error_location": 0.485374391078949, "repair_targets": [0.9997531771659851], "repair_candidates": [7.435941370204091e-05, 4.238455949234776e-05, 0.9997531771659851, 7.140873640310019e-05, 3.596832539187744e-05, 9.051723282027524e-06, 1.3675882655661553e-05], "target_probs": 0.9997531771659851}}
+
+
+{"result": {"time": "2021-02-21 06:40:12.492296", "n_pass": [27, 4, 3], "n_token": 46, "loss": [0.5945599675178528, 0.00010967856360366568], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "post_only", "#NEWLINE#", "def user_logout(", "request", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", "#INDENT#", "redirect_page", "=", "request", ".", "POST", ".", "get", "(", "'current_page'", ",", "'/'", ")", "#NEWLINE#", "logout", "(", "request", ")", "#NEWLINE#", "messages", ".", "success", "(", "request", ",", "'Logged out!'", ")", "#NEWLINE#", "return", "redirect", "(", "request"]}}
+{"position": {"error_location": 37, "repair_targets": [15], "repair_candidates": [15, 5, 13, 17, 30, 37, 45]}}
+{"prediction": {"error_location": 0.5518053770065308, "repair_targets": [0.9998903274536133], "repair_candidates": [2.4971592210931703e-05, 1.0731568181654438e-05, 0.9998903274536133, 2.8686699806712568e-05, 2.5719939003465697e-05, 7.816433026164304e-06, 1.1747146345442161e-05], "target_probs": 0.9998903274536133}}
+
+
+{"result": {"time": "2021-02-21 06:40:12.549190", "n_pass": [31, 5, 4], "n_token": 38, "loss": [0.38583600521087646, 0.0004787398793268949], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "post_only", "#NEWLINE#", "def user_logout(", "request", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", "#INDENT#", "redirect_page", "=", "request", ".", "POST", ".", "get", "request", ")", "#NEWLINE#", "messages", ".", "success", "(", "request", ",", "'Logged out!'", ")", "#NEWLINE#", "return", "redirect", "(", "request"]}}
+{"position": {"error_location": 29, "repair_targets": [15], "repair_candidates": [15, 5, 13, 17, 22, 29, 37]}}
+{"prediction": {"error_location": 0.6798820495605469, "repair_targets": [0.9995213747024536], "repair_candidates": [2.2002766854711808e-05, 8.202715434890706e-06, 0.9995213747024536, 6.255147582123755e-07, 0.00041828464600257576, 1.4227366591512691e-05, 1.5291536328732036e-05], "target_probs": 0.9995213747024536}}
+
+
+{"result": {"time": "2021-02-21 06:40:12.605622", "n_pass": [49, 6, 5], "n_token": 34, "loss": [0.08945127576589584, 0.00027988298097625375], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "post_only", "#NEWLINE#", "def user_logout(", "request", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", "#INDENT#", "redirect_page", "=", "request", ".", "POST", ".", "get", "request", ")", "#NEWLINE#", "messages", ".", "success", "(", "request", "return", "redirect", "(", "request"]}}
+{"position": {"error_location": 29, "repair_targets": [15], "repair_candidates": [15, 5, 13, 17, 22, 29, 33]}}
+{"prediction": {"error_location": 0.9144327044487, "repair_targets": [0.9997201561927795], "repair_candidates": [6.075610144762322e-06, 1.972905693037319e-06, 0.9997201561927795, 1.8654520772543037e-07, 0.0002639113808982074, 5.29379667568719e-06, 2.4027065137488535e-06], "target_probs": 0.9997201561927795}}
+
+
+{"result": {"time": "2021-02-21 06:40:12.661673", "n_pass": [50, 7, 6], "n_token": 31, "loss": [0.03951349854469299, 9.358367242384702e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def user_logout(", "request", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", "#INDENT#", "redirect_page", "=", "request", ".", "POST", ".", "get", "request", ")", "#NEWLINE#", "messages", ".", "success", "(", "request", "return", "redirect", "(", "request"]}}
+{"position": {"error_location": 26, "repair_targets": [12], "repair_candidates": [12, 2, 10, 14, 19, 26, 30]}}
+{"prediction": {"error_location": 0.9612571001052856, "repair_targets": [0.9999064207077026], "repair_candidates": [5.899005373066757e-06, 3.1917193155095447e-07, 0.9999064207077026, 3.034096973664191e-09, 8.445500861853361e-05, 1.383039148095122e-06, 1.562127067700203e-06], "target_probs": 0.9999064207077026}}
+
+
+{"result": {"time": "2021-02-21 06:40:12.721126", "n_pass": [52, 8, 7], "n_token": 27, "loss": [0.03777295723557472, 7.677372923353687e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def user_logout(", "request", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", "#INDENT#", "redirect_page", "=", "request", ".", "POST", ".", "get", "request", ")", "#NEWLINE#", "messages", ".", "success", "(", "request", "return", "redirect", "(", "request"]}}
+{"position": {"error_location": 22, "repair_targets": [8], "repair_candidates": [8, 2, 6, 10, 15, 22, 26]}}
+{"prediction": {"error_location": 0.9629315733909607, "repair_targets": [0.9999232292175293], "repair_candidates": [6.886584287713049e-06, 1.684005474089645e-05, 0.9999232292175293, 3.048384655812697e-08, 5.069268081570044e-05, 1.18382092750835e-06, 1.1912695754290326e-06], "target_probs": 0.9999232292175293}}
+
+
+{"result": {"time": "2021-02-21 06:40:12.776996", "n_pass": [55, 9, 8], "n_token": 23, "loss": [0.07815830409526825, 0.00012780052202288061], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def user_logout(", "request", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", "#INDENT#", "redirect_page", "=", "request", "request", ")", "#NEWLINE#", "messages", ".", "success", "(", "request", "return", "redirect", "(", "request"]}}
+{"position": {"error_location": 18, "repair_targets": [8], "repair_candidates": [8, 2, 6, 10, 11, 18, 22]}}
+{"prediction": {"error_location": 0.9248180389404297, "repair_targets": [0.9998722076416016], "repair_candidates": [4.6141973143676296e-05, 3.345168079249561e-05, 0.9998722076416016, 2.6086678190040402e-05, 1.5530105883954093e-05, 4.469033228815533e-06, 2.053931893897243e-06], "target_probs": 0.9998722076416016}}
+
+
+{"result": {"time": "2021-02-21 06:40:12.833086", "n_pass": [75, 10, 9], "n_token": 21, "loss": [0.36067521572113037, 0.0007338235736824572], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def user_logout(", "request", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", "#INDENT#", "redirect_page", "=", "request", "request", ")", ".", "success", "(", "request", "return", "redirect", "(", "request"]}}
+{"position": {"error_location": 16, "repair_targets": [8], "repair_candidates": [8, 2, 6, 10, 11, 16, 20]}}
+{"prediction": {"error_location": 0.6972053647041321, "repair_targets": [0.9992664456367493], "repair_candidates": [0.00020029755251016468, 0.00038498337380588055, 0.9992664456367493, 8.254713611677289e-05, 6.199250492500141e-05, 1.6234130271186586e-06, 2.172288077417761e-06], "target_probs": 0.9992664456367493}}
+
+
+{"result": {"time": "2021-02-21 06:40:13.000635", "n_pass": [80, 13, 10], "n_token": 20, "loss": [0.13757385313510895, 0.0396440289914608], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def user_logout(", "request", "'\\n    Log out user if one is logged in and redirect them to frontpage.\\n    '", "#NEWLINE#", "if", "request", "#INDENT#", "redirect_page", "=", "request", "request", ")", ".", "success", "(", "request", "return", "redirect", "(", "request"]}}
+{"position": {"error_location": 15, "repair_targets": [7], "repair_candidates": [7, 1, 5, 9, 10, 15, 19]}}
+{"prediction": {"error_location": 0.8714699745178223, "repair_targets": [0.9611315131187439], "repair_candidates": [0.03869256004691124, 0.00012807651364710182, 0.9611315131187439, 2.4830942493281327e-05, 2.2006715880706906e-05, 5.373527756091789e-07, 4.2491245721976156e-07], "target_probs": 0.9611315131187439}}
+
+
+{"result": {"time": "2021-02-21 06:40:13.059093", "n_pass": [82, 14, 11], "n_token": 18, "loss": [0.05944473668932915, 0.003475080942735076], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def user_logout(", "request", "if", "request", "#INDENT#", "redirect_page", "=", "request", "request", ")", ".", "success", "(", "request", "return", "redirect", "(", "request"]}}
+{"position": {"error_location": 13, "repair_targets": [5], "repair_candidates": [5, 1, 3, 7, 8, 13, 17]}}
+{"prediction": {"error_location": 0.9422876834869385, "repair_targets": [0.9965309500694275], "repair_candidates": [0.0031458325684070587, 0.00022547299158759415, 0.9965309500694275, 4.6549219405278563e-05, 4.973977047484368e-05, 1.3236731319921091e-06, 8.177160282230034e-08], "target_probs": 0.9965309500694275}}
+
+
+{"result": {"time": "2021-02-21 06:40:13.114762", "n_pass": [87, 15, 12], "n_token": 16, "loss": [0.023192334920167923, 0.0019146043341606855], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def user_logout(", "request", "if", "request", "#INDENT#", "redirect_page", "=", "request", "request", ")", "(", "request", "return", "redirect", "(", "request"]}}
+{"position": {"error_location": 11, "repair_targets": [5], "repair_candidates": [5, 1, 3, 7, 8, 11, 15]}}
+{"prediction": {"error_location": 0.9770746827125549, "repair_targets": [0.9980872273445129], "repair_candidates": [0.0015176436863839626, 0.00014366891991812736, 0.9980872273445129, 0.0001014144072541967, 0.00014471840404439718, 4.972842816641787e-06, 3.843537967895827e-07], "target_probs": 0.9980872273445129}}
+
+
+{"result": {"time": "2021-02-21 06:40:13.336681", "n_pass": [115, 19, 13], "n_token": 15, "loss": [0.02711663395166397, 0.0010310957441106439], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def user_logout(", "request", "if", "request", "#INDENT#", "redirect_page", "=", "request", "request", ")", "(", "request", "return", "(", "request"]}}
+{"position": {"error_location": 11, "repair_targets": [5], "repair_candidates": [5, 1, 3, 7, 8, 11, 14]}}
+{"prediction": {"error_location": 0.9732477068901062, "repair_targets": [0.9989694356918335], "repair_candidates": [0.0009208572446368635, 1.2556825822684914e-05, 0.9989694356918335, 4.574120612232946e-05, 5.055886504123919e-05, 7.735479243820009e-07, 8.039143750693256e-08], "target_probs": 0.9989694356918335}}
+
+
+{"result": {"time": "2021-02-21 06:40:13.394722", "n_pass": [116, 20, 14], "n_token": 14, "loss": [0.634151816368103, 0.0012158987810835242], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def user_logout(", "request", "if", "request", "#INDENT#", "redirect_page", "=", "request", "request", ")", "(", "request", "return", "request"]}}
+{"position": {"error_location": 11, "repair_targets": [5], "repair_candidates": [5, 1, 3, 7, 8, 11, 13]}}
+{"prediction": {"error_location": 0.5303851962089539, "repair_targets": [0.9987848401069641], "repair_candidates": [0.0011773931328207254, 1.4219994000086444e-06, 0.9987848401069641, 1.7833583115134388e-05, 1.803999657568056e-05, 3.333244933401147e-07, 5.7088332283683485e-08], "target_probs": 0.9987848401069641}}
+
+
+{"result": {"time": "2021-02-21 06:40:13.450226", "n_pass": [118, 21, 15], "n_token": 13, "loss": [0.4934128224849701, 0.00260728457942605], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", "if", "request", "#INDENT#", "redirect_page", "=", "request", "request", ")", "(", "request", "return", "request"]}}
+{"position": {"error_location": 10, "repair_targets": [4], "repair_candidates": [4, 0, 2, 6, 7, 10, 12]}}
+{"prediction": {"error_location": 0.6105391979217529, "repair_targets": [0.9973961114883423], "repair_candidates": [0.0010944660753011703, 0.000248879921855405, 0.9973961114883423, 0.0005640925955958664, 0.0006930702365934849, 3.330714662297396e-06, 1.4602184705836407e-07], "target_probs": 0.9973961114883423}}
+
+
+{"result": {"time": "2021-02-21 06:40:13.671075", "n_pass": [127, 25, 16], "n_token": 12, "loss": [0.5068597197532654, 0.006100628990679979], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["request", "if", "request", "#INDENT#", "redirect_page", "=", "request", "request", "(", "request", "return", "request"]}}
+{"position": {"error_location": 9, "repair_targets": [4], "repair_candidates": [4, 0, 2, 6, 7, 9, 11]}}
+{"prediction": {"error_location": 0.6023843288421631, "repair_targets": [0.9939179420471191], "repair_candidates": [0.0026477379724383354, 0.0011653763940557837, 0.9939179420471191, 0.002240024972707033, 2.7803416742244735e-05, 9.876032436295645e-07, 2.015255233800417e-07], "target_probs": 0.9939179420471191}}
+
+
+
+
+Minimal simplified tokens:
+
+['request', 'if', 'request', '#INDENT#', 'redirect_page', '=', 'request', 'request', '(', 'request', 'return', 'request']

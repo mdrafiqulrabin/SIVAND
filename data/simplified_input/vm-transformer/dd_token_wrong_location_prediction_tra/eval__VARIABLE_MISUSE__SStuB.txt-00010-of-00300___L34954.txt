@@ -1,0 +1,103 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "'Enter a label'", ")", ":", "#NEWLINE#", "#INDENT#", "'Prompt the user to enter text using QT\\n\\n    :param title: Name of the prompt\\n\\n    *Returns*\\n       The text the user typed, or None\\n    '", "#NEWLINE#", "(", "result", ",", "isok", ")", "=", "QtGui", ".", "QInputDialog", ".", "getText", "(", "None", ",", "title", ",", "title", ")", "#NEWLINE#", "if", "result", ":", "#NEWLINE#", "#INDENT#", "return", "str", "(", "result", ")"], "error_location": [31], "repair_targets": [14], "repair_candidates": [12, 31, 38, 2, 25, 27, 14], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "glue-viz/glue/glue/utils/qt/dialogs.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00010-of-00300", "js_count": 34954, "results": {"model": "transformer", "prob": {"loc": [[0.05149379000067711, 2.5545589323883178e-06, 4.702338287643215e-07, 7.252353384501475e-08, 6.280029651861696e-08, 1.099011193161914e-08, 2.1712640574378383e-08, 2.59866279606058e-08, 2.276611255069838e-08, 5.050478080192988e-08, 2.4758426420135038e-08, 1.3581975544241232e-09, 5.9587996759091766e-08, 1.1032516233910883e-08, 8.26090108603239e-05, 1.2602964893915214e-08, 3.020486971649916e-08, 1.281152748333625e-07, 2.082809835712851e-08, 2.047931246806911e-08, 1.6913142886210153e-08, 3.5805858278337155e-09, 1.9766737295867642e-06, 1.7615128911074862e-07, 7.404030810675977e-08, 0.043002620339393616, 1.3062853554401954e-07, 0.8498773574829102, 1.3136475899955258e-05, 4.491240588322398e-07, 1.200313022309274e-07, 0.01176491566002369, 6.249812258829479e-07, 5.567154630625737e-07, 1.681953705201522e-07, 8.824875052937386e-09, 2.0306176740092496e-09, 4.136982312274995e-08, 0.043756674975156784, 1.0349788226449164e-06]], "pointer": [[0.0, 0.0, 0.007162094581872225, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.889450014568865e-05, 0.0, 0.9927074313163757, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.1356836893128275e-07, 0.0, 4.483937573240837e-06, 0.0, 0.0, 0.0, 1.1055190043407492e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.5976757721509784e-05, 0.0]], "target": [0.9927074313163757]}, "loss": [4.442633628845215, 0.00731928925961256], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [27]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:51:52.364394", "n_pass": [1, 1, 1], "n_token": 40, "loss": [0.16266325116157532, 0.00731928925961256], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "'Enter a label'", ")", ":", "#NEWLINE#", "#INDENT#", "'Prompt the user to enter text using QT\\n\\n    :param title: Name of the prompt\\n\\n    *Returns*\\n       The text the user typed, or None\\n    '", "#NEWLINE#", "(", "result", ",", "isok", ")", "=", "QtGui", ".", "QInputDialog", ".", "getText", "(", "None", ",", "title", ",", "title", ")", "#NEWLINE#", "if", "result", ":", "#NEWLINE#", "#INDENT#", "return", "str", "(", "result", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [14], "repair_candidates": [12, 31, 38, 2, 25, 27, 14]}}
+{"prediction": {"error_location": 0.8498773574829102, "repair_targets": [0.9927074313163757], "repair_candidates": [0.007162094581872225, 6.889450014568865e-05, 0.9927074313163757, 1.1356836893128275e-07, 4.483937573240837e-06, 1.1055190043407492e-06, 5.5976757721509784e-05], "target_probs": 0.9927074313163757}}
+
+
+{"result": {"time": "2021-02-21 06:51:52.420754", "n_pass": [21, 2, 2], "n_token": 35, "loss": [0.01844082586467266, 0.0003276407951489091], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "'Enter a label'", "#NEWLINE#", "(", "result", ",", "isok", ")", "=", "QtGui", ".", "QInputDialog", ".", "getText", "(", "None", ",", "title", ",", "title", ")", "#NEWLINE#", "if", "result", ":", "#NEWLINE#", "#INDENT#", "return", "str", "(", "result", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [9], "repair_candidates": [7, 26, 33, 2, 20, 22, 9]}}
+{"prediction": {"error_location": 0.9817280769348145, "repair_targets": [0.9996724128723145], "repair_candidates": [0.00026348582468926907, 5.516694000107236e-05, 0.9996724128723145, 5.816107151446204e-09, 3.98526864842097e-08, 4.118825529531023e-07, 8.515693480148911e-06], "target_probs": 0.9996724128723145}}
+
+
+{"result": {"time": "2021-02-21 06:51:52.590572", "n_pass": [42, 5, 3], "n_token": 33, "loss": [0.013716607354581356, 0.0013967369450256228], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "(", "result", ",", "isok", ")", "=", "QtGui", ".", "QInputDialog", ".", "getText", "(", "None", ",", "title", ",", "title", ")", "#NEWLINE#", "if", "result", ":", "#NEWLINE#", "#INDENT#", "return", "str", "(", "result", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [7], "repair_candidates": [5, 24, 31, 2, 18, 20, 7]}}
+{"prediction": {"error_location": 0.9863770604133606, "repair_targets": [0.9986042380332947], "repair_candidates": [4.021579661639407e-05, 0.0013287486508488655, 0.9986042380332947, 6.163331178754561e-09, 1.7944092434163395e-08, 4.2974684220098425e-06, 2.2418624212150462e-05], "target_probs": 0.9986042380332947}}
+
+
+{"result": {"time": "2021-02-21 06:51:52.646732", "n_pass": [45, 6, 4], "n_token": 31, "loss": [0.08222068846225739, 0.00077134306775406], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "(", "result", ",", "isok", "QtGui", ".", "QInputDialog", ".", "getText", "(", "None", ",", "title", ",", "title", ")", "#NEWLINE#", "if", "result", ":", "#NEWLINE#", "#INDENT#", "return", "str", "(", "result", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [7], "repair_candidates": [5, 22, 29, 2, 16, 18, 7]}}
+{"prediction": {"error_location": 0.921068549156189, "repair_targets": [0.9992289543151855], "repair_candidates": [8.068413444561884e-05, 0.0006108140223659575, 0.9992289543151855, 3.789956082300705e-08, 4.634084405097383e-08, 1.0125140761374496e-05, 6.930643576197326e-05], "target_probs": 0.9992289543151855}}
+
+
+{"result": {"time": "2021-02-21 06:51:52.757854", "n_pass": [47, 8, 5], "n_token": 28, "loss": [0.03702688217163086, 0.0007122310344129801], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "(", "result", ",", "isok", "QtGui", ".", "(", "None", ",", "title", ",", "title", ")", "#NEWLINE#", "if", "result", ":", "#NEWLINE#", "#INDENT#", "return", "str", "(", "result", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [7], "repair_candidates": [5, 19, 26, 2, 13, 15, 7]}}
+{"prediction": {"error_location": 0.9636502265930176, "repair_targets": [0.999288022518158], "repair_candidates": [0.00012050792429363355, 0.0005060164257884026, 0.999288022518158, 1.1686227452400999e-07, 7.629492415617278e-08, 4.2822422983590513e-05, 4.2360676161479205e-05], "target_probs": 0.999288022518158}}
+
+
+{"result": {"time": "2021-02-21 06:51:52.872681", "n_pass": [50, 10, 6], "n_token": 25, "loss": [0.43958792090415955, 0.002042470732703805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "(", "result", ",", "isok", "QtGui", ".", "(", "None", ",", "title", ",", "title", "result", ":", "#NEWLINE#", "#INDENT#", "return", "str", "(", "result", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [7], "repair_candidates": [5, 16, 23, 2, 13, 15, 7]}}
+{"prediction": {"error_location": 0.6443017721176147, "repair_targets": [0.9979596138000488], "repair_candidates": [0.0002400113589828834, 0.0017331421840935946, 0.9979596138000488, 1.7546881281305104e-06, 4.357806119514862e-06, 4.206243102089502e-05, 1.915791472129058e-05], "target_probs": 0.9979596138000488}}
+
+
+{"result": {"time": "2021-02-21 06:51:53.203465", "n_pass": [83, 16, 7], "n_token": 23, "loss": [0.308631956577301, 0.0007588165462948382], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "(", "result", ",", "isok", "QtGui", ".", "(", "None", ",", "title", ",", "title", "result", "#INDENT#", "return", "str", "(", "result", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [7], "repair_candidates": [5, 16, 21, 2, 13, 15, 7]}}
+{"prediction": {"error_location": 0.7344509959220886, "repair_targets": [0.9992414712905884], "repair_candidates": [0.00017076679796446115, 0.0005154127720743418, 0.9992414712905884, 4.943480576002912e-07, 6.578682132385438e-07, 4.140580858802423e-05, 2.9685039407922886e-05], "target_probs": 0.9992414712905884}}
+
+
+{"result": {"time": "2021-02-21 06:51:53.262181", "n_pass": [84, 17, 8], "n_token": 21, "loss": [0.6012018918991089, 0.0004341948661021888], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "(", "result", ",", "isok", "QtGui", ".", "(", "None", ",", "title", ",", "title", "result", "str", "(", "result", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [7], "repair_candidates": [5, 16, 19, 2, 13, 15, 7]}}
+{"prediction": {"error_location": 0.5481523871421814, "repair_targets": [0.9995658993721008], "repair_candidates": [0.00028487498639151454, 0.00014655957056675106, 0.9995658993721008, 9.080576433007082e-07, 8.047384767451149e-07, 4.3827793660966563e-07, 5.243894634077151e-07], "target_probs": 0.9995658993721008}}
+
+
+{"result": {"time": "2021-02-21 06:51:53.986006", "n_pass": [109, 30, 9], "n_token": 20, "loss": [0.15908780694007874, 6.032171950209886e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "(", "result", ",", "isok", "QtGui", ".", "(", "None", ",", "title", ",", "title", "result", "str", "result", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [7], "repair_candidates": [5, 16, 18, 2, 13, 15, 7]}}
+{"prediction": {"error_location": 0.8529213666915894, "repair_targets": [0.9999396800994873], "repair_candidates": [2.4010474589886144e-05, 3.271715104347095e-05, 0.9999396800994873, 1.203473658506482e-07, 1.876735353789627e-07, 4.275064924286198e-08, 3.3073949907702627e-06], "target_probs": 0.9999396800994873}}
+
+
+{"result": {"time": "2021-02-21 06:51:54.041925", "n_pass": [111, 31, 10], "n_token": 19, "loss": [0.04207772761583328, 0.00028095615562051535], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "=", "(", "result", ",", "isok", "QtGui", ".", "(", "None", ",", "title", ",", "title", "result", "str", "result"]}}
+{"position": {"error_location": 15, "repair_targets": [7], "repair_candidates": [5, 16, 18, 2, 13, 15, 7]}}
+{"prediction": {"error_location": 0.9587952494621277, "repair_targets": [0.9997190833091736], "repair_candidates": [1.7423215467715636e-05, 0.0002599823637865484, 0.9997190833091736, 9.492234909203034e-08, 7.340124597021713e-08, 1.184814095722686e-07, 3.1708011647424428e-06], "target_probs": 0.9997190833091736}}
+
+
+{"result": {"time": "2021-02-21 06:51:54.208008", "n_pass": [115, 34, 11], "n_token": 18, "loss": [0.5255740880966187, 0.1165960505604744], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "(", "result", ",", "isok", "QtGui", ".", "(", "None", ",", "title", ",", "title", "result", "str", "result"]}}
+{"position": {"error_location": 14, "repair_targets": [6], "repair_candidates": [4, 15, 17, 2, 12, 14, 6]}}
+{"prediction": {"error_location": 0.5912157893180847, "repair_targets": [0.8899446129798889], "repair_candidates": [0.0002326278481632471, 0.10923590511083603, 0.8899446129798889, 3.0289003916550428e-05, 6.894188845762983e-05, 9.941435564542189e-05, 0.00038830775883980095], "target_probs": 0.8899446129798889}}
+
+
+{"result": {"time": "2021-02-21 06:51:54.434027", "n_pass": [121, 38, 12], "n_token": 17, "loss": [0.7113440632820129, 0.0014792290749028325], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_text(", "title", "(", "result", ",", "isok", "QtGui", "(", "None", ",", "title", ",", "title", "result", "str", "result"]}}
+{"position": {"error_location": 13, "repair_targets": [6], "repair_candidates": [4, 14, 16, 2, 11, 13, 6]}}
+{"prediction": {"error_location": 0.49098387360572815, "repair_targets": [0.9985218644142151], "repair_candidates": [0.0002560472930781543, 0.0009388177422806621, 0.9985218644142151, 0.00013924822269473225, 0.00011941535194637254, 4.006427843705751e-06, 2.0551788111333735e-05], "target_probs": 0.9985218644142151}}
+
+
+{"result": {"time": "2021-02-21 06:51:54.768086", "n_pass": [131, 44, 13], "n_token": 16, "loss": [0.6560685634613037, 0.008211678825318813], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def get_text(", "title", "(", "result", ",", "isok", "QtGui", "(", "None", ",", "title", ",", "title", "result", "str", "result"]}}
+{"position": {"error_location": 12, "repair_targets": [5], "repair_candidates": [3, 13, 15, 1, 10, 12, 5]}}
+{"prediction": {"error_location": 0.5188873410224915, "repair_targets": [0.9918219447135925], "repair_candidates": [0.0010637844679877162, 0.006769936066120863, 0.9918219447135925, 9.042378223966807e-05, 4.690276455221465e-06, 0.0002202397008659318, 2.89081235678168e-05], "target_probs": 0.9918219447135925}}
+
+
+{"result": {"time": "2021-02-21 06:51:54.933897", "n_pass": [136, 47, 14], "n_token": 15, "loss": [0.3961137533187866, 0.04078153520822525], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def get_text(", "title", "(", "result", "isok", "QtGui", "(", "None", ",", "title", ",", "title", "result", "str", "result"]}}
+{"position": {"error_location": 11, "repair_targets": [4], "repair_candidates": [3, 12, 14, 1, 9, 11, 4]}}
+{"prediction": {"error_location": 0.6729301810264587, "repair_targets": [0.9600388407707214], "repair_candidates": [0.0007121852831915021, 0.038691941648721695, 0.9600388407707214, 0.00010791658132802695, 1.0347496754548047e-05, 0.00039488758193328977, 4.3843294406542554e-05], "target_probs": 0.9600388407707214}}
+
+
+{"result": {"time": "2021-02-21 06:51:55.213845", "n_pass": [143, 52, 15], "n_token": 14, "loss": [0.24687103927135468, 0.09949605166912079], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def get_text(", "title", "(", "result", "isok", "QtGui", "(", "None", ",", "title", "title", "result", "str", "result"]}}
+{"position": {"error_location": 10, "repair_targets": [4], "repair_candidates": [3, 11, 13, 1, 9, 10, 4]}}
+{"prediction": {"error_location": 0.7812414765357971, "repair_targets": [0.9052935242652893], "repair_candidates": [0.001438296865671873, 0.09057459980249405, 0.9052935242652893, 0.0007408609380945563, 1.477773275837535e-05, 0.0017133563524112105, 0.0002245375799247995], "target_probs": 0.9052935242652893}}
+
+
+
+
+Minimal simplified tokens:
+
+['def get_text(', 'title', '(', 'result', 'isok', 'QtGui', '(', 'None', ',', 'title', 'title', 'result', 'str', 'result']

@@ -1,0 +1,157 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_roles_for_users_on_users_raises_without_relevant_roles(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "django_user", "=", "User", ".", "objects", ".", "create", "(", "username", "=", "'test'", ",", "email", "=", "'test@example.com'", ",", "first_name", "=", "'Test'", ",", "last_name", "=", "'Tester'", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "'member'", ",", "True", ")", "#NEWLINE#", "with", "self", ".", "assertRaises", "(", "RulesException", ")", ":", "#NEWLINE#", "#INDENT#", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "res", ")", ",", "1", ")"], "error_location": [61], "repair_targets": [32, 40], "repair_candidates": [2, 48, 66, 32, 40, 57, 72, 7, 61, 63], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "chrisglass/django-rulez/rulez/tests/roles_helpers.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 2816, "results": {"model": "transformer", "prob": {"loc": [[0.04832654446363449, 3.7004454611633264e-07, 1.2365622126253584e-07, 4.65280081130004e-09, 7.48961159757755e-09, 8.503903359269316e-09, 6.5715584085523915e-09, 1.1614965700346147e-07, 5.714916540000559e-09, 1.241232094884026e-08, 8.41772962445475e-09, 3.4928917536092285e-09, 7.810948332576118e-09, 3.6978027306844297e-09, 1.6416548120901098e-08, 1.1176187975081575e-08, 1.9799415440502344e-08, 1.3962096367947652e-08, 3.026786599136244e-09, 9.276738488495084e-09, 8.099683590501172e-09, 5.0726765010722374e-09, 1.690351081329311e-09, 3.760522115925369e-09, 1.0358151669720428e-08, 1.570807128814522e-08, 1.3708240098608826e-09, 3.9238621241111105e-09, 1.1733451543705087e-08, 1.287507966907242e-08, 2.79370326872197e-09, 6.654337969536073e-09, 1.10114740436984e-06, 3.6926577351437118e-09, 2.2134615917934752e-08, 1.3236437723662675e-07, 2.4775413720590223e-08, 1.5484404869425816e-08, 3.259338754446617e-08, 1.803376292741632e-08, 2.8536012905533426e-05, 4.144964194097156e-08, 3.6704889794236806e-07, 4.454486557392556e-08, 5.9229769533430954e-08, 2.625248995968832e-08, 3.520759150887898e-08, 4.85642592806812e-09, 8.881636404112214e-08, 4.75770214336535e-08, 1.209907818378042e-08, 6.03511054464434e-08, 2.7409410563450365e-07, 3.6712329176680214e-08, 8.90271749653948e-08, 7.791214073904484e-08, 2.381537811402268e-08, 2.5549331894580973e-07, 1.036101604512396e-08, 3.249047964004603e-08, 6.449005951481013e-08, 0.2690940797328949, 3.073204624115533e-08, 0.6823911666870117, 3.755685540340892e-08, 2.592783587829217e-08, 1.5038688516710863e-08, 1.5895629701390135e-08, 1.276479477674286e-09, 8.319659627886722e-09, 9.389975019757912e-09, 3.252501556971765e-08, 0.00015417773101944476, 1.3103699458838491e-08, 1.1132595290064273e-08, 1.5440537026734091e-06, 2.639246154956254e-08]], "pointer": [[0.0, 0.0, 0.00873034168034792, 0.0, 0.0, 0.0, 0.0, 0.0007685788441449404, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9214889407157898, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.06344384700059891, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.005456645041704178, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.962590173818171e-05, 0.0, 0.0, 0.0, 1.1017286851711106e-06, 0.0, 1.0045086128229741e-05, 0.0, 0.0, 4.908250775770284e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 1.7457489320804598e-06, 0.0, 0.0, 0.0, 0.0]], "target": [0.9849327802658081]}, "loss": [1.3126943111419678, 0.015181883238255978], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [63]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:36:07.542261", "n_pass": [1, 1, 1], "n_token": 77, "loss": [0.3821523189544678, 0.015181883238255978], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_roles_for_users_on_users_raises_without_relevant_roles(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "django_user", "=", "User", ".", "objects", ".", "create", "(", "username", "=", "'test'", ",", "email", "=", "'test@example.com'", ",", "first_name", "=", "'Test'", ",", "last_name", "=", "'Tester'", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "'member'", ",", "True", ")", "#NEWLINE#", "with", "self", ".", "assertRaises", "(", "RulesException", ")", ":", "#NEWLINE#", "#INDENT#", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "res", ")", ",", "1", ")"]}}
+{"position": {"error_location": 63, "repair_targets": [32, 40], "repair_candidates": [2, 48, 66, 32, 40, 57, 72, 7, 61, 63]}}
+{"prediction": {"error_location": 0.6823911666870117, "repair_targets": [0.9214889407157898, 0.06344384700059891], "repair_candidates": [0.00873034168034792, 0.0007685788441449404, 0.9214889407157898, 0.06344384700059891, 0.005456645041704178, 4.962590173818171e-05, 1.1017286851711106e-06, 1.0045086128229741e-05, 4.908250775770284e-05, 1.7457489320804598e-06], "target_probs": 0.9849327802658081}}
+
+
+{"result": {"time": "2021-02-21 05:36:07.599778", "n_pass": [21, 2, 2], "n_token": 68, "loss": [0.22697530686855316, 0.006214397493749857], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_roles_for_users_on_users_raises_without_relevant_roles(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "django_user", "=", ",", "email", "=", "'test@example.com'", ",", "first_name", "=", "'Test'", ",", "last_name", "=", "'Tester'", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "'member'", ",", "True", ")", "#NEWLINE#", "with", "self", ".", "assertRaises", "(", "RulesException", ")", ":", "#NEWLINE#", "#INDENT#", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "res", ")", ",", "1", ")"]}}
+{"position": {"error_location": 54, "repair_targets": [23, 31], "repair_candidates": [2, 39, 57, 23, 31, 48, 63, 7, 52, 54]}}
+{"prediction": {"error_location": 0.7969403862953186, "repair_targets": [0.9505327939987183, 0.04327210411429405], "repair_candidates": [0.003622832242399454, 0.0014312572311609983, 0.9505327939987183, 0.04327210411429405, 0.0011082373093813658, 1.136315222538542e-05, 7.691124892517109e-07, 5.9044259614893235e-06, 1.4420508705370594e-05, 2.38995426116162e-07], "target_probs": 0.9938048720359802}}
+
+
+{"result": {"time": "2021-02-21 05:36:07.655753", "n_pass": [22, 3, 3], "n_token": 59, "loss": [0.35305720567703247, 0.007568196393549442], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_roles_for_users_on_users_raises_without_relevant_roles(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "django_user", "=", "last_name", "=", "'Tester'", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "'member'", ",", "True", ")", "#NEWLINE#", "with", "self", ".", "assertRaises", "(", "RulesException", ")", ":", "#NEWLINE#", "#INDENT#", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "res", ")", ",", "1", ")"]}}
+{"position": {"error_location": 45, "repair_targets": [14, 22], "repair_candidates": [2, 30, 48, 14, 22, 39, 54, 7, 43, 45]}}
+{"prediction": {"error_location": 0.7025371789932251, "repair_targets": [0.8531876802444458, 0.13927267491817474], "repair_candidates": [0.0027020967099815607, 0.003335896646603942, 0.8531876802444458, 0.13927267491817474, 0.001472008996643126, 2.4485832909704186e-05, 9.468129178458184e-07, 1.7964900962397223e-06, 1.8037260360870278e-06, 5.645844112223131e-07], "target_probs": 0.9924603700637817}}
+
+
+{"result": {"time": "2021-02-21 05:36:07.768511", "n_pass": [44, 5, 4], "n_token": 54, "loss": [0.5655157566070557, 0.0199810191988945], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_roles_for_users_on_users_raises_without_relevant_roles(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "django_user", "=", "last_name", "=", "'Tester'", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "with", "self", ".", "assertRaises", "(", "RulesException", ")", ":", "#NEWLINE#", "#INDENT#", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "res", ")", ",", "1", ")"]}}
+{"position": {"error_location": 40, "repair_targets": [14, 22], "repair_candidates": [2, 25, 43, 14, 22, 34, 49, 7, 38, 40]}}
+{"prediction": {"error_location": 0.5680670142173767, "repair_targets": [0.7612447142601013, 0.2189725637435913], "repair_candidates": [0.007345967926084995, 0.00819613691419363, 0.7612447142601013, 0.2189725637435913, 0.004218413960188627, 1.682616311882157e-05, 1.335494630438916e-06, 1.6865932366272318e-06, 1.8790293552228832e-06, 5.009499659536232e-07], "target_probs": 0.9802172780036926}}
+
+
+{"result": {"time": "2021-02-21 05:36:07.826869", "n_pass": [46, 6, 5], "n_token": 49, "loss": [0.7036084532737732, 0.01468613464385271], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_roles_for_users_on_users_raises_without_relevant_roles(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "django_user", "=", "last_name", "=", "'Tester'", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "with", "self", ".", "assertRaises", "(", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "len", "(", "res", ")", ",", "1", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [14, 22], "repair_candidates": [2, 25, 38, 14, 22, 29, 44, 7, 33, 35]}}
+{"prediction": {"error_location": 0.49479663372039795, "repair_targets": [0.9305663704872131, 0.05485479161143303], "repair_candidates": [0.005674188025295734, 0.0060829767026007175, 0.9305663704872131, 0.05485479161143303, 0.00023426960979122669, 0.002530723577365279, 2.782826868497068e-06, 2.0328157916083e-05, 4.017264927824726e-06, 2.949619920400437e-05], "target_probs": 0.9854211807250977}}
+
+
+{"result": {"time": "2021-02-21 05:36:07.882793", "n_pass": [49, 7, 6], "n_token": 44, "loss": [0.4065991938114166, 0.1325186938047409], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_roles_for_users_on_users_raises_without_relevant_roles(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "django_user", "=", "last_name", "=", "'Tester'", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "with", "self", ".", "assertRaises", "(", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")", ",", "1", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [14, 22], "repair_candidates": [2, 25, 38, 14, 22, 29, 39, 7, 33, 35]}}
+{"prediction": {"error_location": 0.6659110188484192, "repair_targets": [0.8692659735679626, 0.006620592437684536], "repair_candidates": [0.012502789497375488, 0.004920121282339096, 0.8692659735679626, 0.006620592437684536, 0.0004618873354047537, 0.0969521701335907, 7.555878482889966e-07, 1.6821804820210673e-06, 0.0056745316833257675, 0.0035994851496070623], "target_probs": 0.8758865594863892}}
+
+
+{"result": {"time": "2021-02-21 05:36:07.995273", "n_pass": [78, 9, 7], "n_token": 41, "loss": [0.36189624667167664, 0.03543704375624657], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_roles_for_users_on_users_raises_without_relevant_roles(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "django_user", "=", "last_name", "=", "'Tester'", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "with", "self", ".", "assertRaises", "(", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [14, 22], "repair_candidates": [2, 25, 38, 14, 22, 29, 39, 7, 33, 35]}}
+{"prediction": {"error_location": 0.6963545680046082, "repair_targets": [0.9600655436515808, 0.005117973778396845], "repair_candidates": [0.008680850267410278, 0.004813628736883402, 0.9600655436515808, 0.005117973778396845, 0.00010281889990437776, 0.010689339600503445, 5.317986619957082e-07, 1.8852820176107343e-06, 0.005536142736673355, 0.004991376772522926], "target_probs": 0.9651834964752197}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.051378", "n_pass": [79, 10, 8], "n_token": 39, "loss": [0.28435277938842773, 0.024181844666600227], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#NEWLINE#", "#INDENT#", "django_user", "=", "last_name", "=", "'Tester'", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "with", "self", ".", "assertRaises", "(", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [12, 20], "repair_candidates": [0, 23, 36, 12, 20, 27, 37, 5, 31, 33]}}
+{"prediction": {"error_location": 0.7525011301040649, "repair_targets": [0.9624038934707642, 0.013704298064112663], "repair_candidates": [0.00768033554777503, 0.0013303501764312387, 0.9624038934707642, 0.013704298064112663, 0.00037921578041277826, 0.004061694722622633, 6.306032673819573e-07, 3.187640686519444e-06, 0.007538126315921545, 0.002898201812058687], "target_probs": 0.976108193397522}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.107549", "n_pass": [81, 11, 9], "n_token": 37, "loss": [0.15432393550872803, 0.027691395953297615], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "=", "last_name", "=", "'Tester'", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "with", "self", ".", "assertRaises", "(", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 31, "repair_targets": [10, 18], "repair_candidates": [0, 21, 34, 10, 18, 25, 35, 3, 29, 31]}}
+{"prediction": {"error_location": 0.8569944500923157, "repair_targets": [0.9600599408149719, 0.012628578580915928], "repair_candidates": [0.0041349586099386215, 0.0009917665738612413, 0.9600599408149719, 0.012628578580915928, 0.0015208326512947679, 0.009848766028881073, 2.077086804774808e-07, 9.87266503216233e-07, 0.007284584920853376, 0.0035293714608997107], "target_probs": 0.9726884961128235}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.221070", "n_pass": [84, 13, 10], "n_token": 35, "loss": [0.1989576816558838, 0.06616267561912537], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "=", "last_name", ")", "#NEWLINE#", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "with", "self", ".", "assertRaises", "(", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [8, 16], "repair_candidates": [0, 19, 32, 8, 16, 23, 33, 3, 27, 29]}}
+{"prediction": {"error_location": 0.8195846080780029, "repair_targets": [0.9149096608161926, 0.021068904548883438], "repair_candidates": [0.01117358822375536, 0.0007875937735661864, 0.9149096608161926, 0.021068904548883438, 0.003634597174823284, 0.01910356432199478, 8.518513823219109e-07, 3.2781608751975e-06, 0.010197432711720467, 0.019120560958981514], "target_probs": 0.9359785914421082}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.276456", "n_pass": [85, 14, 11], "n_token": 33, "loss": [0.1426295042037964, 0.24167032539844513], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "=", "last_name", "user", "=", "MockUser", "(", ")", "#NEWLINE#", "setattr", "(", "user", ",", "with", "self", ".", "assertRaises", "(", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [6, 14], "repair_candidates": [0, 17, 30, 6, 14, 21, 31, 3, 25, 27]}}
+{"prediction": {"error_location": 0.8670751452445984, "repair_targets": [0.6241766214370728, 0.16113844513893127], "repair_candidates": [0.03664134442806244, 0.008511519059538841, 0.6241766214370728, 0.16113844513893127, 0.011718492023646832, 0.07986744493246078, 1.090025580197107e-05, 1.4454601114266552e-05, 0.019832761958241463, 0.058087997138500214], "target_probs": 0.7853150367736816}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.331909", "n_pass": [87, 15, 12], "n_token": 31, "loss": [0.15134310722351074, 0.3560357689857483], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "=", "last_name", "user", "=", ")", "#NEWLINE#", "setattr", "(", "user", ",", "with", "self", ".", "assertRaises", "(", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [6, 12], "repair_candidates": [0, 15, 28, 6, 12, 19, 29, 3, 23, 25]}}
+{"prediction": {"error_location": 0.8595526218414307, "repair_targets": [0.5851512551307678, 0.11529632657766342], "repair_candidates": [0.05445602536201477, 0.005357521120458841, 0.5851512551307678, 0.11529632657766342, 0.04436632990837097, 0.046881046146154404, 1.1303694918751717e-05, 1.685049028310459e-05, 0.020342782139778137, 0.1281205266714096], "target_probs": 0.7004475593566895}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.387295", "n_pass": [88, 16, 13], "n_token": 29, "loss": [0.162509948015213, 0.0023775326553732157], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "=", "last_name", "user", "=", "setattr", "(", "user", ",", "with", "self", ".", "assertRaises", "(", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [6, 10], "repair_candidates": [0, 13, 26, 6, 10, 17, 27, 3, 21, 23]}}
+{"prediction": {"error_location": 0.8500076532363892, "repair_targets": [0.06950265914201736, 0.9281226396560669], "repair_candidates": [0.00045650912215933204, 2.1179987015784718e-05, 0.06950265914201736, 0.9281226396560669, 0.00036378554068505764, 0.00032431905856356025, 5.3442668956904527e-08, 1.0831583807657807e-07, 0.00011155731772305444, 0.0010972315212711692], "target_probs": 0.9976252913475037}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.442773", "n_pass": [91, 17, 14], "n_token": 26, "loss": [0.17350606620311737, 0.011377138085663319], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "=", "last_name", "user", "=", "setattr", "(", "user", ",", "with", "self", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [6, 10], "repair_candidates": [0, 13, 23, 6, 10, 14, 24, 3, 18, 20]}}
+{"prediction": {"error_location": 0.8407120704650879, "repair_targets": [0.039159227162599564, 0.9495280981063843], "repair_candidates": [0.0016789513174444437, 0.00022561925288755447, 0.039159227162599564, 0.9495280981063843, 0.0005354296881705523, 0.001918746973387897, 3.0656585181532137e-07, 5.234452942204371e-07, 0.0002389461442362517, 0.00671418197453022], "target_probs": 0.9886873364448547}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.501705", "n_pass": [98, 18, 15], "n_token": 24, "loss": [0.3314608931541443, 0.3070082664489746], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "user", "=", "setattr", "(", "user", ",", "with", "self", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 8], "repair_candidates": [0, 11, 21, 4, 8, 12, 22, 3, 16, 18]}}
+{"prediction": {"error_location": 0.7178741693496704, "repair_targets": [0.3824411928653717, 0.35320332646369934], "repair_candidates": [0.014167243614792824, 0.002489212667569518, 0.3824411928653717, 0.35320332646369934, 0.007313864771276712, 0.018977085128426552, 2.688225322344806e-06, 5.63928006158676e-06, 0.0009476429549977183, 0.22045212984085083], "target_probs": 0.735644519329071}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.557956", "n_pass": [127, 19, 16], "n_token": 23, "loss": [0.2341843843460083, 0.04617415741086006], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "user", "setattr", "(", "user", ",", "with", "self", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [4, 7], "repair_candidates": [0, 10, 20, 4, 7, 11, 21, 3, 15, 17]}}
+{"prediction": {"error_location": 0.7912158370018005, "repair_targets": [0.09575885534286499, 0.859116792678833], "repair_candidates": [0.002897936385124922, 0.0011878365185111761, 0.09575885534286499, 0.859116792678833, 0.0015760856913402677, 0.0038852118887007236, 3.5029247555939946e-06, 1.0697069683374139e-06, 0.00015378417447209358, 0.03541890159249306], "target_probs": 0.954875648021698}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.613500", "n_pass": [128, 20, 17], "n_token": 22, "loss": [0.11614125967025757, 0.002930819056928158], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "user", "(", "user", ",", "with", "self", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [4, 6], "repair_candidates": [0, 9, 19, 4, 6, 10, 20, 3, 14, 16]}}
+{"prediction": {"error_location": 0.8903495073318481, "repair_targets": [0.02634919062256813, 0.9707242846488953], "repair_candidates": [0.0004568081349134445, 3.819769699475728e-05, 0.02634919062256813, 0.9707242846488953, 0.0003435155958868563, 0.0003383828152436763, 2.513204435672378e-07, 2.1338726696740196e-07, 0.00027146152569912374, 0.0014776537427678704], "target_probs": 0.9970734715461731}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.668814", "n_pass": [129, 21, 18], "n_token": 21, "loss": [0.26115307211875916, 0.0003805884625762701], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "user", "user", ",", "with", "self", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 5], "repair_candidates": [0, 8, 18, 4, 5, 9, 19, 3, 13, 15]}}
+{"prediction": {"error_location": 0.7701629400253296, "repair_targets": [0.5442246794700623, 0.45539480447769165], "repair_candidates": [5.870558743481524e-05, 5.7812478189589456e-05, 0.5442246794700623, 0.45539480447769165, 7.769628427922726e-05, 4.596286999003496e-06, 9.01329002545026e-08, 2.086743400298019e-08, 0.00014141443534754217, 4.0197242924477905e-05], "target_probs": 0.9996194839477539}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.724072", "n_pass": [131, 22, 19], "n_token": 20, "loss": [0.14520634710788727, 0.004354167263954878], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "user", "user", "with", "self", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [4, 5], "repair_candidates": [0, 7, 17, 4, 5, 8, 18, 3, 12, 14]}}
+{"prediction": {"error_location": 0.864844024181366, "repair_targets": [0.42154833674430847, 0.5741069912910461], "repair_candidates": [0.00035095843486487865, 9.644244710216299e-05, 0.42154833674430847, 0.5741069912910461, 0.0007415632135234773, 0.0003006221086252481, 4.420558923357021e-07, 1.1679549771770326e-07, 0.0011797589249908924, 0.0016747330082580447], "target_probs": 0.9956552982330322}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.778987", "n_pass": [132, 23, 20], "n_token": 19, "loss": [0.4885389804840088, 0.004194042179733515], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "django_user", "user", "user", "self", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 5], "repair_candidates": [0, 6, 16, 4, 5, 7, 17, 3, 11, 13]}}
+{"prediction": {"error_location": 0.6135220527648926, "repair_targets": [0.4010564088821411, 0.5947583317756653], "repair_candidates": [0.0003990326658822596, 0.00016949661949183792, 0.4010564088821411, 0.5947583317756653, 0.001442409586161375, 0.00011837275087600574, 7.1450494942837395e-06, 1.3843387023371179e-06, 0.0007943768869154155, 0.0012529899831861258], "target_probs": 0.9958147406578064}}
+
+
+{"result": {"time": "2021-02-21 05:36:08.948307", "n_pass": [142, 26, 21], "n_token": 18, "loss": [0.903794527053833, 0.009356383234262466], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "django_user", "user", "user", "self", "res", "=", "get_roles", "(", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [3, 4], "repair_candidates": [0, 5, 15, 3, 4, 6, 16, 2, 10, 12]}}
+{"prediction": {"error_location": 0.405029833316803, "repair_targets": [0.45675548911094666, 0.5339317321777344], "repair_candidates": [0.0004400693578645587, 0.00010934699821518734, 0.45675548911094666, 0.5339317321777344, 0.0013155195629224181, 0.0014692750992253423, 7.276294581970433e-06, 8.898682608560193e-06, 0.00033982141758315265, 0.005622564814984798], "target_probs": 0.9906872510910034}}
+
+
+{"result": {"time": "2021-02-21 05:36:09.227703", "n_pass": [170, 31, 22], "n_token": 17, "loss": [0.850359320640564, 0.1509806364774704], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "django_user", "user", "user", "self", "res", "=", "get_roles", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [3, 4], "repair_candidates": [0, 5, 14, 3, 4, 6, 15, 2, 9, 11]}}
+{"prediction": {"error_location": 0.4272613823413849, "repair_targets": [0.23989638686180115, 0.6199679374694824], "repair_candidates": [0.00696899788454175, 0.005263576749712229, 0.23989638686180115, 0.6199679374694824, 0.015683064237236977, 0.03233807906508446, 0.004033898469060659, 0.0014681483153253794, 0.0027499287389218807, 0.07163001596927643], "target_probs": 0.859864354133606}}
+
+
+{"result": {"time": "2021-02-21 05:36:09.448179", "n_pass": [178, 35, 23], "n_token": 16, "loss": [0.8668827414512634, 0.25294390320777893], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "django_user", "user", "user", "self", "res", "=", "get_roles", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res"]}}
+{"position": {"error_location": 11, "repair_targets": [3, 4], "repair_candidates": [0, 5, 14, 3, 4, 6, 15, 2, 9, 11]}}
+{"prediction": {"error_location": 0.420259565114975, "repair_targets": [0.17238235473632812, 0.6041290760040283], "repair_candidates": [0.007649400271475315, 0.0035166977904736996, 0.17238235473632812, 0.6041290760040283, 0.007943441160023212, 0.12191984057426453, 0.0016543319215998054, 0.001061151851899922, 0.00025833718245849013, 0.07948529720306396], "target_probs": 0.7765114307403564}}
+
+
+{"result": {"time": "2021-02-21 05:36:09.560939", "n_pass": [186, 37, 24], "n_token": 15, "loss": [0.07061316817998886, 0.5560321807861328], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "django_user", "user", "user", "self", "res", "get_roles", "django_user", ",", "django_user", ")", "#NEWLINE#", "self", "res"]}}
+{"position": {"error_location": 10, "repair_targets": [3, 4], "repair_candidates": [0, 5, 13, 3, 4, 6, 14, 2, 8, 10]}}
+{"prediction": {"error_location": 0.9318222999572754, "repair_targets": [0.23434151709079742, 0.3391384780406952], "repair_candidates": [0.07477492839097977, 0.06263384222984314, 0.23434151709079742, 0.3391384780406952, 0.029237696900963783, 0.06781667470932007, 0.08123242855072021, 0.02430419810116291, 0.038919128477573395, 0.04760105535387993], "target_probs": 0.5734800100326538}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ')', 'django_user', 'user', 'user', 'self', 'res', 'get_roles', 'django_user', ',', 'django_user', ')', '#NEWLINE#', 'self', 'res']

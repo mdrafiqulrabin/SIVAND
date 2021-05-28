@@ -1,0 +1,127 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "application", ",", "db_driver", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "db_driver", ")", ":", "#NEWLINE#", "#INDENT#", "db_driver", "=", "FLAGS", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "db", "=", "utils", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", "=", "auth", ".", "manager", ".", "AuthManager", "(", ")", "#NEWLINE#", "super", "(", "AuthMiddleware", ",", "self", ")", ".", "__init__", "(", "db_driver", ")"], "error_location": [60], "repair_targets": [4], "repair_candidates": [4, 2, 28, 39, 55, 6, 16, 21, 25, 36, 60], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "nii-cloud/dodai-compute/nova/api/openstack/auth.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00003-of-00300", "js_count": 12254, "results": {"model": "rnn", "prob": {"loc": [[0.113975889980793, 1.6700735159247415e-06, 1.3922780794928258e-07, 3.477536481000243e-08, 1.7234307279068162e-06, 6.2992238092363095e-09, 1.65517903383261e-07, 3.315245677981693e-08, 9.361952635345006e-08, 5.2642832315541455e-09, 5.955131054946605e-09, 2.0001957068416232e-07, 1.67383390703435e-07, 2.992391046063858e-08, 3.5410337773100764e-07, 7.218753239612852e-08, 0.8429665565490723, 3.4392519410175737e-06, 1.2708267149719177e-06, 7.111403306225839e-07, 4.202411307829834e-09, 8.487404556944966e-07, 5.3928470578057386e-08, 0.00018251259461976588, 6.711708078199763e-09, 7.365874239440018e-07, 3.1789545573701616e-07, 1.7734572921312974e-08, 5.424766413852922e-08, 4.158253463781847e-10, 1.625249823611341e-09, 6.729602652910671e-09, 1.3800065801206074e-07, 1.3336220128223886e-08, 9.299711223320628e-09, 2.425309908460349e-08, 0.008325650356709957, 1.0219839197134206e-07, 2.041107194372671e-07, 4.216592941475028e-08, 9.085197594238537e-10, 2.718274050295122e-09, 6.184840373180123e-08, 5.578876880463213e-07, 2.2679995659302676e-09, 4.628151017982418e-08, 1.658084443079133e-07, 4.919636253930548e-08, 4.483796658405481e-07, 3.2148893751582364e-06, 1.4913904067270778e-07, 1.5639777473097638e-07, 1.187184750506276e-08, 2.381307467658189e-06, 1.5110071416302162e-08, 6.367478363245027e-06, 8.382201044376814e-10, 3.55643042793119e-10, 1.9490123577270424e-06, 1.0483883983170017e-08, 0.034520599991083145, 4.3525480464268185e-07]], "pointer": [[0.0, 0.0, 0.0003726667782757431, 0.0, 0.986933171749115, 0.0, 0.010182889178395271, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.155549736926332e-05, 0.0, 0.0, 0.0, 0.0, 0.0011085725855082273, 0.0, 0.0, 0.0, 0.0008760995115153491, 0.0, 0.0, 2.4845245206961408e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00012433514348231256, 0.0, 0.0, 3.3961303415708244e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0002983160375151783, 0.0, 0.0, 0.0, 0.0, 2.3481539756176062e-05, 0.0]], "target": [0.986933171749115]}, "loss": [3.366198778152466, 0.013152950443327427], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [16]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 11:52:12.023169", "n_pass": [1, 1, 1], "n_token": 62, "loss": [0.17082780599594116, 0.013152950443327427], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "application", ",", "db_driver", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "db_driver", ")", ":", "#NEWLINE#", "#INDENT#", "db_driver", "=", "FLAGS", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "db", "=", "utils", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", "=", "auth", ".", "manager", ".", "AuthManager", "(", ")", "#NEWLINE#", "super", "(", "AuthMiddleware", ",", "self", ")", ".", "__init__", "(", "db_driver", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [4], "repair_candidates": [4, 2, 28, 39, 55, 6, 16, 21, 25, 36, 60]}}
+{"prediction": {"error_location": 0.8429665565490723, "repair_targets": [0.986933171749115], "repair_candidates": [0.0003726667782757431, 0.986933171749115, 0.010182889178395271, 2.155549736926332e-05, 0.0011085725855082273, 0.0008760995115153491, 2.4845245206961408e-05, 0.00012433514348231256, 3.3961303415708244e-05, 0.0002983160375151783, 2.3481539756176062e-05], "target_probs": 0.986933171749115}}
+
+
+{"result": {"time": "2021-02-21 11:52:12.101623", "n_pass": [21, 2, 2], "n_token": 55, "loss": [0.05411174148321152, 0.018282465636730194], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", ":", "#NEWLINE#", "#INDENT#", "db_driver", "=", "FLAGS", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "db", "=", "utils", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", "=", "auth", ".", "manager", ".", "AuthManager", "(", ")", "#NEWLINE#", "super", "(", "AuthMiddleware", ",", "self", ")", ".", "__init__", "(", "db_driver", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [4], "repair_candidates": [4, 2, 21, 32, 48, 6, 9, 14, 18, 29, 53]}}
+{"prediction": {"error_location": 0.9473262429237366, "repair_targets": [0.9818836450576782], "repair_candidates": [0.006601213943213224, 0.9818836450576782, 0.0020840654615312815, 0.0004892493598163128, 0.001953805796802044, 0.0038344734348356724, 0.00017619830032344908, 0.0011487392475828528, 0.00011595748219406232, 0.0015182908391579986, 0.00019445021462161094], "target_probs": 0.9818836450576782}}
+
+
+{"result": {"time": "2021-02-21 11:52:12.175852", "n_pass": [26, 3, 3], "n_token": 47, "loss": [0.03590621426701546, 0.058086663484573364], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", ":", "#NEWLINE#", "#INDENT#", "db_driver", "=", "FLAGS", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "db", "=", "utils", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", "=", "auth", ".", "manager", ",", "self", ")", ".", "__init__", "(", "db_driver", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [4], "repair_candidates": [4, 2, 21, 32, 40, 6, 9, 14, 18, 29, 45]}}
+{"prediction": {"error_location": 0.9647308588027954, "repair_targets": [0.9435681700706482], "repair_candidates": [0.028368227183818817, 0.9435681700706482, 0.003440645756199956, 0.0005819746875204146, 0.003612205386161804, 0.006159685552120209, 0.0002856160281226039, 0.005743555724620819, 0.00017151929205283523, 0.007435307838022709, 0.0006331310723908246], "target_probs": 0.9435681700706482}}
+
+
+{"result": {"time": "2021-02-21 11:52:12.248859", "n_pass": [53, 4, 4], "n_token": 43, "loss": [0.03163629770278931, 0.056671660393476486], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", ":", "#NEWLINE#", "#INDENT#", "db_driver", "=", "FLAGS", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", "=", "auth", ".", "manager", ",", "self", ")", ".", "__init__", "(", "db_driver", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [4], "repair_candidates": [4, 2, 21, 28, 36, 6, 9, 14, 18, 25, 41]}}
+{"prediction": {"error_location": 0.9688587784767151, "repair_targets": [0.9449042677879333], "repair_candidates": [0.03279350325465202, 0.9449042677879333, 0.003499014303088188, 0.0005459821550175548, 0.0038171045016497374, 0.0055830939672887325, 0.00013095932081341743, 0.0009188419790007174, 0.00014730612747371197, 0.007073794025927782, 0.0005860975361429155], "target_probs": 0.9449042677879333}}
+
+
+{"result": {"time": "2021-02-21 11:52:12.321104", "n_pass": [55, 5, 5], "n_token": 39, "loss": [0.02867693081498146, 0.03560391813516617], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", ":", "#NEWLINE#", "#INDENT#", "db_driver", "=", "FLAGS", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", ",", "self", ")", ".", "__init__", "(", "db_driver", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [4], "repair_candidates": [4, 2, 21, 28, 32, 6, 9, 14, 18, 25, 37]}}
+{"prediction": {"error_location": 0.9717304706573486, "repair_targets": [0.9650224447250366], "repair_candidates": [0.02048834040760994, 0.9650224447250366, 0.002908126451075077, 0.0005756270838901401, 0.0029151728376746178, 0.00537456339225173, 0.00010900213965214789, 0.0007191963377408683, 0.00015551612887065858, 0.001338779111392796, 0.00039337328053079545], "target_probs": 0.9650224447250366}}
+
+
+{"result": {"time": "2021-02-21 11:52:12.390045", "n_pass": [87, 6, 6], "n_token": 37, "loss": [0.031531188637018204, 0.037374868988990784], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", ":", "#NEWLINE#", "#INDENT#", "db_driver", "=", "FLAGS", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", ",", "self", "__init__", "(", "db_driver", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [4], "repair_candidates": [4, 2, 21, 28, 32, 6, 9, 14, 18, 25, 35]}}
+{"prediction": {"error_location": 0.9689607620239258, "repair_targets": [0.963314950466156], "repair_candidates": [0.021054154261946678, 0.963314950466156, 0.002860438311472535, 0.00032328959787264466, 0.0029273780528455973, 0.004258046858012676, 0.0001798698358470574, 0.00037681576213799417, 0.0039954897947609425, 0.0006397186079993844, 6.988401582930237e-05], "target_probs": 0.963314950466156}}
+
+
+{"result": {"time": "2021-02-21 11:52:12.457910", "n_pass": [88, 7, 7], "n_token": 35, "loss": [0.04528855159878731, 0.024602539837360382], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", ":", "#NEWLINE#", "#INDENT#", "db_driver", "=", "FLAGS", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", ",", "self", "db_driver", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [4], "repair_candidates": [4, 2, 21, 28, 32, 6, 9, 14, 18, 25, 33]}}
+{"prediction": {"error_location": 0.9557216763496399, "repair_targets": [0.9756976366043091], "repair_candidates": [0.009763211011886597, 0.9756976366043091, 0.001579040428623557, 0.0003598347830120474, 0.0034911143593490124, 0.007082912605255842, 0.00010210019536316395, 0.0013914704322814941, 5.9812820836668834e-05, 0.00044380093459039927, 2.9006183467572555e-05], "target_probs": 0.9756976366043091}}
+
+
+{"result": {"time": "2021-02-21 11:52:12.524617", "n_pass": [90, 8, 8], "n_token": 34, "loss": [0.07514181733131409, 0.32986965775489807], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", ":", "#NEWLINE#", "#INDENT#", "db_driver", "=", "FLAGS", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", ",", "self", "db_driver", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [3], "repair_candidates": [3, 1, 20, 27, 31, 5, 8, 13, 17, 24, 32]}}
+{"prediction": {"error_location": 0.9276119470596313, "repair_targets": [0.7190174460411072], "repair_candidates": [0.2482677698135376, 0.7190174460411072, 0.0021013806108385324, 0.00018967228243127465, 0.011856633238494396, 0.010615367442369461, 0.00017594544624444097, 0.006089399568736553, 0.00011237378930673003, 0.0015116276917979121, 6.248402496566996e-05], "target_probs": 0.7190174460411072}}
+
+
+{"result": {"time": "2021-02-21 11:52:12.655871", "n_pass": [96, 10, 9], "n_token": 32, "loss": [0.1528916209936142, 0.12185774743556976], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", "#INDENT#", "db_driver", "=", "FLAGS", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", ",", "self", "db_driver", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [3], "repair_candidates": [3, 1, 18, 25, 29, 5, 8, 11, 15, 22, 30]}}
+{"prediction": {"error_location": 0.8582227230072021, "repair_targets": [0.8852742910385132], "repair_candidates": [0.08159378170967102, 0.8852742910385132, 0.001219710917212069, 0.00015759654343128204, 0.023960821330547333, 0.005326188635081053, 4.9695434427121654e-05, 0.0012480986770242453, 5.6891829444793984e-05, 0.0010793582769110799, 3.340121838846244e-05], "target_probs": 0.8852742910385132}}
+
+
+{"result": {"time": "2021-02-21 11:52:12.724361", "n_pass": [98, 11, 10], "n_token": 30, "loss": [0.7164433002471924, 0.37788519263267517], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", "#INDENT#", "db_driver", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ".", "auth", ",", "self", "db_driver", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [3], "repair_candidates": [3, 1, 16, 23, 27, 5, 8, 11, 13, 20, 28]}}
+{"prediction": {"error_location": 0.4884865880012512, "repair_targets": [0.6853091716766357], "repair_candidates": [0.3080442547798157, 0.6853091716766357, 0.000763407617341727, 6.363880675053224e-05, 0.0008800709620118141, 0.001815195893868804, 2.8916014343849383e-05, 0.001336128101684153, 3.390763231436722e-05, 0.0016842861659824848, 4.0988463297253475e-05], "target_probs": 0.6853091716766357}}
+
+
+{"result": {"time": "2021-02-21 11:52:12.915348", "n_pass": [105, 14, 11], "n_token": 28, "loss": [0.6738184690475464, 0.22331394255161285], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", "#INDENT#", "db_driver", ".", "db_driver", "#NEWLINE#", "#UNINDENT#", "self", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ",", "self", "db_driver", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [3], "repair_candidates": [3, 1, 16, 23, 25, 5, 8, 11, 13, 20, 26]}}
+{"prediction": {"error_location": 0.5097583532333374, "repair_targets": [0.7998636960983276], "repair_candidates": [0.19492638111114502, 0.7998636960983276, 0.0006150564295239747, 4.004987204098143e-05, 0.0008906175498850644, 0.0023773368448019028, 3.273467518738471e-05, 0.0006417165859602392, 0.0003195621247868985, 0.00027032007346861064, 2.254946593893692e-05], "target_probs": 0.7998636960983276}}
+
+
+{"result": {"time": "2021-02-21 11:52:13.040265", "n_pass": [115, 16, 12], "n_token": 26, "loss": [0.6085476279258728, 0.11525134742259979], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", "#INDENT#", "db_driver", ".", "db_driver", "self", ".", "import_object", "(", "db_driver", ")", "#NEWLINE#", "self", ",", "self", "db_driver", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [3], "repair_candidates": [3, 1, 14, 21, 23, 5, 8, 11, 13, 18, 24]}}
+{"prediction": {"error_location": 0.5441405773162842, "repair_targets": [0.8911421298980713], "repair_candidates": [0.0965835303068161, 0.8911421298980713, 0.0005511202616617084, 5.7845441915560514e-05, 0.0002672084083314985, 0.010095546022057533, 3.715165439643897e-05, 0.0006228464189916849, 0.00030103203607723117, 0.000296031532343477, 4.5530359784606844e-05], "target_probs": 0.8911421298980713}}
+
+
+{"result": {"time": "2021-02-21 11:52:13.104834", "n_pass": [117, 17, 13], "n_token": 24, "loss": [0.2778470516204834, 0.3667581081390381], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", "#INDENT#", "db_driver", ".", "db_driver", "self", ".", "db_driver", ")", "#NEWLINE#", "self", ",", "self", "db_driver", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [3], "repair_candidates": [3, 1, 14, 19, 21, 5, 8, 11, 13, 16, 22]}}
+{"prediction": {"error_location": 0.7574127316474915, "repair_targets": [0.692977249622345], "repair_candidates": [0.18487995862960815, 0.692977249622345, 0.001744427834637463, 0.0001863743964349851, 0.0007978384965099394, 0.034080248326063156, 0.000344396656146273, 0.07816764712333679, 0.00539402524009347, 0.0012166635133326054, 0.00021109459339641035], "target_probs": 0.692977249622345}}
+
+
+{"result": {"time": "2021-02-21 11:52:13.227096", "n_pass": [155, 19, 14], "n_token": 23, "loss": [0.2013513445854187, 0.34333792328834534], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", "#INDENT#", "db_driver", ".", "db_driver", "self", ".", "db_driver", "#NEWLINE#", "self", ",", "self", "db_driver", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [3], "repair_candidates": [3, 1, 14, 18, 20, 5, 8, 11, 13, 16, 21]}}
+{"prediction": {"error_location": 0.8176251649856567, "repair_targets": [0.7093984484672546], "repair_candidates": [0.15254877507686615, 0.7093984484672546, 0.0016168159199878573, 0.00016736326506361365, 0.0005373048479668796, 0.01658148691058159, 0.0003177938924636692, 0.11226040869951248, 0.003933202009648085, 0.0022948728874325752, 0.0003434952232055366], "target_probs": 0.7093984484672546}}
+
+
+{"result": {"time": "2021-02-21 11:52:13.348670", "n_pass": [158, 21, 15], "n_token": 22, "loss": [0.13871502876281738, 0.4756314158439636], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", ",", "application", ",", "db_driver", "(", "not", "db_driver", ")", "#INDENT#", "db_driver", ".", "db_driver", "self", ".", "db_driver", "#NEWLINE#", "self", "self", "db_driver", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [3], "repair_candidates": [3, 1, 14, 18, 19, 5, 8, 11, 13, 16, 20]}}
+{"prediction": {"error_location": 0.8704761266708374, "repair_targets": [0.6214925050735474], "repair_candidates": [0.29170313477516174, 0.6214925050735474, 0.0044938125647604465, 0.0005708661046810448, 0.001660810667090118, 0.03408230096101761, 0.0005768185365013778, 0.038515571504831314, 0.00013057730393484235, 0.005305848084390163, 0.0014678311999887228], "target_probs": 0.6214925050735474}}
+
+
+{"result": {"time": "2021-02-21 11:52:13.530973", "n_pass": [164, 24, 16], "n_token": 21, "loss": [0.10711051523685455, 0.14412878453731537], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", "application", ",", "db_driver", "(", "not", "db_driver", ")", "#INDENT#", "db_driver", ".", "db_driver", "self", ".", "db_driver", "#NEWLINE#", "self", "self", "db_driver", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [2, 1, 13, 17, 18, 4, 7, 10, 12, 15, 19]}}
+{"prediction": {"error_location": 0.8984261751174927, "repair_targets": [0.8657762408256531], "repair_candidates": [0.11232086271047592, 0.8657762408256531, 0.0019394943956285715, 5.552774018724449e-05, 0.0003863641177304089, 0.006044299341738224, 0.00011988193000433967, 0.011268232017755508, 3.6774501495528966e-05, 0.0016936297761276364, 0.0003587847459129989], "target_probs": 0.8657762408256531}}
+
+
+{"result": {"time": "2021-02-21 11:52:13.649989", "n_pass": [168, 26, 17], "n_token": 20, "loss": [0.033756304532289505, 0.3610529601573944], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", "application", ",", "db_driver", "not", "db_driver", ")", "#INDENT#", "db_driver", ".", "db_driver", "self", ".", "db_driver", "#NEWLINE#", "self", "self", "db_driver", ")"]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [2, 1, 12, 16, 17, 4, 6, 9, 11, 14, 18]}}
+{"prediction": {"error_location": 0.966806948184967, "repair_targets": [0.6969420909881592], "repair_candidates": [0.2880714237689972, 0.6969420909881592, 0.004666440654546022, 7.187121809693053e-05, 0.0002133875386789441, 0.00422237254679203, 8.435644849669188e-05, 0.004380785394459963, 1.6559744835831225e-05, 0.0011610129149630666, 0.00016966801194939762], "target_probs": 0.6969420909881592}}
+
+
+{"result": {"time": "2021-02-21 11:52:13.768579", "n_pass": [171, 28, 18], "n_token": 19, "loss": [0.4346267580986023, 0.5370630025863647], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", "application", ",", "db_driver", "not", "db_driver", "#INDENT#", "db_driver", ".", "db_driver", "self", ".", "db_driver", "#NEWLINE#", "self", "self", "db_driver", ")"]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [2, 1, 11, 15, 16, 4, 6, 8, 10, 13, 17]}}
+{"prediction": {"error_location": 0.6475062966346741, "repair_targets": [0.5844622850418091], "repair_candidates": [0.3852570354938507, 0.5844622850418091, 0.0013702301075682044, 4.9076512368628755e-05, 4.432243076735176e-05, 0.007018545642495155, 8.0528887338005e-05, 0.020629439502954483, 2.7735371986636892e-05, 0.0009648157865740359, 9.595839219400659e-05], "target_probs": 0.5844622850418091}}
+
+
+{"result": {"time": "2021-02-21 11:52:14.063743", "n_pass": [183, 33, 19], "n_token": 18, "loss": [0.6129941344261169, 0.6342926025390625], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __init__(", "self", "application", ",", "db_driver", "not", "db_driver", "#INDENT#", "db_driver", ".", "db_driver", "self", ".", "db_driver", "#NEWLINE#", "self", "self", "db_driver"]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [2, 1, 11, 15, 16, 4, 6, 8, 10, 13, 17]}}
+{"prediction": {"error_location": 0.5417264699935913, "repair_targets": [0.5303105115890503], "repair_candidates": [0.4358944594860077, 0.5303105115890503, 0.0013890888076275587, 0.00012857616820838302, 0.00015787652228027582, 0.012630647048354149, 0.00012784621503669769, 0.01847933605313301, 6.821964052505791e-05, 0.0006543512572534382, 0.00015906651969999075], "target_probs": 0.5303105115890503}}
+
+
+
+
+Minimal simplified tokens:
+
+['def __init__(', 'self', 'application', ',', 'db_driver', 'not', 'db_driver', '#INDENT#', 'db_driver', '.', 'db_driver', 'self', '.', 'db_driver', '#NEWLINE#', 'self', 'self', 'db_driver']

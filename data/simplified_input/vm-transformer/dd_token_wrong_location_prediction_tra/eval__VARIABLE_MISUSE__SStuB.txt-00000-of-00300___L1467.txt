@@ -1,0 +1,151 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Tests moving a local directory to a bucket.'", "#NEWLINE#", "bucket_uri", "=", "self", ".", "CreateBucket", "(", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "CreateTempDir", "(", "test_files", "=", "2", ")", "#NEWLINE#", "self", ".", "RunGsUtil", "(", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", ")", "]", ")", "#NEWLINE#", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"], "error_location": [39], "repair_targets": [9, 48], "repair_candidates": [17, 35, 39, 9, 48, 2, 11, 19, 28, 44], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "GoogleCloudPlatform/gsutil/gslib/tests/test_mv.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 1467, "results": {"model": "transformer", "prob": {"loc": [[0.035463642328977585, 4.3340182287465723e-07, 2.0170440961919667e-07, 9.695680702748177e-09, 1.0182948706471961e-08, 9.415173529703225e-09, 6.2209606355168034e-09, 5.468523411877868e-09, 3.837582251975391e-09, 8.922110623643675e-07, 6.451451817213183e-09, 8.591891997866696e-08, 3.566678508093446e-09, 1.7583845490776184e-09, 2.5075063803114972e-08, 1.2863047516020742e-07, 1.0026261598738984e-08, 8.343585591319425e-07, 1.232272506257459e-09, 4.257379337957445e-09, 3.2899982738143763e-09, 2.402880117102768e-10, 5.659066548702185e-09, 4.896448579927437e-09, 1.63869859903798e-08, 4.7722289309604093e-05, 1.4764646394382908e-08, 4.7941015601793424e-09, 3.9594456602287664e-09, 2.577320579177922e-09, 1.2669832960554572e-09, 9.087512076177973e-09, 4.248183316235554e-08, 2.1798062022071463e-08, 1.3657592390359241e-08, 0.7547751665115356, 3.555444161307264e-09, 3.033501227989177e-10, 3.927344227605545e-09, 0.2096288651227951, 2.1844208664134612e-09, 4.505539941135339e-09, 4.7678296866138226e-09, 4.175910284232032e-09, 4.8460933044225385e-08, 3.466477327407347e-09, 3.4633362844260773e-10, 1.6499287491811288e-09, 7.863320206524804e-05, 5.522314605599377e-09, 3.061720008190605e-06, 3.318225250126261e-09]], "pointer": [[0.0, 0.0, 0.0011568805202841759, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8357143402099609, 0.0, 0.0008556742104701698, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00010806594946188852, 0.0, 0.0001646685559535399, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.4786557585466653e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.7003923858283088e-05, 0.0, 0.0, 0.0, 3.6677529351436533e-06, 0.0, 0.0, 0.0, 0.0, 2.020231704591424e-06, 0.0, 0.0, 0.0, 0.16196291148662567, 0.0, 0.0, 0.0]], "target": [0.9976772665977478]}, "loss": [1.5624165534973145, 0.0023254351690411568], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [35]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:34:37.767152", "n_pass": [1, 1, 1], "n_token": 52, "loss": [0.2813352942466736, 0.0023254351690411568], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Tests moving a local directory to a bucket.'", "#NEWLINE#", "bucket_uri", "=", "self", ".", "CreateBucket", "(", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "CreateTempDir", "(", "test_files", "=", "2", ")", "#NEWLINE#", "self", ".", "RunGsUtil", "(", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", ")", "]", ")", "#NEWLINE#", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [9, 48], "repair_candidates": [17, 35, 39, 9, 48, 2, 11, 19, 28, 44]}}
+{"prediction": {"error_location": 0.7547751665115356, "repair_targets": [0.8357143402099609, 0.16196291148662567], "repair_candidates": [0.0011568805202841759, 0.8357143402099609, 0.0008556742104701698, 0.00010806594946188852, 0.0001646685559535399, 1.4786557585466653e-05, 1.7003923858283088e-05, 3.6677529351436533e-06, 2.020231704591424e-06, 0.16196291148662567], "target_probs": 0.9976772665977478}}
+
+
+{"result": {"time": "2021-02-21 05:34:37.824121", "n_pass": [45, 2, 2], "n_token": 49, "loss": [0.2932904064655304, 0.004983783233910799], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", "#INDENT#", "'Tests moving a local directory to a bucket.'", "#NEWLINE#", "bucket_uri", "=", "self", ".", "CreateBucket", "(", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "CreateTempDir", "(", "test_files", "=", "2", ")", "#NEWLINE#", "self", ".", "RunGsUtil", "(", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", ")", "]", ")", "#NEWLINE#", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [6, 45], "repair_candidates": [14, 32, 36, 6, 45, 2, 8, 16, 25, 41]}}
+{"prediction": {"error_location": 0.7458055019378662, "repair_targets": [0.7885222434997559, 0.2065063863992691], "repair_candidates": [0.004045616369694471, 0.7885222434997559, 0.0004914193414151669, 0.0001935312175191939, 0.00020809730631299317, 1.9191516912542284e-05, 1.0743928214651532e-05, 1.4424172150029335e-06, 1.351111905023572e-06, 0.2065063863992691], "target_probs": 0.9950286149978638}}
+
+
+{"result": {"time": "2021-02-21 05:34:37.879479", "n_pass": [46, 3, 3], "n_token": 46, "loss": [0.43160781264305115, 0.032284315675497055], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", "bucket_uri", "=", "self", ".", "CreateBucket", "(", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "CreateTempDir", "(", "test_files", "=", "2", ")", "#NEWLINE#", "self", ".", "RunGsUtil", "(", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", ")", "]", ")", "#NEWLINE#", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [3, 42], "repair_candidates": [11, 29, 33, 3, 42, 2, 5, 13, 22, 38]}}
+{"prediction": {"error_location": 0.6494640111923218, "repair_targets": [0.5069247484207153, 0.46130651235580444], "repair_candidates": [0.014224148355424404, 0.5069247484207153, 0.015885459259152412, 0.000537852116394788, 0.0010781383607536554, 3.826738247880712e-05, 2.362247187193134e-06, 4.469333987344726e-07, 2.078579200315289e-06, 0.46130651235580444], "target_probs": 0.9682312607765198}}
+
+
+{"result": {"time": "2021-02-21 05:34:37.935004", "n_pass": [48, 4, 4], "n_token": 43, "loss": [0.5917079448699951, 0.08673978596925735], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", "bucket_uri", "=", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "CreateTempDir", "(", "test_files", "=", "2", ")", "#NEWLINE#", "self", ".", "RunGsUtil", "(", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", ")", "]", ")", "#NEWLINE#", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [3, 39], "repair_candidates": [8, 26, 30, 3, 39, 2, 5, 10, 19, 35]}}
+{"prediction": {"error_location": 0.5533813834190369, "repair_targets": [0.7208607792854309, 0.19605489075183868], "repair_candidates": [0.053749069571495056, 0.7208607792854309, 0.022111745551228523, 0.004091596696525812, 0.0028424817137420177, 0.0002309448318555951, 4.395083669805899e-05, 7.065650606818963e-06, 7.597873718623305e-06, 0.19605489075183868], "target_probs": 0.9169156551361084}}
+
+
+{"result": {"time": "2021-02-21 05:34:37.993345", "n_pass": [51, 5, 5], "n_token": 40, "loss": [0.7645136713981628, 0.08103740960359573], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", "bucket_uri", "=", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "=", "2", ")", "#NEWLINE#", "self", ".", "RunGsUtil", "(", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", ")", "]", ")", "#NEWLINE#", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [3, 36], "repair_candidates": [8, 23, 27, 3, 36, 2, 5, 10, 16, 32]}}
+{"prediction": {"error_location": 0.46556025743484497, "repair_targets": [0.7925481200218201, 0.1296110600233078], "repair_candidates": [0.047680556774139404, 0.7925481200218201, 0.01783527433872223, 0.011088302358984947, 0.0007314393296837807, 0.0002706568338908255, 0.00019449742103461176, 2.0491510440479033e-05, 1.9676333977258764e-05, 0.1296110600233078], "target_probs": 0.9221591949462891}}
+
+
+{"result": {"time": "2021-02-21 05:34:38.215163", "n_pass": [90, 9, 6], "n_token": 38, "loss": [0.8037774562835693, 0.10927660763263702], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", "bucket_uri", "=", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", ")", "#NEWLINE#", "self", ".", "RunGsUtil", "(", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", ")", "]", ")", "#NEWLINE#", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [3, 34], "repair_candidates": [8, 21, 25, 3, 34, 2, 5, 10, 14, 30]}}
+{"prediction": {"error_location": 0.44763484597206116, "repair_targets": [0.6834220886230469, 0.21306030452251434], "repair_candidates": [0.050223611295223236, 0.6834220886230469, 0.032139215618371964, 0.01966157555580139, 0.00031460836180485785, 0.0005675767315551639, 0.0005518585094250739, 3.5630167985800654e-05, 2.352563569729682e-05, 0.21306030452251434], "target_probs": 0.8964824080467224}}
+
+
+{"result": {"time": "2021-02-21 05:34:38.271063", "n_pass": [91, 10, 7], "n_token": 36, "loss": [0.046619974076747894, 0.05190955847501755], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", "bucket_uri", "=", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "self", ".", "RunGsUtil", "(", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", ")", "]", ")", "#NEWLINE#", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [3, 32], "repair_candidates": [8, 19, 23, 3, 32, 2, 5, 10, 12, 28]}}
+{"prediction": {"error_location": 0.9544500708580017, "repair_targets": [0.9302200078964233, 0.019194738939404488], "repair_candidates": [0.0201158057898283, 0.9302200078964233, 0.027996152639389038, 0.0003076987050008029, 0.001376367057673633, 0.0007823359919711947, 1.641552785258682e-06, 3.17309013553313e-06, 1.9755939320020843e-06, 0.019194738939404488], "target_probs": 0.9494147300720215}}
+
+
+{"result": {"time": "2021-02-21 05:34:38.329196", "n_pass": [93, 11, 8], "n_token": 34, "loss": [0.0524265356361866, 0.06734976917505264], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", "bucket_uri", "=", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", ")", "]", ")", "#NEWLINE#", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 30], "repair_candidates": [8, 17, 21, 3, 30, 2, 5, 10, 12, 26]}}
+{"prediction": {"error_location": 0.9489239454269409, "repair_targets": [0.9285043478012085, 0.006363788619637489], "repair_candidates": [0.029497239738702774, 0.9285043478012085, 0.03292323648929596, 0.0005840648082084954, 0.00063262291951105, 0.0014596511609852314, 1.691060788289178e-05, 1.5672934750909917e-05, 2.4736957584536867e-06, 0.006363788619637489], "target_probs": 0.9348681569099426}}
+
+
+{"result": {"time": "2021-02-21 05:34:38.494822", "n_pass": [98, 14, 9], "n_token": 32, "loss": [0.023717155680060387, 0.0321815125644207], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", "bucket_uri", "=", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", ")", "#NEWLINE#", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 28], "repair_candidates": [8, 17, 21, 3, 28, 2, 5, 10, 12, 24]}}
+{"prediction": {"error_location": 0.9765619039535522, "repair_targets": [0.9626260995864868, 0.00570471677929163], "repair_candidates": [0.012786224484443665, 0.9626260995864868, 0.017862113192677498, 0.00012547826918307692, 0.00023582011635880917, 0.0006509444792754948, 4.258413810021011e-06, 3.232235940231476e-06, 1.0239831453873194e-06, 0.00570471677929163], "target_probs": 0.9683308005332947}}
+
+
+{"result": {"time": "2021-02-21 05:34:38.550013", "n_pass": [99, 15, 10], "n_token": 30, "loss": [0.11096864938735962, 0.11690960824489594], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", "bucket_uri", "=", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", "self", ".", "AssertNObjectsInBucket", "(", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 26], "repair_candidates": [8, 17, 21, 3, 26, 2, 5, 10, 12, 22]}}
+{"prediction": {"error_location": 0.894966721534729, "repair_targets": [0.4781005084514618, 0.4115650951862335], "repair_candidates": [0.033820345997810364, 0.4781005084514618, 0.04039537161588669, 0.0002465959405526519, 0.01110741589218378, 0.007390410173684359, 4.3713251216104254e-05, 1.414827784174122e-05, 0.01731644570827484, 0.4115650951862335], "target_probs": 0.8896656036376953}}
+
+
+{"result": {"time": "2021-02-21 05:34:38.605584", "n_pass": [101, 16, 11], "n_token": 28, "loss": [0.5344924926757812, 0.1674899160861969], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_move_dir_to_bucket(", "self", "bucket_uri", "=", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", "self", ".", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 24], "repair_candidates": [8, 17, 21, 3, 24, 2, 5, 10, 12, 22]}}
+{"prediction": {"error_location": 0.5859665274620056, "repair_targets": [0.8444740176200867, 0.001311135827563703], "repair_candidates": [0.0438842847943306, 0.8444740176200867, 0.011372669599950314, 2.759082053671591e-05, 0.026978516951203346, 0.008209261111915112, 1.9614035409176722e-06, 1.5984695664883475e-06, 0.06373890489339828, 0.001311135827563703], "target_probs": 0.8457851409912109}}
+
+
+{"result": {"time": "2021-02-21 05:34:39.377552", "n_pass": [105, 19, 12], "n_token": 27, "loss": [0.20184850692749023, 0.08958060294389725], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "=", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", "self", ".", "bucket_uri", ",", "2", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2, 23], "repair_candidates": [7, 16, 20, 2, 23, 1, 4, 9, 11, 21]}}
+{"prediction": {"error_location": 0.8172187209129333, "repair_targets": [0.9128061532974243, 0.0015084061305969954], "repair_candidates": [0.003514259122312069, 0.9128061532974243, 0.01607212983071804, 0.00013523759844247252, 0.030253078788518906, 0.017217202112078667, 1.039311882777838e-05, 2.302654138475191e-05, 0.01846010610461235, 0.0015084061305969954], "target_probs": 0.9143145680427551}}
+
+
+{"result": {"time": "2021-02-21 05:34:39.719560", "n_pass": [121, 25, 13], "n_token": 25, "loss": [0.15644969046115875, 0.03599756211042404], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "=", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", "self", ".", "bucket_uri", ","]}}
+{"position": {"error_location": 16, "repair_targets": [2, 23], "repair_candidates": [7, 16, 20, 2, 23, 1, 4, 9, 11, 21]}}
+{"prediction": {"error_location": 0.8551746010780334, "repair_targets": [0.963798463344574, 0.0008441993268206716], "repair_candidates": [0.001392675330862403, 0.963798463344574, 0.005757858976721764, 2.6220939616905525e-05, 0.01620439998805523, 0.008941019885241985, 1.3134809933035285e-06, 4.5636215872946195e-06, 0.0030292849987745285, 0.0008441993268206716], "target_probs": 0.9646426439285278}}
+
+
+{"result": {"time": "2021-02-21 05:34:39.831989", "n_pass": [125, 27, 14], "n_token": 24, "loss": [0.3465311825275421, 0.121776282787323], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "suri", "(", "dir_to_move", "self", ".", "bucket_uri", ","]}}
+{"position": {"error_location": 15, "repair_targets": [2, 22], "repair_candidates": [6, 15, 19, 2, 22, 1, 3, 8, 10, 20]}}
+{"prediction": {"error_location": 0.7071367502212524, "repair_targets": [0.8841359615325928, 0.0012104548513889313], "repair_candidates": [0.0038269818760454655, 0.8841359615325928, 0.02180633880198002, 0.00011303310748189688, 0.04269182309508324, 0.018625304102897644, 9.239505743607879e-06, 1.9808048818958923e-05, 0.027561113238334656, 0.0012104548513889313], "target_probs": 0.8853464126586914}}
+
+
+{"result": {"time": "2021-02-21 05:34:40.564840", "n_pass": [170, 40, 15], "n_token": 23, "loss": [0.3574017584323883, 0.13284090161323547], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "(", "dir_to_move", "self", ".", "bucket_uri", ","]}}
+{"position": {"error_location": 15, "repair_targets": [2, 21], "repair_candidates": [6, 15, 18, 2, 21, 1, 3, 8, 10, 19]}}
+{"prediction": {"error_location": 0.6994913816452026, "repair_targets": [0.8731592893600464, 0.0024451192002743483], "repair_candidates": [0.0057645742781460285, 0.8731592893600464, 0.026923606172204018, 0.0006908229552209377, 0.0381501205265522, 0.022432316094636917, 3.3080093999160454e-05, 0.0004475299210753292, 0.02995355986058712, 0.0024451192002743483], "target_probs": 0.8756043910980225}}
+
+
+{"result": {"time": "2021-02-21 05:34:40.735058", "n_pass": [176, 43, 16], "n_token": 22, "loss": [0.1895497888326645, 0.06278542429208755], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "self", ")", "#NEWLINE#", "dir_to_move", "=", "self", ".", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "(", "dir_to_move", "self", ".", "bucket_uri"]}}
+{"position": {"error_location": 15, "repair_targets": [2, 21], "repair_candidates": [6, 15, 18, 2, 21, 1, 3, 8, 10, 19]}}
+{"prediction": {"error_location": 0.8273316025733948, "repair_targets": [0.9346305131912231, 0.0045144641771912575], "repair_candidates": [0.005260320845991373, 0.9346305131912231, 0.01247223187237978, 0.0001651152124395594, 0.020172448828816414, 0.011923011392354965, 3.344318201925489e-06, 5.4483505664393306e-05, 0.01080414094030857, 0.0045144641771912575], "target_probs": 0.9391449689865112}}
+
+
+{"result": {"time": "2021-02-21 05:34:40.902315", "n_pass": [182, 46, 17], "n_token": 21, "loss": [0.2453155666589737, 0.04792823642492294], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "self", ")", "dir_to_move", "=", "self", ".", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "(", "dir_to_move", "self", ".", "bucket_uri"]}}
+{"position": {"error_location": 14, "repair_targets": [2, 20], "repair_candidates": [5, 14, 17, 2, 20, 1, 3, 7, 9, 18]}}
+{"prediction": {"error_location": 0.7824575304985046, "repair_targets": [0.9495955109596252, 0.0036066712345927954], "repair_candidates": [0.002741131465882063, 0.9495955109596252, 0.010967271402478218, 0.0002451168547850102, 0.01719214953482151, 0.007591122295707464, 3.954678049922222e-06, 1.8637931134435348e-05, 0.00803834106773138, 0.0036066712345927954], "target_probs": 0.9532021880149841}}
+
+
+{"result": {"time": "2021-02-21 05:34:41.016839", "n_pass": [186, 48, 18], "n_token": 20, "loss": [0.5741326808929443, 0.09217848628759384], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "self", ")", "dir_to_move", "=", "self", "self", ".", "[", "'mv'", ",", "dir_to_move", ",", "(", "dir_to_move", "self", ".", "bucket_uri"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 19], "repair_candidates": [5, 13, 16, 2, 19, 1, 3, 7, 8, 17]}}
+{"prediction": {"error_location": 0.5631932020187378, "repair_targets": [0.9086654782295227, 0.00327686732634902], "repair_candidates": [0.004889411386102438, 0.9086654782295227, 0.018753264099359512, 0.0004051213327329606, 0.025242958217859268, 0.020738227292895317, 2.6295296265743673e-05, 4.731447552330792e-05, 0.017954988405108452, 0.00327686732634902], "target_probs": 0.9119423627853394}}
+
+
+{"result": {"time": "2021-02-21 05:34:41.239316", "n_pass": [191, 52, 19], "n_token": 19, "loss": [0.11111053824424744, 0.015098919160664082], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "self", ")", "dir_to_move", "=", "self", "self", ".", "[", "'mv'", "dir_to_move", ",", "(", "dir_to_move", "self", ".", "bucket_uri"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 18], "repair_candidates": [5, 12, 15, 2, 18, 1, 3, 7, 8, 16]}}
+{"prediction": {"error_location": 0.8948398232460022, "repair_targets": [0.9832119345664978, 0.0018025808967649937], "repair_candidates": [0.0013425621436908841, 0.9832119345664978, 0.0029096619691699743, 2.5518835172988474e-05, 0.004960756283253431, 0.004401248414069414, 4.4366765905579086e-07, 3.199907723683282e-06, 0.0013420244213193655, 0.0018025808967649937], "target_probs": 0.9850144982337952}}
+
+
+{"result": {"time": "2021-02-21 05:34:41.353550", "n_pass": [194, 54, 20], "n_token": 18, "loss": [0.6835565567016602, 0.522361695766449], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "self", ")", "dir_to_move", "=", "self", "self", ".", "[", "'mv'", "dir_to_move", ",", "dir_to_move", "self", ".", "bucket_uri"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 17], "repair_candidates": [5, 12, 14, 2, 17, 1, 3, 7, 8, 15]}}
+{"prediction": {"error_location": 0.504818320274353, "repair_targets": [0.5911840796470642, 0.0019340352155268192], "repair_candidates": [0.004279018379747868, 0.5911840796470642, 0.06587483733892441, 1.2297366993152536e-05, 0.17557892203330994, 0.13793650269508362, 2.5857486889435677e-06, 2.4686826236575143e-06, 0.02319522388279438, 0.0019340352155268192], "target_probs": 0.5931181311607361}}
+
+
+{"result": {"time": "2021-02-21 05:34:41.632618", "n_pass": [208, 59, 21], "n_token": 17, "loss": [0.3460842967033386, 0.08979307860136032], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "self", ")", "dir_to_move", "=", "self", "self", "[", "'mv'", "dir_to_move", ",", "dir_to_move", "self", ".", "bucket_uri"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 16], "repair_candidates": [5, 11, 13, 2, 16, 1, 3, 7, 8, 14]}}
+{"prediction": {"error_location": 0.7074527740478516, "repair_targets": [0.9089269042015076, 0.005193390417844057], "repair_candidates": [0.0030610847752541304, 0.9089269042015076, 0.027955053374171257, 0.0002868835290428251, 0.029202807694673538, 0.022474410012364388, 0.0001316262350883335, 1.2245271136634983e-05, 0.002755741123110056, 0.005193390417844057], "target_probs": 0.9141203165054321}}
+
+
+{"result": {"time": "2021-02-21 05:34:41.691505", "n_pass": [209, 60, 22], "n_token": 16, "loss": [0.19437061250209808, 0.05783761665225029], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "self", ")", "dir_to_move", "=", "self", "self", "'mv'", "dir_to_move", ",", "dir_to_move", "self", ".", "bucket_uri"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 15], "repair_candidates": [5, 10, 12, 2, 15, 1, 3, 7, 8, 13]}}
+{"prediction": {"error_location": 0.8233526945114136, "repair_targets": [0.9407923817634583, 0.0030108208302408457], "repair_candidates": [0.003391776466742158, 0.9407923817634583, 0.027607716619968414, 0.00015236480976454914, 0.008878907188773155, 0.007876484654843807, 2.351072362216655e-05, 8.805334073258564e-05, 0.008177978917956352, 0.0030108208302408457], "target_probs": 0.9438031911849976}}
+
+
+{"result": {"time": "2021-02-21 05:34:41.968385", "n_pass": [221, 65, 23], "n_token": 15, "loss": [0.7770637273788452, 0.04567066952586174], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "self", "bucket_uri", "self", "dir_to_move", "=", "self", "self", "'mv'", "dir_to_move", ",", "dir_to_move", "self", ".", "bucket_uri"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 14], "repair_candidates": [4, 9, 11, 2, 14, 1, 3, 6, 7, 12]}}
+{"prediction": {"error_location": 0.45975396037101746, "repair_targets": [0.9534590244293213, 0.001897513633593917], "repair_candidates": [0.002879815874621272, 0.9534590244293213, 0.007683508563786745, 0.0068280985578894615, 0.009426749311387539, 0.017340099439024925, 0.00010983762331306934, 0.00011837121564894915, 0.0002569669159129262, 0.001897513633593917], "target_probs": 0.9553565382957458}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'self', 'bucket_uri', 'self', 'dir_to_move', '=', 'self', 'self', "'mv'", 'dir_to_move', ',', 'dir_to_move', 'self', '.', 'bucket_uri']

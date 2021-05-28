@@ -1,0 +1,85 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def add_on_return_callback(", "self", ",", "callback", ")", ":", "#NEWLINE#", "#INDENT#", "'Pass a callback function that will be called when basic_publish as\\n        sent a message that has been rejected and returned by the server.\\n\\n        :param callable callback: The function to call, having the signature\\n                                callback(channel, method, properties, body)\\n                                where\\n                                channel: pika.Channel\\n                                method: pika.spec.Basic.Return\\n                                properties: pika.spec.BasicProperties\\n                                body: str, unicode, or bytes (python 3.x)\\n\\n        '", "#NEWLINE#", "self", ".", "callbacks", ".", "add", "(", "self", ".", "channel_number", ",", "'_on_return'", ",", "self", ",", "False", ")"], "error_location": [23], "repair_targets": [4], "repair_candidates": [2, 11, 17, 23, 4], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "pika/pika/pika/channel.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 2814, "results": {"model": "rnn", "prob": {"loc": [[0.0078072454780340195, 9.681282335805008e-07, 3.426340455803256e-08, 2.926154596405439e-10, 5.220540799655282e-08, 4.122252261762327e-10, 4.4997713888328406e-11, 8.414977048509797e-10, 1.3152265943006114e-09, 3.4161115602948655e-10, 2.6594821900260968e-09, 1.8215839503454845e-08, 3.6536734748793265e-10, 2.383649055914816e-09, 7.74113306789559e-09, 4.427807898110814e-09, 1.3672096788042154e-09, 0.0013329226057976484, 3.926519109853643e-09, 1.0643926628972622e-08, 2.325227566046806e-09, 1.731681777528138e-06, 1.485497680420167e-08, 0.9908411502838135, 1.4451525203185156e-05, 1.2252229453224572e-06, 8.69908021172705e-08]], "pointer": [[0.0, 0.0, 0.0013457396999001503, 0.0, 0.9983446598052979, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.1953992725466378e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00015753928164485842, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001401200715918094, 0.0, 0.0, 0.0]], "target": [0.9983446598052979]}, "loss": [0.009200911037623882, 0.0016567118000239134], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 10:24:24.392366", "n_pass": [1, 1, 1], "n_token": 27, "loss": [0.009200911037623882, 0.0016567118000239134], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_on_return_callback(", "self", ",", "callback", ")", ":", "#NEWLINE#", "#INDENT#", "'Pass a callback function that will be called when basic_publish as\\n        sent a message that has been rejected and returned by the server.\\n\\n        :param callable callback: The function to call, having the signature\\n                                callback(channel, method, properties, body)\\n                                where\\n                                channel: pika.Channel\\n                                method: pika.spec.Basic.Return\\n                                properties: pika.spec.BasicProperties\\n                                body: str, unicode, or bytes (python 3.x)\\n\\n        '", "#NEWLINE#", "self", ".", "callbacks", ".", "add", "(", "self", ".", "channel_number", ",", "'_on_return'", ",", "self", ",", "False", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [4], "repair_candidates": [2, 11, 17, 23, 4]}}
+{"prediction": {"error_location": 0.9908411502838135, "repair_targets": [0.9983446598052979], "repair_candidates": [0.0013457396999001503, 0.9983446598052979, 1.1953992725466378e-05, 0.00015753928164485842, 0.0001401200715918094], "target_probs": 0.9983446598052979}}
+
+
+{"result": {"time": "2021-02-11 10:24:24.512780", "n_pass": [24, 3, 2], "n_token": 24, "loss": [0.002315104240551591, 0.0018012046348303556], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_on_return_callback(", "self", ",", "callback", ")", ":", "#NEWLINE#", "#INDENT#", "'Pass a callback function that will be called when basic_publish as\\n        sent a message that has been rejected and returned by the server.\\n\\n        :param callable callback: The function to call, having the signature\\n                                callback(channel, method, properties, body)\\n                                where\\n                                channel: pika.Channel\\n                                method: pika.spec.Basic.Return\\n                                properties: pika.spec.BasicProperties\\n                                body: str, unicode, or bytes (python 3.x)\\n\\n        '", "#NEWLINE#", "self", "add", "(", "self", ".", "channel_number", ",", "'_on_return'", ",", "self", ",", "False", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [4], "repair_candidates": [2, 11, 14, 20, 4]}}
+{"prediction": {"error_location": 0.997687578201294, "repair_targets": [0.9982004165649414], "repair_candidates": [0.001616651308722794, 0.9982004165649414, 6.767630111426115e-05, 2.3215725377667695e-05, 9.19419398996979e-05], "target_probs": 0.9982004165649414}}
+
+
+{"result": {"time": "2021-02-11 10:24:24.632021", "n_pass": [30, 5, 3], "n_token": 21, "loss": [0.0594867467880249, 0.007965495809912682], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_on_return_callback(", "self", ",", "callback", ")", "'Pass a callback function that will be called when basic_publish as\\n        sent a message that has been rejected and returned by the server.\\n\\n        :param callable callback: The function to call, having the signature\\n                                callback(channel, method, properties, body)\\n                                where\\n                                channel: pika.Channel\\n                                method: pika.spec.Basic.Return\\n                                properties: pika.spec.BasicProperties\\n                                body: str, unicode, or bytes (python 3.x)\\n\\n        '", "#NEWLINE#", "self", "add", "(", "self", ".", "channel_number", ",", "'_on_return'", ",", "self", ",", "False", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [4], "repair_candidates": [2, 8, 11, 17, 4]}}
+{"prediction": {"error_location": 0.9422479271888733, "repair_targets": [0.9920661449432373], "repair_candidates": [0.006360392551869154, 0.9920661449432373, 0.00035698647843673825, 0.00010298191045876592, 0.0011134862434118986], "target_probs": 0.9920661449432373}}
+
+
+{"result": {"time": "2021-02-11 10:24:24.746435", "n_pass": [49, 7, 4], "n_token": 19, "loss": [0.3901205062866211, 0.11375336349010468], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_on_return_callback(", "self", ",", "callback", "#NEWLINE#", "self", "add", "(", "self", ".", "channel_number", ",", "'_on_return'", ",", "self", ",", "False", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [2, 6, 9, 15, 4]}}
+{"prediction": {"error_location": 0.6769752502441406, "repair_targets": [0.8924780488014221], "repair_candidates": [0.06850272417068481, 0.8924780488014221, 0.0054571013897657394, 0.0014364657690748572, 0.03212562948465347], "target_probs": 0.8924780488014221}}
+
+
+{"result": {"time": "2021-02-11 10:24:24.802675", "n_pass": [51, 8, 5], "n_token": 17, "loss": [0.1700335144996643, 0.4827224612236023], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_on_return_callback(", "self", ",", "callback", "#NEWLINE#", "self", "self", ".", "channel_number", ",", "'_on_return'", ",", "self", ",", "False", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [2, 6, 7, 13, 4]}}
+{"prediction": {"error_location": 0.8436365127563477, "repair_targets": [0.6171010732650757], "repair_candidates": [0.36157912015914917, 0.6171010732650757, 0.008640183135867119, 0.0023135552182793617, 0.010366054251790047], "target_probs": 0.6171010732650757}}
+
+
+{"result": {"time": "2021-02-11 10:24:24.914146", "n_pass": [54, 10, 6], "n_token": 15, "loss": [0.15918327867984772, 0.3231137692928314], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def add_on_return_callback(", "self", ",", "callback", "#NEWLINE#", "self", "self", ".", "channel_number", ",", "self", ",", "False", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [4], "repair_candidates": [2, 6, 7, 11, 4]}}
+{"prediction": {"error_location": 0.8528400659561157, "repair_targets": [0.7238914966583252], "repair_candidates": [0.2647617757320404, 0.7238914966583252, 0.002132090739905834, 0.005483225453644991, 0.003731419565156102], "target_probs": 0.7238914966583252}}
+
+
+{"result": {"time": "2021-02-11 10:24:25.026251", "n_pass": [57, 12, 7], "n_token": 14, "loss": [0.28743645548820496, 0.33644986152648926], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def add_on_return_callback(", "self", ",", "callback", "#NEWLINE#", "self", "self", ".", "channel_number", ",", "self", ",", "False", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [3], "repair_candidates": [1, 5, 6, 10, 3]}}
+{"prediction": {"error_location": 0.7501842379570007, "repair_targets": [0.7143017053604126], "repair_candidates": [0.27586469054222107, 0.7143017053604126, 0.0015802764100953937, 0.003786185523495078, 0.004467134829610586], "target_probs": 0.7143017053604126}}
+
+
+{"result": {"time": "2021-02-11 10:24:25.244101", "n_pass": [78, 16, 8], "n_token": 13, "loss": [0.5402955412864685, 0.1027340367436409], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def add_on_return_callback(", "self", "callback", "#NEWLINE#", "self", "self", ".", "channel_number", ",", "self", ",", "False", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [1, 4, 5, 9, 2]}}
+{"prediction": {"error_location": 0.5825760960578918, "repair_targets": [0.9023669362068176], "repair_candidates": [0.09272116422653198, 0.9023669362068176, 0.000949439185205847, 0.0011006816057488322, 0.0028618555516004562], "target_probs": 0.9023669362068176}}
+
+
+{"result": {"time": "2021-02-11 10:24:25.408706", "n_pass": [83, 19, 9], "n_token": 12, "loss": [0.007603868842124939, 0.04160146415233612], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def add_on_return_callback(", "self", "callback", "#NEWLINE#", "self", "self", ".", ",", "self", ",", "False", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [1, 4, 5, 8, 2]}}
+{"prediction": {"error_location": 0.9924249649047852, "repair_targets": [0.9592519998550415], "repair_candidates": [0.03706512600183487, 0.9592519998550415, 0.00045474100625142455, 0.0029573156498372555, 0.00027075878460891545], "target_probs": 0.9592519998550415}}
+
+
+{"result": {"time": "2021-02-11 10:24:25.515051", "n_pass": [86, 21, 10], "n_token": 11, "loss": [0.049696605652570724, 0.06305500864982605], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def add_on_return_callback(", "self", "callback", "#NEWLINE#", "self", "self", ".", ",", "self", "False", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [1, 4, 5, 8, 2]}}
+{"prediction": {"error_location": 0.9515180587768555, "repair_targets": [0.9388918280601501], "repair_candidates": [0.05236998572945595, 0.9388918280601501, 0.0005966436583548784, 0.007992888800799847, 0.00014866655692458153], "target_probs": 0.9388918280601501}}
+
+
+{"result": {"time": "2021-02-11 10:24:25.567899", "n_pass": [87, 22, 11], "n_token": 10, "loss": [0.0048383064568042755, 0.04040871933102608], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def add_on_return_callback(", "self", "callback", "#NEWLINE#", "self", "self", ".", ",", "self", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [1, 4, 5, 8, 2]}}
+{"prediction": {"error_location": 0.9951733946800232, "repair_targets": [0.9603968262672424], "repair_candidates": [0.035568807274103165, 0.9603968262672424, 0.0006585967494174838, 0.0026836609467864037, 0.0006920734886080027], "target_probs": 0.9603968262672424}}
+
+
+{"result": {"time": "2021-02-11 10:24:25.620160", "n_pass": [88, 23, 12], "n_token": 9, "loss": [0.009952563792467117, 0.027959400787949562], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def add_on_return_callback(", "self", "callback", "#NEWLINE#", "self", "self", ".", ",", "self"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [1, 4, 5, 8, 2]}}
+{"prediction": {"error_location": 0.9900968074798584, "repair_targets": [0.9724278450012207], "repair_candidates": [0.026187436655163765, 0.9724278450012207, 0.00026645141770131886, 0.0009522665641270578, 0.0001659845729591325], "target_probs": 0.9724278450012207}}
+
+
+
+
+Minimal simplified tokens:
+
+['def add_on_return_callback(', 'self', 'callback', '#NEWLINE#', 'self', 'self', '.', ',', 'self']

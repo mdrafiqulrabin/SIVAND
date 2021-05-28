@@ -1,0 +1,91 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def svd(", "a", ",", "full_matrices", "=", "1", ",", "compute_uv", "=", "1", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    This function performs the SVD on CPU.\\n\\n    Parameters\\n    ----------\\n    full_matrices : bool, optional\\n        If True (default), u and v have the shapes (M, M) and (N, N),\\n        respectively.\\n        Otherwise, the shapes are (M, K) and (K, N), respectively,\\n        where K = min(M, N).\\n    compute_uv : bool, optional\\n        Whether or not to compute u and v in addition to s.\\n        True by default.\\n\\n    Returns\\n    -------\\n    U, V,  D : matrices\\n\\n    '", "#NEWLINE#", "return", "SVD", "(", "full_matrices", ",", "compute_uv", ")", "(", "full_matrices", ")"], "error_location": [25], "repair_targets": [2], "repair_candidates": [8, 22, 2, 4, 20, 25], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "rizar/attention-lvcsr/libs/Theano/theano/tensor/nlinalg.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00003-of-00300", "js_count": 12706, "results": {"model": "rnn", "prob": {"loc": [[0.007079240400344133, 6.366018379111438e-09, 8.69451355356432e-09, 3.658966740704983e-10, 2.3174893115651685e-08, 1.2700167584256405e-09, 2.2795635601369213e-08, 2.2170967839407751e-10, 3.17583577214009e-08, 2.7931392310165393e-08, 3.005021937951824e-07, 1.4354283983664118e-08, 1.156814022351682e-08, 3.488458588662979e-08, 2.0354093521746108e-08, 4.541718467976352e-08, 4.56241728841178e-08, 4.6081281013243824e-09, 6.494561777259378e-09, 4.163994482553335e-09, 0.826288640499115, 8.130083983814984e-08, 9.594744915375486e-05, 1.0360988733637555e-09, 9.087751884351292e-09, 0.16653448343276978, 8.953235806075099e-07]], "pointer": [[0.0, 0.0, 0.6376433968544006, 0.0, 0.00029175414238125086, 0.0, 0.0, 0.0, 0.3620469570159912, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.3727658319548937e-06, 0.0, 7.4925987973983865e-06, 0.0, 0.0, 7.063154498609947e-06, 0.0]], "target": [0.6376433968544006]}, "loss": [1.7925529479980469, 0.4499760866165161], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [20]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 11:53:02.346286", "n_pass": [1, 1, 1], "n_token": 27, "loss": [0.19081120193004608, 0.4499760866165161], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def svd(", "a", ",", "full_matrices", "=", "1", ",", "compute_uv", "=", "1", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    This function performs the SVD on CPU.\\n\\n    Parameters\\n    ----------\\n    full_matrices : bool, optional\\n        If True (default), u and v have the shapes (M, M) and (N, N),\\n        respectively.\\n        Otherwise, the shapes are (M, K) and (K, N), respectively,\\n        where K = min(M, N).\\n    compute_uv : bool, optional\\n        Whether or not to compute u and v in addition to s.\\n        True by default.\\n\\n    Returns\\n    -------\\n    U, V,  D : matrices\\n\\n    '", "#NEWLINE#", "return", "SVD", "(", "full_matrices", ",", "compute_uv", ")", "(", "full_matrices", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [2], "repair_candidates": [8, 22, 2, 4, 20, 25]}}
+{"prediction": {"error_location": 0.826288640499115, "repair_targets": [0.6376433968544006], "repair_candidates": [0.6376433968544006, 0.00029175414238125086, 0.3620469570159912, 3.3727658319548937e-06, 7.4925987973983865e-06, 7.063154498609947e-06], "target_probs": 0.6376433968544006}}
+
+
+{"result": {"time": "2021-02-21 11:53:02.465604", "n_pass": [23, 3, 2], "n_token": 24, "loss": [0.12043000012636185, 0.3109901547431946], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def svd(", "a", ",", "full_matrices", "=", "1", ",", "compute_uv", ":", "#NEWLINE#", "#INDENT#", "'\\n    This function performs the SVD on CPU.\\n\\n    Parameters\\n    ----------\\n    full_matrices : bool, optional\\n        If True (default), u and v have the shapes (M, M) and (N, N),\\n        respectively.\\n        Otherwise, the shapes are (M, K) and (K, N), respectively,\\n        where K = min(M, N).\\n    compute_uv : bool, optional\\n        Whether or not to compute u and v in addition to s.\\n        True by default.\\n\\n    Returns\\n    -------\\n    U, V,  D : matrices\\n\\n    '", "#NEWLINE#", "return", "SVD", "(", "full_matrices", ",", "compute_uv", ")", "(", "full_matrices", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [2], "repair_candidates": [8, 19, 2, 4, 17, 22]}}
+{"prediction": {"error_location": 0.8865391612052917, "repair_targets": [0.7327210903167725], "repair_candidates": [0.7327210903167725, 0.0009379642433486879, 0.26630541682243347, 5.179619165573968e-06, 1.1038109732908197e-05, 1.937412889674306e-05], "target_probs": 0.7327210903167725}}
+
+
+{"result": {"time": "2021-02-21 11:53:02.524618", "n_pass": [24, 4, 3], "n_token": 21, "loss": [0.03768904134631157, 0.012227602303028107], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def svd(", "a", ",", "full_matrices", "=", "1", ",", "compute_uv", "'\\n    This function performs the SVD on CPU.\\n\\n    Parameters\\n    ----------\\n    full_matrices : bool, optional\\n        If True (default), u and v have the shapes (M, M) and (N, N),\\n        respectively.\\n        Otherwise, the shapes are (M, K) and (K, N), respectively,\\n        where K = min(M, N).\\n    compute_uv : bool, optional\\n        Whether or not to compute u and v in addition to s.\\n        True by default.\\n\\n    Returns\\n    -------\\n    U, V,  D : matrices\\n\\n    '", "#NEWLINE#", "return", "SVD", "(", "full_matrices", ",", "compute_uv", ")", "(", "full_matrices", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [8, 16, 2, 4, 14, 19]}}
+{"prediction": {"error_location": 0.9630122184753418, "repair_targets": [0.987846851348877], "repair_candidates": [0.987846851348877, 0.0013640900142490864, 0.010677086189389229, 1.9918861653422937e-05, 2.690222390810959e-05, 6.51137888780795e-05], "target_probs": 0.987846851348877}}
+
+
+{"result": {"time": "2021-02-21 11:53:02.758227", "n_pass": [47, 8, 4], "n_token": 19, "loss": [0.0004439560289029032, 7.164735143305734e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def svd(", "a", ",", "full_matrices", "=", "1", ",", "compute_uv", "'\\n    This function performs the SVD on CPU.\\n\\n    Parameters\\n    ----------\\n    full_matrices : bool, optional\\n        If True (default), u and v have the shapes (M, M) and (N, N),\\n        respectively.\\n        Otherwise, the shapes are (M, K) and (K, N), respectively,\\n        where K = min(M, N).\\n    compute_uv : bool, optional\\n        Whether or not to compute u and v in addition to s.\\n        True by default.\\n\\n    Returns\\n    -------\\n    U, V,  D : matrices\\n\\n    '", "#NEWLINE#", "return", "SVD", "(", "full_matrices", ",", "compute_uv", "full_matrices", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [8, 16, 2, 4, 14, 17]}}
+{"prediction": {"error_location": 0.9995561242103577, "repair_targets": [0.99992835521698], "repair_candidates": [0.99992835521698, 2.0420478904270567e-05, 5.0341059250058606e-05, 2.85319146087204e-07, 2.8118083150729944e-07, 3.40711380886205e-07], "target_probs": 0.99992835521698}}
+
+
+{"result": {"time": "2021-02-21 11:53:02.815391", "n_pass": [48, 9, 5], "n_token": 18, "loss": [0.003604345954954624, 0.011751227080821991], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def svd(", "a", ",", "full_matrices", "=", "1", ",", "compute_uv", "'\\n    This function performs the SVD on CPU.\\n\\n    Parameters\\n    ----------\\n    full_matrices : bool, optional\\n        If True (default), u and v have the shapes (M, M) and (N, N),\\n        respectively.\\n        Otherwise, the shapes are (M, K) and (K, N), respectively,\\n        where K = min(M, N).\\n    compute_uv : bool, optional\\n        Whether or not to compute u and v in addition to s.\\n        True by default.\\n\\n    Returns\\n    -------\\n    U, V,  D : matrices\\n\\n    '", "#NEWLINE#", "return", "SVD", "(", "full_matrices", ",", "compute_uv", "full_matrices", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [1], "repair_candidates": [7, 15, 1, 3, 13, 16]}}
+{"prediction": {"error_location": 0.9964021444320679, "repair_targets": [0.9883175492286682], "repair_candidates": [0.9883175492286682, 0.010834489949047565, 0.0008315505692735314, 6.558337190654129e-06, 5.3019584811409e-06, 4.443326361069921e-06], "target_probs": 0.9883175492286682}}
+
+
+{"result": {"time": "2021-02-21 11:53:02.927808", "n_pass": [52, 11, 6], "n_token": 16, "loss": [0.008125108666718006, 0.006898299790918827], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def svd(", "a", ",", "full_matrices", ",", "compute_uv", "'\\n    This function performs the SVD on CPU.\\n\\n    Parameters\\n    ----------\\n    full_matrices : bool, optional\\n        If True (default), u and v have the shapes (M, M) and (N, N),\\n        respectively.\\n        Otherwise, the shapes are (M, K) and (K, N), respectively,\\n        where K = min(M, N).\\n    compute_uv : bool, optional\\n        Whether or not to compute u and v in addition to s.\\n        True by default.\\n\\n    Returns\\n    -------\\n    U, V,  D : matrices\\n\\n    '", "#NEWLINE#", "return", "SVD", "(", "full_matrices", ",", "compute_uv", "full_matrices", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [1], "repair_candidates": [5, 13, 1, 3, 11, 14]}}
+{"prediction": {"error_location": 0.9919078350067139, "repair_targets": [0.9931254386901855], "repair_candidates": [0.9931254386901855, 0.00430149445310235, 0.002542708534747362, 1.0283484698447865e-05, 1.2970293028047308e-05, 7.183466550486628e-06], "target_probs": 0.9931254386901855}}
+
+
+{"result": {"time": "2021-02-21 11:53:02.982674", "n_pass": [54, 12, 7], "n_token": 14, "loss": [0.05393951013684273, 0.014867791905999184], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def svd(", "a", ",", "full_matrices", ",", "compute_uv", "return", "SVD", "(", "full_matrices", ",", "compute_uv", "full_matrices", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [1], "repair_candidates": [5, 11, 1, 3, 9, 12]}}
+{"prediction": {"error_location": 0.9474895000457764, "repair_targets": [0.9852421879768372], "repair_candidates": [0.9852421879768372, 0.012376787140965462, 0.0021413813810795546, 5.726906965719536e-05, 0.00013481092173606157, 4.7601726691937074e-05], "target_probs": 0.9852421879768372}}
+
+
+{"result": {"time": "2021-02-21 11:53:03.037033", "n_pass": [55, 13, 8], "n_token": 12, "loss": [0.08544131368398666, 0.06745031476020813], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def svd(", "a", ",", "full_matrices", ",", "compute_uv", "(", "full_matrices", ",", "compute_uv", "full_matrices", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [1], "repair_candidates": [5, 9, 1, 3, 7, 10]}}
+{"prediction": {"error_location": 0.9181072115898132, "repair_targets": [0.9347741603851318], "repair_candidates": [0.9347741603851318, 0.044828034937381744, 0.010448436252772808, 0.0033213200513273478, 0.005720699205994606, 0.0009073439869098365], "target_probs": 0.9347741603851318}}
+
+
+{"result": {"time": "2021-02-21 11:53:03.090709", "n_pass": [59, 14, 9], "n_token": 11, "loss": [0.174684077501297, 0.04174892604351044], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", ",", "full_matrices", ",", "compute_uv", "(", "full_matrices", ",", "compute_uv", "full_matrices", ")"]}}
+{"position": {"error_location": 6, "repair_targets": [0], "repair_candidates": [4, 8, 0, 2, 6, 9]}}
+{"prediction": {"error_location": 0.8397222757339478, "repair_targets": [0.9591105580329895], "repair_candidates": [0.9591105580329895, 0.03317766264081001, 0.002865765243768692, 0.0011869642185047269, 0.003407824784517288, 0.0002512788923922926], "target_probs": 0.9591105580329895}}
+
+
+{"result": {"time": "2021-02-21 11:53:03.143850", "n_pass": [76, 15, 10], "n_token": 10, "loss": [0.12968739867210388, 0.39691492915153503], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", "full_matrices", ",", "compute_uv", "(", "full_matrices", ",", "compute_uv", "full_matrices", ")"]}}
+{"position": {"error_location": 5, "repair_targets": [0], "repair_candidates": [3, 7, 0, 1, 5, 8]}}
+{"prediction": {"error_location": 0.8783699870109558, "repair_targets": [0.6723912358283997], "repair_candidates": [0.6723912358283997, 0.3031750023365021, 0.0023316822480410337, 0.005212516989558935, 0.015943976119160652, 0.0009455469553358853], "target_probs": 0.6723912358283997}}
+
+
+{"result": {"time": "2021-02-21 11:53:03.199259", "n_pass": [77, 16, 11], "n_token": 9, "loss": [0.004213741049170494, 0.050958823412656784], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", "full_matrices", "compute_uv", "(", "full_matrices", ",", "compute_uv", "full_matrices", ")"]}}
+{"position": {"error_location": 4, "repair_targets": [0], "repair_candidates": [2, 6, 0, 1, 4, 7]}}
+{"prediction": {"error_location": 0.9957951307296753, "repair_targets": [0.9503178000450134], "repair_candidates": [0.9503178000450134, 0.027826249599456787, 0.0018590334802865982, 0.0075994571670889854, 0.011402235366404057, 0.0009952341206371784], "target_probs": 0.9503178000450134}}
+
+
+{"result": {"time": "2021-02-21 11:53:03.251312", "n_pass": [79, 17, 12], "n_token": 8, "loss": [0.29439908266067505, 0.08810889720916748], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", "full_matrices", "compute_uv", "full_matrices", ",", "compute_uv", "full_matrices", ")"]}}
+{"position": {"error_location": 3, "repair_targets": [0], "repair_candidates": [2, 5, 0, 1, 3, 6]}}
+{"prediction": {"error_location": 0.7449791431427002, "repair_targets": [0.9156611561775208], "repair_candidates": [0.9156611561775208, 0.03971455618739128, 0.02203691564500332, 0.013079197145998478, 0.008542460389435291, 0.0009657114860601723], "target_probs": 0.9156611561775208}}
+
+
+{"result": {"time": "2021-02-21 11:53:03.354015", "n_pass": [84, 19, 13], "n_token": 7, "loss": [0.1474115401506424, 0.08136884868144989], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["a", "full_matrices", "compute_uv", "full_matrices", ",", "compute_uv", "full_matrices"]}}
+{"position": {"error_location": 3, "repair_targets": [0], "repair_candidates": [2, 5, 0, 1, 3, 6]}}
+{"prediction": {"error_location": 0.8629387617111206, "repair_targets": [0.9218536019325256], "repair_candidates": [0.9218536019325256, 0.03934797644615173, 0.025176052004098892, 0.01141740195453167, 0.0018331665778532624, 0.00037178059574216604], "target_probs": 0.9218536019325256}}
+
+
+
+
+Minimal simplified tokens:
+
+['a', 'full_matrices', 'compute_uv', 'full_matrices', ',', 'compute_uv', 'full_matrices']

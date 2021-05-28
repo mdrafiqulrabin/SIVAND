@@ -1,0 +1,103 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def create_allocation(", "self", ",", "session", ",", "ip_address", ",", "status", "=", "'ALLOCATED'", ")", ":", "#NEWLINE#", "#INDENT#", "'Create an IP allocation entry.\\n\\n        :param session: database session\\n        :param ip_address: the IP address to allocate\\n        :param status: IP allocation status\\n        '", "#NEWLINE#", "ip_request", "=", "db_models", ".", "IpamAllocation", "(", "ip_address", "=", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "add", "(", "ip_request", ")"], "error_location": [33], "repair_targets": [2], "repair_candidates": [17, 33, 42, 2, 6, 23, 25, 4, 38, 8, 27, 29], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "openstack/neutron/neutron/ipam/drivers/neutrondb_ipam/db_api.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 2545, "results": {"model": "rnn", "prob": {"loc": [[0.000302759901387617, 2.593726344812808e-09, 1.1526052112742491e-08, 2.3984730868065185e-11, 6.558821485924682e-09, 2.9897184727900594e-10, 4.2348005990788806e-08, 2.0464080430215859e-10, 4.3335868227245555e-09, 1.4135366488421397e-10, 4.223676530051845e-12, 3.46517675664515e-11, 5.328771104928798e-11, 8.487790470468326e-10, 1.9147816665565642e-10, 3.0141675266825985e-10, 4.1870502620611205e-09, 7.638883969818266e-10, 1.8618396754876976e-11, 2.132325782611133e-08, 6.049842848909748e-10, 6.282364073406654e-10, 1.4706146300724754e-09, 2.468760751384025e-09, 5.012725345920899e-09, 1.293667764912243e-06, 2.7827073978414774e-11, 7.354766795586443e-10, 8.696662140428302e-11, 4.551639065653035e-08, 2.51092979741685e-10, 1.696779605708798e-08, 2.4039290003052827e-10, 0.9996262788772583, 2.609304772249743e-07, 1.8711870097831707e-07, 1.850748776455191e-09, 1.3960462785789218e-09, 2.030480006354196e-09, 6.387348427949746e-10, 3.894125577552643e-10, 2.40623632130621e-10, 6.895884143887088e-05, 3.913089297036265e-10]], "pointer": [[0.0, 0.0, 0.9991359114646912, 0.0, 0.00018378197273705155, 0.0, 0.0001824234495870769, 0.0, 4.3451062083477154e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00038607019814662635, 0.0, 0.0, 0.0, 0.0, 0.0, 1.2098937077098526e-05, 0.0, 2.7634482080429734e-07, 0.0, 3.310523243271746e-05, 0.0, 9.467938753005001e-07, 0.0, 0.0, 0.0, 1.8550563254393637e-05, 0.0, 0.0, 0.0, 0.0, 6.513390644613537e-07, 0.0, 0.0, 0.0, 2.8108681817684555e-06, 0.0]], "target": [0.9991359114646912]}, "loss": [0.0003736513026524335, 0.0008644620538689196], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 10:19:49.010953", "n_pass": [1, 1, 1], "n_token": 44, "loss": [0.0003736513026524335, 0.0008644620538689196], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_allocation(", "self", ",", "session", ",", "ip_address", ",", "status", "=", "'ALLOCATED'", ")", ":", "#NEWLINE#", "#INDENT#", "'Create an IP allocation entry.\\n\\n        :param session: database session\\n        :param ip_address: the IP address to allocate\\n        :param status: IP allocation status\\n        '", "#NEWLINE#", "ip_request", "=", "db_models", ".", "IpamAllocation", "(", "ip_address", "=", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "add", "(", "ip_request", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [2], "repair_candidates": [17, 33, 42, 2, 6, 23, 25, 4, 38, 8, 27, 29]}}
+{"prediction": {"error_location": 0.9996262788772583, "repair_targets": [0.9991359114646912], "repair_candidates": [0.9991359114646912, 0.00018378197273705155, 0.0001824234495870769, 4.3451062083477154e-05, 0.00038607019814662635, 1.2098937077098526e-05, 2.7634482080429734e-07, 3.310523243271746e-05, 9.467938753005001e-07, 1.8550563254393637e-05, 6.513390644613537e-07, 2.8108681817684555e-06], "target_probs": 0.9991359114646912}}
+
+
+{"result": {"time": "2021-02-11 10:19:49.079698", "n_pass": [22, 2, 2], "n_token": 39, "loss": [0.00022516099852509797, 0.0009192876168526709], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_allocation(", "self", ",", "session", ",", "ip_address", ",", "status", "=", "'Create an IP allocation entry.\\n\\n        :param session: database session\\n        :param ip_address: the IP address to allocate\\n        :param status: IP allocation status\\n        '", "#NEWLINE#", "ip_request", "=", "db_models", ".", "IpamAllocation", "(", "ip_address", "=", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "add", "(", "ip_request", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [2], "repair_candidates": [12, 28, 37, 2, 6, 18, 20, 4, 33, 8, 22, 24]}}
+{"prediction": {"error_location": 0.9997749924659729, "repair_targets": [0.9990811347961426], "repair_candidates": [0.9990811347961426, 0.00014045779244042933, 0.00019979495846200734, 2.9968885428388603e-05, 0.0004546167328953743, 8.872490980138537e-06, 1.8639840959622234e-07, 5.20379762747325e-05, 9.885879990179092e-07, 2.8946127713425085e-05, 5.694583933291142e-07, 2.339207867407822e-06], "target_probs": 0.9990811347961426}}
+
+
+{"result": {"time": "2021-02-11 10:19:49.149074", "n_pass": [44, 3, 3], "n_token": 36, "loss": [0.0004378790326882154, 0.0006998842000029981], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_allocation(", "self", ",", "session", ",", "ip_address", ",", "status", "ip_request", "=", "db_models", ".", "IpamAllocation", "(", "ip_address", "=", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "add", "(", "ip_request", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [2], "repair_candidates": [9, 25, 34, 2, 6, 15, 17, 4, 30, 8, 19, 21]}}
+{"prediction": {"error_location": 0.9995622038841248, "repair_targets": [0.9993003606796265], "repair_candidates": [0.9993003606796265, 0.0001219134428538382, 0.0001484431413700804, 0.00017898817895911634, 0.00017367031250614673, 2.5988820198108442e-05, 5.319754450283654e-07, 2.2147272829897702e-05, 8.553705583835836e-07, 2.446771031827666e-05, 4.3898626245209016e-07, 2.018289478655788e-06], "target_probs": 0.9993003606796265}}
+
+
+{"result": {"time": "2021-02-11 10:19:49.214145", "n_pass": [46, 4, 4], "n_token": 33, "loss": [0.0005538121913559735, 0.0010788297513499856], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_allocation(", "self", ",", "session", ",", "ip_address", ",", "status", "ip_request", "=", "db_models", "ip_address", "=", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "add", "(", "ip_request", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [2], "repair_candidates": [9, 22, 31, 2, 6, 12, 14, 4, 27, 8, 16, 18]}}
+{"prediction": {"error_location": 0.9994462132453918, "repair_targets": [0.9989217519760132], "repair_candidates": [0.9989217519760132, 0.000136685703182593, 0.00013673210924025625, 0.00021431244385894388, 0.0005079042166471481, 2.149903230019845e-05, 5.52241090190364e-07, 2.1425939848995768e-05, 3.419311724428553e-06, 3.2459633075632155e-05, 4.2361222085673944e-07, 2.8425026812328724e-06], "target_probs": 0.9989217519760132}}
+
+
+{"result": {"time": "2021-02-11 10:19:49.405691", "n_pass": [83, 7, 5], "n_token": 32, "loss": [0.001647664001211524, 0.00217560981400311], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_allocation(", "self", ",", "session", ",", "ip_address", ",", "status", "ip_request", "db_models", "ip_address", "=", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "add", "(", "ip_request", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [2], "repair_candidates": [9, 21, 30, 2, 6, 11, 13, 4, 26, 8, 15, 17]}}
+{"prediction": {"error_location": 0.9983537197113037, "repair_targets": [0.9978267550468445], "repair_candidates": [0.9978267550468445, 0.00029399950290098786, 0.00036953913513571024, 0.0002499351685401052, 0.0004069589776918292, 0.0004744449397549033, 2.1124351405887865e-06, 0.0002658626181073487, 1.2224164493090939e-05, 9.462417074246332e-05, 6.817518851676141e-07, 2.844240952981636e-06], "target_probs": 0.9978267550468445}}
+
+
+{"result": {"time": "2021-02-11 10:19:49.469528", "n_pass": [84, 8, 6], "n_token": 31, "loss": [0.0020651936065405607, 0.006761169992387295], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_allocation(", "self", ",", "session", ",", "ip_address", ",", "status", "ip_request", "ip_address", "=", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "add", "(", "ip_request", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [2], "repair_candidates": [9, 20, 29, 2, 6, 10, 12, 4, 25, 8, 14, 16]}}
+{"prediction": {"error_location": 0.9979368448257446, "repair_targets": [0.9932616353034973], "repair_candidates": [0.9932616353034973, 0.0003613131120800972, 0.00039883676799945533, 0.0006154844886623323, 0.0008280305773951113, 0.004389833193272352, 4.3640284275170416e-06, 8.540861745132133e-05, 8.512469321431126e-06, 4.2846251744776964e-05, 6.783028538848157e-07, 3.0653395697299857e-06], "target_probs": 0.9932616353034973}}
+
+
+{"result": {"time": "2021-02-11 10:19:49.535383", "n_pass": [86, 9, 7], "n_token": 30, "loss": [0.026667186990380287, 0.009884951636195183], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_allocation(", "self", ",", "session", ",", "ip_address", ",", "status", "ip_request", "ip_address", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "add", "(", "ip_request", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [2], "repair_candidates": [9, 19, 28, 2, 6, 10, 11, 4, 24, 8, 13, 15]}}
+{"prediction": {"error_location": 0.9736852645874023, "repair_targets": [0.9901637434959412], "repair_candidates": [0.9901637434959412, 0.0010773452231660485, 0.0012703826650977135, 0.0022610642481595278, 0.0009210857097059488, 0.0015410917112603784, 0.0012617004103958607, 0.0011639363365247846, 0.000122451048810035, 0.00020785887318197638, 1.8064311007037759e-06, 7.4642134677560534e-06], "target_probs": 0.9901637434959412}}
+
+
+{"result": {"time": "2021-02-11 10:19:49.784319", "n_pass": [95, 13, 8], "n_token": 28, "loss": [0.6744673252105713, 0.057538628578186035], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_allocation(", "self", ",", "session", ",", "ip_address", ",", "status", "ip_request", "ip_address", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "ip_request", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [2], "repair_candidates": [9, 19, 26, 2, 6, 10, 11, 4, 24, 8, 13, 15]}}
+{"prediction": {"error_location": 0.5094277262687683, "repair_targets": [0.944085419178009], "repair_candidates": [0.944085419178009, 0.008458603173494339, 0.007756349630653858, 0.013757815584540367, 0.006150819361209869, 0.004252214916050434, 0.0027876426465809345, 0.002374745672568679, 0.000395642826333642, 0.0062554762698709965, 0.00024915215908549726, 0.003476053476333618], "target_probs": 0.944085419178009}}
+
+
+{"result": {"time": "2021-02-11 10:19:49.846146", "n_pass": [97, 14, 9], "n_token": 27, "loss": [0.47086238861083984, 0.15832990407943726], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def create_allocation(", "self", ",", "session", ",", "ip_address", ",", "status", "ip_request", "ip_address", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "ip_request", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [1], "repair_candidates": [8, 18, 25, 1, 5, 9, 10, 3, 23, 7, 12, 14]}}
+{"prediction": {"error_location": 0.6244635581970215, "repair_targets": [0.8535681366920471], "repair_candidates": [0.8535681366920471, 0.05954708904027939, 0.011101820506155491, 0.017168138176202774, 0.002562744077295065, 0.0029683024622499943, 0.002852371893823147, 0.009948955848813057, 0.0014549517072737217, 0.028417978435754776, 0.0007037935429252684, 0.009705670177936554], "target_probs": 0.8535681366920471}}
+
+
+{"result": {"time": "2021-02-11 10:19:50.032768", "n_pass": [102, 17, 10], "n_token": 26, "loss": [0.1671578288078308, 0.079570472240448], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def create_allocation(", "self", ",", "session", "ip_address", ",", "status", "ip_request", "ip_address", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "ip_request", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [1], "repair_candidates": [7, 17, 24, 1, 4, 8, 9, 3, 22, 6, 11, 13]}}
+{"prediction": {"error_location": 0.8460660576820374, "repair_targets": [0.9235129356384277], "repair_candidates": [0.9235129356384277, 0.02336137183010578, 0.0015740563394501805, 0.009568463079631329, 0.0008874990744516253, 0.0014506003353744745, 0.002539822831749916, 0.006108711939305067, 0.0012153165880590677, 0.024700196459889412, 0.00033680108026601374, 0.004744203761219978], "target_probs": 0.9235129356384277}}
+
+
+{"result": {"time": "2021-02-11 10:19:50.093896", "n_pass": [104, 18, 11], "n_token": 25, "loss": [0.08669314533472061, 0.05727848410606384], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def create_allocation(", "self", ",", "session", "ip_address", "status", "ip_request", "ip_address", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", ")", "#NEWLINE#", "session", ".", "ip_request", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [1], "repair_candidates": [6, 16, 23, 1, 4, 7, 8, 3, 21, 5, 10, 12]}}
+{"prediction": {"error_location": 0.9169584512710571, "repair_targets": [0.9443310499191284], "repair_candidates": [0.9443310499191284, 0.01244465634226799, 0.0026566744782030582, 0.009200995787978172, 0.0006076724384911358, 0.0002646505308803171, 0.0006323543493635952, 0.002188427373766899, 0.0004444446531124413, 0.023521147668361664, 0.00022678179084323347, 0.003481208113953471], "target_probs": 0.9443310499191284}}
+
+
+{"result": {"time": "2021-02-11 10:19:50.276223", "n_pass": [114, 21, 12], "n_token": 23, "loss": [0.1662120372056961, 0.0948123037815094], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def create_allocation(", "self", ",", "session", "ip_address", "status", "ip_request", "ip_address", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", "session", ".", "ip_request", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [1], "repair_candidates": [6, 16, 21, 1, 4, 7, 8, 3, 19, 5, 10, 12]}}
+{"prediction": {"error_location": 0.8468666672706604, "repair_targets": [0.9095436334609985], "repair_candidates": [0.9095436334609985, 0.02174118533730507, 0.004823554307222366, 0.014962589368224144, 0.0014477529330179095, 0.0005467752343975008, 0.0013456476153805852, 0.007442770525813103, 0.0012031982187181711, 0.005584439262747765, 0.0006833459483459592, 0.030675264075398445], "target_probs": 0.9095436334609985}}
+
+
+{"result": {"time": "2021-02-11 10:19:50.572110", "n_pass": [145, 26, 13], "n_token": 22, "loss": [0.15219414234161377, 0.20459306240081787], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def create_allocation(", "self", ",", "session", "ip_address", "status", "ip_request", "ip_address", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", "session", "ip_request", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [1], "repair_candidates": [6, 16, 20, 1, 4, 7, 8, 3, 19, 5, 10, 12]}}
+{"prediction": {"error_location": 0.85882169008255, "repair_targets": [0.8149788975715637], "repair_candidates": [0.8149788975715637, 0.06064137816429138, 0.011103500612080097, 0.03154909238219261, 0.0028692397754639387, 0.0009381999261677265, 0.0024452758952975273, 0.023939140141010284, 0.003712535835802555, 0.0021590308751910925, 0.040435053408145905, 0.005228616762906313], "target_probs": 0.8149788975715637}}
+
+
+{"result": {"time": "2021-02-11 10:19:50.632953", "n_pass": [147, 27, 14], "n_token": 21, "loss": [0.1725715845823288, 0.20323774218559265], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def create_allocation(", "self", ",", "session", "ip_address", "status", "ip_request", "ip_address", "ip_address", ",", "status", "=", "status", ",", "ipam_subnet_id", "=", "ip_request", ".", "_ipam_subnet_id", "session", "ip_request"]}}
+{"position": {"error_location": 16, "repair_targets": [1], "repair_candidates": [6, 16, 20, 1, 4, 7, 8, 3, 19, 5, 10, 12]}}
+{"prediction": {"error_location": 0.841498076915741, "repair_targets": [0.8160842061042786], "repair_candidates": [0.8160842061042786, 0.0598108284175396, 0.011170382611453533, 0.040010251104831696, 0.0026297494769096375, 0.0010694990633055568, 0.003063124604523182, 0.04127103090286255, 0.0028235784266144037, 0.0030412094201892614, 0.015340744517743587, 0.003685400588437915], "target_probs": 0.8160842061042786}}
+
+
+{"result": {"time": "2021-02-11 10:19:50.985127", "n_pass": [162, 33, 15], "n_token": 20, "loss": [0.20094862580299377, 0.2341352105140686], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def create_allocation(", "self", ",", "session", "ip_address", "status", "ip_request", "ip_address", "ip_address", ",", "status", "=", "status", ",", "=", "ip_request", ".", "_ipam_subnet_id", "session", "ip_request"]}}
+{"position": {"error_location": 15, "repair_targets": [1], "repair_candidates": [6, 15, 19, 1, 4, 7, 8, 3, 18, 5, 10, 12]}}
+{"prediction": {"error_location": 0.8179544806480408, "repair_targets": [0.7912548184394836], "repair_candidates": [0.7912548184394836, 0.05267152562737465, 0.01103232055902481, 0.046024128794670105, 0.002637705532833934, 0.0016322066076099873, 0.004743263125419617, 0.050754137337207794, 0.017960429191589355, 0.00584070710465312, 0.010516270063817501, 0.004932408221065998], "target_probs": 0.7912548184394836}}
+
+
+
+
+Minimal simplified tokens:
+
+['def create_allocation(', 'self', ',', 'session', 'ip_address', 'status', 'ip_request', 'ip_address', 'ip_address', ',', 'status', '=', 'status', ',', '=', 'ip_request', '.', '_ipam_subnet_id', 'session', 'ip_request']

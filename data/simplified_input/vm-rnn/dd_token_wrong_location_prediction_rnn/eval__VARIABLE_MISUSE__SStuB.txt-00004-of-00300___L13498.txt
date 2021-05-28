@@ -1,0 +1,151 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "environ", "[", "'abc'", "]", "=", "'xyz'", "#NEWLINE#", "os", ".", "environ", "[", "'ab_12'", "]", "=", "'xy99'", "#NEWLINE#", "os", ".", "environ", "[", "'AbAb'", "]", "=", "'ZZZ'", "#NEWLINE#", "conf", "=", "{", "#NEWLINE#", "#INDENT#", "'a'", ":", "'bb'", ",", "#NEWLINE#", "'b'", ":", "[", "1", ",", "2", ",", "3", ",", "4.5", ",", "'ENV[abc]'", "]", ",", "#NEWLINE#", "'c'", ":", "{", "#NEWLINE#", "#INDENT#", "'x'", ":", "'env[ab_12]'", ",", "#NEWLINE#", "'d'", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "expectedConf", "=", "{", "#NEWLINE#", "#INDENT#", "'a'", ":", "'bb'", ",", "#NEWLINE#", "'b'", ":", "[", "1", ",", "2", ",", "3", ",", "4.5", ",", "'xyz'", "]", ",", "#NEWLINE#", "'c'", ":", "{", "#NEWLINE#", "#INDENT#", "'x'", ":", "'xy99'", ",", "#NEWLINE#", "'d'", ":", "'ZZZ x ZZZ'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"], "error_location": [132], "repair_targets": [81], "repair_candidates": [81, 34, 132, 138, 2, 128], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "Cimpress-MCP/JustReleaseNotes/tests/utils/EnvReplacer_Test.py", "license": "apache-2.0", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00004-of-00300", "js_count": 13498, "results": {"model": "rnn", "prob": {"loc": [[0.03076888993382454, 7.532047447966761e-07, 8.013713426180402e-08, 1.5146838228119464e-09, 4.191095914762855e-09, 4.2450167825336393e-08, 5.780044887160329e-09, 3.67405021961531e-08, 1.2140454197506756e-09, 3.068490173063765e-08, 4.5535386572481684e-10, 1.4431596362385335e-08, 5.29888743994178e-10, 4.796962826958406e-10, 2.8650779526628867e-08, 1.8260540857184537e-09, 1.1916684528046062e-08, 2.5705593209579547e-10, 7.770846366383921e-08, 4.7892807775173907e-11, 5.977258115308359e-05, 5.246229145550174e-11, 6.404711760943371e-10, 2.3887889444296206e-09, 6.843863809002926e-10, 3.5205698356577386e-09, 4.949158860512171e-10, 6.440219380010603e-08, 5.647138312525612e-10, 2.1781211556604063e-10, 6.818404729713734e-10, 3.2966762653074966e-09, 1.5077675641350652e-07, 3.526633918227162e-08, 9.763343022939353e-09, 2.660133446852342e-09, 2.5165949324446046e-09, 1.3569234624810633e-08, 7.4691813845007e-10, 1.4943799442335148e-07, 6.728975709968665e-10, 1.2138445804055209e-08, 1.393161030982526e-09, 5.3993427506782155e-09, 3.170539830676944e-09, 3.5583687107987316e-09, 6.608123825913026e-09, 3.7295973243089975e-07, 6.119047490926732e-10, 6.215453254299064e-07, 6.240070682395071e-09, 3.025174351023452e-07, 7.181999994720911e-10, 5.145491854818829e-08, 6.9091448118285825e-09, 3.2133037564108236e-08, 9.1038385718889e-09, 1.4774847123533164e-08, 1.348177924853644e-08, 2.15582796059266e-09, 2.178758062854058e-09, 1.4707108864087104e-09, 3.196467313060225e-09, 3.582284691105997e-09, 3.408025639473067e-09, 1.0083043289199622e-09, 7.1440773297126725e-09, 1.0605687439380063e-09, 3.3791785369885474e-08, 2.364406004318198e-09, 1.5455825064236706e-07, 3.182219210362547e-10, 1.422875817169711e-09, 9.662428634982234e-10, 1.354273990727961e-07, 2.9910623311479867e-07, 9.471317063969309e-09, 3.711089036073645e-08, 3.33126557450214e-08, 2.539989196748138e-08, 1.3598589809760142e-08, 5.116882473288342e-09, 7.60639640162708e-09, 3.1865585725654455e-08, 2.7441522831850307e-08, 2.316477454300525e-09, 4.91373896238656e-07, 3.650299396085188e-09, 1.0102381509113911e-07, 2.9690425673578602e-09, 3.618566069008011e-08, 4.229529615429328e-09, 1.262299775817155e-08, 2.7490818510500503e-08, 2.8778965770470677e-06, 8.503237003409936e-10, 2.213422249042196e-06, 4.334366199287842e-09, 1.0120360229848302e-06, 5.829177140981301e-10, 1.152494206735355e-07, 6.274918362692006e-10, 1.3892855577068985e-07, 1.791818959873126e-08, 1.5119280050157613e-08, 2.295665169071981e-08, 2.1621110457559212e-10, 9.545433332647235e-10, 8.324547162708029e-10, 2.686496003434513e-08, 7.020719561268152e-09, 1.2306432317643612e-08, 3.9353365011152164e-10, 5.7535807229669444e-09, 7.95284282872899e-10, 7.889452646736572e-09, 9.022105840195138e-10, 4.1101579917324216e-09, 8.452206202491652e-06, 1.2104673885460215e-07, 4.666962993837842e-08, 6.580983580306565e-08, 3.585383012705279e-08, 1.3505200513463933e-08, 7.931114254233762e-08, 1.0307666542530569e-07, 8.74276118167927e-09, 5.911587663831597e-09, 4.6254363894604467e-08, 1.9892104630159224e-10, 7.26438631470927e-10, 8.8224636485279e-09, 0.03777717053890228, 5.3454844994860196e-09, 1.8295159520675952e-07, 1.8945787161328553e-08, 5.454822704642481e-10, 1.2558247775018572e-09, 0.9313726425170898, 1.149322883975401e-06, 2.1107362613292935e-07]], "pointer": [[0.0, 0.0, 5.563244121731259e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0029047816060483456, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9970310926437378, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.129653921656427e-06, 0.0, 0.0, 0.0, 1.7431563037462183e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 4.55136660093558e-06, 0.0, 0.0]], "target": [0.9970310926437378]}, "loss": [3.276050329208374, 0.0029733232222497463], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [138]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 11:54:17.502497", "n_pass": [1, 1, 1], "n_token": 141, "loss": [0.0710960403084755, 0.0029733232222497463], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "environ", "[", "'abc'", "]", "=", "'xyz'", "#NEWLINE#", "os", ".", "environ", "[", "'ab_12'", "]", "=", "'xy99'", "#NEWLINE#", "os", ".", "environ", "[", "'AbAb'", "]", "=", "'ZZZ'", "#NEWLINE#", "conf", "=", "{", "#NEWLINE#", "#INDENT#", "'a'", ":", "'bb'", ",", "#NEWLINE#", "'b'", ":", "[", "1", ",", "2", ",", "3", ",", "4.5", ",", "'ENV[abc]'", "]", ",", "#NEWLINE#", "'c'", ":", "{", "#NEWLINE#", "#INDENT#", "'x'", ":", "'env[ab_12]'", ",", "#NEWLINE#", "'d'", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "expectedConf", "=", "{", "#NEWLINE#", "#INDENT#", "'a'", ":", "'bb'", ",", "#NEWLINE#", "'b'", ":", "[", "1", ",", "2", ",", "3", ",", "4.5", ",", "'xyz'", "]", ",", "#NEWLINE#", "'c'", ":", "{", "#NEWLINE#", "#INDENT#", "'x'", ":", "'xy99'", ",", "#NEWLINE#", "'d'", ":", "'ZZZ x ZZZ'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 138, "repair_targets": [81], "repair_candidates": [81, 34, 132, 138, 2, 128]}}
+{"prediction": {"error_location": 0.9313726425170898, "repair_targets": [0.9970310926437378], "repair_candidates": [5.563244121731259e-05, 0.0029047816060483456, 0.9970310926437378, 2.129653921656427e-06, 1.7431563037462183e-06, 4.55136660093558e-06], "target_probs": 0.9970310926437378}}
+
+
+{"result": {"time": "2021-02-21 11:54:17.607019", "n_pass": [9, 2, 2], "n_token": 106, "loss": [0.057413894683122635, 0.00017614723765291274], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "environ", "[", "'abc'", "]", "=", "'xyz'", "#NEWLINE#", "os", ".", "environ", "[", "'ab_12'", "]", "=", "'xy99'", "#NEWLINE#", "os", ".", "environ", "[", "'AbAb'", "]", "=", "'ZZZ'", "#NEWLINE#", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "expectedConf", "=", "{", "#NEWLINE#", "#INDENT#", "'a'", ":", "'bb'", ",", "#NEWLINE#", "'b'", ":", "[", "1", ",", "2", ",", "3", ",", "4.5", ",", "'xyz'", "]", ",", "#NEWLINE#", "'c'", ":", "{", "#NEWLINE#", "#INDENT#", "'x'", ":", "'xy99'", ",", "#NEWLINE#", "'d'", ":", "'ZZZ x ZZZ'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 103, "repair_targets": [46], "repair_candidates": [46, 34, 97, 103, 2, 93]}}
+{"prediction": {"error_location": 0.9442031979560852, "repair_targets": [0.9998238682746887], "repair_candidates": [0.00012826915190089494, 4.389432433526963e-05, 0.9998238682746887, 1.3712981399294222e-06, 9.024336122820387e-07, 1.6114553318402614e-06], "target_probs": 0.9998238682746887}}
+
+
+{"result": {"time": "2021-02-21 11:54:17.702807", "n_pass": [19, 3, 3], "n_token": 88, "loss": [0.048870496451854706, 0.00027654418954625726], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "environ", "[", "'abc'", "]", "=", "'xyz'", "#NEWLINE#", "os", ".", "environ", "[", "'ab_12'", "]", "=", "'xy99'", "#NEWLINE#", "os", ".", "environ", "[", "'AbAb'", "]", "=", "'ZZZ'", "#NEWLINE#", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "expectedConf", "=", "{", "#NEWLINE#", "#INDENT#", "'a'", "#NEWLINE#", "'c'", ":", "{", "#NEWLINE#", "#INDENT#", "'x'", ":", "'xy99'", ",", "#NEWLINE#", "'d'", ":", "'ZZZ x ZZZ'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 85, "repair_targets": [46], "repair_candidates": [46, 34, 79, 85, 2, 75]}}
+{"prediction": {"error_location": 0.9523043632507324, "repair_targets": [0.999723494052887], "repair_candidates": [0.00023406829859595746, 3.7725800211774185e-05, 0.999723494052887, 1.83325357738795e-06, 1.0551924560786574e-06, 1.8007483504334232e-06], "target_probs": 0.999723494052887}}
+
+
+{"result": {"time": "2021-02-21 11:54:17.788384", "n_pass": [20, 4, 4], "n_token": 70, "loss": [0.04657662287354469, 0.000317743222694844], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "environ", "[", "'abc'", "]", "=", "'xyz'", "#NEWLINE#", "os", ".", "environ", "[", "'ab_12'", "]", "=", "'xy99'", "#NEWLINE#", "os", ".", "environ", "[", "'AbAb'", "]", "=", "'ZZZ'", "#NEWLINE#", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "expectedConf", "=", "{", "#NEWLINE#", "#INDENT#", "'a'", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 67, "repair_targets": [46], "repair_candidates": [46, 34, 61, 67, 2, 57]}}
+{"prediction": {"error_location": 0.9544914364814758, "repair_targets": [0.9996823072433472], "repair_candidates": [0.00023915147176012397, 7.289904169738293e-05, 0.9996823072433472, 2.410901288385503e-06, 1.1826996342279017e-06, 2.1132391339051537e-06], "target_probs": 0.9996823072433472}}
+
+
+{"result": {"time": "2021-02-21 11:54:17.867014", "n_pass": [23, 5, 5], "n_token": 53, "loss": [0.045501239597797394, 0.0006697035860270262], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "os", ".", "environ", "[", "'abc'", "]", "=", "'xyz'", "#NEWLINE#", "os", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "expectedConf", "=", "{", "#NEWLINE#", "#INDENT#", "'a'", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 50, "repair_targets": [29], "repair_candidates": [29, 17, 44, 50, 2, 40]}}
+{"prediction": {"error_location": 0.9555185437202454, "repair_targets": [0.9993305206298828], "repair_candidates": [0.00010502577788429335, 0.0005596027476713061, 0.9993305206298828, 1.5292632724595023e-06, 1.0927004723271239e-06, 2.2439967324316967e-06], "target_probs": 0.9993305206298828}}
+
+
+{"result": {"time": "2021-02-21 11:54:17.940336", "n_pass": [38, 6, 6], "n_token": 44, "loss": [0.04761425033211708, 0.009116594679653645], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "os", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "#NEWLINE#", "#UNINDENT#", "}", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "expectedConf", "=", "{", "#NEWLINE#", "#INDENT#", "'a'", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 41, "repair_targets": [20], "repair_candidates": [20, 8, 35, 41, 2, 31]}}
+{"prediction": {"error_location": 0.9535015225410461, "repair_targets": [0.9909248352050781], "repair_candidates": [0.002854023827239871, 0.006208845414221287, 0.9909248352050781, 3.0403691653191345e-06, 2.521468104532687e-06, 6.67701806378318e-06], "target_probs": 0.9909248352050781}}
+
+
+{"result": {"time": "2021-02-21 11:54:18.011096", "n_pass": [54, 7, 7], "n_token": 40, "loss": [0.05586446076631546, 0.03262609243392944], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "os", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "expectedConf", "=", "{", "#NEWLINE#", "#INDENT#", "'a'", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 37, "repair_targets": [16], "repair_candidates": [16, 8, 31, 37, 2, 27]}}
+{"prediction": {"error_location": 0.9456673264503479, "repair_targets": [0.9679003953933716], "repair_candidates": [0.012535234913229942, 0.01950446143746376, 0.9679003953933716, 1.5678951967856847e-05, 1.1356176401022822e-05, 3.2839256164152175e-05], "target_probs": 0.9679003953933716}}
+
+
+{"result": {"time": "2021-02-21 11:54:18.146683", "n_pass": [57, 9, 8], "n_token": 35, "loss": [0.042778924107551575, 0.0762704461812973], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "os", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "expectedConf", "=", "{", "#NEWLINE#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [16], "repair_candidates": [16, 8, 26, 32, 2, 22]}}
+{"prediction": {"error_location": 0.9581230878829956, "repair_targets": [0.9265655875205994], "repair_candidates": [0.02805960550904274, 0.045197222381830215, 0.9265655875205994, 5.1409093430265784e-05, 4.354249540483579e-05, 8.265916403615847e-05], "target_probs": 0.9265655875205994}}
+
+
+{"result": {"time": "2021-02-21 11:54:18.215130", "n_pass": [62, 10, 9], "n_token": 31, "loss": [0.02044110931456089, 0.004170519299805164], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "expectedConf", "=", "{", "#NEWLINE#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [12], "repair_candidates": [12, 4, 22, 28, 2, 18]}}
+{"prediction": {"error_location": 0.9797664880752563, "repair_targets": [0.9958381652832031], "repair_candidates": [0.00044360844185575843, 0.00368113094009459, 0.9958381652832031, 1.6405267160735093e-05, 1.0418556485092267e-05, 1.0311386176908854e-05], "target_probs": 0.9958381652832031}}
+
+
+{"result": {"time": "2021-02-21 11:54:18.278575", "n_pass": [64, 11, 10], "n_token": 27, "loss": [0.16457726061344147, 0.002016071928665042], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "{", "#NEWLINE#", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [8], "repair_candidates": [8, 4, 18, 24, 2, 14]}}
+{"prediction": {"error_location": 0.8482521176338196, "repair_targets": [0.9979859590530396], "repair_candidates": [6.243984535103664e-05, 0.0019132968736812472, 0.9979859590530396, 1.3530151363738696e-06, 6.57769805911812e-06, 3.037488022528123e-05], "target_probs": 0.9979859590530396}}
+
+
+{"result": {"time": "2021-02-21 11:54:18.341695", "n_pass": [84, 12, 11], "n_token": 25, "loss": [0.3528514802455902, 0.006003783084452152], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "}", "#NEWLINE#", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [8], "repair_candidates": [8, 4, 16, 22, 2, 12]}}
+{"prediction": {"error_location": 0.7026815414428711, "repair_targets": [0.9940142035484314], "repair_candidates": [0.0001046132092596963, 0.00581571226939559, 0.9940142035484314, 5.432227112578403e-07, 1.2301710739848204e-05, 5.2576644520740956e-05], "target_probs": 0.9940142035484314}}
+
+
+{"result": {"time": "2021-02-21 11:54:18.403379", "n_pass": [85, 13, 12], "n_token": 23, "loss": [0.2105327993631363, 0.008455638773739338], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_dictWithEnvParsedCorrectly(", "self", ")", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [8], "repair_candidates": [8, 4, 14, 20, 2, 10]}}
+{"prediction": {"error_location": 0.8101524710655212, "repair_targets": [0.9915800094604492], "repair_candidates": [0.000490250822622329, 0.006113880313932896, 0.9915800094604492, 1.6215866708080284e-05, 0.0001497876364737749, 0.0016499520279467106], "target_probs": 0.9915800094604492}}
+
+
+{"result": {"time": "2021-02-21 11:54:18.586848", "n_pass": [91, 16, 13], "n_token": 21, "loss": [0.6327633857727051, 0.6534278988838196], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "self", ".", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [6], "repair_candidates": [6, 2, 12, 18, 0, 8]}}
+{"prediction": {"error_location": 0.5311220288276672, "repair_targets": [0.5202593207359314], "repair_candidates": [0.34917211532592773, 0.12834933400154114, 0.5202593207359314, 9.058102295966819e-05, 5.7484241551719606e-05, 0.0020712316036224365], "target_probs": 0.5202593207359314}}
+
+
+{"result": {"time": "2021-02-21 11:54:19.125004", "n_pass": [128, 25, 14], "n_token": 20, "loss": [0.5853180885314941, 0.6026332974433899], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "self", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "replace", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [6], "repair_candidates": [6, 2, 11, 17, 0, 8]}}
+{"prediction": {"error_location": 0.5569286942481995, "repair_targets": [0.5473683476448059], "repair_candidates": [0.2867658734321594, 0.16240541636943817, 0.5473683476448059, 0.00025240718969143927, 3.738295708899386e-05, 0.0031705815345048904], "target_probs": 0.5473683476448059}}
+
+
+{"result": {"time": "2021-02-21 11:54:19.901422", "n_pass": [152, 38, 15], "n_token": 19, "loss": [0.4402518570423126, 0.6086992621421814], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "self", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "(", "conf", ")", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [6], "repair_candidates": [6, 2, 11, 16, 0, 8]}}
+{"prediction": {"error_location": 0.6438741683959961, "repair_targets": [0.544058084487915], "repair_candidates": [0.2781656086444855, 0.14958612620830536, 0.544058084487915, 0.00031587533885613084, 0.00011119198461528867, 0.027763132005929947], "target_probs": 0.544058084487915}}
+
+
+{"result": {"time": "2021-02-21 11:54:20.021815", "n_pass": [155, 40, 16], "n_token": 18, "loss": [0.2992296814918518, 0.5796341896057129], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "self", "assertEqual", "(", "conf", ",", "EnvReplacer", ".", "(", "conf", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [6], "repair_candidates": [6, 2, 11, 16, 0, 8]}}
+{"prediction": {"error_location": 0.7413890957832336, "repair_targets": [0.5601032376289368], "repair_candidates": [0.2958173155784607, 0.1265447735786438, 0.5601032376289368, 0.0004051883006468415, 0.00010284234303981066, 0.017026616260409355], "target_probs": 0.5601032376289368}}
+
+
+{"result": {"time": "2021-02-21 11:54:20.432245", "n_pass": [166, 47, 17], "n_token": 17, "loss": [0.6578363180160522, 0.34537795186042786], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "self", "(", "conf", ",", "EnvReplacer", ".", "(", "conf", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [6], "repair_candidates": [6, 2, 10, 15, 0, 8]}}
+{"prediction": {"error_location": 0.5179709196090698, "repair_targets": [0.7079527378082275], "repair_candidates": [0.22223855555057526, 0.04750349372625351, 0.7079527378082275, 0.0004938091733492911, 0.0008354654419235885, 0.02097599022090435], "target_probs": 0.7079527378082275}}
+
+
+{"result": {"time": "2021-02-21 11:54:20.490530", "n_pass": [167, 48, 18], "n_token": 16, "loss": [0.686044454574585, 0.0004892353899776936], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "self", "conf", ",", "EnvReplacer", ".", "(", "conf", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [6], "repair_candidates": [6, 2, 9, 14, 0, 8]}}
+{"prediction": {"error_location": 0.5035640001296997, "repair_targets": [0.9995108842849731], "repair_candidates": [0.0003753248311113566, 3.969523822888732e-05, 0.9995108842849731, 2.0165471141808666e-05, 2.4211118443417945e-07, 5.3666080930270255e-05], "target_probs": 0.9995108842849731}}
+
+
+{"result": {"time": "2021-02-21 11:54:20.837312", "n_pass": [176, 54, 19], "n_token": 15, "loss": [0.34880125522613525, 0.005986873526126146], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "conf", ":", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "self", "conf", ",", "EnvReplacer", ".", "(", "conf", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [5], "repair_candidates": [5, 1, 8, 13, 0, 7]}}
+{"prediction": {"error_location": 0.7055333852767944, "repair_targets": [0.9940310120582581], "repair_candidates": [0.0032211532816290855, 0.0020386893302202225, 0.9940310120582581, 0.000605519104283303, 1.0680103514459915e-05, 9.283288090955466e-05], "target_probs": 0.9940310120582581}}
+
+
+{"result": {"time": "2021-02-21 11:54:20.894329", "n_pass": [178, 55, 20], "n_token": 14, "loss": [0.23730988800525665, 0.002213422441855073], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "conf", "'Env[AbAb] x eNV[AbAb]'", ",", "expectedConf", "=", "self", "conf", ",", "EnvReplacer", ".", "(", "conf", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [4, 1, 7, 12, 0, 6]}}
+{"prediction": {"error_location": 0.7887468338012695, "repair_targets": [0.9977890253067017], "repair_candidates": [0.001554319984279573, 0.0004845186194870621, 0.9977890253067017, 0.0001405549410264939, 1.3930527529737446e-05, 1.7650558220339008e-05], "target_probs": 0.9977890253067017}}
+
+
+{"result": {"time": "2021-02-21 11:54:20.950821", "n_pass": [179, 56, 21], "n_token": 13, "loss": [0.6330592036247253, 0.01735830493271351], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "conf", ",", "expectedConf", "=", "self", "conf", ",", "EnvReplacer", ".", "(", "conf", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [3, 1, 6, 11, 0, 5]}}
+{"prediction": {"error_location": 0.5309649705886841, "repair_targets": [0.9827914834022522], "repair_candidates": [0.007141172420233488, 0.004086263012140989, 0.9827914834022522, 0.005869072861969471, 6.088408918003552e-05, 5.104302545078099e-05], "target_probs": 0.9827914834022522}}
+
+
+{"result": {"time": "2021-02-21 11:54:21.006813", "n_pass": [180, 57, 22], "n_token": 12, "loss": [0.47181278467178345, 0.23554305732250214], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "conf", "expectedConf", "=", "self", "conf", ",", "EnvReplacer", ".", "(", "conf", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [2, 1, 5, 10, 0, 4]}}
+{"prediction": {"error_location": 0.623870313167572, "repair_targets": [0.7901416420936584], "repair_candidates": [0.03867233172059059, 0.09128172695636749, 0.7901416420936584, 0.07909256964921951, 0.0005268831155262887, 0.0002847977157216519], "target_probs": 0.7901416420936584}}
+
+
+{"result": {"time": "2021-02-21 11:54:21.119656", "n_pass": [185, 59, 23], "n_token": 11, "loss": [0.1847299039363861, 0.1401858776807785], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "conf", "expectedConf", "=", "self", "conf", "EnvReplacer", ".", "(", "conf", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [2, 1, 5, 9, 0, 4]}}
+{"prediction": {"error_location": 0.8313288688659668, "repair_targets": [0.8691966533660889], "repair_candidates": [0.01813553459942341, 0.09341061860322952, 0.8691966533660889, 0.018542863428592682, 0.0006638876511715353, 5.046798469265923e-05], "target_probs": 0.8691966533660889}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'conf', 'expectedConf', '=', 'self', 'conf', 'EnvReplacer', '.', '(', 'conf', ')']

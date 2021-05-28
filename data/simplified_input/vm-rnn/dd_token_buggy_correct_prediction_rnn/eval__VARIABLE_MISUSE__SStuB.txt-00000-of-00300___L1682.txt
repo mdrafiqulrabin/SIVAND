@@ -1,0 +1,73 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def absolute(", "self", ",", "a", ",", "out", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Perform element-wise absolute value of Tensor `a`, storing the result in\\n        Tensor out. Both Tensor's should have identical shape.\\n\\n        Arguments:\\n            a (Tensor): input to be transformed.\\n            out (Tensor, optional): where the result will be stored. If out is\\n                                    None, only the op-tree will be returned.\\n\\n        Returns:\\n            OpTreeNode: the resulting op-tree\\n        \"", "#NEWLINE#", "return", "OpTreeNode", ".", "build", "(", "'abs'", ",", "out", ",", "None", ",", "out", "=", "out", ")"], "error_location": [22], "repair_targets": [4], "repair_candidates": [6, 22, 26, 28, 2, 4], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "NervanaSystems/neon/neon/backends/backend.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 1682, "results": {"model": "rnn", "prob": {"loc": [[0.0011897849617525935, 9.334596429155795e-10, 1.2020956452474252e-09, 4.16415860127195e-11, 1.2454860476296403e-09, 4.939250831254016e-12, 2.665379028599091e-09, 1.120268461329843e-10, 2.953461086807607e-11, 1.113347608550086e-10, 1.4026144135037555e-10, 3.4368121681893626e-09, 4.967268263378344e-10, 1.9953697028007866e-10, 4.885903903684152e-10, 2.0734557126811382e-10, 2.229264106645701e-09, 3.661786845965409e-11, 8.16244349888251e-10, 2.045126068495051e-09, 2.8151008635290964e-08, 3.9308042931729403e-10, 0.9987861514091492, 5.043699502493837e-07, 5.894790433558228e-08, 3.60712931746221e-10, 2.635582641019596e-09, 5.753840182087799e-10, 2.35418865486281e-05, 3.502677592415182e-10]], "pointer": [[0.0, 0.0, 0.012221966870129108, 0.0, 0.9855279326438904, 0.0, 0.002046799985691905, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.0676866269204766e-06, 0.0, 0.0, 0.0, 0.0001624448486836627, 0.0, 3.477250720607117e-05, 0.0]], "target": [0.9855279326438904]}, "loss": [0.0012147198431193829, 0.014577808789908886], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 10:03:25.710087", "n_pass": [1, 1, 1], "n_token": 30, "loss": [0.0012147198431193829, 0.014577808789908886], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def absolute(", "self", ",", "a", ",", "out", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Perform element-wise absolute value of Tensor `a`, storing the result in\\n        Tensor out. Both Tensor's should have identical shape.\\n\\n        Arguments:\\n            a (Tensor): input to be transformed.\\n            out (Tensor, optional): where the result will be stored. If out is\\n                                    None, only the op-tree will be returned.\\n\\n        Returns:\\n            OpTreeNode: the resulting op-tree\\n        \"", "#NEWLINE#", "return", "OpTreeNode", ".", "build", "(", "'abs'", ",", "out", ",", "None", ",", "out", "=", "out", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [6, 22, 26, 28, 2, 4]}}
+{"prediction": {"error_location": 0.9987861514091492, "repair_targets": [0.9855279326438904], "repair_candidates": [0.012221966870129108, 0.9855279326438904, 0.002046799985691905, 6.0676866269204766e-06, 0.0001624448486836627, 3.477250720607117e-05], "target_probs": 0.9855279326438904}}
+
+
+{"result": {"time": "2021-02-11 10:03:25.769756", "n_pass": [9, 2, 2], "n_token": 23, "loss": [0.00012981049076188356, 0.04987171292304993], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def absolute(", "self", ",", "a", ",", "out", "#NEWLINE#", "return", "OpTreeNode", ".", "build", "(", "'abs'", ",", "out", ",", "None", ",", "out", "=", "out", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [6, 15, 19, 21, 2, 4]}}
+{"prediction": {"error_location": 0.9998701810836792, "repair_targets": [0.9513514637947083], "repair_candidates": [0.0280180424451828, 0.9513514637947083, 0.016132604330778122, 7.502761582145467e-05, 0.0009372592903673649, 0.0034856100101023912], "target_probs": 0.9513514637947083}}
+
+
+{"result": {"time": "2021-02-11 10:03:25.883386", "n_pass": [19, 4, 3], "n_token": 19, "loss": [0.003839622251689434, 0.055286623537540436], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def absolute(", "self", ",", "a", ",", "out", "build", "(", "'abs'", ",", "out", ",", "None", ",", "out", "=", "out", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [4], "repair_candidates": [6, 11, 15, 17, 2, 4]}}
+{"prediction": {"error_location": 0.9961677193641663, "repair_targets": [0.9462139010429382], "repair_candidates": [0.037585705518722534, 0.9462139010429382, 0.0017064372077584267, 9.814166696742177e-05, 0.004019236657768488, 0.010376691818237305], "target_probs": 0.9462139010429382}}
+
+
+{"result": {"time": "2021-02-11 10:03:25.996088", "n_pass": [35, 6, 4], "n_token": 17, "loss": [0.00012718822108581662, 0.4590808153152466], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def absolute(", "self", ",", "a", ",", "out", "build", "(", "out", ",", "None", ",", "out", "=", "out", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [4], "repair_candidates": [6, 9, 13, 15, 2, 4]}}
+{"prediction": {"error_location": 0.9998728036880493, "repair_targets": [0.6318641901016235], "repair_candidates": [0.3664863407611847, 0.6318641901016235, 0.00018107501091435552, 5.159456122783013e-05, 0.0012000780552625656, 0.00021680357167497277], "target_probs": 0.6318641901016235}}
+
+
+{"result": {"time": "2021-02-11 10:03:26.054972", "n_pass": [37, 7, 5], "n_token": 15, "loss": [0.0005570290377363563, 0.3640309274196625], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def absolute(", "self", ",", "a", ",", "out", "build", "(", "out", ",", "out", "=", "out", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [4], "repair_candidates": [6, 9, 11, 13, 2, 4]}}
+{"prediction": {"error_location": 0.9994431138038635, "repair_targets": [0.6948696970939636], "repair_candidates": [0.3046012222766876, 0.6948696970939636, 0.0002967182663269341, 4.3036412535002455e-05, 0.00012929140939377248, 6.004111128277145e-05], "target_probs": 0.6948696970939636}}
+
+
+{"result": {"time": "2021-02-11 10:03:26.109991", "n_pass": [40, 8, 6], "n_token": 14, "loss": [0.0002475670480635017, 0.10535027831792831], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def absolute(", "self", ",", "a", ",", "out", "build", "(", "out", ",", "out", "=", "out", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [3], "repair_candidates": [5, 8, 10, 12, 1, 3]}}
+{"prediction": {"error_location": 0.9997524619102478, "repair_targets": [0.9000092148780823], "repair_candidates": [0.09948830306529999, 0.9000092148780823, 0.0003286302671767771, 2.7761321689467877e-05, 7.490898133255541e-05, 7.113386527635157e-05], "target_probs": 0.9000092148780823}}
+
+
+{"result": {"time": "2021-02-11 10:03:26.217935", "n_pass": [62, 10, 7], "n_token": 13, "loss": [0.00022075122979003936, 0.013783962465822697], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "a", ",", "out", "build", "(", "out", ",", "out", "=", "out", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [4, 7, 9, 11, 0, 2]}}
+{"prediction": {"error_location": 0.9997794032096863, "repair_targets": [0.986310601234436], "repair_candidates": [0.013423817232251167, 0.986310601234436, 0.00016301429423037916, 1.723195964586921e-05, 5.683383278665133e-05, 2.8497641324065626e-05], "target_probs": 0.986310601234436}}
+
+
+{"result": {"time": "2021-02-11 10:03:26.271988", "n_pass": [63, 11, 8], "n_token": 12, "loss": [0.0005641775787808001, 0.17786476016044617], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "a", ",", "out", "build", "(", "out", ",", "out", "=", "out", ")"]}}
+{"position": {"error_location": 6, "repair_targets": [1], "repair_candidates": [3, 6, 8, 10, 0, 1]}}
+{"prediction": {"error_location": 0.9994359612464905, "repair_targets": [0.8370556235313416], "repair_candidates": [0.15545274317264557, 0.8370556235313416, 0.003059597685933113, 0.0009607680258341134, 0.001565049053169787, 0.0019063045037910342], "target_probs": 0.8370556235313416}}
+
+
+{"result": {"time": "2021-02-11 10:03:26.379047", "n_pass": [67, 13, 9], "n_token": 11, "loss": [0.4426679015159607, 0.4782382845878601], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "a", ",", "out", "(", "out", ",", "out", "=", "out", ")"]}}
+{"position": {"error_location": 5, "repair_targets": [1], "repair_candidates": [3, 5, 7, 9, 0, 1]}}
+{"prediction": {"error_location": 0.6423205137252808, "repair_targets": [0.6198744773864746], "repair_candidates": [0.29695719480514526, 0.6198744773864746, 0.006208432372659445, 0.04354497790336609, 0.0066309599205851555, 0.026784008368849754], "target_probs": 0.6198744773864746}}
+
+
+{"result": {"time": "2021-02-11 10:03:26.593532", "n_pass": [74, 17, 10], "n_token": 10, "loss": [0.3845236897468567, 0.5695488452911377], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "a", ",", "out", "(", "out", ",", "out", "=", "out"]}}
+{"position": {"error_location": 5, "repair_targets": [1], "repair_candidates": [3, 5, 7, 9, 0, 1]}}
+{"prediction": {"error_location": 0.6807748079299927, "repair_targets": [0.5657806396484375], "repair_candidates": [0.32372426986694336, 0.5657806396484375, 0.006821144837886095, 0.0661659836769104, 0.00664197513833642, 0.03086605854332447], "target_probs": 0.5657806396484375}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'a', ',', 'out', '(', 'out', ',', 'out', '=', 'out']

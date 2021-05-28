@@ -1,0 +1,199 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "64", ")", ":", "#NEWLINE#", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "'SystemRandom'", ")", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "SystemRandom", "(", ")", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", ".", "join", "(", "map", "(", "(", "lambda", "x", ":", "choice", "(", "(", "string", ".", "digits", "+", "string", ".", "ascii_letters", ")", ")", ")", ",", "range", "(", "choice", ")", ")", ")"], "error_location": [70], "repair_targets": [2], "repair_candidates": [21, 29, 36, 40, 54, 70, 2], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "CiscoSystems/avos/horizon/utils/secret_key.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00013-of-00300", "js_count": 43041, "results": {"model": "rnn", "prob": {"loc": [[0.012327028438448906, 8.953916790233052e-07, 3.519052071965234e-08, 5.4178452835174085e-09, 9.434609751224343e-07, 5.1291704217248935e-09, 5.596429542009673e-09, 1.3168265411422908e-07, 4.839033351800026e-08, 2.8985258637703737e-09, 4.3073933397863584e-07, 7.996834483492421e-08, 5.497113519936647e-08, 2.8708013743994343e-09, 0.9161491394042969, 3.3582006619958804e-10, 2.123604190273909e-07, 1.3086965111597237e-07, 6.188734147372088e-08, 2.731837298597384e-07, 9.286328150892587e-09, 5.7102635508954336e-08, 8.33965874136311e-09, 2.157300116323313e-08, 1.096449064874605e-08, 2.3475319466115252e-08, 2.624372541504272e-07, 1.5853036074986449e-06, 5.772923916680384e-09, 1.257038434232527e-06, 4.680678955537587e-08, 2.9576160613942193e-06, 6.1595617495413535e-09, 9.580620030646969e-08, 8.919615623881327e-08, 8.063716805395416e-09, 2.9783093324908805e-08, 6.586008112208219e-06, 0.003878008108586073, 1.0926384241827236e-09, 1.3109398366850655e-07, 2.202926729921728e-08, 9.866841566008588e-09, 6.179907696690634e-09, 2.1206107980731304e-09, 7.960114345451075e-08, 1.907128854838902e-08, 2.504062290853426e-09, 1.7489686143790095e-08, 4.195587433031278e-09, 6.075704732211307e-06, 1.1322373438815703e-06, 2.2800858801019785e-07, 3.431468303949359e-11, 9.125849381730333e-11, 1.0391235615025973e-11, 1.0655700766193377e-09, 2.0472483811317943e-05, 1.1738447713849354e-10, 1.1312303982435878e-08, 9.111579046816587e-09, 1.5878797057666816e-05, 5.445506712220549e-09, 1.0296301411472086e-07, 1.1510533637348885e-09, 3.873628973138921e-09, 3.6700832595215616e-08, 9.04729624551237e-09, 1.323229099625678e-07, 8.37632452288517e-09, 0.06757795810699463, 6.92420235282043e-06, 9.217986018938973e-08, 2.0959420865551692e-08]], "pointer": [[0.0, 0.0, 0.999935507774353, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.4485342489933828e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0250358172925189e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.7094190954812802e-05, 0.0, 0.0, 0.0, 8.976669050753117e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5421061107190326e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.2680959571298445e-06, 0.0, 0.0, 0.0]], "target": [0.999935507774353]}, "loss": [2.6944732666015625, 6.449430657085031e-05], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [14]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:57:22.633019", "n_pass": [1, 1, 1], "n_token": 74, "loss": [0.08757597953081131, 6.449430657085031e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "64", ")", ":", "#NEWLINE#", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "'SystemRandom'", ")", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "SystemRandom", "(", ")", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", ".", "join", "(", "map", "(", "(", "lambda", "x", ":", "choice", "(", "(", "string", ".", "digits", "+", "string", ".", "ascii_letters", ")", ")", ")", ",", "range", "(", "choice", ")", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [21, 29, 36, 40, 54, 70, 2]}}
+{"prediction": {"error_location": 0.9161491394042969, "repair_targets": [0.999935507774353], "repair_candidates": [0.999935507774353, 1.4485342489933828e-06, 1.0250358172925189e-05, 2.7094190954812802e-05, 8.976669050753117e-06, 1.5421061107190326e-05, 1.2680959571298445e-06], "target_probs": 0.999935507774353}}
+
+
+{"result": {"time": "2021-02-21 12:57:22.717701", "n_pass": [25, 2, 2], "n_token": 65, "loss": [0.107358418405056, 6.270605081226677e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "64", ")", ":", "#NEWLINE#", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "'SystemRandom'", ")", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "SystemRandom", "(", ")", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", "(", "(", "string", ".", "digits", "+", "string", ".", "ascii_letters", ")", ")", ")", ",", "range", "(", "choice", ")", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [21, 29, 36, 40, 45, 61, 2]}}
+{"prediction": {"error_location": 0.8982037901878357, "repair_targets": [0.9999372959136963], "repair_candidates": [0.9999372959136963, 2.116868699886254e-06, 9.938899893313646e-06, 3.5674536775331944e-05, 1.1973849723290186e-05, 1.968845481314929e-06, 1.0025180472439388e-06], "target_probs": 0.9999372959136963}}
+
+
+{"result": {"time": "2021-02-21 12:57:22.799569", "n_pass": [48, 3, 3], "n_token": 60, "loss": [0.4582022428512573, 0.002837806474417448], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "64", ")", ":", "#NEWLINE#", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "'SystemRandom'", ")", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "SystemRandom", "(", ")", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", "(", "(", "string", ".", ")", ")", ")", ",", "range", "(", "choice", ")", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [21, 29, 36, 40, 45, 56, 2]}}
+{"prediction": {"error_location": 0.6324194669723511, "repair_targets": [0.9971662163734436], "repair_candidates": [0.9971662163734436, 1.7264608686673455e-05, 2.480348848621361e-05, 0.0027431354392319918, 2.9728782465099357e-05, 1.5245063877955545e-05, 3.671587364806328e-06], "target_probs": 0.9971662163734436}}
+
+
+{"result": {"time": "2021-02-21 12:57:22.877634", "n_pass": [49, 4, 4], "n_token": 55, "loss": [0.02860012650489807, 5.5672287999186665e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "64", ")", ":", "#NEWLINE#", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "'SystemRandom'", ")", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "SystemRandom", "(", ")", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", "(", "(", "string", ".", "(", "choice", ")", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [21, 29, 36, 40, 45, 51, 2]}}
+{"prediction": {"error_location": 0.9718050956726074, "repair_targets": [0.9999443292617798], "repair_candidates": [0.9999443292617798, 2.052452600764809e-06, 7.52039431972662e-06, 2.8858381483587436e-05, 1.462931959395064e-05, 1.3747737739322474e-06, 1.2477863720050664e-06], "target_probs": 0.9999443292617798}}
+
+
+{"result": {"time": "2021-02-21 12:57:22.955784", "n_pass": [52, 5, 5], "n_token": 51, "loss": [0.051422540098428726, 0.00010288290650350973], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "'SystemRandom'", ")", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "SystemRandom", "(", ")", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", "(", "(", "string", ".", "(", "choice", ")", ")", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [17, 25, 32, 36, 41, 47, 2]}}
+{"prediction": {"error_location": 0.949877142906189, "repair_targets": [0.9998971223831177], "repair_candidates": [0.9998971223831177, 3.6718349747388856e-06, 1.43120141729014e-05, 6.091461546020582e-05, 1.9255210645496845e-05, 2.577805616965634e-06, 2.032847078226041e-06], "target_probs": 0.9998971223831177}}
+
+
+{"result": {"time": "2021-02-21 12:57:23.103249", "n_pass": [55, 7, 6], "n_token": 47, "loss": [0.7886243462562561, 0.0010058572515845299], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "#INDENT#", "choice", "=", "random", ".", "SystemRandom", "(", ")", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", "(", "(", "string", ".", "(", "choice", ")", ")", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [13, 21, 28, 32, 37, 43, 2]}}
+{"prediction": {"error_location": 0.45446959137916565, "repair_targets": [0.9989946484565735], "repair_candidates": [0.9989946484565735, 6.710054003633559e-05, 2.116650102834683e-05, 0.0008346203248947859, 6.72857349854894e-05, 9.300057172367815e-06, 5.86367741561844e-06], "target_probs": 0.9989946484565735}}
+
+
+{"result": {"time": "2021-02-21 12:57:23.317778", "n_pass": [87, 10, 7], "n_token": 45, "loss": [0.3174692392349243, 0.0007768309442326427], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "#INDENT#", "choice", ".", "SystemRandom", "(", ")", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", "(", "(", "string", ".", "(", "choice", ")", ")", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [13, 19, 26, 30, 35, 41, 2]}}
+{"prediction": {"error_location": 0.727989137172699, "repair_targets": [0.9992234706878662], "repair_candidates": [0.9992234706878662, 7.438708848894748e-07, 2.5090339477173984e-05, 0.0006937161670066416, 4.5712102291872725e-05, 6.587714324268745e-06, 4.728627118311124e-06], "target_probs": 0.9992234706878662}}
+
+
+{"result": {"time": "2021-02-21 12:57:23.392086", "n_pass": [88, 11, 8], "n_token": 43, "loss": [0.20756907761096954, 0.0004993731854483485], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "#INDENT#", "choice", "(", ")", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", "(", "(", "string", ".", "(", "choice", ")", ")", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [13, 17, 24, 28, 33, 39, 2]}}
+{"prediction": {"error_location": 0.81255704164505, "repair_targets": [0.9995007514953613], "repair_candidates": [0.9995007514953613, 2.8075228328816593e-05, 6.461027078330517e-05, 0.0003309349704068154, 6.231518636923283e-05, 7.757228559057694e-06, 5.496765879797749e-06], "target_probs": 0.9995007514953613}}
+
+
+{"result": {"time": "2021-02-21 12:57:23.462286", "n_pass": [89, 12, 9], "n_token": 41, "loss": [0.6951847672462463, 0.00037939593312330544], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "#INDENT#", "choice", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", "(", "(", "string", ".", "(", "choice", ")", ")", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [13, 15, 22, 26, 31, 37, 2]}}
+{"prediction": {"error_location": 0.4989822506904602, "repair_targets": [0.9996206760406494], "repair_candidates": [0.9996206760406494, 4.380455720820464e-06, 0.00021289251162670553, 8.791519940132275e-05, 6.299185042735189e-05, 7.132566224754555e-06, 4.108015218662331e-06], "target_probs": 0.9996206760406494}}
+
+
+{"result": {"time": "2021-02-21 12:57:23.737675", "n_pass": [97, 16, 10], "n_token": 38, "loss": [0.8898264765739441, 0.00038034995668567717], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "#INDENT#", "choice", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice", ")", ")", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [13, 15, 22, 26, 31, 34, 2]}}
+{"prediction": {"error_location": 0.41072702407836914, "repair_targets": [0.999619722366333], "repair_candidates": [0.999619722366333, 4.379900474305032e-06, 0.00021185571677051485, 9.76367446128279e-05, 6.21078215772286e-05, 9.462763728151913e-07, 3.3722974421834806e-06], "target_probs": 0.999619722366333}}
+
+
+{"result": {"time": "2021-02-21 12:57:23.807456", "n_pass": [99, 17, 11], "n_token": 35, "loss": [0.7812068462371826, 0.00031190013396553695], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#INDENT#", "'Secret key generator.\\n\\n    The quality of randomness depends on operating system support,\\n    see http://docs.python.org/library/random.html#random.SystemRandom.\\n    '", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "#INDENT#", "choice", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [13, 15, 22, 26, 31, 34, 2]}}
+{"prediction": {"error_location": 0.45785316824913025, "repair_targets": [0.9996881484985352], "repair_candidates": [0.9996881484985352, 5.784797849628376e-06, 0.00016216898802667856, 9.178885375149548e-05, 4.80839007650502e-05, 8.407072300542495e-07, 3.251219141020556e-06], "target_probs": 0.9996881484985352}}
+
+
+{"result": {"time": "2021-02-21 12:57:23.940063", "n_pass": [102, 19, 12], "n_token": 33, "loss": [1.152620553970337, 0.0006329035386443138], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "hasattr", "(", "random", ",", "#INDENT#", "choice", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [11, 13, 20, 24, 29, 32, 2]}}
+{"prediction": {"error_location": 0.31580814719200134, "repair_targets": [0.9993672966957092], "repair_candidates": [0.9993672966957092, 9.920652701111976e-06, 0.0002618041471578181, 0.0002619611914269626, 9.024053724715486e-05, 1.6399773130615358e-06, 7.155364073696546e-06], "target_probs": 0.9993672966957092}}
+
+
+{"result": {"time": "2021-02-21 12:57:24.527608", "n_pass": [147, 28, 13], "n_token": 32, "loss": [0.062460608780384064, 0.0007956211920827627], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "#INDENT#", "choice", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [10, 12, 19, 23, 28, 31, 2]}}
+{"prediction": {"error_location": 0.9394499659538269, "repair_targets": [0.999204695224762], "repair_candidates": [0.999204695224762, 2.157054223062005e-05, 0.00029958775849081576, 0.0003214625467080623, 0.00013717998808715492, 2.644409732965869e-06, 1.2910711120639462e-05], "target_probs": 0.999204695224762}}
+
+
+{"result": {"time": "2021-02-21 12:57:24.659813", "n_pass": [150, 30, 14], "n_token": 31, "loss": [0.6715680360794067, 0.0014067646116018295], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", ".", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 11, 18, 22, 27, 30, 2]}}
+{"prediction": {"error_location": 0.5109068751335144, "repair_targets": [0.9985942244529724], "repair_candidates": [0.9985942244529724, 0.0005579811986535788, 0.00020319920440670103, 0.00035813727299682796, 0.0002580670698080212, 5.424436039902503e-06, 2.2947147954255342e-05], "target_probs": 0.9985942244529724}}
+
+
+{"result": {"time": "2021-02-21 12:57:24.724266", "n_pass": [152, 31, 15], "n_token": 30, "loss": [0.015620733611285686, 0.000761918316129595], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 17, 21, 26, 29, 2]}}
+{"prediction": {"error_location": 0.984500527381897, "repair_targets": [0.9992383718490601], "repair_candidates": [0.9992383718490601, 0.000607901019975543, 1.6169437003554776e-05, 6.257266795728356e-05, 6.0328678955556825e-05, 1.9800713744189125e-06, 1.2666217116930056e-05], "target_probs": 0.9992383718490601}}
+
+
+{"result": {"time": "2021-02-21 12:57:24.787849", "n_pass": [154, 32, 16], "n_token": 29, "loss": [0.0356951579451561, 0.0005172636592760682], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 16, 20, 25, 28, 2]}}
+{"prediction": {"error_location": 0.9649342894554138, "repair_targets": [0.9994828701019287], "repair_candidates": [0.9994828701019287, 0.0003797737299464643, 1.276741659239633e-05, 7.195510988822207e-05, 4.007762618130073e-05, 1.728139068291057e-06, 1.0705652130127419e-05], "target_probs": 0.9994828701019287}}
+
+
+{"result": {"time": "2021-02-21 12:57:24.851746", "n_pass": [155, 33, 17], "n_token": 28, "loss": [0.036005113273859024, 0.0008548574987798929], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "else", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 15, 19, 24, 27, 2]}}
+{"prediction": {"error_location": 0.9646353721618652, "repair_targets": [0.9991455078125], "repair_candidates": [0.9991455078125, 0.0007556736818514764, 1.3535999642044771e-05, 5.122551374370232e-05, 2.467651393089909e-05, 1.295830543313059e-06, 8.085204171948135e-06], "target_probs": 0.9991455078125}}
+
+
+{"result": {"time": "2021-02-21 12:57:24.914910", "n_pass": [156, 34, 18], "n_token": 27, "loss": [0.012873165309429169, 0.0012659095227718353], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", ":", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 14, 18, 23, 26, 2]}}
+{"prediction": {"error_location": 0.9872094392776489, "repair_targets": [0.9987348914146423], "repair_candidates": [0.9987348914146423, 0.001190848182886839, 1.2604358744283672e-05, 3.9242153434315696e-05, 1.6017775124055333e-05, 9.458165664000262e-07, 5.368973688746337e-06], "target_probs": 0.9987348914146423}}
+
+
+{"result": {"time": "2021-02-21 12:57:24.979416", "n_pass": [157, 35, 19], "n_token": 26, "loss": [0.00845850259065628, 0.0005350948194973171], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "#NEWLINE#", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 13, 17, 22, 25, 2]}}
+{"prediction": {"error_location": 0.9915771484375, "repair_targets": [0.9994650483131409], "repair_candidates": [0.9994650483131409, 0.00043341677519492805, 1.0670498340914492e-05, 6.713136826874688e-05, 1.6984315152512863e-05, 8.673908382661466e-07, 5.893652087252121e-06], "target_probs": 0.9994650483131409}}
+
+
+{"result": {"time": "2021-02-21 12:57:25.041037", "n_pass": [158, 36, 20], "n_token": 25, "loss": [0.007794915232807398, 0.060251738876104355], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "#INDENT#", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 12, 16, 21, 24, 2]}}
+{"prediction": {"error_location": 0.9922352433204651, "repair_targets": [0.9415274858474731], "repair_candidates": [0.9415274858474731, 0.00020810436399187893, 3.43032916134689e-05, 0.058192238211631775, 3.0296898330561817e-05, 1.2065227110724663e-06, 6.359362942021107e-06], "target_probs": 0.9415274858474731}}
+
+
+{"result": {"time": "2021-02-21 12:57:25.103395", "n_pass": [159, 37, 21], "n_token": 24, "loss": [0.028762532398104668, 0.09464698284864426], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", "=", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 11, 15, 20, 23, 2]}}
+{"prediction": {"error_location": 0.9716472625732422, "repair_targets": [0.9096940159797668], "repair_candidates": [0.9096940159797668, 0.0006264055264182389, 0.0005193505203351378, 0.08903073519468307, 0.00011513249046402052, 1.2592336133820936e-06, 1.3081858014629688e-05], "target_probs": 0.9096940159797668}}
+
+
+{"result": {"time": "2021-02-21 12:57:25.164583", "n_pass": [161, 38, 22], "n_token": 23, "loss": [0.178987517952919, 0.0006965440115891397], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", "random", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 11, 14, 19, 22, 2]}}
+{"prediction": {"error_location": 0.8361164927482605, "repair_targets": [0.9993036985397339], "repair_candidates": [0.9993036985397339, 0.0004934596945531666, 3.1570078135700896e-05, 1.891638748929836e-05, 0.00014841038500890136, 4.3660915594045946e-07, 3.5458906495478004e-06], "target_probs": 0.9993036985397339}}
+
+
+{"result": {"time": "2021-02-21 12:57:25.225046", "n_pass": [162, 39, 23], "n_token": 22, "loss": [0.40370801091194153, 0.0004145170096307993], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", ".", "choice", "#NEWLINE#", "#UNINDENT#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 11, 13, 18, 21, 2]}}
+{"prediction": {"error_location": 0.6678390502929688, "repair_targets": [0.9995855689048767], "repair_candidates": [0.9995855689048767, 0.00021374717471189797, 1.8392616766504943e-05, 8.214350600610487e-06, 0.00017007265705615282, 7.321671660065476e-07, 3.2931172881944804e-06], "target_probs": 0.9995855689048767}}
+
+
+{"result": {"time": "2021-02-21 12:57:25.828099", "n_pass": [190, 49, 24], "n_token": 21, "loss": [0.3211236596107483, 0.0005490498733706772], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", ".", "choice", "#NEWLINE#", "return", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 11, 13, 17, 20, 2]}}
+{"prediction": {"error_location": 0.7253336310386658, "repair_targets": [0.9994511008262634], "repair_candidates": [0.9994511008262634, 0.00020651357772294432, 1.562370016472414e-05, 7.593678674311377e-06, 0.0003155404410790652, 1.0878744660658413e-06, 2.4574123926868197e-06], "target_probs": 0.9994511008262634}}
+
+
+{"result": {"time": "2021-02-21 12:57:25.887499", "n_pass": [191, 50, 25], "n_token": 20, "loss": [0.6577937602996826, 0.0006021881708875299], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", ".", "choice", "#NEWLINE#", "''", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 11, 13, 16, 19, 2]}}
+{"prediction": {"error_location": 0.5179929137229919, "repair_targets": [0.9993979930877686], "repair_candidates": [0.9993979930877686, 0.0002690557448659092, 2.056646735582035e-05, 1.3328113709576428e-05, 0.0002886948932427913, 4.886268925474724e-06, 5.4826941777719185e-06], "target_probs": 0.9993979930877686}}
+
+
+{"result": {"time": "2021-02-21 12:57:25.946466", "n_pass": [192, 51, 26], "n_token": 19, "loss": [0.6803178191184998, 0.000423819205025211], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", ".", "choice", "#NEWLINE#", "choice", ".", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 11, 13, 15, 18, 2]}}
+{"prediction": {"error_location": 0.5064560174942017, "repair_targets": [0.9995762705802917], "repair_candidates": [0.9995762705802917, 0.0001503866515122354, 9.457124178879894e-06, 7.020542852842482e-06, 0.00025052434648387134, 3.494430757200462e-06, 2.82031714959885e-06], "target_probs": 0.9995762705802917}}
+
+
+{"result": {"time": "2021-02-21 12:57:26.005261", "n_pass": [194, 52, 27], "n_token": 18, "loss": [0.581454873085022, 0.00035184851731173694], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", ".", "choice", "#NEWLINE#", "choice", "(", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 11, 13, 15, 17, 2]}}
+{"prediction": {"error_location": 0.5590843558311462, "repair_targets": [0.9996482133865356], "repair_candidates": [0.9996482133865356, 0.00016407248040195554, 1.0746306543296669e-05, 5.454159690998495e-06, 0.000159353920025751, 1.155422069132328e-05, 5.492773880177992e-07], "target_probs": 0.9996482133865356}}
+
+
+{"result": {"time": "2021-02-21 12:57:26.065624", "n_pass": [195, 53, 28], "n_token": 17, "loss": [0.3201741576194763, 0.0006119692698121071], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", ".", "choice", "#NEWLINE#", "choice", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 11, 13, 15, 16, 2]}}
+{"prediction": {"error_location": 0.7260226011276245, "repair_targets": [0.9993882179260254], "repair_candidates": [0.9993882179260254, 0.00015208359400276095, 1.5181572962319478e-05, 6.803061751270434e-06, 0.0003855570685118437, 4.984358383808285e-05, 2.2254905616136966e-06], "target_probs": 0.9993882179260254}}
+
+
+{"result": {"time": "2021-02-21 12:57:26.526156", "n_pass": [209, 61, 29], "n_token": 16, "loss": [0.844034731388092, 0.0003394464438315481], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", "choice", "#NEWLINE#", "choice", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 11, 12, 14, 15, 2]}}
+{"prediction": {"error_location": 0.42997220158576965, "repair_targets": [0.9996606111526489], "repair_candidates": [0.9996606111526489, 0.0001319989823969081, 2.57828851317754e-05, 2.0749279428855516e-05, 1.0669044968381058e-05, 9.936818241840228e-05, 5.082054121885449e-05], "target_probs": 0.9996606111526489}}
+
+
+{"result": {"time": "2021-02-21 12:57:26.583477", "n_pass": [211, 62, 30], "n_token": 15, "loss": [0.6754492521286011, 0.0002089361078105867], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", "choice", "choice", "choice"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [9, 10, 11, 12, 13, 14, 2]}}
+{"prediction": {"error_location": 0.5089277625083923, "repair_targets": [0.9997910857200623], "repair_candidates": [0.9997910857200623, 8.354298915946856e-05, 2.5203904442605563e-05, 2.9094355340930633e-05, 3.0716579203726724e-05, 2.4617382223368622e-05, 1.56980113388272e-05], "target_probs": 0.9997910857200623}}
+
+
+{"result": {"time": "2021-02-21 12:57:26.640103", "n_pass": [214, 63, 31], "n_token": 14, "loss": [1.0665557384490967, 0.00012350844917818904], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def generate_key(", "key_length", "=", "#NEWLINE#", "if", "(", "random", ",", "choice", "choice", "choice", "choice", "choice", "choice"]}}
+{"position": {"error_location": 6, "repair_targets": [1], "repair_candidates": [8, 9, 10, 11, 12, 13, 1]}}
+{"prediction": {"error_location": 0.3441919982433319, "repair_targets": [0.9998764991760254], "repair_candidates": [0.9998764991760254, 3.910016312147491e-05, 1.46346337714931e-05, 1.7882468455354683e-05, 2.1718995412811637e-05, 1.8886750694946386e-05, 1.1311929483781569e-05], "target_probs": 0.9998764991760254}}
+
+
+
+
+Minimal simplified tokens:
+
+['def generate_key(', 'key_length', '=', '#NEWLINE#', 'if', '(', 'random', ',', 'choice', 'choice', 'choice', 'choice', 'choice', 'choice']

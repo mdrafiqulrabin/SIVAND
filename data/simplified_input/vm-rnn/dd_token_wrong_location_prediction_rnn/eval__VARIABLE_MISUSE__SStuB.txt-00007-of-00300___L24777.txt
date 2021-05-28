@@ -1,0 +1,133 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def update_project_requirements(", "self", ",", "project", ",", "repo_dir", ",", "activate_loc", ")", ":", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ".", "fabfile_requirements", ".", "splitlines", "(", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "(", "'source {} && cd {};pip install {}'", ".", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir", ")", ")"], "error_location": [40], "repair_targets": [13], "repair_candidates": [6, 38, 40, 4, 19, 13, 8, 36, 2, 28], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "fabric-bolt/fabric-bolt/fabric_bolt/task_runners/base.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00007-of-00300", "js_count": 24777, "results": {"model": "rnn", "prob": {"loc": [[0.007128716446459293, 2.3531615767069525e-08, 6.79097578171195e-09, 9.795386030075903e-11, 7.281999891972646e-09, 3.517328928115404e-10, 3.2685182560499015e-08, 2.1601369998291986e-11, 7.82415110478496e-09, 2.92680746305507e-09, 1.094137558332875e-09, 1.0455822874178011e-08, 1.1325159698927223e-09, 2.3621776534810124e-08, 7.941734075922469e-11, 1.0714130915800979e-08, 3.0786972970986426e-09, 8.36064217857313e-10, 4.6748933613116606e-09, 1.1043470493632412e-07, 7.381773525771962e-10, 1.609722666273683e-08, 2.5236142064954947e-09, 9.390781208207244e-11, 6.061716462113509e-09, 9.906499798262303e-08, 1.524911863448608e-09, 3.0852633781108807e-09, 3.451889654115803e-07, 4.6658893637641086e-08, 2.6080217985224863e-09, 1.2624692402596338e-08, 1.0313352838409173e-08, 4.888302100880537e-07, 1.113396574936587e-08, 1.9382513372079302e-08, 0.9317731261253357, 2.1847816242370754e-05, 0.05237632244825363, 1.473740525170797e-07, 0.008698388002812862, 8.707176135658301e-08, 8.062791323482088e-09]], "pointer": [[0.0, 0.0, 1.2289982805668842e-05, 0.0, 0.001443099114112556, 0.0, 0.00047293485840782523, 0.0, 0.001008524326607585, 0.0, 0.0, 0.0, 0.0, 0.9969990253448486, 0.0, 0.0, 0.0, 0.0, 0.0, 2.9331593395909294e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.8722603019559756e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.5947982723882888e-06, 0.0, 8.135893949656747e-07, 0.0, 1.72919226315571e-06, 0.0, 0.0]], "target": [0.9969990253448486]}, "loss": [4.744617462158203, 0.0030054866801947355], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [36]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:18:46.886954", "n_pass": [1, 1, 1], "n_token": 43, "loss": [0.07066582143306732, 0.0030054866801947355], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update_project_requirements(", "self", ",", "project", ",", "repo_dir", ",", "activate_loc", ")", ":", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ".", "fabfile_requirements", ".", "splitlines", "(", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "(", "'source {} && cd {};pip install {}'", ".", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir", ")", ")"]}}
+{"position": {"error_location": 36, "repair_targets": [13], "repair_candidates": [6, 38, 40, 4, 19, 13, 8, 36, 2, 28]}}
+{"prediction": {"error_location": 0.9317731261253357, "repair_targets": [0.9969990253448486], "repair_candidates": [1.2289982805668842e-05, 0.001443099114112556, 0.00047293485840782523, 0.001008524326607585, 0.9969990253448486, 2.9331593395909294e-05, 2.8722603019559756e-05, 3.5947982723882888e-06, 8.135893949656747e-07, 1.72919226315571e-06], "target_probs": 0.9969990253448486}}
+
+
+{"result": {"time": "2021-02-21 12:18:46.956128", "n_pass": [24, 2, 2], "n_token": 38, "loss": [0.13198105990886688, 0.020675500854849815], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update_project_requirements(", "self", ",", "project", ",", "repo_dir", ",", "activate_loc", ")", ":", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "(", "'source {} && cd {};pip install {}'", ".", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir", ")", ")"]}}
+{"position": {"error_location": 31, "repair_targets": [13], "repair_candidates": [6, 33, 35, 4, 19, 13, 8, 31, 2, 23]}}
+{"prediction": {"error_location": 0.8763576149940491, "repair_targets": [0.979536771774292], "repair_candidates": [4.044984234496951e-05, 0.005865120328962803, 0.003922766074538231, 0.010594721883535385, 0.979536771774292, 3.399514753255062e-06, 1.2623793736565858e-05, 1.6326124750776216e-05, 3.654775582617731e-06, 4.12817007600097e-06], "target_probs": 0.979536771774292}}
+
+
+{"result": {"time": "2021-02-21 12:18:47.089633", "n_pass": [48, 4, 3], "n_token": 35, "loss": [1.0214478969573975, 0.05154844745993614], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update_project_requirements(", "self", ",", "project", ",", "repo_dir", ",", "activate_loc", ")", ":", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir", ")", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [13], "repair_candidates": [6, 30, 32, 4, 19, 13, 8, 28, 2, 23]}}
+{"prediction": {"error_location": 0.3600732088088989, "repair_targets": [0.9497576355934143], "repair_candidates": [8.665266068419442e-05, 0.013549386523663998, 0.008946911431849003, 0.027211781591176987, 0.9497576355934143, 1.0924226444330998e-05, 9.70750697888434e-05, 0.0002732197754085064, 3.7541056371992454e-05, 2.886779111577198e-05], "target_probs": 0.9497576355934143}}
+
+
+{"result": {"time": "2021-02-21 12:18:47.420956", "n_pass": [92, 9, 4], "n_token": 33, "loss": [0.8795828819274902, 0.03062516264617443], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update_project_requirements(", "self", ",", "project", ",", "repo_dir", ",", "activate_loc", ")", ":", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 28, "repair_targets": [13], "repair_candidates": [6, 30, 32, 4, 19, 13, 8, 28, 2, 23]}}
+{"prediction": {"error_location": 0.4149559736251831, "repair_targets": [0.9698390364646912], "repair_candidates": [4.86231547256466e-05, 0.014069060795009136, 0.0034562619403004646, 0.01238369569182396, 0.9698390364646912, 7.734806786174886e-06, 5.6007091188803315e-05, 0.00011335829913150519, 1.4460999409493525e-05, 1.173927648778772e-05], "target_probs": 0.9698390364646912}}
+
+
+{"result": {"time": "2021-02-21 12:18:47.486337", "n_pass": [93, 10, 5], "n_token": 32, "loss": [0.41999390721321106, 0.05340535193681717], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update_project_requirements(", "self", ",", "project", ",", "repo_dir", ",", "activate_loc", ")", ":", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 27, "repair_targets": [12], "repair_candidates": [5, 29, 31, 3, 18, 12, 7, 27, 1, 22]}}
+{"prediction": {"error_location": 0.6570507884025574, "repair_targets": [0.947995662689209], "repair_candidates": [0.0006155199953354895, 0.044521965086460114, 0.0025166342966258526, 0.004131956957280636, 0.947995662689209, 2.241434958705213e-05, 0.00012845487799495459, 5.1454499043757096e-05, 8.471733053738717e-06, 7.441693469445454e-06], "target_probs": 0.947995662689209}}
+
+
+{"result": {"time": "2021-02-21 12:18:47.618412", "n_pass": [96, 12, 6], "n_token": 31, "loss": [0.8112331032752991, 0.03660241514444351], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update_project_requirements(", "self", "project", ",", "repo_dir", ",", "activate_loc", ")", ":", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 26, "repair_targets": [11], "repair_candidates": [4, 28, 30, 2, 17, 11, 6, 26, 1, 21]}}
+{"prediction": {"error_location": 0.4443098306655884, "repair_targets": [0.9640593528747559], "repair_candidates": [0.00030088075436651707, 0.02210909314453602, 0.004701566882431507, 0.008530228398740292, 0.9640593528747559, 1.8448907212587073e-05, 0.00013512752775568515, 0.0001157625883934088, 1.7024676708388142e-05, 1.2584468095155898e-05], "target_probs": 0.9640593528747559}}
+
+
+{"result": {"time": "2021-02-21 12:18:47.682733", "n_pass": [98, 13, 7], "n_token": 30, "loss": [1.0336363315582275, 0.0506606325507164], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update_project_requirements(", "self", "project", "repo_dir", ",", "activate_loc", ")", ":", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 25, "repair_targets": [10], "repair_candidates": [3, 27, 29, 2, 16, 10, 5, 25, 1, 20]}}
+{"prediction": {"error_location": 0.35571110248565674, "repair_targets": [0.9506012201309204], "repair_candidates": [0.00029700581217184663, 0.027539458125829697, 0.012046781368553638, 0.009179065935313702, 0.9506012201309204, 1.9608383809099905e-05, 9.58919627009891e-05, 0.00017883602413348854, 2.1920213839621283e-05, 2.0138613763265312e-05], "target_probs": 0.9506012201309204}}
+
+
+{"result": {"time": "2021-02-21 12:18:47.746898", "n_pass": [100, 14, 8], "n_token": 29, "loss": [0.680273175239563, 0.02348114177584648], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update_project_requirements(", "self", "project", "repo_dir", "activate_loc", ")", ":", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 24, "repair_targets": [9], "repair_candidates": [3, 26, 28, 2, 15, 9, 4, 24, 1, 19]}}
+{"prediction": {"error_location": 0.5064786076545715, "repair_targets": [0.9767923951148987], "repair_candidates": [0.0003090035170316696, 0.017059791833162308, 0.0021177029702812433, 0.003502148436382413, 0.9767923951148987, 1.0014873623731546e-05, 0.00011941583943553269, 7.293419184861705e-05, 9.288463843404315e-06, 7.365662895608693e-06], "target_probs": 0.9767923951148987}}
+
+
+{"result": {"time": "2021-02-21 12:18:47.810358", "n_pass": [102, 15, 9], "n_token": 28, "loss": [0.5226067304611206, 0.018535878509283066], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update_project_requirements(", "self", "project", "repo_dir", "activate_loc", ":", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 23, "repair_targets": [8], "repair_candidates": [3, 25, 27, 2, 14, 8, 4, 23, 1, 18]}}
+{"prediction": {"error_location": 0.5929728150367737, "repair_targets": [0.9816348552703857], "repair_candidates": [0.0003159820334985852, 0.01396226603537798, 0.0020490637980401516, 0.0018531603273004293, 0.9816348552703857, 1.102191617974313e-05, 0.00012153032002970576, 4.177425580564886e-05, 5.6944554671645164e-06, 4.616892056219513e-06], "target_probs": 0.9816348552703857}}
+
+
+{"result": {"time": "2021-02-21 12:18:47.872381", "n_pass": [103, 16, 10], "n_token": 27, "loss": [0.5436469316482544, 0.0483342707157135], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update_project_requirements(", "self", "project", "repo_dir", "activate_loc", "#NEWLINE#", "#INDENT#", "pip_installs", "=", "' '", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 22, "repair_targets": [7], "repair_candidates": [3, 24, 26, 2, 13, 7, 4, 22, 1, 17]}}
+{"prediction": {"error_location": 0.580626904964447, "repair_targets": [0.9528152346611023], "repair_candidates": [0.0007109762518666685, 0.037804849445819855, 0.006337442435324192, 0.0018754288321360946, 0.9528152346611023, 2.128994310623966e-05, 0.00029694553813897073, 0.00010942262451862916, 1.4457560610026121e-05, 1.4084037502470892e-05], "target_probs": 0.9528152346611023}}
+
+
+{"result": {"time": "2021-02-21 12:18:47.999262", "n_pass": [105, 18, 11], "n_token": 26, "loss": [0.48563089966773987, 0.20885317027568817], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update_project_requirements(", "self", "project", "repo_dir", "activate_loc", "#NEWLINE#", "pip_installs", "=", "' '", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 21, "repair_targets": [6], "repair_candidates": [3, 23, 25, 2, 12, 6, 4, 21, 1, 16]}}
+{"prediction": {"error_location": 0.615308940410614, "repair_targets": [0.8115143775939941], "repair_candidates": [0.0018917343113571405, 0.14260900020599365, 0.02569427527487278, 0.016901856288313866, 0.8115143775939941, 5.0174388888990507e-05, 0.0009316563373431563, 0.0003170947020407766, 4.4711956434184685e-05, 4.517549677984789e-05], "target_probs": 0.8115143775939941}}
+
+
+{"result": {"time": "2021-02-21 12:18:48.121995", "n_pass": [108, 20, 12], "n_token": 25, "loss": [0.745578944683075, 0.2885406017303467], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update_project_requirements(", "self", "project", "repo_dir", "activate_loc", "#NEWLINE#", "pip_installs", "=", ".", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 20, "repair_targets": [6], "repair_candidates": [3, 22, 24, 2, 11, 6, 4, 20, 1, 15]}}
+{"prediction": {"error_location": 0.47445955872535706, "repair_targets": [0.7493563890457153], "repair_candidates": [0.002835155464708805, 0.1654774695634842, 0.047366268932819366, 0.032378725707530975, 0.7493563890457153, 0.00012727337889373302, 0.001207939931191504, 0.0009820964187383652, 0.0001243237784365192, 0.00014438587822951376], "target_probs": 0.7493563890457153}}
+
+
+{"result": {"time": "2021-02-21 12:18:48.182905", "n_pass": [109, 21, 13], "n_token": 24, "loss": [0.25714677572250366, 0.516355037689209], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update_project_requirements(", "self", "project", "repo_dir", "activate_loc", "#NEWLINE#", "pip_installs", "=", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "check_output_with_ssh_key", "format", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 19, "repair_targets": [6], "repair_candidates": [3, 21, 23, 2, 10, 6, 4, 19, 1, 14]}}
+{"prediction": {"error_location": 0.7732547521591187, "repair_targets": [0.5966914892196655], "repair_candidates": [0.003180295927450061, 0.3471566438674927, 0.03744376823306084, 0.014271194115281105, 0.5966914892196655, 4.5041833800496534e-05, 0.0008475928916595876, 0.0002751568681560457, 3.846681283903308e-05, 5.0342576287221164e-05], "target_probs": 0.5966914892196655}}
+
+
+{"result": {"time": "2021-02-21 12:18:48.364378", "n_pass": [114, 24, 14], "n_token": 22, "loss": [0.485813170671463, 0.1371091604232788], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update_project_requirements(", "self", "project", "repo_dir", "activate_loc", "#NEWLINE#", "pip_installs", "=", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 17, "repair_targets": [6], "repair_candidates": [3, 19, 21, 2, 10, 6, 4, 17, 1, 14]}}
+{"prediction": {"error_location": 0.6151967644691467, "repair_targets": [0.8718750476837158], "repair_candidates": [0.0009098619339056313, 0.09241528064012527, 0.025426123291254044, 0.009119677357375622, 0.8718750476837158, 2.9445891414070502e-05, 7.382078820228344e-06, 0.00018767002620734274, 1.1298528988845646e-05, 1.8252621885039844e-05], "target_probs": 0.8718750476837158}}
+
+
+{"result": {"time": "2021-02-21 12:18:48.424105", "n_pass": [118, 25, 15], "n_token": 21, "loss": [0.6106641888618469, 0.04140270873904228], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "project", "repo_dir", "activate_loc", "#NEWLINE#", "pip_installs", "=", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [2, 18, 20, 1, 9, 5, 3, 16, 0, 13]}}
+{"prediction": {"error_location": 0.5429901480674744, "repair_targets": [0.959442675113678], "repair_candidates": [0.004167328588664532, 0.008592543192207813, 0.014440563507378101, 0.013088543899357319, 0.959442675113678, 6.205122190294787e-05, 3.2827313134475844e-06, 0.00017899276281241328, 9.682718882686459e-06, 1.4311795894172974e-05], "target_probs": 0.959442675113678}}
+
+
+{"result": {"time": "2021-02-21 12:18:48.483180", "n_pass": [123, 26, 16], "n_token": 20, "loss": [0.4625406861305237, 0.48140430450439453], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "project", "repo_dir", "activate_loc", "pip_installs", "=", "join", "(", "project", ")", ")", "#NEWLINE#", "self", ".", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [2, 17, 19, 1, 8, 4, 3, 15, 0, 12]}}
+{"prediction": {"error_location": 0.6296817064285278, "repair_targets": [0.6179150342941284], "repair_candidates": [0.0029445372056216, 0.01469143945723772, 0.040032412856817245, 0.32426851987838745, 0.6179150342941284, 4.0837403503246605e-05, 2.1296798422554275e-06, 9.204903471982107e-05, 5.464905370899942e-06, 7.541540981037542e-06], "target_probs": 0.6179150342941284}}
+
+
+{"result": {"time": "2021-02-21 12:18:48.599786", "n_pass": [126, 28, 17], "n_token": 18, "loss": [0.7161626815795898, 0.396009624004364], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "project", "repo_dir", "activate_loc", "pip_installs", "=", "project", ")", ")", "#NEWLINE#", "self", ".", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [2, 15, 17, 1, 6, 4, 3, 13, 0, 10]}}
+{"prediction": {"error_location": 0.4886236786842346, "repair_targets": [0.6730002164840698], "repair_candidates": [0.0032649405766278505, 0.011659220792353153, 0.06270545721054077, 0.24478599429130554, 0.6730002164840698, 0.004525830503553152, 2.457193431837368e-06, 4.4905973481945693e-05, 4.479717517824611e-06, 6.529136044264305e-06], "target_probs": 0.6730002164840698}}
+
+
+{"result": {"time": "2021-02-21 12:18:48.832631", "n_pass": [153, 32, 18], "n_token": 17, "loss": [0.5016821622848511, 0.374210923910141], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "project", "repo_dir", "activate_loc", "pip_installs", "=", "project", ")", ")", "#NEWLINE#", "self", "(", "activate_loc", ",", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [2, 14, 16, 1, 6, 4, 3, 12, 0, 10]}}
+{"prediction": {"error_location": 0.6055111885070801, "repair_targets": [0.6878318190574646], "repair_candidates": [0.005446734372526407, 0.019029945135116577, 0.07072636485099792, 0.20717179775238037, 0.6878318190574646, 0.009768311865627766, 8.240133865911048e-06, 4.327330316300504e-06, 1.41149109822436e-06, 1.1037796866730787e-05], "target_probs": 0.6878318190574646}}
+
+
+{"result": {"time": "2021-02-21 12:18:48.946712", "n_pass": [156, 34, 19], "n_token": 16, "loss": [1.0072193145751953, 0.2886420786380768], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "project", "repo_dir", "activate_loc", "pip_installs", "=", "project", ")", ")", "#NEWLINE#", "self", "(", "activate_loc", "repo_dir", ",", "repo_dir"]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [2, 13, 15, 1, 6, 4, 3, 12, 0, 10]}}
+{"prediction": {"error_location": 0.3652331829071045, "repair_targets": [0.7492803335189819], "repair_candidates": [0.000810507102869451, 0.0032226787880063057, 0.022610822692513466, 0.2234216332435608, 0.7492803335189819, 0.000649838475510478, 7.785353659528482e-07, 6.214820587047143e-07, 3.448199379363359e-07, 2.463911641825689e-06], "target_probs": 0.7492803335189819}}
+
+
+{"result": {"time": "2021-02-21 12:18:49.003379", "n_pass": [158, 35, 20], "n_token": 15, "loss": [0.6899585127830505, 0.4271334707736969], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "project", "repo_dir", "activate_loc", "pip_installs", "=", "project", ")", ")", "#NEWLINE#", "self", "(", "activate_loc", "repo_dir", "repo_dir"]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [2, 13, 14, 1, 6, 4, 3, 12, 0, 10]}}
+{"prediction": {"error_location": 0.5015968680381775, "repair_targets": [0.6523764729499817], "repair_candidates": [0.001186512759886682, 0.004405466374009848, 0.037801045924425125, 0.3038053512573242, 0.6523764729499817, 0.0004190864274278283, 9.363174058307777e-07, 8.376989626412978e-07, 4.761512002460222e-07, 3.888065748469671e-06], "target_probs": 0.6523764729499817}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'project', 'repo_dir', 'activate_loc', 'pip_installs', '=', 'project', ')', ')', '#NEWLINE#', 'self', '(', 'activate_loc', 'repo_dir', 'repo_dir']

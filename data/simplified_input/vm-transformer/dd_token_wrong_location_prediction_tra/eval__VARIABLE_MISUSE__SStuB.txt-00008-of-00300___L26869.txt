@@ -1,0 +1,109 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def get_id_from_ns_name(", "ns_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Parses identifier from prefix-identifier\\n\\n    :param ns_name: The name of a namespace\\n    :returns: Identifier or None if there is no - to end the prefix\\n    '", "#NEWLINE#", "dash_index", "=", "ns_name", ".", "find", "(", "'-'", ")", "#NEWLINE#", "if", "(", "0", "<=", "dash_index", ")", ":", "#NEWLINE#", "#INDENT#", "return", "dash_index", "[", "(", "dash_index", "+", "1", ")", ":", "]"], "error_location": [28], "repair_targets": [2, 11], "repair_candidates": [2, 11, 9, 22, 28, 31], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "openstack/neutron/neutron/agent/l3/namespaces.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00008-of-00300", "js_count": 26869, "results": {"model": "transformer", "prob": {"loc": [[0.12873747944831848, 3.4005477118626004e-06, 2.0343189532923134e-07, 2.0669352451818668e-08, 4.34444977770454e-08, 7.104740973318258e-08, 6.10798807088031e-08, 4.4874212790091406e-08, 6.483145398306078e-08, 2.0940127853918966e-07, 4.960012844890116e-08, 9.756148529049824e-07, 1.231866377793267e-07, 2.942338994671445e-08, 2.3134398929869349e-07, 1.5124632000151905e-06, 2.135246290890791e-07, 2.6247678874824487e-07, 2.329390440536372e-07, 2.5026427152852193e-08, 2.3567149582959246e-06, 4.2882925299636554e-07, 0.004098658449947834, 2.0695152258554117e-08, 1.509581863956555e-07, 1.538296174885545e-07, 1.0592022192668082e-07, 1.7510428662603772e-08, 0.2087007313966751, 7.952165148594759e-09, 4.566128097849287e-08, 0.6584510207176208, 5.989848972376421e-08, 2.1823701956691366e-07, 3.0038073361993156e-08, 3.016431264768471e-07, 4.233581876178505e-07]], "pointer": [[0.0, 0.0, 0.7230072617530823, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0004337620921432972, 0.0, 0.2765570878982544, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.7966682953083364e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 8.157142161735464e-08, 0.0, 0.0, 1.4336773119794088e-06, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9995643496513367]}, "loss": [1.5668538808822632, 0.00043574528535827994], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [31]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:34:22.004536", "n_pass": [1, 1, 1], "n_token": 37, "loss": [0.41786515712738037, 0.00043574528535827994], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_id_from_ns_name(", "ns_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Parses identifier from prefix-identifier\\n\\n    :param ns_name: The name of a namespace\\n    :returns: Identifier or None if there is no - to end the prefix\\n    '", "#NEWLINE#", "dash_index", "=", "ns_name", ".", "find", "(", "'-'", ")", "#NEWLINE#", "if", "(", "0", "<=", "dash_index", ")", ":", "#NEWLINE#", "#INDENT#", "return", "dash_index", "[", "(", "dash_index", "+", "1", ")", ":", "]"]}}
+{"position": {"error_location": 31, "repair_targets": [2, 11], "repair_candidates": [2, 11, 9, 22, 28, 31]}}
+{"prediction": {"error_location": 0.6584510207176208, "repair_targets": [0.7230072617530823, 0.2765570878982544], "repair_candidates": [0.7230072617530823, 0.0004337620921432972, 0.2765570878982544, 3.7966682953083364e-07, 8.157142161735464e-08, 1.4336773119794088e-06], "target_probs": 0.9995643496513367}}
+
+
+{"result": {"time": "2021-02-21 06:34:22.453507", "n_pass": [50, 9, 2], "n_token": 35, "loss": [0.39740490913391113, 0.00010330018267268315], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_id_from_ns_name(", "ns_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Parses identifier from prefix-identifier\\n\\n    :param ns_name: The name of a namespace\\n    :returns: Identifier or None if there is no - to end the prefix\\n    '", "#NEWLINE#", "dash_index", "=", "ns_name", "(", "'-'", ")", "#NEWLINE#", "if", "(", "0", "<=", "dash_index", ")", ":", "#NEWLINE#", "#INDENT#", "return", "dash_index", "[", "(", "dash_index", "+", "1", ")", ":", "]"]}}
+{"position": {"error_location": 29, "repair_targets": [2, 11], "repair_candidates": [2, 11, 9, 20, 26, 29]}}
+{"prediction": {"error_location": 0.6720618605613708, "repair_targets": [0.9918283224105835, 0.008068379014730453], "repair_candidates": [0.9918283224105835, 0.00010243559518130496, 0.008068379014730453, 2.0973713787952875e-07, 6.300226118582941e-08, 6.759179314030916e-07], "target_probs": 0.9998967051506042}}
+
+
+{"result": {"time": "2021-02-21 06:34:22.678850", "n_pass": [54, 13, 3], "n_token": 33, "loss": [0.3473992347717285, 9.596394193067681e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_id_from_ns_name(", "ns_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Parses identifier from prefix-identifier\\n\\n    :param ns_name: The name of a namespace\\n    :returns: Identifier or None if there is no - to end the prefix\\n    '", "#NEWLINE#", "dash_index", "=", "ns_name", "(", "'-'", ")", "#NEWLINE#", "if", "(", "dash_index", ")", ":", "#NEWLINE#", "#INDENT#", "return", "dash_index", "[", "(", "dash_index", "+", "1", ")", ":", "]"]}}
+{"position": {"error_location": 27, "repair_targets": [2, 11], "repair_candidates": [2, 11, 9, 18, 24, 27]}}
+{"prediction": {"error_location": 0.7065231800079346, "repair_targets": [0.9937613606452942, 0.006229037884622812], "repair_candidates": [0.9937613606452942, 9.276305718231015e-06, 0.006229037884622812, 1.1925207843432872e-07, 4.0831526604279134e-08, 1.853555176012378e-07], "target_probs": 0.9999904036521912}}
+
+
+{"result": {"time": "2021-02-21 06:34:22.734333", "n_pass": [56, 14, 4], "n_token": 30, "loss": [0.8286513090133667, 1.4662849935120903e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_id_from_ns_name(", "ns_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Parses identifier from prefix-identifier\\n\\n    :param ns_name: The name of a namespace\\n    :returns: Identifier or None if there is no - to end the prefix\\n    '", "#NEWLINE#", "dash_index", "=", "ns_name", "(", "'-'", ")", "#NEWLINE#", "if", "(", "dash_index", ")", ":", "dash_index", "[", "(", "dash_index", "+", "1", ")", ":", "]"]}}
+{"position": {"error_location": 24, "repair_targets": [2, 11], "repair_candidates": [2, 11, 9, 18, 21, 24]}}
+{"prediction": {"error_location": 0.4366377592086792, "repair_targets": [0.9840116500854492, 0.015973662957549095], "repair_candidates": [0.9840116500854492, 1.2095764759578742e-05, 0.015973662957549095, 4.746507329400629e-07, 2.846952895652066e-07, 1.8741748135653324e-06], "target_probs": 0.9999853372573853}}
+
+
+{"result": {"time": "2021-02-21 06:34:22.789667", "n_pass": [59, 15, 5], "n_token": 27, "loss": [0.5872506499290466, 5.8533474657451734e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_id_from_ns_name(", "ns_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Parses identifier from prefix-identifier\\n\\n    :param ns_name: The name of a namespace\\n    :returns: Identifier or None if there is no - to end the prefix\\n    '", "#NEWLINE#", "dash_index", "=", "ns_name", "(", "'-'", ")", "#NEWLINE#", "if", "(", "dash_index", ")", ":", "dash_index", "[", "(", "dash_index", "+", "1"]}}
+{"position": {"error_location": 24, "repair_targets": [2, 11], "repair_candidates": [2, 11, 9, 18, 21, 24]}}
+{"prediction": {"error_location": 0.5558534264564514, "repair_targets": [0.9674109220504761, 0.0325305238366127], "repair_candidates": [0.9674109220504761, 5.275696821627207e-05, 0.0325305238366127, 1.278454305975174e-06, 4.422970789619285e-07, 4.041625288664363e-06], "target_probs": 0.9999414682388306}}
+
+
+{"result": {"time": "2021-02-21 06:34:22.959637", "n_pass": [63, 18, 6], "n_token": 25, "loss": [0.7726195454597473, 0.00012726400746032596], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_id_from_ns_name(", "ns_name", ")", ":", "#NEWLINE#", "#NEWLINE#", "dash_index", "=", "ns_name", "(", "'-'", ")", "#NEWLINE#", "if", "(", "dash_index", ")", ":", "dash_index", "[", "(", "dash_index", "+", "1"]}}
+{"position": {"error_location": 22, "repair_targets": [2, 9], "repair_candidates": [2, 9, 7, 16, 19, 22]}}
+{"prediction": {"error_location": 0.46180182695388794, "repair_targets": [0.910959005355835, 0.08891372382640839], "repair_candidates": [0.910959005355835, 0.00011163761519128457, 0.08891372382640839, 3.0590031201427337e-06, 4.43277349404525e-06, 8.103097570710815e-06], "target_probs": 0.9998727440834045}}
+
+
+{"result": {"time": "2021-02-21 06:34:23.015287", "n_pass": [66, 19, 7], "n_token": 23, "loss": [0.9379342198371887, 0.0005169058567844331], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_id_from_ns_name(", "ns_name", ")", ":", "#NEWLINE#", "#NEWLINE#", "dash_index", "=", "ns_name", ")", "#NEWLINE#", "if", "(", "dash_index", ")", ":", "dash_index", "[", "(", "dash_index", "+", "1"]}}
+{"position": {"error_location": 20, "repair_targets": [2, 9], "repair_candidates": [2, 9, 7, 14, 17, 20]}}
+{"prediction": {"error_location": 0.3914356231689453, "repair_targets": [0.4049128592014313, 0.5945703387260437], "repair_candidates": [0.4049128592014313, 0.00039617024594917893, 0.5945703387260437, 7.377069414360449e-05, 2.1446723621920682e-05, 2.5386940251337364e-05], "target_probs": 0.9994832277297974}}
+
+
+{"result": {"time": "2021-02-21 06:34:23.126743", "n_pass": [68, 21, 8], "n_token": 21, "loss": [0.44143006205558777, 0.0013000471517443657], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_id_from_ns_name(", "ns_name", ")", ":", "#NEWLINE#", "#NEWLINE#", "dash_index", "=", "ns_name", ")", "#NEWLINE#", "dash_index", ")", ":", "dash_index", "[", "(", "dash_index", "+", "1"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 9], "repair_candidates": [2, 9, 7, 12, 15, 18]}}
+{"prediction": {"error_location": 0.6431161165237427, "repair_targets": [0.06127430498600006, 0.9374265074729919], "repair_candidates": [0.06127430498600006, 0.0006040672888047993, 0.9374265074729919, 0.0006797108799219131, 1.2141898878326174e-05, 3.221440010747756e-06], "target_probs": 0.9987007975578308}}
+
+
+{"result": {"time": "2021-02-21 06:34:23.182038", "n_pass": [72, 22, 9], "n_token": 19, "loss": [0.24481035768985748, 0.0005316955503076315], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["ns_name", ")", ":", "#NEWLINE#", "#NEWLINE#", "dash_index", "=", "ns_name", ")", "#NEWLINE#", "dash_index", ")", ":", "dash_index", "[", "(", "dash_index", "+", "1"]}}
+{"position": {"error_location": 16, "repair_targets": [0, 7], "repair_candidates": [0, 7, 5, 10, 13, 16]}}
+{"prediction": {"error_location": 0.7828530073165894, "repair_targets": [0.00744194770231843, 0.9920265078544617], "repair_candidates": [0.00744194770231843, 0.0003088822413701564, 0.9920265078544617, 0.00020960261463187635, 1.2055942534061614e-05, 1.0902542726398678e-06], "target_probs": 0.9994684457778931}}
+
+
+{"result": {"time": "2021-02-21 06:34:23.240101", "n_pass": [74, 23, 10], "n_token": 17, "loss": [0.1942654848098755, 0.0031543599907308817], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["ns_name", ")", "#NEWLINE#", "dash_index", "=", "ns_name", ")", "#NEWLINE#", "dash_index", ")", ":", "dash_index", "[", "(", "dash_index", "+", "1"]}}
+{"position": {"error_location": 14, "repair_targets": [0, 5], "repair_candidates": [0, 5, 3, 8, 11, 14]}}
+{"prediction": {"error_location": 0.8234391808509827, "repair_targets": [0.0010161512764170766, 0.995834469795227], "repair_candidates": [0.0010161512764170766, 0.0031161298975348473, 0.995834469795227, 2.852286161214579e-05, 4.60423007098143e-06, 1.6060779728377383e-07], "target_probs": 0.9968506097793579}}
+
+
+{"result": {"time": "2021-02-21 06:34:23.295201", "n_pass": [77, 24, 11], "n_token": 15, "loss": [0.24483564496040344, 0.6298849582672119], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["ns_name", ")", "#NEWLINE#", "dash_index", "=", "ns_name", "dash_index", ")", ":", "dash_index", "[", "(", "dash_index", "+", "1"]}}
+{"position": {"error_location": 12, "repair_targets": [0, 5], "repair_candidates": [0, 5, 3, 6, 9, 12]}}
+{"prediction": {"error_location": 0.7828332781791687, "repair_targets": [0.001942664384841919, 0.5307103991508484], "repair_candidates": [0.001942664384841919, 0.4659144878387451, 0.5307103991508484, 0.0010509854182600975, 0.0003799348487518728, 1.4877313105898793e-06], "target_probs": 0.5326530933380127}}
+
+
+{"result": {"time": "2021-02-21 06:34:23.350503", "n_pass": [97, 25, 12], "n_token": 14, "loss": [0.35870200395584106, 0.41452744603157043], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["ns_name", ")", "#NEWLINE#", "dash_index", "=", "ns_name", "dash_index", ":", "dash_index", "[", "(", "dash_index", "+", "1"]}}
+{"position": {"error_location": 11, "repair_targets": [0, 5], "repair_candidates": [0, 5, 3, 6, 8, 11]}}
+{"prediction": {"error_location": 0.6985825300216675, "repair_targets": [0.006326153874397278, 0.6543262600898743], "repair_candidates": [0.006326153874397278, 0.27644580602645874, 0.6543262600898743, 0.0558522492647171, 0.007042305078357458, 7.224769888125593e-06], "target_probs": 0.6606523990631104}}
+
+
+{"result": {"time": "2021-02-21 06:34:23.405692", "n_pass": [98, 26, 13], "n_token": 13, "loss": [0.45903727412223816, 0.07252717018127441], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["ns_name", ")", "#NEWLINE#", "dash_index", "=", "ns_name", "dash_index", "dash_index", "[", "(", "dash_index", "+", "1"]}}
+{"position": {"error_location": 10, "repair_targets": [0, 5], "repair_candidates": [0, 5, 3, 6, 7, 10]}}
+{"prediction": {"error_location": 0.631891667842865, "repair_targets": [0.008783778175711632, 0.9212567210197449], "repair_candidates": [0.008783778175711632, 0.05532493442296982, 0.9212567210197449, 0.010618312284350395, 0.0040103597566485405, 5.928872269578278e-06], "target_probs": 0.9300404787063599}}
+
+
+{"result": {"time": "2021-02-21 06:34:23.460526", "n_pass": [101, 27, 14], "n_token": 11, "loss": [0.6202425360679626, 0.09794113039970398], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["ns_name", ")", "#NEWLINE#", "dash_index", "=", "ns_name", "dash_index", "dash_index", "[", "(", "dash_index"]}}
+{"position": {"error_location": 10, "repair_targets": [0, 5], "repair_candidates": [0, 5, 3, 6, 7, 10]}}
+{"prediction": {"error_location": 0.5378139615058899, "repair_targets": [0.0013622858095914125, 0.9053400158882141], "repair_candidates": [0.0013622858095914125, 0.07641372829675674, 0.9053400158882141, 0.01277751661837101, 0.004035153891891241, 7.139113586163148e-05], "target_probs": 0.9067022800445557}}
+
+
+{"result": {"time": "2021-02-21 06:34:23.738379", "n_pass": [117, 32, 15], "n_token": 10, "loss": [0.5049166679382324, 0.047400929033756256], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["ns_name", ")", "#NEWLINE#", "dash_index", "=", "ns_name", "dash_index", "dash_index", "[", "dash_index"]}}
+{"position": {"error_location": 9, "repair_targets": [0, 5], "repair_candidates": [0, 5, 3, 6, 7, 9]}}
+{"prediction": {"error_location": 0.6035558581352234, "repair_targets": [0.003812264883890748, 0.9498926997184753], "repair_candidates": [0.003812264883890748, 0.03897437825798988, 0.9498926997184753, 0.005668385419994593, 0.0013593049952760339, 0.0002929152688011527], "target_probs": 0.9537049531936646}}
+
+
+{"result": {"time": "2021-02-21 06:34:23.958753", "n_pass": [126, 36, 16], "n_token": 9, "loss": [0.7117307782173157, 0.22600358724594116], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["ns_name", ")", "#NEWLINE#", "dash_index", "=", "ns_name", "dash_index", "dash_index", "dash_index"]}}
+{"position": {"error_location": 8, "repair_targets": [0, 5], "repair_candidates": [0, 5, 3, 6, 7, 8]}}
+{"prediction": {"error_location": 0.49079400300979614, "repair_targets": [0.27159208059310913, 0.5261231660842896], "repair_candidates": [0.27159208059310913, 0.20028193295001984, 0.5261231660842896, 0.0017141520511358976, 0.0001989772281376645, 8.967340545495972e-05], "target_probs": 0.7977152466773987}}
+
+
+
+
+Minimal simplified tokens:
+
+['ns_name', ')', '#NEWLINE#', 'dash_index', '=', 'ns_name', 'dash_index', 'dash_index', 'dash_index']

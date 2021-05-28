@@ -1,0 +1,61 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def multiply(", "x_gpu", ",", "y_gpu", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Multiplies two scalars, vectors, or matrices with broadcasting.\\n\\n    The numpy broadcasting rules apply so this would yield the same result\\n    as `x_gpu.get()` * `y_gpu.get()` in host code.\\n\\n    Parameters\\n    ----------\\n    x_gpu, y_gpu : pycuda.gpuarray.GPUArray\\n        The arrays to be multiplied.\\n\\n    Returns\\n    -------\\n    out : pycuda.gpuarray.GPUArray\\n        Equivalent to `x_gpu.get()` * `y_gpu.get()`.\\n\\n    Notes\\n    -----\\n    The `out` and `stream` options are not supported because `GPUArray.__mul__`\\n    doesn't provide them.\\n    \"", "#NEWLINE#", "return", "binaryop_2d", "(", "'*'", ",", "operator", ".", "mul", ",", "True", ",", "x_gpu", ",", "x_gpu", ")"], "error_location": [24], "repair_targets": [4], "repair_candidates": [2, 22, 24, 4], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "lebedov/scikit-cuda/skcuda/misc.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00011-of-00300", "js_count": 35897, "results": {"model": "rnn", "prob": {"loc": [[0.006759187672287226, 7.870190721348536e-09, 2.8963693665673418e-09, 2.8244625388529343e-11, 1.3270622822858513e-08, 1.1209860817373851e-09, 4.517451135388484e-10, 5.4583568775967706e-09, 8.40255809375634e-10, 4.3005652372585246e-09, 1.315632158771507e-09, 4.684553189804319e-08, 9.13341651198607e-08, 6.162272914167488e-09, 4.7332710551017954e-07, 2.2698594115411197e-09, 0.0002208837540820241, 1.19792460395729e-08, 1.8416220370909286e-07, 6.309722522246375e-08, 5.337424795470724e-07, 2.1961168883422033e-08, 0.723908543586731, 4.9451507948106155e-05, 0.26905301213264465, 7.422046110150404e-06]], "pointer": [[0.0, 0.0, 0.011800824664533138, 0.0, 0.9868519902229309, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0011916494695469737, 0.0, 0.00015562062617391348, 0.0]], "target": [0.9868519902229309]}, "loss": [1.3128467798233032, 0.013235210441052914], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [22]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:45:05.065288", "n_pass": [1, 1, 1], "n_token": 26, "loss": [0.32309022545814514, 0.013235210441052914], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def multiply(", "x_gpu", ",", "y_gpu", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Multiplies two scalars, vectors, or matrices with broadcasting.\\n\\n    The numpy broadcasting rules apply so this would yield the same result\\n    as `x_gpu.get()` * `y_gpu.get()` in host code.\\n\\n    Parameters\\n    ----------\\n    x_gpu, y_gpu : pycuda.gpuarray.GPUArray\\n        The arrays to be multiplied.\\n\\n    Returns\\n    -------\\n    out : pycuda.gpuarray.GPUArray\\n        Equivalent to `x_gpu.get()` * `y_gpu.get()`.\\n\\n    Notes\\n    -----\\n    The `out` and `stream` options are not supported because `GPUArray.__mul__`\\n    doesn't provide them.\\n    \"", "#NEWLINE#", "return", "binaryop_2d", "(", "'*'", ",", "operator", ".", "mul", ",", "True", ",", "x_gpu", ",", "x_gpu", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [2, 22, 24, 4]}}
+{"prediction": {"error_location": 0.723908543586731, "repair_targets": [0.9868519902229309], "repair_candidates": [0.011800824664533138, 0.9868519902229309, 0.0011916494695469737, 0.00015562062617391348], "target_probs": 0.9868519902229309}}
+
+
+{"result": {"time": "2021-02-21 12:45:05.124287", "n_pass": [9, 2, 2], "n_token": 20, "loss": [0.06598770618438721, 0.1028958186507225], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def multiply(", "x_gpu", ",", "y_gpu", ")", "binaryop_2d", "(", "'*'", ",", "operator", ".", "mul", ",", "True", ",", "x_gpu", ",", "x_gpu", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [4], "repair_candidates": [2, 16, 18, 4]}}
+{"prediction": {"error_location": 0.9361423850059509, "repair_targets": [0.9022209644317627], "repair_candidates": [0.038049329072237015, 0.9022209644317627, 0.0497477650642395, 0.009981985203921795], "target_probs": 0.9022209644317627}}
+
+
+{"result": {"time": "2021-02-21 12:45:05.236760", "n_pass": [19, 4, 3], "n_token": 17, "loss": [0.04810505360364914, 0.12598416209220886], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def multiply(", "x_gpu", ",", "y_gpu", ")", ",", "operator", ".", "mul", ",", "True", ",", "x_gpu", ",", "x_gpu", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [2, 13, 15, 4]}}
+{"prediction": {"error_location": 0.9530336856842041, "repair_targets": [0.8816288113594055], "repair_candidates": [0.046074625104665756, 0.8816288113594055, 0.058855753391981125, 0.013440911658108234], "target_probs": 0.8816288113594055}}
+
+
+{"result": {"time": "2021-02-21 12:45:05.517649", "n_pass": [37, 9, 4], "n_token": 15, "loss": [0.3571167290210724, 0.42768463492393494], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def multiply(", "x_gpu", ",", "y_gpu", ")", ",", "operator", ".", "True", ",", "x_gpu", ",", "x_gpu", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [4], "repair_candidates": [2, 11, 13, 4]}}
+{"prediction": {"error_location": 0.6996908783912659, "repair_targets": [0.6520169973373413], "repair_candidates": [0.2224188596010208, 0.6520169973373413, 0.09034879505634308, 0.03521537780761719], "target_probs": 0.6520169973373413}}
+
+
+{"result": {"time": "2021-02-21 12:45:05.572964", "n_pass": [40, 10, 5], "n_token": 14, "loss": [0.6761263012886047, 0.2407960444688797], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def multiply(", "x_gpu", ",", "y_gpu", ")", ",", "operator", ".", "True", ",", "x_gpu", ",", "x_gpu", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [3], "repair_candidates": [1, 10, 12, 3]}}
+{"prediction": {"error_location": 0.5085832476615906, "repair_targets": [0.7860019207000732], "repair_candidates": [0.20486147701740265, 0.7860019207000732, 0.006777323782444, 0.0023592596407979727], "target_probs": 0.7860019207000732}}
+
+
+{"result": {"time": "2021-02-21 12:45:05.849544", "n_pass": [61, 15, 6], "n_token": 13, "loss": [0.45611196756362915, 0.42190754413604736], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def multiply(", "x_gpu", "y_gpu", ")", ",", "operator", ".", "True", ",", "x_gpu", ",", "x_gpu", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [1, 9, 11, 2]}}
+{"prediction": {"error_location": 0.6337429285049438, "repair_targets": [0.6557946801185608], "repair_candidates": [0.28167837858200073, 0.6557946801185608, 0.041277360171079636, 0.021249569952487946], "target_probs": 0.6557946801185608}}
+
+
+{"result": {"time": "2021-02-21 12:45:06.286801", "n_pass": [71, 23, 7], "n_token": 12, "loss": [0.24029938876628876, 0.41189494729042053], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def multiply(", "x_gpu", "y_gpu", ")", ",", "operator", ".", "True", ",", "x_gpu", ",", "x_gpu"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [1, 9, 11, 2]}}
+{"prediction": {"error_location": 0.7863923907279968, "repair_targets": [0.6623938679695129], "repair_candidates": [0.3054746091365814, 0.6623938679695129, 0.017845148220658302, 0.014286387711763382], "target_probs": 0.6623938679695129}}
+
+
+{"result": {"time": "2021-02-21 12:45:06.394725", "n_pass": [75, 25, 8], "n_token": 11, "loss": [0.6261270642280579, 0.6742678284645081], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def multiply(", "x_gpu", "y_gpu", ",", "operator", ".", "True", ",", "x_gpu", ",", "x_gpu"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [1, 8, 10, 2]}}
+{"prediction": {"error_location": 0.5346584916114807, "repair_targets": [0.5095293521881104], "repair_candidates": [0.2937365174293518, 0.5095293521881104, 0.13797397911548615, 0.05876016989350319], "target_probs": 0.5095293521881104}}
+
+
+
+
+Minimal simplified tokens:
+
+['def multiply(', 'x_gpu', 'y_gpu', ',', 'operator', '.', 'True', ',', 'x_gpu', ',', 'x_gpu']

@@ -1,0 +1,139 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def visit(", "self", ",", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "=", "(", "'visit_%s'", "%", "node", ".", "__class__", ".", "__name__", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "method", "=", "getattr", "(", "self", ",", "name", ")", "#NEWLINE#", "#UNINDENT#", "except", "AttributeError", ":", "#NEWLINE#", "#INDENT#", "method", "=", "self", ".", "default_visit", "#NEWLINE#", "#UNINDENT#", "method", "(", "method", ")"], "error_location": [51], "repair_targets": [4, 16], "repair_candidates": [27, 42, 49, 51, 2, 31, 44, 11, 33, 4, 16], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "ContinuumIO/ashiba/enaml/enaml/core/enaml_compiler.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00005-of-00300", "js_count": 18659, "results": {"model": "rnn", "prob": {"loc": [[0.24346841871738434, 1.5607490695401793e-06, 2.299686002515955e-06, 9.018736868426913e-09, 3.6574772366293473e-07, 2.0373793319095057e-08, 1.8942964530310746e-08, 1.8761757019092329e-06, 1.0449977594362281e-07, 1.4032896444859944e-07, 2.179398143198341e-05, 3.098102979492978e-06, 1.5541461095835984e-07, 6.363402917486383e-06, 1.14708182081813e-05, 4.01721536036348e-08, 0.016575466841459274, 2.3554719064122764e-08, 1.1918990594494971e-06, 3.9732447021378903e-07, 9.88238646471018e-09, 5.4409241556641064e-08, 9.534629157315067e-07, 3.706561528815655e-06, 2.9082190167173394e-07, 1.6272090306301834e-06, 1.6155748880919418e-06, 3.5115027685606037e-07, 7.73072343918102e-08, 4.668385145123466e-07, 8.529803352530507e-08, 0.6998500227928162, 1.905449607875198e-05, 0.0019292366923764348, 8.247646974268719e-07, 4.432005482613022e-07, 9.269971087633166e-06, 1.1912626405319315e-06, 3.9959481910045724e-06, 1.8243073327539605e-06, 3.3931689813471166e-07, 3.925644307400944e-07, 7.37261487415708e-08, 4.230523487080973e-08, 0.0017497700173407793, 8.594253131377627e-08, 1.665566855990619e-06, 9.041860948855174e-07, 3.1655924885853892e-06, 1.5863518854075664e-07, 4.876438879364287e-07, 0.03632261976599693, 2.5819434767981875e-07]], "pointer": [[0.0, 0.0, 0.0008872244507074356, 0.0, 0.9972679615020752, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0007753433892503381, 0.0, 0.0, 0.0, 0.0, 3.925842611351982e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0008072035852819681, 0.0, 0.0, 0.0, 0.00013771340309176594, 0.0, 2.5521278075757436e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.4059561837930232e-05, 0.0, 2.3596729079145007e-05, 0.0, 0.0, 0.0, 0.0, 1.1000532140315045e-05, 0.0, 1.1219075304325088e-06, 0.0]], "target": [0.9973072409629822]}, "loss": [3.315314531326294, 0.002696390962228179], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [31]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:05:30.145988", "n_pass": [1, 1, 1], "n_token": 53, "loss": [0.35688915848731995, 0.002696390962228179], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", ",", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "=", "(", "'visit_%s'", "%", "node", ".", "__class__", ".", "__name__", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "method", "=", "getattr", "(", "self", ",", "name", ")", "#NEWLINE#", "#UNINDENT#", "except", "AttributeError", ":", "#NEWLINE#", "#INDENT#", "method", "=", "self", ".", "default_visit", "#NEWLINE#", "#UNINDENT#", "method", "(", "method", ")"]}}
+{"position": {"error_location": 31, "repair_targets": [4, 16], "repair_candidates": [27, 42, 49, 51, 2, 31, 44, 11, 33, 4, 16]}}
+{"prediction": {"error_location": 0.6998500227928162, "repair_targets": [0.9972679615020752, 3.925842611351982e-05], "repair_candidates": [0.0008872244507074356, 0.9972679615020752, 0.0007753433892503381, 3.925842611351982e-05, 0.0008072035852819681, 0.00013771340309176594, 2.5521278075757436e-05, 2.4059561837930232e-05, 2.3596729079145007e-05, 1.1000532140315045e-05, 1.1219075304325088e-06], "target_probs": 0.9973072409629822}}
+
+
+{"result": {"time": "2021-02-21 12:05:30.222748", "n_pass": [23, 2, 2], "n_token": 46, "loss": [0.210298091173172, 0.001547579769976437], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", ",", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "=", "(", "'visit_%s'", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "=", "getattr", "(", "self", ",", "name", ")", "#NEWLINE#", "#UNINDENT#", "except", "AttributeError", ":", "#NEWLINE#", "#INDENT#", "method", "=", "self", ".", "default_visit", "#NEWLINE#", "#UNINDENT#", "method", "(", "method", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [4, 16], "repair_candidates": [20, 35, 42, 44, 2, 24, 37, 11, 26, 4, 16]}}
+{"prediction": {"error_location": 0.8103424906730652, "repair_targets": [0.9983733892440796, 8.022697875276208e-05], "repair_candidates": [5.372102896217257e-05, 0.9983733892440796, 0.00027133579715155065, 8.022697875276208e-05, 0.0010614222846925259, 8.147435437422246e-05, 2.8900391043862328e-05, 2.081515958707314e-05, 1.769555819919333e-05, 9.9967410278623e-06, 9.429340934730135e-07], "target_probs": 0.9984536170959473}}
+
+
+{"result": {"time": "2021-02-21 12:05:30.365416", "n_pass": [48, 4, 3], "n_token": 43, "loss": [0.004930480848997831, 0.015840034931898117], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", ",", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "=", "(", "'visit_%s'", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "=", "getattr", "(", "self", ",", "name", "except", "AttributeError", ":", "#NEWLINE#", "#INDENT#", "method", "=", "self", ".", "default_visit", "#NEWLINE#", "#UNINDENT#", "method", "(", "method", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [4, 16], "repair_candidates": [20, 32, 39, 41, 2, 24, 34, 11, 26, 4, 16]}}
+{"prediction": {"error_location": 0.995081901550293, "repair_targets": [0.9841659069061279, 0.00011886723950738087], "repair_candidates": [9.068582585314289e-05, 0.9841659069061279, 0.007409942336380482, 0.00011886723950738087, 0.007845061831176281, 0.0001817812881199643, 0.00010188684973400086, 3.4329754271311685e-05, 2.3531751139671542e-05, 1.3087603292660788e-05, 1.4879497939546127e-05], "target_probs": 0.9842847585678101}}
+
+
+{"result": {"time": "2021-02-21 12:05:30.503293", "n_pass": [51, 6, 4], "n_token": 39, "loss": [0.4431353211402893, 0.264982670545578], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", ",", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "=", "(", "'visit_%s'", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "=", "getattr", "(", "self", ",", "name", "except", "AttributeError", ":", "#NEWLINE#", "#INDENT#", "method", "=", "self", "method", "(", "method", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [4, 16], "repair_candidates": [20, 32, 35, 37, 2, 24, 34, 11, 26, 4, 16]}}
+{"prediction": {"error_location": 0.6420203447341919, "repair_targets": [0.766725480556488, 0.0004937401972711086], "repair_candidates": [0.0013675626832991838, 0.766725480556488, 0.07311256229877472, 0.0004937401972711086, 0.1529538333415985, 0.0038473745808005333, 0.0006812289357185364, 0.0005783968372270465, 0.00020541247795335948, 2.728267281781882e-05, 7.170297067204956e-06], "target_probs": 0.7672192454338074}}
+
+
+{"result": {"time": "2021-02-21 12:05:30.642682", "n_pass": [57, 8, 5], "n_token": 36, "loss": [0.5494410991668701, 0.1279817819595337], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", ",", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "=", "getattr", "(", "self", ",", "name", "except", "AttributeError", ":", "#NEWLINE#", "#INDENT#", "method", "=", "self", "method", "(", "method", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [4, 13], "repair_candidates": [17, 29, 32, 34, 2, 21, 31, 11, 23, 4, 13]}}
+{"prediction": {"error_location": 0.5772724151611328, "repair_targets": [0.8766181468963623, 0.0032512384932488203], "repair_candidates": [0.002622145926579833, 0.8766181468963623, 0.030359376221895218, 0.0032512384932488203, 0.08322906494140625, 0.0022381669841706753, 0.0005747671821154654, 0.000785304990131408, 0.00026866522966884077, 4.358819205663167e-05, 9.514169505564496e-06], "target_probs": 0.8798694014549255}}
+
+
+{"result": {"time": "2021-02-21 12:05:30.709036", "n_pass": [60, 9, 6], "n_token": 33, "loss": [0.7606805562973022, 0.06776905804872513], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", ",", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "self", ",", "name", "except", "AttributeError", ":", "#NEWLINE#", "#INDENT#", "method", "=", "self", "method", "(", "method", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 13], "repair_candidates": [17, 26, 29, 31, 2, 18, 28, 11, 20, 4, 13]}}
+{"prediction": {"error_location": 0.4673483371734619, "repair_targets": [0.9273768663406372, 0.007099393289536238], "repair_candidates": [0.005476576741784811, 0.9273768663406372, 0.013044832274317741, 0.007099393289536238, 0.03587796166539192, 0.009213593788444996, 0.0007715079700574279, 0.0005331661668606102, 0.0005238897283561528, 7.030460983514786e-05, 1.1898709999513812e-05], "target_probs": 0.9344762563705444}}
+
+
+{"result": {"time": "2021-02-21 12:05:30.970968", "n_pass": [94, 13, 7], "n_token": 31, "loss": [0.3948034644126892, 0.08584623038768768], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", ",", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "self", ",", "name", "except", "AttributeError", "#INDENT#", "method", "=", "self", "method", "(", "method", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 13], "repair_candidates": [17, 24, 27, 29, 2, 18, 26, 11, 20, 4, 13]}}
+{"prediction": {"error_location": 0.6738123893737793, "repair_targets": [0.911095380783081, 0.00663993414491415], "repair_candidates": [0.003992143552750349, 0.911095380783081, 0.013179847970604897, 0.00663993414491415, 0.04183204844594002, 0.008777126669883728, 0.00046502985060214996, 0.011422520503401756, 0.0024769583251327276, 0.00010899505286943167, 1.0091259355249349e-05], "target_probs": 0.9177353382110596}}
+
+
+{"result": {"time": "2021-02-21 12:05:31.163463", "n_pass": [102, 16, 8], "n_token": 30, "loss": [0.8761833906173706, 0.645370602607727], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "self", ",", "name", "except", "AttributeError", "#INDENT#", "method", "=", "self", "method", "(", "method", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 12], "repair_candidates": [16, 23, 26, 28, 2, 17, 25, 10, 19, 3, 12]}}
+{"prediction": {"error_location": 0.4163689911365509, "repair_targets": [0.4973655343055725, 0.027102606371045113], "repair_candidates": [0.005646789446473122, 0.4973655343055725, 0.16030356287956238, 0.027102606371045113, 0.1622830033302307, 0.06304352730512619, 0.0017581444699317217, 0.06227777153253555, 0.0196878332644701, 0.0004883341025561094, 4.288846321287565e-05], "target_probs": 0.5244681239128113}}
+
+
+{"result": {"time": "2021-02-21 12:05:32.511828", "n_pass": [163, 37, 9], "n_token": 29, "loss": [0.38587579131126404, 0.3349579870700836], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "self", ",", "name", "except", "AttributeError", "#INDENT#", "method", "self", "method", "(", "method", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 12], "repair_candidates": [16, 23, 25, 27, 2, 17, 24, 10, 19, 3, 12]}}
+{"prediction": {"error_location": 0.6798549890518188, "repair_targets": [0.704718828201294, 0.01064930111169815], "repair_candidates": [0.006728268228471279, 0.704718828201294, 0.03600427508354187, 0.01064930111169815, 0.15547288954257965, 0.08066819608211517, 0.0015875434037297964, 0.0024532009847462177, 0.0012541183969005942, 0.00042451752233318985, 3.884255056618713e-05], "target_probs": 0.7153681516647339}}
+
+
+{"result": {"time": "2021-02-21 12:05:32.575272", "n_pass": [165, 38, 10], "n_token": 28, "loss": [0.18080469965934753, 0.3915030360221863], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "self", ",", "name", "except", "AttributeError", "#INDENT#", "method", "self", "method", "method", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 12], "repair_candidates": [16, 23, 25, 26, 2, 17, 24, 10, 19, 3, 12]}}
+{"prediction": {"error_location": 0.8345983624458313, "repair_targets": [0.6645196080207825, 0.011520395055413246], "repair_candidates": [0.008008419536054134, 0.6645196080207825, 0.04424382001161575, 0.011520395055413246, 0.2288229614496231, 0.0373271144926548, 0.0022912623826414347, 0.0019163311226293445, 0.0010241762502118945, 0.0001846841914812103, 0.0001412219717167318], "target_probs": 0.67603999376297}}
+
+
+{"result": {"time": "2021-02-21 12:05:32.638705", "n_pass": [167, 39, 11], "n_token": 27, "loss": [0.10724170506000519, 0.552649736404419], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def visit(", "self", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "self", ",", "name", "except", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 12], "repair_candidates": [16, 23, 25, 26, 2, 17, 24, 10, 19, 3, 12]}}
+{"prediction": {"error_location": 0.8983086347579956, "repair_targets": [0.5588936805725098, 0.01652938313782215], "repair_candidates": [0.009665269404649734, 0.5588936805725098, 0.06046690419316292, 0.01652938313782215, 0.31403639912605286, 0.03276342898607254, 0.002396802417933941, 0.0037631646264344454, 0.0011020887177437544, 0.00021139626915100962, 0.00017146579921245575], "target_probs": 0.5754230618476868}}
+
+
+{"result": {"time": "2021-02-21 12:05:32.701142", "n_pass": [168, 40, 12], "n_token": 26, "loss": [0.2487480193376541, 0.2775414288043976], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def visit(", "self", "node", ")", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "self", ",", "name", "except", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 16, "repair_targets": [2, 11], "repair_candidates": [15, 22, 24, 25, 1, 16, 23, 9, 18, 2, 11]}}
+{"prediction": {"error_location": 0.7797764539718628, "repair_targets": [0.7521854043006897, 0.005458798725157976], "repair_candidates": [0.00986679270863533, 0.7521854043006897, 0.006769693922251463, 0.005458798725157976, 0.17094635963439941, 0.052093055099248886, 0.0009979819878935814, 0.0011382203083485365, 0.0004382047045510262, 5.635799971059896e-05, 4.8994617827702314e-05], "target_probs": 0.7576441764831543}}
+
+
+{"result": {"time": "2021-02-21 12:05:32.824771", "n_pass": [172, 42, 13], "n_token": 25, "loss": [0.2419763058423996, 0.6402407884597778], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def visit(", "self", "node", ":", "#NEWLINE#", "#INDENT#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "self", ",", "name", "except", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 15, "repair_targets": [2, 10], "repair_candidates": [14, 21, 23, 24, 1, 15, 22, 8, 17, 2, 10]}}
+{"prediction": {"error_location": 0.785074770450592, "repair_targets": [0.516501247882843, 0.010664197616279125], "repair_candidates": [0.010352578945457935, 0.516501247882843, 0.02558792196214199, 0.010664197616279125, 0.33339744806289673, 0.09834162145853043, 0.002260283799842, 0.00200789887458086, 0.0007031013374216855, 9.814302029553801e-05, 8.563681330997497e-05], "target_probs": 0.5271654725074768}}
+
+
+{"result": {"time": "2021-02-21 12:05:33.010968", "n_pass": [175, 45, 14], "n_token": 24, "loss": [0.35259774327278137, 0.5887268781661987], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def visit(", "self", "node", ":", "#NEWLINE#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "self", ",", "name", "except", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 14, "repair_targets": [2, 9], "repair_candidates": [13, 20, 22, 23, 1, 14, 21, 7, 16, 2, 9]}}
+{"prediction": {"error_location": 0.7028598189353943, "repair_targets": [0.5470781326293945, 0.007955336943268776], "repair_candidates": [0.009619960561394691, 0.5470781326293945, 0.03394593298435211, 0.007955336943268776, 0.3000222444534302, 0.09647394716739655, 0.002299616113305092, 0.0018423879519104958, 0.0005982550210319459, 8.916859951568767e-05, 7.505799294449389e-05], "target_probs": 0.5550334453582764}}
+
+
+{"result": {"time": "2021-02-21 12:05:33.133065", "n_pass": [177, 47, 15], "n_token": 23, "loss": [0.7395126819610596, 0.49183422327041626], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def visit(", "self", "node", ":", "#NEWLINE#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "name", "%", "node", ".", "#NEWLINE#", "#INDENT#", "method", "self", ",", "name", "except", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 8], "repair_candidates": [12, 19, 21, 22, 1, 13, 20, 6, 15, 2, 8]}}
+{"prediction": {"error_location": 0.4773464500904083, "repair_targets": [0.6083898544311523, 0.0031138595659285784], "repair_candidates": [0.006201354321092367, 0.6083898544311523, 0.006872635334730148, 0.0031138595659285784, 0.2829926013946533, 0.09031940996646881, 0.0006282723043113947, 0.001051960396580398, 0.0003421110741328448, 5.3475130698643625e-05, 3.441597436903976e-05], "target_probs": 0.6115037202835083}}
+
+
+{"result": {"time": "2021-02-21 12:05:33.375284", "n_pass": [183, 51, 16], "n_token": 22, "loss": [0.781068742275238, 0.3115500509738922], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def visit(", "self", "node", ":", "#NEWLINE#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "name", "%", "node", ".", "#NEWLINE#", "method", "self", ",", "name", "except", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 8], "repair_candidates": [11, 18, 20, 21, 1, 12, 19, 6, 14, 2, 8]}}
+{"prediction": {"error_location": 0.45791634917259216, "repair_targets": [0.730255126953125, 0.0020558147225528955], "repair_candidates": [0.008590077050030231, 0.730255126953125, 0.0036884984001517296, 0.0020558147225528955, 0.19740213453769684, 0.05638628825545311, 0.000451474916189909, 0.0007294218521565199, 0.00035929252044297755, 4.990441811969504e-05, 3.197991463821381e-05], "target_probs": 0.732310950756073}}
+
+
+{"result": {"time": "2021-02-21 12:05:33.494357", "n_pass": [188, 53, 17], "n_token": 21, "loss": [0.6373075246810913, 0.13783571124076843], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def visit(", "self", "node", ":", "#NEWLINE#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "name", "%", "node", ".", "#NEWLINE#", "method", "self", ",", "name", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 8], "repair_candidates": [11, 17, 19, 20, 1, 12, 18, 6, 14, 2, 8]}}
+{"prediction": {"error_location": 0.5287140607833862, "repair_targets": [0.8698169589042664, 0.00142485776450485], "repair_candidates": [0.01144737284630537, 0.8698169589042664, 0.0028763969894498587, 0.00142485776450485, 0.09967446327209473, 0.013154746033251286, 0.00012463876919355243, 0.0009641686920076609, 0.000431421329267323, 5.10631398356054e-05, 3.395600288058631e-05], "target_probs": 0.8712418079376221}}
+
+
+{"result": {"time": "2021-02-21 12:05:33.733235", "n_pass": [198, 57, 18], "n_token": 20, "loss": [0.2882460057735443, 0.6864382028579712], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def visit(", "self", "node", "#NEWLINE#", "' The main visitor dispatch method.\\n\\n        Unhandled nodes will raise an error.\\n\\n        '", "name", "%", "node", ".", "#NEWLINE#", "method", "self", ",", "name", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 7], "repair_candidates": [10, 16, 18, 19, 1, 11, 17, 5, 13, 2, 7]}}
+{"prediction": {"error_location": 0.7495771646499634, "repair_targets": [0.48662859201431274, 0.016737133264541626], "repair_candidates": [0.08259020000696182, 0.48662859201431274, 0.052219368517398834, 0.016737133264541626, 0.3155878782272339, 0.0419989638030529, 0.0007742480956949294, 0.0022973851300776005, 0.0009582253405824304, 0.00011533033102750778, 9.259808575734496e-05], "target_probs": 0.5033657550811768}}
+
+
+{"result": {"time": "2021-02-21 12:05:33.849729", "n_pass": [200, 59, 19], "n_token": 19, "loss": [0.20539696514606476, 0.33417007327079773], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def visit(", "self", "node", "#NEWLINE#", "name", "%", "node", ".", "#NEWLINE#", "method", "self", ",", "name", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 6], "repair_candidates": [9, 15, 17, 18, 1, 10, 16, 4, 12, 2, 6]}}
+{"prediction": {"error_location": 0.8143238425254822, "repair_targets": [0.7145925164222717, 0.0013394973939284682], "repair_candidates": [0.034619227051734924, 0.7145925164222717, 0.07585886865854263, 0.0013394973939284682, 0.14620602130889893, 0.020500633865594864, 0.0027326084673404694, 0.0029284919146448374, 0.000990764587186277, 0.00013745995238423347, 9.394107473781332e-05], "target_probs": 0.7159320116043091}}
+
+
+{"result": {"time": "2021-02-21 12:05:33.908071", "n_pass": [202, 60, 20], "n_token": 18, "loss": [0.2618483901023865, 0.42719560861587524], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def visit(", "self", "node", "#NEWLINE#", "name", "node", ".", "#NEWLINE#", "method", "self", ",", "name", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 5], "repair_candidates": [8, 14, 16, 17, 1, 9, 15, 4, 11, 2, 5]}}
+{"prediction": {"error_location": 0.7696276307106018, "repair_targets": [0.631836473941803, 0.020499471575021744], "repair_candidates": [0.020614752545952797, 0.631836473941803, 0.09207489341497421, 0.020499471575021744, 0.18179109692573547, 0.04870240017771721, 0.0014718571910634637, 0.0019661826081573963, 0.0008843468385748565, 9.239282371709123e-05, 6.607817340409383e-05], "target_probs": 0.6523359417915344}}
+
+
+{"result": {"time": "2021-02-21 12:05:34.315239", "n_pass": [219, 67, 21], "n_token": 17, "loss": [0.3799806535243988, 0.5241650342941284], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def visit(", "self", "node", "name", "node", ".", "#NEWLINE#", "method", "self", ",", "name", "AttributeError", "#INDENT#", "method", "self", "method", "method"]}}
+{"position": {"error_location": 8, "repair_targets": [2, 4], "repair_candidates": [7, 13, 15, 16, 1, 8, 14, 3, 10, 2, 4]}}
+{"prediction": {"error_location": 0.6838746070861816, "repair_targets": [0.5681548714637756, 0.023894622921943665], "repair_candidates": [0.013395046815276146, 0.5681548714637756, 0.10351946949958801, 0.023894622921943665, 0.2172640562057495, 0.07098038494586945, 0.000710347609128803, 0.0015310985036194324, 0.00046830682549625635, 4.5382254029391333e-05, 3.6415556678548455e-05], "target_probs": 0.5920494794845581}}
+
+
+
+
+Minimal simplified tokens:
+
+['def visit(', 'self', 'node', 'name', 'node', '.', '#NEWLINE#', 'method', 'self', ',', 'name', 'AttributeError', '#INDENT#', 'method', 'self', 'method', 'method']

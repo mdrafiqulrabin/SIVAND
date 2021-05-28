@@ -1,0 +1,91 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def verify_table_existence(", "self", ",", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        :param str table_name: Table name to be tested.\\n        :raises simplesqlite.TableNotFoundError:\\n            |raises_verify_table_existence|\\n        :raises ValueError: |raises_validate_table_name|\\n\\n        :Examples:\\n\\n            .. code:: python\\n\\n                from simplesqlite import SimpleSQLite, TableNotFoundError\\n                import six\\n\\n                table_name = \"sample_table\"\\n                con = SimpleSQLite(\"sample.sqlite\", \"w\")\\n                con.create_table_with_data(\\n                    table_name=table_name,\\n                    attribute_name_list=[\"attr_a\", \"attr_b\"],\\n                    data_matrix=[[1, \"a\"], [2, \"b\"]])\\n\\n                con.verify_table_existence(table_name)\\n                try:\\n                    con.verify_table_existence(\"not_existing\")\\n                except TableNotFoundError as e:\\n                    six.print_(e)\\n\\n            .. parsed-literal::\\n\\n                \\'not_existing\\' table not found in /tmp/sample.sqlite\\n        '", "#NEWLINE#", "simplesqlite", ".", "validate_table_name", "(", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "return", "#NEWLINE#", "#UNINDENT#", "raise", "simplesqlite", ".", "TableNotFoundError", "(", "(", "\"'%s' table not found in %s\"", "%", "(", "table_name", ",", "table_name", ".", "database_path", ")", ")", ")"], "error_location": [42], "repair_targets": [2, 19], "repair_candidates": [4, 15, 23, 40, 42, 2, 19], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "thombashi/SimpleSQLite/simplesqlite/core.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 497, "results": {"model": "transformer", "prob": {"loc": [[0.028952281922101974, 1.9447585941634316e-07, 3.752955706204375e-07, 5.637116107237716e-09, 1.4323923380743508e-07, 3.753703570197331e-09, 1.0163922148365145e-08, 8.055504707726868e-09, 5.625451215962585e-09, 7.814755065282952e-09, 5.3177973136087076e-09, 5.269594982593162e-09, 7.611771657423105e-09, 1.462671872509702e-09, 8.692933484155674e-09, 0.002430104883387685, 1.9964661035487552e-08, 9.60998480792341e-09, 4.190691349492681e-09, 1.1241518649285354e-07, 7.0988233069613216e-09, 3.357686628735479e-10, 8.126184170009765e-09, 0.0004877738538198173, 4.786820939628456e-10, 1.1869780713880118e-08, 3.123120428938364e-09, 2.175852831243219e-09, 3.832663075797882e-09, 4.387143093254053e-09, 3.126636727301957e-09, 1.4246412383123186e-10, 1.7512319061552262e-07, 2.5933154290669336e-08, 1.3353719241493422e-09, 8.177477361925867e-09, 1.8437864568454643e-08, 3.111551549750402e-08, 5.095643906827263e-09, 4.354042459908669e-08, 0.012011377140879631, 5.430734528744097e-09, 0.9561172127723694, 1.427020208666363e-07, 5.956263926520933e-09, 1.1039357872277833e-08, 4.312179946452943e-09, 4.397498365449337e-09]], "pointer": [[0.0, 0.0, 0.7937539219856262, 0.0, 8.161076402757317e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0004951980663463473, 0.0, 0.0, 0.0, 0.20564889907836914, 0.0, 0.0, 0.0, 5.789860097138444e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 9.32144666876411e-06, 0.0, 5.268586392048746e-06, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9994028210639954]}, "loss": [0.04487501084804535, 0.0005973573424853384], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:52:52.913011", "n_pass": [1, 1, 1], "n_token": 48, "loss": [0.04487501084804535, 0.0005973573424853384], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def verify_table_existence(", "self", ",", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        :param str table_name: Table name to be tested.\\n        :raises simplesqlite.TableNotFoundError:\\n            |raises_verify_table_existence|\\n        :raises ValueError: |raises_validate_table_name|\\n\\n        :Examples:\\n\\n            .. code:: python\\n\\n                from simplesqlite import SimpleSQLite, TableNotFoundError\\n                import six\\n\\n                table_name = \"sample_table\"\\n                con = SimpleSQLite(\"sample.sqlite\", \"w\")\\n                con.create_table_with_data(\\n                    table_name=table_name,\\n                    attribute_name_list=[\"attr_a\", \"attr_b\"],\\n                    data_matrix=[[1, \"a\"], [2, \"b\"]])\\n\\n                con.verify_table_existence(table_name)\\n                try:\\n                    con.verify_table_existence(\"not_existing\")\\n                except TableNotFoundError as e:\\n                    six.print_(e)\\n\\n            .. parsed-literal::\\n\\n                \\'not_existing\\' table not found in /tmp/sample.sqlite\\n        '", "#NEWLINE#", "simplesqlite", ".", "validate_table_name", "(", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "return", "#NEWLINE#", "#UNINDENT#", "raise", "simplesqlite", ".", "TableNotFoundError", "(", "(", "\"'%s' table not found in %s\"", "%", "(", "table_name", ",", "table_name", ".", "database_path", ")", ")", ")"]}}
+{"position": {"error_location": 42, "repair_targets": [2, 19], "repair_candidates": [4, 15, 23, 40, 42, 2, 19]}}
+{"prediction": {"error_location": 0.9561172127723694, "repair_targets": [0.7937539219856262, 0.20564889907836914], "repair_candidates": [0.7937539219856262, 8.161076402757317e-05, 0.0004951980663463473, 0.20564889907836914, 5.789860097138444e-06, 9.32144666876411e-06, 5.268586392048746e-06], "target_probs": 0.9994028210639954}}
+
+
+{"result": {"time": "2021-02-11 11:52:52.969189", "n_pass": [10, 2, 2], "n_token": 36, "loss": [0.05342692509293556, 0.00020637256966438144], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def verify_table_existence(", "self", ",", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        :param str table_name: Table name to be tested.\\n        :raises simplesqlite.TableNotFoundError:\\n            |raises_verify_table_existence|\\n        :raises ValueError: |raises_validate_table_name|\\n\\n        :Examples:\\n\\n            .. code:: python\\n\\n                from simplesqlite import SimpleSQLite, TableNotFoundError\\n                import six\\n\\n                table_name = \"sample_table\"\\n                con = SimpleSQLite(\"sample.sqlite\", \"w\")\\n                con.create_table_with_data(\\n                    table_name=table_name,\\n                    attribute_name_list=[\"attr_a\", \"attr_b\"],\\n                    data_matrix=[[1, \"a\"], [2, \"b\"]])\\n\\n                con.verify_table_existence(table_name)\\n                try:\\n                    con.verify_table_existence(\"not_existing\")\\n                except TableNotFoundError as e:\\n                    six.print_(e)\\n\\n            .. parsed-literal::\\n\\n                \\'not_existing\\' table not found in /tmp/sample.sqlite\\n        '", "#NEWLINE#", "simplesqlite", ".", "validate_table_name", "(", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", "(", "\"'%s' table not found in %s\"", "%", "(", "table_name", ",", "table_name", ".", "database_path", ")", ")", ")"]}}
+{"position": {"error_location": 30, "repair_targets": [2, 19], "repair_candidates": [4, 15, 23, 28, 30, 2, 19]}}
+{"prediction": {"error_location": 0.947975218296051, "repair_targets": [0.5941528677940369, 0.40564075112342834], "repair_candidates": [0.5941528677940369, 5.768680421169847e-05, 0.00012140985199948773, 0.40564075112342834, 1.847105704655405e-05, 5.538649020309094e-06, 3.2264501896861475e-06], "target_probs": 0.9997936487197876}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.025374", "n_pass": [22, 3, 3], "n_token": 30, "loss": [0.029136592522263527, 6.872652011225e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def verify_table_existence(", "self", ",", "table_name", ")", ".", "validate_table_name", "(", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", "(", "\"'%s' table not found in %s\"", "%", "(", "table_name", ",", "table_name", ".", "database_path", ")", ")", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [2, 13], "repair_candidates": [4, 9, 17, 22, 24, 2, 13]}}
+{"prediction": {"error_location": 0.9712839126586914, "repair_targets": [0.5930855870246887, 0.40684568881988525], "repair_candidates": [0.5930855870246887, 3.521557300700806e-05, 2.2678241293760948e-05, 0.40684568881988525, 7.562820883322274e-06, 2.2656395231024362e-06, 9.729482144393842e-07], "target_probs": 0.999931275844574}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.083616", "n_pass": [37, 4, 4], "n_token": 27, "loss": [0.071056067943573, 0.014887090772390366], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def verify_table_existence(", "self", ",", "table_name", ")", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", "(", "\"'%s' table not found in %s\"", "%", "(", "table_name", ",", "table_name", ".", "database_path", ")", ")", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [2, 10], "repair_candidates": [4, 6, 14, 19, 21, 2, 10]}}
+{"prediction": {"error_location": 0.9314096570014954, "repair_targets": [0.41368812322616577, 0.571535050868988], "repair_candidates": [0.41368812322616577, 0.004683110397309065, 0.00979297049343586, 0.571535050868988, 9.969743405235931e-05, 0.000188085570698604, 1.2984848581254482e-05], "target_probs": 0.9852231740951538}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.138593", "n_pass": [40, 5, 5], "n_token": 24, "loss": [0.03955074027180672, 0.008376175537705421], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def verify_table_existence(", "self", ",", "table_name", ")", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", "(", "table_name", ",", "table_name", ".", "database_path", ")", ")", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 10], "repair_candidates": [4, 6, 14, 16, 18, 2, 10]}}
+{"prediction": {"error_location": 0.9612211585044861, "repair_targets": [0.4713002145290375, 0.5203585624694824], "repair_candidates": [0.4713002145290375, 0.0015019618440419436, 0.006697280332446098, 0.5203585624694824, 6.69044311507605e-05, 7.216144149424508e-05, 2.9115860797901405e-06], "target_probs": 0.9916588068008423}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.193390", "n_pass": [43, 6, 6], "n_token": 21, "loss": [0.03430509939789772, 0.003902290714904666], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def verify_table_existence(", "self", ",", "table_name", ")", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", "(", "table_name", ",", "table_name", ".", "database_path"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 10], "repair_candidates": [4, 6, 14, 16, 18, 2, 10]}}
+{"prediction": {"error_location": 0.9662766456604004, "repair_targets": [0.3654637634754181, 0.6306415796279907], "repair_candidates": [0.3654637634754181, 0.0016103051602840424, 0.0022257259115576744, 0.6306415796279907, 2.9313880077097565e-05, 2.3520517061115243e-05, 5.707189302484039e-06], "target_probs": 0.9961053133010864}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.248556", "n_pass": [65, 7, 7], "n_token": 20, "loss": [0.0594448484480381, 0.009073467925190926], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def verify_table_existence(", "self", ",", "table_name", ")", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", "(", "table_name", ",", "table_name", ".", "database_path"]}}
+{"position": {"error_location": 17, "repair_targets": [1, 9], "repair_candidates": [3, 5, 13, 15, 17, 1, 9]}}
+{"prediction": {"error_location": 0.9422873854637146, "repair_targets": [0.05138479173183441, 0.9395827651023865], "repair_candidates": [0.05138479173183441, 0.008937832899391651, 7.999589433893561e-05, 0.9395827651023865, 4.27426448368351e-06, 9.057182978722267e-06, 1.3536146070691757e-06], "target_probs": 0.9909675717353821}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.304090", "n_pass": [66, 8, 8], "n_token": 19, "loss": [0.05301650986075401, 0.004085410851985216], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "table_name", ")", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", "(", "table_name", ",", "table_name", ".", "database_path"]}}
+{"position": {"error_location": 16, "repair_targets": [0, 8], "repair_candidates": [2, 4, 12, 14, 16, 0, 8]}}
+{"prediction": {"error_location": 0.9483643770217896, "repair_targets": [0.002567314775660634, 0.9933556318283081], "repair_candidates": [0.002567314775660634, 0.0013835130957886577, 0.0026648868806660175, 0.9933556318283081, 1.244778741238406e-05, 1.475142653362127e-05, 1.3948473451819154e-06], "target_probs": 0.9959229230880737}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.359359", "n_pass": [67, 9, 9], "n_token": 18, "loss": [0.015150824561715126, 0.005799627862870693], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "table_name", ")", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", "(", "table_name", ",", "table_name", ".", "database_path"]}}
+{"position": {"error_location": 15, "repair_targets": [0, 7], "repair_candidates": [1, 3, 11, 13, 15, 0, 7]}}
+{"prediction": {"error_location": 0.9849634766578674, "repair_targets": [0.005535241682082415, 0.9886819124221802], "repair_candidates": [0.005535241682082415, 0.005579030141234398, 0.000201816888875328, 0.9886819124221802, 1.302834533589703e-07, 1.6799253899080213e-06, 2.280520021713528e-07], "target_probs": 0.9942171573638916}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.417128", "n_pass": [69, 10, 10], "n_token": 17, "loss": [0.020590364933013916, 0.021906398236751556], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "table_name", "table_name", ")", "#NEWLINE#", "if", "self", ".", "has_table", "(", "table_name", "(", "table_name", ",", "table_name", ".", "database_path"]}}
+{"position": {"error_location": 14, "repair_targets": [0, 6], "repair_candidates": [1, 2, 10, 12, 14, 0, 6]}}
+{"prediction": {"error_location": 0.9796201586723328, "repair_targets": [0.027233583852648735, 0.9510982036590576], "repair_candidates": [0.027233583852648735, 0.021605951711535454, 5.016176146455109e-05, 0.9510982036590576, 1.463478042751376e-06, 8.122678991639987e-06, 2.5247811663575703e-06], "target_probs": 0.9783318042755127}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.471992", "n_pass": [71, 11, 11], "n_token": 15, "loss": [0.12779590487480164, 0.29496318101882935], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "table_name", "table_name", "if", "self", ".", "has_table", "(", "table_name", "(", "table_name", ",", "table_name", ".", "database_path"]}}
+{"position": {"error_location": 12, "repair_targets": [0, 4], "repair_candidates": [1, 2, 8, 10, 12, 0, 4]}}
+{"prediction": {"error_location": 0.8800330758094788, "repair_targets": [0.10476578772068024, 0.6397932171821594], "repair_candidates": [0.10476578772068024, 0.24835512042045593, 0.003001614473760128, 0.6397932171821594, 0.0037137772887945175, 0.00034738192334771156, 2.3045844500302337e-05], "target_probs": 0.7445589900016785}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.526604", "n_pass": [73, 12, 12], "n_token": 13, "loss": [0.4952002763748169, 0.26423075795173645], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "table_name", "table_name", "if", "self", "(", "table_name", "(", "table_name", ",", "table_name", ".", "database_path"]}}
+{"position": {"error_location": 10, "repair_targets": [0, 4], "repair_candidates": [1, 2, 6, 8, 10, 0, 4]}}
+{"prediction": {"error_location": 0.6094489097595215, "repair_targets": [0.031799402087926865, 0.7359969615936279], "repair_candidates": [0.031799402087926865, 0.11590183526277542, 0.06815235316753387, 0.7359969615936279, 0.04476406052708626, 0.0030449226032942533, 0.0003405281458981335], "target_probs": 0.7677963376045227}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.581004", "n_pass": [77, 13, 13], "n_token": 11, "loss": [0.5095245838165283, 0.6855069994926453], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "table_name", "table_name", "if", "self", "(", "table_name", "(", "table_name", ",", "table_name"]}}
+{"position": {"error_location": 10, "repair_targets": [0, 4], "repair_candidates": [1, 2, 6, 8, 10, 0, 4]}}
+{"prediction": {"error_location": 0.6007811427116394, "repair_targets": [0.11611420661211014, 0.3877204954624176], "repair_candidates": [0.11611420661211014, 0.09730543941259384, 0.36114105582237244, 0.3877204954624176, 0.034069135785102844, 0.0017575460951775312, 0.0018921573646366596], "target_probs": 0.5038347244262695}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'table_name', 'table_name', 'if', 'self', '(', 'table_name', '(', 'table_name', ',', 'table_name']

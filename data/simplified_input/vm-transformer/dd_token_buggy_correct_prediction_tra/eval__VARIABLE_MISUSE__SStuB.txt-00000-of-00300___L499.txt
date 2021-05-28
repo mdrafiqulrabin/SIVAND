@@ -1,0 +1,73 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def save(", "self", ",", "commit", "=", "True", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "user", ".", "set_password", "(", "commit", ".", "cleaned_data", "[", "'new_password1'", "]", ")", "#NEWLINE#", "if", "commit", ":", "#NEWLINE#", "#INDENT#", "self", ".", "user", ".", "save", "(", ")", "#NEWLINE#", "#UNINDENT#", "return", "self", ".", "user"], "error_location": [17], "repair_targets": [2, 11, 30, 40], "repair_candidates": [2, 11, 30, 40, 4, 17, 26], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "cloudera/hue/desktop/core/ext-py/Django-1.6.10/django/contrib/auth/forms.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 499, "results": {"model": "transformer", "prob": {"loc": [[0.0028351133223623037, 4.153678645479886e-08, 2.841817661192181e-07, 4.923671470535851e-10, 7.182661576621285e-09, 9.293117941844287e-10, 2.0854271642889444e-09, 3.1629460162108103e-10, 5.389770851849107e-10, 9.533405176398446e-10, 5.869351671350387e-10, 4.530626984688979e-09, 7.178631022952686e-10, 1.940926308563462e-10, 6.1573461884734115e-09, 1.6690856696754963e-08, 3.520281399715941e-09, 0.9971132278442383, 1.9292503594670052e-08, 4.761657179663814e-10, 2.3180286579105314e-09, 7.0616672509515865e-09, 2.078826666362943e-09, 1.278892325373704e-09, 9.363003705686879e-10, 4.727107594248992e-10, 2.379367288085632e-05, 1.9322765609786074e-09, 3.00266012054351e-09, 2.0140766832099644e-09, 5.609004105622262e-08, 1.1735419302993932e-09, 4.614927884283304e-10, 3.38828987089812e-09, 1.0310664544377346e-09, 2.973301320707833e-07, 1.7901347959536906e-08, 4.2156527157999335e-09, 4.59217108783605e-09, 3.5498254336019386e-10, 2.7104046239401214e-05, 3.594303077392169e-09, 1.6661904078674183e-09]], "pointer": [[0.0, 0.0, 0.7432064414024353, 0.0, 4.100001387996599e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.21052934229373932, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0823042607153184e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0897768738213927e-05, 0.0, 0.0, 0.0, 0.03615903481841087, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.010032985359430313, 0.0, 0.0]], "target": [0.999927818775177]}, "loss": [0.0028909340035170317, 7.218382961582392e-05], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:52:53.917750", "n_pass": [1, 1, 1], "n_token": 43, "loss": [0.0028909340035170317, 7.218382961582392e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def save(", "self", ",", "commit", "=", "True", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "user", ".", "set_password", "(", "commit", ".", "cleaned_data", "[", "'new_password1'", "]", ")", "#NEWLINE#", "if", "commit", ":", "#NEWLINE#", "#INDENT#", "self", ".", "user", ".", "save", "(", ")", "#NEWLINE#", "#UNINDENT#", "return", "self", ".", "user"]}}
+{"position": {"error_location": 17, "repair_targets": [2, 11, 30, 40], "repair_candidates": [2, 11, 30, 40, 4, 17, 26]}}
+{"prediction": {"error_location": 0.9971132278442383, "repair_targets": [0.7432064414024353, 0.21052934229373932, 0.03615903481841087, 0.010032985359430313], "repair_candidates": [0.7432064414024353, 4.100001387996599e-05, 0.21052934229373932, 3.0823042607153184e-07, 3.0897768738213927e-05, 0.03615903481841087, 0.010032985359430313], "target_probs": 0.999927818775177}}
+
+
+{"result": {"time": "2021-02-11 11:52:53.973884", "n_pass": [21, 2, 2], "n_token": 38, "loss": [0.15729059278964996, 0.0004949602298438549], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def save(", "self", ",", "commit", "#INDENT#", "self", ".", "user", ".", "set_password", "(", "commit", ".", "cleaned_data", "[", "'new_password1'", "]", ")", "#NEWLINE#", "if", "commit", ":", "#NEWLINE#", "#INDENT#", "self", ".", "user", ".", "save", "(", ")", "#NEWLINE#", "#UNINDENT#", "return", "self", ".", "user"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 6, 25, 35], "repair_candidates": [2, 6, 25, 35, 4, 12, 21]}}
+{"prediction": {"error_location": 0.8544555306434631, "repair_targets": [0.8116862773895264, 0.1814262568950653, 0.005988104734569788, 0.00040449536754749715], "repair_candidates": [0.8116862773895264, 0.00048036430962383747, 0.1814262568950653, 1.0396004654467106e-05, 4.179690677119652e-06, 0.005988104734569788, 0.00040449536754749715], "target_probs": 0.9995051622390747}}
+
+
+{"result": {"time": "2021-02-11 11:52:54.029739", "n_pass": [24, 3, 3], "n_token": 33, "loss": [0.11576514691114426, 0.0003262098180130124], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def save(", "self", ",", "commit", "#INDENT#", "self", ".", "user", ".", "set_password", "(", "commit", ".", "cleaned_data", "if", "commit", ":", "#NEWLINE#", "#INDENT#", "self", ".", "user", ".", "save", "(", ")", "#NEWLINE#", "#UNINDENT#", "return", "self", ".", "user"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 6, 20, 30], "repair_candidates": [2, 6, 20, 30, 4, 12, 16]}}
+{"prediction": {"error_location": 0.8906843662261963, "repair_targets": [0.7540626525878906, 0.2351735532283783, 0.007228215225040913, 0.0032094090711325407], "repair_candidates": [0.7540626525878906, 0.00028941757045686245, 0.2351735532283783, 1.4371484212460928e-05, 2.2304187950794585e-05, 0.007228215225040913, 0.0032094090711325407], "target_probs": 0.9996738433837891}}
+
+
+{"result": {"time": "2021-02-11 11:52:54.087928", "n_pass": [26, 4, 4], "n_token": 27, "loss": [0.5177175402641296, 0.009660323150455952], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def save(", "self", ",", "commit", "#INDENT#", "self", ".", "user", ".", "set_password", "(", "commit", ".", "cleaned_data", "if", "commit", ":", "#NEWLINE#", "#INDENT#", "self", "#NEWLINE#", "#UNINDENT#", "return", "self", ".", "user"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 6, 20, 24], "repair_candidates": [2, 6, 20, 24, 4, 12, 16]}}
+{"prediction": {"error_location": 0.5958790183067322, "repair_targets": [0.7882747650146484, 0.19049252569675446, 0.00909376796334982, 0.0025251193437725306], "repair_candidates": [0.7882747650146484, 0.009110299870371819, 0.19049252569675446, 0.000317366881063208, 0.0001861195923993364, 0.00909376796334982, 0.0025251193437725306], "target_probs": 0.9903861880302429}}
+
+
+{"result": {"time": "2021-02-11 11:52:54.142956", "n_pass": [42, 5, 5], "n_token": 24, "loss": [0.029484352096915245, 1.4424427718040533e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def save(", "self", ",", "commit", "#INDENT#", "self", ".", "user", ".", "set_password", "(", "commit", ".", "cleaned_data", "if", "commit", ":", "#NEWLINE#", "#INDENT#", "self", "self", ".", "user"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 6, 20, 21], "repair_candidates": [2, 6, 20, 21, 4, 12, 16]}}
+{"prediction": {"error_location": 0.9709459543228149, "repair_targets": [0.7072821259498596, 0.27723318338394165, 0.009398679248988628, 0.006071578245609999], "repair_candidates": [0.7072821259498596, 1.3528613635571674e-05, 0.27723318338394165, 7.794687917339616e-07, 1.5666488195620332e-07, 0.009398679248988628, 0.006071578245609999], "target_probs": 0.9999855756759644}}
+
+
+{"result": {"time": "2021-02-11 11:52:54.198338", "n_pass": [43, 6, 6], "n_token": 22, "loss": [0.1400734782218933, 4.345273191574961e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "commit", "#INDENT#", "self", ".", "user", ".", "set_password", "(", "commit", ".", "cleaned_data", "if", "commit", ":", "#NEWLINE#", "#INDENT#", "self", "self", ".", "user"]}}
+{"position": {"error_location": 10, "repair_targets": [0, 4, 18, 19], "repair_candidates": [0, 4, 18, 19, 2, 10, 14]}}
+{"prediction": {"error_location": 0.869294285774231, "repair_targets": [0.019222445785999298, 0.833480179309845, 0.0732947587966919, 0.07395915687084198], "repair_candidates": [0.019222445785999298, 3.313107299618423e-05, 0.833480179309845, 9.365131518279668e-06, 9.797165603231406e-07, 0.0732947587966919, 0.07395915687084198], "target_probs": 0.9999565482139587}}
+
+
+{"result": {"time": "2021-02-11 11:52:54.421208", "n_pass": [73, 10, 7], "n_token": 21, "loss": [0.24934722483158112, 0.00032143990392796695], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "commit", "#INDENT#", "self", "user", ".", "set_password", "(", "commit", ".", "cleaned_data", "if", "commit", ":", "#NEWLINE#", "#INDENT#", "self", "self", ".", "user"]}}
+{"position": {"error_location": 9, "repair_targets": [0, 4, 17, 18], "repair_candidates": [0, 4, 17, 18, 2, 9, 13]}}
+{"prediction": {"error_location": 0.7793093919754028, "repair_targets": [0.02791413851082325, 0.8825361728668213, 0.04490109905600548, 0.04432716593146324], "repair_candidates": [0.02791413851082325, 0.0002000364474952221, 0.8825361728668213, 0.00011914152128156275, 2.2688811895932304e-06, 0.04490109905600548, 0.04432716593146324], "target_probs": 0.9996786117553711}}
+
+
+{"result": {"time": "2021-02-11 11:52:54.695162", "n_pass": [79, 15, 8], "n_token": 19, "loss": [0.6410852670669556, 0.0033031359780579805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "commit", "#INDENT#", "self", "user", ".", "set_password", "(", "commit", ".", "commit", ":", "#NEWLINE#", "#INDENT#", "self", "self", ".", "user"]}}
+{"position": {"error_location": 9, "repair_targets": [0, 4, 15, 16], "repair_candidates": [0, 4, 15, 16, 2, 9, 11]}}
+{"prediction": {"error_location": 0.5267204642295837, "repair_targets": [0.05029231682419777, 0.7425984144210815, 0.1030159667134285, 0.10079561918973923], "repair_candidates": [0.05029231682419777, 0.001068712561391294, 0.7425984144210815, 0.000428625411586836, 0.0018002624856308103, 0.1030159667134285, 0.10079561918973923], "target_probs": 0.9967023134231567}}
+
+
+{"result": {"time": "2021-02-11 11:52:54.971834", "n_pass": [89, 20, 9], "n_token": 18, "loss": [0.6412293910980225, 0.010489389300346375], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "commit", "#INDENT#", "self", ".", "set_password", "(", "commit", ".", "commit", ":", "#NEWLINE#", "#INDENT#", "self", "self", ".", "user"]}}
+{"position": {"error_location": 8, "repair_targets": [0, 4, 14, 15], "repair_candidates": [0, 4, 14, 15, 2, 8, 10]}}
+{"prediction": {"error_location": 0.5266445279121399, "repair_targets": [0.052131205797195435, 0.7050952911376953, 0.11523296684026718, 0.11710600554943085], "repair_candidates": [0.052131205797195435, 0.007613485213369131, 0.7050952911376953, 0.0009830351918935776, 0.001838058466091752, 0.11523296684026718, 0.11710600554943085], "target_probs": 0.9895654320716858}}
+
+
+{"result": {"time": "2021-02-11 11:52:55.576751", "n_pass": [118, 31, 10], "n_token": 17, "loss": [0.6510838270187378, 0.006648719310760498], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "commit", "#INDENT#", "self", ".", "set_password", "(", "commit", ".", "commit", ":", "#NEWLINE#", "self", "self", ".", "user"]}}
+{"position": {"error_location": 8, "repair_targets": [0, 4, 13, 14], "repair_candidates": [0, 4, 13, 14, 2, 8, 10]}}
+{"prediction": {"error_location": 0.5214802622795105, "repair_targets": [0.029981371015310287, 0.6865373849868774, 0.1795240193605423, 0.09733056277036667], "repair_candidates": [0.029981371015310287, 0.003730704542249441, 0.6865373849868774, 0.00048158259596675634, 0.0024144286289811134, 0.1795240193605423, 0.09733056277036667], "target_probs": 0.9933733344078064}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ',', 'commit', '#INDENT#', 'self', '.', 'set_password', '(', 'commit', '.', 'commit', ':', '#NEWLINE#', 'self', 'self', '.', 'user']

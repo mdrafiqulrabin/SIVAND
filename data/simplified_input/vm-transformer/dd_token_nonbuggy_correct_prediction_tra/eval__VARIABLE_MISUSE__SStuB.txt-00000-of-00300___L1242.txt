@@ -1,0 +1,223 @@
+
+Original sample:
+
+{"has_bug": false, "bug_kind": 0, "bug_kind_name": "NONE", "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", ":", "#NEWLINE#", "#INDENT#", "pad", "=", "(", "16", "-", "(", "len", "(", "text", ")", "%", "16", ")", ")", "#NEWLINE#", "text", "=", "(", "text", "+", "(", "pad", "*", "chr", "(", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "2", ",", "'0102030405060708'", ")", "#NEWLINE#", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "=", "base64", ".", "b64encode", "(", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"], "error_location": [0], "repair_targets": [], "repair_candidates": [4, 45, 2, 17, 24, 27, 58, 52, 61, 67, 71, 39, 54, 9, 30, 34], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "sk1418/zhuaxia/zhuaxia/util.py", "license": "mit", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 1242, "results": {"model": "transformer", "prob": {"loc": [[0.6250951886177063, 1.083279221347766e-05, 2.0680149646068458e-06, 6.865983692705413e-08, 1.4631112208007835e-05, 6.62957901909067e-08, 1.0119492799276486e-07, 1.1653885678697407e-07, 1.1122506293759216e-07, 1.683352252257464e-06, 1.434418095414003e-07, 4.2948695266886716e-08, 6.645179269071377e-07, 8.83852422361997e-08, 1.6563408422598513e-08, 2.1631000990396387e-08, 3.653278781712288e-07, 0.009873210452497005, 3.357836675377257e-08, 6.134996510809287e-08, 1.6960211723926477e-06, 2.450049123581266e-07, 1.294971951892876e-07, 7.230971021954247e-08, 3.2706038837204687e-06, 1.5064221869920402e-08, 5.8918718792710933e-08, 0.004960113205015659, 1.1743922812001983e-07, 9.202538819863548e-08, 0.049702052026987076, 7.859017614464392e-08, 4.730875602376727e-08, 2.5165121542158886e-07, 0.29567772150039673, 1.1144209111080272e-07, 8.681834628987417e-08, 7.822855252470617e-08, 1.8270219470650773e-07, 1.3055099543635151e-06, 8.763036873915553e-08, 8.744533097626572e-09, 6.916575046034268e-08, 7.841603633096383e-08, 2.742642664088635e-07, 0.005343638360500336, 2.0979096859718993e-07, 6.634026249230374e-06, 2.8394299533829326e-07, 7.785245088598458e-07, 1.0259635985221394e-07, 1.9545271356946614e-07, 3.473686092547723e-06, 1.1159177581987478e-08, 2.1055501520095277e-07, 8.290223263429652e-08, 7.31396170294829e-08, 3.5835543599205266e-07, 0.0019313530065119267, 1.8377446053818858e-07, 2.57281101312401e-07, 1.0858312862183084e-06, 9.133828804408495e-09, 6.45211173377902e-08, 1.1481637329779915e-07, 1.2499188351000612e-08, 3.5962833067060274e-07, 0.0007462372304871678, 6.274787551774352e-07, 5.792182378172583e-07, 3.0044176924093335e-07, 0.006614988204091787]], "pointer": [[0.0, 0.0, 0.2421172857284546, 0.0, 0.5293369889259338, 0.0, 0.0, 0.0, 0.0, 0.006921619176864624, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.10698147863149643, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.038695793598890305, 0.0, 0.0, 0.07110220193862915, 0.0, 0.0, 4.1786835936363786e-05, 0.0, 0.0, 0.0, 2.0693343685707077e-05, 0.0, 0.0, 0.0, 0.0, 0.0005412836908362806, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001376007217913866, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0012448219349607825, 0.0, 2.6142538445128594e-06, 0.0, 0.0, 0.0, 5.256094300420955e-05, 0.0, 0.0, 0.0015451431972905993, 0.0, 0.0, 0.0, 0.0, 0.0, 6.7016926550422795e-06, 0.0, 0.0, 0.0, 1.2974001037946437e-05]], "target": [0.0]}, "loss": [0.4698513448238373, 0.0], "acc": [1.0, 0.0, 0.0, 0.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 15:32:38.154787", "n_pass": [1, 1, 1], "n_token": 72, "loss": [0.4698513448238373, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", ":", "#NEWLINE#", "#INDENT#", "pad", "=", "(", "16", "-", "(", "len", "(", "text", ")", "%", "16", ")", ")", "#NEWLINE#", "text", "=", "(", "text", "+", "(", "pad", "*", "chr", "(", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "2", ",", "'0102030405060708'", ")", "#NEWLINE#", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "=", "base64", ".", "b64encode", "(", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 45, 2, 17, 24, 27, 58, 52, 61, 67, 71, 39, 54, 9, 30, 34]}}
+{"prediction": {"error_location": 0.6250951886177063, "repair_targets": [], "repair_candidates": [0.2421172857284546, 0.5293369889259338, 0.006921619176864624, 0.10698147863149643, 0.038695793598890305, 0.07110220193862915, 4.1786835936363786e-05, 2.0693343685707077e-05, 0.0005412836908362806, 0.001376007217913866, 0.0012448219349607825, 2.6142538445128594e-06, 5.256094300420955e-05, 0.0015451431972905993, 6.7016926550422795e-06, 1.2974001037946437e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:38.212520", "n_pass": [47, 2, 2], "n_token": 68, "loss": [0.12432867288589478, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", ":", "#NEWLINE#", "#INDENT#", "pad", "=", "(", "(", "text", ")", "%", "16", ")", ")", "#NEWLINE#", "text", "=", "(", "text", "+", "(", "pad", "*", "chr", "(", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "2", ",", "'0102030405060708'", ")", "#NEWLINE#", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "=", "base64", ".", "b64encode", "(", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 41, 2, 13, 20, 23, 54, 48, 57, 63, 67, 35, 50, 9, 26, 30]}}
+{"prediction": {"error_location": 0.8830893635749817, "repair_targets": [], "repair_candidates": [0.26828986406326294, 0.5772882103919983, 0.027341535314917564, 0.020810656249523163, 0.05215156450867653, 0.03170716390013695, 0.0002720381016843021, 0.00020035964553244412, 0.0019271165365353227, 0.0012937765568494797, 0.0027541376184672117, 1.921239891089499e-05, 0.00033138319849967957, 0.01554262824356556, 2.674499228305649e-05, 4.3609335989458486e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:38.326204", "n_pass": [55, 4, 3], "n_token": 63, "loss": [0.3824560046195984, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", ":", "#NEWLINE#", "#INDENT#", "pad", "=", "(", "(", "text", ")", "%", "16", ")", ")", "#NEWLINE#", "text", "=", "(", "text", "+", "(", "pad", "*", "chr", "(", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "=", "base64", ".", "b64encode", "(", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 41, 2, 13, 20, 23, 49, 43, 52, 58, 62, 35, 45, 9, 26, 30]}}
+{"prediction": {"error_location": 0.6821839809417725, "repair_targets": [], "repair_candidates": [0.25227090716362, 0.3352260887622833, 0.06390228867530823, 0.028396623209118843, 0.13444681465625763, 0.026213666424155235, 0.0008660034509375691, 0.002985154278576374, 0.10316506773233414, 0.005615605507045984, 0.03353309631347656, 0.0008074226207099855, 0.007745201233774424, 0.004757685121148825, 4.6853710955474526e-05, 2.15997570194304e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:38.381882", "n_pass": [58, 5, 4], "n_token": 58, "loss": [0.265458881855011, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", ":", "#NEWLINE#", "#INDENT#", "pad", "=", "(", "(", "text", ")", "%", "16", ")", ")", "#NEWLINE#", "text", "=", "(", "text", "+", "(", "pad", "*", "chr", "(", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 41, 2, 13, 20, 23, 49, 43, 52, 53, 57, 35, 45, 9, 26, 30]}}
+{"prediction": {"error_location": 0.7668540477752686, "repair_targets": [], "repair_candidates": [0.21917478740215302, 0.4687023460865021, 0.028797708451747894, 0.027061430737376213, 0.07033611834049225, 0.020493054762482643, 0.0001700065186014399, 0.00022595931659452617, 0.10352823883295059, 0.0011266192886978388, 0.05771079659461975, 0.0005399290821515024, 0.0003601183998398483, 0.0009439525892958045, 0.0008190317312255502, 9.972007319447584e-06], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:38.494751", "n_pass": [103, 7, 5], "n_token": 56, "loss": [0.1868099719285965, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "=", "(", "(", "text", ")", "%", "16", ")", ")", "#NEWLINE#", "text", "=", "(", "text", "+", "(", "pad", "*", "chr", "(", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 39, 2, 11, 18, 21, 47, 41, 50, 51, 55, 33, 43, 7, 24, 28]}}
+{"prediction": {"error_location": 0.8296012282371521, "repair_targets": [], "repair_candidates": [0.25134822726249695, 0.3860064446926117, 0.07045473158359528, 0.02093302644789219, 0.09881243109703064, 0.010566816665232182, 0.0005556194810196757, 0.0007349569932557642, 0.12581220269203186, 0.0013827428920194507, 0.0268961600959301, 0.001651702099479735, 0.0011229132069274783, 0.0019555194303393364, 0.0017458117799833417, 2.075743759633042e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:38.552857", "n_pass": [105, 8, 6], "n_token": 54, "loss": [0.24152697622776031, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "%", "16", ")", ")", "#NEWLINE#", "text", "=", "(", "text", "+", "(", "pad", "*", "chr", "(", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 37, 2, 9, 16, 19, 45, 39, 48, 49, 53, 31, 41, 7, 22, 26]}}
+{"prediction": {"error_location": 0.7854276299476624, "repair_targets": [], "repair_candidates": [0.35228094458580017, 0.4142012298107147, 0.010434902273118496, 0.057306792587041855, 0.03981660306453705, 0.006295827217400074, 0.004179011564701796, 0.0048551056534051895, 0.09423726052045822, 0.0019512494327500463, 0.0076723862439394, 0.001383863389492035, 0.0020783445797860622, 0.0017270154785364866, 0.0015431635547429323, 3.6213437851984054e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:38.608241", "n_pass": [107, 9, 7], "n_token": 52, "loss": [0.26785585284233093, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", "16", ")", ")", "#NEWLINE#", "text", "=", "(", "text", "+", "(", "pad", "*", "chr", "(", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 35, 2, 9, 14, 17, 43, 37, 46, 47, 51, 29, 39, 7, 20, 24]}}
+{"prediction": {"error_location": 0.7650180459022522, "repair_targets": [], "repair_candidates": [0.48695921897888184, 0.32970696687698364, 0.019364209845662117, 0.011665279045701027, 0.04533153772354126, 0.008634855039417744, 0.0015304471598938107, 0.002058421727269888, 0.08114948868751526, 0.0016920234775170684, 0.004528538323938847, 0.0013285637833178043, 0.0022017715964466333, 0.0020448665600270033, 0.0017136443639174104, 9.006675099954009e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:38.663934", "n_pass": [108, 10, 8], "n_token": 50, "loss": [0.17914748191833496, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "#NEWLINE#", "text", "=", "(", "text", "+", "(", "pad", "*", "chr", "(", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 33, 2, 9, 12, 15, 41, 35, 44, 45, 49, 27, 37, 7, 18, 22]}}
+{"prediction": {"error_location": 0.8359827399253845, "repair_targets": [], "repair_candidates": [0.33091282844543457, 0.4559095501899719, 0.014622941613197327, 0.032194364815950394, 0.0666728988289833, 0.00554104195907712, 0.007437027059495449, 0.005891010165214539, 0.06321734935045242, 0.002353551797568798, 0.003041929565370083, 0.0016273475484922528, 0.002222594106569886, 0.004406395833939314, 0.0036483630537986755, 0.0003007308696396649], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:38.774200", "n_pass": [112, 12, 9], "n_token": 48, "loss": [0.2648386061191559, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "#NEWLINE#", "text", "=", "(", "text", "pad", "*", "chr", "(", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 31, 2, 9, 12, 15, 39, 33, 42, 43, 47, 25, 35, 7, 16, 20]}}
+{"prediction": {"error_location": 0.7673296928405762, "repair_targets": [], "repair_candidates": [0.28874799609184265, 0.5149738192558289, 0.00984673947095871, 0.033582013100385666, 0.06522820889949799, 0.0049953400157392025, 0.004566802177578211, 0.0038521853275597095, 0.05894062668085098, 0.0024414793588221073, 0.002421659417450428, 0.001060000853613019, 0.0017968445317819715, 0.0042221639305353165, 0.0028991014696657658, 0.0004249870835337788], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:38.829731", "n_pass": [114, 13, 10], "n_token": 46, "loss": [0.6739143133163452, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "#NEWLINE#", "text", "=", "(", "text", "pad", "*", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", ".", "new", "(", "secKey", ",", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 29, 2, 9, 12, 15, 37, 31, 40, 41, 45, 23, 33, 7, 16, 18]}}
+{"prediction": {"error_location": 0.5097095370292664, "repair_targets": [], "repair_candidates": [0.3200581669807434, 0.5631632804870605, 0.0026604358572512865, 0.04526542127132416, 0.017652608454227448, 0.03838394954800606, 0.00031732721254229546, 0.00036533994716592133, 0.007587861735373735, 0.0016044641379266977, 0.0007620106334798038, 0.00013342592865228653, 0.00045221816981211305, 0.0008681081817485392, 0.0006378028774634004, 8.756722672842443e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:38.998980", "n_pass": [119, 16, 11], "n_token": 44, "loss": [0.9387877583503723, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "#NEWLINE#", "text", "=", "(", "text", "pad", "*", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", "(", "secKey", ",", "ciphertext", "=", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 27, 2, 9, 12, 15, 35, 29, 38, 39, 43, 23, 31, 7, 16, 18]}}
+{"prediction": {"error_location": 0.3911016285419464, "repair_targets": [], "repair_candidates": [0.1909058541059494, 0.7290465831756592, 0.0016732399817556143, 0.03422136232256889, 0.011708153411746025, 0.02479717880487442, 0.0001998544903472066, 0.00024680851493030787, 0.004648648668080568, 0.0005471119075082242, 0.0006914371624588966, 8.080190309556201e-05, 0.0002243972703581676, 0.0005508804460987449, 0.00043092737905681133, 2.6693809559219517e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:39.388082", "n_pass": [181, 23, 12], "n_token": 43, "loss": [0.9583882689476013, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "#NEWLINE#", "text", "=", "(", "text", "pad", "*", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", "(", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 27, 2, 9, 12, 15, 34, 29, 37, 38, 42, 23, 30, 7, 16, 18]}}
+{"prediction": {"error_location": 0.3835105001926422, "repair_targets": [], "repair_candidates": [0.22952903807163239, 0.6865244507789612, 0.0018237073672935367, 0.02826656587421894, 0.013230220414698124, 0.020541543141007423, 0.0002581530134193599, 0.0002797972992993891, 0.014367501251399517, 0.0012581042246893048, 3.288722291472368e-05, 0.0014582411386072636, 0.0002513638464733958, 0.0011030962923541665, 0.0010504979873076081, 2.479214163031429e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:39.946893", "n_pass": [200, 33, 13], "n_token": 42, "loss": [0.7581639885902405, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "=", "(", "text", "pad", "*", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", "(", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 26, 2, 9, 11, 14, 33, 28, 36, 37, 41, 22, 29, 7, 15, 17]}}
+{"prediction": {"error_location": 0.46852585673332214, "repair_targets": [], "repair_candidates": [0.08639450371265411, 0.8221046924591064, 0.0035519693046808243, 0.013890392147004604, 0.013354750350117683, 0.003530374262481928, 0.001031272578984499, 0.007352386601269245, 0.034235574305057526, 0.0008404569234699011, 6.982754712225869e-05, 0.008904176764190197, 0.00266538979485631, 0.0010934342863038182, 0.0009368975297547877, 4.396964504849166e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.002350", "n_pass": [202, 34, 14], "n_token": 41, "loss": [0.6606030464172363, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "(", "text", "pad", "*", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", "(", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 25, 2, 9, 11, 13, 32, 27, 35, 36, 40, 21, 28, 7, 14, 16]}}
+{"prediction": {"error_location": 0.5165397524833679, "repair_targets": [], "repair_candidates": [0.06308159977197647, 0.7581872344017029, 0.011515386402606964, 0.019012141972780228, 0.009272845461964607, 0.00726613774895668, 0.0033252828288823366, 0.009834712371230125, 0.07281020283699036, 0.001247691921889782, 9.148352546617389e-05, 0.036394260823726654, 0.005200590472668409, 0.0014627812197431922, 0.001241436810232699, 5.6145538110286e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.058180", "n_pass": [203, 35, 15], "n_token": 40, "loss": [0.5252456068992615, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "*", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", "(", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 24, 2, 9, 11, 12, 31, 26, 34, 35, 39, 20, 27, 7, 13, 15]}}
+{"prediction": {"error_location": 0.5914101004600525, "repair_targets": [], "repair_candidates": [0.10576095432043076, 0.42003294825553894, 0.08884310722351074, 0.01599934697151184, 0.01543351262807846, 0.009740780107676983, 0.11204756796360016, 0.11155445128679276, 0.09051308780908585, 0.0014407832641154528, 0.00015109096420928836, 0.022195177152752876, 0.0023124779108911753, 0.0020865302067250013, 0.0018370426259934902, 5.1140938012395054e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.113233", "n_pass": [206, 36, 16], "n_token": 39, "loss": [0.5562138557434082, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", "(", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 23, 2, 9, 11, 12, 30, 25, 33, 34, 38, 19, 26, 7, 13, 14]}}
+{"prediction": {"error_location": 0.5733758807182312, "repair_targets": [], "repair_candidates": [0.10083909332752228, 0.5325506329536438, 0.023368731141090393, 0.004644928965717554, 0.012058821506798267, 0.009861587546765804, 0.06308665871620178, 0.14328938722610474, 0.07768236100673676, 0.0038540514651685953, 0.0005523912841454148, 0.01987301930785179, 0.002516712760552764, 0.002796834334731102, 0.002959911245852709, 6.493312685051933e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.171236", "n_pass": [208, 37, 17], "n_token": 38, "loss": [0.5401523113250732, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", ")", "#NEWLINE#", "encryptor", "=", "AES", "(", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 22, 2, 9, 11, 12, 29, 24, 32, 33, 37, 18, 25, 7, 13, 14]}}
+{"prediction": {"error_location": 0.5826596021652222, "repair_targets": [], "repair_candidates": [0.10261578857898712, 0.4874034821987152, 0.022025091573596, 0.004105517640709877, 0.012377127073705196, 0.009653154760599136, 0.0832308754324913, 0.1641925722360611, 0.08640968054533005, 0.003961304202675819, 0.0008402258390560746, 0.013793999329209328, 0.0022402626927942038, 0.0032703052274882793, 0.0038155533839017153, 6.495197158074006e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.227064", "n_pass": [209, 38, 18], "n_token": 37, "loss": [0.7487665414810181, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "#NEWLINE#", "encryptor", "=", "AES", "(", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 21, 2, 9, 11, 12, 28, 23, 31, 32, 36, 17, 24, 7, 13, 14]}}
+{"prediction": {"error_location": 0.4729495644569397, "repair_targets": [], "repair_candidates": [0.08786095678806305, 0.2935216426849365, 0.02436946891248226, 0.0029685094486922026, 0.008109993301331997, 0.006311294622719288, 0.0852913185954094, 0.1341184377670288, 0.31108587980270386, 0.003092415863648057, 0.0006378092803061008, 0.032086845487356186, 0.0024030301719903946, 0.003746947506442666, 0.0043295444920659065, 6.583953654626384e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.337340", "n_pass": [211, 40, 19], "n_token": 36, "loss": [0.5953699350357056, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "=", "AES", "(", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 20, 2, 9, 11, 12, 27, 22, 30, 31, 35, 16, 23, 7, 13, 14]}}
+{"prediction": {"error_location": 0.5513585209846497, "repair_targets": [], "repair_candidates": [0.017050642520189285, 0.011961727403104305, 0.020537130534648895, 0.001334745087660849, 0.0029640744905918837, 0.004339538514614105, 0.14858995378017426, 0.01695989817380905, 0.14728423953056335, 0.0003645392134785652, 0.0001353418338112533, 0.6271051168441772, 0.0005188544164411724, 0.0004444854275789112, 0.00039718905463814735, 1.258013435290195e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.392490", "n_pass": [213, 41, 20], "n_token": 35, "loss": [0.32504913210868835, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "AES", "(", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 19, 2, 9, 11, 12, 26, 21, 29, 30, 34, 16, 22, 7, 13, 14]}}
+{"prediction": {"error_location": 0.7224918603897095, "repair_targets": [], "repair_candidates": [0.040916625410318375, 0.04576355591416359, 0.06584956496953964, 0.003458314575254917, 0.013995427638292313, 0.014276125468313694, 0.08513916283845901, 0.1319667100906372, 0.09069378674030304, 0.0025968917179852724, 0.00039953607483766973, 0.5012196898460388, 0.0009198851766996086, 0.001435767044313252, 0.0013324576430022717, 3.6512177757686004e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.447637", "n_pass": [214, 42, 21], "n_token": 34, "loss": [0.3694193959236145, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "(", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 18, 2, 9, 11, 12, 25, 20, 28, 29, 33, 16, 21, 7, 13, 14]}}
+{"prediction": {"error_location": 0.6911354660987854, "repair_targets": [], "repair_candidates": [0.029973741620779037, 0.035978637635707855, 0.061505191028118134, 0.002480715047568083, 0.010466281324625015, 0.0102456696331501, 0.07160692662000656, 0.07970348745584488, 0.058664459735155106, 0.0024172505363821983, 0.00017794399172998965, 0.633243978023529, 0.0005646329373121262, 0.001456738798879087, 0.001483782660216093, 3.0611365218646824e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.505610", "n_pass": [215, 43, 22], "n_token": 33, "loss": [0.5431334972381592, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "secKey", ",", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 17, 2, 9, 11, 12, 24, 19, 27, 28, 32, 16, 20, 7, 13, 14]}}
+{"prediction": {"error_location": 0.5809251070022583, "repair_targets": [], "repair_candidates": [0.022083010524511337, 0.5025066137313843, 0.026091275736689568, 0.00287577323615551, 0.014045924879610538, 0.012723477557301521, 0.04129257798194885, 0.12434972822666168, 0.017146993428468704, 0.22015704214572906, 0.00014102474960964173, 0.010189836844801903, 0.0010435112053528428, 0.002696596784517169, 0.0026285392232239246, 2.8118227419327013e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.560807", "n_pass": [217, 44, 23], "n_token": 32, "loss": [0.5723556280136108, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "secKey", "ciphertext", "encryptor", ".", "encrypt", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 17, 2, 9, 11, 12, 23, 18, 26, 27, 31, 16, 19, 7, 13, 14]}}
+{"prediction": {"error_location": 0.5641947388648987, "repair_targets": [], "repair_candidates": [0.021035196259617805, 0.10755571722984314, 0.026458052918314934, 0.004026737064123154, 0.006991636473685503, 0.00671702716499567, 0.00902637094259262, 0.037020158022642136, 0.48135173320770264, 0.011518724262714386, 0.0013197087682783604, 0.2844606637954712, 0.0009266053675673902, 0.0006657769554294646, 0.0009072262910194695, 1.8706556147662923e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.615791", "n_pass": [220, 45, 24], "n_token": 30, "loss": [0.40863311290740967, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def aes_encrypt(", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 17, 2, 9, 11, 12, 21, 18, 24, 25, 29, 16, 19, 7, 13, 14]}}
+{"prediction": {"error_location": 0.664557933807373, "repair_targets": [], "repair_candidates": [0.04633229225873947, 0.6615477204322815, 0.012556339614093304, 0.00826770905405283, 0.010946404188871384, 0.011914566159248352, 0.003291398985311389, 0.03374602273106575, 0.13551844656467438, 0.0011401090305298567, 7.213669596239924e-05, 0.07053190469741821, 0.0024848124012351036, 0.0008376865880563855, 0.0007854049326851964, 2.7111593226436526e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.781873", "n_pass": [227, 48, 25], "n_token": 29, "loss": [0.5715550780296326, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", ",", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [3, 16, 1, 8, 10, 11, 20, 17, 23, 24, 28, 15, 18, 6, 12, 13]}}
+{"prediction": {"error_location": 0.5646467804908752, "repair_targets": [], "repair_candidates": [0.03048720397055149, 0.8562231063842773, 0.005809993948787451, 0.0032813684083521366, 0.0017753378488123417, 0.0028160198125988245, 0.00040543393697589636, 0.006841248832643032, 0.05667699873447418, 0.0002902810520026833, 2.8718141038552858e-05, 0.03427621349692345, 0.00037297967355698347, 0.0003900271840393543, 0.0003018115821760148, 2.3275941202882677e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.839575", "n_pass": [229, 49, 26], "n_token": 28, "loss": [0.6839149594306946, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", "secKey", ")", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 15, 1, 7, 9, 10, 19, 16, 22, 23, 27, 14, 17, 5, 11, 12]}}
+{"prediction": {"error_location": 0.5046374797821045, "repair_targets": [], "repair_candidates": [0.032113537192344666, 0.8714495897293091, 0.00787703599780798, 0.009206431917846203, 0.003435842925682664, 0.0061372751370072365, 0.0004284516617190093, 0.004157181363552809, 0.039438650012016296, 0.0006267266580834985, 5.100932321511209e-05, 0.02381298691034317, 0.0003305341233499348, 0.0005684252246282995, 0.0003454714023973793, 2.0788629626622424e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.895217", "n_pass": [231, 50, 27], "n_token": 27, "loss": [0.1856742948293686, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", "secKey", "#INDENT#", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 14, 1, 6, 8, 9, 18, 15, 21, 22, 26, 13, 16, 4, 10, 11]}}
+{"prediction": {"error_location": 0.8305440545082092, "repair_targets": [], "repair_candidates": [0.04737421125173569, 0.7704746723175049, 0.02452968992292881, 0.013096295297145844, 0.012036606669425964, 0.001492657815106213, 0.002785531571134925, 0.00567664485424757, 0.08737287670373917, 0.004223810043185949, 0.00022549519781023264, 0.01967879757285118, 0.008181528188288212, 0.0018701475346460938, 0.0009088471415452659, 7.219972758321092e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:40.950296", "n_pass": [232, 51, 28], "n_token": 26, "loss": [0.10052650421857834, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", "secKey", "pad", "(", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 13, 1, 5, 7, 8, 17, 14, 20, 21, 25, 12, 15, 3, 9, 10]}}
+{"prediction": {"error_location": 0.9043611288070679, "repair_targets": [], "repair_candidates": [0.17063134908676147, 0.25834986567497253, 0.07291311025619507, 0.010582749731838703, 0.052624937146902084, 0.005413300823420286, 0.10223986953496933, 0.0738028734922409, 0.2057509869337082, 0.004093039780855179, 0.0006165120867080986, 0.017691168934106827, 0.011221300810575485, 0.010594434104859829, 0.0033551340457051992, 0.00011943371646339074], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:41.005348", "n_pass": [234, 52, 29], "n_token": 25, "loss": [0.32924044132232666, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", "secKey", "pad", "text", ")", "text", "text", "pad", "pad", ")", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 12, 1, 4, 6, 7, 16, 13, 19, 20, 24, 11, 14, 3, 8, 9]}}
+{"prediction": {"error_location": 0.7194700241088867, "repair_targets": [], "repair_candidates": [0.028032245114445686, 0.2783587872982025, 0.304881751537323, 0.03986627236008644, 0.038152437657117844, 0.0003199187049176544, 0.14219219982624054, 0.10258154571056366, 0.045228011906147, 0.0009512274409644306, 0.0007556607597507536, 0.0030271634459495544, 0.00011534967052284628, 0.012021132744848728, 0.0034500807523727417, 6.619717896683142e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:41.060844", "n_pass": [236, 53, 30], "n_token": 24, "loss": [0.11176913231611252, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", "secKey", "pad", "text", "text", "text", "pad", "pad", ")", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 11, 1, 4, 5, 6, 15, 12, 18, 19, 23, 10, 13, 3, 7, 8]}}
+{"prediction": {"error_location": 0.8942508101463318, "repair_targets": [], "repair_candidates": [0.15346436202526093, 0.046496063470840454, 0.03868677467107773, 0.02657375857234001, 0.023071272298693657, 0.02318096160888672, 0.047111380845308304, 0.09058883786201477, 0.2633495032787323, 0.15685883164405823, 0.007114426698535681, 0.04572825878858566, 0.06325208395719528, 0.011348440311849117, 0.002845176961272955, 0.00032981298863887787], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:41.116258", "n_pass": [241, 54, 31], "n_token": 23, "loss": [0.16575804352760315, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", "secKey", "pad", "text", "text", "text", "pad", "pad", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", ")", "#NEWLINE#", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 10, 1, 4, 5, 6, 14, 11, 17, 18, 22, 9, 12, 3, 7, 8]}}
+{"prediction": {"error_location": 0.8472511172294617, "repair_targets": [], "repair_candidates": [0.1602824330329895, 0.015286093577742577, 0.11548180878162384, 0.010118904523551464, 0.009198416024446487, 0.008520232513546944, 0.12573665380477905, 0.18672975897789001, 0.06098111346364021, 0.053304605185985565, 0.002901639323681593, 0.23323914408683777, 0.0010095513425767422, 0.0119221992790699, 0.004890103824436665, 0.00039727959665469825], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:41.174184", "n_pass": [247, 55, 32], "n_token": 21, "loss": [0.40166035294532776, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", "secKey", "pad", "text", "text", "text", "pad", "pad", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", "ciphertext", "ciphertext", ")", "#NEWLINE#", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 10, 1, 4, 5, 6, 14, 11, 15, 16, 20, 9, 12, 3, 7, 8]}}
+{"prediction": {"error_location": 0.6692079901695251, "repair_targets": [], "repair_candidates": [0.045076221227645874, 0.012731003575026989, 0.11552445590496063, 0.0065847886726260185, 0.006879901513457298, 0.007118660025298595, 0.19290480017662048, 0.3040633499622345, 0.0989520326256752, 0.05941792577505112, 0.0035505746491253376, 0.12873712182044983, 0.01759984903037548, 0.0002991239889524877, 0.0002049880422418937, 0.000355271011358127], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:41.229926", "n_pass": [249, 56, 33], "n_token": 19, "loss": [0.08296145498752594, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", "secKey", "pad", "text", "text", "text", "pad", "pad", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", "ciphertext", "ciphertext", "return", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 10, 1, 4, 5, 6, 14, 11, 15, 16, 18, 9, 12, 3, 7, 8]}}
+{"prediction": {"error_location": 0.9203866124153137, "repair_targets": [], "repair_candidates": [0.06426329910755157, 0.010546869598329067, 0.12232213467359543, 0.008018942549824715, 0.007175184786319733, 0.006741703487932682, 0.12386076152324677, 0.12669622898101807, 0.06040627509355545, 0.053622931241989136, 0.0034794581588357687, 0.40187257528305054, 0.009573690593242645, 0.0005528262117877603, 0.0005192236858420074, 0.00034785273601301014], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:41.285974", "n_pass": [272, 57, 34], "n_token": 18, "loss": [0.0012374608777463436, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", "secKey", "pad", "text", "text", "text", "pad", "pad", "encryptor", "secKey", "ciphertext", "encryptor", "(", "text", "ciphertext", "ciphertext", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 10, 1, 4, 5, 6, 14, 11, 15, 16, 17, 9, 12, 3, 7, 8]}}
+{"prediction": {"error_location": 0.9987635612487793, "repair_targets": [], "repair_candidates": [0.23055148124694824, 0.0316900871694088, 0.05585150048136711, 0.03488257899880409, 0.03438073769211769, 0.032948631793260574, 0.07447807490825653, 0.06980019062757492, 0.02078549563884735, 0.05719691887497902, 0.14582613110542297, 0.0896012932062149, 0.07007192075252533, 0.017735736444592476, 0.012427356094121933, 0.02177184820175171], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:32:41.341793", "n_pass": [286, 58, 35], "n_token": 17, "loss": [0.001258177449926734, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "text", "secKey", "pad", "text", "text", "text", "pad", "pad", "encryptor", "secKey", "ciphertext", "encryptor", "text", "ciphertext", "ciphertext", "ciphertext"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 10, 1, 4, 5, 6, 13, 11, 14, 15, 16, 9, 12, 3, 7, 8]}}
+{"prediction": {"error_location": 0.9987426400184631, "repair_targets": [], "repair_candidates": [0.23335011303424835, 0.05298824608325958, 0.04400951787829399, 0.06914778053760529, 0.06994836032390594, 0.06744500249624252, 0.06507349759340286, 0.07973747700452805, 0.011294401250779629, 0.04185495898127556, 0.06330198049545288, 0.008023516274988651, 0.04012975096702576, 0.05313616245985031, 0.05110030621290207, 0.04945901408791542], "target_probs": 0.0}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'text', 'secKey', 'pad', 'text', 'text', 'text', 'pad', 'pad', 'encryptor', 'secKey', 'ciphertext', 'encryptor', 'text', 'ciphertext', 'ciphertext', 'ciphertext']

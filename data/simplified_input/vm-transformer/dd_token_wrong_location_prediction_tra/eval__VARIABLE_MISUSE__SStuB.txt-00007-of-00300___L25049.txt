@@ -1,0 +1,67 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "pytest", ".", "mark", ".", "parametrize", "(", "'sql'", ",", "[", "'select verrrylongcolumn from foo'", ",", "'select \"verrrylongcolumn\" from \"foo\"'", "]", ")", "#NEWLINE#", "def test_truncate_strings_doesnt_truncate_identifiers(", "sql", ")", ":", "#NEWLINE#", "#INDENT#", "formatted", "=", "sqlparse", ".", "format", "(", "sql", ",", "truncate_strings", "=", "2", ")", "#NEWLINE#", "assert", "(", "formatted", "==", "formatted", ")"], "error_location": [40], "repair_targets": [18, 29], "repair_candidates": [23, 38, 40, 18, 29], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "andialbrecht/sqlparse/tests/test_format.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00007-of-00300", "js_count": 25049, "results": {"model": "transformer", "prob": {"loc": [[0.023343607783317566, 5.247609351499705e-07, 7.76082842435244e-09, 1.2414595573773113e-08, 1.4382433910498094e-08, 1.8746247221201884e-08, 2.4249859897906845e-09, 2.151856293153287e-08, 1.9533992201559158e-08, 8.863058731378715e-09, 1.7864337564788002e-08, 1.1041790592969392e-08, 6.459097257049962e-09, 1.3713243873780812e-08, 3.438858087179142e-09, 4.164948830265303e-09, 7.437041649183129e-09, 6.146195374867602e-08, 1.1907729913218645e-06, 9.199439432450163e-09, 1.0183200060964737e-08, 1.1761594365111705e-08, 1.0671494798941694e-08, 1.3232248363692634e-07, 4.341762505077895e-09, 2.6729559010618686e-08, 1.7204131452785987e-08, 1.8252841460508762e-09, 2.690803135863007e-08, 0.0006292323814705014, 6.7973449091596194e-09, 1.233029567337951e-09, 6.190597190425251e-08, 8.462241112283664e-07, 1.1841103031429157e-07, 4.1395601613203326e-08, 1.874871458085181e-08, 1.5504710404457e-08, 0.49001774191856384, 2.5694879113302704e-08, 0.486005961894989, 1.1851292924802692e-07]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6897358298301697, 0.0, 0.0, 0.0, 0.0, 0.0005755205638706684, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3096836805343628, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.1771754745714134e-06, 0.0, 2.779971509880852e-06, 0.0]], "target": [0.9994195103645325]}, "loss": [0.7215343117713928, 0.0005806582048535347], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [38]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:28:11.033554", "n_pass": [1, 1, 1], "n_token": 42, "loss": [0.713313639163971, 0.0005806582048535347], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "pytest", ".", "mark", ".", "parametrize", "(", "'sql'", ",", "[", "'select verrrylongcolumn from foo'", ",", "'select \"verrrylongcolumn\" from \"foo\"'", "]", ")", "#NEWLINE#", "def test_truncate_strings_doesnt_truncate_identifiers(", "sql", ")", ":", "#NEWLINE#", "#INDENT#", "formatted", "=", "sqlparse", ".", "format", "(", "sql", ",", "truncate_strings", "=", "2", ")", "#NEWLINE#", "assert", "(", "formatted", "==", "formatted", ")"]}}
+{"position": {"error_location": 38, "repair_targets": [18, 29], "repair_candidates": [23, 38, 40, 18, 29]}}
+{"prediction": {"error_location": 0.49001774191856384, "repair_targets": [0.6897358298301697, 0.3096836805343628], "repair_candidates": [0.6897358298301697, 0.0005755205638706684, 0.3096836805343628, 2.1771754745714134e-06, 2.779971509880852e-06], "target_probs": 0.9994195103645325}}
+
+
+{"result": {"time": "2021-02-21 06:28:11.145524", "n_pass": [20, 3, 2], "n_token": 37, "loss": [0.5842212438583374, 0.000285547022940591], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "parametrize", "(", "'sql'", ",", "[", "'select verrrylongcolumn from foo'", ",", "'select \"verrrylongcolumn\" from \"foo\"'", "]", ")", "#NEWLINE#", "def test_truncate_strings_doesnt_truncate_identifiers(", "sql", ")", ":", "#NEWLINE#", "#INDENT#", "formatted", "=", "sqlparse", ".", "format", "(", "sql", ",", "truncate_strings", "=", "2", ")", "#NEWLINE#", "assert", "(", "formatted", "==", "formatted", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [13, 24], "repair_candidates": [18, 33, 35, 13, 24]}}
+{"prediction": {"error_location": 0.5575399398803711, "repair_targets": [0.5774715542793274, 0.4222429096698761], "repair_candidates": [0.5774715542793274, 0.00028218465740792453, 0.4222429096698761, 1.3291211189425667e-06, 2.0212728486512788e-06], "target_probs": 0.9997144937515259}}
+
+
+{"result": {"time": "2021-02-21 06:28:11.260606", "n_pass": [25, 5, 3], "n_token": 31, "loss": [0.2385546863079071, 3.159051175316563e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [".", "parametrize", "(", "'sql'", ",", "[", "'select verrrylongcolumn from foo'", ",", "'select \"verrrylongcolumn\" from \"foo\"'", "]", ")", "#NEWLINE#", "def test_truncate_strings_doesnt_truncate_identifiers(", "sql", ")", ":", "#NEWLINE#", "#INDENT#", "formatted", "=", "sqlparse", ".", "format", "(", "sql", "assert", "(", "formatted", "==", "formatted", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [13, 24], "repair_candidates": [18, 27, 29, 13, 24]}}
+{"prediction": {"error_location": 0.787765622138977, "repair_targets": [0.031246913596987724, 0.9687499403953552], "repair_candidates": [0.031246913596987724, 5.38346739631379e-07, 0.9687499403953552, 2.52902850661485e-06, 1.4788413160715663e-08], "target_probs": 0.9999968409538269}}
+
+
+{"result": {"time": "2021-02-21 06:28:11.316262", "n_pass": [27, 6, 4], "n_token": 26, "loss": [0.6578731536865234, 2.288844552822411e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["[", "'select verrrylongcolumn from foo'", ",", "'select \"verrrylongcolumn\" from \"foo\"'", "]", ")", "#NEWLINE#", "def test_truncate_strings_doesnt_truncate_identifiers(", "sql", ")", ":", "#NEWLINE#", "#INDENT#", "formatted", "=", "sqlparse", ".", "format", "(", "sql", "assert", "(", "formatted", "==", "formatted", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [8, 19], "repair_candidates": [13, 22, 24, 8, 19]}}
+{"prediction": {"error_location": 0.5179517865180969, "repair_targets": [0.08524660021066666, 0.9147304892539978], "repair_candidates": [0.08524660021066666, 3.451260681686108e-06, 0.9147304892539978, 1.9518591216183268e-05, 2.0189432348161063e-08], "target_probs": 0.9999771118164062}}
+
+
+{"result": {"time": "2021-02-21 06:28:11.371710", "n_pass": [28, 7, 5], "n_token": 21, "loss": [0.22783499956130981, 2.7060874344897456e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": [")", "#NEWLINE#", "def test_truncate_strings_doesnt_truncate_identifiers(", "sql", ")", ":", "#NEWLINE#", "#INDENT#", "formatted", "=", "sqlparse", ".", "format", "(", "sql", "assert", "(", "formatted", "==", "formatted", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 14], "repair_candidates": [8, 17, 19, 3, 14]}}
+{"prediction": {"error_location": 0.7962557077407837, "repair_targets": [0.008716351352632046, 0.991256594657898], "repair_candidates": [0.008716351352632046, 2.951790975203039e-06, 0.991256594657898, 2.3644759494345635e-05, 4.3038403418904636e-07], "target_probs": 0.999972939491272}}
+
+
+{"result": {"time": "2021-02-21 06:28:11.427505", "n_pass": [41, 8, 6], "n_token": 19, "loss": [0.632693350315094, 0.00012809858890250325], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_truncate_strings_doesnt_truncate_identifiers(", "sql", ")", ":", "#NEWLINE#", "#INDENT#", "formatted", "=", "sqlparse", ".", "format", "(", "sql", "assert", "(", "formatted", "==", "formatted", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [1, 12], "repair_candidates": [6, 15, 17, 1, 12]}}
+{"prediction": {"error_location": 0.5311592221260071, "repair_targets": [0.007623143959790468, 0.9922487735748291], "repair_candidates": [0.007623143959790468, 3.1919655157253146e-05, 0.9922487735748291, 9.595217125024647e-05, 2.3726937570245354e-07], "target_probs": 0.9998719096183777}}
+
+
+{"result": {"time": "2021-02-21 06:28:11.598309", "n_pass": [63, 11, 7], "n_token": 18, "loss": [0.5214700698852539, 0.00010735372779890895], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["sql", ")", ":", "#NEWLINE#", "#INDENT#", "formatted", "=", "sqlparse", ".", "format", "(", "sql", "assert", "(", "formatted", "==", "formatted", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [0, 11], "repair_candidates": [5, 14, 16, 0, 11]}}
+{"prediction": {"error_location": 0.593647301197052, "repair_targets": [0.0012349564349278808, 0.9986577033996582], "repair_candidates": [0.0012349564349278808, 8.213229739340022e-05, 0.9986577033996582, 2.4908955310820602e-05, 4.1017239027496544e-07], "target_probs": 0.9998926520347595}}
+
+
+{"result": {"time": "2021-02-21 06:28:11.933480", "n_pass": [70, 17, 8], "n_token": 17, "loss": [0.6032095551490784, 8.589398203184828e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["sql", ")", ":", "#NEWLINE#", "#INDENT#", "formatted", "=", ".", "format", "(", "sql", "assert", "(", "formatted", "==", "formatted", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [0, 10], "repair_candidates": [5, 13, 15, 0, 10]}}
+{"prediction": {"error_location": 0.5470530390739441, "repair_targets": [0.0006456541013903916, 0.9992684721946716], "repair_candidates": [0.0006456541013903916, 3.643351374194026e-05, 0.9992684721946716, 4.8234993300866336e-05, 1.1588764436964993e-06], "target_probs": 0.9999141097068787}}
+
+
+{"result": {"time": "2021-02-21 06:28:12.378777", "n_pass": [93, 25, 9], "n_token": 16, "loss": [0.5073230862617493, 0.00017179534188471735], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["sql", ")", ":", "#NEWLINE#", "#INDENT#", "formatted", "=", ".", "format", "sql", "assert", "(", "formatted", "==", "formatted", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [0, 9], "repair_candidates": [5, 12, 14, 0, 9]}}
+{"prediction": {"error_location": 0.6021052002906799, "repair_targets": [0.0014598964480683208, 0.9983683228492737], "repair_candidates": [0.0014598964480683208, 0.00010543753887759522, 0.9983683228492737, 6.523181946249679e-05, 1.1763146403609426e-06], "target_probs": 0.9998282194137573}}
+
+
+
+
+Minimal simplified tokens:
+
+['sql', ')', ':', '#NEWLINE#', '#INDENT#', 'formatted', '=', '.', 'format', 'sql', 'assert', '(', 'formatted', '==', 'formatted', ')']

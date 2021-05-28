@@ -1,0 +1,61 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def Get(", "self", ",", "header_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Gets a header value.\\n\\n    Args:\\n      header_name: HTTP header name to look for.\\n\\n    Returns:\\n      A header value that corresponds to header_name. If more than one such\\n      value is in self, one of the values is selected arbitrarily, and\\n      returned. The selection is not deterministic.\\n    '", "#NEWLINE#", "for", "name", "in", "self", ":", "#NEWLINE#", "#INDENT#", "if", "(", "name", ".", "lower", "(", ")", "==", "header_name", ".", "lower", "(", ")", ")", ":", "#NEWLINE#", "#INDENT#", "return", "header_name", "[", "name", "]"], "error_location": [36], "repair_targets": [2, 14], "repair_candidates": [2, 14, 12, 20, 38, 4, 26, 36], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "GoogleCloudPlatform/python-compat-runtime/appengine-compat/exported_appengine_sdk/google/appengine/api/appinfo.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00015-of-00300", "js_count": 49423, "results": {"model": "rnn", "prob": {"loc": [[0.16496282815933228, 4.0722133576309716e-07, 7.861307835810294e-07, 3.613791577095071e-08, 3.516042568207922e-07, 1.0131664396340057e-08, 1.2898008883155399e-08, 7.90706849329581e-07, 7.070270271469781e-07, 1.6273118319531932e-07, 3.229353023925796e-05, 1.418664737684594e-06, 9.222057428814878e-07, 1.8307912341697374e-07, 0.0005877108196727931, 9.296779239775788e-07, 8.473206207781914e-07, 4.472749992601166e-07, 1.4656681912583736e-07, 8.287468062917469e-07, 7.123290561139584e-05, 3.2098552082970855e-07, 3.077604731061001e-07, 3.221367705918965e-07, 1.2316849279159214e-05, 4.0893000914365984e-06, 2.8564569220179692e-05, 1.5202810743630835e-07, 1.1547623302021748e-07, 2.3237008406340465e-07, 9.916536328091752e-06, 4.128900172872818e-07, 4.1970019992731977e-07, 9.44028329286084e-07, 9.485618335247636e-08, 0.00013963575474917889, 0.35478681325912476, 2.4873526172086713e-07, 0.47934430837631226, 7.727272532065399e-06]], "pointer": [[0.0, 0.0, 0.012663627974689007, 0.0, 0.019238756969571114, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3119848966598511, 0.0, 0.6558718085289001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001246275642188266, 0.0, 0.0, 0.0, 0.0, 0.0, 4.03265148634091e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.2638107111561112e-05, 0.0, 5.334493107511662e-05, 0.0]], "target": [0.6685354113578796]}, "loss": [1.036238193511963, 0.402665913105011], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [38]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 13:08:54.213294", "n_pass": [1, 1, 1], "n_token": 40, "loss": [0.7353360056877136, 0.402665913105011], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def Get(", "self", ",", "header_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Gets a header value.\\n\\n    Args:\\n      header_name: HTTP header name to look for.\\n\\n    Returns:\\n      A header value that corresponds to header_name. If more than one such\\n      value is in self, one of the values is selected arbitrarily, and\\n      returned. The selection is not deterministic.\\n    '", "#NEWLINE#", "for", "name", "in", "self", ":", "#NEWLINE#", "#INDENT#", "if", "(", "name", ".", "lower", "(", ")", "==", "header_name", ".", "lower", "(", ")", ")", ":", "#NEWLINE#", "#INDENT#", "return", "header_name", "[", "name", "]"]}}
+{"position": {"error_location": 38, "repair_targets": [2, 14], "repair_candidates": [2, 14, 12, 20, 38, 4, 26, 36]}}
+{"prediction": {"error_location": 0.47934430837631226, "repair_targets": [0.012663627974689007, 0.6558718085289001], "repair_candidates": [0.012663627974689007, 0.019238756969571114, 0.3119848966598511, 0.6558718085289001, 0.0001246275642188266, 4.03265148634091e-05, 2.2638107111561112e-05, 5.334493107511662e-05], "target_probs": 0.6685354113578796}}
+
+
+{"result": {"time": "2021-02-21 13:08:54.968471", "n_pass": [57, 12, 2], "n_token": 37, "loss": [0.5968376398086548, 0.26728498935699463], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def Get(", "self", ",", "header_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Gets a header value.\\n\\n    Args:\\n      header_name: HTTP header name to look for.\\n\\n    Returns:\\n      A header value that corresponds to header_name. If more than one such\\n      value is in self, one of the values is selected arbitrarily, and\\n      returned. The selection is not deterministic.\\n    '", "#NEWLINE#", "for", "name", "in", "self", ":", "#NEWLINE#", "#INDENT#", "if", "(", "name", ".", "lower", "(", ")", "==", "header_name", ".", "lower", "(", ")", "#INDENT#", "return", "header_name", "[", "name", "]"]}}
+{"position": {"error_location": 35, "repair_targets": [2, 14], "repair_candidates": [2, 14, 12, 20, 35, 4, 26, 33]}}
+{"prediction": {"error_location": 0.5505499243736267, "repair_targets": [0.007123803254216909, 0.7583310604095459], "repair_candidates": [0.007123803254216909, 0.01778206042945385, 0.21667203307151794, 0.7583310604095459, 3.846370964311063e-05, 9.540558494336437e-06, 1.198676909552887e-05, 3.1024435884319246e-05], "target_probs": 0.765454888343811}}
+
+
+{"result": {"time": "2021-02-21 13:08:55.169726", "n_pass": [64, 15, 3], "n_token": 35, "loss": [0.7466771602630615, 0.5732031464576721], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def Get(", "self", ",", "header_name", ")", ":", "#NEWLINE#", "#NEWLINE#", "for", "name", "in", "self", ":", "#NEWLINE#", "#INDENT#", "if", "(", "name", ".", "lower", "(", ")", "==", "header_name", ".", "lower", "(", ")", "#INDENT#", "return", "header_name", "[", "name", "]"]}}
+{"position": {"error_location": 33, "repair_targets": [2, 12], "repair_candidates": [2, 12, 10, 18, 33, 4, 24, 31]}}
+{"prediction": {"error_location": 0.4739387035369873, "repair_targets": [0.00227944809012115, 0.5614374279975891], "repair_candidates": [0.00227944809012115, 0.13767826557159424, 0.2981148958206177, 0.5614374279975891, 0.00019013549899682403, 5.258671808405779e-05, 7.637615635758266e-05, 0.00017079465033020824], "target_probs": 0.5637168884277344}}
+
+
+{"result": {"time": "2021-02-21 13:08:55.435003", "n_pass": [72, 19, 4], "n_token": 32, "loss": [0.6099206209182739, 0.14446033537387848], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def Get(", "self", ",", "header_name", ")", ":", "#NEWLINE#", "#NEWLINE#", "for", "name", "in", "self", ":", "#NEWLINE#", "#INDENT#", "if", "(", "name", ".", "lower", "(", ")", "==", "header_name", ".", "#INDENT#", "return", "header_name", "[", "name", "]"]}}
+{"position": {"error_location": 30, "repair_targets": [2, 12], "repair_candidates": [2, 12, 10, 18, 30, 4, 24, 28]}}
+{"prediction": {"error_location": 0.5433940291404724, "repair_targets": [0.01207392942160368, 0.853415310382843], "repair_candidates": [0.01207392942160368, 0.030316276475787163, 0.10403493046760559, 0.853415310382843, 6.97982104611583e-05, 2.58575237239711e-05, 2.1920064682490192e-05, 4.1914703615475446e-05], "target_probs": 0.8654892444610596}}
+
+
+{"result": {"time": "2021-02-21 13:08:56.083297", "n_pass": [121, 29, 5], "n_token": 31, "loss": [0.5771983861923218, 0.23607252538204193], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def Get(", "self", ",", "header_name", ":", "#NEWLINE#", "#NEWLINE#", "for", "name", "in", "self", ":", "#NEWLINE#", "#INDENT#", "if", "(", "name", ".", "lower", "(", ")", "==", "header_name", ".", "#INDENT#", "return", "header_name", "[", "name", "]"]}}
+{"position": {"error_location": 29, "repair_targets": [2, 11], "repair_candidates": [2, 11, 9, 17, 29, 4, 23, 27]}}
+{"prediction": {"error_location": 0.5614692568778992, "repair_targets": [0.024373158812522888, 0.7653502225875854], "repair_candidates": [0.024373158812522888, 0.04456600919365883, 0.16534067690372467, 0.7653502225875854, 0.00013527223200071603, 6.393239164026454e-05, 5.824403342558071e-05, 0.00011245509085711092], "target_probs": 0.7897233963012695}}
+
+
+{"result": {"time": "2021-02-21 13:08:56.662871", "n_pass": [132, 38, 6], "n_token": 30, "loss": [0.6561572551727295, 0.17069938778877258], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def Get(", "self", ",", "header_name", ":", "#NEWLINE#", "#NEWLINE#", "for", "name", "in", "self", ":", "#NEWLINE#", "#INDENT#", "(", "name", ".", "lower", "(", ")", "==", "header_name", ".", "#INDENT#", "return", "header_name", "[", "name", "]"]}}
+{"position": {"error_location": 28, "repair_targets": [2, 11], "repair_candidates": [2, 11, 9, 16, 28, 4, 22, 26]}}
+{"prediction": {"error_location": 0.5188412666320801, "repair_targets": [0.04093275964260101, 0.8021422028541565], "repair_candidates": [0.04093275964260101, 0.044143762439489365, 0.11204453557729721, 0.8021422028541565, 0.0004453785077203065, 7.736698898952454e-05, 7.23781922715716e-05, 0.0001416655577486381], "target_probs": 0.8430749773979187}}
+
+
+{"result": {"time": "2021-02-21 13:08:56.789319", "n_pass": [135, 40, 7], "n_token": 29, "loss": [0.6082360148429871, 0.2731195092201233], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def Get(", "self", ",", "header_name", ":", "#NEWLINE#", "#NEWLINE#", "for", "name", "in", "self", ":", "#NEWLINE#", "#INDENT#", "(", "name", "lower", "(", ")", "==", "header_name", ".", "#INDENT#", "return", "header_name", "[", "name", "]"]}}
+{"position": {"error_location": 27, "repair_targets": [2, 11], "repair_candidates": [2, 11, 9, 16, 27, 4, 21, 25]}}
+{"prediction": {"error_location": 0.5443101525306702, "repair_targets": [0.03249230980873108, 0.7285095453262329], "repair_candidates": [0.03249230980873108, 0.04978908598423004, 0.1879253089427948, 0.7285095453262329, 0.000972963694948703, 8.150231587933376e-05, 7.860727782826871e-05, 0.0001506493572378531], "target_probs": 0.7610018253326416}}
+
+
+{"result": {"time": "2021-02-21 13:08:57.043751", "n_pass": [142, 44, 8], "n_token": 28, "loss": [0.6860513687133789, 0.5954335927963257], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def Get(", "self", ",", "header_name", ":", "#NEWLINE#", "#NEWLINE#", "for", "name", "in", "self", ":", "#NEWLINE#", "#INDENT#", "(", "name", "lower", "(", ")", "==", "header_name", ".", "#INDENT#", "return", "header_name", "[", "name", "]"]}}
+{"position": {"error_location": 26, "repair_targets": [1, 10], "repair_candidates": [1, 10, 8, 15, 26, 3, 20, 24]}}
+{"prediction": {"error_location": 0.5035605430603027, "repair_targets": [0.07461167126893997, 0.47671180963516235], "repair_candidates": [0.07461167126893997, 0.2637936472892761, 0.18113815784454346, 0.47671180963516235, 0.002879984909668565, 0.00021062945597805083, 0.00023339160543400794, 0.0004206711601000279], "target_probs": 0.5513234734535217}}
+
+
+
+
+Minimal simplified tokens:
+
+['def Get(', 'self', ',', 'header_name', ':', '#NEWLINE#', '#NEWLINE#', 'for', 'name', 'in', 'self', ':', '#NEWLINE#', '#INDENT#', '(', 'name', 'lower', '(', ')', '==', 'header_name', '.', '#INDENT#', 'return', 'header_name', '[', 'name', ']']

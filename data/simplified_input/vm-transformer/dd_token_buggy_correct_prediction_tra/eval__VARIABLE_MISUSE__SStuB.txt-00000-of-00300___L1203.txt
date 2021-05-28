@@ -1,0 +1,67 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def _validate_single_char(", "self", ",", "name", ",", "val", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "assert", "(", "_str_block_width", "(", "self", ")", "==", "1", ")", "#NEWLINE#", "#UNINDENT#", "except", "AssertionError", ":", "#NEWLINE#", "#INDENT#", "raise", "Exception", "(", "(", "'Invalid value for %s!  Must be a string of length 1.'", "%", "name", ")", ")"], "error_location": [19], "repair_targets": [6], "repair_candidates": [2, 19, 4, 37, 6], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "kxxoling/PTable/prettytable/prettytable.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 1203, "results": {"model": "transformer", "prob": {"loc": [[5.402189344749786e-05, 9.089339059187296e-09, 3.8175675953766586e-09, 1.0378305992375658e-09, 8.897166026144987e-08, 1.4707144391223892e-09, 2.791985309613665e-07, 1.4241825496696947e-09, 2.2267245824991733e-09, 2.6238231587427663e-09, 2.1884134504546182e-09, 1.8935644163775578e-08, 1.7815692032741026e-08, 6.513301453736631e-09, 2.8724866929508153e-09, 8.333241319213869e-10, 6.636393101722149e-10, 6.962846743618911e-09, 2.6023583288292684e-08, 0.9999306201934814, 1.2783980540831408e-09, 4.241909046243109e-09, 6.848821954008599e-07, 5.646372258638621e-08, 3.894852440566865e-09, 2.3245474434219204e-09, 1.0075249967655964e-08, 1.2340398702903599e-09, 3.802611558967328e-09, 3.5902145700816845e-09, 2.5785564794489346e-09, 2.8220029091308163e-10, 1.5573584088990344e-10, 1.8540367019426185e-09, 2.6856213253267924e-08, 2.143317523461974e-08, 2.5109063273021093e-08, 1.4131564057606738e-05, 1.1890398887715037e-08, 1.2873371701971337e-08]], "pointer": [[0.0, 0.0, 2.771122638023371e-07, 0.0, 0.35795876383781433, 0.0, 0.5234770774841309, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.6292669253489294e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.11856384575366974, 0.0, 0.0]], "target": [0.5234770774841309]}, "loss": [6.937739817658439e-05, 0.6472620368003845], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:17:38.064364", "n_pass": [1, 1, 1], "n_token": 40, "loss": [6.937739817658439e-05, 0.6472620368003845], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _validate_single_char(", "self", ",", "name", ",", "val", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "assert", "(", "_str_block_width", "(", "self", ")", "==", "1", ")", "#NEWLINE#", "#UNINDENT#", "except", "AssertionError", ":", "#NEWLINE#", "#INDENT#", "raise", "Exception", "(", "(", "'Invalid value for %s!  Must be a string of length 1.'", "%", "name", ")", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [6], "repair_candidates": [2, 19, 4, 37, 6]}}
+{"prediction": {"error_location": 0.9999306201934814, "repair_targets": [0.5234770774841309], "repair_candidates": [2.771122638023371e-07, 0.35795876383781433, 0.5234770774841309, 4.6292669253489294e-08, 0.11856384575366974], "target_probs": 0.5234770774841309}}
+
+
+{"result": {"time": "2021-02-11 11:17:38.119330", "n_pass": [10, 2, 2], "n_token": 30, "loss": [0.001192930736579001, 0.27280110120773315], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _validate_single_char(", "self", ",", "name", ",", "val", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "assert", "(", "_str_block_width", "(", "self", "#INDENT#", "raise", "Exception", "(", "(", "'Invalid value for %s!  Must be a string of length 1.'", "%", "name", ")", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [6], "repair_candidates": [2, 19, 4, 27, 6]}}
+{"prediction": {"error_location": 0.9988077878952026, "repair_targets": [0.7612441778182983], "repair_candidates": [1.8597952475829516e-06, 0.20718920230865479, 0.7612441778182983, 9.973518899641931e-08, 0.031564775854349136], "target_probs": 0.7612441778182983}}
+
+
+{"result": {"time": "2021-02-11 11:17:38.174531", "n_pass": [19, 3, 3], "n_token": 25, "loss": [0.02446286752820015, 0.024866662919521332], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _validate_single_char(", "self", ",", "name", ",", "val", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "assert", "(", "_str_block_width", "(", "self", "'Invalid value for %s!  Must be a string of length 1.'", "%", "name", ")", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [6], "repair_candidates": [2, 19, 4, 22, 6]}}
+{"prediction": {"error_location": 0.9758340120315552, "repair_targets": [0.9754399657249451], "repair_candidates": [2.2400788566301344e-06, 0.024234067648649216, 0.9754399657249451, 8.606509709352395e-07, 0.0003228230925742537], "target_probs": 0.9754399657249451}}
+
+
+{"result": {"time": "2021-02-11 11:17:38.228895", "n_pass": [22, 4, 4], "n_token": 20, "loss": [0.00410179328173399, 0.0038553192280232906], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _validate_single_char(", "self", ",", "name", ",", "val", ")", ":", "#NEWLINE#", "assert", "(", "_str_block_width", "(", "self", "'Invalid value for %s!  Must be a string of length 1.'", "%", "name", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [6], "repair_candidates": [2, 14, 4, 17, 6]}}
+{"prediction": {"error_location": 0.9959067106246948, "repair_targets": [0.9961521029472351], "repair_candidates": [5.001820682082325e-07, 0.0037088298704475164, 0.9961521029472351, 1.060507315742143e-06, 0.00013752102677244693], "target_probs": 0.9961521029472351}}
+
+
+{"result": {"time": "2021-02-11 11:17:38.287490", "n_pass": [35, 5, 5], "n_token": 17, "loss": [0.012889640405774117, 0.007834766991436481], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _validate_single_char(", "self", ",", "name", ",", "val", ")", "(", "_str_block_width", "(", "self", "'Invalid value for %s!  Must be a string of length 1.'", "%", "name", ")", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [6], "repair_candidates": [2, 11, 4, 14, 6]}}
+{"prediction": {"error_location": 0.9871929883956909, "repair_targets": [0.9921958446502686], "repair_candidates": [1.400193241352099e-06, 0.007425609510391951, 0.9921958446502686, 6.363410193443997e-06, 0.00037079196772538126], "target_probs": 0.9921958446502686}}
+
+
+{"result": {"time": "2021-02-11 11:17:38.450206", "n_pass": [57, 8, 6], "n_token": 16, "loss": [0.020477432757616043, 0.005930450279265642], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _validate_single_char(", "self", ",", "name", ",", "val", ")", "_str_block_width", "(", "self", "'Invalid value for %s!  Must be a string of length 1.'", "%", "name", ")", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [6], "repair_candidates": [2, 10, 4, 13, 6]}}
+{"prediction": {"error_location": 0.9797306656837463, "repair_targets": [0.9940871000289917], "repair_candidates": [2.2413696569856256e-06, 0.005345413461327553, 0.9940871000289917, 1.8414943042444065e-05, 0.0005468407180160284], "target_probs": 0.9940871000289917}}
+
+
+{"result": {"time": "2021-02-11 11:17:38.504486", "n_pass": [58, 9, 7], "n_token": 15, "loss": [0.023136191070079803, 0.08249504119157791], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _validate_single_char(", "self", ",", "name", ",", "val", ")", "(", "self", "'Invalid value for %s!  Must be a string of length 1.'", "%", "name", ")", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [6], "repair_candidates": [2, 9, 4, 12, 6]}}
+{"prediction": {"error_location": 0.9771293997764587, "repair_targets": [0.9208160042762756], "repair_candidates": [6.254695563256973e-06, 0.07529004663228989, 0.9208160042762756, 2.717667302931659e-05, 0.003860566532239318], "target_probs": 0.9208160042762756}}
+
+
+{"result": {"time": "2021-02-11 11:17:38.558386", "n_pass": [61, 10, 8], "n_token": 13, "loss": [0.3119402825832367, 0.17539583146572113], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _validate_single_char(", "self", ",", "name", ",", "val", ")", "(", "self", "'Invalid value for %s!  Must be a string of length 1.'", "%", "name"]}}
+{"position": {"error_location": 9, "repair_targets": [6], "repair_candidates": [2, 9, 4, 12, 6]}}
+{"prediction": {"error_location": 0.7320252060890198, "repair_targets": [0.8391247987747192], "repair_candidates": [0.00040703691774979234, 0.15874919295310974, 0.8391247987747192, 0.0007701552240177989, 0.0009488581563346088], "target_probs": 0.8391247987747192}}
+
+
+{"result": {"time": "2021-02-11 11:17:38.992637", "n_pass": [79, 18, 9], "n_token": 12, "loss": [0.5087124109268188, 0.3326060175895691], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _validate_single_char(", "self", ",", "name", ",", "val", ")", "(", "self", "'Invalid value for %s!  Must be a string of length 1.'", "name"]}}
+{"position": {"error_location": 9, "repair_targets": [6], "repair_candidates": [2, 9, 4, 11, 6]}}
+{"prediction": {"error_location": 0.6012693643569946, "repair_targets": [0.7170526385307312], "repair_candidates": [0.00036693119909614325, 0.26494601368904114, 0.7170526385307312, 0.00016438857710454613, 0.017469976097345352], "target_probs": 0.7170526385307312}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def _validate_single_char(', 'self', ',', 'name', ',', 'val', ')', '(', 'self', "'Invalid value for %s!  Must be a string of length 1.'", 'name']

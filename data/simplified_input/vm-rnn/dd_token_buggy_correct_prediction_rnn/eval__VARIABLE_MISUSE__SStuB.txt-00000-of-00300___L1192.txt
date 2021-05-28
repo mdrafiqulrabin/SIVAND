@@ -1,0 +1,91 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def _argument_contiguity_check(", "self", ",", "arg_name", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        .. todo::\\n\\n            WRITEME\\n        '", "#NEWLINE#", "return", "(", "'\\n        if (!CudaNdarray_is_c_contiguous(%%(%(arg_name)s)s))\\n        {\\n            if (!(%(class_name_caps)s_COPY_NON_CONTIGUOUS)) {\\n                PyErr_SetString(PyExc_ValueError,\\n                    \"%(class)s: %(arg_name)s must be C contiguous\");\\n                %%(fail)s;\\n            }\\n        }\\n        '", "%", "{", "#NEWLINE#", "#INDENT#", "'class'", ":", "arg_name", ".", "__class__", ".", "__name__", ",", "#NEWLINE#", "'arg_name'", ":", "arg_name", ",", "#NEWLINE#", "'class_name_caps'", ":", "self", ".", "__class__", ".", "__name__", ".", "upper", "(", ")", ",", "#NEWLINE#", "#UNINDENT#", "}", ")"], "error_location": [20], "repair_targets": [2, 34], "repair_candidates": [4, 20, 29, 2, 34], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "lisa-lab/pylearn2/pylearn2/sandbox/cuda_convnet/pool.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 1192, "results": {"model": "rnn", "prob": {"loc": [[2.0903755284962244e-05, 1.2483521993900126e-09, 2.717379432581879e-09, 3.443870189023812e-11, 3.1991675975007183e-10, 1.0240456399523978e-10, 2.86795587278732e-10, 1.2203182908621102e-09, 4.0633640896459156e-10, 2.415720123938314e-10, 2.432369028415593e-10, 1.0479303536037321e-10, 7.549229574799199e-10, 1.3565326639763953e-08, 1.4798897662871013e-09, 1.6514056788707876e-09, 8.314458455060958e-09, 6.754113379692228e-10, 3.322247366099873e-09, 3.4998702602706544e-08, 0.9999738931655884, 3.2665201388226706e-07, 1.3032025947268266e-07, 8.163274500816442e-09, 7.447398253646043e-11, 9.530823907866193e-10, 5.069744068997295e-10, 3.715653618119319e-10, 1.6848335226971045e-10, 4.667457687901333e-06, 3.201072185099463e-10, 1.0217010570912066e-09, 9.273405654486311e-11, 7.425275394545849e-10, 7.83649312108281e-10, 2.1886614742783195e-10, 4.58511395518002e-10, 9.226215902380375e-10, 3.395940126327268e-11, 5.385116241818366e-10, 3.668687575952845e-11, 1.4568732331632361e-10, 3.8270426827580195e-09, 2.738941295987729e-10, 1.3785987906800301e-09, 4.184282698105335e-09, 5.872467845335905e-09, 5.625583887614027e-10]], "pointer": [[0.0, 0.0, 0.9999905824661255, 0.0, 6.861860128992703e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 9.083650809316168e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.5559242544659355e-07, 0.0, 0.0, 0.0, 0.0, 2.174818064304418e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9999927282333374]}, "loss": [2.5987286790041253e-05, 7.271793037944008e-06], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 09:53:43.095807", "n_pass": [1, 1, 1], "n_token": 48, "loss": [2.5987286790041253e-05, 7.271793037944008e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _argument_contiguity_check(", "self", ",", "arg_name", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        .. todo::\\n\\n            WRITEME\\n        '", "#NEWLINE#", "return", "(", "'\\n        if (!CudaNdarray_is_c_contiguous(%%(%(arg_name)s)s))\\n        {\\n            if (!(%(class_name_caps)s_COPY_NON_CONTIGUOUS)) {\\n                PyErr_SetString(PyExc_ValueError,\\n                    \"%(class)s: %(arg_name)s must be C contiguous\");\\n                %%(fail)s;\\n            }\\n        }\\n        '", "%", "{", "#NEWLINE#", "#INDENT#", "'class'", ":", "arg_name", ".", "__class__", ".", "__name__", ",", "#NEWLINE#", "'arg_name'", ":", "arg_name", ",", "#NEWLINE#", "'class_name_caps'", ":", "self", ".", "__class__", ".", "__name__", ".", "upper", "(", ")", ",", "#NEWLINE#", "#UNINDENT#", "}", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [2, 34], "repair_candidates": [4, 20, 29, 2, 34]}}
+{"prediction": {"error_location": 0.9999738931655884, "repair_targets": [0.9999905824661255, 2.174818064304418e-06], "repair_candidates": [0.9999905824661255, 6.861860128992703e-06, 9.083650809316168e-08, 2.5559242544659355e-07, 2.174818064304418e-06], "target_probs": 0.9999927282333374}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.162408", "n_pass": [11, 2, 2], "n_token": 36, "loss": [1.9192511899746023e-05, 1.120573597290786e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _argument_contiguity_check(", "self", ",", "arg_name", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        .. todo::\\n\\n            WRITEME\\n        '", "#NEWLINE#", "return", "(", "'\\n        if (!CudaNdarray_is_c_contiguous(%%(%(arg_name)s)s))\\n        {\\n            if (!(%(class_name_caps)s_COPY_NON_CONTIGUOUS)) {\\n                PyErr_SetString(PyExc_ValueError,\\n                    \"%(class)s: %(arg_name)s must be C contiguous\");\\n                %%(fail)s;\\n            }\\n        }\\n        '", "%", "{", "#NEWLINE#", "#INDENT#", "'class'", ":", "arg_name", ".", "__class__", ".", "__name__", ",", "#NEWLINE#", "'arg_name'", ":", "arg_name", ",", "#NEWLINE#", "'class_name_caps'", ":", "self", "."]}}
+{"position": {"error_location": 20, "repair_targets": [2, 34], "repair_candidates": [4, 20, 29, 2, 34]}}
+{"prediction": {"error_location": 0.9999808073043823, "repair_targets": [0.9999821186065674, 6.692922397633083e-06], "repair_candidates": [0.9999821186065674, 1.0185030077991541e-05, 3.213509671695647e-07, 7.476494374714093e-07, 6.692922397633083e-06], "target_probs": 0.9999887943267822}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.226007", "n_pass": [21, 3, 3], "n_token": 30, "loss": [2.7894584491150454e-05, 5.7816673688648734e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _argument_contiguity_check(", "self", ",", "arg_name", ")", "(", "'\\n        if (!CudaNdarray_is_c_contiguous(%%(%(arg_name)s)s))\\n        {\\n            if (!(%(class_name_caps)s_COPY_NON_CONTIGUOUS)) {\\n                PyErr_SetString(PyExc_ValueError,\\n                    \"%(class)s: %(arg_name)s must be C contiguous\");\\n                %%(fail)s;\\n            }\\n        }\\n        '", "%", "{", "#NEWLINE#", "#INDENT#", "'class'", ":", "arg_name", ".", "__class__", ".", "__name__", ",", "#NEWLINE#", "'arg_name'", ":", "arg_name", ",", "#NEWLINE#", "'class_name_caps'", ":", "self", "."]}}
+{"position": {"error_location": 14, "repair_targets": [2, 28], "repair_candidates": [4, 14, 23, 2, 28]}}
+{"prediction": {"error_location": 0.9999722242355347, "repair_targets": [0.9999774694442749, 1.6733083612052724e-05], "repair_candidates": [0.9999774694442749, 3.7827135201951023e-06, 8.971580882644048e-07, 1.084913378690544e-06, 1.6733083612052724e-05], "target_probs": 0.9999942183494568}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.286493", "n_pass": [22, 4, 4], "n_token": 24, "loss": [3.40932747349143e-05, 9.95402479020413e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _argument_contiguity_check(", "self", ",", "arg_name", ")", "'class'", ":", "arg_name", ".", "__class__", ".", "__name__", ",", "#NEWLINE#", "'arg_name'", ":", "arg_name", ",", "#NEWLINE#", "'class_name_caps'", ":", "self", "."]}}
+{"position": {"error_location": 8, "repair_targets": [2, 22], "repair_candidates": [4, 8, 17, 2, 22]}}
+{"prediction": {"error_location": 0.9999659061431885, "repair_targets": [0.9999656677246094, 2.4358976588700898e-05], "repair_candidates": [0.9999656677246094, 6.267116987146437e-06, 1.6095501678137225e-06, 2.0058243990206392e-06, 2.4358976588700898e-05], "target_probs": 0.9999900460243225}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.406501", "n_pass": [37, 6, 5], "n_token": 21, "loss": [5.173549288883805e-05, 1.4126400856184773e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _argument_contiguity_check(", "self", ",", "arg_name", ")", "'class'", ":", "arg_name", ".", "__class__", ".", "'arg_name'", ":", "arg_name", ",", "#NEWLINE#", "'class_name_caps'", ":", "self", "."]}}
+{"position": {"error_location": 8, "repair_targets": [2, 19], "repair_candidates": [4, 8, 14, 2, 19]}}
+{"prediction": {"error_location": 0.9999481439590454, "repair_targets": [0.9999780654907227, 7.803905646142084e-06], "repair_candidates": [0.9999780654907227, 1.3016640878049657e-05, 1.0356252460042015e-06, 1.1981305192421132e-07, 7.803905646142084e-06], "target_probs": 0.9999858736991882}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.463066", "n_pass": [38, 7, 6], "n_token": 18, "loss": [5.972207145532593e-05, 5.483642325998517e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _argument_contiguity_check(", "self", ",", "arg_name", ")", "'class'", ":", "arg_name", ".", "__class__", ".", "'arg_name'", ":", "arg_name", ":", "self", "."]}}
+{"position": {"error_location": 8, "repair_targets": [2, 16], "repair_candidates": [4, 8, 14, 2, 16]}}
+{"prediction": {"error_location": 0.9999402761459351, "repair_targets": [0.9999902248382568, 4.279960649000714e-06], "repair_candidates": [0.9999902248382568, 4.830554189538816e-06, 4.986799240214168e-07, 4.0011389756955396e-08, 4.279960649000714e-06], "target_probs": 0.9999945163726807}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.575319", "n_pass": [59, 9, 7], "n_token": 17, "loss": [4.732496745418757e-05, 0.0013283966109156609], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _argument_contiguity_check(", "self", ",", "arg_name", ")", "'class'", ":", "arg_name", ".", "__class__", ".", "'arg_name'", ":", "arg_name", ":", "self", "."]}}
+{"position": {"error_location": 7, "repair_targets": [1, 15], "repair_candidates": [3, 7, 13, 1, 15]}}
+{"prediction": {"error_location": 0.9999526739120483, "repair_targets": [0.998594343662262, 7.811825344106182e-05], "repair_candidates": [0.998594343662262, 0.0013108390849083662, 1.5276043995982036e-05, 1.423603293915221e-06, 7.811825344106182e-05], "target_probs": 0.9986724853515625}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.689608", "n_pass": [62, 11, 8], "n_token": 16, "loss": [3.862306402879767e-05, 0.06722085922956467], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _argument_contiguity_check(", "self", "arg_name", ")", "'class'", ":", "arg_name", ".", "__class__", ".", "'arg_name'", ":", "arg_name", ":", "self", "."]}}
+{"position": {"error_location": 6, "repair_targets": [1, 14], "repair_candidates": [2, 6, 12, 1, 14]}}
+{"prediction": {"error_location": 0.9999613761901855, "repair_targets": [0.9347865581512451, 0.0002021437103394419], "repair_candidates": [0.9347865581512451, 0.06494823843240738, 4.951118535245769e-05, 1.3562378626374993e-05, 0.0002021437103394419], "target_probs": 0.9349886775016785}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.745384", "n_pass": [64, 12, 9], "n_token": 15, "loss": [0.00012408917245920748, 0.013880537822842598], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _argument_contiguity_check(", "self", "arg_name", "'class'", ":", "arg_name", ".", "__class__", ".", "'arg_name'", ":", "arg_name", ":", "self", "."]}}
+{"position": {"error_location": 5, "repair_targets": [1, 13], "repair_candidates": [2, 5, 11, 1, 13]}}
+{"prediction": {"error_location": 0.9998757839202881, "repair_targets": [0.9861358404159546, 7.948632992338389e-05], "repair_candidates": [0.9861358404159546, 0.013765247538685799, 1.4521689990942832e-05, 4.788005298905773e-06, 7.948632992338389e-05], "target_probs": 0.986215353012085}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.853959", "n_pass": [67, 14, 10], "n_token": 13, "loss": [0.0004664763400796801, 0.012813474051654339], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _argument_contiguity_check(", "self", "arg_name", "'class'", ":", "arg_name", ".", "'arg_name'", ":", "arg_name", ":", "self", "."]}}
+{"position": {"error_location": 5, "repair_targets": [1, 11], "repair_candidates": [2, 5, 9, 1, 11]}}
+{"prediction": {"error_location": 0.9995336532592773, "repair_targets": [0.9870415925979614, 0.0002266988012706861], "repair_candidates": [0.9870415925979614, 0.012689095921814442, 2.7207604944123887e-05, 1.5427194739459082e-05, 0.0002266988012706861], "target_probs": 0.9872682690620422}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.907748", "n_pass": [68, 15, 11], "n_token": 11, "loss": [0.00040797016117721796, 0.027481846511363983], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _argument_contiguity_check(", "self", "arg_name", "'class'", ":", "arg_name", ".", "arg_name", ":", "self", "."]}}
+{"position": {"error_location": 5, "repair_targets": [1, 9], "repair_candidates": [2, 5, 7, 1, 9]}}
+{"prediction": {"error_location": 0.9995920062065125, "repair_targets": [0.9725907444953918, 0.00030157898436300457], "repair_candidates": [0.9725907444953918, 0.026867089793086052, 0.00013036216842010617, 0.00011022902617696673, 0.00030157898436300457], "target_probs": 0.9728923439979553}}
+
+
+{"result": {"time": "2021-02-11 09:53:43.961060", "n_pass": [71, 16, 12], "n_token": 10, "loss": [0.07132472842931747, 0.5656645894050598], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "arg_name", "'class'", ":", "arg_name", ".", "arg_name", ":", "self", "."]}}
+{"position": {"error_location": 4, "repair_targets": [0, 8], "repair_candidates": [1, 4, 6, 0, 8]}}
+{"prediction": {"error_location": 0.9311593770980835, "repair_targets": [0.5014162063598633, 0.0665663629770279], "repair_candidates": [0.5014162063598633, 0.3208388388156891, 0.05875884369015694, 0.05241972953081131, 0.0665663629770279], "target_probs": 0.56798255443573}}
+
+
+{"result": {"time": "2021-02-11 09:53:44.277346", "n_pass": [93, 22, 13], "n_token": 9, "loss": [0.8917497396469116, 0.4815540313720703], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "arg_name", "'class'", ":", "arg_name", ".", "arg_name", ":", "self"]}}
+{"position": {"error_location": 4, "repair_targets": [0, 8], "repair_candidates": [1, 4, 6, 0, 8]}}
+{"prediction": {"error_location": 0.4099377989768982, "repair_targets": [0.58824223279953, 0.029580311849713326], "repair_candidates": [0.58824223279953, 0.10179568827152252, 0.07645407319068909, 0.2039276659488678, 0.029580311849713326], "target_probs": 0.617822527885437}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'arg_name', "'class'", ':', 'arg_name', '.', 'arg_name', ':', 'self']

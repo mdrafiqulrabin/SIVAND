@@ -1,0 +1,49 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "cache_readonly", "#NEWLINE#", "def _df_raw(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns the degrees of freedom.'", "#NEWLINE#", "df", "=", "self", ".", "_rolling_rank", "(", ")", "#NEWLINE#", "if", "df", ".", "_time_effects", ":", "#NEWLINE#", "#INDENT#", "df", "+=", "self", ".", "_window_time_obs", "#NEWLINE#", "#UNINDENT#", "return", "df", "[", "self", ".", "_valid_indices", "]"], "error_location": [21], "repair_targets": [5, 14, 29, 37], "repair_candidates": [5, 14, 29, 37, 12, 21, 27, 35], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "pydata/pandas/pandas/stats/plm.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00001-of-00300", "js_count": 3452, "results": {"model": "transformer", "prob": {"loc": [[0.002685864455997944, 6.548908260128883e-08, 1.1303191715938965e-09, 1.962283890932781e-09, 1.6680106185162913e-09, 1.3934092635281559e-07, 1.0478197198793282e-09, 1.22410992453581e-09, 1.0778630210594997e-09, 1.0201324229797137e-09, 1.5256537144736626e-09, 7.803387380711513e-10, 3.9541139251753066e-09, 2.0765380526199806e-09, 1.775026134964719e-07, 8.171533449896629e-10, 1.9280690932710343e-10, 1.0794498628285965e-08, 8.160946585178408e-09, 3.2338713928936613e-09, 2.944344323907444e-09, 0.9951134324073792, 7.63515473067855e-09, 2.517056563178244e-10, 5.020453830439919e-09, 2.8102522531270324e-09, 1.6351555665039541e-09, 7.104936372570592e-08, 6.532861362984477e-09, 0.0012151841074228287, 2.364263895771046e-09, 3.3303246271820797e-10, 3.4560432293773147e-09, 1.6205844444172612e-09, 1.5495957295108553e-10, 3.9430466131307185e-05, 1.7701006882475667e-08, 0.0009454878163523972, 4.848351498054626e-09, 8.397992856679082e-10, 2.8842470634060646e-09]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.09749617427587509, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00122996571008116, 0.0, 0.07596129179000854, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.574019476422109e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 2.7742484235204756e-05, 0.0, 0.43474283814430237, 0.0, 0.0, 0.0, 0.0, 0.0, 1.553520814923104e-05, 0.0, 0.3904806971549988, 0.0, 0.0, 0.0]], "target": [0.9986810088157654]}, "loss": [0.004898570477962494, 0.0013198618544265628], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 12:01:47.317537", "n_pass": [1, 1, 1], "n_token": 41, "loss": [0.004898570477962494, 0.0013198618544265628], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "cache_readonly", "#NEWLINE#", "def _df_raw(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns the degrees of freedom.'", "#NEWLINE#", "df", "=", "self", ".", "_rolling_rank", "(", ")", "#NEWLINE#", "if", "df", ".", "_time_effects", ":", "#NEWLINE#", "#INDENT#", "df", "+=", "self", ".", "_window_time_obs", "#NEWLINE#", "#UNINDENT#", "return", "df", "[", "self", ".", "_valid_indices", "]"]}}
+{"position": {"error_location": 21, "repair_targets": [5, 14, 29, 37], "repair_candidates": [5, 14, 29, 37, 12, 21, 27, 35]}}
+{"prediction": {"error_location": 0.9951134324073792, "repair_targets": [0.09749617427587509, 0.07596129179000854, 0.43474283814430237, 0.3904806971549988], "repair_candidates": [0.09749617427587509, 0.00122996571008116, 0.07596129179000854, 4.574019476422109e-05, 2.7742484235204756e-05, 0.43474283814430237, 1.553520814923104e-05, 0.3904806971549988], "target_probs": 0.9986810088157654}}
+
+
+{"result": {"time": "2021-02-11 12:01:47.376237", "n_pass": [20, 2, 2], "n_token": 36, "loss": [0.0013173482147976756, 0.0013184890849515796], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns the degrees of freedom.'", "#NEWLINE#", "df", "=", "self", ".", "_rolling_rank", "(", ")", "#NEWLINE#", "if", "df", ".", "_time_effects", ":", "#NEWLINE#", "#INDENT#", "df", "+=", "self", ".", "_window_time_obs", "#NEWLINE#", "#UNINDENT#", "return", "df", "[", "self", ".", "_valid_indices", "]"]}}
+{"position": {"error_location": 16, "repair_targets": [0, 9, 24, 32], "repair_candidates": [0, 9, 24, 32, 7, 16, 22, 30]}}
+{"prediction": {"error_location": 0.998683512210846, "repair_targets": [0.003154512494802475, 0.1974133551120758, 0.4598413407802582, 0.33827313780784607], "repair_candidates": [0.003154512494802475, 0.0012480919249355793, 0.1974133551120758, 4.889787669526413e-05, 1.2207274266984314e-05, 0.4598413407802582, 8.452755537291523e-06, 0.33827313780784607], "target_probs": 0.9986823797225952}}
+
+
+{"result": {"time": "2021-02-11 12:01:47.431391", "n_pass": [22, 3, 3], "n_token": 31, "loss": [0.3562614917755127, 0.12926192581653595], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns the degrees of freedom.'", "#NEWLINE#", "df", "=", "self", "if", "df", ".", "_time_effects", ":", "#NEWLINE#", "#INDENT#", "df", "+=", "self", ".", "_window_time_obs", "#NEWLINE#", "#UNINDENT#", "return", "df", "[", "self", ".", "_valid_indices", "]"]}}
+{"position": {"error_location": 11, "repair_targets": [0, 9, 19, 27], "repair_candidates": [0, 9, 19, 27, 7, 11, 17, 25]}}
+{"prediction": {"error_location": 0.7002894878387451, "repair_targets": [0.12846767902374268, 0.1525031328201294, 0.23268280923366547, 0.36509013175964355], "repair_candidates": [0.12846767902374268, 0.08703980594873428, 0.1525031328201294, 0.015094765461981297, 0.012016641907393932, 0.23268280923366547, 0.007105047814548016, 0.36509013175964355], "target_probs": 0.8787437677383423}}
+
+
+{"result": {"time": "2021-02-11 12:01:47.598060", "n_pass": [46, 6, 4], "n_token": 28, "loss": [0.4423213601112366, 0.26760780811309814], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#NEWLINE#", "#INDENT#", "'Returns the degrees of freedom.'", "#NEWLINE#", "df", "=", "self", "if", "df", ".", "_time_effects", ":", "#NEWLINE#", "#INDENT#", "df", "+=", "self", ".", "_window_time_obs", "df", "[", "self", ".", "_valid_indices", "]"]}}
+{"position": {"error_location": 11, "repair_targets": [0, 9, 19, 24], "repair_candidates": [0, 9, 19, 24, 7, 11, 17, 22]}}
+{"prediction": {"error_location": 0.6425431966781616, "repair_targets": [0.11299674212932587, 0.032255854457616806, 0.398600697517395, 0.22135455906391144], "repair_candidates": [0.11299674212932587, 0.1176149845123291, 0.032255854457616806, 0.04117349162697792, 0.0032396891620010138, 0.398600697517395, 0.07276397198438644, 0.22135455906391144], "target_probs": 0.765207827091217}}
+
+
+{"result": {"time": "2021-02-11 12:01:47.711964", "n_pass": [50, 8, 5], "n_token": 26, "loss": [0.6097809076309204, 0.5715906023979187], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#INDENT#", "'Returns the degrees of freedom.'", "#NEWLINE#", "df", "=", "self", "if", "df", ".", "_time_effects", ":", "#NEWLINE#", "#INDENT#", "df", "+=", "self", ".", "_window_time_obs", "df", "[", "self", ".", "_valid_indices", "]"]}}
+{"position": {"error_location": 9, "repair_targets": [0, 7, 17, 22], "repair_candidates": [0, 7, 17, 22, 5, 9, 15, 20]}}
+{"prediction": {"error_location": 0.5434699058532715, "repair_targets": [0.07900021970272064, 0.05592004954814911, 0.26821568608283997, 0.16149067878723145], "repair_candidates": [0.07900021970272064, 0.33395397663116455, 0.05592004954814911, 0.06002328544855118, 0.0026896020863205194, 0.26821568608283997, 0.03870652988553047, 0.16149067878723145], "target_probs": 0.5646266341209412}}
+
+
+{"result": {"time": "2021-02-11 12:01:47.766553", "n_pass": [51, 9, 6], "n_token": 24, "loss": [0.6665362119674683, 0.5849000215530396], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "df", "=", "self", "if", "df", ".", "_time_effects", ":", "#NEWLINE#", "#INDENT#", "df", "+=", "self", ".", "_window_time_obs", "df", "[", "self", ".", "_valid_indices", "]"]}}
+{"position": {"error_location": 7, "repair_targets": [0, 5, 15, 20], "repair_candidates": [0, 5, 15, 20, 3, 7, 13, 18]}}
+{"prediction": {"error_location": 0.5134841203689575, "repair_targets": [0.016101134940981865, 0.07345862686634064, 0.3026382327079773, 0.16496355831623077], "repair_candidates": [0.016101134940981865, 0.4296310842037201, 0.07345862686634064, 0.011891217902302742, 0.0006400650017894804, 0.3026382327079773, 0.0006760163814760745, 0.16496355831623077], "target_probs": 0.5571615695953369}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ')', '#NEWLINE#', 'df', '=', 'self', 'if', 'df', '.', '_time_effects', ':', '#NEWLINE#', '#INDENT#', 'df', '+=', 'self', '.', '_window_time_obs', 'df', '[', 'self', '.', '_valid_indices', ']']

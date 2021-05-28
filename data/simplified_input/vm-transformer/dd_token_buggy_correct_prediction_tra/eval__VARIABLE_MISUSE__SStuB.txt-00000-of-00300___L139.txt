@@ -1,0 +1,85 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "(", "reboot", "=", "dict", "(", "type", "=", "'NOT_A_TYPE'", ")", ")", "#NEWLINE#", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", ".", "req", ",", "FAKE_UUID", ",", "body", "=", "body", ")"], "error_location": [29], "repair_targets": [2, 21, 25, 35], "repair_candidates": [2, 21, 25, 35, 7, 29, 41, 43], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "openstack/nova/nova/tests/unit/api/openstack/compute/test_server_actions.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 139, "results": {"model": "transformer", "prob": {"loc": [[0.005068573169410229, 3.3413261490977675e-08, 4.034970046973285e-08, 6.520429196577027e-10, 6.695713983262408e-10, 8.765648207287313e-10, 4.838580092147993e-10, 1.7929608020494925e-08, 1.0638224745562752e-09, 9.178527382580626e-10, 4.132743036677766e-09, 6.039516664557709e-10, 3.0511495552332235e-09, 4.0035658122050677e-10, 1.2574744800986082e-08, 1.0647435016997164e-10, 2.3553181627278263e-09, 4.770452832758565e-08, 7.652961042659001e-10, 5.030549865558953e-10, 1.3573128732069506e-10, 6.765588644874754e-10, 5.415821680010424e-10, 3.341117660315973e-11, 6.817234554645779e-10, 0.0005940346163697541, 5.039060724243427e-09, 1.3427771394791677e-10, 7.999884088505382e-10, 0.9940389394760132, 1.385186276792183e-08, 9.761289554433006e-10, 1.4987893592888213e-08, 2.0471783990227976e-10, 6.413648501180091e-10, 0.0002950105699710548, 2.8629185688799907e-09, 6.861427398474618e-11, 2.39830183490497e-10, 1.063376164900376e-09, 9.57378135102438e-11, 1.3445667912392878e-09, 2.611926230855488e-10, 3.3640342280705227e-06, 4.079742377260942e-10]], "pointer": [[0.0, 0.0, 0.13606871664524078, 0.0, 0.0, 0.0, 0.0, 0.00028307706816121936, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0006506176432594657, 0.0, 0.0, 0.0, 0.18107077479362488, 0.0, 0.0, 0.0, 7.00657847119146e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6819192171096802, 0.0, 0.0, 0.0, 0.0, 0.0, 2.2597242832489428e-07, 0.0, 4.2262368538104056e-07, 0.0]], "target": [0.9997093081474304]}, "loss": [0.005979032255709171, 0.00029073411133140326], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:18:42.617450", "n_pass": [1, 1, 1], "n_token": 45, "loss": [0.005979032255709171, 0.00029073411133140326], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "(", "reboot", "=", "dict", "(", "type", "=", "'NOT_A_TYPE'", ")", ")", "#NEWLINE#", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", ".", "req", ",", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [2, 21, 25, 35], "repair_candidates": [2, 21, 25, 35, 7, 29, 41, 43]}}
+{"prediction": {"error_location": 0.9940389394760132, "repair_targets": [0.13606871664524078, 0.0006506176432594657, 0.18107077479362488, 0.6819192171096802], "repair_candidates": [0.13606871664524078, 0.00028307706816121936, 0.0006506176432594657, 0.18107077479362488, 7.00657847119146e-06, 0.6819192171096802, 2.2597242832489428e-07, 4.2262368538104056e-07], "target_probs": 0.9997093081474304}}
+
+
+{"result": {"time": "2021-02-11 11:18:42.673374", "n_pass": [22, 2, 2], "n_token": 40, "loss": [0.009303313679993153, 0.0008766916580498219], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "type", "=", "'NOT_A_TYPE'", ")", ")", "#NEWLINE#", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", ".", "req", ",", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [2, 16, 20, 30], "repair_candidates": [2, 16, 20, 30, 7, 24, 36, 38]}}
+{"prediction": {"error_location": 0.9907397031784058, "repair_targets": [0.13004502654075623, 0.0003360160335432738, 0.09887844324111938, 0.7698642611503601], "repair_candidates": [0.13004502654075623, 0.0008521749987266958, 0.0003360160335432738, 0.09887844324111938, 2.291304372192826e-05, 0.7698642611503601, 4.514201918937033e-07, 6.828440746176057e-07], "target_probs": 0.9991236925125122}}
+
+
+{"result": {"time": "2021-02-11 11:18:42.728429", "n_pass": [23, 3, 3], "n_token": 34, "loss": [7.271502545336261e-05, 1.1920935776288388e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", ".", "controller", ".", "_action_reboot", ",", "self", ".", "req", ",", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 10, 14, 24], "repair_candidates": [2, 10, 14, 24, 7, 18, 30, 32]}}
+{"prediction": {"error_location": 0.999927282333374, "repair_targets": [0.10692048072814941, 0.02548019029200077, 0.04195842146873474, 0.8256397247314453], "repair_candidates": [0.10692048072814941, 1.1238274737479514e-06, 0.02548019029200077, 0.04195842146873474, 4.0184481520100235e-08, 0.8256397247314453, 1.4725972441453905e-08, 2.9325779138389407e-08], "target_probs": 0.9999988079071045}}
+
+
+{"result": {"time": "2021-02-11 11:18:42.783985", "n_pass": [45, 4, 4], "n_token": 31, "loss": [0.11190535873174667, 0.0008864157716743648], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", "_action_reboot", ",", "self", ".", "req", ",", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 10, 14, 21], "repair_candidates": [2, 10, 14, 21, 7, 18, 27, 29]}}
+{"prediction": {"error_location": 0.8941289782524109, "repair_targets": [0.7682483792304993, 0.17770662903785706, 0.031736478209495544, 0.0214224886149168], "repair_candidates": [0.7682483792304993, 0.0003963070048484951, 0.17770662903785706, 0.031736478209495544, 6.845373718533665e-05, 0.0214224886149168, 0.00019315823737997562, 0.00022819064906798303], "target_probs": 0.9991139769554138}}
+
+
+{"result": {"time": "2021-02-11 11:18:42.839263", "n_pass": [47, 5, 5], "n_token": 28, "loss": [0.3788721263408661, 0.0046998863108456135], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", "_action_reboot", ",", "self", "FAKE_UUID", ",", "body", "=", "body", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 10, 14, 21], "repair_candidates": [2, 10, 14, 21, 7, 18, 24, 26]}}
+{"prediction": {"error_location": 0.684633195400238, "repair_targets": [0.8307865262031555, 0.1197342500090599, 0.03861473128199577, 0.006175650283694267], "repair_candidates": [0.8307865262031555, 0.0020657440181821585, 0.1197342500090599, 0.03861473128199577, 0.0006605109083466232, 0.006175650283694267, 0.0007862161728553474, 0.001176278106868267], "target_probs": 0.9953111410140991}}
+
+
+{"result": {"time": "2021-02-11 11:18:43.006490", "n_pass": [79, 8, 6], "n_token": 26, "loss": [0.1837150752544403, 0.00020839954959228635], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", "_action_reboot", ",", "self", "body", "=", "body", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 10, 14, 21], "repair_candidates": [2, 10, 14, 21, 7, 18, 22, 24]}}
+{"prediction": {"error_location": 0.8321729302406311, "repair_targets": [0.1499222218990326, 0.035754866898059845, 0.0071032000705599785, 0.8070113658905029], "repair_candidates": [0.1499222218990326, 0.00010336469858884811, 0.035754866898059845, 0.0071032000705599785, 2.5074303266592324e-05, 0.8070113658905029, 4.9174770538229495e-05, 3.0707058613188565e-05], "target_probs": 0.9997916221618652}}
+
+
+{"result": {"time": "2021-02-11 11:18:43.061942", "n_pass": [82, 9, 7], "n_token": 25, "loss": [0.32914215326309204, 0.0002222308103227988], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", ".", "assertRaises", "(", "self", ".", "validation_error", ",", "body", "_action_reboot", ",", "self", "body", "=", "body", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [1, 9, 13, 20], "repair_candidates": [1, 9, 13, 20, 6, 17, 21, 23]}}
+{"prediction": {"error_location": 0.7195407748222351, "repair_targets": [0.2674674987792969, 0.01609427109360695, 0.0034759375266730785, 0.7127401232719421], "repair_candidates": [0.2674674987792969, 0.00019152145250700414, 0.01609427109360695, 0.0034759375266730785, 8.48414856591262e-06, 0.7127401232719421, 1.6211557522183284e-05, 5.838425295223715e-06], "target_probs": 0.9997777938842773}}
+
+
+{"result": {"time": "2021-02-11 11:18:43.498803", "n_pass": [93, 17, 8], "n_token": 24, "loss": [0.3621930480003357, 0.00024691291037015617], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", "assertRaises", "(", "self", ".", "validation_error", ",", "body", "_action_reboot", ",", "self", "body", "=", "body", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [1, 9, 12, 19], "repair_candidates": [1, 9, 12, 19, 6, 16, 20, 22]}}
+{"prediction": {"error_location": 0.6961480379104614, "repair_targets": [0.502851665019989, 0.006225555669516325, 0.0032962157856673002, 0.48737964034080505], "repair_candidates": [0.502851665019989, 0.00022804332547821105, 0.006225555669516325, 0.0032962157856673002, 9.192512152367271e-06, 0.48737964034080505, 5.897053597436752e-06, 3.7926527056697523e-06], "target_probs": 0.9997531175613403}}
+
+
+{"result": {"time": "2021-02-11 11:18:43.556165", "n_pass": [94, 18, 9], "n_token": 22, "loss": [0.1455758810043335, 0.013861378654837608], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", "self", ".", "validation_error", ",", "body", "_action_reboot", ",", "self", "body", "=", "body", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [1, 9, 10, 17], "repair_candidates": [1, 9, 10, 17, 6, 14, 18, 20]}}
+{"prediction": {"error_location": 0.8645243644714355, "repair_targets": [0.8208463191986084, 0.008888297714293003, 0.01573777198791504, 0.1407618671655655], "repair_candidates": [0.8208463191986084, 0.005574360024183989, 0.008888297714293003, 0.01573777198791504, 0.007976274937391281, 0.1407618671655655, 0.00018956998246721923, 2.5549928977852687e-05], "target_probs": 0.9862342476844788}}
+
+
+{"result": {"time": "2021-02-11 11:18:44.101573", "n_pass": [125, 28, 10], "n_token": 21, "loss": [0.0634509027004242, 0.01047156099230051], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", "self", ".", "validation_error", ",", "body", ",", "self", "body", "=", "body", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [1, 9, 10, 16], "repair_candidates": [1, 9, 10, 16, 6, 14, 17, 19]}}
+{"prediction": {"error_location": 0.9385203123092651, "repair_targets": [0.9587680697441101, 0.006311782635748386, 0.011442510411143303, 0.013060680590569973], "repair_candidates": [0.9587680697441101, 0.0039931852370500565, 0.006311782635748386, 0.011442510411143303, 0.006258800625801086, 0.013060680590569973, 0.00011573135998332873, 4.920961146126501e-05], "target_probs": 0.9895830750465393}}
+
+
+{"result": {"time": "2021-02-11 11:18:44.213364", "n_pass": [129, 30, 11], "n_token": 20, "loss": [0.5214200019836426, 0.010069110430777073], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "dict", "self", "self", ".", "validation_error", ",", "body", ",", "self", "body", "body", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [1, 9, 10, 16], "repair_candidates": [1, 9, 10, 16, 6, 14, 17, 18]}}
+{"prediction": {"error_location": 0.5936769843101501, "repair_targets": [0.9636419415473938, 0.006711575668305159, 0.014104712754487991, 0.00552322156727314], "repair_candidates": [0.9636419415473938, 0.0037295387592166662, 0.006711575668305159, 0.014104712754487991, 0.005036097019910812, 0.00552322156727314, 0.0010133200557902455, 0.0002396203053649515], "target_probs": 0.9899814128875732}}
+
+
+{"result": {"time": "2021-02-11 11:18:44.650531", "n_pass": [140, 38, 12], "n_token": 19, "loss": [0.9408119320869446, 0.015327375382184982], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_reboot_incorrect_type(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "body", "=", "self", "self", ".", "validation_error", ",", "body", ",", "self", "body", "body", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [1, 8, 9, 15], "repair_candidates": [1, 8, 9, 15, 6, 13, 16, 17]}}
+{"prediction": {"error_location": 0.39031079411506653, "repair_targets": [0.9739990830421448, 0.0035620862618088722, 0.004611895885318518, 0.002616401296108961], "repair_candidates": [0.9739990830421448, 0.004093575291335583, 0.0035620862618088722, 0.004611895885318518, 0.008301532827317715, 0.002616401296108961, 0.002422645688056946, 0.0003928240039385855], "target_probs": 0.9847894906997681}}
+
+
+
+
+Minimal simplified tokens:
+
+['def test_reboot_incorrect_type(', 'self', ')', ':', '#NEWLINE#', '#INDENT#', 'body', '=', 'self', 'self', '.', 'validation_error', ',', 'body', ',', 'self', 'body', 'body', ')']

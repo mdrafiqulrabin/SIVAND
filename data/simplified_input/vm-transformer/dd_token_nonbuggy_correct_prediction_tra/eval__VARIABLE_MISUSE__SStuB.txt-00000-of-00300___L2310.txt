@@ -1,0 +1,187 @@
+
+Original sample:
+
+{"has_bug": false, "bug_kind": 0, "bug_kind_name": "NONE", "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Given a JSON-RPC method in:  [interface].[function] notation, returns a tuple of the interface\\n    name and function.\\n\\n    For example, unpack_method(\"MyService.LoadUser\") would return: (\"MyService\", \"LoadUser\")\\n\\n    :Parameters:\\n      method\\n        String method name\\n    '", "#NEWLINE#", "pos", "=", "method", ".", "find", "(", "'.'", ")", "#NEWLINE#", "if", "(", "pos", "==", "(", "-", "1", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "RpcException", "(", "ERR_METHOD_NOT_FOUND", ",", "(", "'Method not found: %s'", "%", "method", ")", ")", "#NEWLINE#", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", ")", ":", "]", "#NEWLINE#", "return", "(", "iface_name", ",", "func_name", ")"], "error_location": [0], "repair_targets": [], "repair_candidates": [43, 65, 2, 11, 38, 45, 53, 51, 67, 9, 20, 48, 56], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "StackHut/stackhut/stackhut_toolkit/common/barrister/runtime.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 2310, "results": {"model": "transformer", "prob": {"loc": [[0.7086635828018188, 7.834810276108328e-06, 3.760125991902896e-06, 2.774062579646852e-07, 3.717203185260587e-07, 3.6190533592161955e-07, 3.58662191501935e-07, 5.838224979015649e-07, 4.160625621807412e-07, 6.328324616333703e-06, 3.6114579415880144e-07, 1.40103766170796e-05, 2.516073323022283e-07, 9.05215458146813e-08, 7.252142495417502e-07, 7.6234287007537205e-06, 1.1971675348831923e-06, 1.300088342759409e-06, 3.75896917148566e-07, 7.069141361171205e-08, 0.006993831135332584, 3.331258540129056e-06, 1.3811685676046181e-05, 1.3598507848655572e-06, 8.262197297881357e-06, 3.3228579354727117e-07, 2.1449440623655391e-07, 6.596561661353917e-07, 4.5516645741372486e-07, 2.9910526677667804e-07, 1.4769221401422783e-08, 2.9058315931251855e-07, 4.7150874138424115e-07, 8.574288017371146e-07, 4.5898622147433343e-07, 3.5913728879677365e-07, 2.456690708640963e-06, 8.597066312177049e-07, 0.11763547360897064, 8.131602271532756e-07, 6.107557624090987e-07, 8.468643386549957e-07, 7.918765732028987e-07, 7.218212886073161e-06, 1.0403180539242385e-07, 0.020561814308166504, 2.2294291284197243e-06, 1.1432030078140087e-06, 0.07437048107385635, 8.056795763877744e-07, 1.7405102425982477e-06, 4.035305755678564e-05, 3.302644984159997e-07, 0.028333144262433052, 1.512534026915091e-07, 6.118470992078073e-07, 0.03917819261550903, 4.965082780472585e-07, 1.9697095012816135e-06, 2.943344554751093e-07, 7.734553264526767e-07, 8.130942887873971e-07, 7.154363856898271e-07, 3.302331208487885e-08, 1.4253988922519056e-07, 0.0018728513969108462, 3.118292966064473e-07, 0.002246154472231865, 3.6437768358155154e-07]], "pointer": [[0.0, 0.0, 0.15094731748104095, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.20935943722724915, 0.0, 0.07307484745979309, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.05445650964975357, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2700849771499634, 0.0, 0.0, 0.0, 0.0, 0.15365974605083466, 0.0, 0.02567799761891365, 0.0, 0.0, 0.017436867579817772, 0.0, 0.0, 0.02087184228003025, 0.0, 0.005538647994399071, 0.0, 0.0, 0.01828988455235958, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00043653964530676603, 0.0, 0.00016536578186787665, 0.0]], "target": [0.0]}, "loss": [0.3443743884563446, 0.0], "acc": [1.0, 0.0, 0.0, 0.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 15:53:32.604144", "n_pass": [1, 1, 1], "n_token": 69, "loss": [0.3443743884563446, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Given a JSON-RPC method in:  [interface].[function] notation, returns a tuple of the interface\\n    name and function.\\n\\n    For example, unpack_method(\"MyService.LoadUser\") would return: (\"MyService\", \"LoadUser\")\\n\\n    :Parameters:\\n      method\\n        String method name\\n    '", "#NEWLINE#", "pos", "=", "method", ".", "find", "(", "'.'", ")", "#NEWLINE#", "if", "(", "pos", "==", "(", "-", "1", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "RpcException", "(", "ERR_METHOD_NOT_FOUND", ",", "(", "'Method not found: %s'", "%", "method", ")", ")", "#NEWLINE#", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", ")", ":", "]", "#NEWLINE#", "return", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [43, 65, 2, 11, 38, 45, 53, 51, 67, 9, 20, 48, 56]}}
+{"prediction": {"error_location": 0.7086635828018188, "repair_targets": [], "repair_candidates": [0.15094731748104095, 0.20935943722724915, 0.07307484745979309, 0.05445650964975357, 0.2700849771499634, 0.15365974605083466, 0.02567799761891365, 0.017436867579817772, 0.02087184228003025, 0.005538647994399071, 0.01828988455235958, 0.00043653964530676603, 0.00016536578186787665], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:32.661885", "n_pass": [23, 2, 2], "n_token": 60, "loss": [0.28725963830947876, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Given a JSON-RPC method in:  [interface].[function] notation, returns a tuple of the interface\\n    name and function.\\n\\n    For example, unpack_method(\"MyService.LoadUser\") would return: (\"MyService\", \"LoadUser\")\\n\\n    :Parameters:\\n      method\\n        String method name\\n    '", "#NEWLINE#", "pos", "=", "method", ".", "find", "(", "'.'", ")", "#NEWLINE#", "if", "(", "pos", "==", "(", "-", "ERR_METHOD_NOT_FOUND", ",", "(", "'Method not found: %s'", "%", "method", ")", ")", "#NEWLINE#", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", ")", ":", "]", "#NEWLINE#", "return", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [34, 56, 2, 11, 29, 36, 44, 42, 58, 9, 20, 39, 47]}}
+{"prediction": {"error_location": 0.7503167986869812, "repair_targets": [], "repair_candidates": [0.22924774885177612, 0.2404879480600357, 0.05796243995428085, 0.051101554185152054, 0.12825573980808258, 0.18253514170646667, 0.02205689810216427, 0.010514471679925919, 0.06956315785646439, 0.004405144602060318, 0.002992421155795455, 0.000650442554615438, 0.00022687451564706862], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:32.720334", "n_pass": [45, 3, 3], "n_token": 56, "loss": [0.22702500224113464, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Given a JSON-RPC method in:  [interface].[function] notation, returns a tuple of the interface\\n    name and function.\\n\\n    For example, unpack_method(\"MyService.LoadUser\") would return: (\"MyService\", \"LoadUser\")\\n\\n    :Parameters:\\n      method\\n        String method name\\n    '", "#NEWLINE#", "pos", "=", "method", ".", "find", "(", "'.'", ")", "#NEWLINE#", "if", "(", "pos", "==", "(", "-", "%", "method", ")", ")", "#NEWLINE#", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", ")", ":", "]", "#NEWLINE#", "return", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [30, 52, 2, 11, 25, 32, 40, 38, 54, 9, 20, 35, 43]}}
+{"prediction": {"error_location": 0.7969009876251221, "repair_targets": [], "repair_candidates": [0.44429314136505127, 0.13830341398715973, 0.05599113181233406, 0.01165019441395998, 0.12260495871305466, 0.13195399940013885, 0.019520891830325127, 0.015235447324812412, 0.04722905531525612, 0.010742011480033398, 0.0016067231772467494, 0.0006786367739550769, 0.00019040508777834475], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:32.776638", "n_pass": [51, 4, 4], "n_token": 51, "loss": [0.2539195716381073, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Given a JSON-RPC method in:  [interface].[function] notation, returns a tuple of the interface\\n    name and function.\\n\\n    For example, unpack_method(\"MyService.LoadUser\") would return: (\"MyService\", \"LoadUser\")\\n\\n    :Parameters:\\n      method\\n        String method name\\n    '", "#NEWLINE#", "pos", "=", "method", ".", "find", "(", "'.'", ")", "#NEWLINE#", "if", "(", "pos", "==", "(", "-", "%", "method", ")", ")", "#NEWLINE#", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [30, 47, 2, 11, 25, 32, 40, 38, 49, 9, 20, 35, 43]}}
+{"prediction": {"error_location": 0.7757542133331299, "repair_targets": [], "repair_candidates": [0.2132205367088318, 0.07402428239583969, 0.040283817797899246, 0.009370229206979275, 0.10963046550750732, 0.4817841649055481, 0.022479278966784477, 0.011599668301641941, 0.02724425494670868, 0.005426795221865177, 0.0010578236542642117, 0.0008454743656329811, 0.003033251268789172], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:32.832136", "n_pass": [54, 5, 5], "n_token": 47, "loss": [0.2343863993883133, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", ".", "find", "(", "'.'", ")", "#NEWLINE#", "if", "(", "pos", "==", "(", "-", "%", "method", ")", ")", "#NEWLINE#", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [26, 43, 2, 7, 21, 28, 36, 34, 45, 5, 16, 31, 39]}}
+{"prediction": {"error_location": 0.7910560965538025, "repair_targets": [], "repair_candidates": [0.21126052737236023, 0.24762755632400513, 0.026849638670682907, 0.042961519211530685, 0.04929754137992859, 0.2714889347553253, 0.0727321207523346, 0.029756085947155952, 0.02875148504972458, 0.013893441297113895, 0.00248163309879601, 0.000854851386975497, 0.002044655615463853], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:32.887310", "n_pass": [56, 6, 6], "n_token": 43, "loss": [0.2899281680583954, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", ")", "#NEWLINE#", "if", "(", "pos", "==", "(", "-", "%", "method", ")", ")", "#NEWLINE#", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [22, 39, 2, 7, 17, 24, 32, 30, 41, 5, 12, 27, 35]}}
+{"prediction": {"error_location": 0.7483173608779907, "repair_targets": [], "repair_candidates": [0.29207319021224976, 0.3937067687511444, 0.007022712379693985, 0.030566835775971413, 0.014916236512362957, 0.1773526817560196, 0.027409173548221588, 0.0262278001755476, 0.01850072480738163, 0.004192341584712267, 0.003810009453445673, 0.0014641622547060251, 0.00275736628100276], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:32.942653", "n_pass": [57, 7, 7], "n_token": 39, "loss": [0.43366605043411255, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "(", "-", "%", "method", ")", ")", "#NEWLINE#", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [18, 35, 2, 7, 13, 20, 28, 26, 37, 5, 8, 23, 31]}}
+{"prediction": {"error_location": 0.6481286287307739, "repair_targets": [], "repair_candidates": [0.3514184355735779, 0.24988475441932678, 0.29217714071273804, 0.009395324625074863, 0.0006778364186175168, 0.07641972601413727, 0.003443812020123005, 0.00454079220071435, 0.009435749612748623, 0.00030218804022297263, 0.001846024300903082, 0.00028558901976794004, 0.0001725961919873953], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:32.999016", "n_pass": [86, 8, 8], "n_token": 37, "loss": [0.32654741406440735, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", ")", ")", "#NEWLINE#", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [16, 33, 2, 7, 11, 18, 26, 24, 35, 5, 8, 21, 29]}}
+{"prediction": {"error_location": 0.7214100956916809, "repair_targets": [], "repair_candidates": [0.2471935898065567, 0.3276751935482025, 0.22568131983280182, 0.020556170493364334, 0.0017367878463119268, 0.1451629102230072, 0.0024814289063215256, 0.009577087126672268, 0.015322661027312279, 0.000516971223987639, 0.0032869514543563128, 0.00041625346057116985, 0.0003927022044081241], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.056960", "n_pass": [88, 9, 9], "n_token": 35, "loss": [0.3889504373073578, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#NEWLINE#", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [14, 31, 2, 7, 11, 16, 24, 22, 33, 5, 8, 19, 27]}}
+{"prediction": {"error_location": 0.677767813205719, "repair_targets": [], "repair_candidates": [0.30423063039779663, 0.2542458772659302, 0.18099340796470642, 0.028492776677012444, 0.0008843446848914027, 0.18969988822937012, 0.003334491513669491, 0.01802520640194416, 0.01438069436699152, 0.0006983257480897009, 0.0042282226495444775, 0.0004446603124961257, 0.0003414535312913358], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.222178", "n_pass": [137, 12, 10], "n_token": 34, "loss": [0.2521742880344391, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "=", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [13, 30, 2, 7, 11, 15, 23, 21, 32, 5, 8, 18, 26]}}
+{"prediction": {"error_location": 0.7771092057228088, "repair_targets": [], "repair_candidates": [0.20031918585300446, 0.22246204316616058, 0.2786243259906769, 0.06650935858488083, 0.0015605123480781913, 0.19908609986305237, 0.0019112513400614262, 0.012539960443973541, 0.013766318559646606, 0.0003974749124608934, 0.0024760132655501366, 0.00011221275053685531, 0.00023524761490989476], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.278068", "n_pass": [139, 13, 11], "n_token": 33, "loss": [0.970589816570282, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "method", "[", ":", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [13, 29, 2, 7, 11, 14, 22, 20, 31, 5, 8, 17, 25]}}
+{"prediction": {"error_location": 0.3788595199584961, "repair_targets": [], "repair_candidates": [0.5883690118789673, 0.021175624802708626, 0.27689889073371887, 0.008058714680373669, 0.0005003748228773475, 0.013707573525607586, 0.08721320331096649, 0.00047947964048944414, 0.002676150994375348, 0.0003171198768541217, 0.0005530592170543969, 2.671176116564311e-05, 2.4078133719740435e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.390613", "n_pass": [142, 15, 12], "n_token": 32, "loss": [0.7024581432342529, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "#NEWLINE#", "func_name", "=", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [13, 28, 2, 7, 11, 14, 21, 19, 30, 5, 8, 16, 24]}}
+{"prediction": {"error_location": 0.4953661561012268, "repair_targets": [], "repair_candidates": [0.49882936477661133, 0.06675984710454941, 0.2746824622154236, 0.02888505905866623, 0.0011052641784772277, 0.03356628865003586, 0.08766724914312363, 0.0005594039685092866, 0.005923247430473566, 0.0005148690543137491, 0.0013662533601745963, 9.53306516748853e-05, 4.536780033959076e-05], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.500424", "n_pass": [145, 17, 13], "n_token": 31, "loss": [0.23994731903076172, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "func_name", "=", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [13, 27, 2, 7, 11, 14, 20, 18, 29, 5, 8, 16, 23]}}
+{"prediction": {"error_location": 0.7866693139076233, "repair_targets": [], "repair_candidates": [0.26451918482780457, 0.11419451236724854, 0.4035510718822479, 0.1410786509513855, 0.0066816546022892, 0.0199687872081995, 0.00680966442450881, 0.0017522146226838231, 0.025550028309226036, 0.0018281303346157074, 0.013190736062824726, 0.00026199306012131274, 0.0006133161950856447], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.555242", "n_pass": [147, 18, 14], "n_token": 30, "loss": [0.24151453375816345, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "func_name", "method", "[", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [13, 26, 2, 7, 11, 14, 19, 18, 28, 5, 8, 16, 22]}}
+{"prediction": {"error_location": 0.7854374647140503, "repair_targets": [], "repair_candidates": [0.21291783452033997, 0.23466365039348602, 0.20891550183296204, 0.18439000844955444, 0.008694414980709553, 0.04757138714194298, 0.008664012886583805, 0.0254039466381073, 0.015079153701663017, 0.01820562779903412, 0.03449474647641182, 0.00043071957770735025, 0.0005689457757398486], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.610486", "n_pass": [149, 19, 15], "n_token": 29, "loss": [0.3088211417198181, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "func_name", "method", "(", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [13, 25, 2, 7, 11, 14, 19, 18, 27, 5, 8, 16, 21]}}
+{"prediction": {"error_location": 0.7343121767044067, "repair_targets": [], "repair_candidates": [0.3587723672389984, 0.07160460203886032, 0.3969455659389496, 0.06445745378732681, 0.021878834813833237, 0.04389724135398865, 0.03533567115664482, 0.0034244961570948362, 0.00020549386681523174, 0.0002906396985054016, 0.0013976753689348698, 0.00011893820919794962, 0.0016709982883185148], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.668202", "n_pass": [150, 20, 16], "n_token": 28, "loss": [0.5066685676574707, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "func_name", "method", "pos", "+", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [13, 24, 2, 7, 11, 14, 19, 18, 26, 5, 8, 16, 20]}}
+{"prediction": {"error_location": 0.6024993658065796, "repair_targets": [], "repair_candidates": [0.19980761408805847, 0.27000412344932556, 0.1728547364473343, 0.2854319214820862, 0.004200146999210119, 0.0405256412923336, 0.00721443397924304, 0.004712940193712711, 0.0015859968261793256, 0.0009063379839062691, 0.012064263224601746, 0.00018838729010894895, 0.0005034296773374081], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.723415", "n_pass": [152, 21, 17], "n_token": 27, "loss": [0.7785055041313171, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "func_name", "method", "pos", "1", "(", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [13, 23, 2, 7, 11, 14, 19, 18, 25, 5, 8, 16, 20]}}
+{"prediction": {"error_location": 0.4590916037559509, "repair_targets": [], "repair_candidates": [0.17704398930072784, 0.3925531506538391, 0.08797255903482437, 0.2958931624889374, 0.0032194724772125483, 0.027139300480484962, 0.0074236742220819, 0.005556803196668625, 0.0012798997340723872, 0.00014894876221660525, 0.0012783852871507406, 6.699795630993322e-05, 0.00042367985588498414], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.778842", "n_pass": [153, 22, 18], "n_token": 25, "loss": [0.8023144006729126, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def unpack_method(", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "func_name", "method", "pos", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [13, 21, 2, 7, 11, 14, 19, 18, 23, 5, 8, 16, 20]}}
+{"prediction": {"error_location": 0.4482901990413666, "repair_targets": [], "repair_candidates": [0.1604442000389099, 0.3096843361854553, 0.21675042808055878, 0.18728415668010712, 0.0027134637348353863, 0.08780167251825333, 0.017315637320280075, 0.003833983326330781, 0.0006842463626526296, 0.0008474359638057649, 0.005870476830750704, 0.004429922439157963, 0.002340026432648301], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:33.833967", "n_pass": [157, 23, 19], "n_token": 24, "loss": [1.1165577173233032, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", ")", "#NEWLINE#", "pos", "=", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "func_name", "method", "pos", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [12, 20, 1, 6, 10, 13, 18, 17, 22, 4, 7, 15, 19]}}
+{"prediction": {"error_location": 0.3274048864841461, "repair_targets": [], "repair_candidates": [0.34820395708084106, 0.44784408807754517, 0.0184810571372509, 0.05219601094722748, 0.05521749332547188, 0.04381859675049782, 0.010679883882403374, 0.007041021715849638, 0.0009722672402858734, 0.0009344777790829539, 0.00486728735268116, 0.001519236364401877, 0.008224577642977238], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:34.000911", "n_pass": [162, 26, 20], "n_token": 23, "loss": [1.240696907043457, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", ")", "#NEWLINE#", "pos", "method", "pos", "==", "%", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "func_name", "method", "pos", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [11, 19, 1, 5, 9, 12, 17, 16, 21, 4, 6, 14, 18]}}
+{"prediction": {"error_location": 0.2891826033592224, "repair_targets": [], "repair_candidates": [0.34105950593948364, 0.4986853003501892, 0.01874990575015545, 0.039790328592061996, 0.024051133543252945, 0.05720914155244827, 0.0034690801985561848, 0.0067132036201655865, 0.0002813554892782122, 0.0003035971021745354, 0.00742375198751688, 0.0006138424505479634, 0.0016497799661010504], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:34.055943", "n_pass": [165, 27, 21], "n_token": 22, "loss": [1.1119413375854492, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", ")", "#NEWLINE#", "pos", "method", "pos", "%", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "func_name", "method", "pos", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [10, 18, 1, 5, 8, 11, 16, 15, 20, 4, 6, 13, 17]}}
+{"prediction": {"error_location": 0.3289198577404022, "repair_targets": [], "repair_candidates": [0.3830147087574005, 0.377733051776886, 0.02386123687028885, 0.06622596085071564, 0.05734126269817352, 0.06342706084251404, 0.004463950637727976, 0.01292390190064907, 0.0004526883130893111, 0.00046017635031603277, 0.00802577007561922, 0.0006277607171796262, 0.0014424952678382397], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:34.110699", "n_pass": [166, 28, 22], "n_token": 21, "loss": [1.0979845523834229, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", ")", "#NEWLINE#", "pos", "method", "pos", "method", "#UNINDENT#", "iface_name", "method", "[", "pos", "]", "func_name", "method", "pos", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [9, 17, 1, 5, 7, 10, 15, 14, 19, 4, 6, 12, 16]}}
+{"prediction": {"error_location": 0.3335426151752472, "repair_targets": [], "repair_candidates": [0.31527599692344666, 0.2361447960138321, 0.05481284484267235, 0.066168874502182, 0.0633421391248703, 0.13186591863632202, 0.006885187234729528, 0.0951068252325058, 0.0013489247066900134, 0.0008535297820344567, 0.026784371584653854, 0.000706859165802598, 0.0007037012837827206], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:34.165462", "n_pass": [168, 29, 23], "n_token": 20, "loss": [1.158178448677063, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", ")", "#NEWLINE#", "pos", "method", "pos", "method", "iface_name", "method", "[", "pos", "]", "func_name", "method", "pos", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [8, 16, 1, 5, 7, 9, 14, 13, 18, 4, 6, 11, 15]}}
+{"prediction": {"error_location": 0.31405776739120483, "repair_targets": [], "repair_candidates": [0.1403069645166397, 0.31627315282821655, 0.1718180626630783, 0.08541429042816162, 0.00932781957089901, 0.20896483957767487, 0.006331135518848896, 0.023396598175168037, 0.0053733112290501595, 0.004643470514565706, 0.013955915346741676, 0.008705338463187218, 0.00548915658146143], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:34.220123", "n_pass": [171, 30, 24], "n_token": 19, "loss": [0.43045487999916077, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", ")", "#NEWLINE#", "pos", "method", "pos", "method", "iface_name", "method", "pos", "]", "func_name", "method", "pos", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [8, 15, 1, 5, 7, 9, 13, 12, 17, 4, 6, 10, 14]}}
+{"prediction": {"error_location": 0.6502131819725037, "repair_targets": [], "repair_candidates": [0.09327380359172821, 0.06523784250020981, 0.045176904648542404, 0.11697887629270554, 0.06209560111165047, 0.06218133494257927, 0.04748329892754555, 0.10242762416601181, 0.10411086678504944, 0.08840552717447281, 0.17652200162410736, 0.030011286959052086, 0.006095022428780794], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:34.275150", "n_pass": [173, 31, 25], "n_token": 18, "loss": [0.5013718008995056, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", ")", "#NEWLINE#", "pos", "method", "pos", "method", "iface_name", "method", "pos", "func_name", "method", "pos", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [8, 14, 1, 5, 7, 9, 12, 11, 16, 4, 6, 10, 13]}}
+{"prediction": {"error_location": 0.6056991815567017, "repair_targets": [], "repair_candidates": [0.1911582499742508, 0.08101882040500641, 0.0961618572473526, 0.1277872920036316, 0.09923332929611206, 0.0016634758794680238, 0.0010428401874378324, 0.03263530880212784, 0.007815806195139885, 0.05134103074669838, 0.2550307810306549, 0.05164192616939545, 0.003469318151473999], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:34.333125", "n_pass": [181, 32, 26], "n_token": 17, "loss": [0.26721683144569397, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", "#NEWLINE#", "pos", "method", "pos", "method", "iface_name", "method", "pos", "func_name", "method", "pos", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [7, 13, 1, 4, 6, 8, 11, 10, 15, 3, 5, 9, 12]}}
+{"prediction": {"error_location": 0.765507161617279, "repair_targets": [], "repair_candidates": [0.12469232827425003, 0.09502403438091278, 0.42187872529029846, 0.11947483569383621, 0.00837685540318489, 0.0017380041535943747, 0.03036293014883995, 0.049453604966402054, 0.02057761512696743, 0.00994155928492546, 0.09291139245033264, 0.012947753071784973, 0.012620347552001476], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:34.387554", "n_pass": [182, 33, 27], "n_token": 16, "loss": [0.041253190487623215, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", "pos", "method", "pos", "method", "iface_name", "method", "pos", "func_name", "method", "pos", "iface_name", ",", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [6, 12, 1, 3, 5, 7, 10, 9, 14, 2, 4, 8, 11]}}
+{"prediction": {"error_location": 0.9595862627029419, "repair_targets": [], "repair_candidates": [0.10449935495853424, 0.049818504601716995, 0.03251613304018974, 0.0791558101773262, 0.05602395907044411, 0.048097867518663406, 0.04953234642744064, 0.05084097757935524, 0.026573212817311287, 0.011918269097805023, 0.18658895790576935, 0.18164494633674622, 0.12278962135314941], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:34.442813", "n_pass": [202, 34, 28], "n_token": 15, "loss": [0.056988783180713654, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", "pos", "method", "pos", "method", "iface_name", "method", "pos", "func_name", "method", "pos", "iface_name", "func_name", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [6, 12, 1, 3, 5, 7, 10, 9, 13, 2, 4, 8, 11]}}
+{"prediction": {"error_location": 0.9446045756340027, "repair_targets": [], "repair_candidates": [0.09139236807823181, 0.037556782364845276, 0.05420760065317154, 0.05794932320713997, 0.04566819220781326, 0.04080764204263687, 0.05526942387223244, 0.0473843514919281, 0.05417662113904953, 0.01572619192302227, 0.1051986962556839, 0.1949416995048523, 0.19972115755081177], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:53:34.497442", "n_pass": [204, 35, 29], "n_token": 14, "loss": [0.0003305127320345491, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "method", "pos", "method", "pos", "method", "iface_name", "method", "pos", "func_name", "method", "pos", "iface_name", "func_name"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [6, 12, 1, 3, 5, 7, 10, 9, 13, 2, 4, 8, 11]}}
+{"prediction": {"error_location": 0.9996696710586548, "repair_targets": [], "repair_candidates": [0.0722154751420021, 0.09552419185638428, 0.042065709829330444, 0.08193421363830566, 0.06325214356184006, 0.07422614097595215, 0.07811728864908218, 0.10680545121431351, 0.07491911202669144, 0.07168979197740555, 0.09293655306100845, 0.08030785620212555, 0.066006138920784], "target_probs": 0.0}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'method', 'pos', 'method', 'pos', 'method', 'iface_name', 'method', 'pos', 'func_name', 'method', 'pos', 'iface_name', 'func_name']

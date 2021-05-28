@@ -1,0 +1,163 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "if", "self", ".", "allow_reauth", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "super", "(", "MultiTenantConnectionManager", ",", "self", ")", ".", "_init_connection", "(", ")", "#NEWLINE#", "#UNINDENT#", "except", "Exception", "as", "e", ":", "#NEWLINE#", "#INDENT#", "LOG", ".", "debug", "(", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", ".", "store", ".", "get_store_connection", "(", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"], "error_location": [68], "repair_targets": [2, 8, 23, 47, 56, 62], "repair_candidates": [34, 44, 68, 2, 8, 23, 47, 56, 62], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "openstack/glance_store/glance_store/_drivers/swift/connection_manager.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 432, "results": {"model": "transformer", "prob": {"loc": [[0.003850072156637907, 2.9749738672535386e-08, 1.0060368538233888e-07, 3.6090375132857844e-10, 8.176174182139562e-10, 8.925164496353943e-10, 6.603900759571957e-10, 1.9075982460314833e-10, 1.0588913937681355e-05, 9.224335739688172e-10, 1.6228281218833018e-10, 5.171472139409161e-10, 1.7984326527997752e-10, 1.40252670588481e-10, 5.563319943613365e-11, 1.0307324993519273e-09, 5.024357041527594e-10, 2.158205419933168e-10, 3.3697707818580724e-11, 1.4775963785851332e-10, 2.2929763643375622e-10, 6.242033556702609e-10, 1.3333346926547307e-10, 1.518724133120486e-07, 4.4636186413704593e-10, 7.002703417136047e-10, 1.1323895293680053e-10, 5.138320879893854e-09, 1.0053377019758614e-09, 3.423961669746234e-10, 4.1274794693180183e-10, 7.048088224159699e-10, 5.768404864880949e-09, 1.3043585767036348e-08, 1.880893485406432e-08, 5.926849566684211e-10, 1.3490933925552895e-09, 9.230142761218474e-10, 8.994894606928483e-09, 1.0243335069048953e-09, 2.4598825754118536e-10, 2.7326398921445616e-09, 7.744462848791045e-09, 2.8452489253538715e-09, 3.755274155992083e-05, 6.333408908432148e-09, 2.478789173920859e-09, 1.6099686035886407e-05, 1.959515216753971e-09, 2.550818445357095e-10, 6.279233133454909e-09, 6.798660479034879e-08, 1.8943730140108528e-08, 5.335136776807303e-09, 3.4063107889892308e-09, 6.107983008263318e-10, 4.632297532225493e-06, 1.738075128265848e-09, 4.797128250189076e-10, 7.0552874653628805e-09, 1.937560806242189e-10, 7.984493066715004e-09, 0.00012088174844393507, 1.2124981019212555e-08, 1.335409560709877e-09, 1.3997675907262419e-08, 1.257949078237175e-09, 2.141742116990031e-09, 0.9959596991539001, 2.52615723894678e-08, 1.4197666375892481e-09, 4.702713329862718e-09]], "pointer": [[0.0, 0.0, 0.21219143271446228, 0.0, 0.0, 0.0, 0.0, 0.0, 0.20563219487667084, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.02781018242239952, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0007201338885352015, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0006511342362500727, 0.0, 0.0, 0.3884183168411255, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.062123775482177734, 0.0, 0.0, 0.0, 0.0, 0.0, 0.10237414389848709, 0.0, 0.0, 0.0, 0.0, 0.0, 7.869908586144447e-05, 0.0, 0.0, 0.0]], "target": [0.9985500574111938]}, "loss": [0.004048604518175125, 0.0014509947504848242], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:51:35.434031", "n_pass": [1, 1, 1], "n_token": 72, "loss": [0.004048604518175125, 0.0014509947504848242], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "if", "self", ".", "allow_reauth", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "super", "(", "MultiTenantConnectionManager", ",", "self", ")", ".", "_init_connection", "(", ")", "#NEWLINE#", "#UNINDENT#", "except", "Exception", "as", "e", ":", "#NEWLINE#", "#INDENT#", "LOG", ".", "debug", "(", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", ".", "store", ".", "get_store_connection", "(", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 68, "repair_targets": [2, 8, 23, 47, 56, 62], "repair_candidates": [34, 44, 68, 2, 8, 23, 47, 56, 62]}}
+{"prediction": {"error_location": 0.9959596991539001, "repair_targets": [0.21219143271446228, 0.20563219487667084, 0.02781018242239952, 0.3884183168411255, 0.062123775482177734, 0.10237414389848709], "repair_candidates": [0.21219143271446228, 0.20563219487667084, 0.02781018242239952, 0.0007201338885352015, 0.0006511342362500727, 0.3884183168411255, 0.062123775482177734, 0.10237414389848709, 7.869908586144447e-05], "target_probs": 0.9985500574111938}}
+
+
+{"result": {"time": "2021-02-11 11:51:35.491820", "n_pass": [21, 2, 2], "n_token": 63, "loss": [0.03610975295305252, 0.003581911325454712], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "if", "self", "return", "super", "(", "MultiTenantConnectionManager", ",", "self", ")", ".", "_init_connection", "(", ")", "#NEWLINE#", "#UNINDENT#", "except", "Exception", "as", "e", ":", "#NEWLINE#", "#INDENT#", "LOG", ".", "debug", "(", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", ".", "store", ".", "get_store_connection", "(", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 59, "repair_targets": [2, 8, 14, 38, 47, 53], "repair_candidates": [25, 35, 59, 2, 8, 14, 38, 47, 53]}}
+{"prediction": {"error_location": 0.9645344018936157, "repair_targets": [0.22590509057044983, 0.05104665458202362, 0.0803779661655426, 0.4539276659488678, 0.05993863195180893, 0.12522844970226288], "repair_candidates": [0.22590509057044983, 0.05104665458202362, 0.0803779661655426, 0.0012764628045260906, 0.0018497916171327233, 0.4539276659488678, 0.05993863195180893, 0.12522844970226288, 0.0004492900043260306], "target_probs": 0.9964244961738586}}
+
+
+{"result": {"time": "2021-02-11 11:51:35.549462", "n_pass": [44, 3, 3], "n_token": 59, "loss": [0.040981475263834, 0.003881048643961549], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "if", "self", "return", "super", "(", "MultiTenantConnectionManager", ",", "self", ")", "#NEWLINE#", "#UNINDENT#", "except", "Exception", "as", "e", ":", "#NEWLINE#", "#INDENT#", "LOG", ".", "debug", "(", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", ".", "store", ".", "get_store_connection", "(", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 55, "repair_targets": [2, 8, 14, 34, 43, 49], "repair_candidates": [21, 31, 55, 2, 8, 14, 34, 43, 49]}}
+{"prediction": {"error_location": 0.9598470330238342, "repair_targets": [0.2319728583097458, 0.02973189577460289, 0.04089915007352829, 0.42859315872192383, 0.12578769028186798, 0.1391417384147644], "repair_candidates": [0.2319728583097458, 0.02973189577460289, 0.04089915007352829, 0.0020195255056023598, 0.001235217205248773, 0.42859315872192383, 0.12578769028186798, 0.1391417384147644, 0.0006187962717376649], "target_probs": 0.9961264729499817}}
+
+
+{"result": {"time": "2021-02-11 11:51:35.608474", "n_pass": [45, 4, 4], "n_token": 55, "loss": [0.06840921193361282, 0.015841366723179817], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "if", "self", "return", "super", "(", "MultiTenantConnectionManager", ",", "self", ")", "as", "e", ":", "#NEWLINE#", "#INDENT#", "LOG", ".", "debug", "(", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", ".", "store", ".", "get_store_connection", "(", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 51, "repair_targets": [2, 8, 14, 30, 39, 45], "repair_candidates": [17, 27, 51, 2, 8, 14, 30, 39, 45]}}
+{"prediction": {"error_location": 0.9338782429695129, "repair_targets": [0.32466214895248413, 0.0499139167368412, 0.0922640785574913, 0.384712278842926, 0.07840524613857269, 0.05432581156492233], "repair_candidates": [0.32466214895248413, 0.0499139167368412, 0.0922640785574913, 0.012739784084260464, 0.0023239748552441597, 0.384712278842926, 0.07840524613857269, 0.05432581156492233, 0.0006527779041789472], "target_probs": 0.984283447265625}}
+
+
+{"result": {"time": "2021-02-11 11:51:35.664780", "n_pass": [47, 5, 5], "n_token": 50, "loss": [0.2735341489315033, 0.0885285884141922], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "if", "self", "return", "super", "(", "MultiTenantConnectionManager", ",", "self", ")", "as", "e", ":", "#NEWLINE#", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", ".", "store", ".", "get_store_connection", "(", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 46, "repair_targets": [2, 8, 14, 25, 34, 40], "repair_candidates": [17, 22, 46, 2, 8, 14, 25, 34, 40]}}
+{"prediction": {"error_location": 0.7606862783432007, "repair_targets": [0.2821703255176544, 0.05002128705382347, 0.06275802105665207, 0.39456796646118164, 0.08845068514347076, 0.03730866312980652], "repair_candidates": [0.2821703255176544, 0.05002128705382347, 0.06275802105665207, 0.06675174832344055, 0.014106785878539085, 0.39456796646118164, 0.08845068514347076, 0.03730866312980652, 0.0038644748274236917], "target_probs": 0.9152769446372986}}
+
+
+{"result": {"time": "2021-02-11 11:51:35.721340", "n_pass": [51, 6, 6], "n_token": 45, "loss": [0.2153625637292862, 0.04535558819770813], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "if", "self", "return", "super", "(", "MultiTenantConnectionManager", ",", "self", ")", "as", "e", ":", "#NEWLINE#", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 41, "repair_targets": [2, 8, 14, 25, 34, 35], "repair_candidates": [17, 22, 41, 2, 8, 14, 25, 34, 35]}}
+{"prediction": {"error_location": 0.8062490820884705, "repair_targets": [0.28849539160728455, 0.030503425747156143, 0.05027870088815689, 0.4694424569606781, 0.0679994598031044, 0.04893816262483597], "repair_candidates": [0.28849539160728455, 0.030503425747156143, 0.05027870088815689, 0.034865811467170715, 0.006767036858946085, 0.4694424569606781, 0.0679994598031044, 0.04893816262483597, 0.0027095964178442955], "target_probs": 0.9556576013565063}}
+
+
+{"result": {"time": "2021-02-11 11:51:35.777485", "n_pass": [55, 7, 7], "n_token": 41, "loss": [0.17003171145915985, 0.0010274560190737247], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", "self", "return", "super", "(", "MultiTenantConnectionManager", ",", "self", ")", "as", "e", ":", "#NEWLINE#", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 37, "repair_targets": [2, 4, 10, 21, 30, 31], "repair_candidates": [13, 18, 37, 2, 4, 10, 21, 30, 31]}}
+{"prediction": {"error_location": 0.843638002872467, "repair_targets": [0.418102502822876, 0.07969233393669128, 0.09218794107437134, 0.35264670848846436, 0.029128756374120712, 0.02721484936773777], "repair_candidates": [0.418102502822876, 0.07969233393669128, 0.09218794107437134, 0.0007527566631324589, 2.1433992515085265e-05, 0.35264670848846436, 0.029128756374120712, 0.02721484936773777, 0.0002527511096559465], "target_probs": 0.9989730715751648}}
+
+
+{"result": {"time": "2021-02-11 11:51:35.834289", "n_pass": [84, 8, 8], "n_token": 39, "loss": [0.2448401153087616, 0.001154015539214015], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", "self", "return", "MultiTenantConnectionManager", ",", "self", ")", "as", "e", ":", "#NEWLINE#", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [2, 4, 8, 19, 28, 29], "repair_candidates": [11, 16, 35, 2, 4, 8, 19, 28, 29]}}
+{"prediction": {"error_location": 0.7828297019004822, "repair_targets": [0.21202202141284943, 0.14515171945095062, 0.1449330896139145, 0.4398406744003296, 0.029913900420069695, 0.026985228061676025], "repair_candidates": [0.21202202141284943, 0.14515171945095062, 0.1449330896139145, 0.0008741100900806487, 3.963640483561903e-05, 0.4398406744003296, 0.029913900420069695, 0.026985228061676025, 0.00023962905106600374], "target_probs": 0.9988466501235962}}
+
+
+{"result": {"time": "2021-02-11 11:51:35.890151", "n_pass": [85, 9, 9], "n_token": 37, "loss": [0.22072698175907135, 0.0013143112882971764], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", "self", "return", "self", ")", "as", "e", ":", "#NEWLINE#", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [2, 4, 6, 17, 26, 27], "repair_candidates": [9, 14, 33, 2, 4, 6, 17, 26, 27]}}
+{"prediction": {"error_location": 0.8019354939460754, "repair_targets": [0.16970504820346832, 0.15286314487457275, 0.15644368529319763, 0.4303947985172272, 0.05009974539279938, 0.03918013349175453], "repair_candidates": [0.16970504820346832, 0.15286314487457275, 0.15644368529319763, 0.001051602535881102, 7.67060337238945e-05, 0.4303947985172272, 0.05009974539279938, 0.03918013349175453, 0.00018512169481255114], "target_probs": 0.9986865520477295}}
+
+
+{"result": {"time": "2021-02-11 11:51:35.948976", "n_pass": [88, 10, 10], "n_token": 35, "loss": [0.07730837911367416, 0.0011812866432592273], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", "self", "return", "self", ")", "as", "e", "'Cannot initialize swift connection for multi-tenant store with trustee token: %s. Using user token for connection initialization.'", ",", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 31, "repair_targets": [2, 4, 6, 15, 24, 25], "repair_candidates": [9, 12, 31, 2, 4, 6, 15, 24, 25]}}
+{"prediction": {"error_location": 0.9256043434143066, "repair_targets": [0.12887680530548096, 0.1303093135356903, 0.08323926478624344, 0.4944426417350769, 0.0842539593577385, 0.07769740372896194], "repair_candidates": [0.12887680530548096, 0.1303093135356903, 0.08323926478624344, 0.0006996880983933806, 0.000367848202586174, 0.4944426417350769, 0.0842539593577385, 0.07769740372896194, 0.0001130433302023448], "target_probs": 0.9988194108009338}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.004773", "n_pass": [89, 11, 11], "n_token": 33, "loss": [0.0738728791475296, 0.0008849840378388762], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", "self", "return", "self", ")", "as", "e", "e", ")", "#NEWLINE#", "self", ".", "allow_reauth", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [2, 4, 6, 13, 22, 23], "repair_candidates": [9, 10, 29, 2, 4, 6, 13, 22, 23]}}
+{"prediction": {"error_location": 0.9287896752357483, "repair_targets": [0.11891191452741623, 0.10442331433296204, 0.06256379187107086, 0.5679925680160522, 0.07188189774751663, 0.07334188371896744], "repair_candidates": [0.11891191452741623, 0.10442331433296204, 0.06256379187107086, 0.0004583758127409965, 0.0003597141185309738, 0.5679925680160522, 0.07188189774751663, 0.07334188371896744, 6.657282938249409e-05], "target_probs": 0.9991154074668884}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.060385", "n_pass": [92, 12, 12], "n_token": 31, "loss": [0.30157729983329773, 0.007448809687048197], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", "self", "return", "self", ")", "as", "e", "e", ")", "#NEWLINE#", "self", "=", "False", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [2, 4, 6, 13, 20, 21], "repair_candidates": [9, 10, 27, 2, 4, 6, 13, 20, 21]}}
+{"prediction": {"error_location": 0.7396506667137146, "repair_targets": [0.3505181670188904, 0.353913813829422, 0.10930977016687393, 0.06582056730985641, 0.05393451452255249, 0.05908200144767761], "repair_candidates": [0.3505181670188904, 0.353913813829422, 0.10930977016687393, 0.0024150803219527006, 0.002095101634040475, 0.06582056730985641, 0.05393451452255249, 0.05908200144767761, 0.0029110084287822247], "target_probs": 0.9925788640975952}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.115764", "n_pass": [93, 13, 13], "n_token": 29, "loss": [0.30255791544914246, 0.042729444801807404], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", "self", "return", "self", ")", "as", "e", "e", ")", "#NEWLINE#", "self", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [2, 4, 6, 13, 18, 19], "repair_candidates": [9, 10, 25, 2, 4, 6, 13, 18, 19]}}
+{"prediction": {"error_location": 0.7389256954193115, "repair_targets": [0.24676214158535004, 0.26542001962661743, 0.21370935440063477, 0.0628892034292221, 0.1182655617594719, 0.051124267280101776], "repair_candidates": [0.24676214158535004, 0.26542001962661743, 0.21370935440063477, 0.019266322255134583, 0.01986538991332054, 0.0628892034292221, 0.1182655617594719, 0.051124267280101776, 0.002697774674743414], "target_probs": 0.9581705927848816}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.171313", "n_pass": [94, 14, 14], "n_token": 26, "loss": [0.15119627118110657, 0.003601950593292713], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _init_connection(", "self", ")", "self", "return", "self", ")", "as", "e", "e", ")", "#NEWLINE#", "self", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [2, 4, 6, 13, 15, 16], "repair_candidates": [9, 10, 22, 2, 4, 6, 13, 15, 16]}}
+{"prediction": {"error_location": 0.8596789836883545, "repair_targets": [0.30316829681396484, 0.4241008460521698, 0.11984308063983917, 0.07384807616472244, 0.05579977110028267, 0.019644444808363914], "repair_candidates": [0.30316829681396484, 0.4241008460521698, 0.11984308063983917, 0.001801707549020648, 0.0012177291791886091, 0.07384807616472244, 0.05579977110028267, 0.019644444808363914, 0.0005760055501013994], "target_probs": 0.9964045286178589}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.340599", "n_pass": [99, 17, 15], "n_token": 24, "loss": [0.2286171317100525, 0.010839466005563736], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "self", "return", "self", ")", "as", "e", "e", ")", "#NEWLINE#", "self", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [0, 2, 4, 11, 13, 14], "repair_candidates": [7, 8, 20, 0, 2, 4, 11, 13, 14]}}
+{"prediction": {"error_location": 0.7956329584121704, "repair_targets": [0.014419603161513805, 0.6550063490867615, 0.13589996099472046, 0.11250857263803482, 0.050102367997169495, 0.021282166242599487], "repair_candidates": [0.014419603161513805, 0.6550063490867615, 0.13589996099472046, 0.005429424345493317, 0.0046320632100105286, 0.11250857263803482, 0.050102367997169495, 0.021282166242599487, 0.0007194567588157952], "target_probs": 0.989219069480896}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.505568", "n_pass": [131, 20, 16], "n_token": 23, "loss": [0.2378627061843872, 0.015925059095025063], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "return", "self", ")", "as", "e", "e", ")", "#NEWLINE#", "self", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [0, 1, 3, 10, 12, 13], "repair_candidates": [6, 7, 19, 0, 1, 3, 10, 12, 13]}}
+{"prediction": {"error_location": 0.7883110046386719, "repair_targets": [0.02321065217256546, 0.02029820904135704, 0.4385765790939331, 0.2812252938747406, 0.1422126591205597, 0.07867761701345444], "repair_candidates": [0.02321065217256546, 0.02029820904135704, 0.4385765790939331, 0.007524036802351475, 0.007820515893399715, 0.2812252938747406, 0.1422126591205597, 0.07867761701345444, 0.00045429440797306597], "target_probs": 0.9842010736465454}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.560664", "n_pass": [133, 21, 17], "n_token": 22, "loss": [0.08436300605535507, 0.004054050426930189], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "self", ")", "as", "e", "e", ")", "#NEWLINE#", "self", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [0, 1, 2, 9, 11, 12], "repair_candidates": [5, 6, 18, 0, 1, 2, 9, 11, 12]}}
+{"prediction": {"error_location": 0.9190976619720459, "repair_targets": [0.007988768629729748, 0.005794256925582886, 0.4595498740673065, 0.4061073958873749, 0.07039492577314377, 0.04611896723508835], "repair_candidates": [0.007988768629729748, 0.005794256925582886, 0.4595498740673065, 0.0017355730524286628, 0.0021718014031648636, 0.4061073958873749, 0.07039492577314377, 0.04611896723508835, 0.00013836276775691658], "target_probs": 0.995954155921936}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.618300", "n_pass": [135, 22, 18], "n_token": 21, "loss": [0.254491925239563, 0.042894430458545685], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "self", "as", "e", "e", ")", "#NEWLINE#", "self", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [0, 1, 2, 8, 10, 11], "repair_candidates": [4, 5, 17, 0, 1, 2, 8, 10, 11]}}
+{"prediction": {"error_location": 0.7753103375434875, "repair_targets": [0.010761752724647522, 0.007432692684233189, 0.5159491300582886, 0.3310895264148712, 0.05572281777858734, 0.03705662861466408], "repair_candidates": [0.010761752724647522, 0.007432692684233189, 0.5159491300582886, 0.02381964586675167, 0.015622805804014206, 0.3310895264148712, 0.05572281777858734, 0.03705662861466408, 0.002544988412410021], "target_probs": 0.9580125212669373}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.673250", "n_pass": [136, 23, 19], "n_token": 20, "loss": [0.03415338695049286, 0.0021605568472296], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "self", "e", "e", ")", "#NEWLINE#", "self", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [0, 1, 2, 7, 9, 10], "repair_candidates": [3, 4, 16, 0, 1, 2, 7, 9, 10]}}
+{"prediction": {"error_location": 0.9664232730865479, "repair_targets": [0.0028729960322380066, 0.0020314634311944246, 0.42433029413223267, 0.4289630353450775, 0.09441464394330978, 0.04522931948304176], "repair_candidates": [0.0028729960322380066, 0.0020314634311944246, 0.42433029413223267, 0.0012723524123430252, 0.0008124589221552014, 0.4289630353450775, 0.09441464394330978, 0.04522931948304176, 7.347041537286714e-05], "target_probs": 0.9978417754173279}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.728310", "n_pass": [139, 24, 20], "n_token": 19, "loss": [0.014222096651792526, 0.0005318744806572795], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "self", "e", "e", "#NEWLINE#", "self", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [0, 1, 2, 6, 8, 9], "repair_candidates": [3, 4, 15, 0, 1, 2, 6, 8, 9]}}
+{"prediction": {"error_location": 0.9858784675598145, "repair_targets": [0.0023776646703481674, 0.0032545579597353935, 0.5195162892341614, 0.2659439146518707, 0.1290024220943451, 0.07937344163656235], "repair_candidates": [0.0023776646703481674, 0.0032545579597353935, 0.5195162892341614, 0.00029816824826411903, 0.00020150479394942522, 0.2659439146518707, 0.1290024220943451, 0.07937344163656235, 3.202955122105777e-05], "target_probs": 0.9994682669639587}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.783795", "n_pass": [140, 25, 21], "n_token": 18, "loss": [0.015492800623178482, 0.00023224666074384004], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "self", "e", "e", "self", "return", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [0, 1, 2, 5, 7, 8], "repair_candidates": [3, 4, 14, 0, 1, 2, 5, 7, 8]}}
+{"prediction": {"error_location": 0.9846265912055969, "repair_targets": [0.000360041914973408, 0.0005355548346415162, 0.2657146155834198, 0.05738423019647598, 0.37609782814979553, 0.29967552423477173], "repair_candidates": [0.000360041914973408, 0.0005355548346415162, 0.2657146155834198, 0.00016792325186543167, 5.7458812079858035e-05, 0.05738423019647598, 0.37609782814979553, 0.29967552423477173, 6.808974831074011e-06], "target_probs": 0.9997677803039551}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.839020", "n_pass": [142, 26, 22], "n_token": 17, "loss": [0.19875794649124146, 9.000706631923094e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "self", "e", "e", "self", "self", "self", ".", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [0, 1, 2, 5, 6, 7], "repair_candidates": [3, 4, 13, 0, 1, 2, 5, 6, 7]}}
+{"prediction": {"error_location": 0.8197483420372009, "repair_targets": [0.005074851680546999, 0.004375330172479153, 0.7313950061798096, 0.07988028973340988, 0.08497309684753418, 0.09421144425868988], "repair_candidates": [0.005074851680546999, 0.004375330172479153, 0.7313950061798096, 1.233806415257277e-05, 1.5241186702041887e-05, 0.07988028973340988, 0.08497309684753418, 0.09421144425868988, 6.2378472648561e-05], "target_probs": 0.9999099969863892}}
+
+
+{"result": {"time": "2021-02-11 11:51:36.894484", "n_pass": [145, 27, 23], "n_token": 16, "loss": [0.4158479571342468, 7.814474520273507e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "self", "e", "e", "self", "self", "self", "context", ".", "auth_token", ",", "e", ".", "storage_url", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [0, 1, 2, 5, 6, 7], "repair_candidates": [3, 4, 12, 0, 1, 2, 5, 6, 7]}}
+{"prediction": {"error_location": 0.6597805023193359, "repair_targets": [0.005313549656420946, 0.004226441029459238, 0.6976468563079834, 0.16145674884319305, 0.039474960416555405, 0.09180334955453873], "repair_candidates": [0.005313549656420946, 0.004226441029459238, 0.6976468563079834, 3.0364433769136667e-05, 1.785799213394057e-05, 0.16145674884319305, 0.039474960416555405, 0.09180334955453873, 2.9952918339404278e-05], "target_probs": 0.9999218583106995}}
+
+
+{"result": {"time": "2021-02-11 11:51:37.061206", "n_pass": [149, 30, 24], "n_token": 14, "loss": [0.39640530943870544, 0.0999206155538559], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "self", "e", "e", "self", "self", "self", "context", ".", "auth_token", ",", "e", "."]}}
+{"position": {"error_location": 12, "repair_targets": [0, 1, 2, 5, 6, 7], "repair_candidates": [3, 4, 12, 0, 1, 2, 5, 6, 7]}}
+{"prediction": {"error_location": 0.6727340221405029, "repair_targets": [0.09419957548379898, 0.07777705043554306, 0.1328500360250473, 0.09753250330686569, 0.19802376627922058, 0.30452629923820496], "repair_candidates": [0.09419957548379898, 0.07777705043554306, 0.1328500360250473, 0.05506443977355957, 0.0395100973546505, 0.09753250330686569, 0.19802376627922058, 0.30452629923820496, 0.0005161917069926858], "target_probs": 0.9049092531204224}}
+
+
+{"result": {"time": "2021-02-11 11:51:37.172165", "n_pass": [159, 32, 25], "n_token": 12, "loss": [0.5674713850021362, 0.4835466742515564], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "self", "e", "e", "self", "self", "self", "context", ".", "e", "."]}}
+{"position": {"error_location": 10, "repair_targets": [0, 1, 2, 5, 6, 7], "repair_candidates": [3, 4, 10, 0, 1, 2, 5, 6, 7]}}
+{"prediction": {"error_location": 0.5669572949409485, "repair_targets": [0.14518491923809052, 0.3108462393283844, 0.049008142203092575, 0.041201863437891006, 0.03558824211359024, 0.03476324677467346], "repair_candidates": [0.14518491923809052, 0.3108462393283844, 0.049008142203092575, 0.1330299824476242, 0.10842958837747574, 0.041201863437891006, 0.03558824211359024, 0.03476324677467346, 0.14194776117801666], "target_probs": 0.6165926456451416}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'self', 'self', 'e', 'e', 'self', 'self', 'self', 'context', '.', 'e', '.']

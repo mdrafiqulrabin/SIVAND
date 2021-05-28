@@ -1,0 +1,109 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def SetRequestEndCallback(", "callback", ")", ":", "#NEWLINE#", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "=", "_GetRequestId", "(", ")", "#NEWLINE#", "if", "key", ":", "#NEWLINE#", "#INDENT#", "_callback_storage", ".", "setdefault", "(", "key", ",", "[", "]", ")", ".", "append", "(", "key", ")"], "error_location": [32], "repair_targets": [2], "repair_candidates": [9, 16, 24, 32, 2], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "GoogleCloudPlatform/python-compat-runtime/appengine-compat/exported_appengine_sdk/google/appengine/ext/vmruntime/callback.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00005-of-00300", "js_count": 17250, "results": {"model": "rnn", "prob": {"loc": [[0.3883429765701294, 4.201288916760859e-08, 4.506319783104118e-06, 1.4788395219511585e-07, 5.990491303009549e-08, 5.31812645476748e-07, 4.7736502750694854e-08, 2.1566562224961672e-07, 6.625528840231709e-06, 8.977360010931079e-08, 1.145871692642686e-06, 0.0001512227754574269, 5.999561949465715e-07, 5.0973205361515284e-05, 5.13219947606558e-06, 0.00012677875929512084, 0.6009601950645447, 2.9983968943270156e-06, 5.081172957943636e-07, 2.4845089541258858e-08, 2.2631306251241767e-07, 7.077532870880532e-08, 1.1764312546347355e-07, 2.1566817665075178e-08, 0.0005696068401448429, 1.4995823249819296e-08, 1.3640830331951292e-07, 1.330804707322386e-06, 2.42018334262184e-08, 6.258245548451669e-07, 3.7625810023200756e-07, 2.6282509679731447e-07, 0.00977191049605608, 4.268420354947011e-07]], "pointer": [[0.0, 0.0, 0.9080466032028198, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.08648329228162766, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0004091783775947988, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.004896358121186495, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001645224547246471, 0.0]], "target": [0.9080466032028198]}, "loss": [4.628243446350098, 0.09645957499742508], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [16]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:02:08.047334", "n_pass": [1, 1, 1], "n_token": 34, "loss": [0.5092266798019409, 0.09645957499742508], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def SetRequestEndCallback(", "callback", ")", ":", "#NEWLINE#", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "=", "_GetRequestId", "(", ")", "#NEWLINE#", "if", "key", ":", "#NEWLINE#", "#INDENT#", "_callback_storage", ".", "setdefault", "(", "key", ",", "[", "]", ")", ".", "append", "(", "key", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [9, 16, 24, 32, 2]}}
+{"prediction": {"error_location": 0.6009601950645447, "repair_targets": [0.9080466032028198], "repair_candidates": [0.9080466032028198, 0.08648329228162766, 0.0004091783775947988, 0.004896358121186495, 0.0001645224547246471], "target_probs": 0.9080466032028198}}
+
+
+{"result": {"time": "2021-02-21 12:02:08.241220", "n_pass": [25, 4, 2], "n_token": 30, "loss": [0.35742655396461487, 0.09339290112257004], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def SetRequestEndCallback(", "callback", ")", ":", "#NEWLINE#", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "=", "_GetRequestId", "(", ")", "#NEWLINE#", "if", "key", ":", "#NEWLINE#", "#INDENT#", "key", ",", "[", "]", ")", ".", "append", "(", "key", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [9, 16, 20, 28, 2]}}
+{"prediction": {"error_location": 0.699474036693573, "repair_targets": [0.9108355641365051], "repair_candidates": [0.9108355641365051, 0.08592863380908966, 0.000417596660554409, 0.0026844546664506197, 0.00013372310786508024], "target_probs": 0.9108355641365051}}
+
+
+{"result": {"time": "2021-02-21 12:02:08.428430", "n_pass": [48, 7, 3], "n_token": 28, "loss": [0.35484156012535095, 0.07587876170873642], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def SetRequestEndCallback(", "callback", ")", ":", "#NEWLINE#", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "=", "_GetRequestId", "(", ")", "#NEWLINE#", "if", "key", ":", "#NEWLINE#", "#INDENT#", "key", ",", ")", ".", "append", "(", "key", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [9, 16, 20, 26, 2]}}
+{"prediction": {"error_location": 0.7012845873832703, "repair_targets": [0.9269285798072815], "repair_candidates": [0.9269285798072815, 0.0663347840309143, 0.00032169013866223395, 0.006238196045160294, 0.00017679715529084206], "target_probs": 0.9269285798072815}}
+
+
+{"result": {"time": "2021-02-21 12:02:08.489814", "n_pass": [49, 8, 4], "n_token": 25, "loss": [0.6307458281517029, 0.05650009587407112], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def SetRequestEndCallback(", "callback", ")", ":", "#NEWLINE#", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "=", "_GetRequestId", "(", ")", "#NEWLINE#", "if", "key", ":", "#NEWLINE#", "#INDENT#", "key", ",", "(", "key", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [9, 16, 20, 23, 2]}}
+{"prediction": {"error_location": 0.5321947336196899, "repair_targets": [0.9450663924217224], "repair_candidates": [0.9450663924217224, 0.051261283457279205, 0.00033193666604347527, 0.0027140590827912092, 0.0006262576207518578], "target_probs": 0.9450663924217224}}
+
+
+{"result": {"time": "2021-02-21 12:02:08.613896", "n_pass": [53, 10, 5], "n_token": 23, "loss": [0.7134995460510254, 0.327822208404541], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def SetRequestEndCallback(", "callback", ")", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "=", "_GetRequestId", "(", ")", "#NEWLINE#", "if", "key", ":", "#NEWLINE#", "#INDENT#", "key", ",", "(", "key", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [7, 14, 18, 21, 2]}}
+{"prediction": {"error_location": 0.48992663621902466, "repair_targets": [0.7204911112785339], "repair_candidates": [0.7204911112785339, 0.27265065908432007, 0.0008694730349816382, 0.004369482398033142, 0.001619286253117025], "target_probs": 0.7204911112785339}}
+
+
+{"result": {"time": "2021-02-21 12:02:08.732118", "n_pass": [56, 12, 6], "n_token": 21, "loss": [0.43524283170700073, 0.007052196189761162], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def SetRequestEndCallback(", "callback", ")", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "(", ")", "#NEWLINE#", "if", "key", ":", "#NEWLINE#", "#INDENT#", "key", ",", "(", "key", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [7, 12, 16, 19, 2]}}
+{"prediction": {"error_location": 0.6471074819564819, "repair_targets": [0.9929726123809814], "repair_candidates": [0.9929726123809814, 0.006090376526117325, 0.0004327513452153653, 0.00028434666455723345, 0.00021990637469571084], "target_probs": 0.9929726123809814}}
+
+
+{"result": {"time": "2021-02-21 12:02:08.790204", "n_pass": [57, 13, 7], "n_token": 19, "loss": [0.2748419940471649, 0.00918258260935545], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def SetRequestEndCallback(", "callback", ")", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "#NEWLINE#", "if", "key", ":", "#NEWLINE#", "#INDENT#", "key", ",", "(", "key", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [7, 10, 14, 17, 2]}}
+{"prediction": {"error_location": 0.7596920132637024, "repair_targets": [0.9908594489097595], "repair_candidates": [0.9908594489097595, 0.008383805863559246, 0.00023118061653804034, 0.000309139140881598, 0.0002164632169296965], "target_probs": 0.9908594489097595}}
+
+
+{"result": {"time": "2021-02-21 12:02:08.907866", "n_pass": [60, 15, 8], "n_token": 17, "loss": [0.4936106204986572, 0.011671138927340508], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def SetRequestEndCallback(", "callback", ")", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "#NEWLINE#", "if", "key", ":", "key", ",", "(", "key", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [7, 10, 12, 15, 2]}}
+{"prediction": {"error_location": 0.610418438911438, "repair_targets": [0.9883967041969299], "repair_candidates": [0.9883967041969299, 0.009769146330654621, 0.00034966206294484437, 0.00022352189989760518, 0.0012608456891030073], "target_probs": 0.9883967041969299}}
+
+
+{"result": {"time": "2021-02-21 12:02:08.964173", "n_pass": [63, 16, 9], "n_token": 15, "loss": [0.4293349087238312, 0.13771387934684753], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["callback", ")", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "#NEWLINE#", "if", "key", ":", "key", ",", "(", "key", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [0], "repair_candidates": [5, 8, 10, 13, 0]}}
+{"prediction": {"error_location": 0.6509419083595276, "repair_targets": [0.871347963809967], "repair_candidates": [0.871347963809967, 0.07208656519651413, 0.016292152926325798, 0.012033926323056221, 0.028239374980330467], "target_probs": 0.871347963809967}}
+
+
+{"result": {"time": "2021-02-21 12:02:09.130420", "n_pass": [86, 19, 10], "n_token": 14, "loss": [0.47841542959213257, 0.11492893844842911], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["callback", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "#NEWLINE#", "if", "key", ":", "key", ",", "(", "key", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [0], "repair_candidates": [4, 7, 9, 12, 0]}}
+{"prediction": {"error_location": 0.6197646856307983, "repair_targets": [0.8914294838905334], "repair_candidates": [0.8914294838905334, 0.06783322244882584, 0.016895251348614693, 0.008502206765115261, 0.01533993985503912], "target_probs": 0.8914294838905334}}
+
+
+{"result": {"time": "2021-02-21 12:02:09.465301", "n_pass": [94, 25, 11], "n_token": 13, "loss": [0.3808566629886627, 0.12753364443778992], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["callback", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "#NEWLINE#", "if", "key", "key", ",", "(", "key", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [0], "repair_candidates": [4, 7, 8, 11, 0]}}
+{"prediction": {"error_location": 0.6832758188247681, "repair_targets": [0.8802638053894043], "repair_candidates": [0.8802638053894043, 0.068629190325737, 0.008641901426017284, 0.013578294776380062, 0.02888677828013897], "target_probs": 0.8802638053894043}}
+
+
+{"result": {"time": "2021-02-21 12:02:09.519890", "n_pass": [96, 26, 12], "n_token": 12, "loss": [0.7557971477508545, 0.208068385720253], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["callback", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "#NEWLINE#", "if", "key", "key", "(", "key", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [0], "repair_candidates": [4, 7, 8, 10, 0]}}
+{"prediction": {"error_location": 0.46963608264923096, "repair_targets": [0.8121514916419983], "repair_candidates": [0.8121514916419983, 0.1799689382314682, 0.0014934766804799438, 0.0025321515277028084, 0.0038539315573871136], "target_probs": 0.8121514916419983}}
+
+
+{"result": {"time": "2021-02-21 12:02:09.574079", "n_pass": [97, 27, 13], "n_token": 11, "loss": [0.6351340413093567, 0.0776040256023407], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["callback", "#INDENT#", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "#NEWLINE#", "if", "key", "key", "key", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [0], "repair_candidates": [4, 7, 8, 9, 0]}}
+{"prediction": {"error_location": 0.5298644304275513, "repair_targets": [0.9253307580947876], "repair_candidates": [0.9253307580947876, 0.048184290528297424, 0.006530948914587498, 0.007565387524664402, 0.012388717383146286], "target_probs": 0.9253307580947876}}
+
+
+{"result": {"time": "2021-02-21 12:02:09.628091", "n_pass": [100, 28, 14], "n_token": 10, "loss": [0.4452950358390808, 0.064961276948452], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["callback", "'Stores a callback by the request ID.\\n\\n  The request ID currently uses the cloud trace ID.\\n\\n  Args:\\n    callback: A zero-argument callable whose return value is unused.\\n  '", "#NEWLINE#", "key", "#NEWLINE#", "if", "key", "key", "key", ")"]}}
+{"position": {"error_location": 6, "repair_targets": [0], "repair_candidates": [3, 6, 7, 8, 0]}}
+{"prediction": {"error_location": 0.6406352519989014, "repair_targets": [0.9371037483215332], "repair_candidates": [0.9371037483215332, 0.030359286814928055, 0.006429275497794151, 0.008958203718066216, 0.017149459570646286], "target_probs": 0.9371037483215332}}
+
+
+{"result": {"time": "2021-02-21 12:02:09.681178", "n_pass": [101, 29, 15], "n_token": 9, "loss": [0.8260058164596558, 0.6461299657821655], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["callback", "#NEWLINE#", "key", "#NEWLINE#", "if", "key", "key", "key", ")"]}}
+{"position": {"error_location": 5, "repair_targets": [0], "repair_candidates": [2, 5, 6, 7, 0]}}
+{"prediction": {"error_location": 0.43779441714286804, "repair_targets": [0.5240700244903564], "repair_candidates": [0.5240700244903564, 0.08339237421751022, 0.041319046169519424, 0.11927170306444168, 0.23194679617881775], "target_probs": 0.5240700244903564}}
+
+
+{"result": {"time": "2021-02-21 12:02:09.893629", "n_pass": [113, 33, 16], "n_token": 8, "loss": [0.8607576489448547, 0.25736135244369507], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["callback", "#NEWLINE#", "key", "#NEWLINE#", "if", "key", "key", "key"]}}
+{"position": {"error_location": 5, "repair_targets": [0], "repair_candidates": [2, 5, 6, 7, 0]}}
+{"prediction": {"error_location": 0.4228415787220001, "repair_targets": [0.773088812828064], "repair_candidates": [0.773088812828064, 0.1178305521607399, 0.019784636795520782, 0.03408029302954674, 0.05521571263670921], "target_probs": 0.773088812828064}}
+
+
+
+
+Minimal simplified tokens:
+
+['callback', '#NEWLINE#', 'key', '#NEWLINE#', 'if', 'key', 'key', 'key']

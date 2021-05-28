@@ -1,0 +1,151 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", ",", "'_done'", ")", "#NEWLINE#", "@", "mock", ".", "patch", "(", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "client", ".", "captureMessage", "(", "message", "=", "'foo'", ")", "#NEWLINE#", "time", ".", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", ".", "call_count", ",", "1", ")", "#NEWLINE#", "time", ".", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"], "error_location": [53], "repair_targets": [24], "repair_candidates": [26, 53, 71, 24, 22, 31, 49, 67], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "getsentry/raven-python/tests/transport/gevent/tests.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00008-of-00300", "js_count": 27183, "results": {"model": "transformer", "prob": {"loc": [[0.232717365026474, 4.414482646097895e-07, 1.1434173607938192e-09, 1.506179891919146e-08, 5.560979676744182e-09, 1.366496871213485e-08, 2.010150268461075e-09, 8.716900978811282e-09, 3.2024431106947304e-08, 1.1128176158337055e-09, 3.727801178854406e-09, 1.6800625335378072e-09, 1.2653217362768032e-09, 9.429960146078997e-10, 5.501873956426095e-10, 6.574882416288119e-09, 1.2458329923248357e-09, 7.597000362125073e-09, 3.008921467539949e-08, 5.028450988930899e-09, 6.3033143149482385e-09, 2.234364027131619e-09, 3.2291009688378836e-07, 4.368525263753753e-10, 1.2380936595945968e-06, 2.1713762732300523e-10, 1.1229251128952455e-07, 3.5707131695872363e-10, 1.5284542520532796e-09, 2.5816404569667384e-09, 2.3419062245011446e-09, 1.942191971693319e-07, 1.049915887563202e-08, 1.209581990124775e-09, 3.054411479297414e-08, 1.126128412742844e-09, 4.62992879590729e-08, 2.367722906626568e-09, 4.777135131917021e-08, 5.452414370665792e-06, 1.3307465351886094e-08, 8.150422559083381e-09, 2.640253526919878e-08, 1.053129494721361e-07, 2.0566346403683156e-09, 2.7473777919340137e-08, 8.226793397625443e-06, 3.181311569733225e-08, 3.682742999444599e-08, 1.131909925788932e-06, 1.600000416601688e-07, 3.849311536185951e-09, 1.106673419570825e-08, 0.3354506492614746, 1.5595276181556983e-06, 9.736822015327107e-09, 2.808263488418561e-08, 3.0096421141934115e-06, 3.896738931530308e-08, 2.7673316083109967e-08, 3.0091626967987395e-08, 5.451155971059052e-08, 1.1237509811579116e-09, 6.905077043484198e-08, 1.581816832185723e-05, 2.6920300655319807e-08, 4.044207813080902e-08, 6.258233042899519e-06, 2.1763634094895679e-07, 6.383554573829997e-09, 1.0940395611669373e-07, 0.4317386746406555, 1.6201959169848124e-06, 1.1017935008794666e-08, 2.59819525894045e-08, 4.6447381464531645e-05, 6.317134904065824e-08]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00023908648290671408, 0.0, 0.9986121654510498, 0.0, 0.0009701979579403996, 0.0, 0.0, 0.0, 0.0, 0.00016563545796088874, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.7440934243495576e-06, 0.0, 0.0, 0.0, 8.397523032499521e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0277181900164578e-05, 0.0, 0.0, 0.0, 7.34729610485374e-07, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9986121654510498]}, "loss": [1.092280387878418, 0.0013887984678149223], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [71]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:34:42.108292", "n_pass": [1, 1, 1], "n_token": 77, "loss": [0.8399348258972168, 0.0013887984678149223], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", ",", "'_done'", ")", "#NEWLINE#", "@", "mock", ".", "patch", "(", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "client", ".", "captureMessage", "(", "message", "=", "'foo'", ")", "#NEWLINE#", "time", ".", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", ".", "call_count", ",", "1", ")", "#NEWLINE#", "time", ".", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 71, "repair_targets": [24], "repair_candidates": [26, 53, 71, 24, 22, 31, 49, 67]}}
+{"prediction": {"error_location": 0.4317386746406555, "repair_targets": [0.9986121654510498], "repair_candidates": [0.00023908648290671408, 0.9986121654510498, 0.0009701979579403996, 0.00016563545796088874, 1.7440934243495576e-06, 8.397523032499521e-08, 1.0277181900164578e-05, 7.34729610485374e-07], "target_probs": 0.9986121654510498}}
+
+
+{"result": {"time": "2021-02-21 06:34:42.355498", "n_pass": [24, 5, 2], "n_token": 67, "loss": [0.7600576877593994, 0.001294496702030301], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", ",", "'_done'", ")", "#NEWLINE#", "@", "mock", ".", "patch", "(", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "client", ".", "captureMessage", "(", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", ".", "call_count", ",", "1", ")", "#NEWLINE#", "time", ".", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 61, "repair_targets": [24], "repair_candidates": [26, 43, 61, 24, 22, 31, 39, 57]}}
+{"prediction": {"error_location": 0.46763938665390015, "repair_targets": [0.9987063407897949], "repair_candidates": [0.00011940005060750991, 0.9987063407897949, 0.0011209000367671251, 4.9079601012635976e-05, 1.2619664175872458e-06, 2.392822580077336e-07, 2.573721758380998e-06, 3.5079438021057285e-08], "target_probs": 0.9987063407897949}}
+
+
+{"result": {"time": "2021-02-21 06:34:42.533792", "n_pass": [29, 8, 3], "n_token": 58, "loss": [0.7434963583946228, 0.0011993683874607086], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "client", ".", "captureMessage", "(", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", ".", "call_count", ",", "1", ")", "#NEWLINE#", "time", ".", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 52, "repair_targets": [15], "repair_candidates": [17, 34, 52, 15, 13, 22, 30, 48]}}
+{"prediction": {"error_location": 0.4754486083984375, "repair_targets": [0.9988013505935669], "repair_candidates": [0.0002664120402187109, 0.9988013505935669, 0.000662653474137187, 0.0002641477913130075, 2.568765239630011e-06, 6.637175715695776e-07, 2.080588956232532e-06, 4.750303617129248e-08], "target_probs": 0.9988013505935669}}
+
+
+{"result": {"time": "2021-02-21 06:34:42.778074", "n_pass": [51, 12, 4], "n_token": 53, "loss": [1.0508798360824585, 0.0036600371822714806], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", ".", "call_count", ",", "1", ")", "#NEWLINE#", "time", ".", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 47, "repair_targets": [15], "repair_candidates": [17, 29, 47, 15, 13, 22, 25, 43]}}
+{"prediction": {"error_location": 0.3496299982070923, "repair_targets": [0.996346652507782], "repair_candidates": [5.6966870033647865e-05, 0.996346652507782, 0.0035810780245810747, 1.9179271930624964e-06, 7.608092005284561e-07, 1.1821366570075043e-05, 5.956745781077188e-07, 2.481521903519024e-07], "target_probs": 0.996346652507782}}
+
+
+{"result": {"time": "2021-02-21 06:34:43.317011", "n_pass": [89, 21, 5], "n_token": 50, "loss": [0.839730978012085, 0.002157868817448616], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", ".", "call_count", "#NEWLINE#", "time", ".", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 44, "repair_targets": [15], "repair_candidates": [17, 29, 44, 15, 13, 22, 25, 40]}}
+{"prediction": {"error_location": 0.4318266808986664, "repair_targets": [0.9978444576263428], "repair_candidates": [3.641449802671559e-05, 0.9978444576263428, 0.002104300307109952, 2.9025952699157642e-06, 5.479386118167895e-07, 1.0053679943666793e-05, 7.051040142869169e-07, 5.853075890627224e-07], "target_probs": 0.9978444576263428}}
+
+
+{"result": {"time": "2021-02-21 06:34:43.376815", "n_pass": [90, 22, 6], "n_token": 47, "loss": [0.18098953366279602, 0.006952256895601749], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", ".", "call_count", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 41, "repair_targets": [15], "repair_candidates": [17, 29, 41, 15, 13, 22, 25, 37]}}
+{"prediction": {"error_location": 0.8344441056251526, "repair_targets": [0.9930718541145325], "repair_candidates": [2.7207101084059104e-05, 0.9930718541145325, 0.0037918216548860073, 4.455398993741255e-06, 5.873299642189522e-07, 0.0031029232777655125, 4.3271981553516525e-07, 7.187344976955501e-07], "target_probs": 0.9930718541145325}}
+
+
+{"result": {"time": "2021-02-21 06:34:44.151708", "n_pass": [151, 35, 7], "n_token": 46, "loss": [0.07406717538833618, 0.0010784717742353678], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", "call_count", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 40, "repair_targets": [15], "repair_candidates": [17, 29, 40, 15, 13, 22, 25, 36]}}
+{"prediction": {"error_location": 0.928609311580658, "repair_targets": [0.9989221096038818], "repair_candidates": [6.781046977266669e-05, 0.9989221096038818, 0.0009475379483774304, 1.704318492556922e-05, 1.6098559854071937e-06, 4.249383709975518e-05, 5.881051379219571e-07, 8.88941769972007e-07], "target_probs": 0.9989221096038818}}
+
+
+{"result": {"time": "2021-02-21 06:34:44.210794", "n_pass": [152, 36, 8], "n_token": 45, "loss": [0.07458909600973129, 0.005663188174366951], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", "sleep", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 39, "repair_targets": [15], "repair_candidates": [17, 29, 39, 15, 13, 22, 25, 35]}}
+{"prediction": {"error_location": 0.9281247854232788, "repair_targets": [0.9943528175354004], "repair_candidates": [7.1994167228695e-05, 0.9943528175354004, 0.0038902240339666605, 1.1036620890081394e-05, 2.028152266575489e-06, 0.001669674413278699, 6.038494575477671e-07, 1.6091386214611703e-06], "target_probs": 0.9943528175354004}}
+
+
+{"result": {"time": "2021-02-21 06:34:44.269288", "n_pass": [153, 37, 9], "n_token": 44, "loss": [0.11031561344861984, 0.009746810421347618], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", "(", "0", ")", "#NEWLINE#", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 38, "repair_targets": [15], "repair_candidates": [17, 29, 38, 15, 13, 22, 25, 34]}}
+{"prediction": {"error_location": 0.8955514430999756, "repair_targets": [0.9903005361557007], "repair_candidates": [7.837626617401838e-05, 0.9903005361557007, 0.006778330076485872, 6.692261649732245e-06, 1.3190215213398915e-06, 0.0028315100353211164, 5.285093038764899e-07, 2.695324155865819e-06], "target_probs": 0.9903005361557007}}
+
+
+{"result": {"time": "2021-02-21 06:34:44.386109", "n_pass": [155, 39, 10], "n_token": 42, "loss": [0.7061209678649902, 0.016372406855225563], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", "(", "0", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 36, "repair_targets": [15], "repair_candidates": [17, 29, 36, 15, 13, 22, 25, 32]}}
+{"prediction": {"error_location": 0.4935550093650818, "repair_targets": [0.9837608933448792], "repair_candidates": [0.00031751435017213225, 0.9837608933448792, 0.015116778202354908, 6.941336778254481e-06, 4.688269257258071e-07, 0.0007876723539084196, 2.2527333385369275e-06, 7.432422080455581e-06], "target_probs": 0.9837608933448792}}
+
+
+{"result": {"time": "2021-02-21 06:34:45.736442", "n_pass": [184, 62, 11], "n_token": 41, "loss": [0.3395954668521881, 0.02360343560576439], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "#NEWLINE#", "self", ".", "assertEqual", "(", "done", "(", "0", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [15], "repair_candidates": [17, 28, 35, 15, 13, 22, 24, 31]}}
+{"prediction": {"error_location": 0.7120582461357117, "repair_targets": [0.9766729474067688], "repair_candidates": [0.0007944964454509318, 0.9766729474067688, 0.021691814064979553, 3.8712223613401875e-05, 1.0081236041514785e-06, 0.0007795842830091715, 4.907804850518005e-06, 1.6489717381773517e-05], "target_probs": 0.9766729474067688}}
+
+
+{"result": {"time": "2021-02-21 06:34:45.794515", "n_pass": [185, 63, 12], "n_token": 40, "loss": [0.10202068090438843, 0.0052303122356534], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", ".", "assertEqual", "(", "done", "(", "0", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 34, "repair_targets": [15], "repair_candidates": [17, 27, 34, 15, 13, 22, 23, 30]}}
+{"prediction": {"error_location": 0.9030108451843262, "repair_targets": [0.994783341884613], "repair_candidates": [0.002467622049152851, 0.994783341884613, 0.002717206021770835, 7.279013061634032e-06, 4.775423349201446e-06, 4.6902860049158335e-06, 1.1922965313715395e-05, 3.2048267257778207e-06], "target_probs": 0.994783341884613}}
+
+
+{"result": {"time": "2021-02-21 06:34:45.852703", "n_pass": [187, 64, 13], "n_token": 39, "loss": [0.10427657514810562, 0.0038349756505340338], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "assertEqual", "(", "done", "(", "0", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [15], "repair_candidates": [17, 26, 33, 15, 13, 22, 23, 29]}}
+{"prediction": {"error_location": 0.9009760022163391, "repair_targets": [0.9961723685264587], "repair_candidates": [0.0002886216971091926, 0.9961723685264587, 0.0034713868517428637, 6.998289336479502e-06, 8.32015120977303e-06, 3.1979685445548967e-05, 1.3168893929105252e-05, 7.223366537800757e-06], "target_probs": 0.9961723685264587}}
+
+
+{"result": {"time": "2021-02-21 06:34:45.915182", "n_pass": [188, 65, 14], "n_token": 38, "loss": [0.12263477593660355, 0.004445645026862621], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "(", "done", "(", "0", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [15], "repair_candidates": [17, 25, 32, 15, 13, 22, 23, 28]}}
+{"prediction": {"error_location": 0.8845865726470947, "repair_targets": [0.9955642223358154], "repair_candidates": [0.0008281375630758703, 0.9955642223358154, 0.0035213876981288195, 3.415707760723308e-05, 2.337934165552724e-05, 7.523850399593357e-06, 1.3985227269586176e-05, 7.279733381437836e-06], "target_probs": 0.9955642223358154}}
+
+
+{"result": {"time": "2021-02-21 06:34:45.973574", "n_pass": [189, 66, 15], "n_token": 37, "loss": [0.12838846445083618, 0.005280224606394768], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "done", "(", "0", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 31, "repair_targets": [15], "repair_candidates": [17, 24, 31, 15, 13, 22, 23, 27]}}
+{"prediction": {"error_location": 0.879511833190918, "repair_targets": [0.9947336912155151], "repair_candidates": [0.0013056510360911489, 0.9947336912155151, 0.003872789442539215, 3.796223973040469e-05, 2.0852101442869753e-05, 4.947373781760689e-06, 1.6741061699576676e-05, 7.292782356671523e-06], "target_probs": 0.9947336912155151}}
+
+
+{"result": {"time": "2021-02-21 06:34:46.031829", "n_pass": [191, 67, 16], "n_token": 35, "loss": [0.09377381950616837, 0.004960841033607721], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "done", "self", ".", "assertEquals", "(", "done", ".", "call_count", ",", "1", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [15], "repair_candidates": [17, 24, 29, 15, 13, 22, 23, 25]}}
+{"prediction": {"error_location": 0.9104886651039124, "repair_targets": [0.9950514435768127], "repair_candidates": [0.0033073348458856344, 0.9950514435768127, 0.0015878182603046298, 3.9912149077281356e-05, 7.870482363614428e-07, 7.105145414243452e-06, 4.615432317223167e-06, 9.976689625545987e-07], "target_probs": 0.9950514435768127}}
+
+
+{"result": {"time": "2021-02-21 06:34:46.146788", "n_pass": [195, 69, 17], "n_token": 33, "loss": [0.1610390990972519, 0.06931976974010468], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "done", "self", ".", "assertEquals", "(", "done", ".", "1", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [15], "repair_candidates": [17, 24, 29, 15, 13, 22, 23, 25]}}
+{"prediction": {"error_location": 0.8512588739395142, "repair_targets": [0.9330282807350159], "repair_candidates": [0.06270433962345123, 0.9330282807350159, 0.003269555512815714, 0.0009042623569257557, 7.392945008177776e-06, 5.6830820540199056e-05, 2.8339783966657706e-05, 9.965571052816813e-07], "target_probs": 0.9330282807350159}}
+
+
+{"result": {"time": "2021-02-21 06:34:46.204791", "n_pass": [196, 70, 18], "n_token": 31, "loss": [0.36344969272613525, 0.003000883152708411], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", ".", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "done", "self", ".", "assertEquals", "(", "done", "."]}}
+{"position": {"error_location": 29, "repair_targets": [15], "repair_candidates": [17, 24, 29, 15, 13, 22, 23, 25]}}
+{"prediction": {"error_location": 0.695273756980896, "repair_targets": [0.9970036149024963], "repair_candidates": [0.0011758619220927358, 0.9970036149024963, 0.0016976131591945887, 4.5659075112780556e-05, 5.3286894399207085e-06, 6.222444790182635e-05, 9.097237125388347e-06, 6.033686190676235e-07], "target_probs": 0.9970036149024963}}
+
+
+{"result": {"time": "2021-02-21 06:34:46.439075", "n_pass": [200, 74, 19], "n_token": 30, "loss": [0.635346531867981, 0.003307023085653782], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "mock", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "done", "self", ".", "assertEquals", "(", "done", "."]}}
+{"position": {"error_location": 28, "repair_targets": [14], "repair_candidates": [16, 23, 28, 14, 12, 21, 22, 24]}}
+{"prediction": {"error_location": 0.5297518968582153, "repair_targets": [0.9966984391212463], "repair_candidates": [0.00044562804396264255, 0.9966984391212463, 0.002719462150707841, 1.3210234101279639e-05, 1.6795472674857592e-06, 0.00011318353790557012, 5.4878769333299715e-06, 2.885164349208935e-06], "target_probs": 0.9966984391212463}}
+
+
+{"result": {"time": "2021-02-21 06:34:47.429169", "n_pass": [225, 91, 20], "n_token": 29, "loss": [0.89716637134552, 0.0015343868872150779], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["@", "mock", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "done", "self", ".", "assertEquals", "(", "done", "."]}}
+{"position": {"error_location": 27, "repair_targets": [13], "repair_candidates": [15, 22, 27, 13, 11, 20, 21, 23]}}
+{"prediction": {"error_location": 0.4077232778072357, "repair_targets": [0.9984667897224426], "repair_candidates": [2.659840538399294e-05, 0.9984667897224426, 0.001471765455789864, 1.0040167580882553e-05, 2.7619914817478275e-06, 1.4414392353501171e-05, 6.286956249823561e-06, 1.3727699297305662e-06], "target_probs": 0.9984667897224426}}
+
+
+{"result": {"time": "2021-02-21 06:34:48.532062", "n_pass": [259, 110, 21], "n_token": 28, "loss": [0.37295088171958923, 0.0004207184538245201], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["@", "mock", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "done", "self", "assertEquals", "(", "done", "."]}}
+{"position": {"error_location": 26, "repair_targets": [13], "repair_candidates": [15, 22, 26, 13, 11, 20, 21, 23]}}
+{"prediction": {"error_location": 0.6886990070343018, "repair_targets": [0.9995793700218201], "repair_candidates": [2.0964051145710982e-05, 0.9995793700218201, 0.00030508232885040343, 3.7064550269860774e-05, 6.976546956138918e-06, 2.1110950910951942e-05, 2.8514832592918538e-05, 9.382263783663802e-07], "target_probs": 0.9995793700218201}}
+
+
+{"result": {"time": "2021-02-21 06:34:48.708248", "n_pass": [263, 113, 22], "n_token": 27, "loss": [0.6528934240341187, 0.0007141397800296545], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["@", "mock", "patch", ".", "object", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "done", "self", "assertEquals", "(", "done"]}}
+{"position": {"error_location": 26, "repair_targets": [13], "repair_candidates": [15, 22, 26, 13, 11, 20, 21, 23]}}
+{"prediction": {"error_location": 0.5205374360084534, "repair_targets": [0.9992861151695251], "repair_candidates": [1.1276789336989168e-05, 0.9992861151695251, 0.0006397250690497458, 2.5652187105151825e-05, 5.7186916819773614e-06, 2.1075813492643647e-05, 7.293407634278992e-06, 3.1479976314585656e-06], "target_probs": 0.9992861151695251}}
+
+
+{"result": {"time": "2021-02-21 06:34:48.994257", "n_pass": [268, 118, 23], "n_token": 26, "loss": [0.7811480164527893, 0.000997384893707931], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["@", "mock", "patch", ".", "(", "GeventedHTTPTransport", "'raven.transport.http.HTTPTransport.send'", ")", "#NEWLINE#", "def test_does_send(", "self", ",", "send", ",", "done", ")", ":", "#NEWLINE#", "#INDENT#", "self", "self", "done", "self", "assertEquals", "(", "done"]}}
+{"position": {"error_location": 25, "repair_targets": [12], "repair_candidates": [14, 21, 25, 12, 10, 19, 20, 22]}}
+{"prediction": {"error_location": 0.45788004994392395, "repair_targets": [0.9990031123161316], "repair_candidates": [1.441778749722289e-05, 0.9990031123161316, 0.0008428794681094587, 2.9130676921340637e-05, 9.584443432686385e-06, 8.33881858852692e-05, 6.662595751549816e-06, 1.0810417734319344e-05], "target_probs": 0.9990031123161316}}
+
+
+
+
+Minimal simplified tokens:
+
+['@', 'mock', 'patch', '.', '(', 'GeventedHTTPTransport', "'raven.transport.http.HTTPTransport.send'", ')', '#NEWLINE#', 'def test_does_send(', 'self', ',', 'send', ',', 'done', ')', ':', '#NEWLINE#', '#INDENT#', 'self', 'self', 'done', 'self', 'assertEquals', '(', 'done']

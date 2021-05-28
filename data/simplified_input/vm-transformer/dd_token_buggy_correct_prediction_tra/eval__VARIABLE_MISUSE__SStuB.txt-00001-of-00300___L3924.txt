@@ -1,0 +1,85 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "classmethod", "#NEWLINE#", "def for_domain(", "cls", ",", "name", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "mapping", "=", "DocDomainMapping", ".", "objects", ".", "get", "(", "domain_name", "=", "name", ",", "doc_type", "=", "'ILSGatewayConfig'", ")", "#NEWLINE#", "return", "cls", ".", "get", "(", "docid", "=", "cls", ".", "doc_id", ")", "#NEWLINE#", "#UNINDENT#", "except", "DocDomainMapping", ".", "DoesNotExist", ":", "#NEWLINE#", "#INDENT#", "return", "None"], "error_location": [40], "repair_targets": [16], "repair_candidates": [5, 34, 40, 16, 7, 26], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "dimagi/commcare-hq/custom/ilsgateway/models.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00001-of-00300", "js_count": 3924, "results": {"model": "transformer", "prob": {"loc": [[0.003367926925420761, 1.887962852720193e-08, 3.6841588113567525e-10, 8.220285563353968e-10, 6.697630228202911e-10, 3.0490727720433597e-09, 5.449218298814174e-10, 8.190486067150005e-10, 4.302209422046843e-10, 2.7060151341906646e-10, 5.076982168006339e-10, 6.009525654881998e-10, 1.9342605295236126e-09, 4.3830170604053365e-09, 1.7559651510623553e-09, 1.0655506477164067e-09, 1.2873395860424353e-07, 3.0327382272155035e-10, 3.3910054764163533e-09, 8.686327213069944e-10, 8.521108818548839e-11, 1.8231205434204867e-09, 1.3557030498212441e-11, 5.170110450869458e-10, 4.888951049553114e-11, 2.85644974340471e-09, 1.184483426186489e-05, 4.268194242484924e-09, 1.2497054502347282e-09, 3.164687356616014e-08, 2.0406828582508751e-07, 3.560529293622494e-08, 5.101030708942744e-08, 1.897834778219476e-07, 1.4337383724694064e-08, 9.206568840625096e-09, 8.035312692999952e-11, 2.9004045387637234e-08, 2.7195794061185552e-08, 2.7550767001116583e-08, 0.9965999722480774, 3.3509252261865186e-08, 6.954269160530657e-09, 2.509972603093047e-07, 2.123350952842884e-07, 2.520281725537643e-07, 1.0253405662297155e-06, 3.287683512098738e-06, 9.886239382694839e-08, 8.273061098407197e-07, 1.9598057861003326e-06, 1.4901341955919634e-06, 4.1358387647960626e-07, 3.2481846119480906e-06, 6.466578724939609e-06]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 1.883673030533828e-05, 0.0, 0.0003045079647563398, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9996412992477417, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.154212754452601e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.9833497592335334e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 7.366105592154781e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9996412992477417]}, "loss": [0.003405963070690632, 0.0003587651008274406], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 12:06:56.310955", "n_pass": [1, 1, 1], "n_token": 55, "loss": [0.003405963070690632, 0.0003587651008274406], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "classmethod", "#NEWLINE#", "def for_domain(", "cls", ",", "name", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "mapping", "=", "DocDomainMapping", ".", "objects", ".", "get", "(", "domain_name", "=", "name", ",", "doc_type", "=", "'ILSGatewayConfig'", ")", "#NEWLINE#", "return", "cls", ".", "get", "(", "docid", "=", "cls", ".", "doc_id", ")", "#NEWLINE#", "#UNINDENT#", "except", "DocDomainMapping", ".", "DoesNotExist", ":", "#NEWLINE#", "#INDENT#", "return", "None"]}}
+{"position": {"error_location": 40, "repair_targets": [16], "repair_candidates": [5, 34, 40, 16, 7, 26]}}
+{"prediction": {"error_location": 0.9965999722480774, "repair_targets": [0.9996412992477417], "repair_candidates": [1.883673030533828e-05, 0.0003045079647563398, 0.9996412992477417, 3.154212754452601e-05, 2.9833497592335334e-06, 7.366105592154781e-07], "target_probs": 0.9996412992477417}}
+
+
+{"result": {"time": "2021-02-11 12:06:56.367212", "n_pass": [11, 2, 2], "n_token": 41, "loss": [2.8490614567999728e-05, 0.006279713474214077], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "classmethod", "#NEWLINE#", "def for_domain(", "cls", ",", "name", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "mapping", "=", "DocDomainMapping", ".", "objects", ".", "get", "(", "domain_name", "=", "name", ",", "doc_type", "=", "'ILSGatewayConfig'", ")", "#NEWLINE#", "return", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 40, "repair_targets": [16], "repair_candidates": [5, 34, 40, 16, 7, 26]}}
+{"prediction": {"error_location": 0.9999713897705078, "repair_targets": [0.9937399625778198], "repair_candidates": [1.9220635749661596e-08, 0.0013411055551841855, 0.9937399625778198, 0.004918637219816446, 1.608464117452968e-08, 3.7781359196742414e-07], "target_probs": 0.9937399625778198}}
+
+
+{"result": {"time": "2021-02-11 12:06:56.422524", "n_pass": [24, 3, 3], "n_token": 34, "loss": [4.7205765440594405e-05, 0.0007114556501619518], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "classmethod", "#NEWLINE#", "def for_domain(", "cls", ",", "name", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "mapping", "=", "DocDomainMapping", ".", "objects", ".", "get", "(", "domain_name", "=", "name", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 33, "repair_targets": [16], "repair_candidates": [5, 27, 33, 16, 7, 26]}}
+{"prediction": {"error_location": 0.9999527931213379, "repair_targets": [0.99928879737854], "repair_candidates": [6.532864471608946e-09, 0.0005511130439117551, 0.99928879737854, 0.0001597240916453302, 1.2006407423825749e-08, 3.13267122464822e-07], "target_probs": 0.99928879737854}}
+
+
+{"result": {"time": "2021-02-11 12:06:56.481080", "n_pass": [41, 4, 4], "n_token": 31, "loss": [5.1973900554003194e-05, 0.002062837593257427], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def for_domain(", "cls", ",", "name", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "mapping", "=", "DocDomainMapping", ".", "objects", ".", "get", "(", "domain_name", "=", "name", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 30, "repair_targets": [13], "repair_candidates": [2, 24, 30, 13, 4, 23]}}
+{"prediction": {"error_location": 0.9999479055404663, "repair_targets": [0.9979392886161804], "repair_candidates": [1.4824788507894482e-08, 0.0014247571816667914, 0.9979392886161804, 0.0006353612989187241, 1.7073180913484975e-07, 3.680435725073039e-07], "target_probs": 0.9979392886161804}}
+
+
+{"result": {"time": "2021-02-11 12:06:56.536011", "n_pass": [43, 5, 5], "n_token": 28, "loss": [0.0005068686441518366, 0.01417980995029211], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def for_domain(", "cls", ",", "name", ")", "try", ":", "#NEWLINE#", "#INDENT#", "mapping", "=", "DocDomainMapping", ".", "objects", ".", "get", "(", "domain_name", "=", "name", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 27, "repair_targets": [10], "repair_candidates": [2, 21, 27, 10, 4, 20]}}
+{"prediction": {"error_location": 0.9994931221008301, "repair_targets": [0.985920250415802], "repair_candidates": [1.524887238701922e-07, 0.009271898306906223, 0.985920250415802, 0.004802574869245291, 2.9423947580653476e-06, 2.210620095866034e-06], "target_probs": 0.985920250415802}}
+
+
+{"result": {"time": "2021-02-11 12:06:56.590877", "n_pass": [44, 6, 6], "n_token": 25, "loss": [2.3245540432981215e-05, 0.0006128042587079108], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def for_domain(", "cls", ",", "name", ")", "#INDENT#", "mapping", "=", "DocDomainMapping", ".", "objects", ".", "get", "(", "domain_name", "=", "name", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 24, "repair_targets": [7], "repair_candidates": [2, 18, 24, 7, 4, 17]}}
+{"prediction": {"error_location": 0.9999767541885376, "repair_targets": [0.9993873834609985], "repair_candidates": [2.6171823819254314e-08, 0.00039315439062193036, 0.9993873834609985, 0.00021911739895585924, 1.546067238678006e-07, 1.6833084259815223e-07], "target_probs": 0.9993873834609985}}
+
+
+{"result": {"time": "2021-02-11 12:06:56.646050", "n_pass": [46, 7, 7], "n_token": 21, "loss": [8.666139910928905e-05, 0.002211272018030286], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def for_domain(", "cls", ",", "name", ")", "#INDENT#", "mapping", "=", "get", "(", "domain_name", "=", "name", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 20, "repair_targets": [7], "repair_candidates": [2, 14, 20, 7, 4, 13]}}
+{"prediction": {"error_location": 0.9999134540557861, "repair_targets": [0.9977911710739136], "repair_candidates": [9.288896762882359e-08, 0.001176844583824277, 0.9977911710739136, 0.001031345222145319, 3.5976424328509893e-07, 1.6368701949431852e-07], "target_probs": 0.9977911710739136}}
+
+
+{"result": {"time": "2021-02-11 12:06:56.701360", "n_pass": [47, 8, 8], "n_token": 17, "loss": [0.0017001472879201174, 0.5869436860084534], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def for_domain(", "cls", ",", "name", ")", "#INDENT#", "mapping", "=", "name", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 16, "repair_targets": [7], "repair_candidates": [2, 10, 16, 7, 4, 9]}}
+{"prediction": {"error_location": 0.9983012676239014, "repair_targets": [0.5560240745544434], "repair_candidates": [4.4361388518154854e-07, 0.1738061159849167, 0.5560240745544434, 0.2701623737812042, 6.150297394924564e-06, 8.363441565961693e-07], "target_probs": 0.5560240745544434}}
+
+
+{"result": {"time": "2021-02-11 12:06:56.868429", "n_pass": [67, 11, 9], "n_token": 16, "loss": [0.0041853697039186954, 0.5006046295166016], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def for_domain(", "cls", ",", "name", ")", "#INDENT#", "mapping", "=", "name", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 15, "repair_targets": [6], "repair_candidates": [1, 9, 15, 6, 3, 8]}}
+{"prediction": {"error_location": 0.9958233833312988, "repair_targets": [0.6061640381813049], "repair_candidates": [0.00034103309735655785, 0.1841849833726883, 0.6061640381813049, 0.20930896699428558, 1.8789673106311966e-07, 7.686944627494086e-07], "target_probs": 0.6061640381813049}}
+
+
+{"result": {"time": "2021-02-11 12:06:56.923211", "n_pass": [68, 12, 10], "n_token": 15, "loss": [0.0013675870141014457, 0.0031192621681839228], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "name", ")", "#INDENT#", "mapping", "=", "name", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 14, "repair_targets": [5], "repair_candidates": [0, 8, 14, 5, 2, 7]}}
+{"prediction": {"error_location": 0.9986333250999451, "repair_targets": [0.9968855977058411], "repair_candidates": [0.00013487113756127656, 0.0018592223059386015, 0.9968855977058411, 0.0011196869891136885, 4.407792744132166e-07, 1.576337780306858e-07], "target_probs": 0.9968855977058411}}
+
+
+{"result": {"time": "2021-02-11 12:06:56.977935", "n_pass": [70, 13, 11], "n_token": 13, "loss": [0.008322439156472683, 0.6292487382888794], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", ",", "name", "mapping", "=", "name", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [0, 6, 12, 3, 2, 5]}}
+{"prediction": {"error_location": 0.9917120933532715, "repair_targets": [0.5329920649528503], "repair_candidates": [0.007122630253434181, 0.28590524196624756, 0.5329920649528503, 0.17396168410778046, 1.262080422748113e-05, 5.8013170018966775e-06], "target_probs": 0.5329920649528503}}
+
+
+{"result": {"time": "2021-02-11 12:06:57.475075", "n_pass": [100, 22, 12], "n_token": 12, "loss": [0.000671042304020375, 0.31031057238578796], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["cls", "name", "mapping", "=", "name", "cls", ".", "get", "(", "docid", "=", "cls"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [0, 5, 11, 2, 1, 4]}}
+{"prediction": {"error_location": 0.9993290901184082, "repair_targets": [0.7332192063331604], "repair_candidates": [0.11203332990407944, 0.08622530847787857, 0.7332192063331604, 0.06780816614627838, 0.0005798836355097592, 0.00013406241487246007], "target_probs": 0.7332192063331604}}
+
+
+
+
+Minimal simplified tokens:
+
+['cls', 'name', 'mapping', '=', 'name', 'cls', '.', 'get', '(', 'docid', '=', 'cls']

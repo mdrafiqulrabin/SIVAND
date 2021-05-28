@@ -1,0 +1,223 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "LoadLibrary", "(", "path", ")", "as", "handle", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "RT_MANIFEST", ",", "resource_name", ")", "#NEWLINE#", "#UNINDENT#", "except", "pywintypes", ".", "error", "as", "error", ":", "#NEWLINE#", "#INDENT#", "if", "(", "path", ".", "args", "[", "0", "]", "==", "winerror", ".", "ERROR_RESOURCE_DATA_NOT_FOUND", ")", ":", "#NEWLINE#", "#INDENT#", "return", "None", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "raise"], "error_location": [49], "repair_targets": [41, 43], "repair_candidates": [2, 14, 49, 4, 34, 41, 43, 17, 30], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "adblockplus/gyp/test/win/gyptest-link-generate-manifest.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00016-of-00300", "js_count": 53375, "results": {"model": "transformer", "prob": {"loc": [[0.1161288246512413, 2.0082181890757056e-06, 6.078018373045779e-07, 1.4507381074224668e-08, 8.287851187560591e-07, 1.4411186910479046e-08, 3.4598411247088734e-08, 4.253429253253671e-08, 3.6162546734885836e-08, 1.414885417716505e-07, 6.125603846385275e-08, 3.546105187268722e-09, 1.623145173823559e-08, 2.6596413249535544e-07, 0.0007740946603007615, 3.2753309398003694e-08, 1.1095253427129137e-07, 2.1461971755343257e-07, 1.1687625800504975e-07, 1.4098775125148677e-07, 5.051737517192123e-08, 7.236210564087742e-08, 2.431254984003317e-07, 1.2371252466891747e-07, 5.234103639395471e-08, 1.953883987937388e-08, 1.0334024835856326e-07, 4.0559267944217936e-08, 3.1146544898774664e-08, 2.1945588457583654e-07, 0.013998378068208694, 3.906981760337658e-07, 1.9442909433564637e-06, 6.442789413085848e-07, 0.0001805059873731807, 2.2226394946756045e-07, 1.65030499488239e-07, 1.932724416064957e-07, 9.50647404351912e-07, 6.325167873910686e-07, 2.2884570682890626e-07, 1.4586222505386104e-06, 1.0662245841785989e-07, 0.000283338304143399, 1.8168277620134177e-06, 1.337075445917435e-06, 7.817635037099535e-07, 2.685252411538386e-07, 7.80906975705875e-06, 0.28252655267715454, 1.3449636071527493e-06, 2.3371028134988592e-07, 1.7091420545511937e-07, 1.8753915355773643e-05, 7.10548633264807e-08, 3.390342442344263e-07, 0.5860429406166077, 1.899581206998846e-06, 9.752086782555125e-08, 1.4573673468021298e-07, 6.833573024778161e-06, 1.0687436997613986e-06, 5.399368205871724e-07, 1.3671265151060652e-06, 2.033930059042177e-06, 8.409868428316258e-07, 6.616327823394386e-07, 4.373133606350166e-07, 6.4474971850359e-07, 4.445035131084296e-07, 2.5261627456529823e-07, 2.5954093416657997e-06]], "pointer": [[0.0, 0.0, 0.012029135599732399, 0.0, 0.00617457227781415, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.01015347521752119, 0.0, 0.0, 0.0013666219310835004, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.8858579248189926e-05, 0.0, 0.0, 0.0, 0.0014605080941691995, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.009178737178444862, 0.0, 0.9564487338066101, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0031392655801028013, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9656274914741516]}, "loss": [1.2639826536178589, 0.03497713804244995], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [56]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:25:48.714362", "n_pass": [1, 1, 1], "n_token": 72, "loss": [0.5343621969223022, 0.03497713804244995], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "LoadLibrary", "(", "path", ")", "as", "handle", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "RT_MANIFEST", ",", "resource_name", ")", "#NEWLINE#", "#UNINDENT#", "except", "pywintypes", ".", "error", "as", "error", ":", "#NEWLINE#", "#INDENT#", "if", "(", "path", ".", "args", "[", "0", "]", "==", "winerror", ".", "ERROR_RESOURCE_DATA_NOT_FOUND", ")", ":", "#NEWLINE#", "#INDENT#", "return", "None", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "raise"]}}
+{"position": {"error_location": 56, "repair_targets": [41, 43], "repair_candidates": [2, 14, 49, 4, 34, 41, 43, 17, 30]}}
+{"prediction": {"error_location": 0.5860429406166077, "repair_targets": [0.009178737178444862, 0.9564487338066101], "repair_candidates": [0.012029135599732399, 0.00617457227781415, 0.01015347521752119, 0.0013666219310835004, 4.8858579248189926e-05, 0.0014605080941691995, 0.009178737178444862, 0.9564487338066101, 0.0031392655801028013], "target_probs": 0.9656274914741516}}
+
+
+{"result": {"time": "2021-02-21 07:25:49.064652", "n_pass": [57, 7, 2], "n_token": 67, "loss": [0.6986585259437561, 0.15788839757442474], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "LoadLibrary", "(", "path", ")", "as", "handle", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "RT_MANIFEST", ",", "resource_name", ")", "#NEWLINE#", "#UNINDENT#", "except", "pywintypes", ".", "error", "as", "error", ":", "#NEWLINE#", "#INDENT#", "if", "(", "path", ".", "args", "[", "0", "]", "==", "winerror", "#INDENT#", "return", "None", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "raise"]}}
+{"position": {"error_location": 56, "repair_targets": [41, 43], "repair_candidates": [2, 14, 49, 4, 34, 41, 43, 17, 30]}}
+{"prediction": {"error_location": 0.4972519278526306, "repair_targets": [0.029664110392332077, 0.8242809772491455], "repair_candidates": [0.053973231464624405, 0.025288334116339684, 0.045126330107450485, 0.002878220984712243, 2.3341597625403665e-05, 0.01088563073426485, 0.029664110392332077, 0.8242809772491455, 0.007879800163209438], "target_probs": 0.8539450764656067}}
+
+
+{"result": {"time": "2021-02-21 07:25:49.178461", "n_pass": [59, 9, 3], "n_token": 62, "loss": [0.6617524027824402, 0.14408046007156372], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "LoadLibrary", "(", "path", ")", "as", "handle", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "RT_MANIFEST", ",", "resource_name", ")", "#NEWLINE#", "#UNINDENT#", "except", "pywintypes", ".", "error", "as", "error", ":", "#NEWLINE#", "#INDENT#", "if", "(", "path", ".", "args", "[", "0", "]", "==", "winerror", "#INDENT#", "return", "None", "#NEWLINE#", "#UNINDENT#"]}}
+{"position": {"error_location": 56, "repair_targets": [41, 43], "repair_candidates": [2, 14, 49, 4, 34, 41, 43, 17, 30]}}
+{"prediction": {"error_location": 0.5159463882446289, "repair_targets": [0.02982451394200325, 0.8359935879707336], "repair_candidates": [0.04671479016542435, 0.029289817437529564, 0.037593115121126175, 0.002678745426237583, 1.5624471416231245e-05, 0.012113156728446484, 0.02982451394200325, 0.8359935879707336, 0.005776720121502876], "target_probs": 0.8658180832862854}}
+
+
+{"result": {"time": "2021-02-21 07:25:49.410376", "n_pass": [73, 13, 4], "n_token": 57, "loss": [1.0032603740692139, 0.07529196888208389], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "LoadLibrary", "(", "path", ")", "as", "handle", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "RT_MANIFEST", ",", "resource_name", ")", "#NEWLINE#", "#UNINDENT#", "except", "pywintypes", ".", "error", "as", "error", ":", "#NEWLINE#", "#INDENT#", "if", "(", "path", ".", "args", "[", "0", "]", "==", "winerror"]}}
+{"position": {"error_location": 56, "repair_targets": [41, 43], "repair_candidates": [2, 14, 49, 4, 34, 41, 43, 17, 30]}}
+{"prediction": {"error_location": 0.3666819632053375, "repair_targets": [0.03389129787683487, 0.8935813307762146], "repair_candidates": [0.029835496097803116, 0.015103017911314964, 0.017724210396409035, 0.002036284888163209, 4.455474845599383e-05, 0.003895319765433669, 0.03389129787683487, 0.8935813307762146, 0.0038885255344212055], "target_probs": 0.9274726510047913}}
+
+
+{"result": {"time": "2021-02-21 07:25:49.868880", "n_pass": [119, 21, 5], "n_token": 55, "loss": [0.8965690732002258, 0.14848743379116058], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "RT_MANIFEST", ",", "resource_name", ")", "#NEWLINE#", "#UNINDENT#", "except", "pywintypes", ".", "error", "as", "error", ":", "#NEWLINE#", "#INDENT#", "if", "(", "path", ".", "args", "[", "0", "]", "==", "winerror"]}}
+{"position": {"error_location": 54, "repair_targets": [39, 41], "repair_candidates": [2, 12, 47, 4, 32, 39, 41, 15, 28]}}
+{"prediction": {"error_location": 0.4079669415950775, "repair_targets": [0.024834316223859787, 0.837176501750946], "repair_candidates": [0.05669179931282997, 0.01774548552930355, 0.05000501498579979, 0.0026333543937653303, 0.0001605096913408488, 0.0038963910192251205, 0.024834316223859787, 0.837176501750946, 0.006856657564640045], "target_probs": 0.8620108366012573}}
+
+
+{"result": {"time": "2021-02-21 07:25:49.929662", "n_pass": [121, 22, 6], "n_token": 53, "loss": [0.9708018898963928, 0.2978772222995758], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "RT_MANIFEST", ",", "resource_name", ")", "#NEWLINE#", "#UNINDENT#", "except", "pywintypes", ".", "error", "as", "error", ":", "#NEWLINE#", "#INDENT#", "if", "(", "path", ".", "args", "[", "0", "]", "==", "winerror"]}}
+{"position": {"error_location": 52, "repair_targets": [37, 39], "repair_candidates": [2, 12, 45, 4, 30, 37, 39, 15, 26]}}
+{"prediction": {"error_location": 0.37877917289733887, "repair_targets": [0.038293905556201935, 0.7040985822677612], "repair_candidates": [0.10568246245384216, 0.03967057913541794, 0.08254925906658173, 0.0036031557247042656, 0.00013887144450563937, 0.017155293375253677, 0.038293905556201935, 0.7040985822677612, 0.008807886391878128], "target_probs": 0.7423924803733826}}
+
+
+{"result": {"time": "2021-02-21 07:25:50.273305", "n_pass": [128, 28, 7], "n_token": 51, "loss": [0.9471257925033569, 0.2801251709461212], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "resource_name", ")", "#NEWLINE#", "#UNINDENT#", "except", "pywintypes", ".", "error", "as", "error", ":", "#NEWLINE#", "#INDENT#", "if", "(", "path", ".", "args", "[", "0", "]", "==", "winerror"]}}
+{"position": {"error_location": 50, "repair_targets": [35, 37], "repair_candidates": [2, 12, 43, 4, 28, 35, 37, 15, 26]}}
+{"prediction": {"error_location": 0.3878542184829712, "repair_targets": [0.038812585175037384, 0.7168765664100647], "repair_candidates": [0.09740296751260757, 0.04235459119081497, 0.06067657098174095, 0.003944272641092539, 0.00014321014168672264, 0.032105207443237305, 0.038812585175037384, 0.7168765664100647, 0.007683990523219109], "target_probs": 0.7556891441345215}}
+
+
+{"result": {"time": "2021-02-21 07:25:50.330294", "n_pass": [130, 29, 8], "n_token": 49, "loss": [0.5644298791885376, 0.12114882469177246], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "resource_name", ")", "except", "pywintypes", ".", "error", "as", "error", ":", "#NEWLINE#", "#INDENT#", "if", "(", "path", ".", "args", "[", "0", "]", "==", "winerror"]}}
+{"position": {"error_location": 48, "repair_targets": [33, 35], "repair_candidates": [2, 12, 41, 4, 28, 33, 35, 15, 26]}}
+{"prediction": {"error_location": 0.5686842799186707, "repair_targets": [0.010263691656291485, 0.8756384253501892], "repair_candidates": [0.036824680864810944, 0.027104897424578667, 0.02915789932012558, 0.0022731972858309746, 7.309466309379786e-05, 0.014656570740044117, 0.010263691656291485, 0.8756384253501892, 0.004007590003311634], "target_probs": 0.8859021067619324}}
+
+
+{"result": {"time": "2021-02-21 07:25:50.387940", "n_pass": [131, 30, 9], "n_token": 47, "loss": [0.38655123114585876, 0.16818487644195557], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "resource_name", ")", ".", "error", "as", "error", ":", "#NEWLINE#", "#INDENT#", "if", "(", "path", ".", "args", "[", "0", "]", "==", "winerror"]}}
+{"position": {"error_location": 46, "repair_targets": [31, 33], "repair_candidates": [2, 12, 39, 4, 28, 31, 33, 15, 26]}}
+{"prediction": {"error_location": 0.679395854473114, "repair_targets": [0.013635694049298763, 0.8315618634223938], "repair_candidates": [0.028119022026658058, 0.03333815932273865, 0.02835181914269924, 0.0035495790652930737, 8.517583046341315e-05, 0.056016236543655396, 0.013635694049298763, 0.8315618634223938, 0.005342498421669006], "target_probs": 0.8451975584030151}}
+
+
+{"result": {"time": "2021-02-21 07:25:50.444785", "n_pass": [134, 31, 10], "n_token": 44, "loss": [0.31856366991996765, 0.2558741271495819], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "resource_name", ")", ".", "error", "as", "error", ":", "(", "path", ".", "args", "[", "0", "]", "==", "winerror"]}}
+{"position": {"error_location": 43, "repair_targets": [31, 33], "repair_candidates": [2, 12, 36, 4, 28, 31, 33, 15, 26]}}
+{"prediction": {"error_location": 0.727192759513855, "repair_targets": [0.01788862980902195, 0.7563508152961731], "repair_candidates": [0.04590122401714325, 0.05715537816286087, 0.05616362765431404, 0.003146022092550993, 6.803135329391807e-05, 0.044878676533699036, 0.01788862980902195, 0.7563508152961731, 0.01844765804708004], "target_probs": 0.7742394208908081}}
+
+
+{"result": {"time": "2021-02-21 07:25:50.501052", "n_pass": [136, 32, 11], "n_token": 41, "loss": [0.12899859249591827, 0.4217568337917328], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "resource_name", ")", ".", "error", "as", "error", ":", "(", "path", ".", "]", "==", "winerror"]}}
+{"position": {"error_location": 40, "repair_targets": [31, 33], "repair_candidates": [2, 12, 36, 4, 28, 31, 33, 15, 26]}}
+{"prediction": {"error_location": 0.8789752721786499, "repair_targets": [0.024098506197333336, 0.6317949891090393], "repair_candidates": [0.06699729710817337, 0.04694272577762604, 0.14177227020263672, 0.0009271355229429901, 1.3048608707322273e-05, 0.026484714820981026, 0.024098506197333336, 0.6317949891090393, 0.06096931919455528], "target_probs": 0.6558935046195984}}
+
+
+{"result": {"time": "2021-02-21 07:25:51.074571", "n_pass": [194, 42, 12], "n_token": 39, "loss": [0.15588650107383728, 0.36177024245262146], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "resource_name", ")", ".", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 38, "repair_targets": [31, 33], "repair_candidates": [2, 12, 36, 4, 28, 31, 33, 15, 26]}}
+{"prediction": {"error_location": 0.8556561470031738, "repair_targets": [0.016960760578513145, 0.6794816255569458], "repair_candidates": [0.17264030873775482, 0.04191664606332779, 0.05740320309996605, 0.0002679119643289596, 5.453082394524245e-06, 0.031023239716887474, 0.016960760578513145, 0.6794816255569458, 0.00030076049733906984], "target_probs": 0.6964423656463623}}
+
+
+{"result": {"time": "2021-02-21 07:25:51.131423", "n_pass": [196, 43, 13], "n_token": 38, "loss": [0.4048343598842621, 0.09155802428722382], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "(", "handle", ",", "resource_name", ")", ".", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 37, "repair_targets": [30, 32], "repair_candidates": [1, 11, 35, 3, 27, 30, 32, 14, 25]}}
+{"prediction": {"error_location": 0.6670873165130615, "repair_targets": [0.03287454694509506, 0.8796338438987732], "repair_candidates": [0.025978226214647293, 0.025986909866333008, 0.012600538320839405, 0.00014118522813078016, 2.244886900371057e-06, 0.022526785731315613, 0.03287454694509506, 0.8796338438987732, 0.0002556797699071467], "target_probs": 0.9125083684921265}}
+
+
+{"result": {"time": "2021-02-21 07:25:52.330038", "n_pass": [221, 64, 14], "n_token": 37, "loss": [0.6483179926872253, 0.05367033928632736], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", ".", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 36, "repair_targets": [29, 31], "repair_candidates": [1, 11, 34, 3, 26, 29, 31, 14, 24]}}
+{"prediction": {"error_location": 0.522924542427063, "repair_targets": [0.03496112674474716, 0.9127833843231201], "repair_candidates": [0.017307432368397713, 0.01680171862244606, 0.003583258716389537, 0.0008428025175817311, 1.1164872375957202e-05, 0.013679774478077888, 0.03496112674474716, 0.9127833843231201, 2.9256611014716327e-05], "target_probs": 0.9477444887161255}}
+
+
+{"result": {"time": "2021-02-21 07:25:52.500922", "n_pass": [226, 67, 15], "n_token": 36, "loss": [0.4046951234340668, 0.07946179062128067], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def extract_manifest(", "path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 35, "repair_targets": [28, 30], "repair_candidates": [1, 11, 33, 3, 26, 28, 30, 14, 24]}}
+{"prediction": {"error_location": 0.6671801805496216, "repair_targets": [0.0016908214893192053, 0.921922504901886], "repair_candidates": [0.03240407630801201, 0.020493751391768456, 0.005698909051716328, 0.002323018154129386, 5.914474513701862e-06, 0.015268870629370213, 0.0016908214893192053, 0.921922504901886, 0.00019212294137105346], "target_probs": 0.9236133098602295}}
+
+
+{"result": {"time": "2021-02-21 07:25:52.673467", "n_pass": [233, 70, 16], "n_token": 35, "loss": [0.4071516990661621, 0.17049013078212738], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", ",", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 34, "repair_targets": [27, 29], "repair_candidates": [0, 10, 32, 2, 25, 27, 29, 13, 23]}}
+{"prediction": {"error_location": 0.6655431985855103, "repair_targets": [0.0002559671993367374, 0.8429954648017883], "repair_candidates": [0.046929001808166504, 0.06486096233129501, 0.01614207960665226, 0.0010862499475479126, 1.1962631560891168e-06, 0.02743544988334179, 0.0002559671993367374, 0.8429954648017883, 0.0002936174569185823], "target_probs": 0.8432514071464539}}
+
+
+{"result": {"time": "2021-02-21 07:25:52.730776", "n_pass": [235, 71, 17], "n_token": 34, "loss": [0.23417390882968903, 0.39047279953956604], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 33, "repair_targets": [26, 28], "repair_candidates": [0, 9, 31, 1, 24, 26, 28, 12, 22]}}
+{"prediction": {"error_location": 0.7912241220474243, "repair_targets": [0.0014676139689981937, 0.6752692461013794], "repair_candidates": [0.04602310433983803, 0.13746023178100586, 0.02252504602074623, 0.0018736157799139619, 2.4349515115318354e-06, 0.11457635462284088, 0.0014676139689981937, 0.6752692461013794, 0.0008023824193514884], "target_probs": 0.6767368316650391}}
+
+
+{"result": {"time": "2021-02-21 07:25:52.787509", "n_pass": [237, 72, 18], "n_token": 33, "loss": [0.32950037717819214, 0.3733075261116028], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", ":", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 32, "repair_targets": [25, 27], "repair_candidates": [0, 8, 30, 1, 23, 25, 27, 11, 21]}}
+{"prediction": {"error_location": 0.7192830443382263, "repair_targets": [0.003392323851585388, 0.6850611567497253], "repair_candidates": [0.04847519472241402, 0.10043627768754959, 0.03026486560702324, 0.013437510468065739, 1.3335875337361358e-05, 0.11825854331254959, 0.003392323851585388, 0.6850611567497253, 0.0006608401890844107], "target_probs": 0.6884534955024719}}
+
+
+{"result": {"time": "2021-02-21 07:25:52.844101", "n_pass": [238, 73, 19], "n_token": 32, "loss": [0.42884817719459534, 0.35422080755233765], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "#NEWLINE#", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 31, "repair_targets": [24, 26], "repair_candidates": [0, 7, 29, 1, 22, 24, 26, 10, 20]}}
+{"prediction": {"error_location": 0.6512587666511536, "repair_targets": [0.006600508000701666, 0.6951195001602173], "repair_candidates": [0.055743493139743805, 0.06681599467992783, 0.04474751278758049, 0.017232468351721764, 2.67213999904925e-05, 0.113365538418293, 0.006600508000701666, 0.6951195001602173, 0.0003483135951682925], "target_probs": 0.7017199993133545}}
+
+
+{"result": {"time": "2021-02-21 07:25:52.900987", "n_pass": [239, 74, 20], "n_token": 31, "loss": [0.6159282922744751, 0.4870791733264923], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "#INDENT#", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 30, "repair_targets": [23, 25], "repair_candidates": [0, 6, 28, 1, 21, 23, 25, 9, 19]}}
+{"prediction": {"error_location": 0.5401392579078674, "repair_targets": [0.001123035792261362, 0.6132953763008118], "repair_candidates": [0.07528010755777359, 0.0873982235789299, 0.09972425550222397, 0.02014968916773796, 3.485734123387374e-05, 0.10117092728614807, 0.001123035792261362, 0.6132953763008118, 0.001823530183173716], "target_probs": 0.6144183874130249}}
+
+
+{"result": {"time": "2021-02-21 07:25:52.957830", "n_pass": [240, 75, 21], "n_token": 30, "loss": [0.6919929385185242, 0.44270479679107666], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "'Reads manifest from |path| and returns it as a string.\\n    Returns None is there is no such manifest.'", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 29, "repair_targets": [22, 24], "repair_candidates": [0, 5, 27, 1, 20, 22, 24, 8, 18]}}
+{"prediction": {"error_location": 0.500577449798584, "repair_targets": [0.0010819765739142895, 0.6412147879600525], "repair_candidates": [0.06439337879419327, 0.06544370949268341, 0.12608148157596588, 0.023420201614499092, 8.143967716023326e-05, 0.0760580450296402, 0.0010819765739142895, 0.6412147879600525, 0.002224933123216033], "target_probs": 0.6422967910766602}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.018007", "n_pass": [241, 76, 22], "n_token": 29, "loss": [0.7719219326972961, 0.46459096670150757], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "#NEWLINE#", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 28, "repair_targets": [21, 23], "repair_candidates": [0, 4, 26, 1, 19, 21, 23, 7, 17]}}
+{"prediction": {"error_location": 0.4621239900588989, "repair_targets": [0.011030064895749092, 0.6173620223999023], "repair_candidates": [0.03958412632346153, 0.10201812535524368, 0.07137735188007355, 0.0238101314753294, 0.000167308040545322, 0.13426414132118225, 0.011030064895749092, 0.6173620223999023, 0.000386767991585657], "target_probs": 0.6283921003341675}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.074985", "n_pass": [242, 77, 23], "n_token": 28, "loss": [0.6799598336219788, 0.3204359710216522], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "with", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 27, "repair_targets": [20, 22], "repair_candidates": [0, 3, 25, 1, 18, 20, 22, 6, 16]}}
+{"prediction": {"error_location": 0.5066373348236084, "repair_targets": [0.024553650990128517, 0.7012788653373718], "repair_candidates": [0.02356342412531376, 0.0677732601761818, 0.1063724085688591, 0.019227834418416023, 0.00020209881768096238, 0.05675390362739563, 0.024553650990128517, 0.7012788653373718, 0.00027450124616734684], "target_probs": 0.7258325219154358}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.131376", "n_pass": [243, 78, 24], "n_token": 27, "loss": [0.47339290380477905, 0.28220662474632263], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", ")", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 26, "repair_targets": [19, 21], "repair_candidates": [0, 2, 24, 1, 17, 19, 21, 5, 15]}}
+{"prediction": {"error_location": 0.6228853464126587, "repair_targets": [0.021905137225985527, 0.7322127223014832], "repair_candidates": [0.02513899654150009, 0.03004114329814911, 0.13683980703353882, 0.02151048369705677, 0.00016380079614464194, 0.03188534080982208, 0.021905137225985527, 0.7322127223014832, 0.0003025412152055651], "target_probs": 0.7541178464889526}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.187591", "n_pass": [245, 79, 25], "n_token": 26, "loss": [0.38692986965179443, 0.5742888450622559], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "as", "handle", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 25, "repair_targets": [18, 20], "repair_candidates": [0, 2, 23, 1, 16, 18, 20, 4, 14]}}
+{"prediction": {"error_location": 0.6791387796401978, "repair_targets": [0.025159694254398346, 0.5379454493522644], "repair_candidates": [0.02953091636300087, 0.07579118013381958, 0.101576067507267, 0.18581394851207733, 6.64414546918124e-05, 0.0421304851770401, 0.025159694254398346, 0.5379454493522644, 0.0019857909064739943], "target_probs": 0.5631051659584045}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.300080", "n_pass": [248, 81, 26], "n_token": 25, "loss": [0.13303866982460022, 0.16579121351242065], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "as", "handle", "try", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 24, "repair_targets": [17, 19], "repair_candidates": [0, 2, 22, 1, 15, 17, 19, 4, 13]}}
+{"prediction": {"error_location": 0.87543123960495, "repair_targets": [0.03509446606040001, 0.8121286630630493], "repair_candidates": [0.01777108944952488, 0.05539184808731079, 0.038842327892780304, 0.012885979376733303, 7.746118353679776e-05, 0.027750704437494278, 0.03509446606040001, 0.8121286630630493, 5.752898505306803e-05], "target_probs": 0.8472231030464172}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.359748", "n_pass": [249, 82, 27], "n_token": 24, "loss": [0.1132509857416153, 0.13073545694351196], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "as", "handle", ":", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 23, "repair_targets": [16, 18], "repair_candidates": [0, 2, 21, 1, 14, 16, 18, 4, 12]}}
+{"prediction": {"error_location": 0.8929263949394226, "repair_targets": [0.0869458019733429, 0.7905040383338928], "repair_candidates": [0.012896822765469551, 0.0319182388484478, 0.03851686418056488, 0.018085353076457977, 2.2031616026652046e-05, 0.021021157503128052, 0.0869458019733429, 0.7905040383338928, 8.969131158664823e-05], "target_probs": 0.8774498701095581}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.416701", "n_pass": [250, 83, 28], "n_token": 23, "loss": [0.07401082664728165, 0.20192968845367432], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "as", "handle", "#NEWLINE#", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 22, "repair_targets": [15, 17], "repair_candidates": [0, 2, 20, 1, 13, 15, 17, 4, 11]}}
+{"prediction": {"error_location": 0.9286616444587708, "repair_targets": [0.30797716975212097, 0.5091752409934998], "repair_candidates": [0.02498343028128147, 0.0407417006790638, 0.010556602850556374, 0.008237110450863838, 0.00011538072430994362, 0.09770390391349792, 0.30797716975212097, 0.5091752409934998, 0.0005094592925161123], "target_probs": 0.8171523809432983}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.473582", "n_pass": [251, 84, 29], "n_token": 22, "loss": [0.0958896055817604, 0.12124644964933395], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "as", "handle", "#INDENT#", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 21, "repair_targets": [14, 16], "repair_candidates": [0, 2, 19, 1, 12, 14, 16, 4, 10]}}
+{"prediction": {"error_location": 0.9085643291473389, "repair_targets": [0.24195094406604767, 0.6438646912574768], "repair_candidates": [0.01205438282340765, 0.01702902279794216, 0.0071223727427423, 0.02201276645064354, 3.822430153377354e-05, 0.05567822977900505, 0.24195094406604767, 0.6438646912574768, 0.00024930984363891184], "target_probs": 0.8858156204223633}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.530466", "n_pass": [252, 85, 30], "n_token": 21, "loss": [0.14149828255176544, 0.08023817837238312], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "as", "handle", "return", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 20, "repair_targets": [13, 15], "repair_candidates": [0, 2, 18, 1, 11, 13, 15, 4, 9]}}
+{"prediction": {"error_location": 0.86805659532547, "repair_targets": [0.17190825939178467, 0.750988245010376], "repair_candidates": [0.009612749330699444, 0.02320694364607334, 0.02205599471926689, 0.005539631471037865, 0.00012114481796743348, 0.016540762037038803, 0.17190825939178467, 0.750988245010376, 2.6195008103968576e-05], "target_probs": 0.9228965044021606}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.586755", "n_pass": [253, 86, 31], "n_token": 20, "loss": [0.2953187823295593, 0.25230470299720764], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "as", "handle", "win32api", ".", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 19, "repair_targets": [12, 14], "repair_candidates": [0, 2, 17, 1, 10, 12, 14, 4, 8]}}
+{"prediction": {"error_location": 0.7442942261695862, "repair_targets": [0.17986248433589935, 0.5971454381942749], "repair_candidates": [0.022525181993842125, 0.06496145576238632, 0.06176670640707016, 0.002397415926679969, 0.000795582018326968, 0.0704987421631813, 0.17986248433589935, 0.5971454381942749, 4.692553557106294e-05], "target_probs": 0.7770079374313354}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.701775", "n_pass": [255, 88, 32], "n_token": 19, "loss": [0.24783764779567719, 0.2641359865665436], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "as", "handle", "win32api", "LoadResource", "handle", ",", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 18, "repair_targets": [11, 13], "repair_candidates": [0, 2, 16, 1, 9, 11, 13, 4, 7]}}
+{"prediction": {"error_location": 0.7804866433143616, "repair_targets": [0.1463439166545868, 0.6215251684188843], "repair_candidates": [0.010027890093624592, 0.028604919090867043, 0.13308940827846527, 0.009585524909198284, 0.001004495075903833, 0.04974107816815376, 0.1463439166545868, 0.6215251684188843, 7.75404623709619e-05], "target_probs": 0.7678691148757935}}
+
+
+{"result": {"time": "2021-02-21 07:25:53.814817", "n_pass": [258, 90, 33], "n_token": 18, "loss": [0.4198630750179291, 0.32014212012290955], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "as", "handle", "win32api", "LoadResource", "handle", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 17, "repair_targets": [10, 12], "repair_candidates": [0, 2, 15, 1, 8, 10, 12, 4, 7]}}
+{"prediction": {"error_location": 0.6571367979049683, "repair_targets": [0.15102346241474152, 0.5750223994255066], "repair_candidates": [0.013951549306511879, 0.03773098438978195, 0.10797209292650223, 0.017037348821759224, 0.00428971741348505, 0.09292583167552948, 0.15102346241474152, 0.5750223994255066, 4.6632139856228605e-05], "target_probs": 0.7260458469390869}}
+
+
+{"result": {"time": "2021-02-21 07:25:54.042863", "n_pass": [270, 94, 34], "n_token": 17, "loss": [0.33572468161582947, 0.5230810046195984], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "handle", "win32api", "LoadResource", "handle", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 16, "repair_targets": [9, 11], "repair_candidates": [0, 2, 14, 1, 7, 9, 11, 3, 6]}}
+{"prediction": {"error_location": 0.7148199081420898, "repair_targets": [0.23877930641174316, 0.3539123833179474], "repair_candidates": [0.007792500779032707, 0.025657925754785538, 0.15604892373085022, 0.022701237350702286, 0.007615738548338413, 0.18746764957904816, 0.23877930641174316, 0.3539123833179474, 2.43636459344998e-05], "target_probs": 0.5926916599273682}}
+
+
+{"result": {"time": "2021-02-21 07:25:54.098818", "n_pass": [272, 95, 35], "n_token": 16, "loss": [0.6827923059463501, 0.617495059967041], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "resource_name", "path", "handle", "LoadResource", "handle", "resource_name", ")", "error", "as", "error", ":", "(", "path", "==", "winerror"]}}
+{"position": {"error_location": 15, "repair_targets": [8, 10], "repair_candidates": [0, 2, 13, 1, 6, 8, 10, 3, 5]}}
+{"prediction": {"error_location": 0.5052043199539185, "repair_targets": [0.2587035596370697, 0.28059008717536926], "repair_candidates": [0.01464118529111147, 0.04336592182517052, 0.023469803854823112, 0.012640448287129402, 0.007642813492566347, 0.3588380813598633, 0.2587035596370697, 0.28059008717536926, 0.0001080188958439976], "target_probs": 0.539293646812439}}
+
+
+
+
+Minimal simplified tokens:
+
+['path', 'resource_name', 'path', 'handle', 'LoadResource', 'handle', 'resource_name', ')', 'error', 'as', 'error', ':', '(', 'path', '==', 'winerror']

@@ -1,0 +1,259 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", ",", "**kwds", ")", ":", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "#NEWLINE#", "#INDENT#", "return", "func", "#NEWLINE#", "#UNINDENT#", "arg0", "=", "(", "(", "len", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "or", "None", ")", "#NEWLINE#", "if", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", ")", "in", "(", "classmethod", ",", "staticmethod", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"], "error_location": [28], "repair_targets": [3, 31], "repair_candidates": [64, 75, 22, 28, 44, 50, 66, 3, 31], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "numba/numba/numba/tracing.py", "license": "bsd-2-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00014-of-00300", "js_count": 46954, "results": {"model": "transformer", "prob": {"loc": [[0.26928630471229553, 5.619262083200738e-06, 5.010753625356301e-07, 3.1715242130303523e-06, 2.9825508818248636e-07, 1.2012266097372049e-06, 3.794744145579898e-07, 6.73191834721365e-07, 4.490077287755412e-07, 3.5488758953761135e-07, 1.2086821925549884e-06, 4.1350963897457405e-07, 1.5167900528467726e-05, 2.5427580112591386e-05, 4.6288144517347973e-07, 6.84715132592828e-07, 9.792948958420311e-07, 5.731591841140471e-07, 3.8617176301158906e-07, 0.0013374759582802653, 5.670573273164337e-07, 3.571808235847129e-07, 9.334050332654442e-07, 6.765508260286879e-07, 4.66222303430186e-07, 1.1169563549628947e-06, 4.1349444472871255e-06, 8.612254532636143e-06, 0.19168046116828918, 6.716156235597737e-07, 2.047252337433747e-06, 0.0008052589255385101, 0.0002997677365783602, 1.0707774890761357e-05, 1.6446434756289818e-06, 1.1375594112905674e-05, 0.00014341976202558726, 3.7474574128282256e-06, 4.211889063299168e-06, 2.095255922540673e-06, 1.1637731404334772e-05, 4.1570407915969554e-07, 1.9011858967132866e-05, 8.732891728868708e-06, 0.010340170934796333, 1.844256189542648e-06, 9.345001217297977e-08, 1.0985767175952788e-06, 1.7855228406915558e-06, 1.6377669453504495e-05, 0.009187554940581322, 1.1274673994421391e-07, 4.204438823762757e-07, 8.871192221704405e-06, 0.0030838935635983944, 1.972160816876567e-06, 0.0021463006269186735, 1.1466995601949748e-06, 2.8943932761649194e-07, 3.101152117324091e-07, 2.3419320314133074e-06, 1.1139617299704696e-06, 6.68301481709932e-07, 1.9332163958551973e-07, 2.9590216854558093e-07, 9.348897037853021e-06, 0.014203010126948357, 2.4744226720940787e-06, 1.5839098068681778e-06, 1.2971100886716158e-06, 3.645023753051646e-06, 2.722269982768921e-06, 1.5504341490668594e-06, 1.1226921969864634e-06, 1.4600953363697045e-05, 0.49725809693336487]], "pointer": [[0.0, 0.0, 0.0, 0.5959077477455139, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.13937465846538544, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0012309554731473327, 0.0, 0.0, 0.18676483631134033, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.027705056592822075, 0.0, 0.0, 0.0, 0.0, 0.0, 0.013247459195554256, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.004544796422123909, 0.0, 0.02888449840247631, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00233996519818902]], "target": [0.7826725840568542]}, "loss": [1.6519256830215454, 0.24504083395004272], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [75]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:13:07.614250", "n_pass": [1, 1, 1], "n_token": 76, "loss": [0.6986461877822876, 0.24504083395004272], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", ",", "**kwds", ")", ":", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "#NEWLINE#", "#INDENT#", "return", "func", "#NEWLINE#", "#UNINDENT#", "arg0", "=", "(", "(", "len", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "or", "None", ")", "#NEWLINE#", "if", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", ")", "in", "(", "classmethod", ",", "staticmethod", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 75, "repair_targets": [3, 31], "repair_candidates": [64, 75, 22, 28, 44, 50, 66, 3, 31]}}
+{"prediction": {"error_location": 0.49725809693336487, "repair_targets": [0.5959077477455139, 0.18676483631134033], "repair_candidates": [0.5959077477455139, 0.13937465846538544, 0.0012309554731473327, 0.18676483631134033, 0.027705056592822075, 0.013247459195554256, 0.004544796422123909, 0.02888449840247631, 0.00233996519818902], "target_probs": 0.7826725840568542}}
+
+
+{"result": {"time": "2021-02-21 07:13:07.733136", "n_pass": [45, 3, 2], "n_token": 72, "loss": [0.4918607771396637, 0.40029972791671753], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "#NEWLINE#", "#INDENT#", "return", "func", "#NEWLINE#", "#UNINDENT#", "arg0", "=", "(", "(", "len", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "or", "None", ")", "#NEWLINE#", "if", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", ")", "in", "(", "classmethod", ",", "staticmethod", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 71, "repair_targets": [3, 27], "repair_candidates": [60, 71, 18, 24, 40, 46, 62, 3, 27]}}
+{"prediction": {"error_location": 0.6114875078201294, "repair_targets": [0.5816961526870728, 0.088422991335392], "repair_candidates": [0.5816961526870728, 0.18209035694599152, 0.004611575976014137, 0.088422991335392, 0.02013196237385273, 0.03205995634198189, 0.0026075120549649, 0.08604386448860168, 0.002335540484637022], "target_probs": 0.6701191663742065}}
+
+
+{"result": {"time": "2021-02-21 07:13:08.020614", "n_pass": [55, 8, 3], "n_token": 67, "loss": [0.5131882429122925, 0.4997435212135315], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "#NEWLINE#", "#INDENT#", "return", "func", "#NEWLINE#", "#UNINDENT#", "arg0", "=", "(", "(", "len", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "or", "None", ")", "#NEWLINE#", "if", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "staticmethod", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 66, "repair_targets": [3, 27], "repair_candidates": [55, 66, 18, 24, 40, 46, 57, 3, 27]}}
+{"prediction": {"error_location": 0.5985840559005737, "repair_targets": [0.5326443314552307, 0.07404188066720963], "repair_candidates": [0.5326443314552307, 0.1825876235961914, 0.008348008617758751, 0.07404188066720963, 0.021637780591845512, 0.04182341322302818, 0.0016857226146385074, 0.1351018249988556, 0.0021294932812452316], "target_probs": 0.6066862344741821}}
+
+
+{"result": {"time": "2021-02-21 07:13:08.077431", "n_pass": [56, 9, 4], "n_token": 62, "loss": [0.7105634808540344, 0.42911604046821594], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "#NEWLINE#", "#INDENT#", "return", "func", "#NEWLINE#", "#UNINDENT#", "arg0", "=", "(", "(", "len", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "or", "None", ")", "#NEWLINE#", "if", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 61, "repair_targets": [3, 27], "repair_candidates": [50, 61, 18, 24, 40, 46, 52, 3, 27]}}
+{"prediction": {"error_location": 0.4913671910762787, "repair_targets": [0.5661457777023315, 0.08493856340646744], "repair_candidates": [0.5661457777023315, 0.21634630858898163, 0.015093314461410046, 0.08493856340646744, 0.028677992522716522, 0.01939084194600582, 0.0012837660033255816, 0.06415218114852905, 0.003971287980675697], "target_probs": 0.6510843634605408}}
+
+
+{"result": {"time": "2021-02-21 07:13:08.306533", "n_pass": [67, 13, 5], "n_token": 57, "loss": [0.44163456559181213, 0.5905809998512268], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "#NEWLINE#", "#INDENT#", "return", "func", "#NEWLINE#", "#UNINDENT#", "arg0", "=", "(", "(", "len", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 56, "repair_targets": [3, 27], "repair_candidates": [45, 56, 18, 24, 35, 41, 47, 3, 27]}}
+{"prediction": {"error_location": 0.6429845690727234, "repair_targets": [0.4437311589717865, 0.11027418076992035], "repair_candidates": [0.4437311589717865, 0.31910160183906555, 0.03297407552599907, 0.11027418076992035, 0.007178801111876965, 0.010915937833487988, 0.0016659146640449762, 0.07274338603019714, 0.0014149588532745838], "target_probs": 0.5540053248405457}}
+
+
+{"result": {"time": "2021-02-21 07:13:08.476608", "n_pass": [76, 16, 6], "n_token": 52, "loss": [0.9101007580757141, 0.26741552352905273], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "#UNINDENT#", "arg0", "=", "(", "(", "len", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 51, "repair_targets": [3, 22], "repair_candidates": [40, 51, 13, 19, 30, 36, 42, 3, 22]}}
+{"prediction": {"error_location": 0.40248361229896545, "repair_targets": [0.4566916823387146, 0.3086633086204529], "repair_candidates": [0.4566916823387146, 0.17360985279083252, 0.0023110120091587305, 0.3086633086204529, 0.0023323914501816034, 0.01029376219958067, 0.001255970448255539, 0.043836966156959534, 0.0010050872806459665], "target_probs": 0.7653549909591675}}
+
+
+{"result": {"time": "2021-02-21 07:13:09.443838", "n_pass": [176, 33, 7], "n_token": 51, "loss": [0.5320487022399902, 0.4669455885887146], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "(", "(", "len", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 50, "repair_targets": [3, 21], "repair_candidates": [39, 50, 12, 18, 29, 35, 41, 3, 21]}}
+{"prediction": {"error_location": 0.5874004364013672, "repair_targets": [0.4949459433555603, 0.13196827471256256], "repair_candidates": [0.4949459433555603, 0.27991583943367004, 0.0012123198248445988, 0.13196827471256256, 0.00717423390597105, 0.014387708157300949, 0.001971437130123377, 0.06689499318599701, 0.0015292440075427294], "target_probs": 0.6269142031669617}}
+
+
+{"result": {"time": "2021-02-21 07:13:09.557404", "n_pass": [178, 35, 8], "n_token": 50, "loss": [0.4984959363937378, 0.4942350387573242], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "(", "len", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 49, "repair_targets": [3, 20], "repair_candidates": [38, 49, 12, 17, 28, 34, 40, 3, 20]}}
+{"prediction": {"error_location": 0.6074436902999878, "repair_targets": [0.5174869894981384, 0.0925503820180893], "repair_candidates": [0.5174869894981384, 0.29217150807380676, 0.0011840994702652097, 0.0925503820180893, 0.0081415930762887, 0.014807162806391716, 0.0026744152419269085, 0.06909593939781189, 0.001887957681901753], "target_probs": 0.6100373864173889}}
+
+
+{"result": {"time": "2021-02-21 07:13:09.614519", "n_pass": [179, 36, 9], "n_token": 49, "loss": [0.42007794976234436, 0.5034805536270142], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "len", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 48, "repair_targets": [3, 19], "repair_candidates": [37, 48, 12, 16, 27, 33, 39, 3, 19]}}
+{"prediction": {"error_location": 0.6569956541061401, "repair_targets": [0.5417017340660095, 0.06272152066230774], "repair_candidates": [0.5417017340660095, 0.2976047694683075, 0.0017578346887603402, 0.06272152066230774, 0.008309336379170418, 0.015179300680756569, 0.0037815107498317957, 0.06680605560541153, 0.002137920120730996], "target_probs": 0.6044232845306396}}
+
+
+{"result": {"time": "2021-02-21 07:13:09.673826", "n_pass": [180, 37, 10], "n_token": 48, "loss": [0.3973405957221985, 0.520289421081543], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "(", "arg0", ")", "and", "args", "[", "0", "]", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 47, "repair_targets": [3, 18], "repair_candidates": [36, 47, 12, 15, 26, 32, 38, 3, 18]}}
+{"prediction": {"error_location": 0.6721051335334778, "repair_targets": [0.5339711904525757, 0.06037728115916252], "repair_candidates": [0.5339711904525757, 0.3074372708797455, 0.0028498240280896425, 0.06037728115916252, 0.00819990411400795, 0.016013719141483307, 0.004018106497824192, 0.06483858078718185, 0.0022941483184695244], "target_probs": 0.5943484902381897}}
+
+
+{"result": {"time": "2021-02-21 07:13:09.730667", "n_pass": [181, 38, 11], "n_token": 47, "loss": [0.3767954111099243, 0.5236790180206299], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "arg0", ")", "and", "args", "[", "0", "]", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 46, "repair_targets": [3, 17], "repair_candidates": [35, 46, 12, 14, 25, 31, 37, 3, 17]}}
+{"prediction": {"error_location": 0.68605637550354, "repair_targets": [0.4837258458137512, 0.10861146450042725], "repair_candidates": [0.4837258458137512, 0.31111109256744385, 0.008636740036308765, 0.10861146450042725, 0.007627767976373434, 0.012585156597197056, 0.004730710759758949, 0.06039413809776306, 0.0025772149674594402], "target_probs": 0.5923373103141785}}
+
+
+{"result": {"time": "2021-02-21 07:13:09.787507", "n_pass": [183, 39, 12], "n_token": 46, "loss": [0.2923129200935364, 0.6165626645088196], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "arg0", "and", "args", "[", "0", "]", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 45, "repair_targets": [3, 16], "repair_candidates": [34, 45, 12, 14, 24, 30, 36, 3, 16]}}
+{"prediction": {"error_location": 0.7465348839759827, "repair_targets": [0.3963156044483185, 0.14348112046718597], "repair_candidates": [0.3963156044483185, 0.3386777639389038, 0.012351573444902897, 0.14348112046718597, 0.006734564434736967, 0.017756614834070206, 0.0036422281991690397, 0.07933588325977325, 0.0017047012224793434], "target_probs": 0.5397967100143433}}
+
+
+{"result": {"time": "2021-02-21 07:13:09.844383", "n_pass": [184, 40, 13], "n_token": 45, "loss": [0.3182581961154938, 0.6840502023696899], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "arg0", "args", "[", "0", "]", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 44, "repair_targets": [3, 15], "repair_candidates": [33, 44, 12, 14, 23, 29, 35, 3, 15]}}
+{"prediction": {"error_location": 0.7274149656295776, "repair_targets": [0.43582451343536377, 0.0687447115778923], "repair_candidates": [0.43582451343536377, 0.3670736253261566, 0.03491578623652458, 0.0687447115778923, 0.002782464260235429, 0.013439642265439034, 0.003204185515642166, 0.07286491245031357, 0.0011500840773805976], "target_probs": 0.5045692324638367}}
+
+
+{"result": {"time": "2021-02-21 07:13:09.901514", "n_pass": [186, 41, 14], "n_token": 44, "loss": [0.26806020736694336, 0.6246330738067627], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "arg0", "args", "0", "]", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 43, "repair_targets": [3, 15], "repair_candidates": [32, 43, 12, 14, 22, 28, 34, 3, 15]}}
+{"prediction": {"error_location": 0.7648617029190063, "repair_targets": [0.4146603047847748, 0.1207975447177887], "repair_candidates": [0.4146603047847748, 0.3456884026527405, 0.010094721801578999, 0.1207975447177887, 0.0011115599190816283, 0.016624968498945236, 0.0027260014321655035, 0.08750339597463608, 0.0007931311847642064], "target_probs": 0.5354578495025635}}
+
+
+{"result": {"time": "2021-02-21 07:13:10.017554", "n_pass": [188, 43, 15], "n_token": 43, "loss": [0.23529259860515594, 0.5942333936691284], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "arg0", "args", "0", ")", "(", "callable", "(", "arg0", ")", "or", "(", "type", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 42, "repair_targets": [3, 15], "repair_candidates": [31, 42, 12, 14, 21, 27, 33, 3, 15]}}
+{"prediction": {"error_location": 0.790339469909668, "repair_targets": [0.37452778220176697, 0.1774577647447586], "repair_candidates": [0.37452778220176697, 0.27966684103012085, 0.018189286813139915, 0.1774577647447586, 0.0007647665916010737, 0.02376900613307953, 0.0019964168313890696, 0.12301527708768845, 0.0006128606619313359], "target_probs": 0.5519855618476868}}
+
+
+{"result": {"time": "2021-02-21 07:13:10.469233", "n_pass": [197, 51, 16], "n_token": 42, "loss": [0.218044251203537, 0.6716315150260925], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "arg0", "args", "0", ")", "(", "callable", "(", "arg0", ")", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 41, "repair_targets": [3, 15], "repair_candidates": [30, 41, 12, 14, 21, 26, 32, 3, 15]}}
+{"prediction": {"error_location": 0.8040898442268372, "repair_targets": [0.34274694323539734, 0.16812744736671448], "repair_candidates": [0.34274694323539734, 0.2674098610877991, 0.016581343486905098, 0.16812744736671448, 0.0008058267994783819, 0.02302648313343525, 0.0017329287948086858, 0.17901991307735443, 0.0005492824711836874], "target_probs": 0.5108743906021118}}
+
+
+{"result": {"time": "2021-02-21 07:13:10.695549", "n_pass": [204, 55, 17], "n_token": 40, "loss": [0.2177094668149948, 0.6172099709510803], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "arg0", "args", "0", ")", "(", "callable", "(", "arg0", ")", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "#NEWLINE#", "#INDENT#", "return", "decorator"]}}
+{"position": {"error_location": 39, "repair_targets": [3, 15], "repair_candidates": [30, 39, 12, 14, 21, 26, 32, 3, 15]}}
+{"prediction": {"error_location": 0.8043590188026428, "repair_targets": [0.33880868554115295, 0.20063871145248413], "repair_candidates": [0.33880868554115295, 0.26801300048828125, 0.019933002069592476, 0.20063871145248413, 0.0021506771445274353, 0.03602345660328865, 0.0026149139739573, 0.1311669647693634, 0.0006505628116428852], "target_probs": 0.5394474267959595}}
+
+
+{"result": {"time": "2021-02-21 07:13:10.752131", "n_pass": [205, 56, 18], "n_token": 38, "loss": [0.22310121357440948, 0.5181542634963989], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#NEWLINE#", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "arg0", "args", "0", ")", "(", "callable", "(", "arg0", ")", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 37, "repair_targets": [3, 15], "repair_candidates": [30, 37, 12, 14, 21, 26, 32, 3, 15]}}
+{"prediction": {"error_location": 0.8000339269638062, "repair_targets": [0.39754995703697205, 0.19806893169879913], "repair_candidates": [0.39754995703697205, 0.25628188252449036, 0.021274501457810402, 0.19806893169879913, 0.0017085792496800423, 0.03250773623585701, 0.0026914405170828104, 0.08937932550907135, 0.0005376142216846347], "target_probs": 0.5956189036369324}}
+
+
+{"result": {"time": "2021-02-21 07:13:10.977806", "n_pass": [211, 60, 19], "n_token": 37, "loss": [0.3721972405910492, 0.51524817943573], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "#INDENT#", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "arg0", "args", "0", ")", "(", "callable", "(", "arg0", ")", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 36, "repair_targets": [3, 14], "repair_candidates": [29, 36, 11, 13, 20, 25, 31, 3, 14]}}
+{"prediction": {"error_location": 0.6892182230949402, "repair_targets": [0.4605955183506012, 0.1367568075656891], "repair_candidates": [0.4605955183506012, 0.292844295501709, 0.022581489756703377, 0.1367568075656891, 0.000814250553958118, 0.00706880446523428, 0.0026953821070492268, 0.0761471837759018, 0.0004963179235346615], "target_probs": 0.5973523259162903}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.036551", "n_pass": [212, 61, 20], "n_token": 36, "loss": [0.7634469270706177, 0.47599250078201294], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", "func", ")", ":", "arg0", "=", "arg0", "args", "0", ")", "(", "callable", "(", "arg0", ")", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 35, "repair_targets": [3, 13], "repair_candidates": [28, 35, 10, 12, 19, 24, 30, 3, 13]}}
+{"prediction": {"error_location": 0.4660571813583374, "repair_targets": [0.538568377494812, 0.08269980549812317], "repair_candidates": [0.538568377494812, 0.27355673909187317, 0.029858672991394997, 0.08269980549812317, 0.0007968246354721487, 0.0019331758376210928, 0.002832853002473712, 0.06928234547376633, 0.00047122317482717335], "target_probs": 0.6212681531906128}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.260507", "n_pass": [216, 65, 21], "n_token": 35, "loss": [0.8437962532043457, 0.31029975414276123], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", ":", "arg0", "=", "arg0", "args", "0", ")", "(", "callable", "(", "arg0", ")", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 34, "repair_targets": [3, 12], "repair_candidates": [27, 34, 9, 11, 18, 23, 29, 3, 12]}}
+{"prediction": {"error_location": 0.43007469177246094, "repair_targets": [0.6513208150863647, 0.08190631121397018], "repair_candidates": [0.6513208150863647, 0.16105614602565765, 0.017944587394595146, 0.08190631121397018, 0.0006981702754274011, 0.0023307716473937035, 0.0015751662431284785, 0.08263145387172699, 0.0005365564138628542], "target_probs": 0.7332271337509155}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.374933", "n_pass": [218, 67, 22], "n_token": 34, "loss": [0.7722917199134827, 0.33977437019348145], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", "0", ")", "(", "callable", "(", "arg0", ")", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 33, "repair_targets": [3, 11], "repair_candidates": [26, 33, 8, 10, 17, 22, 28, 3, 11]}}
+{"prediction": {"error_location": 0.46195313334465027, "repair_targets": [0.5590386390686035, 0.15289229154586792], "repair_candidates": [0.5590386390686035, 0.1739642322063446, 0.046655699610710144, 0.15289229154586792, 0.0007386272773146629, 0.0015161543851718307, 0.0018307125428691506, 0.062306083738803864, 0.0010575349442660809], "target_probs": 0.7119309306144714}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.487688", "n_pass": [223, 69, 23], "n_token": 33, "loss": [0.72751784324646, 0.20162957906723022], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "callable", "(", "arg0", ")", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 32, "repair_targets": [3, 11], "repair_candidates": [25, 32, 8, 10, 16, 21, 27, 3, 11]}}
+{"prediction": {"error_location": 0.48310667276382446, "repair_targets": [0.6128379702568054, 0.20455966889858246], "repair_candidates": [0.6128379702568054, 0.08508418500423431, 0.054831698536872864, 0.20455966889858246, 0.0008090382907539606, 0.0012348212767392397, 0.0010108480928465724, 0.03871044144034386, 0.0009213334415107965], "target_probs": 0.8173976540565491}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.600216", "n_pass": [225, 71, 24], "n_token": 32, "loss": [0.9745018482208252, 0.12085922062397003], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "callable", "(", "arg0", ")", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 31, "repair_targets": [3, 11], "repair_candidates": [24, 31, 8, 10, 15, 20, 26, 3, 11]}}
+{"prediction": {"error_location": 0.3773803114891052, "repair_targets": [0.7490154504776001, 0.13714328408241272], "repair_candidates": [0.7490154504776001, 0.06181490421295166, 0.0027349195443093777, 0.13714328408241272, 0.004307158757001162, 0.0013931065332144499, 0.0011130126658827066, 0.04113895818591118, 0.0013393204426392913], "target_probs": 0.8861587047576904}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.656641", "n_pass": [226, 72, 25], "n_token": 31, "loss": [0.7834113240242004, 0.1989831030368805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", ")", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 30, "repair_targets": [3, 11], "repair_candidates": [23, 30, 8, 10, 14, 19, 25, 3, 11]}}
+{"prediction": {"error_location": 0.45684489607810974, "repair_targets": [0.6520631909370422, 0.16750052571296692], "repair_candidates": [0.6520631909370422, 0.0872475653886795, 0.056747183203697205, 0.16750052571296692, 0.0022199831437319517, 0.0017543556168675423, 0.000664723280351609, 0.031113237142562866, 0.0006891765515320003], "target_probs": 0.8195637464523315}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.771766", "n_pass": [229, 74, 26], "n_token": 30, "loss": [0.780981183052063, 0.20271740853786469], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "or", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 29, "repair_targets": [3, 11], "repair_candidates": [22, 29, 8, 10, 14, 18, 24, 3, 11]}}
+{"prediction": {"error_location": 0.4579564929008484, "repair_targets": [0.6507116556167603, 0.16579727828502655], "repair_candidates": [0.6507116556167603, 0.090851791203022, 0.05810641124844551, 0.16579727828502655, 0.0015509892255067825, 0.0005352500593289733, 0.0006455612019635737, 0.03109361045062542, 0.000707461847923696], "target_probs": 0.816508948802948}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.828034", "n_pass": [230, 75, 27], "n_token": 29, "loss": [0.789220929145813, 0.22039589285850525], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "(", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 28, "repair_targets": [3, 11], "repair_candidates": [21, 28, 8, 10, 14, 17, 23, 3, 11]}}
+{"prediction": {"error_location": 0.45419856905937195, "repair_targets": [0.6471156477928162, 0.1550855189561844], "repair_candidates": [0.6471156477928162, 0.0940738096833229, 0.06773977726697922, 0.1550855189561844, 0.0019843741320073605, 0.00037448570947162807, 0.0003427056653890759, 0.03274518996477127, 0.0005384664400480688], "target_probs": 0.8022011518478394}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.884859", "n_pass": [231, 76, 28], "n_token": 28, "loss": [0.724754273891449, 0.30158862471580505], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "(", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 27, "repair_targets": [3, 11], "repair_candidates": [20, 27, 8, 10, 14, 16, 22, 3, 11]}}
+{"prediction": {"error_location": 0.48444366455078125, "repair_targets": [0.5523699522018433, 0.18727229535579681], "repair_candidates": [0.5523699522018433, 0.11422331631183624, 0.10006876289844513, 0.18727229535579681, 0.0019627627916634083, 0.000640035723336041, 0.0002665058709681034, 0.04260732978582382, 0.0005890352767892182], "target_probs": 0.7396422624588013}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.940916", "n_pass": [232, 77, 29], "n_token": 27, "loss": [1.0162913799285889, 0.17480431497097015], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "#INDENT#", "return", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 26, "repair_targets": [3, 11], "repair_candidates": [19, 26, 8, 10, 14, 15, 21, 3, 11]}}
+{"prediction": {"error_location": 0.36193472146987915, "repair_targets": [0.6714494824409485, 0.16817183792591095], "repair_candidates": [0.6714494824409485, 0.06616482138633728, 0.0581829696893692, 0.16817183792591095, 0.00035430409479886293, 0.0003774060751311481, 0.00017021296662278473, 0.034722890704870224, 0.00040599590283818543], "target_probs": 0.8396213054656982}}
+
+
+{"result": {"time": "2021-02-21 07:13:11.997308", "n_pass": [234, 78, 30], "n_token": 25, "loss": [1.0420384407043457, 0.18323659896850586], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "#NEWLINE#", "#UNINDENT#", "return", "decorator"]}}
+{"position": {"error_location": 24, "repair_targets": [3, 11], "repair_candidates": [17, 24, 8, 10, 14, 15, 19, 3, 11]}}
+{"prediction": {"error_location": 0.35273492336273193, "repair_targets": [0.696555495262146, 0.1360156387090683], "repair_candidates": [0.696555495262146, 0.06875280290842056, 0.06463999301195145, 0.1360156387090683, 0.0002147320337826386, 0.00017996132373809814, 0.0006346387090161443, 0.032338544726371765, 0.0006682472303509712], "target_probs": 0.8325711488723755}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.055703", "n_pass": [237, 79, 31], "n_token": 23, "loss": [0.07698723673820496, 0.036502014845609665], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "return", "decorator"]}}
+{"position": {"error_location": 22, "repair_targets": [3, 11], "repair_candidates": [17, 22, 8, 10, 14, 15, 19, 3, 11]}}
+{"prediction": {"error_location": 0.9259016513824463, "repair_targets": [0.8144269585609436, 0.14972922205924988], "repair_candidates": [0.8144269585609436, 0.014745143242180347, 0.017154257744550705, 0.14972922205924988, 0.0004958232748322189, 0.00021522934548556805, 3.918262336810585e-06, 0.003226987086236477, 2.531388872739626e-06], "target_probs": 0.9641561508178711}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.111878", "n_pass": [239, 80, 32], "n_token": 22, "loss": [0.03665633872151375, 0.09929703921079636], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def notrace(", "*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "return", "decorator"]}}
+{"position": {"error_location": 21, "repair_targets": [2, 10], "repair_candidates": [16, 21, 7, 9, 13, 14, 18, 2, 10]}}
+{"prediction": {"error_location": 0.9640073776245117, "repair_targets": [0.032322853803634644, 0.8731508255004883], "repair_candidates": [0.032322853803634644, 0.034833673387765884, 0.04929054155945778, 0.8731508255004883, 0.003478739410638809, 0.0011372376466169953, 2.6191772121819668e-05, 0.00575126800686121, 8.664205779496115e-06], "target_probs": 0.9054737091064453}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.168281", "n_pass": [240, 81, 33], "n_token": 21, "loss": [0.05212162807583809, 0.052151165902614594], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["*", "args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "return", "decorator"]}}
+{"position": {"error_location": 20, "repair_targets": [1, 9], "repair_candidates": [15, 20, 6, 8, 12, 13, 17, 1, 9]}}
+{"prediction": {"error_location": 0.9492133855819702, "repair_targets": [0.004876842722296715, 0.9443085193634033], "repair_candidates": [0.004876842722296715, 0.02472354657948017, 0.01885506696999073, 0.9443085193634033, 0.0027947742491960526, 0.0014583241427317262, 1.5379728210973553e-05, 0.002960189478471875, 7.393750365736196e-06], "target_probs": 0.9491853713989258}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.225041", "n_pass": [241, 82, 34], "n_token": 20, "loss": [0.02800147607922554, 0.17463870346546173], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["args", "'Just a no-op in case tracing is disabled.'", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "return", "decorator"]}}
+{"position": {"error_location": 19, "repair_targets": [0, 8], "repair_candidates": [14, 19, 5, 7, 11, 12, 16, 0, 8]}}
+{"prediction": {"error_location": 0.9723869562149048, "repair_targets": [0.03594384714961052, 0.8038164973258972], "repair_candidates": [0.03594384714961052, 0.05457821860909462, 0.09744885563850403, 0.8038164973258972, 0.003520617727190256, 0.0025250979233533144, 1.509899811935611e-05, 0.002145137172192335, 6.691481303278124e-06], "target_probs": 0.8397603631019592}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.281633", "n_pass": [243, 83, 35], "n_token": 19, "loss": [0.12180653214454651, 0.13405291736125946], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["args", "#NEWLINE#", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "return", "decorator"]}}
+{"position": {"error_location": 18, "repair_targets": [0, 7], "repair_candidates": [13, 18, 4, 6, 10, 11, 15, 0, 7]}}
+{"prediction": {"error_location": 0.8853196501731873, "repair_targets": [0.06863190978765488, 0.8059118986129761], "repair_candidates": [0.06863190978765488, 0.06495600193738937, 0.04818999394774437, 0.8059118986129761, 0.004174306523054838, 0.0030835403595119715, 7.924402598291636e-05, 0.004918060731142759, 5.490549301612191e-05], "target_probs": 0.8745437860488892}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.338014", "n_pass": [244, 84, 36], "n_token": 18, "loss": [0.031263403594493866, 0.4049225151538849], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["args", "def decorator(", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "return", "decorator"]}}
+{"position": {"error_location": 17, "repair_targets": [0, 6], "repair_candidates": [12, 17, 3, 5, 9, 10, 14, 0, 6]}}
+{"prediction": {"error_location": 0.9692202210426331, "repair_targets": [0.06238846108317375, 0.604640007019043], "repair_candidates": [0.06238846108317375, 0.20429739356040955, 0.10026846826076508, 0.604640007019043, 0.011986929923295975, 0.012440717779099941, 4.362145409686491e-05, 0.003917730413377285, 1.6645177311147563e-05], "target_probs": 0.6670284867286682}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.396396", "n_pass": [245, 85, 37], "n_token": 17, "loss": [0.01254771463572979, 0.0068283225409686565], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["args", ")", "arg0", "=", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "return", "decorator"]}}
+{"position": {"error_location": 16, "repair_targets": [0, 5], "repair_candidates": [11, 16, 2, 4, 8, 9, 13, 0, 5]}}
+{"prediction": {"error_location": 0.9875307083129883, "repair_targets": [0.002405689563602209, 0.9907892346382141], "repair_candidates": [0.002405689563602209, 0.0015645136591047049, 0.0029708538204431534, 0.9907892346382141, 0.0005624181940220296, 0.0013903757790103555, 5.56077054625348e-07, 0.00031621544621884823, 2.2624028872542112e-07], "target_probs": 0.9931949377059937}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.451873", "n_pass": [246, 86, 38], "n_token": 16, "loss": [0.006801311857998371, 0.0069348509423434734], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["args", "arg0", "=", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "return", "decorator"]}}
+{"position": {"error_location": 15, "repair_targets": [0, 4], "repair_candidates": [10, 15, 1, 3, 7, 8, 12, 0, 4]}}
+{"prediction": {"error_location": 0.9932218790054321, "repair_targets": [0.0017263597110286355, 0.9913627505302429], "repair_candidates": [0.0017263597110286355, 0.002588825998827815, 0.00130236626137048, 0.9913627505302429, 0.0015149125829339027, 0.0011794866295531392, 3.764848202081339e-07, 0.0003245317784603685, 4.436219001036079e-07], "target_probs": 0.9930891394615173}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.507753", "n_pass": [248, 87, 39], "n_token": 15, "loss": [0.005801031831651926, 0.04009653255343437], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["args", "arg0", "arg0", "args", ")", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "return", "decorator"]}}
+{"position": {"error_location": 14, "repair_targets": [0, 3], "repair_candidates": [9, 14, 1, 2, 6, 7, 11, 0, 3]}}
+{"prediction": {"error_location": 0.9942157864570618, "repair_targets": [0.002766047604382038, 0.9579306244850159], "repair_candidates": [0.002766047604382038, 0.008946014568209648, 0.022198757156729698, 0.9579306244850159, 0.00266030291095376, 0.002877738093957305, 5.870044788025552e-06, 0.0026133672799915075, 1.1498595995362848e-06], "target_probs": 0.9606966972351074}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.563951", "n_pass": [251, 88, 40], "n_token": 14, "loss": [0.0013574680779129267, 0.4125621020793915], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["args", "arg0", "arg0", "args", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", ")", "return", "decorator"]}}
+{"position": {"error_location": 13, "repair_targets": [0, 3], "repair_candidates": [8, 13, 1, 2, 5, 6, 10, 0, 3]}}
+{"prediction": {"error_location": 0.9986434578895569, "repair_targets": [0.0009673938038758934, 0.6609846949577332], "repair_candidates": [0.0009673938038758934, 0.00769983883947134, 0.10549164563417435, 0.6609846949577332, 0.021723197773098946, 0.010064280591905117, 9.334186756859708e-07, 0.19306787848472595, 6.842925870387262e-08], "target_probs": 0.6619520783424377}}
+
+
+{"result": {"time": "2021-02-21 07:13:12.789845", "n_pass": [275, 92, 41], "n_token": 13, "loss": [0.06621979922056198, 0.13641537725925446], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["args", "arg0", "arg0", "args", "(", "arg0", "arg0", "#NEWLINE#", "decorator", "(", "arg0", "return", "decorator"]}}
+{"position": {"error_location": 12, "repair_targets": [0, 3], "repair_candidates": [8, 12, 1, 2, 5, 6, 10, 0, 3]}}
+{"prediction": {"error_location": 0.9359251260757446, "repair_targets": [0.001027463236823678, 0.8714526891708374], "repair_candidates": [0.001027463236823678, 0.021753063425421715, 0.06649737805128098, 0.8714526891708374, 0.014798123389482498, 0.0029425567481666803, 7.48879901948385e-05, 0.021452683955430984, 1.2301176184337237e-06], "target_probs": 0.8724801540374756}}
+
+
+
+
+Minimal simplified tokens:
+
+['args', 'arg0', 'arg0', 'args', '(', 'arg0', 'arg0', '#NEWLINE#', 'decorator', '(', 'arg0', 'return', 'decorator']

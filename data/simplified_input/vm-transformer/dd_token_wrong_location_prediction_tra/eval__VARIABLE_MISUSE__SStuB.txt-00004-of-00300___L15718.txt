@@ -1,0 +1,49 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def clipped_relu(", "x", ",", "z", "=", "20.0", ")", ":", "#NEWLINE#", "#INDENT#", "'Clipped Rectifier Unit function.\\n\\n    This function is expressed as :math:`ClippedReLU(x, z)\\n    = \\\\min(\\\\max(0, x), z)`, where :math:`z(>0)` is a clipping value.\\n\\n    Args:\\n        x (~chainer.Variable): Input variable.\\n        z (float): Clipping value. (default = 20.0)\\n\\n    Returns:\\n        ~chainer.Variable: Output variable.\\n\\n    '", "#NEWLINE#", "return", "ClippedReLU", "(", "z", ")", "(", "z", ")"], "error_location": [19], "repair_targets": [2], "repair_candidates": [4, 16, 19, 2], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "pfnet/chainer/chainer/functions/activation/clipped_relu.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00004-of-00300", "js_count": 15718, "results": {"model": "transformer", "prob": {"loc": [[0.0019473482389003038, 7.591399935336085e-07, 5.3094780128049024e-08, 5.4170484986570955e-08, 4.370373929418747e-08, 3.903272016714254e-08, 7.557975436611741e-07, 2.4463911785232995e-08, 1.0285684481914359e-07, 1.3502868512205168e-07, 5.423148152772228e-08, 1.1991366477559495e-07, 7.11557319732492e-08, 4.69968597371917e-08, 3.791248204265685e-09, 1.8635319065651856e-08, 0.6220728754997253, 1.0056187704776676e-07, 1.3198801163127882e-08, 0.3759772479534149, 1.496094625963451e-07]], "pointer": [[0.0, 0.0, 0.9999933242797852, 0.0, 6.439699063776061e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.11718961193219e-07, 0.0, 0.0, 1.309451960196384e-07, 0.0]], "target": [0.9999933242797852]}, "loss": [0.9782266616821289, 6.6757424974639434e-06], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [16]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:02:36.505161", "n_pass": [1, 1, 1], "n_token": 21, "loss": [0.47469809651374817, 6.6757424974639434e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clipped_relu(", "x", ",", "z", "=", "20.0", ")", ":", "#NEWLINE#", "#INDENT#", "'Clipped Rectifier Unit function.\\n\\n    This function is expressed as :math:`ClippedReLU(x, z)\\n    = \\\\min(\\\\max(0, x), z)`, where :math:`z(>0)` is a clipping value.\\n\\n    Args:\\n        x (~chainer.Variable): Input variable.\\n        z (float): Clipping value. (default = 20.0)\\n\\n    Returns:\\n        ~chainer.Variable: Output variable.\\n\\n    '", "#NEWLINE#", "return", "ClippedReLU", "(", "z", ")", "(", "z", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [4, 16, 19, 2]}}
+{"prediction": {"error_location": 0.6220728754997253, "repair_targets": [0.9999933242797852], "repair_candidates": [0.9999933242797852, 6.439699063776061e-06, 1.11718961193219e-07, 1.309451960196384e-07], "target_probs": 0.9999933242797852}}
+
+
+{"result": {"time": "2021-02-21 06:02:36.560426", "n_pass": [9, 2, 2], "n_token": 16, "loss": [0.5914030075073242, 2.0265784769435413e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clipped_relu(", "x", ",", "z", "#INDENT#", "'Clipped Rectifier Unit function.\\n\\n    This function is expressed as :math:`ClippedReLU(x, z)\\n    = \\\\min(\\\\max(0, x), z)`, where :math:`z(>0)` is a clipping value.\\n\\n    Args:\\n        x (~chainer.Variable): Input variable.\\n        z (float): Clipping value. (default = 20.0)\\n\\n    Returns:\\n        ~chainer.Variable: Output variable.\\n\\n    '", "#NEWLINE#", "return", "ClippedReLU", "(", "z", ")", "(", "z", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [4, 11, 14, 2]}}
+{"prediction": {"error_location": 0.553550124168396, "repair_targets": [0.9999797344207764], "repair_candidates": [0.9999797344207764, 1.9954666640842333e-05, 7.158880777069498e-08, 2.428558047995466e-07], "target_probs": 0.9999797344207764}}
+
+
+{"result": {"time": "2021-02-21 06:02:36.836051", "n_pass": [38, 7, 3], "n_token": 15, "loss": [0.7011327743530273, 0.000212513143196702], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clipped_relu(", "x", ",", "z", "#INDENT#", "#NEWLINE#", "return", "ClippedReLU", "(", "z", ")", "(", "z", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [4, 10, 13, 2]}}
+{"prediction": {"error_location": 0.49602311849594116, "repair_targets": [0.9997875094413757], "repair_candidates": [0.9997875094413757, 0.00021040601131971925, 4.861234970121586e-07, 1.6574169876548694e-06], "target_probs": 0.9997875094413757}}
+
+
+{"result": {"time": "2021-02-21 06:02:36.891162", "n_pass": [39, 8, 4], "n_token": 14, "loss": [0.9859911203384399, 0.004217924550175667], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clipped_relu(", "x", ",", "z", "#INDENT#", "return", "ClippedReLU", "(", "z", ")", "(", "z", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [4, 9, 12, 2]}}
+{"prediction": {"error_location": 0.37306931614875793, "repair_targets": [0.995790958404541], "repair_candidates": [0.995790958404541, 0.004184295888990164, 1.9154012989019975e-06, 2.2723717847838998e-05], "target_probs": 0.995790958404541}}
+
+
+{"result": {"time": "2021-02-21 06:02:37.384610", "n_pass": [61, 17, 5], "n_token": 13, "loss": [0.2665589153766632, 0.01991419494152069], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clipped_relu(", "x", ",", "z", "#INDENT#", "return", "ClippedReLU", "(", "z", ")", "z", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [4, 9, 11, 2]}}
+{"prediction": {"error_location": 0.7660108804702759, "repair_targets": [0.9802827835083008], "repair_candidates": [0.9802827835083008, 0.01961454749107361, 8.965653978521004e-05, 1.302388591284398e-05], "target_probs": 0.9802827835083008}}
+
+
+{"result": {"time": "2021-02-21 06:02:37.439050", "n_pass": [63, 18, 6], "n_token": 12, "loss": [0.5461817383766174, 0.03962685167789459], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clipped_relu(", "x", ",", "z", "#INDENT#", "return", "ClippedReLU", "(", "z", ")", "z"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [4, 9, 11, 2]}}
+{"prediction": {"error_location": 0.5791569948196411, "repair_targets": [0.9611480236053467], "repair_candidates": [0.9611480236053467, 0.03876092657446861, 8.325248199980706e-05, 7.707349141128361e-06], "target_probs": 0.9611480236053467}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def clipped_relu(', 'x', ',', 'z', '#INDENT#', 'return', 'ClippedReLU', '(', 'z', ')', 'z']

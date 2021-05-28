@@ -1,0 +1,115 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def fingerprint_target(", "self", ",", "target", ")", ":", "#NEWLINE#", "#INDENT#", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", ")", "#NEWLINE#", "if", "target", ":", "#NEWLINE#", "#INDENT#", "return", "'{fingerprint}-{name}'", ".", "format", "(", "fingerprint", "=", "fingerprint", ",", "name", "=", "type", "(", "self", ")", ".", "__name__", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "None"], "error_location": [21], "repair_targets": [11, 30, 32], "repair_candidates": [11, 30, 32, 4, 17, 21, 2, 13, 38], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "pantsbuild/pants/src/python/pants/base/fingerprint_strategy.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00008-of-00300", "js_count": 27835, "results": {"model": "rnn", "prob": {"loc": [[0.07090079039335251, 3.33537343522039e-07, 2.5441980255891394e-07, 5.808221126279989e-10, 4.0562969871871246e-08, 2.314025637772943e-09, 8.697049747041774e-10, 3.527857117546773e-08, 3.8662658852217646e-08, 2.19438547333084e-08, 1.2588520803546999e-07, 1.2790267511775255e-08, 1.136028160431124e-09, 1.058486941474257e-05, 3.5934037967422228e-09, 8.73098815468154e-10, 1.8126387502093166e-08, 0.002750262850895524, 1.3498139495027317e-08, 6.449961915677704e-07, 9.368552014166198e-07, 0.0509391725063324, 1.3365345239435555e-06, 4.8816236386528544e-08, 1.5858892865594498e-08, 3.544003135402818e-08, 2.6093027738482988e-09, 2.3742364874124178e-07, 1.5548833331990863e-08, 1.6613100228823896e-08, 9.040953159455967e-07, 3.3870318816298095e-07, 0.001618865062482655, 6.005029717925936e-07, 1.2815994523407426e-06, 8.204297330394184e-08, 1.1301557378828875e-06, 1.1496222640516862e-07, 0.8737492561340332, 1.4496473340841476e-05, 4.120514063288283e-07, 8.240175652929338e-09, 5.860953677938596e-08, 1.4601337738895381e-07, 3.6533299407892628e-06, 4.6626109195813115e-08, 6.448375415857299e-07, 1.199884991365252e-07, 3.3109053276803024e-08, 1.1701949915732257e-06, 1.7082639942600508e-06]], "pointer": [[0.0, 0.0, 0.00042427427251823246, 0.0, 0.14778846502304077, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8416987657546997, 0.0, 1.4162654224492144e-05, 0.0, 0.0, 0.0, 4.6420551370829344e-05, 0.0, 0.0, 0.0, 0.0001309407380176708, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.009253292344510555, 0.0, 0.00043400193681009114, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00020967097952961922, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.8513860106468201]}, "loss": [2.9771230220794678, 0.1608896553516388], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [38]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:23:38.944006", "n_pass": [1, 1, 1], "n_token": 51, "loss": [0.13496193289756775, 0.1608896553516388], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def fingerprint_target(", "self", ",", "target", ")", ":", "#NEWLINE#", "#INDENT#", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", ")", "#NEWLINE#", "if", "target", ":", "#NEWLINE#", "#INDENT#", "return", "'{fingerprint}-{name}'", ".", "format", "(", "fingerprint", "=", "fingerprint", ",", "name", "=", "type", "(", "self", ")", ".", "__name__", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "None"]}}
+{"position": {"error_location": 38, "repair_targets": [11, 30, 32], "repair_candidates": [11, 30, 32, 4, 17, 21, 2, 13, 38]}}
+{"prediction": {"error_location": 0.8737492561340332, "repair_targets": [0.8416987657546997, 0.009253292344510555, 0.00043400193681009114], "repair_candidates": [0.00042427427251823246, 0.14778846502304077, 0.8416987657546997, 1.4162654224492144e-05, 4.6420551370829344e-05, 0.0001309407380176708, 0.009253292344510555, 0.00043400193681009114, 0.00020967097952961922], "target_probs": 0.8513860106468201}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.017115", "n_pass": [24, 2, 2], "n_token": 45, "loss": [0.02600930444896221, 0.05807996913790703], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def fingerprint_target(", "self", ",", "target", ")", ":", "#NEWLINE#", "#INDENT#", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", ")", "#NEWLINE#", "if", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", ",", "name", "=", "type", "(", "self", ")", ".", "__name__", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "None"]}}
+{"position": {"error_location": 32, "repair_targets": [11, 24, 26], "repair_candidates": [11, 24, 26, 4, 17, 21, 2, 13, 32]}}
+{"prediction": {"error_location": 0.9743258953094482, "repair_targets": [0.9378364086151123, 0.005681815557181835, 5.626579877571203e-05], "repair_candidates": [7.723809540038928e-05, 0.05624670535326004, 0.9378364086151123, 6.898397259647027e-06, 1.8267859559273347e-05, 2.4162078261724673e-05, 0.005681815557181835, 5.626579877571203e-05, 5.215983765083365e-05], "target_probs": 0.9435744881629944}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.086079", "n_pass": [27, 3, 3], "n_token": 38, "loss": [0.0637970045208931, 0.038182780146598816], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def fingerprint_target(", "self", ",", "target", ")", ":", "#NEWLINE#", "#INDENT#", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", ")", "#NEWLINE#", "if", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", ",", "name", "=", "type", "(", "self", ")", ".", "__name__", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 32, "repair_targets": [11, 24, 26], "repair_candidates": [11, 24, 26, 4, 17, 21, 2, 13, 32]}}
+{"prediction": {"error_location": 0.9381953477859497, "repair_targets": [0.9387993812561035, 0.023709189146757126, 2.841409332177136e-05], "repair_candidates": [7.732227095402777e-05, 0.03729001060128212, 0.9387993812561035, 6.153734375402564e-06, 1.42899561978993e-05, 1.7271533579332754e-05, 0.023709189146757126, 2.841409332177136e-05, 5.7907509471988305e-05], "target_probs": 0.9625369906425476}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.153830", "n_pass": [48, 4, 4], "n_token": 35, "loss": [0.13654983043670654, 0.024427350610494614], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def fingerprint_target(", "self", ",", "target", ")", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", ")", "#NEWLINE#", "if", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", ",", "name", "=", "type", "(", "self", ")", ".", "__name__", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 29, "repair_targets": [8, 21, 23], "repair_candidates": [8, 21, 23, 4, 14, 18, 2, 10, 29]}}
+{"prediction": {"error_location": 0.8723627328872681, "repair_targets": [0.9603316187858582, 0.015509966760873795, 2.698176285775844e-05], "repair_candidates": [0.00010887794633163139, 0.02393067069351673, 0.9603316187858582, 2.3365573724731803e-06, 1.1735694897652138e-05, 1.3260291780170519e-05, 0.015509966760873795, 2.698176285775844e-05, 6.454619870055467e-05], "target_probs": 0.9758685827255249}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.219637", "n_pass": [51, 5, 5], "n_token": 32, "loss": [0.07919232547283173, 0.2399546504020691], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def fingerprint_target(", "self", ",", "target", ")", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", ",", "name", "=", "type", "(", "self", ")", ".", "__name__", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 26, "repair_targets": [8, 18, 20], "repair_candidates": [8, 18, 20, 4, 14, 15, 2, 10, 26]}}
+{"prediction": {"error_location": 0.923862099647522, "repair_targets": [0.49963638186454773, 0.28680548071861267, 0.0002216738066636026], "repair_candidates": [0.00043603352969512343, 0.21238836646080017, 0.49963638186454773, 5.0416401791153476e-06, 0.0001531099114799872, 3.7239751691231504e-05, 0.28680548071861267, 0.0002216738066636026, 0.00031667252187617123], "target_probs": 0.7866635322570801}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.286963", "n_pass": [54, 6, 6], "n_token": 29, "loss": [0.0006696127820760012, 0.02939497120678425], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def fingerprint_target(", "self", ",", "target", ")", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "type", "(", "self", ")", ".", "__name__", ")", "#NEWLINE#"]}}
+{"position": {"error_location": 23, "repair_targets": [8, 18, 20], "repair_candidates": [8, 18, 20, 4, 14, 15, 2, 10, 23]}}
+{"prediction": {"error_location": 0.9993306398391724, "repair_targets": [0.7007749080657959, 0.27025434374809265, 3.6303590604802594e-06], "repair_candidates": [6.478932482423261e-05, 0.028869282454252243, 0.7007749080657959, 1.0202195426245453e-06, 1.0368723451392725e-05, 4.1469966163276695e-06, 0.27025434374809265, 3.6303590604802594e-06, 1.7483869669376872e-05], "target_probs": 0.9710328578948975}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.348735", "n_pass": [56, 7, 7], "n_token": 25, "loss": [0.00017975145601667464, 0.020790940150618553], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def fingerprint_target(", "self", ",", "target", ")", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "type", "(", "self", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [8, 18, 20], "repair_candidates": [8, 18, 20, 4, 14, 15, 2, 10, 23]}}
+{"prediction": {"error_location": 0.9998202919960022, "repair_targets": [0.40195292234420776, 0.5774621367454529, 8.646055903227534e-06], "repair_candidates": [3.712395118782297e-05, 0.020509863272309303, 0.40195292234420776, 1.0238535423923167e-06, 9.104766832024325e-06, 3.8140890410431894e-06, 0.5774621367454529, 8.646055903227534e-06, 1.5411967979162e-05], "target_probs": 0.9794237017631531}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.410734", "n_pass": [81, 8, 8], "n_token": 24, "loss": [0.0003784178989008069, 0.025228288024663925], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def fingerprint_target(", "self", ",", "target", ")", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "type", "(", "self", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [7, 17, 19], "repair_candidates": [7, 17, 19, 3, 13, 14, 1, 9, 22]}}
+{"prediction": {"error_location": 0.9996216297149658, "repair_targets": [0.3221922218799591, 0.6528875827789307, 7.473404821212171e-06], "repair_candidates": [0.0003687613643705845, 0.024519970640540123, 0.3221922218799591, 8.15704709111742e-07, 3.308283112346544e-06, 1.4602070450564497e-06, 0.6528875827789307, 7.473404821212171e-06, 1.844327198341489e-05], "target_probs": 0.9750872850418091}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.471916", "n_pass": [82, 9, 9], "n_token": 23, "loss": [0.02082343026995659, 0.24927693605422974], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "target", ")", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "type", "(", "self", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [6, 16, 18], "repair_candidates": [6, 16, 18, 2, 12, 13, 0, 8, 21]}}
+{"prediction": {"error_location": 0.9793919920921326, "repair_targets": [0.6326329112052917, 0.14661504328250885, 0.00011615797848207876], "repair_candidates": [0.04758533835411072, 0.17252537608146667, 0.6326329112052917, 1.4176155673339963e-05, 0.00017266056966036558, 4.572611578623764e-05, 0.14661504328250885, 0.00011615797848207876, 0.0002925777807831764], "target_probs": 0.7793641090393066}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.532595", "n_pass": [83, 10, 10], "n_token": 22, "loss": [0.03741313889622688, 0.3887149393558502], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "target", ")", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "type", "(", "self", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [5, 15, 17], "repair_candidates": [5, 15, 17, 1, 11, 12, 0, 7, 20]}}
+{"prediction": {"error_location": 0.9632781744003296, "repair_targets": [0.22644805908203125, 0.45123133063316345, 0.0002481036353856325], "repair_candidates": [0.06223823130130768, 0.2579621374607086, 0.22644805908203125, 1.4317478417069651e-05, 0.0006206954130902886, 0.00011650549276964739, 0.45123133063316345, 0.0002481036353856325, 0.0011206698836758733], "target_probs": 0.6779274940490723}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.592669", "n_pass": [85, 11, 11], "n_token": 21, "loss": [0.08285282552242279, 0.33117324113845825], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "target", "'Consumers of subclass instances call this to get a fingerprint labeled with the name'", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "type", "(", "self", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [4, 14, 16], "repair_candidates": [4, 14, 16, 1, 10, 11, 0, 6, 19]}}
+{"prediction": {"error_location": 0.9204866290092468, "repair_targets": [0.19817225635051727, 0.5194122791290283, 0.0004962047678418458], "repair_candidates": [0.08297844231128693, 0.19393637776374817, 0.19817225635051727, 1.856226117524784e-05, 0.002396026626229286, 0.000386063038604334, 0.5194122791290283, 0.0004962047678418458, 0.0022038344759494066], "target_probs": 0.7180807590484619}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.654761", "n_pass": [86, 12, 12], "n_token": 20, "loss": [0.02894483134150505, 0.17560717463493347], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "target", "#NEWLINE#", "fingerprint", "=", "self", ".", "compute_fingerprint", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "type", "(", "self", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [3, 13, 15], "repair_candidates": [3, 13, 15, 1, 9, 10, 0, 5, 18]}}
+{"prediction": {"error_location": 0.971470057964325, "repair_targets": [0.28873127698898315, 0.5499539971351624, 0.0002621921303216368], "repair_candidates": [0.04124517738819122, 0.11775479465723038, 0.28873127698898315, 9.131000297202263e-06, 0.0008488275925628841, 0.0001709257485345006, 0.5499539971351624, 0.0002621921303216368, 0.0010236207162961364], "target_probs": 0.8389474749565125}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.713234", "n_pass": [89, 13, 13], "n_token": 18, "loss": [0.02910718135535717, 0.2953833341598511], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "target", "#NEWLINE#", "fingerprint", "=", "self", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "type", "(", "self", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [3, 11, 13], "repair_candidates": [3, 11, 13, 1, 7, 8, 0, 5, 16]}}
+{"prediction": {"error_location": 0.9713123440742493, "repair_targets": [0.12690921127796173, 0.6166180372238159, 0.0007190204923972487], "repair_candidates": [0.05828448012471199, 0.18246686458587646, 0.12690921127796173, 5.125698953634128e-05, 0.011797203682363033, 0.0009043148602358997, 0.6166180372238159, 0.0007190204923972487, 0.0022496411111205816], "target_probs": 0.744246244430542}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.770605", "n_pass": [94, 14, 14], "n_token": 16, "loss": [0.17896808683872223, 0.34783366322517395], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "target", "#NEWLINE#", "fingerprint", "=", "self", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "self", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [3, 11, 13], "repair_candidates": [3, 11, 13, 1, 7, 8, 0, 5, 14]}}
+{"prediction": {"error_location": 0.8361326456069946, "repair_targets": [0.6868402361869812, 0.01360735297203064, 0.005768724717199802], "repair_candidates": [0.06296538561582565, 0.22513821721076965, 0.6868402361869812, 0.00013875358854420483, 0.005120798945426941, 0.00012572217383421957, 0.01360735297203064, 0.005768724717199802, 0.0002947799803223461], "target_probs": 0.7062163352966309}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.828019", "n_pass": [119, 15, 15], "n_token": 15, "loss": [0.025906391441822052, 0.1745709329843521], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "target", "#NEWLINE#", "fingerprint", "=", "self", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "self"]}}
+{"position": {"error_location": 14, "repair_targets": [3, 11, 13], "repair_candidates": [3, 11, 13, 1, 7, 8, 0, 5, 14]}}
+{"prediction": {"error_location": 0.9744263291358948, "repair_targets": [0.8206664323806763, 0.017899522557854652, 0.0012513482943177223], "repair_candidates": [0.027501538395881653, 0.13208530843257904, 0.8206664323806763, 9.837698598857969e-05, 0.00035634796950034797, 2.6392493964522146e-05, 0.017899522557854652, 0.0012513482943177223, 0.00011474604980321601], "target_probs": 0.8398172855377197}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.883856", "n_pass": [122, 16, 16], "n_token": 14, "loss": [0.01762092113494873, 0.1587333232164383], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "target", "fingerprint", "=", "self", "(", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "self"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 10, 12], "repair_candidates": [2, 10, 12, 1, 6, 7, 0, 4, 13]}}
+{"prediction": {"error_location": 0.9825335144996643, "repair_targets": [0.8517588973045349, 0.001373002422042191, 9.197578037856147e-05], "repair_candidates": [0.003984162118285894, 0.14273342490196228, 0.8517588973045349, 3.4680146200116724e-05, 8.881982466846239e-06, 1.6685963828422246e-06, 0.001373002422042191, 9.197578037856147e-05, 1.3387624676397536e-05], "target_probs": 0.8532238602638245}}
+
+
+{"result": {"time": "2021-02-21 12:23:39.997591", "n_pass": [126, 18, 17], "n_token": 13, "loss": [0.4126378297805786, 0.07755417376756668], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "target", "fingerprint", "=", "self", "target", "target", ":", "#NEWLINE#", "fingerprint", "=", "fingerprint", "self"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 9, 11], "repair_candidates": [2, 9, 11, 1, 5, 6, 0, 4, 12]}}
+{"prediction": {"error_location": 0.6619019508361816, "repair_targets": [0.9222497940063477, 0.0029719171579927206, 0.00015516066923737526], "repair_candidates": [0.0043786391615867615, 0.06945498287677765, 0.9222497940063477, 0.0002190251980209723, 0.0005102025461383164, 4.2874933569692075e-05, 0.0029719171579927206, 0.00015516066923737526, 1.748418071656488e-05], "target_probs": 0.9253768920898438}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'target', 'fingerprint', '=', 'self', 'target', 'target', ':', '#NEWLINE#', 'fingerprint', '=', 'fingerprint', 'self']

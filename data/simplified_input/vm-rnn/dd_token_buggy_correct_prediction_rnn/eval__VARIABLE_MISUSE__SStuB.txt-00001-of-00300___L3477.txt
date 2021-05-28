@@ -1,0 +1,97 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "contextlib", ".", "contextmanager", "#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", "=", "threading", ".", "current_thread", "(", ")", ".", "ident", "#NEWLINE#", "with", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"], "error_location": [25], "repair_targets": [7, 33], "repair_candidates": [7, 33, 14, 25, 37], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "beetbox/beets/beets/dbcore/db.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00001-of-00300", "js_count": 3477, "results": {"model": "rnn", "prob": {"loc": [[9.945859346771613e-05, 1.5877549275344904e-09, 6.0333621432207e-10, 3.917095814376381e-11, 1.0514604811828754e-11, 1.25072174839147e-10, 6.7488983152008686e-12, 1.6355901522047134e-08, 4.833442240198549e-12, 1.0089564600468393e-11, 7.184198791421181e-10, 7.566665627400937e-10, 7.315142935837571e-10, 8.045772048603794e-09, 2.2327220072781984e-09, 1.8592218875568278e-09, 2.1082986023657213e-08, 1.2711722785496704e-09, 1.0542127171220272e-09, 9.248411814155588e-09, 4.576885999085789e-07, 6.11917272408391e-09, 1.1431771085312903e-08, 2.0958577096052977e-08, 2.2098672047832224e-07, 0.9998852014541626, 6.018653380124306e-07, 4.507767528139084e-07, 5.097569921730383e-09, 7.985459404835638e-09, 5.877456854541663e-10, 9.37933175571004e-10, 2.015869471350129e-09, 1.197367237182334e-05, 7.123425738164713e-10, 9.089359487290949e-09, 3.5694419642240405e-11, 1.5342034203058574e-06, 2.5514443890983785e-09, 1.560754997464997e-10]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9999388456344604, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.2179097110638395e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.045619218435604e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.4512953586963704e-06, 0.0, 0.0, 0.0, 1.4316208307718625e-06, 0.0, 0.0]], "target": [0.9999412894248962]}, "loss": [0.00011467275908216834, 5.871229950571433e-05], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 10:43:14.709177", "n_pass": [1, 1, 1], "n_token": 40, "loss": [0.00011467275908216834, 5.871229950571433e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "contextlib", ".", "contextmanager", "#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", "=", "threading", ".", "current_thread", "(", ")", ".", "ident", "#NEWLINE#", "with", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [7, 33], "repair_candidates": [7, 33, 14, 25, 37]}}
+{"prediction": {"error_location": 0.9998852014541626, "repair_targets": [0.9999388456344604, 2.4512953586963704e-06], "repair_candidates": [0.9999388456344604, 5.2179097110638395e-05, 5.045619218435604e-06, 2.4512953586963704e-06, 1.4316208307718625e-06], "target_probs": 0.9999412894248962}}
+
+
+{"result": {"time": "2021-02-11 10:43:14.775597", "n_pass": [20, 2, 2], "n_token": 35, "loss": [4.95898348162882e-05, 1.3113108252582606e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", "=", "threading", ".", "current_thread", "(", ")", ".", "ident", "#NEWLINE#", "with", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [2, 28], "repair_candidates": [2, 28, 9, 20, 32]}}
+{"prediction": {"error_location": 0.9999505281448364, "repair_targets": [0.9999861717224121, 7.170909270826087e-07], "repair_candidates": [0.9999861717224121, 1.1061982149840333e-05, 1.141217353506363e-06, 7.170909270826087e-07, 7.981301450854517e-07], "target_probs": 0.9999868869781494}}
+
+
+{"result": {"time": "2021-02-11 10:43:14.838793", "n_pass": [22, 3, 3], "n_token": 30, "loss": [3.8742269680369645e-05, 5.66245716981939e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", ")", ".", "ident", "#NEWLINE#", "with", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [2, 23], "repair_candidates": [2, 23, 9, 15, 27]}}
+{"prediction": {"error_location": 0.999961256980896, "repair_targets": [0.9999936819076538, 6.412720949811046e-07], "repair_candidates": [0.9999936819076538, 3.967884367739316e-06, 1.164269633591175e-06, 6.412720949811046e-07, 5.693386242455745e-07], "target_probs": 0.9999943375587463}}
+
+
+{"result": {"time": "2021-02-11 10:43:14.900406", "n_pass": [23, 4, 4], "n_token": 25, "loss": [0.00022623363474849612, 1.1920999895664863e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 18], "repair_candidates": [2, 18, 9, 10, 22]}}
+{"prediction": {"error_location": 0.9997738003730774, "repair_targets": [0.9999877214431763, 3.8117934764159145e-07], "repair_candidates": [0.9999877214431763, 7.275956249941373e-06, 4.277823336451547e-06, 3.8117934764159145e-07, 3.3106763908108405e-07], "target_probs": 0.9999880790710449}}
+
+
+{"result": {"time": "2021-02-11 10:43:15.022135", "n_pass": [43, 6, 5], "n_token": 22, "loss": [0.007619011681526899, 0.0001875934103736654], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", "thread_id", "]", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 18], "repair_candidates": [2, 18, 9, 10, 19]}}
+{"prediction": {"error_location": 0.9924099445343018, "repair_targets": [0.9998082518577576, 4.194206212559948e-06], "repair_candidates": [0.9998082518577576, 0.0001573609042679891, 2.9740112950094044e-05, 4.194206212559948e-06, 4.5873355247749714e-07], "target_probs": 0.9998124241828918}}
+
+
+{"result": {"time": "2021-02-11 10:43:15.196347", "n_pass": [48, 9, 6], "n_token": 20, "loss": [0.2969796359539032, 0.00720335403457284], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", "thread_id", "]", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [2, 16], "repair_candidates": [2, 16, 7, 8, 17]}}
+{"prediction": {"error_location": 0.7430590987205505, "repair_targets": [0.9928088188171387, 1.3685147678188514e-05], "repair_candidates": [0.9928088188171387, 0.0066380491480231285, 0.0005372859886847436, 1.3685147678188514e-05, 2.1860118977201637e-06], "target_probs": 0.992822527885437}}
+
+
+{"result": {"time": "2021-02-11 10:43:15.425203", "n_pass": [73, 13, 7], "n_token": 19, "loss": [0.23043709993362427, 0.0001704242022242397], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", "thread_id", "]", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [2, 15], "repair_candidates": [2, 15, 6, 7, 16]}}
+{"prediction": {"error_location": 0.7941864132881165, "repair_targets": [0.9998207688331604, 8.812028681859374e-06], "repair_candidates": [0.9998207688331604, 8.34028105600737e-05, 8.59745850902982e-05, 8.812028681859374e-06, 1.068243705049099e-06], "target_probs": 0.9998295903205872}}
+
+
+{"result": {"time": "2021-02-11 10:43:15.600306", "n_pass": [77, 16, 8], "n_token": 18, "loss": [0.03642084449529648, 0.0002834006445482373], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", "#NEWLINE#", "#INDENT#", "(", "yield", "self", "thread_id", "]", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [2, 14], "repair_candidates": [2, 14, 6, 7, 15]}}
+{"prediction": {"error_location": 0.9642344117164612, "repair_targets": [0.9996349811553955, 8.163833263097331e-05], "repair_candidates": [0.9996349811553955, 0.00014572925283573568, 0.00013485699309967458, 8.163833263097331e-05, 2.7124008283863077e-06], "target_probs": 0.9997166395187378}}
+
+
+{"result": {"time": "2021-02-11 10:43:15.712528", "n_pass": [79, 18, 9], "n_token": 16, "loss": [0.011356238275766373, 7.44489734643139e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", "#NEWLINE#", "#INDENT#", "self", "thread_id", "]", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [2, 12], "repair_candidates": [2, 12, 6, 7, 13]}}
+{"prediction": {"error_location": 0.9887080192565918, "repair_targets": [0.9998393058776855, 8.626578346593305e-05], "repair_candidates": [0.9998393058776855, 3.275885319453664e-05, 1.7287760783801787e-05, 8.626578346593305e-05, 2.436963222862687e-05], "target_probs": 0.9999255537986755}}
+
+
+{"result": {"time": "2021-02-11 10:43:15.768007", "n_pass": [81, 19, 10], "n_token": 14, "loss": [0.02665998972952366, 9.102043259190395e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", "#NEWLINE#", "#INDENT#", "self", "thread_id"]}}
+{"position": {"error_location": 7, "repair_targets": [2, 12], "repair_candidates": [2, 12, 6, 7, 13]}}
+{"prediction": {"error_location": 0.9736922383308411, "repair_targets": [0.999842643737793, 6.632434815401211e-05], "repair_candidates": [0.999842643737793, 4.118137076147832e-05, 3.8406091334763914e-05, 6.632434815401211e-05, 1.1433526196924504e-05], "target_probs": 0.999908983707428}}
+
+
+{"result": {"time": "2021-02-11 10:43:15.822352", "n_pass": [82, 20, 11], "n_token": 13, "loss": [0.08971013873815536, 0.007426711264997721], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _tx_stack(", "self", ")", ":", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", "#NEWLINE#", "#INDENT#", "self", "thread_id"]}}
+{"position": {"error_location": 6, "repair_targets": [1, 11], "repair_candidates": [1, 11, 5, 6, 12]}}
+{"prediction": {"error_location": 0.9141960144042969, "repair_targets": [0.9914277791976929, 0.001173035241663456], "repair_candidates": [0.9914277791976929, 0.004601522348821163, 0.0025671322364360094, 0.001173035241663456, 0.00023061101092025638], "target_probs": 0.9926007986068726}}
+
+
+{"result": {"time": "2021-02-11 10:43:15.877233", "n_pass": [83, 21, 12], "n_token": 12, "loss": [0.20430748164653778, 0.40063074231147766], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", "#NEWLINE#", "#INDENT#", "self", "thread_id"]}}
+{"position": {"error_location": 5, "repair_targets": [0, 10], "repair_candidates": [0, 10, 4, 5, 11]}}
+{"prediction": {"error_location": 0.8152116537094116, "repair_targets": [0.47346678376197815, 0.19643060863018036], "repair_candidates": [0.47346678376197815, 0.2793547809123993, 0.044629648327827454, 0.19643060863018036, 0.006118123419582844], "target_probs": 0.6698973774909973}}
+
+
+{"result": {"time": "2021-02-11 10:43:16.041088", "n_pass": [87, 24, 13], "n_token": 11, "loss": [0.6967442631721497, 0.2378765046596527], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "thread_id", "thread_id", ".", "_shared_map_lock", "#NEWLINE#", "#INDENT#", "self", "thread_id"]}}
+{"position": {"error_location": 4, "repair_targets": [0, 9], "repair_candidates": [0, 9, 3, 4, 10]}}
+{"prediction": {"error_location": 0.49820461869239807, "repair_targets": [0.5805896520614624, 0.207710400223732], "repair_candidates": [0.5805896520614624, 0.18042919039726257, 0.024051513522863388, 0.207710400223732, 0.007219245191663504], "target_probs": 0.7883000373840332}}
+
+
+{"result": {"time": "2021-02-11 10:43:16.416032", "n_pass": [102, 31, 14], "n_token": 10, "loss": [0.5141334533691406, 0.24733000993728638], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "thread_id", "thread_id", ".", "_shared_map_lock", "#NEWLINE#", "self", "thread_id"]}}
+{"position": {"error_location": 4, "repair_targets": [0, 8], "repair_candidates": [0, 8, 3, 4, 9]}}
+{"prediction": {"error_location": 0.5980185866355896, "repair_targets": [0.33581581711769104, 0.4450671076774597], "repair_candidates": [0.33581581711769104, 0.10216639935970306, 0.008935950696468353, 0.4450671076774597, 0.10801470279693604], "target_probs": 0.7808829545974731}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ')', ':', 'thread_id', 'thread_id', '.', '_shared_map_lock', '#NEWLINE#', 'self', 'thread_id']

@@ -1,0 +1,79 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Gradient of the log likelihood function at y, given link(f) w.r.t link(f)\\n\\n        .. math::\\n            \\\\frac{d \\\\ln p(y_{i}|\\\\lambda(f_{i}))}{d\\\\lambda(f)} = \\\\frac{1}{\\\\lambda(f)} - y_{i}\\n\\n        :param link_f: latent variables (f)\\n        :type link_f: Nx1 array\\n        :param y: data\\n        :type y: Nx1 array\\n        :param Y_metadata: Y_metadata which is not used in exponential distribution\\n        :returns: gradient of likelihood evaluated at points\\n        :rtype: Nx1 array\\n\\n        '", "#NEWLINE#", "grad", "=", "(", "(", "1.0", "/", "y", ")", "-", "y", ")", "#NEWLINE#", "return", "grad"], "error_location": [23], "repair_targets": [4], "repair_candidates": [17, 30, 4, 6, 23, 26, 8, 2], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "SheffieldML/GPy/GPy/likelihoods/exponential.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00017-of-00300", "js_count": 56509, "results": {"model": "transformer", "prob": {"loc": [[0.031118670478463173, 1.806480440791347e-07, 1.0099302727439863e-07, 7.33358307414278e-09, 9.05817728380498e-07, 8.847813148804562e-09, 1.325314684663681e-07, 9.630863218035302e-09, 1.0642735105648171e-05, 1.1796949195286288e-07, 2.0477786577544066e-08, 1.1366624974584738e-08, 1.695086027098114e-08, 1.8125643208577458e-08, 1.2023491535728681e-08, 4.840303446940197e-08, 1.2656150794043697e-08, 2.6063959879252252e-08, 1.4016638960612227e-09, 1.0561346464044163e-08, 9.936869105331425e-08, 1.1453842034825357e-06, 3.67892525332536e-08, 0.2802107334136963, 4.837726663708963e-09, 1.2578300179200141e-08, 0.6886231303215027, 2.2477165373402386e-07, 6.273227626252265e-08, 1.267594456066945e-07, 3.347890742588788e-05]], "pointer": [[0.0, 0.0, 0.016138866543769836, 0.0, 0.716429591178894, 0.0, 0.0002068503526970744, 0.0, 0.2671746015548706, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.9353675422025844e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 1.3160243383936177e-07, 0.0, 0.0, 3.972844240252016e-07, 0.0, 0.0, 0.0, 2.1124282056916854e-07]], "target": [0.716429591178894]}, "loss": [1.2722134590148926, 0.3334752917289734], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [26]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:32:09.920183", "n_pass": [1, 1, 1], "n_token": 31, "loss": [0.3730611205101013, 0.3334752917289734], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Gradient of the log likelihood function at y, given link(f) w.r.t link(f)\\n\\n        .. math::\\n            \\\\frac{d \\\\ln p(y_{i}|\\\\lambda(f_{i}))}{d\\\\lambda(f)} = \\\\frac{1}{\\\\lambda(f)} - y_{i}\\n\\n        :param link_f: latent variables (f)\\n        :type link_f: Nx1 array\\n        :param y: data\\n        :type y: Nx1 array\\n        :param Y_metadata: Y_metadata which is not used in exponential distribution\\n        :returns: gradient of likelihood evaluated at points\\n        :rtype: Nx1 array\\n\\n        '", "#NEWLINE#", "grad", "=", "(", "(", "1.0", "/", "y", ")", "-", "y", ")", "#NEWLINE#", "return", "grad"]}}
+{"position": {"error_location": 26, "repair_targets": [4], "repair_candidates": [17, 30, 4, 6, 23, 26, 8, 2]}}
+{"prediction": {"error_location": 0.6886231303215027, "repair_targets": [0.716429591178894], "repair_candidates": [0.016138866543769836, 0.716429591178894, 0.0002068503526970744, 0.2671746015548706, 4.9353675422025844e-05, 1.3160243383936177e-07, 3.972844240252016e-07, 2.1124282056916854e-07], "target_probs": 0.716429591178894}}
+
+
+{"result": {"time": "2021-02-21 07:32:09.976772", "n_pass": [23, 2, 2], "n_token": 27, "loss": [0.6299551129341125, 0.19355928897857666], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "=", "None", "'\\n        Gradient of the log likelihood function at y, given link(f) w.r.t link(f)\\n\\n        .. math::\\n            \\\\frac{d \\\\ln p(y_{i}|\\\\lambda(f_{i}))}{d\\\\lambda(f)} = \\\\frac{1}{\\\\lambda(f)} - y_{i}\\n\\n        :param link_f: latent variables (f)\\n        :type link_f: Nx1 array\\n        :param y: data\\n        :type y: Nx1 array\\n        :param Y_metadata: Y_metadata which is not used in exponential distribution\\n        :returns: gradient of likelihood evaluated at points\\n        :rtype: Nx1 array\\n\\n        '", "#NEWLINE#", "grad", "=", "(", "(", "1.0", "/", "y", ")", "-", "y", ")", "#NEWLINE#", "return", "grad"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [13, 26, 4, 6, 19, 22, 8, 2]}}
+{"prediction": {"error_location": 0.5326157212257385, "repair_targets": [0.8240209817886353], "repair_candidates": [0.0031433652620762587, 0.8240209817886353, 6.977196335355984e-06, 0.1728169471025467, 1.1510496733535547e-05, 5.09710993412682e-08, 6.638520488877475e-08, 9.61505008945096e-08], "target_probs": 0.8240209817886353}}
+
+
+{"result": {"time": "2021-02-21 07:32:10.033369", "n_pass": [25, 3, 3], "n_token": 23, "loss": [0.44319480657577515, 0.11943025141954422], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "=", "None", "'\\n        Gradient of the log likelihood function at y, given link(f) w.r.t link(f)\\n\\n        .. math::\\n            \\\\frac{d \\\\ln p(y_{i}|\\\\lambda(f_{i}))}{d\\\\lambda(f)} = \\\\frac{1}{\\\\lambda(f)} - y_{i}\\n\\n        :param link_f: latent variables (f)\\n        :type link_f: Nx1 array\\n        :param y: data\\n        :type y: Nx1 array\\n        :param Y_metadata: Y_metadata which is not used in exponential distribution\\n        :returns: gradient of likelihood evaluated at points\\n        :rtype: Nx1 array\\n\\n        '", "#NEWLINE#", "grad", "=", "y", ")", "-", "y", ")", "#NEWLINE#", "return", "grad"]}}
+{"position": {"error_location": 18, "repair_targets": [4], "repair_candidates": [13, 22, 4, 6, 15, 18, 8, 2]}}
+{"prediction": {"error_location": 0.6419821977615356, "repair_targets": [0.8874258995056152], "repair_candidates": [0.008057472296059132, 0.8874258995056152, 6.27265251296194e-07, 0.10450953990221024, 6.430133453250164e-06, 9.900860220568575e-08, 1.3830395495517678e-08, 1.8808242074896953e-08], "target_probs": 0.8874258995056152}}
+
+
+{"result": {"time": "2021-02-21 07:32:10.148705", "n_pass": [48, 5, 4], "n_token": 22, "loss": [0.30021435022354126, 0.17155343294143677], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "=", "None", "'\\n        Gradient of the log likelihood function at y, given link(f) w.r.t link(f)\\n\\n        .. math::\\n            \\\\frac{d \\\\ln p(y_{i}|\\\\lambda(f_{i}))}{d\\\\lambda(f)} = \\\\frac{1}{\\\\lambda(f)} - y_{i}\\n\\n        :param link_f: latent variables (f)\\n        :type link_f: Nx1 array\\n        :param y: data\\n        :type y: Nx1 array\\n        :param Y_metadata: Y_metadata which is not used in exponential distribution\\n        :returns: gradient of likelihood evaluated at points\\n        :rtype: Nx1 array\\n\\n        '", "#NEWLINE#", "grad", "=", "y", ")", "-", "y", ")", "#NEWLINE#", "return", "grad"]}}
+{"position": {"error_location": 17, "repair_targets": [3], "repair_candidates": [12, 21, 3, 5, 14, 17, 7, 1]}}
+{"prediction": {"error_location": 0.7406594753265381, "repair_targets": [0.8423552513122559], "repair_candidates": [0.0017110473709180951, 0.8423552513122559, 1.6814797163533513e-06, 0.15590795874595642, 2.3847591364756227e-05, 2.0745521567278047e-07, 2.1090180268856784e-08, 2.660770093143583e-08], "target_probs": 0.8423552513122559}}
+
+
+{"result": {"time": "2021-02-21 07:32:10.316301", "n_pass": [57, 8, 5], "n_token": 20, "loss": [0.18021005392074585, 0.5148054361343384], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "=", "None", "'\\n        Gradient of the log likelihood function at y, given link(f) w.r.t link(f)\\n\\n        .. math::\\n            \\\\frac{d \\\\ln p(y_{i}|\\\\lambda(f_{i}))}{d\\\\lambda(f)} = \\\\frac{1}{\\\\lambda(f)} - y_{i}\\n\\n        :param link_f: latent variables (f)\\n        :type link_f: Nx1 array\\n        :param y: data\\n        :type y: Nx1 array\\n        :param Y_metadata: Y_metadata which is not used in exponential distribution\\n        :returns: gradient of likelihood evaluated at points\\n        :rtype: Nx1 array\\n\\n        '", "#NEWLINE#", "grad", "=", "y", ")", "-", "y", "return", "grad"]}}
+{"position": {"error_location": 17, "repair_targets": [3], "repair_candidates": [12, 19, 3, 5, 14, 17, 7, 1]}}
+{"prediction": {"error_location": 0.8350948691368103, "repair_targets": [0.5976168513298035], "repair_candidates": [0.0030631304252892733, 0.5976168513298035, 5.133974991622381e-05, 0.38993072509765625, 0.006932244636118412, 5.188855084270472e-06, 1.706139528323547e-06, 0.002398870186880231], "target_probs": 0.5976168513298035}}
+
+
+{"result": {"time": "2021-02-21 07:32:10.427116", "n_pass": [64, 10, 6], "n_token": 18, "loss": [0.08665729314088821, 0.5725798010826111], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "=", "None", "grad", "=", "y", ")", "-", "y", "return", "grad"]}}
+{"position": {"error_location": 15, "repair_targets": [3], "repair_candidates": [10, 17, 3, 5, 12, 15, 7, 1]}}
+{"prediction": {"error_location": 0.9169911742210388, "repair_targets": [0.5640683770179749], "repair_candidates": [0.003911830950528383, 0.5640683770179749, 0.00011507134331623092, 0.4316323399543762, 0.00019525224342942238, 2.8483460482675582e-05, 5.564123512158403e-06, 4.313303725211881e-05], "target_probs": 0.5640683770179749}}
+
+
+{"result": {"time": "2021-02-21 07:32:10.483223", "n_pass": [73, 11, 7], "n_token": 16, "loss": [0.2788783609867096, 0.06129981577396393], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "grad", "=", "y", ")", "-", "y", "return", "grad"]}}
+{"position": {"error_location": 13, "repair_targets": [3], "repair_candidates": [8, 15, 3, 5, 10, 13, 7, 1]}}
+{"prediction": {"error_location": 0.7566319108009338, "repair_targets": [0.9405412077903748], "repair_candidates": [0.0024351603351533413, 0.9405412077903748, 9.261606464860961e-05, 0.056810781359672546, 5.916133522987366e-05, 3.7073979910928756e-05, 6.817871962994104e-06, 1.7108168322010897e-05], "target_probs": 0.9405412077903748}}
+
+
+{"result": {"time": "2021-02-21 07:32:10.542099", "n_pass": [99, 12, 8], "n_token": 15, "loss": [0.3507433831691742, 0.013645099475979805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "grad", "y", ")", "-", "y", "return", "grad"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [8, 14, 3, 5, 9, 12, 7, 1]}}
+{"prediction": {"error_location": 0.7041645050048828, "repair_targets": [0.9864475727081299], "repair_candidates": [0.004924748092889786, 0.9864475727081299, 0.00434119300916791, 0.0035599288530647755, 0.0006480775773525238, 6.059622683096677e-05, 9.296260941482615e-06, 8.62328761286335e-06], "target_probs": 0.9864475727081299}}
+
+
+{"result": {"time": "2021-02-21 07:32:10.597426", "n_pass": [101, 13, 9], "n_token": 14, "loss": [0.8594439029693604, 0.019911641255021095], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "grad", "y", "-", "y", "return", "grad"]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [8, 13, 3, 5, 9, 11, 7, 1]}}
+{"prediction": {"error_location": 0.4233974516391754, "repair_targets": [0.9802852869033813], "repair_candidates": [0.012125004082918167, 0.9802852869033813, 0.0062451353296637535, 0.0011491848854348063, 0.00017405299877282232, 4.536256255960325e-06, 1.3830215721100103e-05, 2.947429948108038e-06], "target_probs": 0.9802852869033813}}
+
+
+{"result": {"time": "2021-02-21 07:32:10.653319", "n_pass": [102, 14, 10], "n_token": 13, "loss": [0.4856477975845337, 0.057313136756420135], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def dlogpdf_dlink(", "self", ",", "link_f", ",", "y", ",", "Y_metadata", "grad", "y", "y", "return", "grad"]}}
+{"position": {"error_location": 10, "repair_targets": [3], "repair_candidates": [8, 12, 3, 5, 9, 10, 7, 1]}}
+{"prediction": {"error_location": 0.6152984499931335, "repair_targets": [0.9442983269691467], "repair_candidates": [0.04375578463077545, 0.9442983269691467, 0.0009150126134045422, 0.008948223665356636, 0.001305888989008963, 4.1442490328336135e-05, 9.694654181657825e-06, 0.0007257471443153918], "target_probs": 0.9442983269691467}}
+
+
+{"result": {"time": "2021-02-21 07:32:10.874021", "n_pass": [110, 18, 11], "n_token": 12, "loss": [0.42438235878944397, 0.5157992243766785], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def dlogpdf_dlink(", "self", ",", "link_f", "y", ",", "Y_metadata", "grad", "y", "y", "return", "grad"]}}
+{"position": {"error_location": 9, "repair_targets": [3], "repair_candidates": [7, 11, 3, 4, 8, 9, 6, 1]}}
+{"prediction": {"error_location": 0.6541736721992493, "repair_targets": [0.5970232486724854], "repair_candidates": [0.05407572165131569, 0.5970232486724854, 0.08564481884241104, 0.21068929135799408, 0.026478758081793785, 0.025717608630657196, 0.00017013706383295357, 0.00020034468616358936], "target_probs": 0.5970232486724854}}
+
+
+
+
+Minimal simplified tokens:
+
+['def dlogpdf_dlink(', 'self', ',', 'link_f', 'y', ',', 'Y_metadata', 'grad', 'y', 'y', 'return', 'grad']

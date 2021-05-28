@@ -1,0 +1,79 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "contextmanager", "#NEWLINE#", "def stdin_encoding(", "encoding", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Context manager for running bits of code while emulating an arbitrary\\n    stdin encoding.\\n\\n    >>> import sys\\n    >>> _encoding = sys.stdin.encoding\\n    >>> with stdin_encoding('AES'): sys.stdin.encoding\\n    'AES'\\n    >>> sys.stdin.encoding==_encoding\\n    True\\n\\n    \"", "#NEWLINE#", "import", "sys", "#NEWLINE#", "_stdin", "=", "sys", ".", "stdin", "#NEWLINE#", "sys", ".", "stdin", "=", "SimpleMock", "(", "sys", ".", "stdin", ",", "'encoding'", ",", "_stdin", ")", "#NEWLINE#", "(", "yield", ")", "#NEWLINE#", "sys", ".", "stdin", "=", "_stdin"], "error_location": [35], "repair_targets": [5], "repair_candidates": [17, 35, 46, 5], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "pydata/pandas/pandas/util/testing.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 211, "results": {"model": "transformer", "prob": {"loc": [[0.03178601711988449, 2.1375117285060696e-06, 1.3220034134064917e-07, 2.972423658320622e-07, 4.687159673721908e-07, 3.3941225410671905e-05, 4.0857503336155787e-07, 4.813693976757349e-07, 4.6005237663848675e-07, 4.2553568846415146e-07, 2.865465660306654e-07, 1.495628083603151e-07, 6.308195565907226e-07, 9.756696073282001e-08, 4.2468332139833365e-06, 1.239331027136359e-06, 9.084584462470957e-08, 1.2089081792510115e-05, 1.373284987948864e-07, 0.00258097006008029, 1.9208603418974235e-07, 1.981592312461089e-08, 4.1870347899930493e-07, 6.584787684005278e-07, 1.7163443999379524e-07, 5.276420012023664e-08, 2.0298392655604403e-07, 3.184017941748607e-06, 7.290617759281304e-06, 0.002755209803581238, 1.0625033155520214e-06, 8.170970033916092e-08, 1.994732883758843e-05, 0.0012484791222959757, 4.031658318126574e-05, 0.6638947129249573, 4.3232903408352286e-06, 1.0940557615413127e-07, 2.0128821276443887e-08, 3.0319775760290213e-05, 1.3825526821165113e-06, 2.3244562896707066e-07, 3.312818989797961e-06, 1.978251020773314e-07, 4.783816720532741e-08, 1.3157448108813696e-07, 0.29756319522857666]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.9993076324462891, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0006809019832871854, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.372308118647197e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.019255356979556e-06]], "target": [0.9993076324462891]}, "loss": [0.4096316695213318, 0.000692607369273901], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:34:29.235121", "n_pass": [1, 1, 1], "n_token": 47, "loss": [0.4096316695213318, 0.000692607369273901], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "contextmanager", "#NEWLINE#", "def stdin_encoding(", "encoding", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Context manager for running bits of code while emulating an arbitrary\\n    stdin encoding.\\n\\n    >>> import sys\\n    >>> _encoding = sys.stdin.encoding\\n    >>> with stdin_encoding('AES'): sys.stdin.encoding\\n    'AES'\\n    >>> sys.stdin.encoding==_encoding\\n    True\\n\\n    \"", "#NEWLINE#", "import", "sys", "#NEWLINE#", "_stdin", "=", "sys", ".", "stdin", "#NEWLINE#", "sys", ".", "stdin", "=", "SimpleMock", "(", "sys", ".", "stdin", ",", "'encoding'", ",", "_stdin", ")", "#NEWLINE#", "(", "yield", ")", "#NEWLINE#", "sys", ".", "stdin", "=", "_stdin"]}}
+{"position": {"error_location": 35, "repair_targets": [5], "repair_candidates": [17, 35, 46, 5]}}
+{"prediction": {"error_location": 0.6638947129249573, "repair_targets": [0.9993076324462891], "repair_candidates": [0.9993076324462891, 0.0006809019832871854, 7.372308118647197e-06, 4.019255356979556e-06], "target_probs": 0.9993076324462891}}
+
+
+{"result": {"time": "2021-02-11 11:34:29.290802", "n_pass": [10, 2, 2], "n_token": 35, "loss": [0.42361754179000854, 0.0004946024273522198], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "contextmanager", "#NEWLINE#", "def stdin_encoding(", "encoding", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n    Context manager for running bits of code while emulating an arbitrary\\n    stdin encoding.\\n\\n    >>> import sys\\n    >>> _encoding = sys.stdin.encoding\\n    >>> with stdin_encoding('AES'): sys.stdin.encoding\\n    'AES'\\n    >>> sys.stdin.encoding==_encoding\\n    True\\n\\n    \"", "#NEWLINE#", "import", "sys", "#NEWLINE#", "_stdin", "=", "sys", ".", "stdin", "#NEWLINE#", "_stdin", ")", "#NEWLINE#", "(", "yield", ")", "#NEWLINE#", "sys", ".", "stdin", "=", "_stdin"]}}
+{"position": {"error_location": 23, "repair_targets": [5], "repair_candidates": [17, 23, 34, 5]}}
+{"prediction": {"error_location": 0.654674232006073, "repair_targets": [0.9995055198669434], "repair_candidates": [0.9995055198669434, 0.0004345845663920045, 4.270994759281166e-05, 1.7184416719828732e-05], "target_probs": 0.9995055198669434}}
+
+
+{"result": {"time": "2021-02-11 11:34:29.401745", "n_pass": [23, 4, 3], "n_token": 29, "loss": [0.44016149640083313, 0.0009035376715473831], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "contextmanager", "#NEWLINE#", "def stdin_encoding(", "encoding", "=", "None", ")", ":", "#NEWLINE#", "_stdin", "=", "sys", ".", "stdin", "#NEWLINE#", "_stdin", ")", "#NEWLINE#", "(", "yield", ")", "#NEWLINE#", "sys", ".", "stdin", "=", "_stdin"]}}
+{"position": {"error_location": 17, "repair_targets": [5], "repair_candidates": [11, 17, 28, 5]}}
+{"prediction": {"error_location": 0.6439324021339417, "repair_targets": [0.9990968704223633], "repair_candidates": [0.9990968704223633, 0.0008621845045126975, 3.2667943742126226e-05, 8.34506226965459e-06], "target_probs": 0.9990968704223633}}
+
+
+{"result": {"time": "2021-02-11 11:34:29.514346", "n_pass": [39, 6, 4], "n_token": 26, "loss": [0.0025779129937291145, 2.2649790025752736e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "contextmanager", "#NEWLINE#", "def stdin_encoding(", "encoding", "=", "None", ")", ":", "#NEWLINE#", "_stdin", "=", "sys", "_stdin", ")", "#NEWLINE#", "(", "yield", ")", "#NEWLINE#", "sys", ".", "stdin", "=", "_stdin"]}}
+{"position": {"error_location": 14, "repair_targets": [5], "repair_candidates": [11, 14, 25, 5]}}
+{"prediction": {"error_location": 0.997425377368927, "repair_targets": [0.9999977350234985], "repair_candidates": [0.9999977350234985, 2.1417879452201305e-06, 2.570039825400272e-08, 9.354596386401681e-08], "target_probs": 0.9999977350234985}}
+
+
+{"result": {"time": "2021-02-11 11:34:29.569281", "n_pass": [41, 7, 5], "n_token": 23, "loss": [0.002881662454456091, 1.4305124977909145e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "contextmanager", "#NEWLINE#", "def stdin_encoding(", "encoding", "=", "None", ")", ":", "#NEWLINE#", "_stdin", "=", "sys", "_stdin", ")", "#NEWLINE#", "#NEWLINE#", "sys", ".", "stdin", "=", "_stdin"]}}
+{"position": {"error_location": 14, "repair_targets": [5], "repair_candidates": [11, 14, 22, 5]}}
+{"prediction": {"error_location": 0.9971224665641785, "repair_targets": [0.9999985694885254], "repair_candidates": [0.9999985694885254, 1.2519496976892697e-06, 3.585683927553873e-08, 7.183307815239459e-08], "target_probs": 0.9999985694885254}}
+
+
+{"result": {"time": "2021-02-11 11:34:29.624375", "n_pass": [42, 8, 6], "n_token": 20, "loss": [0.008388523012399673, 1.1920930376163597e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "contextmanager", "#NEWLINE#", "def stdin_encoding(", "encoding", "=", "None", ")", ":", "#NEWLINE#", "_stdin", "=", "sys", "_stdin", ")", "#NEWLINE#", "stdin", "=", "_stdin"]}}
+{"position": {"error_location": 14, "repair_targets": [5], "repair_candidates": [11, 14, 19, 5]}}
+{"prediction": {"error_location": 0.9916464686393738, "repair_targets": [0.9999998807907104], "repair_candidates": [0.9999998807907104, 9.655062171987083e-08, 9.292991265397177e-09, 2.7000801594567747e-09], "target_probs": 0.9999998807907104}}
+
+
+{"result": {"time": "2021-02-11 11:34:29.679223", "n_pass": [44, 9, 7], "n_token": 18, "loss": [0.2423781007528305, 8.583106136939023e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["contextmanager", "#NEWLINE#", "def stdin_encoding(", "encoding", "=", "None", ")", ":", "#NEWLINE#", "_stdin", "=", "sys", "_stdin", ")", "#NEWLINE#", "stdin", "=", "_stdin"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [9, 12, 17, 3]}}
+{"prediction": {"error_location": 0.7847594022750854, "repair_targets": [0.9999914169311523], "repair_candidates": [0.9999914169311523, 7.931139407446608e-06, 5.884826350666117e-07, 7.342040220237323e-08], "target_probs": 0.9999914169311523}}
+
+
+{"result": {"time": "2021-02-11 11:34:29.845588", "n_pass": [63, 12, 8], "n_token": 17, "loss": [0.12357211112976074, 4.768372718899627e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def stdin_encoding(", "encoding", "=", "None", ")", ":", "#NEWLINE#", "_stdin", "=", "sys", "_stdin", ")", "#NEWLINE#", "stdin", "=", "_stdin"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [8, 11, 16, 2]}}
+{"prediction": {"error_location": 0.8837578892707825, "repair_targets": [0.9999995231628418], "repair_candidates": [0.9999995231628418, 4.3396852333899005e-07, 5.506441169700338e-08, 1.2196101906170043e-08], "target_probs": 0.9999995231628418}}
+
+
+{"result": {"time": "2021-02-11 11:34:29.900632", "n_pass": [64, 13, 9], "n_token": 16, "loss": [0.17246243357658386, 2.563032649050001e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def stdin_encoding(", "encoding", "=", "None", ")", ":", "#NEWLINE#", "_stdin", "=", "sys", "_stdin", ")", "#NEWLINE#", "stdin", "=", "_stdin"]}}
+{"position": {"error_location": 10, "repair_targets": [1], "repair_candidates": [7, 10, 15, 1]}}
+{"prediction": {"error_location": 0.8415898084640503, "repair_targets": [0.9999743700027466], "repair_candidates": [0.9999743700027466, 2.040360777755268e-05, 5.157565283298027e-06, 8.244619920105833e-08], "target_probs": 0.9999743700027466}}
+
+
+{"result": {"time": "2021-02-11 11:34:29.955250", "n_pass": [66, 14, 10], "n_token": 15, "loss": [0.5993744134902954, 0.0001375769788865], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def stdin_encoding(", "encoding", "None", ")", ":", "#NEWLINE#", "_stdin", "=", "sys", "_stdin", ")", "#NEWLINE#", "stdin", "=", "_stdin"]}}
+{"position": {"error_location": 9, "repair_targets": [1], "repair_candidates": [6, 9, 14, 1]}}
+{"prediction": {"error_location": 0.549155056476593, "repair_targets": [0.9998624324798584], "repair_candidates": [0.9998624324798584, 0.00011852366878883913, 1.89072270586621e-05, 1.5054732216412958e-07], "target_probs": 0.9998624324798584}}
+
+
+{"result": {"time": "2021-02-11 11:34:30.176154", "n_pass": [72, 18, 11], "n_token": 13, "loss": [0.5381727814674377, 0.027566824108362198], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def stdin_encoding(", "encoding", "None", ")", ":", "#NEWLINE#", "_stdin", "=", "sys", "_stdin", ")", "=", "_stdin"]}}
+{"position": {"error_location": 9, "repair_targets": [1], "repair_candidates": [6, 9, 12, 1]}}
+{"prediction": {"error_location": 0.5838140249252319, "repair_targets": [0.9728096723556519], "repair_candidates": [0.9728096723556519, 0.02480224333703518, 0.0018519886070862412, 0.0005359956994652748], "target_probs": 0.9728096723556519}}
+
+
+
+
+Minimal simplified tokens:
+
+['def stdin_encoding(', 'encoding', 'None', ')', ':', '#NEWLINE#', '_stdin', '=', 'sys', '_stdin', ')', '=', '_stdin']

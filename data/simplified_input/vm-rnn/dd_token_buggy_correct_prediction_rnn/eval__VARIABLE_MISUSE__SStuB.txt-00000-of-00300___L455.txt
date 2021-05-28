@@ -1,0 +1,157 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_add_email_addresses(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"Add email addresses to the authorized user's account.\"", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "(", "'add_email_addresses'", ")", "#NEWLINE#", "with", "self", ".", "recorder", ".", "use_cassette", "(", "cassette_name", ")", ":", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "add_email_addresses", "(", "[", "'example1@example.com'", ",", "'example2@example.com'", "]", ")", "#NEWLINE#", "#UNINDENT#", "for", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3", ".", "users", ".", "Email", ")"], "error_location": [55], "repair_targets": [36], "repair_candidates": [2, 9, 17, 25, 38, 53, 55, 62, 36, 15, 19, 31], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "sigmavirus24/github3.py/tests/integration/test_github.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 455, "results": {"model": "rnn", "prob": {"loc": [[1.0112203199241776e-05, 4.433271250103843e-10, 1.1117631121271287e-11, 4.6907088808870526e-14, 4.444785400739386e-14, 1.6656680375259914e-12, 1.0427065027379667e-12, 1.935853387313724e-12, 1.3354752199934428e-11, 3.859042425891079e-12, 1.0595625261509631e-13, 2.1474740930817193e-13, 5.198905108499963e-12, 2.7482517997445832e-11, 4.58862158339568e-12, 3.675526549784536e-11, 8.57601750031689e-14, 1.7306668251282353e-12, 9.669422516367723e-14, 1.3727361261595128e-12, 5.512514490019216e-12, 1.5949741527521155e-11, 7.459143545884839e-12, 8.104458770752387e-11, 7.2451649714422306e-12, 7.126162507309353e-12, 4.72521110780888e-13, 1.9316857141626897e-12, 2.0508792147183597e-12, 5.443108203745384e-12, 2.5037343726053152e-11, 7.015715230984654e-10, 2.0338208114173417e-12, 1.4479755068574907e-11, 1.9153321983989002e-10, 2.2152810835729397e-11, 1.8449589078706197e-11, 6.810059027112514e-12, 2.2686640066549302e-10, 5.856887240821007e-14, 1.437611097873659e-12, 1.8863695327997476e-12, 7.649190525774174e-13, 4.784300039473166e-11, 1.896102892751106e-11, 2.5323378376879147e-12, 4.570276991057443e-13, 1.6581493123002389e-12, 1.9931864318756265e-12, 6.505322322492013e-12, 1.6679779779593673e-10, 4.6397502506678734e-10, 3.151361116504603e-11, 1.0291217183988621e-10, 9.576876891514985e-07, 0.9999709129333496, 3.02623592851603e-09, 1.336031285603667e-10, 1.8646737799665747e-12, 7.991662019646295e-12, 1.0443555048533781e-10, 6.916709338611327e-08, 1.7820686480263248e-05, 4.1709864728733947e-13, 8.317800848089973e-08, 7.6891055642795e-14, 4.705261735793442e-10, 9.521247505694941e-12, 1.6727976642760822e-11, 6.888191839832247e-12]], "pointer": [[0.0, 0.0, 4.7470617658973424e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 9.779672893728275e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 7.932856647130393e-07, 0.0, 3.899742750945734e-08, 0.0, 1.273864995710028e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 2.1820871154432098e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 5.887827114747779e-07, 0.0, 0.0, 0.0, 0.0, 0.9999833106994629, 0.0, 3.404686310659599e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.4493282833427656e-05, 0.0, 7.3818560153426915e-09, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.682245892060564e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9999833106994629]}, "loss": [2.90866428258596e-05, 1.6689440599293448e-05], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 10:33:42.882002", "n_pass": [1, 1, 1], "n_token": 70, "loss": [2.90866428258596e-05, 1.6689440599293448e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_add_email_addresses(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"Add email addresses to the authorized user's account.\"", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "(", "'add_email_addresses'", ")", "#NEWLINE#", "with", "self", ".", "recorder", ".", "use_cassette", "(", "cassette_name", ")", ":", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "add_email_addresses", "(", "[", "'example1@example.com'", ",", "'example2@example.com'", "]", ")", "#NEWLINE#", "#UNINDENT#", "for", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3", ".", "users", ".", "Email", ")"]}}
+{"position": {"error_location": 55, "repair_targets": [36], "repair_candidates": [2, 9, 17, 25, 38, 53, 55, 62, 36, 15, 19, 31]}}
+{"prediction": {"error_location": 0.9999709129333496, "repair_targets": [0.9999833106994629], "repair_candidates": [4.7470617658973424e-08, 9.779672893728275e-08, 7.932856647130393e-07, 3.899742750945734e-08, 1.273864995710028e-07, 2.1820871154432098e-07, 5.887827114747779e-07, 0.9999833106994629, 3.404686310659599e-07, 1.4493282833427656e-05, 7.3818560153426915e-09, 2.682245892060564e-08], "target_probs": 0.9999833106994629}}
+
+
+{"result": {"time": "2021-02-11 10:33:42.966606", "n_pass": [25, 2, 2], "n_token": 61, "loss": [0.11103202402591705, 8.130403875838965e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_add_email_addresses(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"Add email addresses to the authorized user's account.\"", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "(", "'add_email_addresses'", ")", "#NEWLINE#", "with", "self", ".", "recorder", ".", "use_cassette", "(", "cassette_name", ")", ":", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "add_email_addresses", "for", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3", ".", "users", ".", "Email", ")"]}}
+{"position": {"error_location": 46, "repair_targets": [36], "repair_candidates": [2, 9, 17, 25, 38, 44, 46, 53, 36, 15, 19, 31]}}
+{"prediction": {"error_location": 0.8949100971221924, "repair_targets": [0.9999186992645264], "repair_candidates": [8.516832394889207e-08, 1.785752061778112e-07, 3.48984872289293e-06, 7.079621866523667e-08, 4.111880116397515e-07, 2.2429333057516487e-06, 1.202274461320485e-06, 0.9999186992645264, 2.1454065972648095e-06, 7.143343100324273e-05, 1.3883605376463493e-08, 4.812584109004092e-08], "target_probs": 0.9999186992645264}}
+
+
+{"result": {"time": "2021-02-11 10:33:43.045215", "n_pass": [49, 3, 3], "n_token": 56, "loss": [0.3183349370956421, 2.5034263671841472e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_add_email_addresses(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"Add email addresses to the authorized user's account.\"", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "(", "'add_email_addresses'", ")", "#NEWLINE#", "with", "self", ".", "recorder", ".", "use_cassette", "(", "cassette_name", ")", ":", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "add_email_addresses", "for", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 46, "repair_targets": [36], "repair_candidates": [2, 9, 17, 25, 38, 44, 46, 53, 36, 15, 19, 31]}}
+{"prediction": {"error_location": 0.7273591756820679, "repair_targets": [0.9999749660491943], "repair_candidates": [2.3558389017352965e-08, 3.62148391275241e-08, 1.870821392913058e-06, 2.8568898358116712e-08, 3.6525287328004197e-07, 1.6047042095124198e-07, 1.6897788555070292e-06, 0.9999749660491943, 9.219445473718224e-08, 2.0757564925588667e-05, 3.733946929429521e-09, 1.5877379411222137e-08], "target_probs": 0.9999749660491943}}
+
+
+{"result": {"time": "2021-02-11 10:33:43.120299", "n_pass": [51, 4, 4], "n_token": 52, "loss": [0.2491847276687622, 4.3750766053562984e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_add_email_addresses(", "self", ")", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "(", "'add_email_addresses'", ")", "#NEWLINE#", "with", "self", ".", "recorder", ".", "use_cassette", "(", "cassette_name", ")", ":", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "add_email_addresses", "for", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 42, "repair_targets": [32], "repair_candidates": [2, 5, 13, 21, 34, 40, 42, 49, 32, 11, 15, 27]}}
+{"prediction": {"error_location": 0.7794359922409058, "repair_targets": [0.9999562501907349], "repair_candidates": [6.242451888738287e-08, 4.84854822957459e-09, 5.304832029651152e-06, 4.186541602280158e-08, 6.712682534271153e-07, 5.467598498398729e-07, 4.415292096382473e-06, 0.9999562501907349, 2.5718074425640225e-07, 3.241494414396584e-05, 7.973712357056684e-09, 3.026158168495385e-08], "target_probs": 0.9999562501907349}}
+
+
+{"result": {"time": "2021-02-11 10:33:43.193954", "n_pass": [55, 5, 5], "n_token": 48, "loss": [0.1289770007133484, 0.06035923585295677], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_add_email_addresses(", "self", ")", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", ".", "recorder", ".", "use_cassette", "(", "cassette_name", ")", ":", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "add_email_addresses", "for", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 38, "repair_targets": [28], "repair_candidates": [2, 5, 13, 17, 30, 36, 38, 45, 28, 11, 15, 23]}}
+{"prediction": {"error_location": 0.8789942860603333, "repair_targets": [0.9414262771606445], "repair_candidates": [6.307828925855574e-08, 4.713713419590704e-09, 0.05854042246937752, 1.1364151077941642e-06, 1.9291670128041005e-07, 2.9438677984217065e-07, 1.3083988505968591e-06, 0.9414262771606445, 1.2583821273892681e-07, 3.017619928868953e-05, 1.0477635647987427e-08, 2.5825729110806606e-08], "target_probs": 0.9414262771606445}}
+
+
+{"result": {"time": "2021-02-11 10:33:43.340821", "n_pass": [90, 7, 6], "n_token": 46, "loss": [0.13182412087917328, 0.06870885193347931], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_add_email_addresses(", "self", ")", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", ".", "use_cassette", "(", "cassette_name", ")", ":", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "add_email_addresses", "for", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 36, "repair_targets": [26], "repair_candidates": [2, 5, 13, 17, 28, 34, 36, 43, 26, 11, 15, 21]}}
+{"prediction": {"error_location": 0.8764951229095459, "repair_targets": [0.9335984587669373], "repair_candidates": [9.241274767646246e-08, 7.135490420751012e-09, 0.0663573145866394, 1.4687030898130615e-06, 3.507593646645546e-07, 1.005682065624569e-06, 3.51135076925857e-06, 0.9335984587669373, 2.0939347677995102e-07, 3.749715324374847e-05, 1.4864663278046919e-08, 3.620743527221748e-08], "target_probs": 0.9335984587669373}}
+
+
+{"result": {"time": "2021-02-11 10:33:43.411973", "n_pass": [91, 8, 7], "n_token": 44, "loss": [0.14755481481552124, 0.15044522285461426], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_add_email_addresses(", "self", ")", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", ")", ":", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "add_email_addresses", "for", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 34, "repair_targets": [24], "repair_candidates": [2, 5, 13, 17, 26, 32, 34, 41, 24, 11, 15, 19]}}
+{"prediction": {"error_location": 0.8628150224685669, "repair_targets": [0.8603248596191406], "repair_candidates": [3.0690247854181507e-07, 2.7834513360858182e-08, 0.13961900770664215, 2.092496970362845e-06, 2.5601329980418086e-06, 7.638306669832673e-06, 1.542091922601685e-05, 0.8603248596191406, 3.1856129112384224e-07, 2.755519926722627e-05, 2.3682257932478024e-08, 1.3040678936704353e-07], "target_probs": 0.8603248596191406}}
+
+
+{"result": {"time": "2021-02-11 10:33:43.482361", "n_pass": [93, 9, 8], "n_token": 42, "loss": [0.10084901005029678, 0.21858909726142883], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_add_email_addresses(", "self", ")", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "add_email_addresses", "for", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 32, "repair_targets": [22], "repair_candidates": [2, 5, 13, 17, 24, 30, 32, 39, 22, 11, 15, 19]}}
+{"prediction": {"error_location": 0.9040696024894714, "repair_targets": [0.8036518692970276], "repair_candidates": [2.8624137371480174e-07, 2.826739375905163e-08, 0.19624046981334686, 3.2432228636025684e-06, 1.941352593348711e-06, 3.4551201224530814e-06, 2.499835318303667e-06, 0.8036518692970276, 3.3055545145543874e-07, 9.568534005666152e-05, 5.328538676963035e-08, 1.418879946868401e-07], "target_probs": 0.8036518692970276}}
+
+
+{"result": {"time": "2021-02-11 10:33:43.689098", "n_pass": [98, 12, 9], "n_token": 40, "loss": [0.3609456419944763, 0.29643774032592773], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_add_email_addresses(", "self", ")", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 30, "repair_targets": [22], "repair_candidates": [2, 5, 13, 17, 24, 28, 30, 37, 22, 11, 15, 19]}}
+{"prediction": {"error_location": 0.6970168948173523, "repair_targets": [0.7434619069099426], "repair_candidates": [3.0659117555842386e-07, 2.9118780275894096e-08, 0.2565014660358429, 3.3661644920357503e-06, 2.1425780687422957e-06, 3.5180748909624526e-06, 3.1937418043526122e-06, 0.7434619069099426, 2.3388241743305116e-07, 2.359610516577959e-05, 6.887149339718235e-08, 9.500377728954845e-08], "target_probs": 0.7434619069099426}}
+
+
+{"result": {"time": "2021-02-11 10:33:43.894658", "n_pass": [103, 15, 10], "n_token": 38, "loss": [0.5029868483543396, 0.17794187366962433], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "self", ".", "basic_login", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 28, "repair_targets": [20], "repair_candidates": [0, 3, 11, 15, 22, 26, 28, 35, 20, 9, 13, 17]}}
+{"prediction": {"error_location": 0.60472172498703, "repair_targets": [0.8369910717010498], "repair_candidates": [0.00010220806871075183, 4.7034131256395995e-08, 0.16287639737129211, 4.592124241753481e-06, 2.1569458112935536e-06, 3.5581151678343304e-06, 3.953610303142341e-06, 0.8369910717010498, 2.4807155796224833e-07, 1.5702855307608843e-05, 4.3152795115020126e-08, 4.460055436084076e-08], "target_probs": 0.8369910717010498}}
+
+
+{"result": {"time": "2021-02-11 10:33:43.961708", "n_pass": [106, 16, 11], "n_token": 36, "loss": [0.3604927062988281, 0.18026483058929443], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "self", "(", ")", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 26, "repair_targets": [18], "repair_candidates": [0, 3, 9, 13, 20, 24, 26, 33, 18, 7, 11, 15]}}
+{"prediction": {"error_location": 0.6973326802253723, "repair_targets": [0.835049033164978], "repair_candidates": [7.908089901320636e-05, 1.2215747346999706e-07, 0.16484715044498444, 1.2217502671774128e-06, 2.9896807518525748e-06, 1.822353056013526e-06, 1.826767629609094e-06, 0.835049033164978, 1.5305010947486153e-07, 1.647900717216544e-05, 4.0690064651016655e-08, 4.798047470444544e-08], "target_probs": 0.835049033164978}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.027638", "n_pass": [107, 17, 12], "n_token": 34, "loss": [0.4597432017326355, 0.09203137457370758], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "self", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "gh", ".", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 24, "repair_targets": [16], "repair_candidates": [0, 3, 7, 11, 18, 22, 24, 31, 16, 5, 9, 13]}}
+{"prediction": {"error_location": 0.6314457654953003, "repair_targets": [0.9120765328407288], "repair_candidates": [9.007027983898297e-05, 1.7872436728794128e-05, 0.08778789639472961, 6.433735961763887e-07, 4.6466079766105395e-06, 1.9805438569164835e-06, 1.4003113619764918e-06, 0.9120765328407288, 1.9752481250634446e-07, 1.854606125561986e-05, 5.985768325444951e-08, 5.666887048505487e-08], "target_probs": 0.9120765328407288}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.160179", "n_pass": [116, 19, 13], "n_token": 32, "loss": [0.17437800765037537, 0.12108618766069412], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "self", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "assert", "isinstance", "(", "email", ",", "github3"]}}
+{"position": {"error_location": 22, "repair_targets": [16], "repair_candidates": [0, 3, 7, 11, 18, 20, 22, 29, 16, 5, 9, 13]}}
+{"prediction": {"error_location": 0.8399792313575745, "repair_targets": [0.8859575986862183], "repair_candidates": [0.00011400008224882185, 3.164973168168217e-05, 0.11387316882610321, 1.0024872381109162e-06, 5.001262252335437e-06, 2.1655603177350713e-06, 1.3720629112867755e-06, 0.8859575986862183, 1.3799613043374848e-06, 1.2504629012255464e-05, 8.118926331235343e-08, 6.184568945855062e-08], "target_probs": 0.8859575986862183}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.287602", "n_pass": [119, 21, 14], "n_token": 29, "loss": [0.0014117523096501827, 0.324061781167984], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "self", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "#NEWLINE#", "#INDENT#", "emails", "=", "self", ".", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "email", ",", "github3"]}}
+{"position": {"error_location": 22, "repair_targets": [16], "repair_candidates": [0, 3, 7, 11, 18, 20, 22, 26, 16, 5, 9, 13]}}
+{"prediction": {"error_location": 0.9985892176628113, "repair_targets": [0.72320556640625], "repair_candidates": [0.000739836657885462, 0.00012883571616839617, 0.2757003605365753, 6.357756319630425e-06, 3.470705632935278e-05, 1.6894040527404286e-05, 4.062713287567021e-06, 0.72320556640625, 4.162446657574037e-06, 0.00015850736235734075, 3.309815781449288e-07, 4.263926314251876e-07], "target_probs": 0.72320556640625}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.350433", "n_pass": [128, 22, 15], "n_token": 27, "loss": [0.004665916319936514, 0.4684307277202606], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "self", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "emails", "=", "self", ".", "email", "in", "email", ":", "#NEWLINE#", "#INDENT#", "email", ",", "github3"]}}
+{"position": {"error_location": 20, "repair_targets": [14], "repair_candidates": [0, 3, 7, 11, 16, 18, 20, 24, 14, 5, 9, 13]}}
+{"prediction": {"error_location": 0.9953449368476868, "repair_targets": [0.6259838342666626], "repair_candidates": [0.004660917911678553, 0.0022075274027884007, 0.36165544390678406, 4.767204518429935e-05, 8.587221964262426e-05, 6.172145367600024e-05, 0.003683028742671013, 0.6259838342666626, 0.00017392485460732132, 0.001431975164450705, 2.951566330011701e-06, 5.113993211125489e-06], "target_probs": 0.6259838342666626}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.411117", "n_pass": [132, 23, 16], "n_token": 24, "loss": [0.007235750090330839, 0.6586434841156006], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "self", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "emails", "=", "self", ".", "email", "in", "email", "email", ",", "github3"]}}
+{"position": {"error_location": 20, "repair_targets": [14], "repair_candidates": [0, 3, 7, 11, 16, 18, 20, 21, 14, 5, 9, 13]}}
+{"prediction": {"error_location": 0.9927903413772583, "repair_targets": [0.51755291223526], "repair_candidates": [0.006735077127814293, 0.001369879231788218, 0.46616271138191223, 4.3474177800817415e-05, 0.00013317354023456573, 3.4327764296904206e-05, 0.0028041566256433725, 0.51755291223526, 6.260682130232453e-05, 0.005057091824710369, 8.113921467156615e-06, 3.648154597613029e-05], "target_probs": 0.51755291223526}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.471683", "n_pass": [167, 24, 17], "n_token": 22, "loss": [0.0038860533386468887, 0.43424829840660095], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "self", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "emails", "=", "self", ".", "email", "in", "email", "email"]}}
+{"position": {"error_location": 20, "repair_targets": [14], "repair_candidates": [0, 3, 7, 11, 16, 18, 20, 21, 14, 5, 9, 13]}}
+{"prediction": {"error_location": 0.9961215853691101, "repair_targets": [0.6477513909339905], "repair_candidates": [0.007073689717799425, 0.0009939250303432345, 0.33831286430358887, 5.078191315988079e-05, 0.00011760724009945989, 5.427267387858592e-05, 0.0021849321201443672, 0.6477513909339905, 0.00018022803124040365, 0.0031928089447319508, 5.856576535734348e-06, 8.164514292730018e-05], "target_probs": 0.6477513909339905}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.533901", "n_pass": [169, 25, 18], "n_token": 21, "loss": [0.003494586795568466, 0.6485929489135742], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "#NEWLINE#", "self", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "emails", "=", "self", ".", "email", "in", "email", "email"]}}
+{"position": {"error_location": 19, "repair_targets": [13], "repair_candidates": [0, 2, 6, 10, 15, 17, 19, 20, 13, 4, 8, 12]}}
+{"prediction": {"error_location": 0.9965115189552307, "repair_targets": [0.5227808356285095], "repair_candidates": [0.0037928414531052113, 0.0011650441447272897, 0.466287761926651, 5.3806343203177676e-05, 8.242099283961579e-05, 5.6399159802822396e-05, 0.00223485566675663, 0.5227808356285095, 0.00029002869268879294, 0.0031905861105769873, 4.762539902003482e-06, 6.0635647969320416e-05], "target_probs": 0.5227808356285095}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.592666", "n_pass": [170, 26, 19], "n_token": 20, "loss": [0.02112904191017151, 0.38572707772254944], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "#NEWLINE#", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "emails", "=", "self", ".", "email", "in", "email", "email"]}}
+{"position": {"error_location": 18, "repair_targets": [12], "repair_candidates": [0, 1, 5, 9, 14, 16, 18, 19, 12, 3, 7, 11]}}
+{"prediction": {"error_location": 0.9790925979614258, "repair_targets": [0.6799560785293579], "repair_candidates": [0.009178046137094498, 0.009984493255615234, 0.28562480211257935, 0.00038162581040523946, 7.601040124427527e-05, 0.00012091323151253164, 0.007895657792687416, 0.6799560785293579, 0.0009407975012436509, 0.005684659816324711, 1.0027400094259065e-05, 0.00014682217442896217], "target_probs": 0.6799560785293579}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.650485", "n_pass": [172, 27, 20], "n_token": 19, "loss": [0.038669753819704056, 0.5189365148544312], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "cassette_name", "=", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "emails", "=", "self", ".", "email", "in", "email", "email"]}}
+{"position": {"error_location": 17, "repair_targets": [11], "repair_candidates": [0, 1, 4, 8, 13, 15, 17, 18, 11, 2, 6, 10]}}
+{"prediction": {"error_location": 0.9620683789253235, "repair_targets": [0.5951531529426575], "repair_candidates": [0.019105568528175354, 0.04644787684082985, 0.326170414686203, 0.00030819931998848915, 7.784046465530992e-05, 0.0003489169757813215, 0.0035679484717547894, 0.5951531529426575, 0.0025293496437370777, 0.005970851518213749, 2.036669866356533e-05, 0.0002995311515405774], "target_probs": 0.5951531529426575}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.708118", "n_pass": [174, 28, 21], "n_token": 18, "loss": [0.4818503260612488, 0.22021877765655518], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "cassette_name", "self", ".", "cassette_name", "with", "self", "(", "cassette_name", "emails", "=", "self", ".", "email", "in", "email", "email"]}}
+{"position": {"error_location": 16, "repair_targets": [10], "repair_candidates": [0, 1, 3, 7, 12, 14, 16, 17, 10, 2, 5, 9]}}
+{"prediction": {"error_location": 0.6176394820213318, "repair_targets": [0.8023432493209839], "repair_candidates": [0.10094903409481049, 0.03210027888417244, 0.0072217294946312904, 0.0006714804330840707, 0.0007851592963561416, 0.004480720032006502, 0.03376137465238571, 0.8023432493209839, 0.007637940812855959, 0.008600766770541668, 0.00015934008115436882, 0.001288820174522698], "target_probs": 0.8023432493209839}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.765303", "n_pass": [176, 29, 22], "n_token": 17, "loss": [0.677114725112915, 0.294132262468338], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "cassette_name", "self", "cassette_name", "with", "self", "(", "cassette_name", "emails", "=", "self", ".", "email", "in", "email", "email"]}}
+{"position": {"error_location": 15, "repair_targets": [9], "repair_candidates": [0, 1, 3, 6, 11, 13, 15, 16, 9, 2, 4, 8]}}
+{"prediction": {"error_location": 0.5080808997154236, "repair_targets": [0.7451779246330261], "repair_candidates": [0.12684763967990875, 0.005607870407402515, 0.01843402348458767, 0.08022851496934891, 0.00037283453275449574, 0.00121621647849679, 0.00798658188432455, 0.7451779246330261, 0.0024751920718699694, 0.009388106875121593, 0.00024044336169026792, 0.0020246722269803286], "target_probs": 0.7451779246330261}}
+
+
+{"result": {"time": "2021-02-11 10:33:44.882705", "n_pass": [180, 31, 23], "n_token": 16, "loss": [0.3723088204860687, 0.003596985712647438], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "cassette_name", "self", "cassette_name", "with", "self", "cassette_name", "emails", "=", "self", ".", "email", "in", "email", "email"]}}
+{"position": {"error_location": 14, "repair_targets": [8], "repair_candidates": [0, 1, 3, 6, 10, 12, 14, 15, 8, 2, 4, 7]}}
+{"prediction": {"error_location": 0.6891413331031799, "repair_targets": [0.9964094758033752], "repair_candidates": [0.002817305736243725, 5.8769655879586935e-05, 3.4751134080579504e-05, 9.183643123833463e-05, 2.349704664084129e-05, 2.072652932838537e-06, 0.0001272231456823647, 0.9964094758033752, 1.1616837582550943e-05, 0.00037188755231909454, 3.482213969618897e-06, 4.811561302631162e-05], "target_probs": 0.9964094758033752}}
+
+
+{"result": {"time": "2021-02-11 10:33:45.108895", "n_pass": [194, 35, 24], "n_token": 15, "loss": [0.08814067393541336, 0.0022561352234333754], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "cassette_name", "self", "cassette_name", "self", "cassette_name", "emails", "=", "self", ".", "email", "in", "email", "email"]}}
+{"position": {"error_location": 13, "repair_targets": [7], "repair_candidates": [0, 1, 3, 5, 9, 11, 13, 14, 7, 2, 4, 6]}}
+{"prediction": {"error_location": 0.9156320691108704, "repair_targets": [0.9977464079856873], "repair_candidates": [0.0016756916884332895, 2.0642783056246117e-05, 3.4683341709751403e-06, 5.203781711315969e-06, 1.8631317288964055e-05, 7.881168130552396e-06, 0.0002658065059222281, 0.9977464079856873, 7.058013125060825e-06, 0.00021342962281778455, 2.7078367565991357e-06, 3.2950036256806925e-05], "target_probs": 0.9977464079856873}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'self', 'cassette_name', 'self', 'cassette_name', 'self', 'cassette_name', 'emails', '=', 'self', '.', 'email', 'in', 'email', 'email']

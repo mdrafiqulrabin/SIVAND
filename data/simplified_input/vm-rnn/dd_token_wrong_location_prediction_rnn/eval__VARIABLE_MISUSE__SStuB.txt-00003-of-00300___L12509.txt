@@ -1,0 +1,25 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def create_hmac_ctx(", "self", ",", "key", ",", "algorithm", ")", ":", "#NEWLINE#", "#INDENT#", "return", "_HMACContext", "(", "algorithm", ",", "key", ",", "algorithm", ")"], "error_location": [14], "repair_targets": [2], "repair_candidates": [6, 14, 18, 2, 4, 16], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "cloudera/hue/desktop/core/ext-py/cryptography-1.3.1/src/cryptography/hazmat/backends/openssl/backend.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00003-of-00300", "js_count": 12509, "results": {"model": "rnn", "prob": {"loc": [[0.29905104637145996, 1.4653828657174017e-05, 2.5440265289944364e-06, 8.010987784246026e-08, 2.0081806724192575e-06, 5.931691049454457e-08, 1.6401362472606706e-06, 3.5475967052889246e-08, 2.6671514774534444e-08, 3.74423876792207e-07, 5.12326323587331e-08, 2.113883397214522e-07, 1.539277218398638e-05, 2.191561634390382e-06, 0.057910628616809845, 1.7586730791663285e-06, 0.2520429193973541, 4.8560403229203075e-05, 0.3909022808074951, 3.4597237572597805e-06]], "pointer": [[0.0, 0.0, 0.7256534695625305, 0.0, 0.010234899818897247, 0.0, 0.2633671760559082, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.678226782241836e-05, 0.0, 0.00038462007069028914, 0.0, 0.0002930698392447084, 0.0]], "target": [0.7256534695625305]}, "loss": [2.8488543033599854, 0.32068270444869995], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [18]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 11:53:00.833989", "n_pass": [1, 1, 1], "n_token": 20, "loss": [0.9392976760864258, 0.32068270444869995], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_hmac_ctx(", "self", ",", "key", ",", "algorithm", ")", ":", "#NEWLINE#", "#INDENT#", "return", "_HMACContext", "(", "algorithm", ",", "key", ",", "algorithm", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [2], "repair_candidates": [6, 14, 18, 2, 4, 16]}}
+{"prediction": {"error_location": 0.3909022808074951, "repair_targets": [0.7256534695625305], "repair_candidates": [0.7256534695625305, 0.010234899818897247, 0.2633671760559082, 6.678226782241836e-05, 0.00038462007069028914, 0.0002930698392447084], "target_probs": 0.7256534695625305}}
+
+
+{"result": {"time": "2021-02-21 11:53:01.350665", "n_pass": [52, 10, 2], "n_token": 19, "loss": [0.9885495901107788, 0.2527899444103241], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def create_hmac_ctx(", "self", ",", "key", ",", "algorithm", ")", "#NEWLINE#", "#INDENT#", "return", "_HMACContext", "(", "algorithm", ",", "key", ",", "algorithm", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [2], "repair_candidates": [6, 13, 17, 2, 4, 15]}}
+{"prediction": {"error_location": 0.37211599946022034, "repair_targets": [0.7766309976577759], "repair_candidates": [0.7766309976577759, 0.013862580992281437, 0.20894697308540344, 6.140867481008172e-05, 0.00019890055409632623, 0.0002990895591210574], "target_probs": 0.7766309976577759}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def create_hmac_ctx(', 'self', ',', 'key', ',', 'algorithm', ')', '#NEWLINE#', '#INDENT#', 'return', '_HMACContext', '(', 'algorithm', ',', 'key', ',', 'algorithm', ')']

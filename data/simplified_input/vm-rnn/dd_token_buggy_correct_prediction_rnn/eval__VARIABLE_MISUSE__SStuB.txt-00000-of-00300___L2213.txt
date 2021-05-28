@@ -1,0 +1,169 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def filter_log_files_for_uploading(", "log_files", ",", "zipped_only", ")", ":", "#NEWLINE#", "#INDENT#", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "=", "[", "]", "#NEWLINE#", "for", "lf", "in", "filter_log_files_for_active", "(", "log_files", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "zipped_only", "and", "(", "not", "lf", ".", "bzip", ")", ")", ":", "#NEWLINE#", "#INDENT#", "continue", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"], "error_location": [47], "repair_targets": [17, 32], "repair_candidates": [11, 43, 47, 52, 4, 28, 2, 21, 17, 32], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "rhettg/BlueOx/blueox/store.py", "license": "isc", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 2213, "results": {"model": "rnn", "prob": {"loc": [[0.004903491120785475, 6.958923659539096e-09, 4.6222858429700864e-08, 1.2456592424214818e-09, 5.711853656720223e-09, 1.3714647195683938e-09, 6.285297976527104e-11, 3.918327440288749e-09, 6.758134940554328e-09, 9.69096358716115e-09, 2.5647967305530983e-08, 2.007097066325514e-08, 3.5684276866732034e-08, 1.470033794248593e-06, 7.101341452653287e-07, 3.807539599165466e-07, 5.3500310848164645e-09, 6.8771806027712046e-09, 5.284155335516516e-08, 1.9023821096197935e-07, 1.613033973058009e-08, 0.0005542308208532631, 1.8639366317074746e-07, 6.414043696167937e-08, 2.470836193424475e-07, 5.851370232790032e-08, 4.695038136048879e-09, 6.85130032707093e-08, 0.000612535746768117, 1.372891755835326e-08, 8.041065591157803e-09, 8.103241100343439e-08, 0.0025776277761906385, 3.258710634668205e-08, 1.7164225027954672e-06, 1.4574528961475153e-07, 2.8296513576719917e-08, 1.2419170047905936e-07, 8.306724907924945e-08, 2.0700698932785144e-09, 5.4694323807780165e-06, 8.045718402627244e-08, 1.6410158565349775e-08, 1.6946880521118146e-07, 8.363767278751766e-08, 5.0368202941797335e-09, 1.2084592881933531e-08, 0.9898194670677185, 3.7006915931669937e-07, 1.413366419455997e-07, 2.9112273480791373e-08, 1.2430492191128906e-08, 0.0015204015653580427]], "pointer": [[0.0, 0.0, 0.0003778111422434449, 0.0, 0.0005313395522534847, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.810562475337065e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9989570379257202, 0.0, 0.0, 0.0, 2.9657249100978333e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.6676026411441853e-06, 0.0, 0.0, 0.0, 0.00012493871327023953, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8.741296255720954e-07, 0.0, 0.0, 0.0, 1.325122269690837e-07, 0.0, 0.0, 0.0, 0.0, 3.3050346814889053e-07]], "target": [0.9990819692611694]}, "loss": [0.01023272518068552, 0.0009184523951262236], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 10:15:29.195383", "n_pass": [1, 1, 1], "n_token": 53, "loss": [0.01023272518068552, 0.0009184523951262236], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def filter_log_files_for_uploading(", "log_files", ",", "zipped_only", ")", ":", "#NEWLINE#", "#INDENT#", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "=", "[", "]", "#NEWLINE#", "for", "lf", "in", "filter_log_files_for_active", "(", "log_files", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "zipped_only", "and", "(", "not", "lf", ".", "bzip", ")", ")", ":", "#NEWLINE#", "#INDENT#", "continue", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 47, "repair_targets": [17, 32], "repair_candidates": [11, 43, 47, 52, 4, 28, 2, 21, 17, 32]}}
+{"prediction": {"error_location": 0.9898194670677185, "repair_targets": [0.9989570379257202, 0.00012493871327023953], "repair_candidates": [0.0003778111422434449, 0.0005313395522534847, 3.810562475337065e-06, 0.9989570379257202, 2.9657249100978333e-08, 3.6676026411441853e-06, 0.00012493871327023953, 8.741296255720954e-07, 1.325122269690837e-07, 3.3050346814889053e-07], "target_probs": 0.9990819692611694}}
+
+
+{"result": {"time": "2021-02-11 10:15:29.271208", "n_pass": [46, 2, 2], "n_token": 50, "loss": [0.011978008784353733, 0.0007495111785829067], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def filter_log_files_for_uploading(", "log_files", ",", "zipped_only", ")", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "=", "[", "]", "#NEWLINE#", "for", "lf", "in", "filter_log_files_for_active", "(", "log_files", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "zipped_only", "and", "(", "not", "lf", ".", "bzip", ")", ")", ":", "#NEWLINE#", "#INDENT#", "continue", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 44, "repair_targets": [14, 29], "repair_candidates": [8, 40, 44, 49, 4, 25, 2, 18, 14, 29]}}
+{"prediction": {"error_location": 0.9880931973457336, "repair_targets": [0.9991075396537781, 0.00014325877418741584], "repair_candidates": [0.0004531961167231202, 0.00028442221810109913, 6.683052561129443e-06, 0.9991075396537781, 2.6168088140821055e-08, 3.6027308851771522e-06, 0.00014325877418741584, 8.798451744951308e-07, 1.1830982771243725e-07, 3.219965378775669e-07], "target_probs": 0.9992507696151733}}
+
+
+{"result": {"time": "2021-02-11 10:15:29.343857", "n_pass": [47, 3, 3], "n_token": 47, "loss": [0.010732665657997131, 0.0008786603575572371], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def filter_log_files_for_uploading(", "log_files", ",", "zipped_only", ")", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "in", "filter_log_files_for_active", "(", "log_files", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "zipped_only", "and", "(", "not", "lf", ".", "bzip", ")", ")", ":", "#NEWLINE#", "#INDENT#", "continue", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 41, "repair_targets": [11, 26], "repair_candidates": [8, 37, 41, 46, 4, 22, 2, 15, 11, 26]}}
+{"prediction": {"error_location": 0.9893246293067932, "repair_targets": [0.9990183115005493, 0.00010340366134187207], "repair_candidates": [0.0003476758429314941, 0.0005038836388848722, 2.299890184076503e-05, 0.9990183115005493, 5.888315968149982e-08, 2.7360947569832206e-06, 0.00010340366134187207, 5.005717866879422e-07, 1.0893729296412857e-07, 3.176627956236189e-07], "target_probs": 0.9991217255592346}}
+
+
+{"result": {"time": "2021-02-11 10:15:29.414960", "n_pass": [49, 4, 4], "n_token": 44, "loss": [0.013900846242904663, 0.036978207528591156], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def filter_log_files_for_uploading(", "log_files", ",", "zipped_only", ")", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "zipped_only", "and", "(", "not", "lf", ".", "bzip", ")", ")", ":", "#NEWLINE#", "#INDENT#", "continue", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 38, "repair_targets": [11, 23], "repair_candidates": [8, 34, 38, 43, 4, 19, 2, 12, 11, 23]}}
+{"prediction": {"error_location": 0.9861955642700195, "repair_targets": [0.9634536504745483, 0.00024349339946638793], "repair_candidates": [0.0057518016546964645, 0.0040308572351932526, 0.0008910012547858059, 0.9634536504745483, 0.025589559227228165, 2.710851731535513e-05, 0.00024349339946638793, 8.734822586120572e-06, 1.1173281109222444e-06, 2.650805299708736e-06], "target_probs": 0.9636971354484558}}
+
+
+{"result": {"time": "2021-02-11 10:15:29.484531", "n_pass": [51, 5, 5], "n_token": 41, "loss": [0.01330297440290451, 0.030554303899407387], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def filter_log_files_for_uploading(", "log_files", ",", "zipped_only", ")", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", ")", ":", "(", "zipped_only", "and", "(", "not", "lf", ".", "bzip", ")", ")", ":", "#NEWLINE#", "#INDENT#", "continue", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 35, "repair_targets": [11, 20], "repair_candidates": [8, 31, 35, 40, 4, 16, 2, 12, 11, 20]}}
+{"prediction": {"error_location": 0.986785352230072, "repair_targets": [0.9698740839958191, 3.365186057635583e-05], "repair_candidates": [0.0028350495267659426, 0.001849391614086926, 0.0004009349213447422, 0.9698740839958191, 0.025002451613545418, 1.2478286635086988e-06, 3.365186057635583e-05, 2.20826609620417e-06, 3.065039209104725e-07, 7.298203854588792e-07], "target_probs": 0.9699077606201172}}
+
+
+{"result": {"time": "2021-02-11 10:15:29.553751", "n_pass": [54, 6, 6], "n_token": 37, "loss": [0.06346555799245834, 0.44174349308013916], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def filter_log_files_for_uploading(", "log_files", ",", "zipped_only", ")", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", ")", ":", "(", "zipped_only", "and", "(", "not", "lf", ":", "#NEWLINE#", "#INDENT#", "continue", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 31, "repair_targets": [11, 20], "repair_candidates": [8, 27, 31, 36, 4, 16, 2, 12, 11, 20]}}
+{"prediction": {"error_location": 0.9385064244270325, "repair_targets": [0.6428748965263367, 3.9621667383471504e-05], "repair_candidates": [0.15184123814105988, 0.029515724629163742, 0.021297108381986618, 0.6428748965263367, 0.1541856974363327, 1.6909243640839122e-05, 3.9621667383471504e-05, 0.0001576273498358205, 2.577208579168655e-05, 4.542525493889116e-05], "target_probs": 0.6429145336151123}}
+
+
+{"result": {"time": "2021-02-11 10:15:29.618800", "n_pass": [55, 7, 7], "n_token": 33, "loss": [0.044869083911180496, 0.1467597931623459], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def filter_log_files_for_uploading(", "log_files", ",", "zipped_only", ")", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", ")", ":", "(", "zipped_only", "and", "(", "not", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 27, "repair_targets": [11, 20], "repair_candidates": [8, 23, 27, 32, 4, 16, 2, 12, 11, 20]}}
+{"prediction": {"error_location": 0.9561227560043335, "repair_targets": [0.8634429574012756, 5.8390596677782014e-05], "repair_candidates": [0.020493989810347557, 0.005863093305379152, 0.005490219220519066, 0.8634429574012756, 0.10456927120685577, 5.039124062022893e-06, 5.8390596677782014e-05, 6.372854841174558e-05, 2.0618492726498516e-06, 1.1368541890988126e-05], "target_probs": 0.8635013699531555}}
+
+
+{"result": {"time": "2021-02-11 10:15:29.875319", "n_pass": [92, 11, 8], "n_token": 32, "loss": [0.0298599936068058, 0.3334912061691284], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def filter_log_files_for_uploading(", "log_files", ",", "zipped_only", ")", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", ")", ":", "(", "zipped_only", "and", "(", "not", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 26, "repair_targets": [10, 19], "repair_candidates": [7, 22, 26, 31, 3, 15, 1, 11, 10, 19]}}
+{"prediction": {"error_location": 0.9705814123153687, "repair_targets": [0.7162823677062988, 0.00013585366832558066], "repair_candidates": [0.040548890829086304, 0.0402410589158535, 0.011609302833676338, 0.7162823677062988, 0.19095243513584137, 1.5013634765637107e-05, 0.00013585366832558066, 0.00015999109018594027, 8.408010216953699e-06, 4.6612625737907365e-05], "target_probs": 0.7164182066917419}}
+
+
+{"result": {"time": "2021-02-11 10:15:29.941725", "n_pass": [93, 12, 9], "n_token": 31, "loss": [0.059481579810380936, 0.24338795244693756], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", ",", "zipped_only", ")", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", ")", ":", "(", "zipped_only", "and", "(", "not", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 25, "repair_targets": [9, 18], "repair_candidates": [6, 21, 25, 30, 2, 14, 0, 10, 9, 18]}}
+{"prediction": {"error_location": 0.9422528743743896, "repair_targets": [0.7838796973228455, 8.758914191275835e-05], "repair_candidates": [0.012511921115219593, 0.014505148865282536, 0.004140807315707207, 0.7838796973228455, 0.18479515612125397, 8.242174772021826e-06, 8.758914191275835e-05, 5.0933063903357834e-05, 4.497685040405486e-06, 1.6070756828412414e-05], "target_probs": 0.7839673161506653}}
+
+
+{"result": {"time": "2021-02-11 10:15:30.005242", "n_pass": [94, 13, 10], "n_token": 30, "loss": [0.04231680929660797, 0.6208776235580444], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", ")", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", ")", ":", "(", "zipped_only", "and", "(", "not", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 24, "repair_targets": [8, 17], "repair_candidates": [5, 20, 24, 29, 1, 13, 0, 9, 8, 17]}}
+{"prediction": {"error_location": 0.9585660696029663, "repair_targets": [0.5373734831809998, 9.908716310746968e-05], "repair_candidates": [0.008092628791928291, 0.006471392698585987, 0.008620117790997028, 0.5373734831809998, 0.4392320513725281, 1.1330324923619628e-05, 9.908716310746968e-05, 7.843696948839352e-05, 5.340951247490011e-06, 1.6172618416021578e-05], "target_probs": 0.5374725461006165}}
+
+
+{"result": {"time": "2021-02-11 10:15:30.067944", "n_pass": [96, 14, 11], "n_token": 29, "loss": [0.04335920885205269, 0.6242086291313171], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", ")", ":", "(", "zipped_only", "and", "(", "not", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 23, "repair_targets": [7, 16], "repair_candidates": [4, 19, 23, 28, 1, 12, 0, 8, 7, 16]}}
+{"prediction": {"error_location": 0.9575674533843994, "repair_targets": [0.5355815291404724, 0.0001036377070704475], "repair_candidates": [0.009724142029881477, 0.00724393967539072, 0.022197969257831573, 0.5355815291404724, 0.4250243008136749, 1.7552658391650766e-05, 0.0001036377070704475, 7.825931970728561e-05, 6.484637196990661e-06, 2.2201316824066453e-05], "target_probs": 0.5356851816177368}}
+
+
+{"result": {"time": "2021-02-11 10:15:30.254321", "n_pass": [101, 17, 12], "n_token": 27, "loss": [0.13050726056098938, 0.6681620478630066], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", "(", "zipped_only", "and", "(", "not", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 21, "repair_targets": [7, 14], "repair_candidates": [4, 17, 21, 26, 1, 10, 0, 8, 7, 14]}}
+{"prediction": {"error_location": 0.8776502013206482, "repair_targets": [0.5121585726737976, 0.0004913843586109579], "repair_candidates": [0.06208899989724159, 0.04944946616888046, 0.15368032455444336, 0.5121585726737976, 0.20924896001815796, 0.012284433469176292, 0.0004913843586109579, 5.648872320307419e-05, 6.010699144098908e-05, 0.0004812904226128012], "target_probs": 0.5126499533653259}}
+
+
+{"result": {"time": "2021-02-11 10:15:30.318140", "n_pass": [103, 18, 13], "n_token": 25, "loss": [0.023246029391884804, 0.22904066741466522], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "\"Filter out log files that we shouldn't upload\\n\\n    specify zipped_only if we should only bother to upload zipped log files\\n    \"", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", "(", "zipped_only", "not", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 19, "repair_targets": [7, 12], "repair_candidates": [4, 15, 19, 24, 1, 10, 0, 8, 7, 12]}}
+{"prediction": {"error_location": 0.9770220518112183, "repair_targets": [0.7941833734512329, 0.0011127899633720517], "repair_candidates": [0.013697500340640545, 0.01081910915672779, 0.02901269495487213, 0.7941833734512329, 0.14991337060928345, 0.0011879095109179616, 0.0011127899633720517, 1.2982985936105251e-05, 9.095248969970271e-06, 5.12100086780265e-05], "target_probs": 0.7952961921691895}}
+
+
+{"result": {"time": "2021-02-11 10:15:30.558557", "n_pass": [113, 22, 14], "n_token": 24, "loss": [0.023866040632128716, 0.5401392579078674], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "#NEWLINE#", "out_files", "#NEWLINE#", "for", "lf", "log_files", "(", "zipped_only", "not", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 18, "repair_targets": [6, 11], "repair_candidates": [3, 14, 18, 23, 1, 9, 0, 7, 6, 11]}}
+{"prediction": {"error_location": 0.9764165878295898, "repair_targets": [0.5809596180915833, 0.0017075211508199573], "repair_candidates": [0.01771366037428379, 0.02453516237437725, 0.058124955743551254, 0.5809596180915833, 0.3124579191207886, 0.00440824031829834, 0.0017075211508199573, 1.4387355804501567e-05, 9.628752195567358e-06, 6.889845826663077e-05], "target_probs": 0.5826671123504639}}
+
+
+{"result": {"time": "2021-02-11 10:15:30.859287", "n_pass": [150, 27, 15], "n_token": 23, "loss": [0.020246390253305435, 0.6520492434501648], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "#NEWLINE#", "out_files", "for", "lf", "log_files", "(", "zipped_only", "not", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 17, "repair_targets": [5, 10], "repair_candidates": [3, 13, 17, 22, 1, 8, 0, 6, 5, 10]}}
+{"prediction": {"error_location": 0.979957103729248, "repair_targets": [0.5162742137908936, 0.00470286700874567], "repair_candidates": [0.04472750425338745, 0.18261730670928955, 0.12986955046653748, 0.5162742137908936, 0.11639687418937683, 0.005266270134598017, 0.00470286700874567, 3.770009789150208e-05, 1.4399158317246474e-05, 9.32770490180701e-05], "target_probs": 0.5209770798683167}}
+
+
+{"result": {"time": "2021-02-11 10:15:30.918486", "n_pass": [153, 28, 16], "n_token": 22, "loss": [0.02837628312408924, 0.36517056822776794], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "#NEWLINE#", "out_files", "for", "lf", "log_files", "zipped_only", "not", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 16, "repair_targets": [5, 9], "repair_candidates": [3, 12, 16, 21, 1, 7, 0, 6, 5, 9]}}
+{"prediction": {"error_location": 0.9720226526260376, "repair_targets": [0.6922699809074402, 0.0018082971218973398], "repair_candidates": [0.015054930932819843, 0.06491757929325104, 0.08759955316781998, 0.6922699809074402, 0.1365385204553604, 0.0017207951750606298, 0.0018082971218973398, 5.2457748097367585e-05, 5.327547114575282e-06, 3.2575480872765183e-05], "target_probs": 0.694078266620636}}
+
+
+{"result": {"time": "2021-02-11 10:15:30.977986", "n_pass": [155, 29, 17], "n_token": 21, "loss": [0.039033133536577225, 0.5298978090286255], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "#NEWLINE#", "out_files", "for", "lf", "log_files", "zipped_only", "lf", "#NEWLINE#", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 15, "repair_targets": [5, 8], "repair_candidates": [3, 11, 15, 20, 1, 7, 0, 6, 5, 8]}}
+{"prediction": {"error_location": 0.9617188572883606, "repair_targets": [0.5675421357154846, 0.021122971549630165], "repair_candidates": [0.019966354593634605, 0.0823514461517334, 0.1189718246459961, 0.5675421357154846, 0.18108995258808136, 0.008783552795648575, 0.021122971549630165, 0.00011722570343408734, 8.13475617178483e-06, 4.640296538127586e-05], "target_probs": 0.5886651277542114}}
+
+
+{"result": {"time": "2021-02-11 10:15:31.038864", "n_pass": [157, 30, 18], "n_token": 20, "loss": [0.07867049425840378, 0.05931979790329933], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "#NEWLINE#", "out_files", "for", "lf", "log_files", "zipped_only", "lf", "#UNINDENT#", "out_files", ".", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 14, "repair_targets": [5, 8], "repair_candidates": [3, 10, 14, 19, 1, 7, 0, 6, 5, 8]}}
+{"prediction": {"error_location": 0.9243444800376892, "repair_targets": [0.9417628049850464, 0.0006425445317290723], "repair_candidates": [0.004162440542131662, 0.02395949698984623, 0.003995413426309824, 0.9417628049850464, 0.02498297020792961, 0.000429096951847896, 0.0006425445317290723, 5.833567411173135e-05, 1.3859788623449276e-06, 5.58871442990494e-06], "target_probs": 0.9424053430557251}}
+
+
+{"result": {"time": "2021-02-11 10:15:31.154711", "n_pass": [160, 32, 19], "n_token": 19, "loss": [0.03179728612303734, 0.10956966131925583], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "#NEWLINE#", "out_files", "for", "lf", "log_files", "zipped_only", "lf", "#UNINDENT#", "out_files", "append", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 13, "repair_targets": [5, 8], "repair_candidates": [3, 10, 13, 18, 1, 7, 0, 6, 5, 8]}}
+{"prediction": {"error_location": 0.9687029123306274, "repair_targets": [0.8358573317527771, 0.06036239489912987], "repair_candidates": [0.003943301271647215, 0.023793626576662064, 0.006236610002815723, 0.8358573317527771, 0.0655209943652153, 0.004069431684911251, 0.06036239489912987, 0.0002065708686131984, 1.0776423096103827e-06, 8.640666237624828e-06], "target_probs": 0.8962197303771973}}
+
+
+{"result": {"time": "2021-02-11 10:15:31.212359", "n_pass": [161, 33, 20], "n_token": 18, "loss": [0.6973338723182678, 0.0911761075258255], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "#NEWLINE#", "out_files", "for", "lf", "log_files", "zipped_only", "lf", "#UNINDENT#", "out_files", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 12, "repair_targets": [5, 8], "repair_candidates": [3, 10, 12, 17, 1, 7, 0, 6, 5, 8]}}
+{"prediction": {"error_location": 0.4979110360145569, "repair_targets": [0.9097043871879578, 0.0031525352969765663], "repair_candidates": [0.0022690538316965103, 0.015131723135709763, 0.00383780081756413, 0.9097043871879578, 0.06376894563436508, 0.0020922271069139242, 0.0031525352969765663, 3.577426468837075e-05, 7.054827619867865e-07, 6.778006991225993e-06], "target_probs": 0.912856936454773}}
+
+
+{"result": {"time": "2021-02-11 10:15:31.555760", "n_pass": [171, 39, 21], "n_token": 17, "loss": [0.21349498629570007, 0.09142961353063583], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "out_files", "for", "lf", "log_files", "zipped_only", "lf", "#UNINDENT#", "out_files", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 11, "repair_targets": [4, 7], "repair_candidates": [2, 9, 11, 16, 1, 6, 0, 5, 4, 7]}}
+{"prediction": {"error_location": 0.8077563643455505, "repair_targets": [0.9104946255683899, 0.002130938461050391], "repair_candidates": [0.0019690494518727064, 0.00595635874196887, 0.009546993300318718, 0.9104946255683899, 0.069057896733284, 0.0008257050649262965, 0.002130938461050391, 1.6532136214664206e-05, 3.764923803828424e-07, 1.5899881873338018e-06], "target_probs": 0.9126255512237549}}
+
+
+{"result": {"time": "2021-02-11 10:15:31.612012", "n_pass": [173, 40, 22], "n_token": 16, "loss": [0.025288574397563934, 0.3015046715736389], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "out_files", "lf", "log_files", "zipped_only", "lf", "#UNINDENT#", "out_files", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 10, "repair_targets": [3, 6], "repair_candidates": [2, 8, 10, 15, 1, 5, 0, 4, 3, 6]}}
+{"prediction": {"error_location": 0.9750286340713501, "repair_targets": [0.7374966740608215, 0.002207687357440591], "repair_candidates": [0.002275502309203148, 0.017010757699608803, 0.21674638986587524, 0.7374966740608215, 0.01888774149119854, 0.005347308702766895, 0.002207687357440591, 2.151175976905506e-05, 2.4998653316288255e-06, 3.939131147490116e-06], "target_probs": 0.7397043704986572}}
+
+
+{"result": {"time": "2021-02-11 10:15:31.667817", "n_pass": [178, 41, 23], "n_token": 15, "loss": [0.018391085788607597, 0.21682903170585632], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "out_files", "lf", "log_files", "zipped_only", "lf", "out_files", "(", "out_files", ")", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 9, "repair_targets": [3, 6], "repair_candidates": [2, 7, 9, 14, 1, 5, 0, 4, 3, 6]}}
+{"prediction": {"error_location": 0.981777012348175, "repair_targets": [0.8049643039703369, 0.00010326762276235968], "repair_candidates": [0.0015264104586094618, 0.01327622588723898, 0.1300213634967804, 0.8049643039703369, 0.039714667946100235, 0.010389489121735096, 0.00010326762276235968, 2.256940661027329e-06, 6.823795501986751e-07, 1.2656075796257937e-06], "target_probs": 0.8050675988197327}}
+
+
+{"result": {"time": "2021-02-11 10:15:31.780882", "n_pass": [182, 43, 24], "n_token": 14, "loss": [0.15418395400047302, 0.19075031578540802], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "out_files", "lf", "log_files", "zipped_only", "lf", "out_files", "(", "out_files", "#NEWLINE#", "#UNINDENT#", "return", "out_files"]}}
+{"position": {"error_location": 9, "repair_targets": [3, 6], "repair_candidates": [2, 7, 9, 13, 1, 5, 0, 4, 3, 6]}}
+{"prediction": {"error_location": 0.8571144342422485, "repair_targets": [0.826087236404419, 0.0002516319800633937], "repair_candidates": [0.0010149447480216622, 0.009519773535430431, 0.11873849481344223, 0.826087236404419, 0.03175198659300804, 0.012631632387638092, 0.0002516319800633937, 3.0636856536148116e-06, 3.8156028381308715e-07, 9.15468206130754e-07], "target_probs": 0.8263388872146606}}
+
+
+{"result": {"time": "2021-02-11 10:15:31.946191", "n_pass": [185, 46, 25], "n_token": 13, "loss": [0.39988312125205994, 0.2543330788612366], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "out_files", "lf", "log_files", "zipped_only", "lf", "out_files", "(", "out_files", "#NEWLINE#", "#UNINDENT#", "out_files"]}}
+{"position": {"error_location": 9, "repair_targets": [3, 6], "repair_candidates": [2, 7, 9, 12, 1, 5, 0, 4, 3, 6]}}
+{"prediction": {"error_location": 0.6703984141349792, "repair_targets": [0.7753747701644897, 5.870236782357097e-05], "repair_candidates": [0.0027983414474874735, 0.012163442559540272, 0.13828973472118378, 0.7753747701644897, 0.0494815818965435, 0.021767577156424522, 5.870236782357097e-05, 6.066557943995576e-06, 2.1804041807627073e-06, 5.763611989095807e-05], "target_probs": 0.7754334807395935}}
+
+
+{"result": {"time": "2021-02-11 10:15:32.111785", "n_pass": [198, 49, 26], "n_token": 12, "loss": [0.2676708996295929, 0.4955860376358032], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["log_files", "zipped_only", "out_files", "lf", "log_files", "zipped_only", "lf", "out_files", "(", "out_files", "#NEWLINE#", "out_files"]}}
+{"position": {"error_location": 9, "repair_targets": [3, 6], "repair_candidates": [2, 7, 9, 11, 1, 5, 0, 4, 3, 6]}}
+{"prediction": {"error_location": 0.7651596069335938, "repair_targets": [0.6091939210891724, 1.9823552065645345e-05], "repair_candidates": [0.007669507991522551, 0.03256918117403984, 0.2984057664871216, 0.6091939210891724, 0.048316992819309235, 0.003762480802834034, 1.9823552065645345e-05, 7.249131158459932e-06, 6.781425327062607e-06, 4.8336780309909955e-05], "target_probs": 0.6092137694358826}}
+
+
+
+
+Minimal simplified tokens:
+
+['log_files', 'zipped_only', 'out_files', 'lf', 'log_files', 'zipped_only', 'lf', 'out_files', '(', 'out_files', '#NEWLINE#', 'out_files']

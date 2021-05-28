@@ -1,0 +1,115 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def makeService(", "config", ")", ":", "#NEWLINE#", "#INDENT#", "log", ".", "msg", "(", "'Starting Roost'", ")", "#NEWLINE#", "top_service", "=", "service", ".", "MultiService", "(", ")", "#NEWLINE#", "services", ".", "start", "(", "config", ",", "config", ")", "#NEWLINE#", "if", "config", ".", "has_key", "(", "'telnet-users'", ")", ":", "#NEWLINE#", "#INDENT#", "telnet_service", "(", "config", "[", "'telnet-users'", "]", ")", ".", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"], "error_location": [26], "repair_targets": [14, 51, 56], "repair_candidates": [14, 51, 56, 2, 26, 28, 32, 43], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "benrady/roost/roost/main.py", "license": "bsd-2-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00016-of-00300", "js_count": 52484, "results": {"model": "transformer", "prob": {"loc": [[0.00978790782392025, 2.416665267901408e-07, 1.6238948319369229e-07, 1.8574304760932137e-08, 2.5046475116141664e-08, 1.6202836405909693e-08, 1.1860942450425682e-08, 4.317022295197148e-09, 5.76387115813759e-09, 9.11000253012162e-09, 3.621333632963797e-08, 1.5253699814365973e-07, 4.0903881171061585e-08, 1.1982228542706252e-08, 3.9526826185465325e-06, 9.685919621915673e-09, 4.3975209251811975e-08, 7.184837169660341e-09, 5.478482112408756e-09, 5.3519233489396356e-08, 1.7671547425379686e-07, 7.877770968889308e-08, 3.4105998025779627e-09, 5.5152185041151824e-09, 4.2955687895585015e-09, 1.7967019871889534e-08, 0.3230530321598053, 3.962622088238277e-07, 0.6635847091674805, 2.2090276274866483e-07, 1.2527968351605523e-07, 1.171657189047437e-07, 0.00016266564489342272, 1.4387619096112303e-08, 7.025043657904462e-09, 3.725029884549258e-08, 7.620760555937522e-08, 7.3821642132543275e-09, 7.286246983539968e-08, 2.7681018366365606e-08, 2.057969261670678e-08, 2.5073612075487972e-09, 5.0341220081406846e-09, 0.0022358433343470097, 5.4528186410607304e-08, 1.810344762986915e-08, 1.9292350827981863e-08, 1.153553252919437e-08, 1.3763027162383423e-08, 4.5392728464932475e-10, 2.351140260259399e-08, 0.0002691320260055363, 3.774039569748311e-08, 5.667028801781271e-08, 2.0590805505094067e-08, 1.0214440848699269e-08, 0.0009001739672385156]], "pointer": [[0.0, 0.0, 0.0013435481814667583, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.990888237953186, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.560996133775916e-05, 0.0, 1.7400795968569582e-06, 0.0, 0.0, 0.0, 0.00021339693921618164, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.072520384099334e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0071957590989768505, 0.0, 0.0, 0.0, 0.0, 0.0002709210093598813]], "target": [0.9983549118041992]}, "loss": [1.1299386024475098, 0.0016464428044855595], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [28]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:23:53.665745", "n_pass": [1, 1, 1], "n_token": 57, "loss": [0.4100985825061798, 0.0016464428044855595], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", ")", ":", "#NEWLINE#", "#INDENT#", "log", ".", "msg", "(", "'Starting Roost'", ")", "#NEWLINE#", "top_service", "=", "service", ".", "MultiService", "(", ")", "#NEWLINE#", "services", ".", "start", "(", "config", ",", "config", ")", "#NEWLINE#", "if", "config", ".", "has_key", "(", "'telnet-users'", ")", ":", "#NEWLINE#", "#INDENT#", "telnet_service", "(", "config", "[", "'telnet-users'", "]", ")", ".", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 28, "repair_targets": [14, 51, 56], "repair_candidates": [14, 51, 56, 2, 26, 28, 32, 43]}}
+{"prediction": {"error_location": 0.6635847091674805, "repair_targets": [0.990888237953186, 0.0071957590989768505, 0.0002709210093598813], "repair_candidates": [0.0013435481814667583, 0.990888237953186, 1.560996133775916e-05, 1.7400795968569582e-06, 0.00021339693921618164, 7.072520384099334e-05, 0.0071957590989768505, 0.0002709210093598813], "target_probs": 0.9983549118041992}}
+
+
+{"result": {"time": "2021-02-21 07:23:53.722941", "n_pass": [21, 2, 2], "n_token": 50, "loss": [0.3690791428089142, 0.00040563225047662854], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", ")", ":", "#NEWLINE#", "#INDENT#", "top_service", "=", "service", ".", "MultiService", "(", ")", "#NEWLINE#", "services", ".", "start", "(", "config", ",", "config", ")", "#NEWLINE#", "if", "config", ".", "has_key", "(", "'telnet-users'", ")", ":", "#NEWLINE#", "#INDENT#", "telnet_service", "(", "config", "[", "'telnet-users'", "]", ")", ".", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 21, "repair_targets": [7, 44, 49], "repair_candidates": [7, 44, 49, 2, 19, 21, 25, 36]}}
+{"prediction": {"error_location": 0.6913706064224243, "repair_targets": [0.9988627433776855, 0.0006431952933780849, 8.851930761011317e-05], "repair_candidates": [0.00013561281957663596, 0.9988627433776855, 9.103524462261703e-06, 4.3899663637603226e-07, 0.0002522904542274773, 8.068367606028914e-06, 0.0006431952933780849, 8.851930761011317e-05], "target_probs": 0.9995944499969482}}
+
+
+{"result": {"time": "2021-02-21 07:23:53.779441", "n_pass": [25, 3, 3], "n_token": 43, "loss": [0.5837424397468567, 0.0006485299672931433], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", ")", ":", "#NEWLINE#", "#INDENT#", "top_service", "=", "service", ".", "MultiService", "(", ")", "#NEWLINE#", "services", ".", "start", "(", "config", ",", "config", ")", "#NEWLINE#", "if", "config", ".", "has_key", "(", "config", "[", "'telnet-users'", "]", ")", ".", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 21, "repair_targets": [7, 37, 42], "repair_candidates": [7, 37, 42, 2, 19, 21, 25, 29]}}
+{"prediction": {"error_location": 0.5578069090843201, "repair_targets": [0.9876229763031006, 0.01150877308100462, 0.00021993038535583764], "repair_candidates": [0.00010457313328515738, 0.9876229763031006, 8.869062185112853e-06, 1.8234433127872762e-06, 0.0002712961577344686, 0.0002618746366351843, 0.01150877308100462, 0.00021993038535583764], "target_probs": 0.9993516802787781}}
+
+
+{"result": {"time": "2021-02-21 07:23:53.839796", "n_pass": [45, 4, 4], "n_token": 39, "loss": [0.5039719343185425, 0.00020714759011752903], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", ")", ":", "#NEWLINE#", "#INDENT#", "top_service", "=", "service", ".", "MultiService", "(", ")", "#NEWLINE#", "services", ".", "start", "(", "config", ",", "config", ")", "#NEWLINE#", "if", "config", ".", "has_key", "(", "config", "[", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 21, "repair_targets": [7, 33, 38], "repair_candidates": [7, 33, 38, 2, 19, 21, 25, 29]}}
+{"prediction": {"error_location": 0.6041263341903687, "repair_targets": [0.9933619499206543, 0.006094612181186676, 0.0003362971474416554], "repair_candidates": [0.00010354952974012122, 0.9933619499206543, 3.945274784200592e-06, 7.530377956754819e-07, 7.959538197610527e-05, 1.933780367835425e-05, 0.006094612181186676, 0.0003362971474416554], "target_probs": 0.9997928738594055}}
+
+
+{"result": {"time": "2021-02-21 07:23:53.896530", "n_pass": [49, 5, 5], "n_token": 36, "loss": [0.3438278138637543, 0.0032112246844917536], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", "=", "service", ".", "MultiService", "(", ")", "#NEWLINE#", "services", ".", "start", "(", "config", ",", "config", ")", "#NEWLINE#", "if", "config", ".", "has_key", "(", "config", "[", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 30, 35], "repair_candidates": [4, 30, 35, 2, 16, 18, 22, 26]}}
+{"prediction": {"error_location": 0.7090509533882141, "repair_targets": [0.9864532351493835, 0.010064974427223206, 0.0002757543988991529], "repair_candidates": [0.0009085518540814519, 0.9864532351493835, 0.00012088305811630562, 6.399178346327972e-06, 0.0010616765357553959, 0.0011085201986134052, 0.010064974427223206, 0.0002757543988991529], "target_probs": 0.9967939257621765}}
+
+
+{"result": {"time": "2021-02-21 07:23:53.952849", "n_pass": [51, 6, 6], "n_token": 33, "loss": [0.5318930745124817, 0.0061454870738089085], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", "=", "(", ")", "#NEWLINE#", "services", ".", "start", "(", "config", ",", "config", ")", "#NEWLINE#", "if", "config", ".", "has_key", "(", "config", "[", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 15, "repair_targets": [4, 27, 32], "repair_candidates": [4, 27, 32, 2, 13, 15, 19, 23]}}
+{"prediction": {"error_location": 0.5874918103218079, "repair_targets": [0.9759357571601868, 0.017733778804540634, 0.00020382925868034363], "repair_candidates": [0.0013846755027770996, 0.9759357571601868, 9.122226038016379e-05, 5.934482487646164e-06, 0.003656345186755061, 0.000988463289104402, 0.017733778804540634, 0.00020382925868034363], "target_probs": 0.9938733577728271}}
+
+
+{"result": {"time": "2021-02-21 07:23:54.121509", "n_pass": [79, 9, 7], "n_token": 31, "loss": [0.35195595026016235, 0.00263059139251709], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "services", ".", "start", "(", "config", ",", "config", ")", "#NEWLINE#", "if", "config", ".", "has_key", "(", "config", "[", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 25, 30], "repair_candidates": [4, 25, 30, 2, 11, 13, 17, 21]}}
+{"prediction": {"error_location": 0.7033111453056335, "repair_targets": [0.9509990811347961, 0.04532602056860924, 0.0010477647883817554], "repair_candidates": [0.0009799100225791335, 0.9509990811347961, 4.072598312632181e-05, 3.4332135783188278e-06, 0.0007617935189045966, 0.0008411582675762475, 0.04532602056860924, 0.0010477647883817554], "target_probs": 0.9973728656768799}}
+
+
+{"result": {"time": "2021-02-21 07:23:54.236609", "n_pass": [81, 11, 8], "n_token": 29, "loss": [0.21149444580078125, 0.004135505296289921], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "start", "(", "config", ",", "config", ")", "#NEWLINE#", "if", "config", ".", "has_key", "(", "config", "[", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 11, "repair_targets": [4, 23, 28], "repair_candidates": [4, 23, 28, 2, 9, 11, 15, 19]}}
+{"prediction": {"error_location": 0.8093737959861755, "repair_targets": [0.9591782093048096, 0.03376748040318489, 0.0029273275285959244], "repair_candidates": [0.003100132569670677, 0.9591782093048096, 0.000200917711481452, 7.3203459578508046e-06, 0.0003979954344686121, 0.00042060393025167286, 0.03376748040318489, 0.0029273275285959244], "target_probs": 0.9958730340003967}}
+
+
+{"result": {"time": "2021-02-21 07:23:54.348482", "n_pass": [85, 13, 9], "n_token": 27, "loss": [0.8880099058151245, 0.15325923264026642], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "start", "(", "config", ",", "config", ")", "config", ".", "has_key", "(", "config", "[", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 11, "repair_targets": [4, 21, 26], "repair_candidates": [4, 21, 26, 2, 9, 11, 13, 17]}}
+{"prediction": {"error_location": 0.41147381067276, "repair_targets": [0.7616468071937561, 0.04997038468718529, 0.04629012197256088], "repair_candidates": [0.0890522375702858, 0.7616468071937561, 0.018207987770438194, 0.0053820498287677765, 0.026719529181718826, 0.0027309025172144175, 0.04997038468718529, 0.04629012197256088], "target_probs": 0.8579072952270508}}
+
+
+{"result": {"time": "2021-02-21 07:23:54.405035", "n_pass": [87, 14, 10], "n_token": 25, "loss": [0.5498406291007996, 0.10556348413228989], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "start", "(", "config", ",", "config", ")", "config", ".", "config", "[", "setServiceParent", "(", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 11, "repair_targets": [4, 19, 24], "repair_candidates": [4, 19, 24, 2, 9, 11, 13, 15]}}
+{"prediction": {"error_location": 0.577041745185852, "repair_targets": [0.8109902143478394, 0.031086578965187073, 0.05774052068591118], "repair_candidates": [0.04623507708311081, 0.8109902143478394, 0.017021162435412407, 0.0013633411144837737, 0.0004664409498218447, 0.03509670868515968, 0.031086578965187073, 0.05774052068591118], "target_probs": 0.8998173475265503}}
+
+
+{"result": {"time": "2021-02-21 07:23:54.461025", "n_pass": [89, 15, 11], "n_token": 23, "loss": [0.5163304805755615, 0.2829153835773468], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "start", "(", "config", ",", "config", ")", "config", ".", "config", "[", "top_service", ")", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 11, "repair_targets": [4, 17, 22], "repair_candidates": [4, 17, 22, 2, 9, 11, 13, 15]}}
+{"prediction": {"error_location": 0.5967062711715698, "repair_targets": [0.6994868516921997, 0.004921260755509138, 0.04917542636394501], "repair_candidates": [0.02859978936612606, 0.6994868516921997, 0.008236079476773739, 0.0008131071226671338, 0.0001129467345890589, 0.20865456759929657, 0.004921260755509138, 0.04917542636394501], "target_probs": 0.753583550453186}}
+
+
+{"result": {"time": "2021-02-21 07:23:54.799100", "n_pass": [124, 21, 12], "n_token": 22, "loss": [0.5580954551696777, 0.36538973450660706], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "start", "(", "config", ",", "config", ")", "config", ".", "config", "[", "top_service", "#NEWLINE#", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 11, "repair_targets": [4, 17, 21], "repair_candidates": [4, 17, 21, 2, 9, 11, 13, 15]}}
+{"prediction": {"error_location": 0.572297990322113, "repair_targets": [0.6296479105949402, 0.003942457027733326, 0.06033578887581825], "repair_candidates": [0.02656170167028904, 0.6296479105949402, 0.009170898236334324, 0.0006150673143565655, 0.00017618504352867603, 0.2695499658584595, 0.003942457027733326, 0.06033578887581825], "target_probs": 0.6939261555671692}}
+
+
+{"result": {"time": "2021-02-21 07:23:54.857771", "n_pass": [125, 22, 13], "n_token": 21, "loss": [0.5471708178520203, 0.4432263672351837], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "start", "(", "config", ",", "config", ")", "config", ".", "config", "[", "top_service", "#UNINDENT#", "return", "top_service"]}}
+{"position": {"error_location": 11, "repair_targets": [4, 17, 20], "repair_candidates": [4, 17, 20, 2, 9, 11, 13, 15]}}
+{"prediction": {"error_location": 0.5785844922065735, "repair_targets": [0.5888842940330505, 0.010475493967533112, 0.042602065950632095], "repair_candidates": [0.026269184425473213, 0.5888842940330505, 0.015261471271514893, 0.0011167846387252212, 0.0004083563981112093, 0.31498241424560547, 0.010475493967533112, 0.042602065950632095], "target_probs": 0.6419618725776672}}
+
+
+{"result": {"time": "2021-02-21 07:23:54.913655", "n_pass": [126, 23, 14], "n_token": 20, "loss": [0.8001907467842102, 0.6317664384841919], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "start", "(", "config", ",", "config", ")", "config", ".", "config", "[", "top_service", "return", "top_service"]}}
+{"position": {"error_location": 11, "repair_targets": [4, 17, 19], "repair_candidates": [4, 17, 19, 2, 9, 11, 13, 15]}}
+{"prediction": {"error_location": 0.4492432475090027, "repair_targets": [0.5296332836151123, 0.0013859784230589867, 0.0006325741996988654], "repair_candidates": [0.04850177839398384, 0.5296332836151123, 0.024058274924755096, 0.003996029030531645, 0.00032371783163398504, 0.39146843552589417, 0.0013859784230589867, 0.0006325741996988654], "target_probs": 0.5316518545150757}}
+
+
+{"result": {"time": "2021-02-21 07:23:55.586744", "n_pass": [145, 35, 15], "n_token": 19, "loss": [0.2988254129886627, 0.02519962005317211], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "start", "(", "config", ",", "config", ")", "config", ".", "config", "top_service", "return", "top_service"]}}
+{"position": {"error_location": 11, "repair_targets": [4, 16, 18], "repair_candidates": [4, 16, 18, 2, 9, 11, 13, 15]}}
+{"prediction": {"error_location": 0.7416888475418091, "repair_targets": [0.9017928838729858, 0.0014305836521089077, 0.07189179211854935], "repair_candidates": [0.003257991746068001, 0.9017928838729858, 0.0011356498580425978, 0.0001267444167751819, 1.6202366168727167e-05, 0.020348191261291504, 0.0014305836521089077, 0.07189179211854935], "target_probs": 0.9751152396202087}}
+
+
+{"result": {"time": "2021-02-21 07:23:55.642693", "n_pass": [147, 36, 16], "n_token": 18, "loss": [0.09316962212324142, 0.00022574827016796917], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "start", "(", "config", ",", "config", ")", "config", ".", "config", "top_service", "top_service"]}}
+{"position": {"error_location": 11, "repair_targets": [4, 16, 17], "repair_candidates": [4, 16, 17, 2, 9, 11, 13, 15]}}
+{"prediction": {"error_location": 0.9110389351844788, "repair_targets": [0.9841713309288025, 0.007373215164989233, 0.008229715749621391], "repair_candidates": [0.0001290250802412629, 0.9841713309288025, 4.2350318835815415e-05, 1.3546609807235654e-06, 3.0089483971096342e-06, 5.0008009566226974e-05, 0.007373215164989233, 0.008229715749621391], "target_probs": 0.9997742772102356}}
+
+
+{"result": {"time": "2021-02-21 07:23:55.698779", "n_pass": [149, 37, 17], "n_token": 17, "loss": [1.0016732215881348, 0.14928439259529114], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def makeService(", "config", "#INDENT#", "top_service", ")", "#NEWLINE#", "start", "(", "config", ",", "config", ")", "config", ".", "config", "top_service", "top_service"]}}
+{"position": {"error_location": 10, "repair_targets": [3, 15, 16], "repair_candidates": [3, 15, 16, 1, 8, 10, 12, 14]}}
+{"prediction": {"error_location": 0.36726441979408264, "repair_targets": [0.8431721925735474, 0.00782864075154066, 0.010323280468583107], "repair_candidates": [0.1385708749294281, 0.8431721925735474, 2.2214995624381118e-05, 1.3969662177260034e-05, 6.4555738390481565e-06, 6.237025809241459e-05, 0.00782864075154066, 0.010323280468583107], "target_probs": 0.8613241314888}}
+
+
+
+
+Minimal simplified tokens:
+
+['def makeService(', 'config', '#INDENT#', 'top_service', ')', '#NEWLINE#', 'start', '(', 'config', ',', 'config', ')', 'config', '.', 'config', 'top_service', 'top_service']

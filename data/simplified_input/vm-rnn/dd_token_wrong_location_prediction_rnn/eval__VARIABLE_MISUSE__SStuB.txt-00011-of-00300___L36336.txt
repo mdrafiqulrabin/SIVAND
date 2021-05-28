@@ -1,0 +1,139 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def remove_config_files(", "app_id", ")", ":", "#NEWLINE#", "#INDENT#", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "=", "TaskQueueConfig", ".", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "=", "TaskQueueConfig", ".", "get_celery_configuration_path", "(", "worker_file", ")", "#NEWLINE#", "file_io", ".", "delete", "(", "worker_file", ")", "#NEWLINE#", "file_io", ".", "delete", "(", "config_file", ")"], "error_location": [27], "repair_targets": [5, 18], "repair_candidates": [12, 27, 34, 21, 41, 5, 18], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "AppScale/appscale/AppTaskQueue/tq_config.py", "license": "apache-2.0", "note": "license: github_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00011-of-00300", "js_count": 36336, "results": {"model": "rnn", "prob": {"loc": [[0.0005631689564324915, 4.3183764897314347e-10, 3.3129349263916197e-10, 3.685765026517629e-10, 1.2468625958106383e-11, 2.3361317325054642e-09, 6.538752872486953e-11, 5.354903673260303e-11, 1.1648991771195938e-09, 3.6974232703324006e-11, 1.6105784761411002e-10, 2.035462021154899e-09, 2.406529697740467e-10, 7.786774697260412e-12, 7.573899840629394e-10, 5.471487846131495e-11, 1.2718823216850694e-10, 8.414979824067359e-09, 1.375688771076966e-05, 9.872238582175896e-10, 1.8687190461719183e-08, 1.7145924957606695e-10, 1.2712777879009263e-11, 2.553298406038351e-10, 1.911252683894915e-10, 2.8853960887254004e-10, 4.424175192863089e-10, 0.00433944258838892, 8.245831573105988e-09, 4.127750918847539e-10, 1.1562880652959961e-09, 3.588852270919318e-10, 2.855341518781529e-09, 1.2181748665351932e-10, 0.9950776696205139, 2.2687693945755427e-09, 5.099055622181936e-10, 1.395047743990574e-09, 6.664870738637418e-11, 9.362280950497848e-10, 1.4337636633499073e-09, 5.890673946851166e-06, 2.5974064912781536e-11]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.5178307890892029, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.008044395595788956, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0435583135404158e-05, 0.0, 0.0, 0.4740894138813019, 0.0, 0.0, 0.0, 0.0, 0.0, 1.7856784779723966e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.617990154860308e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.755904122546781e-05, 0.0]], "target": [0.5178412199020386]}, "loss": [5.440009117126465, 0.6580865979194641], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [34]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:46:11.731387", "n_pass": [1, 1, 1], "n_token": 43, "loss": [0.004934513941407204, 0.6580865979194641], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def remove_config_files(", "app_id", ")", ":", "#NEWLINE#", "#INDENT#", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "=", "TaskQueueConfig", ".", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "=", "TaskQueueConfig", ".", "get_celery_configuration_path", "(", "worker_file", ")", "#NEWLINE#", "file_io", ".", "delete", "(", "worker_file", ")", "#NEWLINE#", "file_io", ".", "delete", "(", "config_file", ")"]}}
+{"position": {"error_location": 34, "repair_targets": [5, 18], "repair_candidates": [12, 27, 34, 21, 41, 5, 18]}}
+{"prediction": {"error_location": 0.9950776696205139, "repair_targets": [0.5178307890892029, 1.0435583135404158e-05], "repair_candidates": [0.5178307890892029, 0.008044395595788956, 1.0435583135404158e-05, 0.4740894138813019, 1.7856784779723966e-06, 5.617990154860308e-06, 1.755904122546781e-05], "target_probs": 0.5178412199020386}}
+
+
+{"result": {"time": "2021-02-21 12:46:12.082951", "n_pass": [48, 6, 2], "n_token": 41, "loss": [0.0069727422669529915, 0.2640901207923889], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def remove_config_files(", "app_id", ")", ":", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "=", "TaskQueueConfig", ".", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "=", "TaskQueueConfig", ".", "get_celery_configuration_path", "(", "worker_file", ")", "#NEWLINE#", "file_io", ".", "delete", "(", "worker_file", ")", "#NEWLINE#", "file_io", ".", "delete", "(", "config_file", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [5, 16], "repair_candidates": [10, 25, 32, 19, 39, 5, 16]}}
+{"prediction": {"error_location": 0.9930516481399536, "repair_targets": [0.7678975462913513, 6.7854361986974254e-06], "repair_candidates": [0.7678975462913513, 0.028116611763834953, 6.7854361986974254e-06, 0.2039680778980255, 8.741990882299433e-07, 2.7228143153479323e-06, 7.405860287690302e-06], "target_probs": 0.7679043412208557}}
+
+
+{"result": {"time": "2021-02-21 12:46:12.220417", "n_pass": [53, 8, 3], "n_token": 38, "loss": [0.011551283299922943, 0.049942824989557266], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def remove_config_files(", "app_id", ")", ":", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "=", "TaskQueueConfig", ".", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", ")", "#NEWLINE#", "file_io", ".", "delete", "(", "worker_file", ")", "#NEWLINE#", "file_io", ".", "delete", "(", "config_file", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [5, 16], "repair_candidates": [10, 22, 29, 19, 36, 5, 16]}}
+{"prediction": {"error_location": 0.988515317440033, "repair_targets": [0.9512798190116882, 3.966202257288387e-06], "repair_candidates": [0.9512798190116882, 0.04848018288612366, 3.966202257288387e-06, 0.0002048573223873973, 1.2216391041874886e-05, 8.595607141614892e-06, 1.0282660696248058e-05], "target_probs": 0.9512838125228882}}
+
+
+{"result": {"time": "2021-02-21 12:46:12.287979", "n_pass": [55, 9, 4], "n_token": 35, "loss": [0.10528814047574997, 0.0012161971535533667], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def remove_config_files(", "app_id", ")", ":", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "=", "TaskQueueConfig", ".", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", ".", "delete", "(", "worker_file", ")", "#NEWLINE#", "file_io", ".", "delete", "(", "config_file", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [5, 16], "repair_candidates": [10, 22, 26, 19, 33, 5, 16]}}
+{"prediction": {"error_location": 0.9000652432441711, "repair_targets": [0.9987831711769104, 1.3496261317413882e-06], "repair_candidates": [0.9987831711769104, 0.0011338107287883759, 1.3496261317413882e-06, 6.159135955385864e-05, 8.110860676424636e-07, 1.4565304809366353e-05, 4.674757747125113e-06], "target_probs": 0.9987845420837402}}
+
+
+{"result": {"time": "2021-02-21 12:46:12.421759", "n_pass": [58, 11, 5], "n_token": 32, "loss": [0.1247696653008461, 0.0008489515748806298], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def remove_config_files(", "app_id", ")", ":", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "=", "TaskQueueConfig", ".", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", ".", "delete", "(", "worker_file", ")", "#NEWLINE#", "(", "config_file", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [5, 16], "repair_candidates": [10, 22, 26, 19, 30, 5, 16]}}
+{"prediction": {"error_location": 0.8827002048492432, "repair_targets": [0.9991506338119507, 7.645155051250185e-07], "repair_candidates": [0.9991506338119507, 0.0007476325845345855, 7.645155051250185e-07, 6.687220593448728e-05, 1.4990000636316836e-06, 3.4441361549397698e-06, 2.9131644623703323e-05], "target_probs": 0.9991514086723328}}
+
+
+{"result": {"time": "2021-02-21 12:46:12.486845", "n_pass": [60, 12, 6], "n_token": 30, "loss": [0.24258659780025482, 0.00236641988158226], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["staticmethod", "#NEWLINE#", "def remove_config_files(", "app_id", ")", ":", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "=", "TaskQueueConfig", ".", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", ".", "delete", "(", "worker_file", ")", "#NEWLINE#", "(", "config_file", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [3, 14], "repair_candidates": [8, 20, 24, 17, 28, 3, 14]}}
+{"prediction": {"error_location": 0.784595787525177, "repair_targets": [0.9976323843002319, 4.0215541048382875e-06], "repair_candidates": [0.9976323843002319, 0.001627248479053378, 4.0215541048382875e-06, 0.000521977199241519, 6.330788892228156e-06, 1.4475283023784868e-05, 0.00019345508189871907], "target_probs": 0.9976363778114319}}
+
+
+{"result": {"time": "2021-02-21 12:46:12.550315", "n_pass": [61, 13, 7], "n_token": 28, "loss": [0.7622674107551575, 0.02362290397286415], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def remove_config_files(", "app_id", ")", ":", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "=", "TaskQueueConfig", ".", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", ".", "delete", "(", "worker_file", ")", "#NEWLINE#", "(", "config_file", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [1, 12], "repair_candidates": [6, 18, 22, 15, 26, 1, 12]}}
+{"prediction": {"error_location": 0.4666071832180023, "repair_targets": [0.9766427278518677, 1.123250876844395e-05], "repair_candidates": [0.9766427278518677, 0.01919320784509182, 1.123250876844395e-05, 0.0037218090146780014, 2.4658093025209382e-05, 2.7013751605409198e-05, 0.00037937331944704056], "target_probs": 0.9766539335250854}}
+
+
+{"result": {"time": "2021-02-21 12:46:12.674341", "n_pass": [65, 15, 8], "n_token": 25, "loss": [0.0029463237151503563, 0.0006122674676589668], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def remove_config_files(", "app_id", ")", ":", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", ".", "delete", "(", "worker_file", ")", "#NEWLINE#", "(", "config_file", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [1, 9], "repair_candidates": [6, 15, 19, 12, 23, 1, 9]}}
+{"prediction": {"error_location": 0.9970581531524658, "repair_targets": [0.9991530179977417, 0.00023492828768212348], "repair_candidates": [0.9991530179977417, 0.00028315960662439466, 0.00023492828768212348, 0.00013085607497487217, 1.9263465219410136e-05, 1.0178935553994961e-05, 0.0001686548930592835], "target_probs": 0.9993879199028015}}
+
+
+{"result": {"time": "2021-02-21 12:46:12.738198", "n_pass": [69, 16, 9], "n_token": 22, "loss": [0.4192294478416443, 0.0009661810472607613], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def remove_config_files(", "app_id", ")", ":", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", "worker_file", ")", "#NEWLINE#", "(", "config_file", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [1, 9], "repair_candidates": [6, 15, 16, 12, 20, 1, 9]}}
+{"prediction": {"error_location": 0.6575533151626587, "repair_targets": [0.9987924098968506, 0.0002418482763459906], "repair_candidates": [0.9987924098968506, 0.0003465400659479201, 0.0002418482763459906, 4.1324568883283064e-05, 0.0002506398886907846, 7.264230589498766e-06, 0.0003198964986950159], "target_probs": 0.9990342855453491}}
+
+
+{"result": {"time": "2021-02-21 12:46:12.857460", "n_pass": [96, 18, 10], "n_token": 20, "loss": [0.5150538682937622, 0.0005899619427509606], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def remove_config_files(", "app_id", ")", ":", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", "worker_file", ")", "config_file", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [1, 9], "repair_candidates": [6, 15, 16, 12, 18, 1, 9]}}
+{"prediction": {"error_location": 0.597468376159668, "repair_targets": [0.9990106821060181, 0.0003995068836957216], "repair_candidates": [0.9990106821060181, 0.0003431674849707633, 0.0003995068836957216, 1.459498980693752e-05, 2.653989940881729e-05, 3.107174052274786e-06, 0.0002023128472501412], "target_probs": 0.9994102120399475}}
+
+
+{"result": {"time": "2021-02-21 12:46:12.974349", "n_pass": [100, 20, 11], "n_token": 19, "loss": [0.7000202536582947, 0.0012665659887716174], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def remove_config_files(", "app_id", ":", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", "worker_file", ")", "config_file", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [1, 8], "repair_candidates": [5, 14, 15, 11, 17, 1, 8]}}
+{"prediction": {"error_location": 0.4965752065181732, "repair_targets": [0.9943510293960571, 0.00438323151320219], "repair_candidates": [0.9943510293960571, 0.0006466543418355286, 0.00438323151320219, 7.586412539239973e-05, 0.00012129493552492931, 9.497020073467866e-06, 0.00041235852404497564], "target_probs": 0.9987342357635498}}
+
+
+{"result": {"time": "2021-02-21 12:46:13.032789", "n_pass": [101, 21, 12], "n_token": 18, "loss": [0.8170912265777588, 0.008959133177995682], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def remove_config_files(", "app_id", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "get_celery_worker_script_path", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", "worker_file", ")", "config_file", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [1, 7], "repair_candidates": [4, 13, 14, 10, 16, 1, 7]}}
+{"prediction": {"error_location": 0.44171464443206787, "repair_targets": [0.7198473215103149, 0.27123355865478516], "repair_candidates": [0.7198473215103149, 0.0026584090664982796, 0.27123355865478516, 0.002236185362562537, 0.0013201241381466389, 9.274879994336516e-05, 0.0026115919463336468], "target_probs": 0.9910808801651001}}
+
+
+{"result": {"time": "2021-02-21 12:46:13.208246", "n_pass": [105, 24, 13], "n_token": 17, "loss": [0.7498342394828796, 0.013597063720226288], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def remove_config_files(", "app_id", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", "worker_file", ")", "config_file", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [1, 6], "repair_candidates": [4, 12, 13, 9, 15, 1, 6]}}
+{"prediction": {"error_location": 0.4724448621273041, "repair_targets": [0.2788558006286621, 0.7076391577720642], "repair_candidates": [0.2788558006286621, 0.0020356792956590652, 0.7076391577720642, 0.0034583585802465677, 0.002131278859451413, 0.00014105103036854416, 0.005738695152103901], "target_probs": 0.9864949584007263}}
+
+
+{"result": {"time": "2021-02-21 12:46:13.379327", "n_pass": [113, 27, 14], "n_token": 16, "loss": [0.7496575117111206, 0.011800500564277172], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app_id", "' Removed celery worker and config files.\\n   \\n    Args:\\n      app_id: The application identifer.\\n    '", "#NEWLINE#", "worker_file", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", "worker_file", ")", "config_file", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [0, 5], "repair_candidates": [3, 11, 12, 8, 14, 0, 5]}}
+{"prediction": {"error_location": 0.4725284278392792, "repair_targets": [0.16446466743946075, 0.8238041996955872], "repair_candidates": [0.16446466743946075, 0.0013378089061006904, 0.8238041996955872, 0.0012889486970379949, 0.0015868127811700106, 9.616496390663087e-05, 0.007421393413096666], "target_probs": 0.9882688522338867}}
+
+
+{"result": {"time": "2021-02-21 12:46:13.438383", "n_pass": [115, 28, 15], "n_token": 15, "loss": [0.22513236105442047, 0.0044557033106684685], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app_id", "#NEWLINE#", "worker_file", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", "worker_file", ")", "config_file", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [0, 4], "repair_candidates": [2, 10, 11, 7, 13, 0, 4]}}
+{"prediction": {"error_location": 0.7984105944633484, "repair_targets": [0.03707297146320343, 0.9584812521934509], "repair_candidates": [0.03707297146320343, 0.00017422733071725816, 0.9584812521934509, 0.0013053660513833165, 0.00039057558751665056, 2.9207640181994066e-05, 0.0025463285855948925], "target_probs": 0.9955542087554932}}
+
+
+{"result": {"time": "2021-02-21 12:46:13.493952", "n_pass": [116, 29, 16], "n_token": 14, "loss": [0.1799357682466507, 0.008884862065315247], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app_id", "worker_file", "(", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", "worker_file", ")", "config_file", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [0, 3], "repair_candidates": [1, 9, 10, 6, 12, 0, 3]}}
+{"prediction": {"error_location": 0.8353239297866821, "repair_targets": [0.038607362657785416, 0.9525471329689026], "repair_candidates": [0.038607362657785416, 0.001747496542520821, 0.9525471329689026, 0.0015957646537572145, 0.0005425821873359382, 3.534268762450665e-05, 0.004924375098198652], "target_probs": 0.9911544919013977}}
+
+
+{"result": {"time": "2021-02-21 12:46:13.549211", "n_pass": [118, 30, 17], "n_token": 13, "loss": [0.3817040026187897, 0.12681668996810913], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app_id", "worker_file", "app_id", ")", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", "worker_file", ")", "config_file", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [0, 2], "repair_candidates": [1, 8, 9, 5, 11, 0, 2]}}
+{"prediction": {"error_location": 0.6826971769332886, "repair_targets": [0.037518925964832306, 0.8433762192726135], "repair_candidates": [0.037518925964832306, 0.11104647070169449, 0.8433762192726135, 0.0008052077027969062, 0.00011070682376157492, 1.21121074698749e-05, 0.007130344398319721], "target_probs": 0.8808951377868652}}
+
+
+{"result": {"time": "2021-02-21 12:46:13.659169", "n_pass": [137, 32, 18], "n_token": 12, "loss": [0.0708073228597641, 0.2452847808599472], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app_id", "worker_file", "app_id", "#NEWLINE#", "config_file", "get_celery_configuration_path", "(", "worker_file", "worker_file", ")", "config_file", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [0, 2], "repair_candidates": [1, 7, 8, 4, 10, 0, 2]}}
+{"prediction": {"error_location": 0.9316413998603821, "repair_targets": [0.10224572569131851, 0.6802359223365784], "repair_candidates": [0.10224572569131851, 0.21039924025535583, 0.6802359223365784, 0.003094171406701207, 0.002527499571442604, 0.00017657526768743992, 0.0013208672171458602], "target_probs": 0.7824816703796387}}
+
+
+{"result": {"time": "2021-02-21 12:46:13.771036", "n_pass": [140, 34, 19], "n_token": 11, "loss": [0.02401525154709816, 0.2741442024707794], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app_id", "worker_file", "app_id", "#NEWLINE#", "config_file", "get_celery_configuration_path", "worker_file", "worker_file", ")", "config_file", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [0, 2], "repair_candidates": [1, 6, 7, 4, 9, 0, 2]}}
+{"prediction": {"error_location": 0.9762707352638245, "repair_targets": [0.1075875386595726, 0.6526349186897278], "repair_candidates": [0.1075875386595726, 0.23172618448734283, 0.6526349186897278, 0.0036018742248415947, 0.0008272179984487593, 0.00017499242676422, 0.0034473601263016462], "target_probs": 0.7602224349975586}}
+
+
+{"result": {"time": "2021-02-21 12:46:13.824924", "n_pass": [143, 35, 20], "n_token": 10, "loss": [0.07030697911977768, 0.2576231360435486], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app_id", "worker_file", "app_id", "#NEWLINE#", "config_file", "get_celery_configuration_path", "worker_file", "worker_file", "config_file", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [0, 2], "repair_candidates": [1, 6, 7, 4, 8, 0, 2]}}
+{"prediction": {"error_location": 0.9321075081825256, "repair_targets": [0.06931392103433609, 0.7035725116729736], "repair_candidates": [0.06931392103433609, 0.2217176854610443, 0.7035725116729736, 0.002538061933591962, 0.0005165707552805543, 0.0002208938094554469, 0.0021203034557402134], "target_probs": 0.7728864550590515}}
+
+
+{"result": {"time": "2021-02-21 12:46:13.878544", "n_pass": [145, 36, 21], "n_token": 9, "loss": [0.02470073103904724, 0.3085908591747284], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app_id", "worker_file", "app_id", "#NEWLINE#", "config_file", "get_celery_configuration_path", "worker_file", "worker_file", "config_file"]}}
+{"position": {"error_location": 7, "repair_targets": [0, 2], "repair_candidates": [1, 6, 7, 4, 8, 0, 2]}}
+{"prediction": {"error_location": 0.9756019711494446, "repair_targets": [0.07053104788064957, 0.6639501452445984], "repair_candidates": [0.07053104788064957, 0.2599273920059204, 0.6639501452445984, 0.0029916930943727493, 0.0005152057274244726, 0.00010217552335234359, 0.001982336165383458], "target_probs": 0.7344812154769897}}
+
+
+
+
+Minimal simplified tokens:
+
+['app_id', 'worker_file', 'app_id', '#NEWLINE#', 'config_file', 'get_celery_configuration_path', 'worker_file', 'worker_file', 'config_file']

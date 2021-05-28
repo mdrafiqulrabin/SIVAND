@@ -1,0 +1,121 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Connect to S3 and update the bucket with the static files from the\\n        directory.\\n\\n        :param bucket_name: The name of the S3 bucket to upload to.\\n        '", "#NEWLINE#", "self", ".", "minify_files", "(", ")", "#NEWLINE#", "files", "=", "self", ".", "enumerate_files", "(", "self", ".", "directory", ")", "#NEWLINE#", "conn", "=", "self", ".", "connect_s3", "(", ")", "#NEWLINE#", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"], "error_location": [42], "repair_targets": [4], "repair_candidates": [17, 40, 28, 42, 44, 2, 11, 19, 23, 30, 36, 4], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "Lukasa/collectr/collectr/models.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00016-of-00300", "js_count": 52459, "results": {"model": "rnn", "prob": {"loc": [[0.23304668068885803, 2.737906925176503e-06, 7.743285550532164e-07, 8.166049525470953e-08, 4.51756619668231e-07, 1.1144627620751635e-07, 3.213714094840725e-08, 9.818885615686668e-08, 6.283067932599806e-08, 6.069763358595992e-09, 1.0206185230288156e-08, 3.52645166401544e-08, 2.1031185681863462e-09, 1.1586936743412934e-08, 2.761522353011969e-07, 2.281071601828444e-06, 9.976877635153869e-08, 2.838486068412749e-07, 7.018215342213807e-09, 3.2541027650268006e-08, 8.72508065796751e-10, 3.324465369658469e-09, 3.190699970900823e-08, 0.001980437897145748, 3.377517145963793e-07, 7.943754098960198e-08, 2.3107094015983876e-09, 9.246408971819164e-09, 1.2677847394115815e-07, 5.886290344037093e-10, 3.309057774458779e-07, 1.5752982251981962e-09, 2.435865953387406e-09, 7.055682544887532e-07, 8.973378839982615e-07, 5.1075819129664524e-08, 1.9270213869049257e-08, 1.2210911171095518e-09, 9.822571200857055e-09, 6.555613651926251e-08, 0.000822322559542954, 1.7163230836558796e-08, 0.10546746850013733, 1.1024772561540885e-07, 0.6586719751358032, 5.033369347984262e-07, 1.1844621283785273e-08, 3.784645628002181e-07]], "pointer": [[0.0, 0.0, 0.0019638848025351763, 0.0, 0.9547849893569946, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.1551162060641218e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.037987470626831055, 0.0, 5.051305197412148e-05, 0.0, 0.0, 0.0, 0.0007333855028264225, 0.0, 0.0, 0.0, 0.0, 0.003909780643880367, 0.0, 7.9762474342715e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 2.068454159598332e-05, 0.0, 0.0, 0.0, 0.0002787339617498219, 0.0, 0.00014664632908534259, 0.0, 3.271398236392997e-05, 0.0, 0.0, 0.0]], "target": [0.9547849893569946]}, "loss": [2.2493526935577393, 0.04626910760998726], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [44]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 13:15:40.865772", "n_pass": [1, 1, 1], "n_token": 48, "loss": [0.4175296127796173, 0.04626910760998726], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Connect to S3 and update the bucket with the static files from the\\n        directory.\\n\\n        :param bucket_name: The name of the S3 bucket to upload to.\\n        '", "#NEWLINE#", "self", ".", "minify_files", "(", ")", "#NEWLINE#", "files", "=", "self", ".", "enumerate_files", "(", "self", ".", "directory", ")", "#NEWLINE#", "conn", "=", "self", ".", "connect_s3", "(", ")", "#NEWLINE#", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"]}}
+{"position": {"error_location": 44, "repair_targets": [4], "repair_candidates": [17, 40, 28, 42, 44, 2, 11, 19, 23, 30, 36, 4]}}
+{"prediction": {"error_location": 0.6586719751358032, "repair_targets": [0.9547849893569946], "repair_candidates": [0.0019638848025351763, 0.9547849893569946, 1.1551162060641218e-05, 0.037987470626831055, 5.051305197412148e-05, 0.0007333855028264225, 0.003909780643880367, 7.9762474342715e-05, 2.068454159598332e-05, 0.0002787339617498219, 0.00014664632908534259, 3.271398236392997e-05], "target_probs": 0.9547849893569946}}
+
+
+{"result": {"time": "2021-02-21 13:15:41.158577", "n_pass": [55, 5, 2], "n_token": 45, "loss": [0.4081641733646393, 0.025179754942655563], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Connect to S3 and update the bucket with the static files from the\\n        directory.\\n\\n        :param bucket_name: The name of the S3 bucket to upload to.\\n        '", "#NEWLINE#", "self", ".", "minify_files", "(", ")", "#NEWLINE#", "files", "=", "self", ".", "enumerate_files", "(", "self", ".", "directory", ")", "#NEWLINE#", "conn", "=", "self", ".", "connect_s3", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"]}}
+{"position": {"error_location": 41, "repair_targets": [4], "repair_candidates": [17, 37, 28, 39, 41, 2, 11, 19, 23, 30, 33, 4]}}
+{"prediction": {"error_location": 0.6648697853088379, "repair_targets": [0.9751346111297607], "repair_candidates": [0.0015489181969314814, 0.9751346111297607, 8.550259735784493e-06, 0.01874471642076969, 4.255693784216419e-05, 0.0006991012487560511, 0.0035136293154209852, 6.652934825979173e-05, 2.9342465495574288e-05, 0.000161873729666695, 4.181181429885328e-05, 8.349851668754127e-06], "target_probs": 0.9751346111297607}}
+
+
+{"result": {"time": "2021-02-21 13:15:41.300094", "n_pass": [62, 7, 3], "n_token": 42, "loss": [0.4616580903530121, 0.06281423568725586], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", "'\\n        Connect to S3 and update the bucket with the static files from the\\n        directory.\\n\\n        :param bucket_name: The name of the S3 bucket to upload to.\\n        '", "#NEWLINE#", "self", ".", "minify_files", "(", ")", "#NEWLINE#", "files", "=", "self", ".", "enumerate_files", "(", "self", ".", "directory", ")", "#NEWLINE#", "conn", "=", "self", ".", "connect_s3", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"]}}
+{"position": {"error_location": 38, "repair_targets": [4], "repair_candidates": [14, 34, 25, 36, 38, 2, 8, 16, 20, 27, 30, 4]}}
+{"prediction": {"error_location": 0.6302377581596375, "repair_targets": [0.9391179084777832], "repair_candidates": [0.006065696943551302, 0.9391179084777832, 5.450904427561909e-05, 0.04325404390692711, 9.014111856231466e-05, 0.0031775478273630142, 0.007149598561227322, 0.00015007560432422906, 9.748958837008104e-05, 0.0006985340151004493, 0.00011660944437608123, 2.779512942652218e-05], "target_probs": 0.9391179084777832}}
+
+
+{"result": {"time": "2021-02-21 13:15:41.650957", "n_pass": [107, 12, 4], "n_token": 41, "loss": [0.6856825351715088, 0.034264206886291504], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", "#NEWLINE#", "self", ".", "minify_files", "(", ")", "#NEWLINE#", "files", "=", "self", ".", "enumerate_files", "(", "self", ".", "directory", ")", "#NEWLINE#", "conn", "=", "self", ".", "connect_s3", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"]}}
+{"position": {"error_location": 37, "repair_targets": [4], "repair_candidates": [13, 33, 24, 35, 37, 2, 7, 15, 19, 26, 29, 4]}}
+{"prediction": {"error_location": 0.5037462711334229, "repair_targets": [0.9663161635398865], "repair_candidates": [0.0016539336647838354, 0.9663161635398865, 7.749823271296918e-05, 0.022870084270834923, 6.394772935891524e-05, 0.002039266051724553, 0.0063316733576357365, 9.677103662397712e-05, 7.584122795378789e-05, 0.0003713729965966195, 8.344595698872581e-05, 1.9882229025824927e-05], "target_probs": 0.9663161635398865}}
+
+
+{"result": {"time": "2021-02-21 13:15:41.862826", "n_pass": [111, 15, 5], "n_token": 40, "loss": [0.639040470123291, 0.05979040265083313], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", "#NEWLINE#", "self", ".", "(", ")", "#NEWLINE#", "files", "=", "self", ".", "enumerate_files", "(", "self", ".", "directory", ")", "#NEWLINE#", "conn", "=", "self", ".", "connect_s3", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"]}}
+{"position": {"error_location": 36, "repair_targets": [4], "repair_candidates": [12, 32, 23, 34, 36, 2, 7, 14, 18, 25, 28, 4]}}
+{"prediction": {"error_location": 0.527798593044281, "repair_targets": [0.941961944103241], "repair_candidates": [0.0019280589185655117, 0.941961944103241, 0.0002251240803161636, 0.03594202920794487, 0.00012099586456315592, 0.008853284642100334, 0.009737703949213028, 0.0001640446571400389, 0.00014041856047697365, 0.000726277066860348, 0.00016275547386612743, 3.723156623891555e-05], "target_probs": 0.941961944103241}}
+
+
+{"result": {"time": "2021-02-21 13:15:41.931967", "n_pass": [112, 16, 6], "n_token": 39, "loss": [0.7049506306648254, 0.0845516249537468], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", "#NEWLINE#", "self", ".", ")", "#NEWLINE#", "files", "=", "self", ".", "enumerate_files", "(", "self", ".", "directory", ")", "#NEWLINE#", "conn", "=", "self", ".", "connect_s3", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"]}}
+{"position": {"error_location": 35, "repair_targets": [4], "repair_candidates": [11, 31, 22, 33, 35, 2, 7, 13, 17, 24, 27, 4]}}
+{"prediction": {"error_location": 0.4941328763961792, "repair_targets": [0.9189242124557495], "repair_candidates": [0.0037811966612935066, 0.9189242124557495, 0.001261840807273984, 0.03562294691801071, 0.0001533913309685886, 0.016698382794857025, 0.020404072478413582, 0.0003938226436730474, 0.0004075521428603679, 0.001928679528646171, 0.00034485015203244984, 7.910100976005197e-05], "target_probs": 0.9189242124557495}}
+
+
+{"result": {"time": "2021-02-21 13:15:42.000509", "n_pass": [113, 17, 7], "n_token": 38, "loss": [0.6385891437530518, 0.07905079424381256], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", "#NEWLINE#", "self", ".", "#NEWLINE#", "files", "=", "self", ".", "enumerate_files", "(", "self", ".", "directory", ")", "#NEWLINE#", "conn", "=", "self", ".", "connect_s3", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"]}}
+{"position": {"error_location": 34, "repair_targets": [4], "repair_candidates": [10, 30, 21, 32, 34, 2, 7, 12, 16, 23, 26, 4]}}
+{"prediction": {"error_location": 0.5280369520187378, "repair_targets": [0.9239929914474487], "repair_candidates": [0.004892539232969284, 0.9239929914474487, 0.0011236437130719423, 0.02094123139977455, 0.00010464461229275912, 0.014010878279805183, 0.030381251126527786, 0.0004779434239026159, 0.00048645681818015873, 0.0030475894454866648, 0.00044437876204028726, 9.654353198129684e-05], "target_probs": 0.9239929914474487}}
+
+
+{"result": {"time": "2021-02-21 13:15:42.136681", "n_pass": [117, 19, 8], "n_token": 36, "loss": [0.6151046752929688, 0.12760114669799805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", "#NEWLINE#", "self", ".", "#NEWLINE#", "files", "=", "self", ".", "self", ".", "directory", ")", "#NEWLINE#", "conn", "=", "self", ".", "connect_s3", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"]}}
+{"position": {"error_location": 32, "repair_targets": [4], "repair_candidates": [10, 28, 19, 30, 32, 2, 7, 12, 14, 21, 24, 4]}}
+{"prediction": {"error_location": 0.5405843257904053, "repair_targets": [0.8802043795585632], "repair_candidates": [0.009972674772143364, 0.8802043795585632, 0.002337838290259242, 0.035431310534477234, 0.00152717309538275, 0.01048960816115141, 0.05334927514195442, 0.0005882800905965269, 0.00047956983326002955, 0.004962662700563669, 0.0005251783295534551, 0.0001321908930549398], "target_probs": 0.8802043795585632}}
+
+
+{"result": {"time": "2021-02-21 13:15:42.206526", "n_pass": [119, 20, 9], "n_token": 34, "loss": [0.4021798074245453, 0.20993632078170776], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", "#NEWLINE#", "self", ".", "#NEWLINE#", "files", "=", "self", ".", "self", ".", "#NEWLINE#", "conn", "=", "self", ".", "connect_s3", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"]}}
+{"position": {"error_location": 30, "repair_targets": [4], "repair_candidates": [10, 26, 17, 28, 30, 2, 7, 12, 14, 19, 22, 4]}}
+{"prediction": {"error_location": 0.6688604354858398, "repair_targets": [0.8106358647346497], "repair_candidates": [0.017193997278809547, 0.8106358647346497, 0.0023654454853385687, 0.12846893072128296, 0.004360104911029339, 0.010828492231667042, 0.01953018270432949, 0.0002739856718108058, 0.0006208455306477845, 0.004541406407952309, 0.0009719616500660777, 0.00020878009672742337], "target_probs": 0.8106358647346497}}
+
+
+{"result": {"time": "2021-02-21 13:15:42.272529", "n_pass": [122, 21, 10], "n_token": 32, "loss": [0.7952067255973816, 0.3236667513847351], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", "#NEWLINE#", "self", ".", "#NEWLINE#", "files", "=", "self", ".", "self", ".", "#NEWLINE#", "conn", "=", "self", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")", "#NEWLINE#", "return"]}}
+{"position": {"error_location": 28, "repair_targets": [4], "repair_candidates": [10, 24, 17, 26, 28, 2, 7, 12, 14, 19, 20, 4]}}
+{"prediction": {"error_location": 0.4514878988265991, "repair_targets": [0.7234913110733032], "repair_candidates": [0.04139094799757004, 0.7234913110733032, 0.003387549426406622, 0.08837366104125977, 0.0064346096478402615, 0.010262256488204002, 0.12236963212490082, 0.0012681231601163745, 0.00017842995293904096, 0.0016799343284219503, 0.0009024763712659478, 0.00026115236687473953], "target_probs": 0.7234913110733032}}
+
+
+{"result": {"time": "2021-02-21 13:15:42.401913", "n_pass": [128, 23, 11], "n_token": 30, "loss": [0.3545783460140228, 0.11902693659067154], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def update(", "self", ",", "bucket_name", ")", "#NEWLINE#", "self", ".", "#NEWLINE#", "files", "=", "self", ".", "self", ".", "#NEWLINE#", "conn", "=", "self", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [4], "repair_candidates": [10, 24, 17, 26, 28, 2, 7, 12, 14, 19, 20, 4]}}
+{"prediction": {"error_location": 0.7014691233634949, "repair_targets": [0.8877838850021362], "repair_candidates": [0.030313316732645035, 0.8877838850021362, 0.002896549180150032, 0.04821205139160156, 0.004172295797616243, 0.00909589696675539, 0.01445422600954771, 0.0008738621836528182, 7.200086110970005e-05, 0.001242295140400529, 0.0006614038720726967, 0.00022225973953027278], "target_probs": 0.8877838850021362}}
+
+
+{"result": {"time": "2021-02-21 13:15:42.465768", "n_pass": [129, 24, 12], "n_token": 29, "loss": [0.7617932558059692, 0.07136643677949905], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update(", "self", ",", "bucket_name", ")", "#NEWLINE#", "self", ".", "#NEWLINE#", "files", "=", "self", ".", "self", ".", "#NEWLINE#", "conn", "=", "self", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [3], "repair_candidates": [9, 23, 16, 25, 27, 1, 6, 11, 13, 18, 19, 3]}}
+{"prediction": {"error_location": 0.46682852506637573, "repair_targets": [0.9311206340789795], "repair_candidates": [0.03017646260559559, 0.9311206340789795, 0.0015587550587952137, 0.025024134665727615, 0.00263262283988297, 0.002404323546215892, 0.005962178111076355, 0.0003372131031937897, 2.379839679633733e-05, 0.000341725506586954, 0.0003226093540433794, 9.555978613207117e-05], "target_probs": 0.9311206340789795}}
+
+
+{"result": {"time": "2021-02-21 13:15:42.594846", "n_pass": [132, 26, 13], "n_token": 28, "loss": [0.6891716718673706, 0.13452957570552826], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update(", "self", "bucket_name", ")", "#NEWLINE#", "self", ".", "#NEWLINE#", "files", "=", "self", ".", "self", ".", "#NEWLINE#", "conn", "=", "self", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [2], "repair_candidates": [8, 22, 15, 24, 26, 1, 5, 10, 12, 17, 18, 2]}}
+{"prediction": {"error_location": 0.5019917488098145, "repair_targets": [0.8741270303726196], "repair_candidates": [0.04433388635516167, 0.8741270303726196, 0.0018886914476752281, 0.05122468248009682, 0.012220701202750206, 0.0051894779317080975, 0.009694975800812244, 0.0005593136884272099, 3.520556492730975e-05, 0.00031853298423811793, 0.00032730717794038355, 8.00911002443172e-05], "target_probs": 0.8741270303726196}}
+
+
+{"result": {"time": "2021-02-21 13:15:42.658049", "n_pass": [134, 27, 14], "n_token": 27, "loss": [0.872868537902832, 0.28917020559310913], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update(", "self", "bucket_name", "#NEWLINE#", "self", ".", "#NEWLINE#", "files", "=", "self", ".", "self", ".", "#NEWLINE#", "conn", "=", "self", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [2], "repair_candidates": [7, 21, 14, 23, 25, 1, 4, 9, 11, 16, 17, 2]}}
+{"prediction": {"error_location": 0.4177514612674713, "repair_targets": [0.7488847374916077], "repair_candidates": [0.09157412499189377, 0.7488847374916077, 0.003308170475065708, 0.09004414081573486, 0.0303959958255291, 0.00697186728939414, 0.025482656434178352, 0.0014126590685918927, 6.830960774095729e-05, 0.0009916432900354266, 0.0007138238288462162, 0.00015177277964539826], "target_probs": 0.7488847374916077}}
+
+
+{"result": {"time": "2021-02-21 13:15:42.720081", "n_pass": [135, 28, 15], "n_token": 26, "loss": [0.9650638103485107, 0.5290297269821167], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update(", "self", "bucket_name", "self", ".", "#NEWLINE#", "files", "=", "self", ".", "self", ".", "#NEWLINE#", "conn", "=", "self", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [2], "repair_candidates": [6, 20, 13, 22, 24, 1, 3, 8, 10, 15, 16, 2]}}
+{"prediction": {"error_location": 0.3809589147567749, "repair_targets": [0.58917635679245], "repair_candidates": [0.15916836261749268, 0.58917635679245, 0.013002804480493069, 0.1515391767024994, 0.03775492683053017, 0.009180866181850433, 0.03372030705213547, 0.003610001178458333, 0.00012406865425873548, 0.0015556272119283676, 0.0009736412321217358, 0.00019383452308829874], "target_probs": 0.58917635679245}}
+
+
+{"result": {"time": "2021-02-21 13:15:43.092192", "n_pass": [175, 34, 16], "n_token": 25, "loss": [0.9292266368865967, 0.6740114092826843], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update(", "self", "bucket_name", "self", ".", "#NEWLINE#", "files", "=", "self", "self", ".", "#NEWLINE#", "conn", "=", "self", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [2], "repair_candidates": [6, 19, 12, 21, 23, 1, 3, 8, 9, 14, 15, 2]}}
+{"prediction": {"error_location": 0.3948589563369751, "repair_targets": [0.509660005569458], "repair_candidates": [0.12571576237678528, 0.509660005569458, 0.005655947607010603, 0.29473403096199036, 0.03348196670413017, 0.0023534847423434258, 0.016205541789531708, 0.008093851618468761, 0.00022461166372522712, 0.0023800258059054613, 0.0012749648885801435, 0.00021976872812956572], "target_probs": 0.509660005569458}}
+
+
+{"result": {"time": "2021-02-21 13:15:43.274938", "n_pass": [180, 37, 17], "n_token": 24, "loss": [0.8066300749778748, 0.6483433842658997], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update(", "self", "bucket_name", "self", ".", "#NEWLINE#", "files", "=", "self", "self", ".", "#NEWLINE#", "conn", "self", "self", ".", "upload_files", "(", "files", ",", "conn", ",", "conn", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [2], "repair_candidates": [6, 18, 12, 20, 22, 1, 3, 8, 9, 13, 14, 2]}}
+{"prediction": {"error_location": 0.4463597238063812, "repair_targets": [0.5229113101959229], "repair_candidates": [0.11487957090139389, 0.5229113101959229, 0.006710014771670103, 0.30823689699172974, 0.031157493591308594, 0.0037556944880634546, 0.002609728602692485, 0.0013311270158737898, 0.00021544433548115194, 0.005274150054901838, 0.002623001579195261, 0.00029555984656326473], "target_probs": 0.5229113101959229}}
+
+
+{"result": {"time": "2021-02-21 13:15:43.338776", "n_pass": [183, 38, 18], "n_token": 23, "loss": [0.5901347994804382, 0.6280695199966431], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def update(", "self", "bucket_name", "self", ".", "#NEWLINE#", "files", "=", "self", "self", ".", "#NEWLINE#", "conn", "self", "self", "upload_files", "(", "files", ",", "conn", ",", "conn", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [2], "repair_candidates": [6, 17, 12, 19, 21, 1, 3, 8, 9, 13, 14, 2]}}
+{"prediction": {"error_location": 0.554252564907074, "repair_targets": [0.5336209535598755], "repair_candidates": [0.08893914520740509, 0.5336209535598755, 0.006617216859012842, 0.3070105016231537, 0.04608830064535141, 0.002963865175843239, 0.0013014485593885183, 0.001030992134474218, 0.0005213520489633083, 0.008016384206712246, 0.003215906210243702, 0.0006739230593666434], "target_probs": 0.5336209535598755}}
+
+
+
+
+Minimal simplified tokens:
+
+['def update(', 'self', 'bucket_name', 'self', '.', '#NEWLINE#', 'files', '=', 'self', 'self', '.', '#NEWLINE#', 'conn', 'self', 'self', 'upload_files', '(', 'files', ',', 'conn', ',', 'conn', ')']

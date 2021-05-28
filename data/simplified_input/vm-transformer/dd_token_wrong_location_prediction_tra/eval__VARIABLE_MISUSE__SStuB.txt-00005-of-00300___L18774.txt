@@ -1,0 +1,181 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def clean_default_account(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Check that account owner is the same as my company'", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "[", "'default_account'", "]", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", ".", "id", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "forms", ".", "ValidationError", "(", "_", "(", "'Default Account has to belong to your company'", ")", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "KeyError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "account"], "error_location": [39], "repair_targets": [22], "repair_candidates": [22, 2, 11, 24, 9, 35, 39, 69], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "treeio/treeio/treeio/finance/forms.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00005-of-00300", "js_count": 18774, "results": {"model": "transformer", "prob": {"loc": [[0.1566571593284607, 2.656331616890384e-06, 2.1280300188664114e-06, 3.4858661734915586e-08, 6.811936970052557e-08, 5.468556807386449e-08, 3.5258867825405105e-08, 5.508709577384252e-08, 2.5350420429504084e-08, 1.3398503142525442e-06, 6.130781571300759e-08, 6.428991036955267e-05, 3.5190272029694825e-08, 8.405359963603587e-09, 3.9177248112309826e-08, 3.9834847598285705e-07, 5.1721460891940296e-08, 2.351584349469249e-08, 5.120212165365956e-08, 6.309710443019867e-08, 7.504802113089681e-08, 5.031407823707923e-08, 1.008008166536456e-05, 1.670208860105049e-07, 0.001419435953721404, 6.014099085405178e-08, 1.1423018086986758e-08, 1.275609520234866e-07, 1.9677534055517754e-06, 3.8141325831020367e-07, 3.6565529626386706e-07, 9.51077527133748e-06, 9.409487574885134e-06, 1.0309041499567684e-05, 2.732257371462765e-06, 0.40105992555618286, 5.143173211763497e-07, 7.313900596273015e-08, 1.3166207963877241e-06, 0.11724197864532471, 5.815491590510646e-07, 2.5786457058529777e-07, 1.3848042499375879e-06, 1.2253227623659768e-06, 9.579263860359788e-06, 4.037348389829276e-06, 1.6980022792267846e-06, 1.2353824274669023e-07, 1.817903694245615e-06, 3.3307455282738374e-07, 9.910704790172531e-08, 4.3937046712017036e-07, 0.0001851273118518293, 4.466877362574451e-05, 0.00037148987757973373, 1.0917622603301425e-05, 5.763616627518786e-06, 2.920129190897569e-06, 1.0106200534210075e-06, 1.032291834235366e-06, 6.374615168169839e-06, 8.974199090516777e-07, 1.7779780137061607e-06, 7.698494641772413e-07, 5.802119176223641e-07, 1.2107801012462005e-05, 3.52919528268103e-07, 4.80300229810382e-07, 4.290504875825718e-07, 0.32283470034599304]], "pointer": [[0.0, 0.0, 0.0040299673564732075, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.005185829009860754, 0.0, 0.006593001075088978, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9785077571868896, 0.0, 0.005447698757052422, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.1828777436167e-05, 0.0, 0.0, 0.0, 0.00015624627121724188, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.758876563457306e-06]], "target": [0.9785077571868896]}, "loss": [2.1435153484344482, 0.021726565435528755], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [35]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:09:51.299464", "n_pass": [1, 1, 1], "n_token": 70, "loss": [0.9136444926261902, 0.021726565435528755], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clean_default_account(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Check that account owner is the same as my company'", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "[", "'default_account'", "]", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", ".", "id", ")", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "forms", ".", "ValidationError", "(", "_", "(", "'Default Account has to belong to your company'", ")", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "KeyError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 35, "repair_targets": [22], "repair_candidates": [22, 2, 11, 24, 9, 35, 39, 69]}}
+{"prediction": {"error_location": 0.40105992555618286, "repair_targets": [0.9785077571868896], "repair_candidates": [0.0040299673564732075, 0.005185829009860754, 0.006593001075088978, 0.9785077571868896, 0.005447698757052422, 7.1828777436167e-05, 0.00015624627121724188, 7.758876563457306e-06], "target_probs": 0.9785077571868896}}
+
+
+{"result": {"time": "2021-02-21 06:09:51.415913", "n_pass": [25, 3, 2], "n_token": 61, "loss": [0.7356248497962952, 0.027986984699964523], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clean_default_account(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Check that account owner is the same as my company'", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "[", "'default_account'", "]", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", ".", "id", ")", "_", "(", "'Default Account has to belong to your company'", ")", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "KeyError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 35, "repair_targets": [22], "repair_candidates": [22, 2, 11, 24, 9, 35, 39, 60]}}
+{"prediction": {"error_location": 0.4792059361934662, "repair_targets": [0.9724010229110718], "repair_candidates": [0.004598530009388924, 0.003933048341423273, 0.010383287444710732, 0.9724010229110718, 0.008580401539802551, 2.1935480617685243e-05, 7.912162982393056e-05, 2.654774334587273e-06], "target_probs": 0.9724010229110718}}
+
+
+{"result": {"time": "2021-02-21 06:09:51.472432", "n_pass": [26, 4, 3], "n_token": 52, "loss": [0.8329127430915833, 0.01513099018484354], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clean_default_account(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Check that account owner is the same as my company'", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "[", "'default_account'", "]", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", ".", "id", ")", "KeyError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 35, "repair_targets": [22], "repair_candidates": [22, 2, 11, 24, 9, 35, 39, 51]}}
+{"prediction": {"error_location": 0.4347810745239258, "repair_targets": [0.9849829077720642], "repair_candidates": [0.0025519446935504675, 0.003516626078635454, 0.005257755052298307, 0.9849829077720642, 0.0034910549875348806, 2.4214103177655488e-05, 0.00016971779405139387, 5.729444637836423e-06], "target_probs": 0.9849829077720642}}
+
+
+{"result": {"time": "2021-02-21 06:09:51.644445", "n_pass": [48, 7, 4], "n_token": 48, "loss": [0.41130927205085754, 0.01844717003405094], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clean_default_account(", "self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "[", "'default_account'", "]", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", ".", "id", ")", "KeyError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 31, "repair_targets": [18], "repair_candidates": [18, 2, 7, 20, 5, 31, 35, 47]}}
+{"prediction": {"error_location": 0.6627818942070007, "repair_targets": [0.9817219376564026], "repair_candidates": [0.002038037171587348, 0.00805785320699215, 0.004653868731111288, 0.9817219376564026, 0.0032332129776477814, 4.3231426388956606e-05, 0.0002003270055865869, 5.151043296791613e-05], "target_probs": 0.9817219376564026}}
+
+
+{"result": {"time": "2021-02-21 06:09:51.983236", "n_pass": [84, 13, 5], "n_token": 46, "loss": [0.6938844323158264, 0.020815283060073853], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clean_default_account(", "self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", ".", "id", ")", "KeyError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 29, "repair_targets": [16], "repair_candidates": [16, 2, 7, 18, 5, 29, 33, 45]}}
+{"prediction": {"error_location": 0.49963149428367615, "repair_targets": [0.9793998599052429], "repair_candidates": [0.0019294596277177334, 0.009627197869122028, 0.004015512298792601, 0.9793998599052429, 0.004606550093740225, 8.579911082051694e-05, 0.0002727748651523143, 6.286225107032806e-05], "target_probs": 0.9793998599052429}}
+
+
+{"result": {"time": "2021-02-21 06:09:52.600199", "n_pass": [99, 24, 6], "n_token": 43, "loss": [1.101526141166687, 0.024224162101745605], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def clean_default_account(", "self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", ".", "id", ")", "KeyError", ":", "#NEWLINE#", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 29, "repair_targets": [16], "repair_candidates": [16, 2, 7, 18, 5, 29, 33, 42]}}
+{"prediction": {"error_location": 0.33236345648765564, "repair_targets": [0.9760668873786926], "repair_candidates": [0.0018861581338569522, 0.012155367061495781, 0.00453227898105979, 0.9760668873786926, 0.004502417054027319, 0.00029796516173519194, 0.0004890779964625835, 6.975774158490822e-05], "target_probs": 0.9760668873786926}}
+
+
+{"result": {"time": "2021-02-21 06:09:52.658836", "n_pass": [101, 25, 7], "n_token": 41, "loss": [0.944040060043335, 0.006754449103027582], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", ".", "id", ")", "KeyError", ":", "#NEWLINE#", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 27, "repair_targets": [14], "repair_candidates": [14, 0, 5, 16, 3, 27, 31, 40]}}
+{"prediction": {"error_location": 0.3890528380870819, "repair_targets": [0.9932683110237122], "repair_candidates": [0.0009840218117460608, 0.001953389495611191, 0.0014839826617389917, 0.9932683110237122, 0.002096490701660514, 9.367572056362405e-05, 0.00010705339082051069, 1.2996677469345741e-05], "target_probs": 0.9932683110237122}}
+
+
+{"result": {"time": "2021-02-21 06:09:53.218333", "n_pass": [118, 35, 8], "n_token": 38, "loss": [0.45511868596076965, 0.01837049052119255], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "KeyError", ":", "#NEWLINE#", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 27, "repair_targets": [14], "repair_candidates": [14, 0, 5, 16, 3, 27, 31, 37]}}
+{"prediction": {"error_location": 0.6343726515769958, "repair_targets": [0.9817972183227539], "repair_candidates": [0.00031160705839283764, 0.00036026170710101724, 0.003235339419916272, 0.9817972183227539, 0.014275639317929745, 6.001247129461262e-06, 8.966968607637682e-07, 1.3018953723076265e-05], "target_probs": 0.9817972183227539}}
+
+
+{"result": {"time": "2021-02-21 06:09:53.274288", "n_pass": [119, 36, 9], "n_token": 35, "loss": [0.7626821994781494, 0.005672899074852467], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 27, "repair_targets": [14], "repair_candidates": [14, 0, 5, 16, 3, 27, 31, 34]}}
+{"prediction": {"error_location": 0.4664137363433838, "repair_targets": [0.9943431615829468], "repair_candidates": [0.000380006997147575, 0.00045459310058504343, 0.0011752190766856074, 0.9943431615829468, 0.0036130298394709826, 2.612692696857266e-05, 3.0177038752299268e-06, 4.8017777771747205e-06], "target_probs": 0.9943431615829468}}
+
+
+{"result": {"time": "2021-02-21 06:09:53.443485", "n_pass": [126, 39, 10], "n_token": 33, "loss": [1.0860389471054077, 0.0034556423779577017], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "[", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 25, "repair_targets": [12], "repair_candidates": [12, 0, 5, 14, 3, 25, 29, 32]}}
+{"prediction": {"error_location": 0.3375508785247803, "repair_targets": [0.9965503215789795], "repair_candidates": [0.00028579821810126305, 0.00034685220452956855, 0.0009490037919022143, 0.9965503215789795, 0.0018523073522374034, 1.2582223462231923e-05, 1.1268886055404437e-06, 2.0641359697037842e-06], "target_probs": 0.9965503215789795}}
+
+
+{"result": {"time": "2021-02-21 06:09:54.228902", "n_pass": [182, 53, 11], "n_token": 32, "loss": [0.9965932369232178, 0.0025771060027182102], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "'my_company'", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 24, "repair_targets": [12], "repair_candidates": [12, 0, 5, 14, 3, 24, 28, 31]}}
+{"prediction": {"error_location": 0.3691348731517792, "repair_targets": [0.9974262118339539], "repair_candidates": [0.00026232757954858243, 0.00033327186247333884, 0.0010357929859310389, 0.9974262118339539, 0.000930985901504755, 8.680904102220666e-06, 7.936793622320693e-07, 1.910713308461709e-06], "target_probs": 0.9974262118339539}}
+
+
+{"result": {"time": "2021-02-21 06:09:54.284640", "n_pass": [183, 54, 12], "n_token": 31, "loss": [1.0293316841125488, 0.0023949190508574247], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 23, "repair_targets": [12], "repair_candidates": [12, 0, 5, 14, 3, 23, 27, 30]}}
+{"prediction": {"error_location": 0.35724565386772156, "repair_targets": [0.997607946395874], "repair_candidates": [0.00028761138673871756, 0.00044815847650170326, 0.0010279687121510506, 0.997607946395874, 0.0006152631249278784, 9.74735667114146e-06, 6.180367790875607e-07, 2.610171350170276e-06], "target_probs": 0.997607946395874}}
+
+
+{"result": {"time": "2021-02-21 06:09:54.343163", "n_pass": [184, 55, 13], "n_token": 30, "loss": [1.0218849182128906, 0.003910069819539785], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "#UNINDENT#", "return", "account"]}}
+{"position": {"error_location": 22, "repair_targets": [12], "repair_candidates": [12, 0, 5, 14, 3, 22, 26, 29]}}
+{"prediction": {"error_location": 0.3599158227443695, "repair_targets": [0.9960975646972656], "repair_candidates": [0.0003925877099391073, 0.0008242457988671958, 0.0021410067565739155, 0.9960975646972656, 0.0005280639161355793, 1.0946779184450861e-05, 7.024165142865968e-07, 4.8146512199309655e-06], "target_probs": 0.9960975646972656}}
+
+
+{"result": {"time": "2021-02-21 06:09:54.844242", "n_pass": [195, 64, 14], "n_token": 29, "loss": [0.9133041501045227, 0.00589621439576149], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", ".", "cleaned_data", "]", "#NEWLINE#", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 22, "repair_targets": [12], "repair_candidates": [12, 0, 5, 14, 3, 22, 26, 28]}}
+{"prediction": {"error_location": 0.4011964201927185, "repair_targets": [0.9941211342811584], "repair_candidates": [0.00047635260852985084, 0.00029396210447885096, 0.0038422169163823128, 0.9941211342811584, 0.0012639891356229782, 8.776358981776866e-07, 8.591798064117029e-07, 5.428192366707663e-07], "target_probs": 0.9941211342811584}}
+
+
+{"result": {"time": "2021-02-21 06:09:55.068500", "n_pass": [203, 68, 15], "n_token": 28, "loss": [0.6999674439430237, 0.0018659346969798207], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "cleaned_data", "]", "#NEWLINE#", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 21, "repair_targets": [11], "repair_candidates": [11, 0, 5, 13, 3, 21, 25, 27]}}
+{"prediction": {"error_location": 0.4966014623641968, "repair_targets": [0.9981358051300049], "repair_candidates": [0.0003238496428821236, 0.00027283336385153234, 0.0010150667512789369, 0.9981358051300049, 0.0002493634819984436, 1.3084857073408784e-06, 9.761367891769623e-07, 7.271167987710214e-07], "target_probs": 0.9981358051300049}}
+
+
+{"result": {"time": "2021-02-21 06:09:55.124336", "n_pass": [204, 69, 16], "n_token": 27, "loss": [0.7612856030464172, 0.0020844591781497], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "]", "#NEWLINE#", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 20, "repair_targets": [10], "repair_candidates": [10, 0, 5, 12, 3, 20, 24, 26]}}
+{"prediction": {"error_location": 0.46706563234329224, "repair_targets": [0.9979177117347717], "repair_candidates": [0.00024399567337241024, 5.381051596486941e-05, 0.001260706689208746, 0.9979177117347717, 0.0005230462411418557, 2.2989956960373092e-07, 2.8896596404592856e-07, 2.1064522570668487e-07], "target_probs": 0.9979177117347717}}
+
+
+{"result": {"time": "2021-02-21 06:09:55.180098", "n_pass": [205, 70, 17], "n_token": 26, "loss": [0.7238023281097412, 0.004587247967720032], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "#NEWLINE#", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 19, "repair_targets": [9], "repair_candidates": [9, 0, 5, 11, 3, 19, 23, 25]}}
+{"prediction": {"error_location": 0.4849049746990204, "repair_targets": [0.9954232573509216], "repair_candidates": [0.0006834295345470309, 9.564642095938325e-05, 0.0022528867702931166, 0.9954232573509216, 0.001542777055874467, 7.967941542119661e-07, 6.676449970655085e-07, 5.009852657167357e-07], "target_probs": 0.9954232573509216}}
+
+
+{"result": {"time": "2021-02-21 06:09:55.236095", "n_pass": [206, 71, 18], "n_token": 25, "loss": [0.6566162109375, 0.009248032234609127], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "#NEWLINE#", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 18, "repair_targets": [8], "repair_candidates": [8, 0, 5, 10, 3, 18, 22, 24]}}
+{"prediction": {"error_location": 0.5186032056808472, "repair_targets": [0.9907945990562439], "repair_candidates": [0.0010173659538850188, 0.00010715534881455824, 0.00482755433768034, 0.9907945990562439, 0.0032505665440112352, 1.1059362350351876e-06, 8.819883419164398e-07, 7.001604558354302e-07], "target_probs": 0.9907945990562439}}
+
+
+{"result": {"time": "2021-02-21 06:09:55.292054", "n_pass": [207, 72, 19], "n_token": 24, "loss": [0.9281648993492126, 0.02182409167289734], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "#INDENT#", "company", "=", "self", ".", "cleaned_data", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 17, "repair_targets": [7], "repair_candidates": [7, 0, 5, 9, 3, 17, 21, 23]}}
+{"prediction": {"error_location": 0.3952784240245819, "repair_targets": [0.9784123301506042], "repair_candidates": [0.00169238296803087, 0.00014173499948810786, 0.011289866641163826, 0.9784123301506042, 0.008461006917059422, 1.0432509043312166e-06, 8.5227605950422e-07, 7.552547458544723e-07], "target_probs": 0.9784123301506042}}
+
+
+{"result": {"time": "2021-02-21 06:09:55.349992", "n_pass": [208, 73, 20], "n_token": 23, "loss": [0.21469435095787048, 0.29716622829437256], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "company", "=", "self", ".", "cleaned_data", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 16, "repair_targets": [6], "repair_candidates": [6, 0, 5, 8, 3, 16, 20, 22]}}
+{"prediction": {"error_location": 0.8067879676818848, "repair_targets": [0.7429205179214478], "repair_candidates": [0.00585873331874609, 0.0005633450346067548, 0.22124938666820526, 0.7429205179214478, 0.02939748764038086, 1.2136305258536595e-06, 4.597528004524065e-06, 4.742808869195869e-06], "target_probs": 0.7429205179214478}}
+
+
+{"result": {"time": "2021-02-21 06:09:55.460721", "n_pass": [212, 75, 21], "n_token": 22, "loss": [0.3872527778148651, 0.5240390300750732], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "company", "=", "self", "cleaned_data", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 15, "repair_targets": [6], "repair_candidates": [6, 0, 5, 8, 3, 15, 19, 21]}}
+{"prediction": {"error_location": 0.6789194345474243, "repair_targets": [0.5921241044998169], "repair_candidates": [0.020849715918302536, 0.0021970397792756557, 0.290688693523407, 0.5921241044998169, 0.09408148378133774, 1.119943135563517e-05, 2.6390915081719868e-05, 2.1349160306272097e-05], "target_probs": 0.5921241044998169}}
+
+
+{"result": {"time": "2021-02-21 06:09:55.516752", "n_pass": [213, 76, 22], "n_token": 21, "loss": [0.31982678174972534, 0.36302056908607483], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "company", "=", "self", "#NEWLINE#", "if", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 14, "repair_targets": [6], "repair_candidates": [6, 0, 5, 8, 3, 14, 18, 20]}}
+{"prediction": {"error_location": 0.7262747287750244, "repair_targets": [0.6955721378326416], "repair_candidates": [0.0051404149271547794, 0.0005979850539006293, 0.20790566504001617, 0.6955721378326416, 0.09076318889856339, 4.256423380866181e-06, 9.588202374288812e-06, 6.860088433313649e-06], "target_probs": 0.6955721378326416}}
+
+
+{"result": {"time": "2021-02-21 06:09:55.628496", "n_pass": [215, 78, 23], "n_token": 20, "loss": [0.525980532169342, 0.5504909753799438], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "company", "=", "self", "#NEWLINE#", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 13, "repair_targets": [6], "repair_candidates": [6, 0, 5, 8, 3, 13, 17, 19]}}
+{"prediction": {"error_location": 0.5909757018089294, "repair_targets": [0.5766665935516357], "repair_candidates": [0.0038107677828520536, 0.0006924279150553048, 0.24425238370895386, 0.5766665935516357, 0.17455759644508362, 8.695077667653095e-06, 6.820543603680562e-06, 4.7260655264835805e-06], "target_probs": 0.5766665935516357}}
+
+
+{"result": {"time": "2021-02-21 06:09:56.243548", "n_pass": [234, 89, 24], "n_token": 19, "loss": [0.34749776124954224, 0.4466175138950348], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "company", "=", "self", "(", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 12, "repair_targets": [6], "repair_candidates": [6, 0, 5, 8, 3, 12, 16, 18]}}
+{"prediction": {"error_location": 0.7064536213874817, "repair_targets": [0.6397885680198669], "repair_candidates": [0.0021885221358388662, 0.00016970510478131473, 0.29373878240585327, 0.6397885680198669, 0.0641075000166893, 2.057842493741191e-06, 2.9902255391789367e-06, 1.7960193190447171e-06], "target_probs": 0.6397885680198669}}
+
+
+{"result": {"time": "2021-02-21 06:09:56.299382", "n_pass": [235, 90, 25], "n_token": 18, "loss": [0.44192418456077576, 0.5615791082382202], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "company", "=", "self", "not", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 11, "repair_targets": [6], "repair_candidates": [6, 0, 5, 8, 3, 11, 15, 17]}}
+{"prediction": {"error_location": 0.6427983045578003, "repair_targets": [0.5703077912330627], "repair_candidates": [0.002490772632881999, 0.0009483349276706576, 0.28944167494773865, 0.5703077912330627, 0.13673913478851318, 2.6907693609246053e-05, 2.8704125725198537e-05, 1.6688783944118768e-05], "target_probs": 0.5703077912330627}}
+
+
+{"result": {"time": "2021-02-21 06:09:56.357411", "n_pass": [236, 91, 26], "n_token": 17, "loss": [0.41693031787872314, 0.20566362142562866], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "company", "=", "self", "(", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 10, "repair_targets": [6], "repair_candidates": [6, 0, 5, 8, 3, 10, 14, 16]}}
+{"prediction": {"error_location": 0.6590668559074402, "repair_targets": [0.8141068816184998], "repair_candidates": [0.0018823996651917696, 0.00019592496391851455, 0.154386505484581, 0.8141068816184998, 0.029417386278510094, 5.070433417131426e-06, 4.197940597805427e-06, 1.6458712934763753e-06], "target_probs": 0.8141068816184998}}
+
+
+{"result": {"time": "2021-02-21 06:09:56.412795", "n_pass": [237, 92, 27], "n_token": 16, "loss": [0.1770624816417694, 0.611939013004303], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "account", "=", "self", "company", "=", "self", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 9, "repair_targets": [6], "repair_candidates": [6, 0, 5, 8, 3, 9, 13, 15]}}
+{"prediction": {"error_location": 0.837727427482605, "repair_targets": [0.5422983169555664], "repair_candidates": [0.002993152476847172, 7.758527499390766e-05, 0.1559753119945526, 0.5422983169555664, 0.29864564538002014, 7.924383680801839e-06, 1.468992877562414e-06, 6.098665039644402e-07], "target_probs": 0.5422983169555664}}
+
+
+{"result": {"time": "2021-02-21 06:09:56.635172", "n_pass": [245, 96, 28], "n_token": 15, "loss": [0.8793255090713501, 0.5006707906723022], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "#NEWLINE#", "account", "=", "self", "company", "=", "self", "account", ".", "owner_id", "==", "account", "return", "account"]}}
+{"position": {"error_location": 8, "repair_targets": [5], "repair_candidates": [5, 0, 4, 7, 2, 8, 12, 14]}}
+{"prediction": {"error_location": 0.4150627851486206, "repair_targets": [0.6061239242553711], "repair_candidates": [0.0039805201813578606, 9.43997292779386e-05, 0.07892352342605591, 0.6061239242553711, 0.3108772933483124, 2.470587787684053e-07, 9.471456507981202e-08, 5.2305804132402045e-08], "target_probs": 0.6061239242553711}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', '#NEWLINE#', 'account', '=', 'self', 'company', '=', 'self', 'account', '.', 'owner_id', '==', 'account', 'return', 'account']

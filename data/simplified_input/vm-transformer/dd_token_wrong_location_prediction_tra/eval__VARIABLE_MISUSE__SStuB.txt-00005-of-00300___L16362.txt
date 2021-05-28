@@ -1,0 +1,61 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def is_link(", "path", ",", "use_sudo", "=", "False", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Check if a path exists, and is a symbolic link.\\n    '", "#NEWLINE#", "func", "=", "(", "(", "path", "and", "run_as_root", ")", "or", "run", ")", "#NEWLINE#", "with", "settings", "(", "hide", "(", "'running'", ",", "'warnings'", ")", ",", "warn_only", "=", "True", ")", ":", "#NEWLINE#", "#INDENT#", "return", "func", "(", "(", "'[ -L \"%(path)s\" ]'", "%", "locals", "(", ")", ")", ")", ".", "succeeded"], "error_location": [17], "repair_targets": [4], "repair_candidates": [4, 2, 17, 13, 43], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "ronnix/fabtools/fabtools/files.py", "license": "bsd-2-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00005-of-00300", "js_count": 16362, "results": {"model": "transformer", "prob": {"loc": [[0.0009339107200503349, 6.471656632811573e-08, 2.6037918487986644e-08, 1.79436643321651e-09, 3.147232519040699e-07, 1.0953736584440321e-08, 1.9627442782166327e-08, 2.0760178021106412e-09, 4.957864341292861e-09, 1.2103424040788013e-08, 5.871303887516888e-09, 2.7290418813663564e-08, 7.944646718271997e-09, 1.5332265235201703e-08, 9.143237278408378e-09, 2.958795164431649e-08, 8.149979180416267e-08, 0.18110014498233795, 4.893698246632994e-08, 0.7829149961471558, 1.4251093638506518e-08, 7.532421797407096e-09, 0.035048216581344604, 1.3398341103254552e-08, 5.258617985504088e-09, 6.26785012780573e-10, 1.7775183547286133e-09, 1.9337194956392523e-08, 2.4958740851843686e-08, 8.551079844210108e-08, 1.550873065525593e-07, 1.1147203338168765e-07, 3.4717623975666356e-07, 3.8861486473251716e-08, 2.5722057372945528e-08, 4.0051109095884385e-09, 5.4787172132364503e-08, 2.676866586170945e-07, 6.3707847886007585e-09, 2.655942488161145e-08, 5.308167239093109e-09, 4.35569891266141e-09, 1.630689183684808e-08, 2.402682923730026e-07, 5.4857544284914184e-08, 7.230196530372268e-08, 1.742860575859595e-07, 5.686380433189697e-08, 3.263470560455062e-08, 8.65668141614151e-08, 2.1415472062358276e-08, 1.4303706663554294e-08, 2.5743061016214597e-08, 7.899165765934413e-09, 3.784260460548694e-09]], "pointer": [[0.0, 0.0, 4.1862008401949424e-06, 0.0, 0.9995591044425964, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00043666313285939395, 0.0, 0.0, 0.0, 2.279223387802176e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.9377211774317402e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9995591044425964]}, "loss": [1.7087050676345825, 0.0004409927933011204], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [19]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:04:23.153534", "n_pass": [1, 1, 1], "n_token": 55, "loss": [0.2447311133146286, 0.0004409927933011204], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def is_link(", "path", ",", "use_sudo", "=", "False", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Check if a path exists, and is a symbolic link.\\n    '", "#NEWLINE#", "func", "=", "(", "(", "path", "and", "run_as_root", ")", "or", "run", ")", "#NEWLINE#", "with", "settings", "(", "hide", "(", "'running'", ",", "'warnings'", ")", ",", "warn_only", "=", "True", ")", ":", "#NEWLINE#", "#INDENT#", "return", "func", "(", "(", "'[ -L \"%(path)s\" ]'", "%", "locals", "(", ")", ")", ")", ".", "succeeded"]}}
+{"position": {"error_location": 19, "repair_targets": [4], "repair_candidates": [4, 2, 17, 13, 43]}}
+{"prediction": {"error_location": 0.7829149961471558, "repair_targets": [0.9995591044425964], "repair_candidates": [4.1862008401949424e-06, 0.9995591044425964, 0.00043666313285939395, 2.279223387802176e-08, 2.9377211774317402e-08], "target_probs": 0.9995591044425964}}
+
+
+{"result": {"time": "2021-02-21 06:04:23.209430", "n_pass": [10, 2, 2], "n_token": 41, "loss": [0.15048345923423767, 0.002010935451835394], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def is_link(", "path", ",", "use_sudo", "=", "False", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Check if a path exists, and is a symbolic link.\\n    '", "#NEWLINE#", "func", "=", "(", "(", "path", "and", "run_as_root", ")", "or", "run", ")", "#NEWLINE#", "with", "settings", "#INDENT#", "return", "func", "(", "(", "'[ -L \"%(path)s\" ]'", "%", "locals", "(", ")", ")", ")", ".", "succeeded"]}}
+{"position": {"error_location": 19, "repair_targets": [4], "repair_candidates": [4, 2, 17, 13, 29]}}
+{"prediction": {"error_location": 0.8602919578552246, "repair_targets": [0.9979910850524902], "repair_candidates": [3.4448141832399415e-06, 0.9979910850524902, 0.0020053875632584095, 2.0087425056658503e-08, 4.170065892594721e-08], "target_probs": 0.9979910850524902}}
+
+
+{"result": {"time": "2021-02-21 06:04:23.268048", "n_pass": [20, 3, 3], "n_token": 34, "loss": [0.20893210172653198, 0.00488644652068615], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def is_link(", "path", ",", "use_sudo", "=", "False", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Check if a path exists, and is a symbolic link.\\n    '", "#NEWLINE#", "func", "=", "(", "(", "path", "and", "run_as_root", ")", "or", "run", ")", "#NEWLINE#", "with", "settings", "#INDENT#", "return", "func", "(", "(", "'[ -L \"%(path)s\" ]'", "%"]}}
+{"position": {"error_location": 19, "repair_targets": [4], "repair_candidates": [4, 2, 17, 13, 29]}}
+{"prediction": {"error_location": 0.8114503026008606, "repair_targets": [0.9951254725456238], "repair_candidates": [2.6032466848846525e-06, 0.9951254725456238, 0.004871817771345377, 1.8007295210509255e-08, 9.227242969700455e-08], "target_probs": 0.9951254725456238}}
+
+
+{"result": {"time": "2021-02-21 06:04:23.323933", "n_pass": [22, 4, 4], "n_token": 27, "loss": [0.35998114943504333, 0.005890158470720053], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def is_link(", "path", ",", "use_sudo", "=", "func", "=", "(", "(", "path", "and", "run_as_root", ")", "or", "run", ")", "#NEWLINE#", "with", "settings", "#INDENT#", "return", "func", "(", "(", "'[ -L \"%(path)s\" ]'", "%"]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [4, 2, 10, 6, 22]}}
+{"prediction": {"error_location": 0.6976893544197083, "repair_targets": [0.9941271543502808], "repair_candidates": [8.088298272923566e-06, 0.9941271543502808, 0.005857786629348993, 1.1674249122961555e-07, 6.9106058617762756e-06], "target_probs": 0.9941271543502808}}
+
+
+{"result": {"time": "2021-02-21 06:04:23.379419", "n_pass": [24, 5, 5], "n_token": 20, "loss": [0.052431512624025345, 0.0020574619993567467], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def is_link(", "path", ",", "use_sudo", "=", "func", "=", "(", "(", "path", "and", "run_as_root", "#INDENT#", "return", "func", "(", "(", "'[ -L \"%(path)s\" ]'", "%"]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [4, 2, 10, 6, 15]}}
+{"prediction": {"error_location": 0.9489192962646484, "repair_targets": [0.9979446530342102], "repair_candidates": [9.656984730099794e-06, 0.9979446530342102, 0.002037207130342722, 7.545023095190118e-07, 7.647890924999956e-06], "target_probs": 0.9979446530342102}}
+
+
+{"result": {"time": "2021-02-21 06:04:23.435142", "n_pass": [35, 6, 6], "n_token": 16, "loss": [0.19281311333179474, 0.0004967492423020303], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def is_link(", "path", ",", "use_sudo", "=", "func", "=", "(", "(", "path", "and", "run_as_root", "#INDENT#", "return", "func"]}}
+{"position": {"error_location": 12, "repair_targets": [4], "repair_candidates": [4, 2, 10, 6, 15]}}
+{"prediction": {"error_location": 0.8246361017227173, "repair_targets": [0.9995033740997314], "repair_candidates": [0.00019231710757594556, 0.9995033740997314, 0.00029280284070409834, 8.833552783471532e-06, 2.7620601485978113e-06], "target_probs": 0.9995033740997314}}
+
+
+{"result": {"time": "2021-02-21 06:04:23.602821", "n_pass": [54, 9, 7], "n_token": 15, "loss": [0.4623250961303711, 0.011033684015274048], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def is_link(", "path", "use_sudo", "=", "func", "=", "(", "(", "path", "and", "run_as_root", "#INDENT#", "return", "func"]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [3, 2, 9, 5, 14]}}
+{"prediction": {"error_location": 0.6298174858093262, "repair_targets": [0.9890269637107849], "repair_candidates": [0.000711947213858366, 0.9890269637107849, 0.009886760264635086, 2.365731961617712e-05, 0.0003507143701426685], "target_probs": 0.9890269637107849}}
+
+
+{"result": {"time": "2021-02-21 06:04:23.823337", "n_pass": [76, 13, 8], "n_token": 14, "loss": [1.1287448406219482, 0.012143012136220932], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def is_link(", "path", "use_sudo", "=", "func", "(", "(", "path", "and", "run_as_root", "#INDENT#", "return", "func"]}}
+{"position": {"error_location": 10, "repair_targets": [3], "repair_candidates": [3, 2, 8, 5, 13]}}
+{"prediction": {"error_location": 0.32343900203704834, "repair_targets": [0.987930417060852], "repair_candidates": [0.004205129574984312, 0.987930417060852, 0.007042881101369858, 0.00039342656964436173, 0.0004280999128241092], "target_probs": 0.987930417060852}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def is_link(', 'path', 'use_sudo', '=', 'func', '(', '(', 'path', 'and', 'run_as_root', '#INDENT#', 'return', 'func']

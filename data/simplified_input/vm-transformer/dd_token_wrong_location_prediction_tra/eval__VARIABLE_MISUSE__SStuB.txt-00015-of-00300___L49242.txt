@@ -1,0 +1,61 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_fill_template(", ")", ":", "#NEWLINE#", "#INDENT#", "template", "=", "'My name is __NAME__!\\nI am __AGE__ years old.\\nSincerely __NAME__\\n'", "#NEWLINE#", "res", "=", "'My name is Hugo!\\nI am 44 years old.\\nSincerely Hugo\\n'", "#NEWLINE#", "info", "=", "{", "#NEWLINE#", "#INDENT#", "'NAME'", ":", "'Hugo'", ",", "#NEWLINE#", "'AGE'", ":", "'44'", ",", "#NEWLINE#", "'SEX'", ":", "'male'", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "assert", "(", "fill_template", "(", "template", ",", "res", ")", "==", "res", ")"], "error_location": [43], "repair_targets": [14], "repair_candidates": [6, 41, 14, 10, 43, 46], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "conda/constructor/constructor/tests/test_utils.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00015-of-00300", "js_count": 49242, "results": {"model": "transformer", "prob": {"loc": [[0.0001597411319380626, 1.711076613730711e-09, 1.855510328718779e-10, 2.940064858236724e-10, 2.2555375622790308e-10, 2.0179709292467152e-10, 4.6352091609414003e-10, 1.96800534202346e-10, 3.849127405697317e-10, 9.328898764593418e-11, 7.47200412654081e-10, 1.0584632059718047e-09, 3.5563809674954427e-09, 8.212305141475085e-11, 7.131570356477823e-08, 1.1531199328729258e-09, 4.418885257706506e-09, 1.1052683213108594e-09, 3.6510381384857737e-09, 6.397951946013336e-09, 4.899570527072683e-09, 6.5762884027265045e-09, 1.733479804144622e-09, 1.1997824955756187e-09, 1.3751562111252724e-09, 8.453323374624233e-09, 1.1273005640077827e-08, 6.422772980130276e-09, 3.1183746695973014e-09, 9.36234911819156e-09, 1.4269724957216567e-08, 1.79633303787341e-08, 1.3059640480150847e-08, 7.085156905617396e-09, 5.0662967154835314e-09, 1.5383998075435557e-08, 8.849126764687298e-09, 9.028821068568504e-08, 1.5187805457728132e-09, 9.429764746826663e-10, 4.988150781315426e-09, 9.190622222376987e-05, 5.397533797690812e-08, 0.3042645752429962, 3.0883276491699974e-10, 4.1428775965357545e-09, 0.6954829096794128, 5.40820735750458e-07]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.349314728344325e-06, 0.0, 0.0, 0.0, 1.2916240166305215e-06, 0.0, 0.0, 0.0, 0.999990701675415, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.747606905970315e-07, 0.0, 4.1890881874451225e-09, 0.0, 0.0, 5.906017896961657e-09, 0.0]], "target": [0.999990701675415]}, "loss": [1.1898577213287354, 9.298368240706623e-06], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [46]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:17:06.125926", "n_pass": [1, 1, 1], "n_token": 48, "loss": [0.36314886808395386, 9.298368240706623e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_fill_template(", ")", ":", "#NEWLINE#", "#INDENT#", "template", "=", "'My name is __NAME__!\\nI am __AGE__ years old.\\nSincerely __NAME__\\n'", "#NEWLINE#", "res", "=", "'My name is Hugo!\\nI am 44 years old.\\nSincerely Hugo\\n'", "#NEWLINE#", "info", "=", "{", "#NEWLINE#", "#INDENT#", "'NAME'", ":", "'Hugo'", ",", "#NEWLINE#", "'AGE'", ":", "'44'", ",", "#NEWLINE#", "'SEX'", ":", "'male'", ",", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "assert", "(", "fill_template", "(", "template", ",", "res", ")", "==", "res", ")"]}}
+{"position": {"error_location": 46, "repair_targets": [14], "repair_candidates": [6, 41, 14, 10, 43, 46]}}
+{"prediction": {"error_location": 0.6954829096794128, "repair_targets": [0.999990701675415], "repair_candidates": [7.349314728344325e-06, 1.2916240166305215e-06, 0.999990701675415, 5.747606905970315e-07, 4.1890881874451225e-09, 5.906017896961657e-09], "target_probs": 0.999990701675415}}
+
+
+{"result": {"time": "2021-02-21 07:17:06.182551", "n_pass": [10, 2, 2], "n_token": 36, "loss": [0.42484143376350403, 3.9816695789340883e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_fill_template(", ")", ":", "#NEWLINE#", "#INDENT#", "template", "=", "'My name is __NAME__!\\nI am __AGE__ years old.\\nSincerely __NAME__\\n'", "#NEWLINE#", "res", "=", "'My name is Hugo!\\nI am 44 years old.\\nSincerely Hugo\\n'", "#NEWLINE#", "info", "=", "{", "#NEWLINE#", "#INDENT#", "'NAME'", ":", "'Hugo'", ",", "#NEWLINE#", "#NEWLINE#", "assert", "(", "fill_template", "(", "template", ",", "res", ")", "==", "res", ")"]}}
+{"position": {"error_location": 34, "repair_targets": [14], "repair_candidates": [6, 29, 14, 10, 31, 34]}}
+{"prediction": {"error_location": 0.6538734436035156, "repair_targets": [0.99996018409729], "repair_candidates": [3.617279799073003e-05, 1.0345308965042932e-06, 0.99996018409729, 2.463449845890864e-06, 3.484081911864223e-09, 1.1407317757061719e-08], "target_probs": 0.99996018409729}}
+
+
+{"result": {"time": "2021-02-21 07:17:06.239577", "n_pass": [21, 3, 3], "n_token": 30, "loss": [0.5411241054534912, 0.009148354642093182], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["template", "=", "'My name is __NAME__!\\nI am __AGE__ years old.\\nSincerely __NAME__\\n'", "#NEWLINE#", "res", "=", "'My name is Hugo!\\nI am 44 years old.\\nSincerely Hugo\\n'", "#NEWLINE#", "info", "=", "{", "#NEWLINE#", "#INDENT#", "'NAME'", ":", "'Hugo'", ",", "#NEWLINE#", "#NEWLINE#", "assert", "(", "fill_template", "(", "template", ",", "res", ")", "==", "res", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [8], "repair_candidates": [0, 23, 8, 4, 25, 28]}}
+{"prediction": {"error_location": 0.5820935368537903, "repair_targets": [0.9908933639526367], "repair_candidates": [0.00036859625834040344, 0.00014990949421189725, 0.9908933639526367, 0.008588066324591637, 1.3017444011609314e-08, 3.546177040902876e-08], "target_probs": 0.9908933639526367}}
+
+
+{"result": {"time": "2021-02-21 07:17:06.298500", "n_pass": [23, 4, 4], "n_token": 24, "loss": [0.6497781276702881, 0.027523690834641457], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["template", "=", "'My name is __NAME__!\\nI am __AGE__ years old.\\nSincerely __NAME__\\n'", "#NEWLINE#", "res", "=", "'My name is Hugo!\\nI am 44 years old.\\nSincerely Hugo\\n'", "#NEWLINE#", "info", "=", "{", "#NEWLINE#", "#NEWLINE#", "assert", "(", "fill_template", "(", "template", ",", "res", ")", "==", "res", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [8], "repair_candidates": [0, 17, 8, 4, 19, 22]}}
+{"prediction": {"error_location": 0.522161602973938, "repair_targets": [0.9728516340255737], "repair_candidates": [0.007665834855288267, 0.00012928801879752427, 0.9728516340255737, 0.019352925941348076, 8.643635140970218e-08, 2.4430872258562886e-07], "target_probs": 0.9728516340255737}}
+
+
+{"result": {"time": "2021-02-21 07:17:06.466305", "n_pass": [61, 7, 5], "n_token": 22, "loss": [0.5915683507919312, 0.019012033939361572], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["template", "=", "'My name is __NAME__!\\nI am __AGE__ years old.\\nSincerely __NAME__\\n'", "#NEWLINE#", "res", "=", "'My name is Hugo!\\nI am 44 years old.\\nSincerely Hugo\\n'", "#NEWLINE#", "info", "=", "#NEWLINE#", "assert", "(", "fill_template", "(", "template", ",", "res", ")", "==", "res", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [8], "repair_candidates": [0, 15, 8, 4, 17, 20]}}
+{"prediction": {"error_location": 0.5534586310386658, "repair_targets": [0.9811675548553467], "repair_candidates": [0.005569262430071831, 0.00050300732254982, 0.9811675548553467, 0.012760033831000328, 3.531823367097786e-08, 9.424017832770915e-08], "target_probs": 0.9811675548553467}}
+
+
+{"result": {"time": "2021-02-21 07:17:06.522421", "n_pass": [62, 8, 6], "n_token": 20, "loss": [0.14956824481487274, 0.25668802857398987], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["template", "=", "'My name is __NAME__!\\nI am __AGE__ years old.\\nSincerely __NAME__\\n'", "#NEWLINE#", "res", "=", "'My name is Hugo!\\nI am 44 years old.\\nSincerely Hugo\\n'", "#NEWLINE#", "info", "=", "(", "fill_template", "(", "template", ",", "res", ")", "==", "res", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [8], "repair_candidates": [0, 13, 8, 4, 15, 18]}}
+{"prediction": {"error_location": 0.8610796928405762, "repair_targets": [0.7736095190048218], "repair_candidates": [0.13863591849803925, 0.009189371950924397, 0.7736095190048218, 0.07856343686580658, 2.3657246117636532e-07, 1.5353867865997017e-06], "target_probs": 0.7736095190048218}}
+
+
+{"result": {"time": "2021-02-21 07:17:06.578145", "n_pass": [63, 9, 7], "n_token": 18, "loss": [0.23695074021816254, 0.20369797945022583], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["template", "=", "'My name is __NAME__!\\nI am __AGE__ years old.\\nSincerely __NAME__\\n'", "#NEWLINE#", "res", "=", "'My name is Hugo!\\nI am 44 years old.\\nSincerely Hugo\\n'", "#NEWLINE#", "info", "=", "(", "template", ",", "res", ")", "==", "res", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [8], "repair_candidates": [0, 11, 8, 4, 13, 16]}}
+{"prediction": {"error_location": 0.789030134677887, "repair_targets": [0.8157086968421936], "repair_candidates": [0.11094262450933456, 0.010019637644290924, 0.8157086968421936, 0.06332756578922272, 6.757600203854963e-07, 7.750767849756812e-07], "target_probs": 0.8157086968421936}}
+
+
+{"result": {"time": "2021-02-21 07:17:06.637445", "n_pass": [66, 10, 8], "n_token": 16, "loss": [0.5510453581809998, 0.5751085877418518], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["template", "=", "'My name is __NAME__!\\nI am __AGE__ years old.\\nSincerely __NAME__\\n'", "#NEWLINE#", "res", "=", "'My name is Hugo!\\nI am 44 years old.\\nSincerely Hugo\\n'", "#NEWLINE#", "info", "=", "(", "template", ",", "res", "res", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [8], "repair_candidates": [0, 11, 8, 4, 13, 14]}}
+{"prediction": {"error_location": 0.5763469934463501, "repair_targets": [0.5626437664031982], "repair_candidates": [0.2104443609714508, 0.054799314588308334, 0.5626437664031982, 0.17210499942302704, 2.8816464237024775e-06, 4.625711426342605e-06], "target_probs": 0.5626437664031982}}
+
+
+
+
+Minimal simplified tokens:
+
+['template', '=', "'My name is __NAME__!\\nI am __AGE__ years old.\\nSincerely __NAME__\\n'", '#NEWLINE#', 'res', '=', "'My name is Hugo!\\nI am 44 years old.\\nSincerely Hugo\\n'", '#NEWLINE#', 'info', '=', '(', 'template', ',', 'res', 'res', ')']

@@ -1,0 +1,79 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def new(", "self", ",", "text", "=", "None", ",", "path", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Create a new note.\\n        Makes sure the directory is created on writing the buffer.\\n        '", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "None", ")", "#NEWLINE#", "if", "path", ":", "#NEWLINE#", "#INDENT#", "(", "V", "+", "(", "(", "\"au! BufWritePre,FileWritePre <buffer> call mkdir(fnamemodify('\"", "+", "path", ")", "+", "\"', ':h'), 'p')\"", ")", ")"], "error_location": [23], "repair_targets": [4], "repair_candidates": [4, 8, 21, 23, 29, 40, 2, 17], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "fmoralesc/vim-pad/pythonx/pad/plugin.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00010-of-00300", "js_count": 34719, "results": {"model": "transformer", "prob": {"loc": [[0.0012201810022816062, 6.976926414381524e-08, 2.707777557731106e-09, 7.961967751768384e-10, 7.605130463161913e-07, 1.5173734491114033e-09, 4.2912121078764187e-10, 4.032820744015453e-10, 1.9776980764163454e-07, 6.554675024972312e-09, 5.284930271187704e-10, 2.0759189922614496e-09, 1.202903554542445e-09, 2.4535999898489536e-09, 1.4382187663031232e-09, 2.938749021907938e-09, 1.2315821695807472e-09, 9.741596418422205e-10, 6.697900012397895e-10, 5.428947846830567e-10, 1.73994263441557e-09, 0.9494437575340271, 3.283956440114366e-09, 0.04582952708005905, 3.913482427009285e-09, 1.1563384916257746e-08, 1.1936569066506308e-08, 2.348800709484067e-09, 6.933198903880111e-09, 0.0021364204585552216, 2.7541038338796398e-09, 2.1605504052502056e-09, 1.0386302928822033e-09, 2.4050775260242574e-10, 9.08994934434304e-06, 1.1280678613445616e-09, 9.773084563846623e-10, 1.786298220451954e-08, 2.549313471433834e-08, 2.7552600201374844e-09, 0.0013597110519185662, 6.653030903969182e-10, 1.3693797207281477e-09, 2.0454022831017937e-07, 6.440377120497942e-09, 6.085716819370646e-09]], "pointer": [[0.0, 0.0, 3.2229541830020025e-05, 0.0, 0.9999078512191772, 0.0, 0.0, 0.0, 4.729621286969632e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.4488805340515682e-06, 0.0, 0.0, 0.0, 3.428200159305561e-07, 0.0, 2.3047593913361197e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 1.9847077510348754e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.546708169073099e-06, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9999078512191772]}, "loss": [3.082826852798462, 9.215302998200059e-05], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [21]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:51:38.373862", "n_pass": [1, 1, 1], "n_token": 46, "loss": [0.05187910795211792, 9.215302998200059e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def new(", "self", ",", "text", "=", "None", ",", "path", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Create a new note.\\n        Makes sure the directory is created on writing the buffer.\\n        '", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "None", ")", "#NEWLINE#", "if", "path", ":", "#NEWLINE#", "#INDENT#", "(", "V", "+", "(", "(", "\"au! BufWritePre,FileWritePre <buffer> call mkdir(fnamemodify('\"", "+", "path", ")", "+", "\"', ':h'), 'p')\"", ")", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [4], "repair_candidates": [4, 8, 21, 23, 29, 40, 2, 17]}}
+{"prediction": {"error_location": 0.9494437575340271, "repair_targets": [0.9999078512191772], "repair_candidates": [3.2229541830020025e-05, 0.9999078512191772, 4.729621286969632e-05, 3.4488805340515682e-06, 3.428200159305561e-07, 2.3047593913361197e-06, 1.9847077510348754e-06, 4.546708169073099e-06], "target_probs": 0.9999078512191772}}
+
+
+{"result": {"time": "2021-02-21 06:51:38.431041", "n_pass": [22, 2, 2], "n_token": 40, "loss": [0.11768756061792374, 0.00010896322783082724], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def new(", "self", ",", "text", "=", "None", ",", "path", "=", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "None", ")", "#NEWLINE#", "if", "path", ":", "#NEWLINE#", "#INDENT#", "(", "V", "+", "(", "(", "\"au! BufWritePre,FileWritePre <buffer> call mkdir(fnamemodify('\"", "+", "path", ")", "+", "\"', ':h'), 'p')\"", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [4, 8, 15, 17, 23, 34, 2, 11]}}
+{"prediction": {"error_location": 0.8889736533164978, "repair_targets": [0.9998910427093506], "repair_candidates": [5.8530735259409994e-05, 0.9998910427093506, 1.575291207700502e-05, 2.1574884158326313e-05, 6.318230134638725e-07, 1.0628496056597214e-06, 5.9192416301812045e-06, 5.457410225062631e-06], "target_probs": 0.9998910427093506}}
+
+
+{"result": {"time": "2021-02-21 06:51:38.489794", "n_pass": [26, 3, 3], "n_token": 34, "loss": [0.1468891203403473, 0.00015689173596911132], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def new(", "self", ",", "text", "=", "None", ",", "path", "=", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "None", ")", "#NEWLINE#", "if", "path", ":", "#NEWLINE#", "#INDENT#", "(", "path", ")", "+", "\"', ':h'), 'p')\"", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [4, 8, 15, 17, 23, 28, 2, 11]}}
+{"prediction": {"error_location": 0.8633896112442017, "repair_targets": [0.9998431205749512], "repair_candidates": [9.026335465023294e-05, 0.9998431205749512, 1.4110316442383919e-05, 5.103518924443051e-05, 7.143228231143439e-08, 6.533151264420667e-08, 7.552826559731329e-07, 6.609610636587604e-07], "target_probs": 0.9998431205749512}}
+
+
+{"result": {"time": "2021-02-21 06:51:38.545931", "n_pass": [46, 4, 4], "n_token": 31, "loss": [0.14584410190582275, 0.00011683192860800773], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def new(", "self", ",", "text", "=", "None", ",", "path", "=", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "None", ")", "#NEWLINE#", "if", "path", ":", "#NEWLINE#", "#INDENT#", "(", "path", ")", "+"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [4, 8, 15, 17, 23, 28, 2, 11]}}
+{"prediction": {"error_location": 0.864292323589325, "repair_targets": [0.9998831748962402], "repair_candidates": [6.306399882305413e-05, 0.9998831748962402, 1.0777398529171478e-05, 4.0677201468497515e-05, 6.480764369598546e-08, 6.732016544219732e-08, 7.686449521315808e-07, 1.3820576896250714e-06], "target_probs": 0.9998831748962402}}
+
+
+{"result": {"time": "2021-02-21 06:51:38.601957", "n_pass": [47, 5, 5], "n_token": 29, "loss": [0.17507849633693695, 6.675942859146744e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "text", "=", "None", ",", "path", "=", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "None", ")", "#NEWLINE#", "if", "path", ":", "#NEWLINE#", "#INDENT#", "(", "path", ")", "+"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [2, 6, 13, 15, 21, 26, 0, 9]}}
+{"prediction": {"error_location": 0.8393911123275757, "repair_targets": [0.9999332427978516], "repair_candidates": [3.140619446639903e-05, 0.9999332427978516, 4.311631300879526e-07, 3.4507858799770474e-05, 6.799599105988818e-09, 1.913209146664485e-09, 6.12514554632071e-08, 3.061258837533387e-07], "target_probs": 0.9999332427978516}}
+
+
+{"result": {"time": "2021-02-21 06:51:38.657819", "n_pass": [54, 6, 6], "n_token": 26, "loss": [0.13797146081924438, 7.689294579904526e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "text", "=", "None", ",", "path", "=", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "if", "path", ":", "#NEWLINE#", "#INDENT#", "(", "path", ")", "+"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [2, 6, 13, 15, 18, 23, 0, 9]}}
+{"prediction": {"error_location": 0.8711235523223877, "repair_targets": [0.9999231100082397], "repair_candidates": [3.82099169655703e-05, 0.9999231100082397, 7.439240903295286e-07, 3.516905417200178e-05, 2.64595776400256e-08, 6.827626908290085e-09, 2.2409997413319616e-08, 2.7412747840571683e-06], "target_probs": 0.9999231100082397}}
+
+
+{"result": {"time": "2021-02-21 06:51:38.713825", "n_pass": [56, 7, 7], "n_token": 23, "loss": [0.17509740591049194, 0.0001927203848026693], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "text", "=", "None", ",", "path", "=", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "if", "path", ":", "path", ")", "+"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [2, 6, 13, 15, 18, 20, 0, 9]}}
+{"prediction": {"error_location": 0.8393752574920654, "repair_targets": [0.9998072981834412], "repair_candidates": [0.00017544618458487093, 0.9998072981834412, 1.5306745808629785e-06, 1.4642512724094559e-05, 2.317850373856345e-07, 3.150598004708627e-08, 7.433557129843393e-07, 8.155056718806009e-08], "target_probs": 0.9998072981834412}}
+
+
+{"result": {"time": "2021-02-21 06:51:38.770400", "n_pass": [82, 8, 8], "n_token": 21, "loss": [0.12273336201906204, 0.0003287140280008316], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "text", "=", "None", ",", "path", "=", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "if", "path", ":", "path"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [2, 6, 13, 15, 18, 20, 0, 9]}}
+{"prediction": {"error_location": 0.8844995498657227, "repair_targets": [0.9996713399887085], "repair_candidates": [0.0002734631998464465, 0.9996713399887085, 9.920941010932438e-07, 5.351655636331998e-05, 8.433442388877666e-08, 1.656587578224844e-08, 2.929315030542057e-07, 3.0324409294735233e-07], "target_probs": 0.9996713399887085}}
+
+
+{"result": {"time": "2021-02-21 06:51:38.829301", "n_pass": [84, 9, 9], "n_token": 20, "loss": [0.2275487780570984, 0.3820793926715851], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "text", "=", "None", ",", "path", "=", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "if", "path", ":", "path"]}}
+{"position": {"error_location": 12, "repair_targets": [1], "repair_candidates": [1, 5, 12, 14, 17, 19, 0, 8]}}
+{"prediction": {"error_location": 0.79648357629776, "repair_targets": [0.6824408769607544], "repair_candidates": [0.23148123919963837, 0.6824408769607544, 0.0002597076236270368, 0.08543911576271057, 6.221491639735177e-05, 9.693737410998438e-06, 0.00014679960440844297, 0.00016035638691391796], "target_probs": 0.6824408769607544}}
+
+
+{"result": {"time": "2021-02-21 06:51:38.884879", "n_pass": [86, 10, 10], "n_token": 19, "loss": [0.7797119617462158, 0.3036004602909088], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "text", "None", ",", "path", "=", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "if", "path", ":", "path"]}}
+{"position": {"error_location": 11, "repair_targets": [1], "repair_candidates": [1, 4, 11, 13, 16, 18, 0, 7]}}
+{"prediction": {"error_location": 0.4585380554199219, "repair_targets": [0.738155722618103], "repair_candidates": [0.21564996242523193, 0.738155722618103, 0.0013073132140561938, 0.04433823376893997, 0.00035101515823043883, 2.085012056340929e-05, 8.841915405355394e-05, 8.857993088895455e-05], "target_probs": 0.738155722618103}}
+
+
+{"result": {"time": "2021-02-21 06:51:39.557934", "n_pass": [122, 22, 11], "n_token": 18, "loss": [0.7479681968688965, 0.4089600145816803], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "text", "None", ",", "path", "=", "#NEWLINE#", "self", ".", "open", "(", "path", ",", "path", ",", "if", "path", "path"]}}
+{"position": {"error_location": 11, "repair_targets": [1], "repair_candidates": [1, 4, 11, 13, 16, 17, 0, 7]}}
+{"prediction": {"error_location": 0.47332727909088135, "repair_targets": [0.6643407940864563], "repair_candidates": [0.27550914883613586, 0.6643407940864563, 0.00424257991835475, 0.05533090606331825, 0.00041120219975709915, 2.3673323084949516e-05, 7.21598626114428e-05, 6.956801371416077e-05], "target_probs": 0.6643407940864563}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'text', 'None', ',', 'path', '=', '#NEWLINE#', 'self', '.', 'open', '(', 'path', ',', 'path', ',', 'if', 'path', 'path']

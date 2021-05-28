@@ -1,0 +1,103 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "raise_if_offline", "#NEWLINE#", "def schema_has_table(", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Check whether the specified table exists in the current schema.\\n\\n    This method cannot be executed in offline mode.\\n    '", "#NEWLINE#", "bind", "=", "op", ".", "get_bind", "(", ")", "#NEWLINE#", "insp", "=", "sa", ".", "engine", ".", "reflection", ".", "Inspector", ".", "from_engine", "(", "table_name", ")", "#NEWLINE#", "return", "(", "table_name", "in", "insp", ".", "get_table_names", "(", ")", ")"], "error_location": [32], "repair_targets": [12], "repair_candidates": [5, 32, 37, 20, 39, 12], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "openstack/neutron/neutron/db/migration/__init__.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00004-of-00300", "js_count": 15759, "results": {"model": "transformer", "prob": {"loc": [[0.003115839557722211, 1.3908089613323682e-07, 3.4089919775937005e-09, 1.7746380365224468e-08, 6.968962740216966e-09, 4.593043740896974e-07, 2.0055008320696288e-08, 1.966545859488633e-08, 1.2506874647044697e-08, 1.0981841214174892e-08, 2.289912615083267e-08, 8.854842192818069e-09, 7.348501753767778e-07, 3.605617848734255e-08, 9.520247701289009e-09, 6.216604120368174e-09, 1.5569185052299872e-08, 3.121532898830992e-08, 1.1025874755432596e-06, 2.50439484261733e-07, 4.047627498948714e-06, 2.865598958123883e-07, 4.969272140442627e-07, 2.2942977295770106e-08, 4.068077430474659e-09, 5.802544933430909e-08, 1.6449126505335698e-09, 5.0656179695351966e-08, 7.228242449031086e-09, 4.047925017403031e-08, 2.036448565334581e-09, 4.5934334025332646e-07, 0.19606523215770721, 3.3336850719933864e-06, 4.2228603547300736e-07, 1.7771795057797135e-07, 2.07245243188936e-08, 0.8008021116256714, 3.101694403540023e-07, 3.209387244851314e-08, 1.546120209638957e-08, 2.0887138685310447e-09, 9.538924814478378e-07, 2.40875033341581e-06, 7.252963314385852e-07]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 1.7758233298081905e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9995015859603882, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0004697370750363916, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.470968855865067e-06, 0.0, 0.0, 0.0, 0.0, 1.5693249224568717e-06, 0.0, 2.9441177957778564e-06, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9995015859603882]}, "loss": [1.6293078660964966, 0.0004985383129678667], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [37]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:02:43.466233", "n_pass": [1, 1, 1], "n_token": 45, "loss": [0.22214139997959137, 0.0004985383129678667], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "raise_if_offline", "#NEWLINE#", "def schema_has_table(", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Check whether the specified table exists in the current schema.\\n\\n    This method cannot be executed in offline mode.\\n    '", "#NEWLINE#", "bind", "=", "op", ".", "get_bind", "(", ")", "#NEWLINE#", "insp", "=", "sa", ".", "engine", ".", "reflection", ".", "Inspector", ".", "from_engine", "(", "table_name", ")", "#NEWLINE#", "return", "(", "table_name", "in", "insp", ".", "get_table_names", "(", ")", ")"]}}
+{"position": {"error_location": 37, "repair_targets": [12], "repair_candidates": [5, 32, 37, 20, 39, 12]}}
+{"prediction": {"error_location": 0.8008021116256714, "repair_targets": [0.9995015859603882], "repair_candidates": [1.7758233298081905e-05, 0.9995015859603882, 0.0004697370750363916, 6.470968855865067e-06, 1.5693249224568717e-06, 2.9441177957778564e-06], "target_probs": 0.9995015859603882}}
+
+
+{"result": {"time": "2021-02-21 06:02:43.576956", "n_pass": [24, 3, 2], "n_token": 39, "loss": [0.13933029770851135, 0.00014139221457298845], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "raise_if_offline", "#NEWLINE#", "def schema_has_table(", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Check whether the specified table exists in the current schema.\\n\\n    This method cannot be executed in offline mode.\\n    '", "#NEWLINE#", "bind", "=", "op", ".", "get_bind", "(", ")", "#NEWLINE#", "insp", ".", "Inspector", ".", "from_engine", "(", "table_name", ")", "#NEWLINE#", "return", "(", "table_name", "in", "insp", ".", "get_table_names", "(", ")", ")"]}}
+{"position": {"error_location": 31, "repair_targets": [12], "repair_candidates": [5, 26, 31, 20, 33, 12]}}
+{"prediction": {"error_location": 0.8699406385421753, "repair_targets": [0.9998586177825928], "repair_candidates": [7.887269021011889e-06, 0.9998586177825928, 6.245145050343126e-05, 4.353836629888974e-06, 1.1809029274445493e-06, 6.551369006047025e-05], "target_probs": 0.9998586177825928}}
+
+
+{"result": {"time": "2021-02-21 06:02:43.689095", "n_pass": [46, 5, 3], "n_token": 36, "loss": [0.14712119102478027, 0.00016976843471638858], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "raise_if_offline", "#NEWLINE#", "def schema_has_table(", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Check whether the specified table exists in the current schema.\\n\\n    This method cannot be executed in offline mode.\\n    '", "#NEWLINE#", "bind", "=", "op", ".", "get_bind", "(", ")", "#NEWLINE#", "insp", "from_engine", "(", "table_name", ")", "#NEWLINE#", "return", "(", "table_name", "in", "insp", ".", "get_table_names", "(", ")", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [12], "repair_candidates": [5, 23, 28, 20, 30, 12]}}
+{"prediction": {"error_location": 0.8631893396377563, "repair_targets": [0.9998302459716797], "repair_candidates": [6.152802143333247e-06, 0.9998302459716797, 1.474448527005734e-05, 2.3054774374031695e-06, 8.222863812079595e-07, 0.00014561433636117727], "target_probs": 0.9998302459716797}}
+
+
+{"result": {"time": "2021-02-21 06:02:43.746919", "n_pass": [47, 6, 4], "n_token": 33, "loss": [0.003422714304178953, 3.576342714950442e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "raise_if_offline", "#NEWLINE#", "def schema_has_table(", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Check whether the specified table exists in the current schema.\\n\\n    This method cannot be executed in offline mode.\\n    '", "#NEWLINE#", "bind", "=", "op", ".", "get_bind", "(", ")", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names", "(", ")", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [12], "repair_candidates": [5, 23, 25, 20, 27, 12]}}
+{"prediction": {"error_location": 0.9965832829475403, "repair_targets": [0.9999642372131348], "repair_candidates": [1.943494498846121e-05, 0.9999642372131348, 3.524344265315449e-06, 4.1889720705512445e-06, 9.283766644330171e-07, 7.632435881532729e-06], "target_probs": 0.9999642372131348}}
+
+
+{"result": {"time": "2021-02-21 06:02:43.801858", "n_pass": [50, 7, 5], "n_token": 30, "loss": [0.017994018271565437, 9.358367242384702e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "raise_if_offline", "#NEWLINE#", "def schema_has_table(", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Check whether the specified table exists in the current schema.\\n\\n    This method cannot be executed in offline mode.\\n    '", "#NEWLINE#", "bind", "=", "op", ".", "get_bind", "(", ")", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 25, "repair_targets": [12], "repair_candidates": [5, 23, 25, 20, 27, 12]}}
+{"prediction": {"error_location": 0.98216712474823, "repair_targets": [0.9999064207077026], "repair_candidates": [6.59433935652487e-05, 0.9999064207077026, 2.602863787615206e-06, 2.0201734514557756e-05, 4.497319423535373e-06, 4.0008663404478284e-07], "target_probs": 0.9999064207077026}}
+
+
+{"result": {"time": "2021-02-21 06:02:43.857592", "n_pass": [51, 8, 6], "n_token": 28, "loss": [0.0690610408782959, 0.001094105071388185], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["raise_if_offline", "#NEWLINE#", "def schema_has_table(", "table_name", ")", ":", "#NEWLINE#", "#INDENT#", "'Check whether the specified table exists in the current schema.\\n\\n    This method cannot be executed in offline mode.\\n    '", "#NEWLINE#", "bind", "=", "op", ".", "get_bind", "(", ")", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 23, "repair_targets": [10], "repair_candidates": [3, 21, 23, 18, 25, 10]}}
+{"prediction": {"error_location": 0.9332695007324219, "repair_targets": [0.9989064931869507], "repair_candidates": [0.0009840966667979956, 0.9989064931869507, 7.299416211026255e-06, 4.542815440800041e-05, 5.2781480917474255e-05, 3.925055807485478e-06], "target_probs": 0.9989064931869507}}
+
+
+{"result": {"time": "2021-02-21 06:02:43.969333", "n_pass": [54, 10, 7], "n_token": 25, "loss": [0.13769425451755524, 0.004336507525295019], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["raise_if_offline", "#NEWLINE#", "def schema_has_table(", "table_name", "#INDENT#", "'Check whether the specified table exists in the current schema.\\n\\n    This method cannot be executed in offline mode.\\n    '", "#NEWLINE#", "bind", "=", "op", ".", "get_bind", "(", ")", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 20, "repair_targets": [7], "repair_candidates": [3, 18, 20, 15, 22, 7]}}
+{"prediction": {"error_location": 0.871364951133728, "repair_targets": [0.995672881603241], "repair_candidates": [0.003950260113924742, 0.995672881603241, 5.7245392781624105e-06, 8.623702160548419e-05, 0.0002831073070410639, 1.8079510937241139e-06], "target_probs": 0.995672881603241}}
+
+
+{"result": {"time": "2021-02-21 06:02:44.024632", "n_pass": [55, 11, 8], "n_token": 22, "loss": [0.6120547652244568, 0.03562473505735397], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["raise_if_offline", "#NEWLINE#", "def schema_has_table(", "table_name", "bind", "=", "op", ".", "get_bind", "(", ")", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 17, "repair_targets": [4], "repair_candidates": [3, 15, 17, 12, 19, 4]}}
+{"prediction": {"error_location": 0.5422356128692627, "repair_targets": [0.9650023579597473], "repair_candidates": [0.03412695601582527, 0.9650023579597473, 5.9025078371632844e-05, 0.000368977285688743, 0.0003880715521518141, 5.460302054416388e-05], "target_probs": 0.9650023579597473}}
+
+
+{"result": {"time": "2021-02-21 06:02:44.083051", "n_pass": [57, 12, 9], "n_token": 19, "loss": [0.6005052924156189, 0.06654821336269379], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["raise_if_offline", "#NEWLINE#", "def schema_has_table(", "table_name", "bind", "=", "op", ")", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [3, 12, 14, 9, 16, 4]}}
+{"prediction": {"error_location": 0.5485343337059021, "repair_targets": [0.9356178045272827], "repair_candidates": [0.05914649739861488, 0.9356178045272827, 0.0016339808935299516, 0.0029452720191329718, 0.00046830723294988275, 0.00018807576270774007], "target_probs": 0.9356178045272827}}
+
+
+{"result": {"time": "2021-02-21 06:02:44.138756", "n_pass": [62, 13, 10], "n_token": 17, "loss": [0.16452820599079132, 0.0364244319498539], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def schema_has_table(", "table_name", "bind", "=", "op", ")", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [1, 10, 12, 7, 14, 2]}}
+{"prediction": {"error_location": 0.8482939004898071, "repair_targets": [0.9642309546470642], "repair_candidates": [0.03535757586359978, 0.9642309546470642, 3.031787673535291e-05, 0.0002000464592128992, 0.0001252893271157518, 5.568662891164422e-05], "target_probs": 0.9642309546470642}}
+
+
+{"result": {"time": "2021-02-21 06:02:44.194353", "n_pass": [81, 14, 11], "n_token": 16, "loss": [0.5639841556549072, 0.22916831076145172], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["table_name", "bind", "=", "op", ")", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 11, "repair_targets": [1], "repair_candidates": [0, 9, 11, 6, 13, 1]}}
+{"prediction": {"error_location": 0.5689378380775452, "repair_targets": [0.795194685459137], "repair_candidates": [0.20252999663352966, 0.795194685459137, 0.00024925792240537703, 0.0008966566529124975, 0.0007839477621018887, 0.000345546577591449], "target_probs": 0.795194685459137}}
+
+
+{"result": {"time": "2021-02-21 06:02:44.249594", "n_pass": [83, 15, 12], "n_token": 15, "loss": [0.054908934980630875, 0.10813341289758682], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["table_name", "bind", "op", ")", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 10, "repair_targets": [1], "repair_candidates": [0, 8, 10, 5, 12, 1]}}
+{"prediction": {"error_location": 0.9465714693069458, "repair_targets": [0.8975078463554382], "repair_candidates": [0.0821024626493454, 0.8975078463554382, 0.01753207854926586, 0.0017502096015959978, 0.0009354350040666759, 0.00017200794536620378], "target_probs": 0.8975078463554382}}
+
+
+{"result": {"time": "2021-02-21 06:02:44.359699", "n_pass": [85, 17, 13], "n_token": 14, "loss": [0.1846642941236496, 0.11732567846775055], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["table_name", "bind", "op", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 9, "repair_targets": [1], "repair_candidates": [0, 7, 9, 4, 11, 1]}}
+{"prediction": {"error_location": 0.8313833475112915, "repair_targets": [0.8892955183982849], "repair_candidates": [0.06297343969345093, 0.8892955183982849, 0.04181523248553276, 0.005062674172222614, 0.000296803773380816, 0.0005564213497564197], "target_probs": 0.8892955183982849}}
+
+
+{"result": {"time": "2021-02-21 06:02:44.526748", "n_pass": [94, 20, 14], "n_token": 13, "loss": [0.012531821615993977, 0.487135648727417], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["table_name", "bind", "#NEWLINE#", "insp", "from_engine", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 8, "repair_targets": [1], "repair_candidates": [0, 6, 8, 3, 10, 1]}}
+{"prediction": {"error_location": 0.9875463843345642, "repair_targets": [0.6143836975097656], "repair_candidates": [0.29200369119644165, 0.6143836975097656, 0.041407786309719086, 0.051821980625391006, 0.00028819660656154156, 9.464118193136528e-05], "target_probs": 0.6143836975097656}}
+
+
+{"result": {"time": "2021-02-21 06:02:44.692324", "n_pass": [114, 23, 15], "n_token": 12, "loss": [0.10002388060092926, 0.6327613592147827], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["table_name", "bind", "#NEWLINE#", "insp", "(", "table_name", "(", "table_name", "in", "insp", ".", "get_table_names"]}}
+{"position": {"error_location": 7, "repair_targets": [1], "repair_candidates": [0, 5, 7, 3, 9, 1]}}
+{"prediction": {"error_location": 0.9048157930374146, "repair_targets": [0.531123161315918], "repair_candidates": [0.25160279870033264, 0.531123161315918, 0.03462206944823265, 0.18100060522556305, 0.0016292971558868885, 2.2010357497492805e-05], "target_probs": 0.531123161315918}}
+
+
+
+
+Minimal simplified tokens:
+
+['table_name', 'bind', '#NEWLINE#', 'insp', '(', 'table_name', '(', 'table_name', 'in', 'insp', '.', 'get_table_names']

@@ -1,0 +1,103 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def get_key(", "key", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "django_settings", ".", "CACHES", "[", "'default'", "]", "[", "'KEY_PREFIX'", "]", "#NEWLINE#", "#UNINDENT#", "except", "KeyError", ":", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "#UNINDENT#", "return", "(", "'%s_%s_%s'", "%", "(", "key", ",", "omblog_settings", ".", "CACHE_PREFIX", ",", "key", ")", ")"], "error_location": [39], "repair_targets": [11, 29], "repair_candidates": [2, 39, 45, 11, 29], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "jamiecurle/django-omblog/omblog/cache.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00008-of-00300", "js_count": 27497, "results": {"model": "rnn", "prob": {"loc": [[0.0015664731618016958, 3.786241986603045e-09, 1.4620258781405937e-08, 1.0529621619070895e-10, 6.200728125405064e-11, 4.486890026189627e-10, 3.1090333085792565e-10, 1.318210163248068e-08, 4.5136536175327535e-10, 1.9025567787878117e-09, 1.6282660553201822e-08, 5.2336459610557995e-09, 4.6540285514318214e-10, 6.910828886930176e-08, 1.8081122710178477e-10, 8.669294260243987e-08, 5.1250274857306266e-11, 2.2466652982444657e-09, 1.8128184819943272e-07, 1.3516175678685016e-10, 3.410992599484075e-10, 3.6487985966005e-09, 1.472228294829847e-08, 3.281065641402847e-09, 7.547234504023947e-10, 1.2847422681261378e-08, 1.0286909990497861e-08, 1.0338109923679895e-08, 1.2102438162742146e-08, 7.264243873095211e-09, 2.3045156893886087e-08, 6.110183647933809e-08, 1.1739373917407647e-08, 3.910410661944752e-09, 7.097372134445834e-10, 7.705954629955158e-08, 7.797633649886393e-09, 2.0128251843054557e-10, 1.0985656473394556e-07, 0.045789361000061035, 3.0682903440215625e-10, 0.00016115786274895072, 1.2396224491340035e-08, 5.264587912279239e-07, 2.2783788153901696e-05, 0.9524551630020142, 3.125196371911443e-06, 5.577710453508189e-07]], "pointer": [[0.0, 0.0, 0.00033538384013809264, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5774956345558167, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4221687316894531, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.679216113525399e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 1.8669740597943019e-07, 0.0, 0.0]], "target": [0.9996643662452698]}, "loss": [3.0837032794952393, 0.00033569009974598885], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [45]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:22:44.884254", "n_pass": [1, 1, 1], "n_token": 48, "loss": [0.048712119460105896, 0.00033569009974598885], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_key(", "key", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "django_settings", ".", "CACHES", "[", "'default'", "]", "[", "'KEY_PREFIX'", "]", "#NEWLINE#", "#UNINDENT#", "except", "KeyError", ":", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "#UNINDENT#", "return", "(", "'%s_%s_%s'", "%", "(", "key", ",", "omblog_settings", ".", "CACHE_PREFIX", ",", "key", ")", ")"]}}
+{"position": {"error_location": 45, "repair_targets": [11, 29], "repair_candidates": [2, 39, 45, 11, 29]}}
+{"prediction": {"error_location": 0.9524551630020142, "repair_targets": [0.5774956345558167, 0.4221687316894531], "repair_candidates": [0.00033538384013809264, 0.5774956345558167, 0.4221687316894531, 6.679216113525399e-08, 1.8669740597943019e-07], "target_probs": 0.9996643662452698}}
+
+
+{"result": {"time": "2021-02-21 12:22:44.951456", "n_pass": [9, 2, 2], "n_token": 36, "loss": [0.058988574892282486, 0.0004980612429790199], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_key(", "key", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "django_prefix", "except", "KeyError", ":", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "#UNINDENT#", "return", "(", "'%s_%s_%s'", "%", "(", "key", ",", "omblog_settings", ".", "CACHE_PREFIX", ",", "key", ")", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [11, 17], "repair_candidates": [2, 27, 33, 11, 17]}}
+{"prediction": {"error_location": 0.9427176713943481, "repair_targets": [0.022027192637324333, 0.9774748682975769], "repair_candidates": [0.0004972699680365622, 0.022027192637324333, 0.9774748682975769, 1.7407904806532315e-07, 5.809373533338658e-07], "target_probs": 0.9995020627975464}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.081751", "n_pass": [36, 4, 3], "n_token": 33, "loss": [0.0437186062335968, 0.0022186196874827147], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_key(", "key", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "#UNINDENT#", "return", "(", "'%s_%s_%s'", "%", "(", "key", ",", "omblog_settings", ".", "CACHE_PREFIX", ",", "key", ")", ")"]}}
+{"position": {"error_location": 30, "repair_targets": [11, 14], "repair_candidates": [2, 24, 30, 11, 14]}}
+{"prediction": {"error_location": 0.9572234153747559, "repair_targets": [0.012121899984776974, 0.9856619238853455], "repair_candidates": [0.0022124729584902525, 0.012121899984776974, 0.9856619238853455, 8.033374570004526e-07, 2.803626557579264e-06], "target_probs": 0.9977838397026062}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.212274", "n_pass": [38, 6, 4], "n_token": 30, "loss": [0.15531288087368011, 0.003984510898590088], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_key(", "key", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "'%s_%s_%s'", "%", "(", "key", ",", "omblog_settings", ".", "CACHE_PREFIX", ",", "key", ")", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [11, 14], "repair_candidates": [2, 21, 27, 11, 14]}}
+{"prediction": {"error_location": 0.8561473488807678, "repair_targets": [0.0066193169914186, 0.9894040822982788], "repair_candidates": [0.003965585958212614, 0.0066193169914186, 0.9894040822982788, 1.6011729258025298e-06, 9.34059607970994e-06], "target_probs": 0.996023416519165}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.274925", "n_pass": [39, 7, 5], "n_token": 27, "loss": [0.21420912444591522, 0.03676930069923401], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_key(", "key", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "key", ",", "omblog_settings", ".", "CACHE_PREFIX", ",", "key", ")", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [11, 14], "repair_candidates": [2, 18, 24, 11, 14]}}
+{"prediction": {"error_location": 0.8071795701980591, "repair_targets": [0.006142749916762114, 0.9577557444572449], "repair_candidates": [0.03593241050839424, 0.006142749916762114, 0.9577557444572449, 7.139339140849188e-05, 9.774487989488989e-05], "target_probs": 0.9638984799385071}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.396997", "n_pass": [44, 9, 6], "n_token": 24, "loss": [0.022215669974684715, 0.0031939437612891197], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_key(", "key", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "key", ",", "omblog_settings", ".", "CACHE_PREFIX", ",", "key", ")", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [8, 11], "repair_candidates": [2, 15, 21, 8, 11]}}
+{"prediction": {"error_location": 0.9780293107032776, "repair_targets": [0.024362588301301003, 0.9724485874176025], "repair_candidates": [0.003064442193135619, 0.024362588301301003, 0.9724485874176025, 4.3745785660576075e-05, 8.070380863500759e-05], "target_probs": 0.9968111515045166}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.456520", "n_pass": [45, 10, 7], "n_token": 21, "loss": [0.015309559181332588, 0.0022817635908722878], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_key(", "key", "#NEWLINE#", "#INDENT#", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "key", ",", "omblog_settings", ".", "CACHE_PREFIX", ",", "key", ")", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [5, 8], "repair_candidates": [2, 12, 18, 5, 8]}}
+{"prediction": {"error_location": 0.9848071336746216, "repair_targets": [0.19329389929771423, 0.8044269680976868], "repair_candidates": [0.00218061450868845, 0.19329389929771423, 0.8044269680976868, 2.2786745830671862e-05, 7.567304419353604e-05], "target_probs": 0.9977208375930786}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.575072", "n_pass": [50, 12, 8], "n_token": 18, "loss": [0.09482945501804352, 0.011525032110512257], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_key(", "key", "#NEWLINE#", "#INDENT#", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "key", ",", "omblog_settings", "key", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [5, 8], "repair_candidates": [2, 12, 15, 5, 8]}}
+{"prediction": {"error_location": 0.9095279574394226, "repair_targets": [0.3803327977657318, 0.6082082986831665], "repair_candidates": [0.01125460583716631, 0.3803327977657318, 0.6082082986831665, 0.00019272784993518144, 1.1639405784080736e-05], "target_probs": 0.9885411262512207}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.688328", "n_pass": [70, 14, 9], "n_token": 16, "loss": [0.41536563634872437, 0.00941667053848505], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get_key(", "key", "#NEWLINE#", "#INDENT#", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "key", ",", "omblog_settings", "key"]}}
+{"position": {"error_location": 15, "repair_targets": [5, 8], "repair_candidates": [2, 12, 15, 5, 8]}}
+{"prediction": {"error_location": 0.6600988507270813, "repair_targets": [0.42409488558769226, 0.5665326118469238], "repair_candidates": [0.009164870716631413, 0.42409488558769226, 0.5665326118469238, 0.00019862287444993854, 8.981534847407602e-06], "target_probs": 0.9906275272369385}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.744817", "n_pass": [71, 15, 10], "n_token": 15, "loss": [0.4459689259529114, 0.05813916027545929], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def get_key(", "key", "#NEWLINE#", "#INDENT#", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "key", ",", "omblog_settings", "key"]}}
+{"position": {"error_location": 14, "repair_targets": [4, 7], "repair_candidates": [1, 11, 14, 4, 7]}}
+{"prediction": {"error_location": 0.6402036547660828, "repair_targets": [0.24000975489616394, 0.7035088539123535], "repair_candidates": [0.05625619739294052, 0.24000975489616394, 0.7035088539123535, 0.00021194241708144546, 1.3264554581837729e-05], "target_probs": 0.9435186386108398}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.800684", "n_pass": [72, 16, 11], "n_token": 14, "loss": [0.5012698173522949, 0.02055429480969906], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["key", "#NEWLINE#", "#INDENT#", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "key", ",", "omblog_settings", "key"]}}
+{"position": {"error_location": 13, "repair_targets": [3, 6], "repair_candidates": [0, 10, 13, 3, 6]}}
+{"prediction": {"error_location": 0.605760931968689, "repair_targets": [0.17388077080249786, 0.8057747483253479], "repair_candidates": [0.020175764337182045, 0.17388077080249786, 0.8057747483253479, 0.00015991811233107, 8.876315405359492e-06], "target_probs": 0.9796555042266846}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.855958", "n_pass": [74, 17, 12], "n_token": 13, "loss": [0.6796959638595581, 0.05062953010201454], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["key", "#INDENT#", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "key", ",", "omblog_settings", "key"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 5], "repair_candidates": [0, 9, 12, 2, 5]}}
+{"prediction": {"error_location": 0.5067710876464844, "repair_targets": [0.38932302594184875, 0.5613077282905579], "repair_candidates": [0.04917686805129051, 0.38932302594184875, 0.5613077282905579, 0.0001814715942600742, 1.0922481123998296e-05], "target_probs": 0.950630784034729}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.911098", "n_pass": [75, 18, 13], "n_token": 12, "loss": [0.6227637529373169, 0.03834305331110954], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["key", "django_prefix", "#NEWLINE#", "#INDENT#", "django_prefix", "=", "''", "#NEWLINE#", "key", ",", "omblog_settings", "key"]}}
+{"position": {"error_location": 11, "repair_targets": [1, 4], "repair_candidates": [0, 8, 11, 1, 4]}}
+{"prediction": {"error_location": 0.536459743976593, "repair_targets": [0.07080536335706711, 0.8915773630142212], "repair_candidates": [0.03742870315909386, 0.07080536335706711, 0.8915773630142212, 0.00017441192176193, 1.413998870702926e-05], "target_probs": 0.9623827338218689}}
+
+
+{"result": {"time": "2021-02-21 12:22:45.967439", "n_pass": [77, 19, 14], "n_token": 10, "loss": [0.6283888220787048, 0.016001490876078606], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["key", "django_prefix", "django_prefix", "=", "''", "#NEWLINE#", "key", ",", "omblog_settings", "key"]}}
+{"position": {"error_location": 9, "repair_targets": [1, 2], "repair_candidates": [0, 6, 9, 1, 2]}}
+{"prediction": {"error_location": 0.5334506034851074, "repair_targets": [0.2780926525592804, 0.7060331702232361], "repair_candidates": [0.01576903834939003, 0.2780926525592804, 0.7060331702232361, 0.00010106379340868443, 4.027163868158823e-06], "target_probs": 0.9841258525848389}}
+
+
+{"result": {"time": "2021-02-21 12:22:46.020561", "n_pass": [79, 20, 15], "n_token": 8, "loss": [0.5244935154914856, 0.006770171225070953], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["key", "django_prefix", "django_prefix", "=", "key", ",", "omblog_settings", "key"]}}
+{"position": {"error_location": 7, "repair_targets": [1, 2], "repair_candidates": [0, 4, 7, 1, 2]}}
+{"prediction": {"error_location": 0.5918551087379456, "repair_targets": [0.18934977054595947, 0.8039029240608215], "repair_candidates": [0.006671637762337923, 0.18934977054595947, 0.8039029240608215, 7.438289321726188e-05, 1.3246408343547955e-06], "target_probs": 0.993252694606781}}
+
+
+
+
+Minimal simplified tokens:
+
+['key', 'django_prefix', 'django_prefix', '=', 'key', ',', 'omblog_settings', 'key']

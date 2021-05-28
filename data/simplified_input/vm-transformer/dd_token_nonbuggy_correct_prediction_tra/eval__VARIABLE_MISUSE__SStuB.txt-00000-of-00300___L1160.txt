@@ -1,0 +1,205 @@
+
+Original sample:
+
+{"has_bug": false, "bug_kind": 0, "bug_kind_name": "NONE", "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Add a socket FileDescriptor for notification of data available to read.\\n        '", "#NEWLINE#", "if", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", ",", "'doRead'", ",", "(", "(", "(", "FD_READ", "|", "FD_ACCEPT", ")", "|", "FD_CONNECT", ")", "|", "FD_CLOSE", ")", ")", "#NEWLINE#", "if", "(", "reader", "in", "self", ".", "_closedAndNotReading", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_closedAndReading", "[", "reader", "]", "=", "True", "#NEWLINE#", "del", "self", ".", "_closedAndNotReading", "[", "reader", "]"], "error_location": [0], "repair_targets": [], "repair_candidates": [4, 13, 26, 33, 54, 67, 77, 2, 15, 22, 29, 56, 63, 73], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "twisted/twisted/twisted/internet/win32eventreactor.py", "license": "mit", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 1160, "results": {"model": "transformer", "prob": {"loc": [[0.9986760020256042, 3.3169594644277822e-06, 1.7007118913170416e-07, 5.9425868670359705e-09, 1.1052710533476784e-06, 3.966567518887132e-09, 1.0465153188476961e-08, 1.1340593353281747e-08, 7.182868078103866e-09, 9.517841625950041e-09, 1.5780241113816373e-08, 1.8857784667147826e-08, 8.261239514695262e-08, 9.844303713180125e-05, 1.5286398991065653e-07, 1.6783289538579993e-05, 1.1887033224411425e-07, 8.132909457003734e-09, 8.908195070489455e-09, 2.0872391814918956e-08, 4.919797902402934e-09, 3.3118405795562467e-09, 2.2499853002955206e-07, 2.4535685483328962e-08, 6.603185997988703e-09, 1.1528237031654953e-08, 4.556774365482852e-05, 2.295778012140204e-09, 1.3692522671249208e-08, 3.813315743173007e-07, 3.6869536756967136e-08, 2.670505772073284e-08, 9.435316172812236e-08, 4.2924344597849995e-05, 2.258135367583236e-08, 6.9504504374151566e-09, 1.1112679665359337e-08, 9.501897046959584e-09, 6.204518854246999e-08, 4.81896165638318e-07, 2.155878974008374e-06, 2.9885665497886293e-08, 9.873081019406982e-09, 2.1905717240144895e-09, 2.0094081065735736e-08, 1.7343496949706605e-07, 6.966855536916228e-09, 3.137180115686533e-08, 1.2545358174520516e-07, 1.820900763505051e-08, 1.0781465498155285e-08, 1.4383454427502329e-08, 2.2029498225606403e-08, 4.626081206993149e-08, 0.000537477491889149, 1.0714681764056877e-07, 1.7244228729396127e-05, 2.1861056609395746e-07, 1.5858509172517188e-08, 5.163697913701526e-09, 9.822259983138792e-08, 1.710552055556036e-08, 3.1572280345670833e-09, 8.266059694506112e-07, 2.0573187597960896e-08, 1.4223910049793176e-08, 9.085036722922268e-09, 3.468635259196162e-05, 7.707018134794907e-09, 1.5992914370599465e-07, 1.5806961073394632e-08, 5.751211507032394e-09, 1.1377765396503037e-09, 1.1818420716736e-05, 4.2049990156556305e-08, 9.579691706562699e-09, 7.266511392600705e-09, 0.000508176744915545, 1.8437747328903242e-08]], "pointer": [[0.0, 0.0, 0.7636486887931824, 0.0, 0.02966388314962387, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0044679115526378155, 0.0, 0.009642785415053368, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.023436766117811203, 0.0, 0.0, 0.0, 0.021949756890535355, 0.0, 0.0, 0.0634288638830185, 0.0, 0.0, 0.0, 0.005125701427459717, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0009947007056325674, 0.0, 0.003672047285363078, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.012735496275126934, 0.0, 0.0, 0.0, 0.05617804080247879, 0.0, 0.0, 0.0, 0.0, 0.0, 0.002527492120862007, 0.0, 0.0, 0.0, 0.0025279622059315443, 0.0]], "target": [0.0]}, "loss": [0.0013247294118627906, 0.0], "acc": [1.0, 0.0, 0.0, 0.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 15:29:24.670251", "n_pass": [1, 1, 1], "n_token": 79, "loss": [0.0013247294118627906, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Add a socket FileDescriptor for notification of data available to read.\\n        '", "#NEWLINE#", "if", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", ",", "'doRead'", ",", "(", "(", "(", "FD_READ", "|", "FD_ACCEPT", ")", "|", "FD_CONNECT", ")", "|", "FD_CLOSE", ")", ")", "#NEWLINE#", "if", "(", "reader", "in", "self", ".", "_closedAndNotReading", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_closedAndReading", "[", "reader", "]", "=", "True", "#NEWLINE#", "del", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 26, 33, 54, 67, 77, 2, 15, 22, 29, 56, 63, 73]}}
+{"prediction": {"error_location": 0.9986760020256042, "repair_targets": [], "repair_candidates": [0.7636486887931824, 0.02966388314962387, 0.0044679115526378155, 0.009642785415053368, 0.023436766117811203, 0.021949756890535355, 0.0634288638830185, 0.005125701427459717, 0.0009947007056325674, 0.003672047285363078, 0.012735496275126934, 0.05617804080247879, 0.002527492120862007, 0.0025279622059315443], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:24.727389", "n_pass": [24, 2, 2], "n_token": 69, "loss": [0.0019010106334462762, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Add a socket FileDescriptor for notification of data available to read.\\n        '", "#NEWLINE#", "if", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", ",", "'doRead'", ",", "(", "(", ")", ")", "#NEWLINE#", "if", "(", "reader", "in", "self", ".", "_closedAndNotReading", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_closedAndReading", "[", "reader", "]", "=", "True", "#NEWLINE#", "del", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 26, 33, 44, 57, 67, 2, 15, 22, 29, 46, 53, 63]}}
+{"prediction": {"error_location": 0.9981006979942322, "repair_targets": [], "repair_candidates": [0.730991542339325, 0.03150683268904686, 0.002996808849275112, 0.008668039925396442, 0.019439805299043655, 0.004935567267239094, 0.04711327701807022, 0.0007692090002819896, 0.0004914128221571445, 0.0026174276135861874, 0.004875600337982178, 0.14085938036441803, 0.0026819193735718727, 0.00205313041806221], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:24.784525", "n_pass": [45, 3, 3], "n_token": 64, "loss": [0.004698664415627718, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Add a socket FileDescriptor for notification of data available to read.\\n        '", "#NEWLINE#", "if", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", ",", "'doRead'", ",", "(", "(", "reader", "in", "self", ".", "_closedAndNotReading", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_closedAndReading", "[", "reader", "]", "=", "True", "#NEWLINE#", "del", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 26, 33, 39, 52, 62, 2, 15, 22, 29, 41, 48, 58]}}
+{"prediction": {"error_location": 0.9953124523162842, "repair_targets": [], "repair_candidates": [0.8947566151618958, 0.010296228341758251, 0.0022741593420505524, 0.008788665756583214, 0.013601523824036121, 0.0012354381615296006, 0.048928212374448776, 0.000254288810538128, 2.7633908757707104e-05, 0.0049651749432086945, 0.003423352725803852, 0.00852750800549984, 0.0016707590548321605, 0.001250558067113161], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:24.844074", "n_pass": [57, 4, 4], "n_token": 59, "loss": [0.00048756631440483034, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Add a socket FileDescriptor for notification of data available to read.\\n        '", "#NEWLINE#", "if", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "_closedAndNotReading", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_closedAndReading", "[", "reader", "]", "=", "True", "#NEWLINE#", "del", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 26, 33, 34, 47, 57, 2, 15, 22, 29, 36, 43, 53]}}
+{"prediction": {"error_location": 0.9995125532150269, "repair_targets": [], "repair_candidates": [0.8703733682632446, 0.031952425837516785, 0.005530962720513344, 0.007556196302175522, 0.016328996047377586, 0.005334874149411917, 0.0327405221760273, 0.0006820678827352822, 0.0012327200965955853, 0.01498785987496376, 0.004606995265930891, 0.0062768226489424706, 0.0008993684314191341, 0.0014967839233577251], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:24.901267", "n_pass": [97, 5, 5], "n_token": 56, "loss": [0.0035211960785090923, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Add a socket FileDescriptor for notification of data available to read.\\n        '", "#NEWLINE#", "if", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", ".", "_closedAndReading", "[", "reader", "]", "=", "True", "#NEWLINE#", "del", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 26, 33, 34, 44, 54, 2, 15, 22, 29, 36, 40, 50]}}
+{"prediction": {"error_location": 0.9964848756790161, "repair_targets": [], "repair_candidates": [0.6784211993217468, 0.23340821266174316, 0.006014394573867321, 0.009833808057010174, 0.00864311121404171, 0.005281438585370779, 0.023619594052433968, 0.0003049660590477288, 0.00043330900371074677, 0.025096474215388298, 0.006718544289469719, 0.0015149146784096956, 0.00035645542084239423, 0.0003536200965754688], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:24.956991", "n_pass": [99, 6, 6], "n_token": 53, "loss": [0.1385171264410019, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Add a socket FileDescriptor for notification of data available to read.\\n        '", "#NEWLINE#", "if", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "True", "#NEWLINE#", "del", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 26, 33, 34, 41, 51, 2, 15, 22, 29, 36, 40, 47]}}
+{"prediction": {"error_location": 0.8706485033035278, "repair_targets": [], "repair_candidates": [0.019851623103022575, 0.08227329701185226, 0.03629504144191742, 0.0004284418246243149, 0.000559306878130883, 0.18068872392177582, 0.0008325911476276815, 0.0162711963057518, 0.011515471152961254, 0.0012606628006324172, 0.13466133177280426, 0.4736981689929962, 1.4492859918391332e-05, 0.041649676859378815], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:25.013008", "n_pass": [101, 7, 7], "n_token": 50, "loss": [0.05785839632153511, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        Add a socket FileDescriptor for notification of data available to read.\\n        '", "#NEWLINE#", "if", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 26, 33, 34, 41, 48, 2, 15, 22, 29, 36, 40, 44]}}
+{"prediction": {"error_location": 0.943783700466156, "repair_targets": [], "repair_candidates": [0.07888033241033554, 0.12724341452121735, 0.015993328765034676, 0.0009991952683776617, 0.001452817115932703, 0.1025732010602951, 0.002811472862958908, 0.022624673321843147, 0.018723271787166595, 0.005852028727531433, 0.16328230500221252, 0.4502934217453003, 0.0003889766812790185, 0.008881602436304092], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:25.071296", "n_pass": [107, 8, 8], "n_token": 48, "loss": [0.07661078870296478, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "#INDENT#", "'\\n        Add a socket FileDescriptor for notification of data available to read.\\n        '", "#NEWLINE#", "if", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 11, 24, 31, 32, 39, 46, 2, 13, 20, 27, 34, 38, 42]}}
+{"prediction": {"error_location": 0.9262501001358032, "repair_targets": [], "repair_candidates": [0.09153696149587631, 0.11925709247589111, 0.025706853717565536, 0.0015392624773085117, 0.0018431995995342731, 0.09066943824291229, 0.005607431288808584, 0.023550013080239296, 0.01932714693248272, 0.003908910322934389, 0.14671054482460022, 0.4582509398460388, 0.0004052997683174908, 0.01168681588023901], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:25.736918", "n_pass": [108, 9, 9], "n_token": 46, "loss": [0.10841383039951324, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "#NEWLINE#", "if", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 9, 22, 29, 30, 37, 44, 2, 11, 18, 25, 32, 36, 40]}}
+{"prediction": {"error_location": 0.8972561955451965, "repair_targets": [], "repair_candidates": [0.05813509598374367, 0.15709684789180756, 0.07726993411779404, 0.0017521879635751247, 0.0012262904783710837, 0.1833290010690689, 0.003679143264889717, 0.008302480913698673, 0.006412037648260593, 0.001207497320137918, 0.10756286233663559, 0.3739702105522156, 0.000488174642669037, 0.01956823468208313], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:25.794363", "n_pass": [109, 10, 10], "n_token": 44, "loss": [0.2868272662162781, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", ".", "_reads", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 20, 27, 28, 35, 42, 2, 9, 16, 23, 30, 34, 38]}}
+{"prediction": {"error_location": 0.7506413459777832, "repair_targets": [], "repair_candidates": [0.023923823609948158, 0.24228855967521667, 0.32083460688591003, 0.010009841993451118, 0.0011756157036870718, 0.08287514746189117, 0.0034352345392107964, 0.0332208126783371, 0.03486211225390434, 0.0015255744801834226, 0.021028755232691765, 0.21998870372772217, 0.0008428727160207927, 0.003988264594227076], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:25.850879", "n_pass": [112, 11, 11], "n_token": 42, "loss": [0.4162577986717224, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 18, 25, 26, 33, 40, 2, 9, 14, 21, 28, 32, 36]}}
+{"prediction": {"error_location": 0.6595102548599243, "repair_targets": [], "repair_candidates": [0.07204493135213852, 0.2408289760351181, 0.23019950091838837, 0.09015621989965439, 0.008823542855679989, 0.09035169333219528, 0.015058401972055435, 0.04468471556901932, 0.03761206939816475, 0.006429164670407772, 0.026592612266540527, 0.13076446950435638, 0.00224513653665781, 0.004208608064800501], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:25.907421", "n_pass": [113, 12, 12], "n_token": 40, "loss": [0.19118957221508026, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "#NEWLINE#", "#INDENT#", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 16, 23, 24, 31, 38, 2, 9, 12, 19, 26, 30, 34]}}
+{"prediction": {"error_location": 0.8259758949279785, "repair_targets": [], "repair_candidates": [0.05573630705475807, 0.31781476736068726, 0.3133765161037445, 0.03820422664284706, 0.005322974640876055, 0.052783459424972534, 0.010463042184710503, 0.040220651775598526, 0.018350448459386826, 0.003709794022142887, 0.025051310658454895, 0.11099797487258911, 0.0013933635782450438, 0.00657504890114069], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:25.963380", "n_pass": [114, 13, 13], "n_token": 38, "loss": [0.1286860853433609, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "_reads", "[", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 14, 21, 22, 29, 36, 2, 9, 10, 17, 24, 28, 32]}}
+{"prediction": {"error_location": 0.8792498707771301, "repair_targets": [], "repair_candidates": [0.0396585687994957, 0.3128291070461273, 0.46830540895462036, 0.015106559731066227, 0.009031349793076515, 0.01160635706037283, 0.006366572342813015, 0.03689587116241455, 0.0215048398822546, 0.0023745691869407892, 0.008237982168793678, 0.06545914709568024, 0.0006397987599484622, 0.0019838244188576937], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.019403", "n_pass": [116, 14, 14], "n_token": 36, "loss": [0.21321426331996918, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "]", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 19, 20, 27, 34, 2, 9, 10, 15, 22, 26, 30]}}
+{"prediction": {"error_location": 0.8079831600189209, "repair_targets": [], "repair_candidates": [0.023933492600917816, 0.17828267812728882, 0.18783950805664062, 0.004856521263718605, 0.002498948248103261, 0.005330425221472979, 0.00541513180360198, 0.35142382979393005, 0.20711371302604675, 0.0007556719938293099, 0.0012034756364300847, 0.029331494122743607, 0.0002543501032050699, 0.0017606834881007671], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.080052", "n_pass": [160, 15, 15], "n_token": 35, "loss": [0.19443371891975403, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "=", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 18, 19, 26, 33, 2, 9, 10, 14, 21, 25, 29]}}
+{"prediction": {"error_location": 0.8233007192611694, "repair_targets": [], "repair_candidates": [0.019239725545048714, 0.12965916097164154, 0.25095510482788086, 0.008019473403692245, 0.004117157775908709, 0.015372958965599537, 0.004596465267241001, 0.3445563018321991, 0.20107276737689972, 0.0007831683615222573, 0.001006850739941001, 0.018892452120780945, 0.0001344416377833113, 0.0015938861761242151], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.136499", "n_pass": [161, 16, 16], "n_token": 34, "loss": [0.1728810966014862, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "self", ".", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 17, 18, 25, 32, 2, 9, 10, 13, 20, 24, 28]}}
+{"prediction": {"error_location": 0.8412375450134277, "repair_targets": [], "repair_candidates": [0.03346479684114456, 0.1897733360528946, 0.24060846865177155, 0.007085403427481651, 0.0035178540274500847, 0.015404255129396915, 0.003615420777350664, 0.2958059310913086, 0.18382327258586884, 0.0011988247279077768, 0.003086581826210022, 0.020186495035886765, 0.00023145569139160216, 0.0021978882141411304], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.192797", "n_pass": [163, 17, 17], "n_token": 33, "loss": [0.21459519863128662, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "self", "_makeSocketEvent", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 16, 17, 24, 31, 2, 9, 10, 13, 19, 23, 27]}}
+{"prediction": {"error_location": 0.8068680763244629, "repair_targets": [], "repair_candidates": [0.03948027640581131, 0.305090993642807, 0.3600158095359802, 0.013659642077982426, 0.0035828931722790003, 0.022469155490398407, 0.010833989828824997, 0.10227161645889282, 0.11860552430152893, 0.0018798396922647953, 0.0017288645030930638, 0.018646227195858955, 0.00030354323098436, 0.0014316566521301866], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.248832", "n_pass": [164, 18, 18], "n_token": 32, "loss": [0.1501111090183258, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "self", "(", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 15, 16, 23, 30, 2, 9, 10, 13, 18, 22, 26]}}
+{"prediction": {"error_location": 0.8606122732162476, "repair_targets": [], "repair_candidates": [0.052090518176555634, 0.31007763743400574, 0.49343881011009216, 0.017566906288266182, 0.0066948081366717815, 0.03277231380343437, 0.016864381730556488, 0.012853260152041912, 0.012206410057842731, 0.0015931740636005998, 0.002036677673459053, 0.03914415463805199, 0.0005045996513217688, 0.002156260423362255], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.304508", "n_pass": [165, 19, 19], "n_token": 31, "loss": [0.15280373394489288, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "self", "reader", "reader", "in", "self", ".", "#NEWLINE#", "#INDENT#", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 14, 15, 22, 29, 2, 9, 10, 13, 17, 21, 25]}}
+{"prediction": {"error_location": 0.8582983613014221, "repair_targets": [], "repair_candidates": [0.023544995114207268, 0.41056370735168457, 0.34198129177093506, 0.006072281859815121, 0.0025183362886309624, 0.057144712656736374, 0.004383733496069908, 0.08602552860975266, 0.03353666141629219, 0.0008333434234373271, 0.0008342809742316604, 0.029699724167585373, 0.00024468693300150335, 0.0026167631149291992], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.363670", "n_pass": [169, 20, 20], "n_token": 29, "loss": [0.03671747446060181, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "self", "reader", "reader", "in", "self", ".", "self", "reader", "]", "=", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 14, 15, 20, 27, 2, 9, 10, 13, 17, 19, 23]}}
+{"prediction": {"error_location": 0.9639485478401184, "repair_targets": [], "repair_candidates": [0.018732041120529175, 0.2682504653930664, 0.5262064933776855, 0.017795240506529808, 0.0054651652462780476, 0.02592623047530651, 0.03382940590381622, 0.09536230564117432, 0.0010853122221305966, 0.0007192649063654244, 0.0013724945019930601, 0.004388339817523956, 0.0005549908382818103, 0.0003121841000393033], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.419680", "n_pass": [171, 21, 21], "n_token": 27, "loss": [0.037645645439624786, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "self", "reader", "reader", "in", "self", ".", "self", "reader", "self", ".", "_closedAndNotReading", "[", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 14, 15, 20, 25, 2, 9, 10, 13, 17, 19, 21]}}
+{"prediction": {"error_location": 0.963054358959198, "repair_targets": [], "repair_candidates": [0.049701202660799026, 0.032297760248184204, 0.7083491683006287, 0.05607260763645172, 0.03621985763311386, 0.004623048938810825, 0.07453146576881409, 0.011729400604963303, 0.00010981299419654533, 0.0011087061138823628, 0.0036458203103393316, 0.004482395946979523, 0.01697360910475254, 0.00015523242473136634], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.475126", "n_pass": [173, 22, 22], "n_token": 25, "loss": [0.021519150584936142, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def addReader(", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "self", "reader", "reader", "in", "self", ".", "self", "reader", "self", ".", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 14, 15, 20, 23, 2, 9, 10, 13, 17, 19, 21]}}
+{"prediction": {"error_location": 0.9787105321884155, "repair_targets": [], "repair_candidates": [0.04393817111849785, 0.04534400999546051, 0.6537612676620483, 0.05196559429168701, 0.043807439506053925, 0.013334126211702824, 0.07356781512498856, 0.0531950369477272, 0.0005353509914129972, 0.0008409290458075702, 0.0024656695313751698, 0.006468666717410088, 0.0024132311809808016, 0.00836266204714775], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.530766", "n_pass": [176, 23, 23], "n_token": 24, "loss": [0.017306268215179443, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", ",", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "self", "reader", "reader", "in", "self", ".", "self", "reader", "self", ".", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [3, 6, 11, 13, 14, 19, 22, 1, 8, 9, 12, 16, 18, 20]}}
+{"prediction": {"error_location": 0.982842743396759, "repair_targets": [], "repair_candidates": [0.5394485592842102, 0.04508942365646362, 0.14123684167861938, 0.028412438929080963, 0.030569272115826607, 0.02145831286907196, 0.0754980742931366, 0.08958782255649567, 0.0010248518083244562, 0.0007033762522041798, 0.0011931514600291848, 0.008957055397331715, 0.0011262926273047924, 0.015694476664066315], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.585953", "n_pass": [178, 24, 24], "n_token": 23, "loss": [0.022389957681298256, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "reader", ")", "(", "reader", "not in", "self", "self", ".", "reader", "self", "reader", "reader", "in", "self", ".", "self", "reader", "self", ".", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 5, 10, 12, 13, 18, 21, 1, 7, 8, 11, 15, 17, 19]}}
+{"prediction": {"error_location": 0.97785884141922, "repair_targets": [], "repair_candidates": [0.3795936107635498, 0.04372594878077507, 0.2608482539653778, 0.01849743351340294, 0.020596176385879517, 0.038494691252708435, 0.05178910866379738, 0.14267443120479584, 0.002338554710149765, 0.0005283276550471783, 0.0005031183827668428, 0.012893952429294586, 0.0003806243184953928, 0.027135729789733887], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.641849", "n_pass": [180, 25, 25], "n_token": 22, "loss": [0.021233148872852325, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "reader", "(", "reader", "not in", "self", "self", ".", "reader", "self", "reader", "reader", "in", "self", ".", "self", "reader", "self", ".", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 4, 9, 11, 12, 17, 20, 1, 6, 7, 10, 14, 16, 18]}}
+{"prediction": {"error_location": 0.9789907932281494, "repair_targets": [], "repair_candidates": [0.7104662656784058, 0.063531294465065, 0.027328507974743843, 0.018947431817650795, 0.014543898403644562, 0.02464059367775917, 0.0312972292304039, 0.08333349227905273, 0.0009059998556040227, 0.0010534074390307069, 0.001000012969598174, 0.007091489154845476, 0.0008258676389232278, 0.015034484677016735], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.700693", "n_pass": [181, 26, 26], "n_token": 21, "loss": [0.03368542343378067, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "reader", "reader", "not in", "self", "self", ".", "reader", "self", "reader", "reader", "in", "self", ".", "self", "reader", "self", ".", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 8, 10, 11, 16, 19, 1, 5, 6, 9, 13, 15, 17]}}
+{"prediction": {"error_location": 0.9668756127357483, "repair_targets": [], "repair_candidates": [0.3186967074871063, 0.11910884082317352, 0.4414832890033722, 0.006976907607167959, 0.004934302065521479, 0.00963036622852087, 0.006839449983090162, 0.07922112196683884, 0.0006957210134714842, 0.001036137924529612, 0.0004689462366513908, 0.002721128985285759, 0.00032744466443546116, 0.007859609089791775], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.756709", "n_pass": [183, 27, 27], "n_token": 20, "loss": [0.022574353963136673, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "reader", "reader", "self", "self", ".", "reader", "self", "reader", "reader", "in", "self", ".", "self", "reader", "self", ".", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 7, 9, 10, 15, 18, 1, 4, 5, 8, 12, 14, 16]}}
+{"prediction": {"error_location": 0.9776785373687744, "repair_targets": [], "repair_candidates": [0.4351828992366791, 0.04730811342597008, 0.06456941366195679, 0.033458516001701355, 0.03805067762732506, 0.051541317254304886, 0.07234659790992737, 0.13699164986610413, 0.07000914216041565, 0.008668201975524426, 0.0025261647533625364, 0.01648503541946411, 0.0012237633345648646, 0.021638482809066772], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.812249", "n_pass": [186, 28, 28], "n_token": 19, "loss": [0.06639483571052551, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "reader", "reader", "self", "self", "reader", "self", "reader", "reader", "in", "self", ".", "self", "reader", "self", ".", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 8, 9, 14, 17, 1, 4, 5, 7, 11, 13, 15]}}
+{"prediction": {"error_location": 0.9357615113258362, "repair_targets": [], "repair_candidates": [0.08654837310314178, 0.03613296523690224, 0.023826904594898224, 0.09466488659381866, 0.10014767199754715, 0.14152614772319794, 0.24029940366744995, 0.15153101086616516, 0.11584940552711487, 0.0035960187669843435, 0.001461879350244999, 0.0019243441056460142, 0.00042300092172808945, 0.0020680036395788193], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.868924", "n_pass": [212, 29, 29], "n_token": 18, "loss": [0.063944511115551, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "reader", "reader", "self", "self", "reader", "self", "reader", "reader", "self", ".", "self", "reader", "self", ".", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 8, 9, 13, 16, 1, 4, 5, 7, 10, 12, 14]}}
+{"prediction": {"error_location": 0.9380569458007812, "repair_targets": [], "repair_candidates": [0.17692402005195618, 0.31456759572029114, 0.18948374688625336, 0.013797733001410961, 0.014498473145067692, 0.13436266779899597, 0.025152739137411118, 0.05331436172127724, 0.035061463713645935, 0.004091186914592981, 0.001470085233449936, 0.015908068045973778, 0.0004275658866390586, 0.020940344780683517], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.924761", "n_pass": [214, 30, 30], "n_token": 17, "loss": [0.04394383355975151, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "reader", "reader", "self", "self", "reader", "self", "reader", "reader", "self", "self", "reader", "self", ".", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 8, 9, 12, 15, 1, 4, 5, 7, 10, 11, 13]}}
+{"prediction": {"error_location": 0.9570077061653137, "repair_targets": [], "repair_candidates": [0.13133251667022705, 0.28466272354125977, 0.156672403216362, 0.010296132415533066, 0.010234633460640907, 0.09093762934207916, 0.01512339897453785, 0.1284344643354416, 0.1366427093744278, 0.00967763178050518, 0.0017409404972568154, 0.011044494807720184, 0.0001841276534833014, 0.013016127981245518], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:26.979994", "n_pass": [218, 31, 31], "n_token": 16, "loss": [0.04040530323982239, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "reader", "reader", "self", "self", "reader", "self", "reader", "reader", "self", "self", "reader", "self", "reader", "]"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 8, 9, 12, 14, 1, 4, 5, 7, 10, 11, 13]}}
+{"prediction": {"error_location": 0.9604001045227051, "repair_targets": [], "repair_candidates": [0.07106063514947891, 0.009295155294239521, 0.01603666879236698, 0.0028032392729073763, 0.0030648482497781515, 0.048842690885066986, 0.0038663146551698446, 0.04569154605269432, 0.04152979701757431, 0.009536259807646275, 0.04839332774281502, 0.36705106496810913, 0.02440158650279045, 0.3084268867969513], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 15:29:27.038259", "n_pass": [220, 32, 32], "n_token": 15, "loss": [0.0003725788265001029, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "reader", "reader", "self", "self", "reader", "self", "reader", "reader", "self", "self", "reader", "self", "reader"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 8, 9, 12, 14, 1, 4, 5, 7, 10, 11, 13]}}
+{"prediction": {"error_location": 0.9996275901794434, "repair_targets": [], "repair_candidates": [0.30030199885368347, 0.15033972263336182, 0.09378323704004288, 0.049958016723394394, 0.05957667902112007, 0.059480760246515274, 0.05889390408992767, 0.06327839940786362, 0.05861508473753929, 0.02642030455172062, 0.02135896496474743, 0.027305614203214645, 0.013009156100451946, 0.01767817512154579], "target_probs": 0.0}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'self', 'reader', 'reader', 'self', 'self', 'reader', 'self', 'reader', 'reader', 'self', 'self', 'reader', 'self', 'reader']

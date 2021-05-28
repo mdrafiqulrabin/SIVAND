@@ -1,0 +1,175 @@
+
+Original sample:
+
+{"has_bug": false, "bug_kind": 0, "bug_kind_name": "NONE", "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Do all the related feature configurations for changing isolation\\n        levels. This doesn't touch the uses_autocommit feature, since that\\n        controls the movement *between* isolation levels.\\n        \"", "#NEWLINE#", "assert", "(", "level", "in", "range", "(", "5", ")", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "self", ".", "connection", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "connection", ".", "set_isolation_level", "(", "level", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "finally", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"], "error_location": [0], "repair_targets": [], "repair_candidates": [4, 13, 42, 55, 65, 2, 27, 36, 51, 57], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "AppScale/appscale/AppServer/lib/django-1.5/django/db/backends/postgresql_psycopg2/base.py", "license": "apache-2.0", "note": "license: github_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 308, "results": {"model": "transformer", "prob": {"loc": [[0.9842529892921448, 7.719335371803027e-06, 4.0499651277059456e-07, 8.611689139570444e-08, 3.5726282021641964e-06, 8.782527061157452e-08, 1.68092341823467e-07, 1.7903937532537384e-07, 1.445266519795041e-07, 1.640368054722785e-07, 2.9781227794956067e-07, 1.4873212883514952e-08, 6.719401568489047e-08, 0.00032926752464845777, 3.695424481975351e-07, 5.3648435027753294e-08, 4.560225193017686e-07, 1.604811222932767e-05, 1.0498084890286918e-07, 6.541624486544606e-08, 2.1425600849056536e-08, 2.925471420667236e-09, 1.1394019594490601e-07, 3.04242817605882e-08, 1.7416731168395927e-08, 4.81180357780886e-08, 4.1653017035514495e-08, 9.706748824100941e-05, 4.992305093765026e-07, 5.4634600843428416e-08, 1.341421267397891e-07, 3.11239816142006e-08, 1.4152439220538326e-08, 9.692580960063424e-08, 2.086032857562259e-08, 2.160344791946045e-08, 7.541951845269068e-07, 6.299568866552363e-08, 7.972743354400791e-09, 1.7525940165796783e-07, 2.0931830491122128e-08, 9.979887494182549e-08, 0.000559211359359324, 1.9794806860318204e-07, 1.7167957366837072e-07, 9.176103077379594e-08, 1.0241292613955011e-07, 2.3960776474041268e-08, 8.411284824205723e-08, 9.686426949429006e-08, 3.876760601428941e-08, 9.736814945426886e-07, 1.3368263296342775e-07, 9.675822809640522e-09, 7.773470400707083e-08, 0.009169342927634716, 5.444921669095493e-08, 6.149371643004997e-07, 1.1657870402359549e-07, 1.58567758035133e-07, 2.0962208679975447e-07, 3.705381246277284e-08, 2.486655503730617e-08, 8.112271743243582e-09, 1.6665401858517725e-07, 0.005556480493396521, 4.5091283595866116e-08]], "pointer": [[0.0, 0.0, 0.7476488947868347, 0.0, 0.07355019450187683, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0011550947092473507, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00948578305542469, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.02914607711136341, 0.0, 0.0, 0.0, 0.0, 0.0, 0.006408486980944872, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.09190284460783005, 0.0, 0.0, 0.0, 0.001216501696035266, 0.0, 0.03896138444542885, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0005246814107522368, 0.0]], "target": [0.0]}, "loss": [0.015872091054916382, 0.0], "acc": [1.0, 0.0, 0.0, 0.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 16:12:32.877194", "n_pass": [1, 1, 1], "n_token": 67, "loss": [0.015872091054916382, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Do all the related feature configurations for changing isolation\\n        levels. This doesn't touch the uses_autocommit feature, since that\\n        controls the movement *between* isolation levels.\\n        \"", "#NEWLINE#", "assert", "(", "level", "in", "range", "(", "5", ")", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "self", ".", "connection", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "connection", ".", "set_isolation_level", "(", "level", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "finally", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 42, 55, 65, 2, 27, 36, 51, 57]}}
+{"prediction": {"error_location": 0.9842529892921448, "repair_targets": [], "repair_candidates": [0.7476488947868347, 0.07355019450187683, 0.0011550947092473507, 0.00948578305542469, 0.02914607711136341, 0.006408486980944872, 0.09190284460783005, 0.001216501696035266, 0.03896138444542885, 0.0005246814107522368], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:32.933403", "n_pass": [22, 2, 2], "n_token": 59, "loss": [0.04897425323724747, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Do all the related feature configurations for changing isolation\\n        levels. This doesn't touch the uses_autocommit feature, since that\\n        controls the movement *between* isolation levels.\\n        \"", "#NEWLINE#", "assert", "(", "level", "in", "range", "#INDENT#", "if", "(", "self", ".", "connection", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "connection", ".", "set_isolation_level", "(", "level", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "finally", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 34, 47, 57, 2, 19, 28, 43, 49]}}
+{"prediction": {"error_location": 0.9522056579589844, "repair_targets": [], "repair_candidates": [0.7898659110069275, 0.08396535366773605, 0.00011706949590006843, 0.0031464388594031334, 0.016459736973047256, 0.024330832064151764, 0.05230429768562317, 0.0006859132554382086, 0.02672814391553402, 0.0023962403647601604], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:32.992242", "n_pass": [45, 3, 3], "n_token": 55, "loss": [0.4246804714202881, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Do all the related feature configurations for changing isolation\\n        levels. This doesn't touch the uses_autocommit feature, since that\\n        controls the movement *between* isolation levels.\\n        \"", "#NEWLINE#", "assert", "(", "level", "in", "range", "#INDENT#", "if", "(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "connection", ".", "set_isolation_level", "(", "level", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "finally", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 30, 43, 53, 2, 19, 24, 39, 45]}}
+{"prediction": {"error_location": 0.6539787650108337, "repair_targets": [], "repair_candidates": [0.005713731981813908, 0.7611595988273621, 0.14763915538787842, 9.865327592706308e-05, 0.0001230183697771281, 0.0801813006401062, 0.0002571516379248351, 0.002955798991024494, 8.909240568755195e-05, 0.0017825162503868341], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.048365", "n_pass": [46, 4, 4], "n_token": 51, "loss": [0.023732056841254234, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Do all the related feature configurations for changing isolation\\n        levels. This doesn't touch the uses_autocommit feature, since that\\n        controls the movement *between* isolation levels.\\n        \"", "#NEWLINE#", "assert", "(", "level", "in", "range", "#INDENT#", "if", "(", "self", "self", ".", "connection", ".", "set_isolation_level", "(", "level", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "finally", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 26, 39, 49, 2, 19, 20, 35, 41]}}
+{"prediction": {"error_location": 0.9765472412109375, "repair_targets": [], "repair_candidates": [0.7068885564804077, 0.0907299816608429, 0.00021104536426719278, 0.0025206904392689466, 0.0019747349433600903, 0.06247592717409134, 0.09929724037647247, 0.00317862699739635, 0.03032187558710575, 0.002401296980679035], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.104400", "n_pass": [49, 5, 5], "n_token": 47, "loss": [0.039990998804569244, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "#INDENT#", "\"\\n        Do all the related feature configurations for changing isolation\\n        levels. This doesn't touch the uses_autocommit feature, since that\\n        controls the movement *between* isolation levels.\\n        \"", "#NEWLINE#", "assert", "(", "level", "in", "range", "#INDENT#", "if", "(", "self", "self", ".", "connection", ".", "set_isolation_level", "(", "level", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 13, 26, 35, 45, 2, 19, 20, 31, 37]}}
+{"prediction": {"error_location": 0.9607982039451599, "repair_targets": [], "repair_candidates": [0.6144834160804749, 0.054405342787504196, 0.00013898825272917747, 0.0021706903353333473, 0.0026330561377108097, 0.025644570589065552, 0.24314679205417633, 0.01103802490979433, 0.043182723224163055, 0.0031564750242978334], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.160016", "n_pass": [56, 6, 6], "n_token": 43, "loss": [0.04297124966979027, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "(", "level", "in", "range", "#INDENT#", "if", "(", "self", "self", ".", "connection", ".", "set_isolation_level", "(", "level", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 9, 22, 31, 41, 2, 15, 16, 27, 33]}}
+{"prediction": {"error_location": 0.9579388499259949, "repair_targets": [], "repair_candidates": [0.3683176338672638, 0.31022679805755615, 0.0018503842875361443, 0.0025391709059476852, 0.002317780861631036, 0.03046967089176178, 0.2300277203321457, 0.02331233024597168, 0.023830244317650795, 0.007108279503881931], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.216102", "n_pass": [88, 7, 7], "n_token": 41, "loss": [0.02207306958734989, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "(", "level", "#INDENT#", "if", "(", "self", "self", ".", "connection", ".", "set_isolation_level", "(", "level", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 9, 20, 29, 39, 2, 13, 14, 25, 31]}}
+{"prediction": {"error_location": 0.9781686663627625, "repair_targets": [], "repair_candidates": [0.7161366939544678, 0.025051197037100792, 0.01882932335138321, 0.0024922394659370184, 0.002094375202432275, 0.008650465868413448, 0.18796303868293762, 0.001780810533091426, 0.036615848541259766, 0.000386006518965587], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.271786", "n_pass": [89, 8, 8], "n_token": 39, "loss": [0.03139672800898552, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "(", "level", "(", "self", "self", ".", "connection", ".", "set_isolation_level", "(", "level", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 9, 18, 27, 37, 2, 11, 12, 23, 29]}}
+{"prediction": {"error_location": 0.9690910577774048, "repair_targets": [], "repair_candidates": [0.6095309853553772, 0.042201802134513855, 0.05584101006388664, 0.005804581567645073, 0.0030941443983465433, 0.07201194018125534, 0.1830744743347168, 0.0015038150595501065, 0.025695879012346268, 0.0012413773220032454], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.330667", "n_pass": [92, 9, 9], "n_token": 37, "loss": [0.02753375470638275, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "(", "level", "(", "self", "self", ".", "set_isolation_level", "(", "level", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 9, 16, 25, 35, 2, 11, 12, 21, 27]}}
+{"prediction": {"error_location": 0.972841739654541, "repair_targets": [], "repair_candidates": [0.4546368420124054, 0.047326669096946716, 0.08508330583572388, 0.019370662048459053, 0.01449043583124876, 0.024434976279735565, 0.3042689859867096, 0.007045411504805088, 0.0421869270503521, 0.00115586060564965], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.385985", "n_pass": [93, 10, 10], "n_token": 35, "loss": [0.05848374590277672, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "(", "level", "(", "self", "self", ".", "level", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 9, 14, 23, 33, 2, 11, 12, 19, 25]}}
+{"prediction": {"error_location": 0.9431935548782349, "repair_targets": [], "repair_candidates": [0.18613947927951813, 0.39509719610214233, 0.00947536900639534, 0.0039678653702139854, 0.0024762044195085764, 0.03692891448736191, 0.32767921686172485, 0.002424919977784157, 0.034527529031038284, 0.0012832187348976731], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.441218", "n_pass": [95, 11, 11], "n_token": 33, "loss": [0.07889492809772491, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "(", "level", "(", "self", "self", ".", "level", ")", "#INDENT#", "self", ".", "isolation_level", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 9, 14, 21, 31, 2, 11, 12, 17, 23]}}
+{"prediction": {"error_location": 0.9241371154785156, "repair_targets": [], "repair_candidates": [0.22108806669712067, 0.4526452422142029, 0.009833427146077156, 0.004531129263341427, 0.003060470102354884, 0.04973214119672775, 0.22230686247348785, 0.0007449528202414513, 0.03540661558508873, 0.0006510998355224729], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.496730", "n_pass": [97, 12, 12], "n_token": 31, "loss": [0.29273536801338196, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "(", "level", "(", "self", "self", ".", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "uses_savepoints", "=", "bool", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 9, 14, 19, 29, 2, 11, 12, 17, 21]}}
+{"prediction": {"error_location": 0.7462195754051208, "repair_targets": [], "repair_candidates": [0.40355047583580017, 0.06455136090517044, 0.003982722293585539, 0.0012686265399679542, 0.0012171303387731314, 0.013002355583012104, 0.5061162710189819, 0.0007934306049719453, 0.004989210981875658, 0.0005284001235850155], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.607342", "n_pass": [101, 14, 13], "n_token": 28, "loss": [0.42634376883506775, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", ":", "#NEWLINE#", "(", "level", "(", "self", "self", ".", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 9, 14, 19, 26, 2, 11, 12, 17, 21]}}
+{"prediction": {"error_location": 0.6528918147087097, "repair_targets": [], "repair_candidates": [0.5618489980697632, 0.05564913898706436, 0.0037358901463449, 0.001153783407062292, 0.0010841521434485912, 0.01871592551469803, 0.2997227609157562, 0.00016296663670800626, 0.057425323873758316, 0.0005010542809031904], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.665440", "n_pass": [106, 15, 14], "n_token": 26, "loss": [0.2940778136253357, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", "(", "level", "(", "self", "self", ".", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", ".", "features", ".", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 17, 24, 2, 9, 10, 15, 19]}}
+{"prediction": {"error_location": 0.7452184557914734, "repair_targets": [], "repair_candidates": [0.41193774342536926, 0.08652099967002869, 0.015190007165074348, 0.0020759606268256903, 0.0012583595234900713, 0.022738775238394737, 0.4271208345890045, 0.001597656519152224, 0.025921162217855453, 0.005638526752591133], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.720340", "n_pass": [114, 16, 15], "n_token": 23, "loss": [0.5682262778282166, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", "(", "level", "(", "self", "self", ".", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", "(", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 17, 21, 2, 9, 10, 15, 19]}}
+{"prediction": {"error_location": 0.5665294528007507, "repair_targets": [], "repair_candidates": [0.7941941022872925, 0.03087136708199978, 0.009962094947695732, 0.003594215726479888, 0.004097655415534973, 0.04077063500881195, 0.08653083443641663, 0.018351130187511444, 0.0007491056458093226, 0.010878773406147957], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.776036", "n_pass": [148, 17, 16], "n_token": 22, "loss": [0.23213790357112885, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "def _set_isolation_level(", "self", ",", "level", ")", "(", "level", "(", "self", "self", ".", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [4, 7, 12, 17, 20, 2, 9, 10, 15, 19]}}
+{"prediction": {"error_location": 0.7928367853164673, "repair_targets": [], "repair_candidates": [0.28543341159820557, 0.09921186417341232, 0.040103428065776825, 0.0033506876789033413, 0.00408802879974246, 0.09188754111528397, 0.3351023197174072, 0.007395497988909483, 0.006516695488244295, 0.1269104927778244], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.831398", "n_pass": [150, 18, 17], "n_token": 21, "loss": [0.14137627184391022, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", ",", "level", ")", "(", "level", "(", "self", "self", ".", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [3, 6, 11, 16, 19, 1, 8, 9, 14, 18]}}
+{"prediction": {"error_location": 0.8681625723838806, "repair_targets": [], "repair_candidates": [0.15539909899234772, 0.5945459008216858, 0.01097850687801838, 0.006515613291412592, 0.006186386104673147, 0.018169954419136047, 0.14496484398841858, 0.002870383905246854, 0.029202677309513092, 0.03116656467318535], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.886966", "n_pass": [152, 19, 18], "n_token": 20, "loss": [0.17079342901706696, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "level", ")", "(", "level", "(", "self", "self", ".", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 5, 10, 15, 18, 1, 7, 8, 13, 17]}}
+{"prediction": {"error_location": 0.8429955840110779, "repair_targets": [], "repair_candidates": [0.1954488754272461, 0.11345486342906952, 0.06822649389505386, 0.014210615307092667, 0.010520460084080696, 0.0373549610376358, 0.4618779122829437, 0.00253887171857059, 0.046052515506744385, 0.05031448230147362], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:33.941896", "n_pass": [154, 20, 19], "n_token": 19, "loss": [0.05176490172743797, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "level", "(", "level", "(", "self", "self", ".", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 4, 9, 14, 17, 1, 6, 7, 12, 16]}}
+{"prediction": {"error_location": 0.949552059173584, "repair_targets": [], "repair_candidates": [0.22918720543384552, 0.02338441275060177, 0.07577048987150192, 0.09726038575172424, 0.05829204246401787, 0.018467605113983154, 0.3966512978076935, 0.002770419232547283, 0.03204307705163956, 0.0661730170249939], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:34.000141", "n_pass": [155, 21, 20], "n_token": 18, "loss": [0.06674716621637344, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "level", "level", "(", "self", "self", ".", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 8, 13, 16, 1, 5, 6, 11, 15]}}
+{"prediction": {"error_location": 0.9354316592216492, "repair_targets": [], "repair_candidates": [0.20267488062381744, 0.02262631617486477, 0.2694356143474579, 0.14019811153411865, 0.06864159554243088, 0.012364959344267845, 0.18244551122188568, 0.0022746575996279716, 0.03522215783596039, 0.06411616504192352], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:34.055017", "n_pass": [157, 22, 21], "n_token": 17, "loss": [0.03902430459856987, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "level", "level", "self", "self", ".", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 7, 12, 15, 1, 4, 5, 10, 14]}}
+{"prediction": {"error_location": 0.9617273211479187, "repair_targets": [], "repair_candidates": [0.30754533410072327, 0.02210267260670662, 0.17459170520305634, 0.08567145466804504, 0.11519595235586166, 0.004780251998454332, 0.16110150516033173, 0.009199627675116062, 0.009985016658902168, 0.10982654243707657], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:34.109915", "n_pass": [160, 23, 22], "n_token": 16, "loss": [0.1692657768726349, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "level", "level", "self", "self", "level", ")", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 11, 14, 1, 4, 5, 9, 13]}}
+{"prediction": {"error_location": 0.8442845940589905, "repair_targets": [], "repair_candidates": [0.012372046709060669, 0.030596330761909485, 0.06108788400888443, 0.2499976009130478, 0.3907710313796997, 0.021112261340022087, 0.10363249480724335, 0.0019338636193424463, 0.013117080554366112, 0.11537937074899673], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:34.164943", "n_pass": [162, 24, 23], "n_token": 15, "loss": [0.1833917200565338, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "level", "level", "self", "self", "level", "#INDENT#", "self", "=", "level", "#NEWLINE#", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 10, 13, 1, 4, 5, 8, 12]}}
+{"prediction": {"error_location": 0.8324419856071472, "repair_targets": [], "repair_candidates": [0.06132950633764267, 0.08110273629426956, 0.16053365170955658, 0.18952779471874237, 0.29222893714904785, 0.03448067232966423, 0.04855145514011383, 0.011536202393472195, 0.006915074307471514, 0.1137940064072609], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:34.219647", "n_pass": [163, 25, 24], "n_token": 14, "loss": [0.006840146612375975, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "level", "level", "self", "self", "level", "self", "=", "level", "#NEWLINE#", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 9, 12, 1, 4, 5, 7, 11]}}
+{"prediction": {"error_location": 0.9931833148002625, "repair_targets": [], "repair_candidates": [0.2941066324710846, 0.09116552770137787, 0.202323317527771, 0.03959043323993683, 0.09058775752782822, 0.10035440325737, 0.16136319935321808, 0.00038312061224132776, 0.017528418451547623, 0.0025971282739192247], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:34.274600", "n_pass": [165, 26, 25], "n_token": 13, "loss": [0.14609907567501068, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "level", "level", "self", "self", "level", "self", "level", "#NEWLINE#", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 8, 11, 1, 4, 5, 7, 10]}}
+{"prediction": {"error_location": 0.8640722036361694, "repair_targets": [], "repair_candidates": [0.13648545742034912, 0.1602165549993515, 0.16931535303592682, 0.004199776332825422, 0.004379690624773502, 0.03950914368033409, 0.002029105555266142, 0.20524123311042786, 0.003795933211222291, 0.2748277187347412], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:34.332374", "n_pass": [167, 27, 26], "n_token": 12, "loss": [0.007985097356140614, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "level", "level", "self", "self", "level", "self", "level", "self", "level", ")"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 8, 10, 1, 4, 5, 7, 9]}}
+{"prediction": {"error_location": 0.9920467138290405, "repair_targets": [], "repair_candidates": [0.18751896917819977, 0.19325588643550873, 0.30728182196617126, 0.009350153617560863, 0.008966231718659401, 0.13421352207660675, 0.0066776759922504425, 0.06336391717195511, 0.009888707660138607, 0.07948308438062668], "target_probs": 0.0}}
+
+
+{"result": {"time": "2021-02-11 16:12:34.387601", "n_pass": [182, 28, 27], "n_token": 11, "loss": [0.0023706448264420033, 0.0], "accuracy": [1.0, 0.0, 0.0, 0.0]}}
+{"sample": {"has_bug": false, "source_tokens": ["#NEWLINE#", "self", "level", "level", "self", "self", "level", "self", "level", "self", "level"]}}
+{"position": {"error_location": 0, "repair_targets": [], "repair_candidates": [2, 3, 6, 8, 10, 1, 4, 5, 7, 9]}}
+{"prediction": {"error_location": 0.9976321458816528, "repair_targets": [], "repair_candidates": [0.3920716643333435, 0.13934579491615295, 0.065146304666996, 0.06189063563942909, 0.061638087034225464, 0.059784796088933945, 0.05457752197980881, 0.0553954541683197, 0.0500456728041172, 0.06010407954454422], "target_probs": 0.0}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'self', 'level', 'level', 'self', 'self', 'level', 'self', 'level', 'self', 'level']

@@ -1,0 +1,133 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", ")", ":", "#NEWLINE#", "#INDENT#", "brokers", "=", "(", "'%s:%d'", "%", "(", "self", ".", "server", ".", "host", ",", "self", ".", "server", ".", "port", ")", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"], "error_location": [46], "repair_targets": [29], "repair_candidates": [42, 9, 39, 46, 2, 15, 21, 33, 29], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "dpkp/kafka-python/test/test_consumer_integration.py", "license": "apache-2.0", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00002-of-00300", "js_count": 7879, "results": {"model": "rnn", "prob": {"loc": [[0.03643348813056946, 5.464493213480637e-08, 7.692748482668321e-08, 7.613038671694383e-11, 9.17797482458127e-09, 1.845412572754057e-10, 2.3477245147951464e-10, 2.082253125479383e-08, 1.38305091823554e-08, 1.9537653273005162e-08, 1.1864292881469396e-09, 4.351153677362163e-07, 1.820321138268355e-08, 1.6722464524221436e-09, 3.6894565180745076e-09, 4.485662259412493e-07, 2.037350982364572e-10, 5.1509010390304866e-09, 9.300266112788336e-10, 4.4087644646140234e-10, 8.058045203318542e-11, 4.756136149808299e-06, 6.632062121703086e-10, 5.774198896801863e-08, 3.0117577320964983e-09, 2.342939176003256e-09, 1.534516069767733e-09, 1.885418265956673e-09, 3.874999876529728e-09, 3.857899955050925e-08, 1.9743040535757928e-09, 2.0465327210672513e-08, 1.0251628879132113e-08, 4.290328433853574e-06, 7.277094926649852e-09, 7.543564883860654e-09, 8.385248051467897e-10, 7.432250185956946e-06, 9.455950475967256e-07, 0.010761777870357037, 1.461175997974351e-06, 8.991028153104708e-07, 0.6606602668762207, 3.2829578344717447e-07, 7.944177760066395e-09, 2.400563516857801e-06, 0.2921207547187805]], "pointer": [[0.0, 0.0, 0.009132477454841137, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0011133224470540881, 0.0, 0.0, 0.0, 0.0, 0.0, 0.015565113164484501, 0.0, 0.0, 0.0, 0.0, 0.0, 0.008411395363509655, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9307717084884644, 0.0, 0.0, 0.0, 0.03487866744399071, 0.0, 0.0, 0.0, 0.0, 0.0, 4.927476038574241e-05, 0.0, 0.0, 5.174737088964321e-05, 0.0, 0.0, 0.0, 2.629280606925022e-05]], "target": [0.9307717084884644]}, "loss": [1.2305879592895508, 0.0717412456870079], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [42]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 11:43:26.839052", "n_pass": [1, 1, 1], "n_token": 47, "loss": [0.41451555490493774, 0.0717412456870079], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", ")", ":", "#NEWLINE#", "#INDENT#", "brokers", "=", "(", "'%s:%d'", "%", "(", "self", ".", "server", ".", "host", ",", "self", ".", "server", ".", "port", ")", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 42, "repair_targets": [29], "repair_candidates": [42, 9, 39, 46, 2, 15, 21, 33, 29]}}
+{"prediction": {"error_location": 0.6606602668762207, "repair_targets": [0.9307717084884644], "repair_candidates": [0.009132477454841137, 0.0011133224470540881, 0.015565113164484501, 0.008411395363509655, 0.9307717084884644, 0.03487866744399071, 4.927476038574241e-05, 5.174737088964321e-05, 2.629280606925022e-05], "target_probs": 0.9307717084884644}}
+
+
+{"result": {"time": "2021-02-21 11:43:27.052098", "n_pass": [46, 4, 2], "n_token": 44, "loss": [0.4764098823070526, 0.1593211442232132], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "(", "'%s:%d'", "%", "(", "self", ".", "server", ".", "host", ",", "self", ".", "server", ".", "port", ")", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 39, "repair_targets": [26], "repair_candidates": [39, 6, 36, 43, 2, 12, 18, 30, 26]}}
+{"prediction": {"error_location": 0.6210088729858398, "repair_targets": [0.8527224659919739], "repair_candidates": [0.017371051013469696, 0.0002444933052174747, 0.0191967710852623, 0.04830900952219963, 0.8527224659919739, 0.0619923397898674, 5.9616202634060755e-05, 7.36080328351818e-05, 3.067184297833592e-05], "target_probs": 0.8527224659919739}}
+
+
+{"result": {"time": "2021-02-21 11:43:27.121736", "n_pass": [47, 5, 3], "n_token": 41, "loss": [0.2339109182357788, 0.1693052500486374], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "(", "self", ".", "server", ".", "host", ",", "self", ".", "server", ".", "port", ")", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 36, "repair_targets": [23], "repair_candidates": [36, 6, 33, 40, 2, 9, 15, 27, 23]}}
+{"prediction": {"error_location": 0.7914323210716248, "repair_targets": [0.8442511558532715], "repair_candidates": [0.021536175161600113, 0.00014191228547133505, 0.002813366474583745, 0.0678432434797287, 0.8442511558532715, 0.06331168115139008, 3.694913539220579e-05, 4.4503631215775385e-05, 2.1061658117105253e-05], "target_probs": 0.8442511558532715}}
+
+
+{"result": {"time": "2021-02-21 11:43:27.192747", "n_pass": [49, 6, 4], "n_token": 38, "loss": [0.20847484469413757, 0.2557338774204254], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "(", "self", ".", ",", "self", ".", "server", ".", "port", ")", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 33, "repair_targets": [20], "repair_candidates": [33, 6, 30, 37, 2, 9, 12, 24, 20]}}
+{"prediction": {"error_location": 0.8118215203285217, "repair_targets": [0.7743480205535889], "repair_candidates": [0.026065675541758537, 0.00011856932542286813, 0.08970806002616882, 0.00923570804297924, 0.7743480205535889, 0.10039674490690231, 4.8491478082723916e-05, 5.190561569179408e-05, 2.677371412573848e-05], "target_probs": 0.7743480205535889}}
+
+
+{"result": {"time": "2021-02-21 11:43:27.525606", "n_pass": [89, 11, 5], "n_token": 37, "loss": [0.17350457608699799, 0.21684177219867706], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "self", ".", ",", "self", ".", "server", ".", "port", ")", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 32, "repair_targets": [19], "repair_candidates": [32, 6, 29, 36, 2, 8, 11, 23, 19]}}
+{"prediction": {"error_location": 0.840713381767273, "repair_targets": [0.8050573468208313], "repair_candidates": [0.0317181758582592, 0.00018929196812678128, 0.09180909395217896, 0.00554380239918828, 0.8050573468208313, 0.0655742734670639, 4.6062781621003523e-05, 4.009101394331083e-05, 2.1862122594029643e-05], "target_probs": 0.8050573468208313}}
+
+
+{"result": {"time": "2021-02-21 11:43:27.595139", "n_pass": [91, 12, 6], "n_token": 36, "loss": [0.16289421916007996, 0.40306124091148376], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "self", ",", "self", ".", "server", ".", "port", ")", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 31, "repair_targets": [18], "repair_candidates": [31, 6, 28, 35, 2, 8, 10, 22, 18]}}
+{"prediction": {"error_location": 0.8496810793876648, "repair_targets": [0.6682711839675903], "repair_candidates": [0.0009621401550248265, 0.0007562844548374414, 0.27115151286125183, 0.0045845406129956245, 0.6682711839675903, 0.05419432744383812, 3.683950490085408e-05, 2.7517726266523823e-05, 1.560013697599061e-05], "target_probs": 0.6682711839675903}}
+
+
+{"result": {"time": "2021-02-21 11:43:27.661759", "n_pass": [92, 13, 7], "n_token": 35, "loss": [0.16038262844085693, 0.16063626110553741], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "self", "self", ".", "server", ".", "port", ")", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 30, "repair_targets": [17], "repair_candidates": [30, 6, 27, 34, 2, 8, 9, 21, 17]}}
+{"prediction": {"error_location": 0.851817786693573, "repair_targets": [0.851601779460907], "repair_candidates": [0.03379828855395317, 0.00020610698265954852, 0.03239103779196739, 0.004611866548657417, 0.851601779460907, 0.07728169858455658, 5.027042789151892e-05, 3.4348016924923286e-05, 2.447189763188362e-05], "target_probs": 0.851601779460907}}
+
+
+{"result": {"time": "2021-02-21 11:43:27.728021", "n_pass": [94, 14, 8], "n_token": 34, "loss": [0.23635685443878174, 0.3397305905818939], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "self", "self", "server", ".", "port", ")", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 29, "repair_targets": [16], "repair_candidates": [29, 6, 26, 33, 2, 8, 9, 20, 16]}}
+{"prediction": {"error_location": 0.7894988059997559, "repair_targets": [0.711962103843689], "repair_candidates": [0.0011891766916960478, 0.0019790390506386757, 0.007190263364464045, 0.03858853131532669, 0.711962103843689, 0.23883958160877228, 0.00015478934801649302, 6.528080120915547e-05, 3.1252850021701306e-05], "target_probs": 0.711962103843689}}
+
+
+{"result": {"time": "2021-02-21 11:43:27.792863", "n_pass": [95, 15, 9], "n_token": 32, "loss": [0.13990579545497894, 0.5593605041503906], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "self", "self", "port", ")", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 27, "repair_targets": [14], "repair_candidates": [27, 6, 24, 31, 2, 8, 9, 18, 14]}}
+{"prediction": {"error_location": 0.8694401383399963, "repair_targets": [0.5715744495391846], "repair_candidates": [0.0014008074067533016, 0.025935770943760872, 0.012635595165193081, 0.010684684850275517, 0.5715744495391846, 0.3770361840724945, 0.00040998816257342696, 0.00019600398081820458, 0.00012653664452955127], "target_probs": 0.5715744495391846}}
+
+
+{"result": {"time": "2021-02-21 11:43:27.856197", "n_pass": [96, 16, 10], "n_token": 30, "loss": [0.15783080458641052, 0.3648024797439575], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "self", "self", ")", "#NEWLINE#", "consumer", "=", "KafkaConsumer", "(", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 25, "repair_targets": [12], "repair_candidates": [25, 6, 22, 29, 2, 8, 9, 16, 12]}}
+{"prediction": {"error_location": 0.8539941906929016, "repair_targets": [0.6943337917327881], "repair_candidates": [0.0017729620449244976, 0.005968157202005386, 0.023820819333195686, 0.009101858362555504, 0.6943337917327881, 0.2646650969982147, 0.00017144605226349086, 8.87823334778659e-05, 7.719222776358947e-05], "target_probs": 0.6943337917327881}}
+
+
+{"result": {"time": "2021-02-21 11:43:27.984607", "n_pass": [99, 18, 11], "n_token": 28, "loss": [0.26065632700920105, 0.04745030403137207], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "self", "self", ")", "#NEWLINE#", "consumer", "=", "self", ".", "topic", ",", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 23, "repair_targets": [12], "repair_candidates": [23, 6, 20, 27, 2, 8, 9, 14, 12]}}
+{"prediction": {"error_location": 0.7705457806587219, "repair_targets": [0.953657865524292], "repair_candidates": [0.0005206434871070087, 0.0008697544108144939, 0.004637204110622406, 0.002374618547037244, 0.953657865524292, 0.03783608227968216, 3.7399127904791385e-05, 4.2329764255555347e-05, 2.4123282855725847e-05], "target_probs": 0.953657865524292}}
+
+
+{"result": {"time": "2021-02-21 11:43:28.046273", "n_pass": [101, 19, 12], "n_token": 26, "loss": [0.21782730519771576, 0.0038259406574070454], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "self", "self", ")", "#NEWLINE#", "consumer", "=", "self", ".", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 21, "repair_targets": [12], "repair_candidates": [21, 6, 18, 25, 2, 8, 9, 14, 12]}}
+{"prediction": {"error_location": 0.8042643070220947, "repair_targets": [0.9961813688278198], "repair_candidates": [0.00018223350343760103, 0.00045173606486059725, 0.0011690310202538967, 0.0016349105862900615, 0.9961813688278198, 0.0002840347297023982, 1.5814468497410417e-05, 5.9814694395754486e-05, 2.09798599826172e-05], "target_probs": 0.9961813688278198}}
+
+
+{"result": {"time": "2021-02-21 11:43:28.228480", "n_pass": [107, 22, 13], "n_token": 25, "loss": [0.3495353162288666, 0.019504643976688385], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def kafka_consumer(", "self", ",", "**configs", "#INDENT#", "brokers", "=", "self", "self", ")", "#NEWLINE#", "consumer", "=", "self", ".", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 20, "repair_targets": [11], "repair_candidates": [20, 5, 17, 24, 1, 7, 8, 13, 11]}}
+{"prediction": {"error_location": 0.7050155997276306, "repair_targets": [0.9806843400001526], "repair_candidates": [0.010059828869998455, 0.0016689248150214553, 0.004460685420781374, 0.001989711308851838, 0.9806843400001526, 0.0009129460668191314, 2.7236148525844328e-05, 0.00014698987070005387, 4.933720265398733e-05], "target_probs": 0.9806843400001526}}
+
+
+{"result": {"time": "2021-02-21 11:43:28.288894", "n_pass": [108, 23, 14], "n_token": 24, "loss": [0.1512439250946045, 0.3758065700531006], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "**configs", "#INDENT#", "brokers", "=", "self", "self", ")", "#NEWLINE#", "consumer", "=", "self", ".", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 19, "repair_targets": [10], "repair_candidates": [19, 4, 16, 23, 0, 6, 7, 12, 10]}}
+{"prediction": {"error_location": 0.8596380949020386, "repair_targets": [0.6867351531982422], "repair_candidates": [0.23977401852607727, 0.0171672236174345, 0.004348454996943474, 0.05000387504696846, 0.6867351531982422, 0.001577317831106484, 4.521966548054479e-05, 0.0002502697170712054, 9.850685455603525e-05], "target_probs": 0.6867351531982422}}
+
+
+{"result": {"time": "2021-02-21 11:43:28.350962", "n_pass": [110, 24, 15], "n_token": 23, "loss": [0.06234458088874817, 0.17402635514736176], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "**configs", "#INDENT#", "brokers", "=", "self", "self", ")", "#NEWLINE#", "consumer", "=", "self", ".", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 18, "repair_targets": [9], "repair_candidates": [18, 3, 15, 22, 0, 5, 6, 11, 9]}}
+{"prediction": {"error_location": 0.9395591020584106, "repair_targets": [0.8402747511863708], "repair_candidates": [0.04854077845811844, 0.013654549606144428, 0.0028184920083731413, 0.09419862926006317, 0.8402747511863708, 0.0004226848832331598, 1.3295733879203908e-05, 5.117402542964555e-05, 2.568988929851912e-05], "target_probs": 0.8402747511863708}}
+
+
+{"result": {"time": "2021-02-21 11:43:28.410747", "n_pass": [111, 25, 16], "n_token": 22, "loss": [0.06129937246441841, 0.20306655764579773], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "#INDENT#", "brokers", "=", "self", "self", ")", "#NEWLINE#", "consumer", "=", "self", ".", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 17, "repair_targets": [8], "repair_candidates": [17, 2, 14, 21, 0, 4, 5, 10, 8]}}
+{"prediction": {"error_location": 0.9405417442321777, "repair_targets": [0.8162239193916321], "repair_candidates": [0.04559006914496422, 0.05614237114787102, 0.0030994012486189604, 0.07854078710079193, 0.8162239193916321, 0.0003386171592865139, 9.806176421989221e-06, 3.9638242014916614e-05, 1.5396723028970882e-05], "target_probs": 0.8162239193916321}}
+
+
+{"result": {"time": "2021-02-21 11:43:28.469761", "n_pass": [112, 26, 17], "n_token": 21, "loss": [0.046990711241960526, 0.5016523003578186], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "brokers", "=", "self", "self", ")", "#NEWLINE#", "consumer", "=", "self", ".", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 16, "repair_targets": [7], "repair_candidates": [16, 1, 13, 20, 0, 3, 4, 9, 7]}}
+{"prediction": {"error_location": 0.9540963768959045, "repair_targets": [0.6055293083190918], "repair_candidates": [0.037656623870134354, 0.2504882216453552, 0.006208642385900021, 0.09966357797384262, 0.6055293083190918, 0.00039124232716858387, 6.252881121326936e-06, 3.685513001983054e-05, 1.9334820535732433e-05], "target_probs": 0.6055293083190918}}
+
+
+{"result": {"time": "2021-02-21 11:43:28.527852", "n_pass": [114, 27, 18], "n_token": 20, "loss": [0.17761798202991486, 0.23303157091140747], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "brokers", "self", "self", ")", "#NEWLINE#", "consumer", "=", "self", ".", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 15, "repair_targets": [6], "repair_candidates": [15, 1, 12, 19, 0, 2, 3, 8, 6]}}
+{"prediction": {"error_location": 0.8372622132301331, "repair_targets": [0.7921285629272461], "repair_candidates": [0.016724873334169388, 0.00520677212625742, 0.0021694584283977747, 0.18304112553596497, 0.7921285629272461, 0.0006231972365640104, 1.4869237020320725e-05, 6.446754559874535e-05, 2.6659216018742882e-05], "target_probs": 0.7921285629272461}}
+
+
+{"result": {"time": "2021-02-21 11:43:28.585171", "n_pass": [117, 28, 19], "n_token": 18, "loss": [0.15616095066070557, 0.616033673286438], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "brokers", "self", "self", "consumer", "=", "self", ".", "bootstrap_servers", "=", "brokers", ",", "**", "configs", ")", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [13, 1, 10, 17, 0, 2, 3, 6, 4]}}
+{"prediction": {"error_location": 0.8554214835166931, "repair_targets": [0.5400823354721069], "repair_candidates": [0.06757794320583344, 0.031630828976631165, 0.006396672688424587, 0.3534789979457855, 0.5400823354721069, 0.00028396028210408986, 2.4847089662216604e-05, 0.00020227307686582208, 0.0003221726219635457], "target_probs": 0.5400823354721069}}
+
+
+{"result": {"time": "2021-02-21 11:43:29.043811", "n_pass": [151, 36, 20], "n_token": 17, "loss": [0.3301561772823334, 0.6477921009063721], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "brokers", "self", "self", "consumer", "=", "self", ".", "bootstrap_servers", "=", "brokers", ",", "**", "configs", "#NEWLINE#", "return", "brokers"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [13, 1, 10, 16, 0, 2, 3, 6, 4]}}
+{"prediction": {"error_location": 0.7188115119934082, "repair_targets": [0.5231996774673462], "repair_candidates": [0.08499731123447418, 0.026654383167624474, 0.006363263353705406, 0.3575313091278076, 0.5231996774673462, 0.000581757165491581, 3.453327008173801e-05, 0.00014897847722750157, 0.0004888343974016607], "target_probs": 0.5231996774673462}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'brokers', 'self', 'self', 'consumer', '=', 'self', '.', 'bootstrap_servers', '=', 'brokers', ',', '**', 'configs', '#NEWLINE#', 'return', 'brokers']

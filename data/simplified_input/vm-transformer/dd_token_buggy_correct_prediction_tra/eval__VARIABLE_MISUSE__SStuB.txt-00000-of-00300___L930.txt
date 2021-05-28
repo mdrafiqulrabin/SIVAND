@@ -1,0 +1,85 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_prod_cdn_in_common_settings(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Make sure prod cdn is specified by default for statics.'", "#NEWLINE#", "prod_cdn_host", "=", "base_settings", ".", "PROD_CDN_HOST", "#NEWLINE#", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_FONT_SRC", ")", "#NEWLINE#", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_IMG_SRC", ")", "#NEWLINE#", "assert", "(", "self", "in", "base_settings", ".", "CSP_SCRIPT_SRC", ")", "#NEWLINE#", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_STYLE_SRC", ")"], "error_location": [35], "repair_targets": [9, 17, 26, 44], "repair_candidates": [9, 17, 26, 44, 2, 35], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "mozilla/addons-server/src/olympia/amo/tests/test_csp_headers.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 930, "results": {"model": "transformer", "prob": {"loc": [[1.740025822982716e-06, 3.739629092502916e-11, 5.940918590408018e-11, 5.735462018513493e-13, 1.377567222619891e-12, 1.3620533737337959e-12, 9.460002226013842e-13, 6.754958463243976e-13, 9.115903561521255e-13, 8.103932802594471e-11, 3.125726023497921e-12, 4.115708641949656e-12, 9.7238384878795e-13, 1.5357025818108633e-13, 9.111348828194643e-13, 9.859085119481859e-13, 2.1631333876892533e-12, 7.901042664570923e-08, 3.5106448997845874e-11, 5.3067754184066285e-12, 2.4201235633569684e-12, 5.080194620012135e-13, 3.645013978148537e-13, 1.7289608330098294e-12, 2.0970126676789214e-12, 3.0665613277858217e-12, 1.6453827811346855e-07, 2.186625533417974e-11, 8.510778887194093e-12, 2.6057305185095414e-12, 1.2764106178259071e-12, 3.5210508553956688e-12, 2.2556871735052164e-12, 3.975326578337102e-12, 2.0319750656389024e-12, 0.9999974966049194, 2.8021083717244544e-11, 1.4041166666867166e-11, 1.5459363390118996e-12, 8.978135075665694e-13, 1.368923746060402e-12, 2.186582945956639e-12, 3.576376391214997e-12, 2.401317426153904e-12, 4.1935177819141245e-07, 3.8244508254736687e-11, 5.143142856045557e-11, 4.414366008148596e-12, 5.443904875501726e-13, 7.523938069797786e-13]], "pointer": [[0.0, 0.0, 1.0842990150194964e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.15542441606521606, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1470339596271515, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4623972773551941, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.002165959107515e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.23514319956302643, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9999988675117493]}, "loss": [2.3841830625315197e-06, 1.1324889328534482e-06], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:57:36.597984", "n_pass": [1, 1, 1], "n_token": 50, "loss": [2.3841830625315197e-06, 1.1324889328534482e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_prod_cdn_in_common_settings(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Make sure prod cdn is specified by default for statics.'", "#NEWLINE#", "prod_cdn_host", "=", "base_settings", ".", "PROD_CDN_HOST", "#NEWLINE#", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_FONT_SRC", ")", "#NEWLINE#", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_IMG_SRC", ")", "#NEWLINE#", "assert", "(", "self", "in", "base_settings", ".", "CSP_SCRIPT_SRC", ")", "#NEWLINE#", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_STYLE_SRC", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [9, 17, 26, 44], "repair_candidates": [9, 17, 26, 44, 2, 35]}}
+{"prediction": {"error_location": 0.9999974966049194, "repair_targets": [0.15542441606521606, 0.1470339596271515, 0.4623972773551941, 0.23514319956302643], "repair_candidates": [1.0842990150194964e-07, 0.15542441606521606, 0.1470339596271515, 0.4623972773551941, 1.002165959107515e-06, 0.23514319956302643], "target_probs": 0.9999988675117493}}
+
+
+{"result": {"time": "2021-02-11 11:57:36.654561", "n_pass": [23, 2, 2], "n_token": 44, "loss": [4.172316494077677e-06, 1.4901172562531428e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_prod_cdn_in_common_settings(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Make sure prod cdn is specified by default for statics.'", "#NEWLINE#", "prod_cdn_host", "=", "base_settings", ".", "PROD_CDN_HOST", "#NEWLINE#", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_IMG_SRC", ")", "#NEWLINE#", "assert", "(", "self", "in", "base_settings", ".", "CSP_SCRIPT_SRC", ")", "#NEWLINE#", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_STYLE_SRC", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [9, 17, 20, 38], "repair_candidates": [9, 17, 20, 38, 2, 29]}}
+{"prediction": {"error_location": 0.9999958276748657, "repair_targets": [0.2623802721500397, 0.17516407370567322, 0.2531394362449646, 0.3093147277832031], "repair_candidates": [1.782288592266923e-07, 0.2623802721500397, 0.17516407370567322, 0.2531394362449646, 1.3352844234759687e-06, 0.3093147277832031], "target_probs": 0.9999985098838806}}
+
+
+{"result": {"time": "2021-02-11 11:57:36.712404", "n_pass": [26, 3, 3], "n_token": 37, "loss": [0.054260797798633575, 0.025447333231568336], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_prod_cdn_in_common_settings(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Make sure prod cdn is specified by default for statics.'", "#NEWLINE#", "prod_cdn_host", "=", "base_settings", ".", "PROD_CDN_HOST", "#NEWLINE#", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_IMG_SRC", ")", "#NEWLINE#", "assert", "(", "self", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_STYLE_SRC", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [9, 17, 20, 31], "repair_candidates": [9, 17, 20, 31, 2, 29]}}
+{"prediction": {"error_location": 0.9471850395202637, "repair_targets": [0.6664718985557556, 0.1078704223036766, 0.17277708649635315, 0.027754319831728935], "repair_candidates": [0.0006130786496214569, 0.6664718985557556, 0.1078704223036766, 0.17277708649635315, 0.024513117969036102, 0.027754319831728935], "target_probs": 0.9748737215995789}}
+
+
+{"result": {"time": "2021-02-11 11:57:36.768656", "n_pass": [46, 4, 4], "n_token": 33, "loss": [0.025117233395576477, 0.025474173948168755], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_prod_cdn_in_common_settings(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Make sure prod cdn is specified by default for statics.'", "#NEWLINE#", "prod_cdn_host", "=", "base_settings", ".", "PROD_CDN_HOST", "#NEWLINE#", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_IMG_SRC", ")", "#NEWLINE#", "assert", "(", "self", "(", "prod_cdn_host", "in"]}}
+{"position": {"error_location": 29, "repair_targets": [9, 17, 20, 31], "repair_candidates": [9, 17, 20, 31, 2, 29]}}
+{"prediction": {"error_location": 0.9751957058906555, "repair_targets": [0.8701806664466858, 0.050211772322654724, 0.05065469443798065, 0.003800417296588421], "repair_candidates": [0.0005196018610149622, 0.8701806664466858, 0.050211772322654724, 0.05065469443798065, 0.02463287115097046, 0.003800417296588421], "target_probs": 0.9748475551605225}}
+
+
+{"result": {"time": "2021-02-11 11:57:36.823838", "n_pass": [48, 5, 5], "n_token": 30, "loss": [0.05807472765445709, 0.01674024574458599], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_prod_cdn_in_common_settings(", "self", "#INDENT#", "'Make sure prod cdn is specified by default for statics.'", "#NEWLINE#", "prod_cdn_host", "=", "base_settings", ".", "PROD_CDN_HOST", "#NEWLINE#", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_IMG_SRC", ")", "#NEWLINE#", "assert", "(", "self", "(", "prod_cdn_host", "in"]}}
+{"position": {"error_location": 26, "repair_targets": [6, 14, 17, 28], "repair_candidates": [6, 14, 17, 28, 2, 26]}}
+{"prediction": {"error_location": 0.9435794353485107, "repair_targets": [0.8976094126701355, 0.04131145775318146, 0.036132264882326126, 0.008345959708094597], "repair_candidates": [0.0004545135307125747, 0.8976094126701355, 0.04131145775318146, 0.036132264882326126, 0.016146324574947357, 0.008345959708094597], "target_probs": 0.9833990931510925}}
+
+
+{"result": {"time": "2021-02-11 11:57:36.879119", "n_pass": [49, 6, 6], "n_token": 27, "loss": [0.15704160928726196, 0.03740636259317398], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_prod_cdn_in_common_settings(", "self", "prod_cdn_host", "=", "base_settings", ".", "PROD_CDN_HOST", "#NEWLINE#", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "CSP_IMG_SRC", ")", "#NEWLINE#", "assert", "(", "self", "(", "prod_cdn_host", "in"]}}
+{"position": {"error_location": 23, "repair_targets": [3, 11, 14, 25], "repair_candidates": [3, 11, 14, 25, 2, 23]}}
+{"prediction": {"error_location": 0.8546684980392456, "repair_targets": [0.8815661668777466, 0.06023779511451721, 0.012483375146985054, 0.008997245691716671], "repair_candidates": [0.004561394918709993, 0.8815661668777466, 0.06023779511451721, 0.012483375146985054, 0.03215406835079193, 0.008997245691716671], "target_probs": 0.9632846117019653}}
+
+
+{"result": {"time": "2021-02-11 11:57:37.047107", "n_pass": [55, 9, 7], "n_token": 24, "loss": [0.029193904250860214, 0.0011984732700511813], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_prod_cdn_in_common_settings(", "self", "prod_cdn_host", "=", "base_settings", ".", "PROD_CDN_HOST", "#NEWLINE#", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "assert", "(", "self", "(", "prod_cdn_host", "in"]}}
+{"position": {"error_location": 20, "repair_targets": [3, 11, 14, 22], "repair_candidates": [3, 11, 14, 22, 2, 20]}}
+{"prediction": {"error_location": 0.9712281227111816, "repair_targets": [0.9739845991134644, 0.017765484750270844, 0.0044823139905929565, 0.002569877542555332], "repair_candidates": [0.0005950445192866027, 0.9739845991134644, 0.017765484750270844, 0.0044823139905929565, 0.0006026412011124194, 0.002569877542555332], "target_probs": 0.9988022446632385}}
+
+
+{"result": {"time": "2021-02-11 11:57:37.102637", "n_pass": [60, 10, 8], "n_token": 21, "loss": [0.16038008034229279, 0.002604535548016429], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_prod_cdn_in_common_settings(", "self", "prod_cdn_host", "=", "base_settings", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "in", "base_settings", ".", "assert", "(", "self", "(", "prod_cdn_host", "in"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 8, 11, 19], "repair_candidates": [3, 8, 11, 19, 2, 17]}}
+{"prediction": {"error_location": 0.8518199920654297, "repair_targets": [0.697367787361145, 0.29637542366981506, 0.003302998375147581, 0.0003526139189489186], "repair_candidates": [0.0015936437994241714, 0.697367787361145, 0.29637542366981506, 0.003302998375147581, 0.001007518032565713, 0.0003526139189489186], "target_probs": 0.997398853302002}}
+
+
+{"result": {"time": "2021-02-11 11:57:37.158124", "n_pass": [63, 11, 9], "n_token": 18, "loss": [0.22623278200626373, 0.0070928349159657955], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_prod_cdn_in_common_settings(", "self", "prod_cdn_host", "=", "base_settings", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "assert", "(", "self", "(", "prod_cdn_host", "in"]}}
+{"position": {"error_location": 14, "repair_targets": [3, 8, 11, 16], "repair_candidates": [3, 8, 11, 16, 2, 14]}}
+{"prediction": {"error_location": 0.7975324392318726, "repair_targets": [0.8435215950012207, 0.13737082481384277, 0.011193878948688507, 0.0008459895616397262], "repair_candidates": [0.00583635363727808, 0.8435215950012207, 0.13737082481384277, 0.011193878948688507, 0.0012313418556004763, 0.0008459895616397262], "target_probs": 0.9929322600364685}}
+
+
+{"result": {"time": "2021-02-11 11:57:37.268308", "n_pass": [86, 13, 10], "n_token": 17, "loss": [0.2999317944049835, 0.051232386380434036], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def test_prod_cdn_in_common_settings(", "self", "prod_cdn_host", "=", "base_settings", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "assert", "(", "self", "(", "prod_cdn_host", "in"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 7, 10, 15], "repair_candidates": [2, 7, 10, 15, 1, 13]}}
+{"prediction": {"error_location": 0.7408687472343445, "repair_targets": [0.36764809489250183, 0.581142783164978, 0.0011878357036039233, 7.912084402050823e-05], "repair_candidates": [0.048733923584222794, 0.36764809489250183, 0.581142783164978, 0.0011878357036039233, 0.001208256697282195, 7.912084402050823e-05], "target_probs": 0.950057864189148}}
+
+
+{"result": {"time": "2021-02-11 11:57:37.323137", "n_pass": [87, 14, 11], "n_token": 16, "loss": [0.15784862637519836, 0.026827316731214523], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "prod_cdn_host", "=", "base_settings", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "assert", "(", "self", "(", "prod_cdn_host", "in"]}}
+{"position": {"error_location": 12, "repair_targets": [1, 6, 9, 14], "repair_candidates": [1, 6, 9, 14, 0, 12]}}
+{"prediction": {"error_location": 0.8539790511131287, "repair_targets": [0.7875757813453674, 0.1630014330148697, 0.0225338377058506, 0.00041827152017503977], "repair_candidates": [0.02586919441819191, 0.7875757813453674, 0.1630014330148697, 0.0225338377058506, 0.0006015684339217842, 0.00041827152017503977], "target_probs": 0.9735293388366699}}
+
+
+{"result": {"time": "2021-02-11 11:57:37.930545", "n_pass": [118, 25, 12], "n_token": 15, "loss": [0.35981056094169617, 0.11214185506105423], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "prod_cdn_host", "=", "base_settings", "assert", "(", "prod_cdn_host", "assert", "(", "prod_cdn_host", "assert", "(", "self", "prod_cdn_host", "in"]}}
+{"position": {"error_location": 12, "repair_targets": [1, 6, 9, 13], "repair_candidates": [1, 6, 9, 13, 0, 12]}}
+{"prediction": {"error_location": 0.6978085041046143, "repair_targets": [0.7575027346611023, 0.12431356310844421, 0.011808385141193867, 0.00029281520983204246], "repair_candidates": [0.10600335896015167, 0.7575027346611023, 0.12431356310844421, 0.011808385141193867, 7.922305667307228e-05, 0.00029281520983204246], "target_probs": 0.893917441368103}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'prod_cdn_host', '=', 'base_settings', 'assert', '(', 'prod_cdn_host', 'assert', '(', 'prod_cdn_host', 'assert', '(', 'self', 'prod_cdn_host', 'in']

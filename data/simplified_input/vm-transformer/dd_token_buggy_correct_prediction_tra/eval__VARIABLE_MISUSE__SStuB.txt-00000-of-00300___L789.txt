@@ -1,0 +1,169 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "super", "(", "AtcdVService", ",", "self", ")", ".", "initLogging", "(", ")", "#NEWLINE#", "sh", "=", "logging", ".", "handlers", ".", "SysLogHandler", "(", "address", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ".", "setLevel", "(", "logging", ".", "DEBUG", ")", "#NEWLINE#", "self", ".", "logger", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "=", "logging", ".", "getLogger", "(", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"], "error_location": [50], "repair_targets": [18, 35, 66], "repair_candidates": [2, 11, 28, 44, 50, 18, 35, 66, 53, 62], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "facebook/augmented-traffic-control/atc/atcd/atcd/AtcdVService.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 789, "results": {"model": "transformer", "prob": {"loc": [[0.03420339524745941, 7.038080696020188e-08, 2.558844514055636e-08, 8.15495848627279e-09, 1.6302646344001914e-08, 1.4414860416422925e-08, 1.0934062544265544e-08, 1.968222251846896e-09, 1.2578286856523846e-08, 1.8720870187394212e-08, 6.060170143484811e-09, 9.460909389247263e-09, 1.4112049306902463e-08, 6.58631238437124e-09, 1.4603059872442259e-09, 3.574189477717482e-08, 1.1391458087928186e-07, 5.508194345082984e-09, 8.032426990212116e-07, 5.963268989717108e-09, 2.1216761680875607e-08, 7.203578622494433e-09, 5.267065006364646e-09, 1.8418154112964658e-08, 2.1379362724616158e-09, 2.1677564632227586e-08, 5.039844985788022e-09, 2.4198294923394315e-08, 3.145921709801769e-07, 1.386678860626489e-08, 1.0731862065682662e-09, 2.782309138638084e-07, 2.2773477326154534e-07, 3.886774990746744e-08, 1.3411726840217852e-08, 3.6711423945234856e-07, 9.445836113286532e-09, 4.928057961706145e-09, 1.798302307065569e-08, 4.216848026317166e-07, 6.815481157218528e-08, 6.006344506204186e-07, 1.3497677286977705e-07, 3.838145801182691e-08, 3.571910383470822e-06, 1.3419710676032537e-08, 2.4960897793135928e-09, 2.2821863510102958e-08, 3.494090128342009e-09, 8.836423859293063e-08, 0.9638426899909973, 1.1608039329757958e-07, 1.218369618527504e-07, 2.0279735224448814e-07, 1.5269179698407243e-07, 1.4554620975104626e-07, 4.650272344974837e-08, 1.1876489125484113e-08, 7.219487088150345e-07, 1.1618710686889244e-06, 1.556040558625682e-07, 9.46531812928697e-08, 8.114822946936329e-08, 9.457519212219268e-09, 5.685328319238181e-10, 4.566464895106037e-08, 0.0019432712579146028, 4.207016957025189e-08]], "pointer": [[0.0, 0.0, 0.00041811729897744954, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8.474129572277889e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4443536698818207, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5849622286623344e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5372284650802612, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.151454752194695e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001662193244555965, 0.0, 0.0, 0.0034109423868358135, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00038804401992820203, 0.0, 0.0, 0.0, 0.013882430270314217, 0.0]], "target": [0.9954646229743958]}, "loss": [0.0368272103369236, 0.004545692820101976], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:54:50.211149", "n_pass": [1, 1, 1], "n_token": 68, "loss": [0.0368272103369236, 0.004545692820101976], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "super", "(", "AtcdVService", ",", "self", ")", ".", "initLogging", "(", ")", "#NEWLINE#", "sh", "=", "logging", ".", "handlers", ".", "SysLogHandler", "(", "address", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ".", "setLevel", "(", "logging", ".", "DEBUG", ")", "#NEWLINE#", "self", ".", "logger", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "=", "logging", ".", "getLogger", "(", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 50, "repair_targets": [18, 35, 66], "repair_candidates": [2, 11, 28, 44, 50, 18, 35, 66, 53, 62]}}
+{"prediction": {"error_location": 0.9638426899909973, "repair_targets": [0.4443536698818207, 0.5372284650802612, 0.013882430270314217], "repair_candidates": [0.00041811729897744954, 8.474129572277889e-05, 0.4443536698818207, 1.5849622286623344e-05, 0.5372284650802612, 5.151454752194695e-05, 0.0001662193244555965, 0.0034109423868358135, 0.00038804401992820203, 0.013882430270314217], "target_probs": 0.9954646229743958}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.270662", "n_pass": [45, 2, 2], "n_token": 64, "loss": [0.07840445637702942, 0.01238835509866476], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", "(", "AtcdVService", ",", "self", ")", ".", "initLogging", "(", ")", "#NEWLINE#", "sh", "=", "logging", ".", "handlers", ".", "SysLogHandler", "(", "address", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ".", "setLevel", "(", "logging", ".", "DEBUG", ")", "#NEWLINE#", "self", ".", "logger", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "=", "logging", ".", "getLogger", "(", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 46, "repair_targets": [14, 31, 62], "repair_candidates": [2, 7, 24, 40, 46, 14, 31, 62, 49, 58]}}
+{"prediction": {"error_location": 0.9245901703834534, "repair_targets": [0.5935880541801453, 0.38462433218955994, 0.009475694969296455], "repair_candidates": [0.0004745482583530247, 0.005303509533405304, 0.5935880541801453, 0.00011650740634649992, 0.38462433218955994, 0.0003390903293620795, 0.00044944710680283606, 0.004951725713908672, 0.0006770456093363464, 0.009475694969296455], "target_probs": 0.9876880645751953}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.328565", "n_pass": [47, 3, 3], "n_token": 60, "loss": [0.056033432483673096, 0.009960261173546314], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", "(", "AtcdVService", ",", "self", ")", "#NEWLINE#", "sh", "=", "logging", ".", "handlers", ".", "SysLogHandler", "(", "address", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ".", "setLevel", "(", "logging", ".", "DEBUG", ")", "#NEWLINE#", "self", ".", "logger", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "=", "logging", ".", "getLogger", "(", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 42, "repair_targets": [10, 27, 58], "repair_candidates": [2, 7, 20, 36, 42, 10, 27, 58, 45, 54]}}
+{"prediction": {"error_location": 0.9455075263977051, "repair_targets": [0.6422830820083618, 0.3406921625137329, 0.007113952189683914], "repair_candidates": [0.00041480394429527223, 0.0038213846273720264, 0.6422830820083618, 3.288648440502584e-05, 0.3406921625137329, 0.0003422193694859743, 0.00024260318605229259, 0.004814761690795422, 0.0002421053359284997, 0.007113952189683914], "target_probs": 0.9900891780853271}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.388558", "n_pass": [49, 4, 4], "n_token": 56, "loss": [0.08945617824792862, 0.015519380569458008], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", "(", "AtcdVService", ",", "self", ")", "#NEWLINE#", "sh", "=", "SysLogHandler", "(", "address", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ".", "setLevel", "(", "logging", ".", "DEBUG", ")", "#NEWLINE#", "self", ".", "logger", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "=", "logging", ".", "getLogger", "(", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 38, "repair_targets": [10, 23, 54], "repair_candidates": [2, 7, 16, 32, 38, 10, 23, 54, 41, 50]}}
+{"prediction": {"error_location": 0.9144284129142761, "repair_targets": [0.5923200249671936, 0.3899896442890167, 0.002290709875524044], "repair_candidates": [0.00033968640491366386, 0.007786095608025789, 0.5923200249671936, 2.4419805413344875e-05, 0.3899896442890167, 3.710074088303372e-05, 6.0872571339132264e-05, 0.007061918266117573, 8.954312943387777e-05, 0.002290709875524044], "target_probs": 0.9846004247665405}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.445536", "n_pass": [50, 5, 5], "n_token": 52, "loss": [0.07927371561527252, 0.01216219738125801], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", "(", "AtcdVService", ",", "self", ")", "#NEWLINE#", "sh", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ".", "setLevel", "(", "logging", ".", "DEBUG", ")", "#NEWLINE#", "self", ".", "logger", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "=", "logging", ".", "getLogger", "(", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 34, "repair_targets": [10, 19, 50], "repair_candidates": [2, 7, 12, 28, 34, 10, 19, 50, 37, 46]}}
+{"prediction": {"error_location": 0.9237870573997498, "repair_targets": [0.34906715154647827, 0.6314647197723389, 0.0073795928619802], "repair_candidates": [0.0003843244630843401, 0.005637140944600105, 0.34906715154647827, 2.0089551981072873e-05, 0.6314647197723389, 0.00010679523984435946, 8.232593245338649e-05, 0.005776572972536087, 8.126955799525604e-05, 0.0073795928619802], "target_probs": 0.9879114627838135}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.502227", "n_pass": [53, 6, 6], "n_token": 48, "loss": [0.0727706030011177, 0.007213380187749863], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", "(", "AtcdVService", ",", "self", ")", "#NEWLINE#", "sh", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ".", "DEBUG", ")", "#NEWLINE#", "self", ".", "logger", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "=", "logging", ".", "getLogger", "(", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 30, "repair_targets": [10, 19, 46], "repair_candidates": [2, 7, 12, 24, 30, 10, 19, 46, 33, 42]}}
+{"prediction": {"error_location": 0.9298142194747925, "repair_targets": [0.5249214172363281, 0.4644812345504761, 0.0034098962787538767], "repair_candidates": [0.0004928328562527895, 0.003503599902614951, 0.5249214172363281, 1.8697806808631867e-05, 0.4644812345504761, 8.059559331741184e-05, 7.314688991755247e-05, 0.0029555878136307, 6.298485823208466e-05, 0.0034098962787538767], "target_probs": 0.9928125739097595}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.616780", "n_pass": [87, 8, 7], "n_token": 46, "loss": [0.1134953573346138, 0.015154590830206871], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", "(", "AtcdVService", ",", "self", ")", "#NEWLINE#", "sh", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ")", "#NEWLINE#", "self", ".", "logger", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "=", "logging", ".", "getLogger", "(", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [10, 19, 44], "repair_candidates": [2, 7, 12, 22, 28, 10, 19, 44, 31, 40]}}
+{"prediction": {"error_location": 0.892708420753479, "repair_targets": [0.7562882900238037, 0.2216106802225113, 0.007060684263706207], "repair_candidates": [0.0013454235158860683, 0.0054671368561685085, 0.7562882900238037, 5.4518295655725524e-05, 0.2216106802225113, 0.00019411132961977273, 0.00030985893681645393, 0.007492879405617714, 0.0001763918116921559, 0.007060684263706207], "target_probs": 0.9849596619606018}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.677643", "n_pass": [89, 9, 8], "n_token": 44, "loss": [0.01367192342877388, 0.011247591115534306], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", "(", "AtcdVService", ",", "self", ")", "#NEWLINE#", "sh", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ")", "#NEWLINE#", "self", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "=", "logging", ".", "getLogger", "(", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [10, 19, 42], "repair_candidates": [2, 7, 12, 22, 26, 10, 19, 42, 29, 38]}}
+{"prediction": {"error_location": 0.9864209890365601, "repair_targets": [0.7024238705635071, 0.28276023268699646, 0.003631377359852195], "repair_candidates": [0.0002155244001187384, 0.0015322321560233831, 0.7024238705635071, 1.7353244402329437e-05, 0.28276023268699646, 8.150076610036194e-05, 1.188149326480925e-05, 0.009197729639708996, 0.0001283483870793134, 0.003631377359852195], "target_probs": 0.988815426826477}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.791362", "n_pass": [93, 11, 9], "n_token": 42, "loss": [0.004330305848270655, 0.011254161596298218], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", "(", "AtcdVService", ",", "self", ")", "#NEWLINE#", "sh", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ")", "#NEWLINE#", "self", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "getLogger", "(", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [10, 19, 40], "repair_candidates": [2, 7, 12, 22, 26, 10, 19, 40, 29, 36]}}
+{"prediction": {"error_location": 0.9956793189048767, "repair_targets": [0.765346109867096, 0.1974799484014511, 0.02598286233842373], "repair_candidates": [0.00010158768418477848, 0.0008322839275933802, 0.765346109867096, 6.869023764011217e-06, 0.1974799484014511, 3.6154004192212597e-05, 3.6429273677640595e-06, 0.00923951156437397, 0.0009710523299872875, 0.02598286233842373], "target_probs": 0.9888089299201965}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.848096", "n_pass": [94, 12, 10], "n_token": 39, "loss": [0.010464323684573174, 0.03378159552812576], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", "(", "AtcdVService", ",", "self", ")", "#NEWLINE#", "sh", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ")", "#NEWLINE#", "self", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "'sparts.tasks'", ")", "#NEWLINE#", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [10, 19, 37], "repair_candidates": [2, 7, 12, 22, 26, 10, 19, 37, 29, 33]}}
+{"prediction": {"error_location": 0.9895903468132019, "repair_targets": [0.73195880651474, 0.2036665827035904, 0.031157236546278], "repair_candidates": [0.00021747799473814666, 0.0010896511375904083, 0.73195880651474, 1.26946079035406e-05, 0.2036665827035904, 3.52695606125053e-05, 6.380199920386076e-06, 0.03159567341208458, 0.0002603583561722189, 0.031157236546278], "target_probs": 0.9667826294898987}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.905010", "n_pass": [95, 13, 11], "n_token": 36, "loss": [0.00866770464926958, 0.06362366676330566], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def initLogging(", "self", ")", "(", "AtcdVService", ",", "self", ")", "#NEWLINE#", "sh", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ")", "#NEWLINE#", "self", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [10, 19, 34], "repair_candidates": [2, 7, 12, 22, 26, 10, 19, 34, 29, 30]}}
+{"prediction": {"error_location": 0.9913697242736816, "repair_targets": [0.6773104667663574, 0.25272566080093384, 0.00832193624228239], "repair_candidates": [0.0001469882408855483, 0.0031628375872969627, 0.6773104667663574, 9.81507128017256e-06, 0.25272566080093384, 1.0243660653941333e-05, 5.2945561037631705e-06, 0.04097023978829384, 0.017336491495370865, 0.00832193624228239], "target_probs": 0.9383580684661865}}
+
+
+{"result": {"time": "2021-02-11 11:54:50.961285", "n_pass": [98, 14, 12], "n_token": 34, "loss": [0.0017225203337147832, 0.052032049745321274], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "(", "AtcdVService", ",", "self", ")", "#NEWLINE#", "sh", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ")", "#NEWLINE#", "self", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [8, 17, 32], "repair_candidates": [0, 5, 10, 20, 24, 8, 17, 32, 27, 28]}}
+{"prediction": {"error_location": 0.9982789754867554, "repair_targets": [0.5460268259048462, 0.39562711119651794, 0.007644450291991234], "repair_candidates": [0.002400336554273963, 0.0002454671775922179, 0.5460268259048462, 2.6297714157408336e-06, 0.39562711119651794, 4.899455916529405e-07, 9.430393674847437e-07, 0.03124936856329441, 0.01680240035057068, 0.007644450291991234], "target_probs": 0.9492984414100647}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.020743", "n_pass": [100, 15, 13], "n_token": 32, "loss": [0.0020159415435045958, 0.03166471794247627], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ",", "self", ")", "#NEWLINE#", "sh", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ")", "#NEWLINE#", "self", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [6, 15, 30], "repair_candidates": [0, 3, 8, 18, 22, 6, 15, 30, 25, 26]}}
+{"prediction": {"error_location": 0.9979860782623291, "repair_targets": [0.5469451546669006, 0.4058791697025299, 0.016007021069526672], "repair_candidates": [0.001956310123205185, 0.00014180374273564667, 0.5469451546669006, 4.772252395923715e-06, 0.4058791697025299, 1.1701355333570973e-06, 5.810739480693883e-07, 0.01881105825304985, 0.010252966545522213, 0.016007021069526672], "target_probs": 0.9688313603401184}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.077897", "n_pass": [102, 16, 14], "n_token": 30, "loss": [0.011834884062409401, 0.06884957104921341], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ",", "self", "sh", "=", "self", ".", "_syslog_address", "(", ")", ")", "#NEWLINE#", "sh", ")", "#NEWLINE#", "self", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [4, 13, 28], "repair_candidates": [0, 3, 6, 16, 20, 4, 13, 28, 23, 24]}}
+{"prediction": {"error_location": 0.9882349967956543, "repair_targets": [0.1733887642621994, 0.754683792591095, 0.005394489970058203], "repair_candidates": [0.0028614557813853025, 0.0002489325124770403, 0.1733887642621994, 7.937810551084112e-06, 0.754683792591095, 9.512949077361554e-07, 2.592612702301267e-07, 0.04857233911752701, 0.014841056428849697, 0.005394489970058203], "target_probs": 0.9334670901298523}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.134466", "n_pass": [105, 17, 15], "n_token": 28, "loss": [0.04815845191478729, 0.06450584530830383], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ",", "self", "sh", "=", "self", ".", ")", ")", "#NEWLINE#", "sh", ")", "#NEWLINE#", "self", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 11, 26], "repair_candidates": [0, 3, 6, 14, 18, 4, 11, 26, 21, 22]}}
+{"prediction": {"error_location": 0.9529829025268555, "repair_targets": [0.0672302097082138, 0.8632971048355103, 0.007003324571996927], "repair_candidates": [0.0027491780929267406, 0.0002707229577936232, 0.0672302097082138, 0.00011201435700058937, 0.8632971048355103, 5.801495262858225e-06, 8.574515391046589e-07, 0.04197660833597183, 0.017354147508740425, 0.007003324571996927], "target_probs": 0.9375306367874146}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.190359", "n_pass": [106, 18, 16], "n_token": 26, "loss": [0.01643594726920128, 0.02687758393585682], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ",", "self", "sh", "=", "self", ".", "#NEWLINE#", "sh", ")", "#NEWLINE#", "self", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [4, 9, 24], "repair_candidates": [0, 3, 6, 12, 16, 4, 9, 24, 19, 20]}}
+{"prediction": {"error_location": 0.9836983680725098, "repair_targets": [0.0790434181690216, 0.8875726461410522, 0.006864374503493309], "repair_candidates": [0.0012182535137981176, 7.515802280977368e-05, 0.0790434181690216, 1.0269832273479551e-05, 0.8875726461410522, 3.0386474918486783e-06, 3.440935643084231e-07, 0.017046378925442696, 0.008166017942130566, 0.006864374503493309], "target_probs": 0.9734804034233093}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.246821", "n_pass": [108, 19, 17], "n_token": 24, "loss": [0.16527605056762695, 0.04484303668141365], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ",", "self", "sh", "=", "self", ".", "#NEWLINE#", "sh", "self", ".", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [4, 9, 22], "repair_candidates": [0, 3, 6, 10, 14, 4, 9, 22, 17, 18]}}
+{"prediction": {"error_location": 0.8476597666740417, "repair_targets": [0.7259601950645447, 0.21145915985107422, 0.018728168681263924], "repair_candidates": [0.009676246903836727, 0.001902563264593482, 0.7259601950645447, 0.0021244746167212725, 0.21145915985107422, 2.9263097530929372e-05, 5.0782773541868664e-06, 0.01900661177933216, 0.011108228005468845, 0.018728168681263924], "target_probs": 0.9561475515365601}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.363182", "n_pass": [143, 21, 18], "n_token": 23, "loss": [0.16777056455612183, 0.14068721234798431], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ",", "self", "sh", "=", "self", ".", "#NEWLINE#", "sh", "self", "addHandler", "(", "self", ")", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 9, 21], "repair_candidates": [0, 3, 6, 10, 13, 4, 9, 21, 16, 17]}}
+{"prediction": {"error_location": 0.8455477356910706, "repair_targets": [0.16758567094802856, 0.6987159848213196, 0.002459337003529072], "repair_candidates": [0.0028599565848708153, 0.005722456146031618, 0.16758567094802856, 0.0003717640938702971, 0.6987159848213196, 5.567637344938703e-05, 1.3926994142821059e-05, 0.07607074081897736, 0.046144574880599976, 0.002459337003529072], "target_probs": 0.8687610030174255}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.531928", "n_pass": [147, 24, 19], "n_token": 22, "loss": [0.2822124660015106, 0.17113010585308075], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ",", "self", "sh", "=", "self", ".", "#NEWLINE#", "sh", "self", "addHandler", "(", "self", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", ".", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 9, 20], "repair_candidates": [0, 3, 6, 10, 13, 4, 9, 20, 15, 16]}}
+{"prediction": {"error_location": 0.7541134357452393, "repair_targets": [0.17977601289749146, 0.6623242497444153, 0.0006116898148320615], "repair_candidates": [0.0035977486986666918, 0.019795065745711327, 0.17977601289749146, 0.0008644050103612244, 0.6623242497444153, 0.00023098774545360357, 1.0411313269287348e-05, 0.08175364881753922, 0.05103578418493271, 0.0006116898148320615], "target_probs": 0.8427119255065918}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.644925", "n_pass": [151, 26, 20], "n_token": 21, "loss": [0.6016678214073181, 0.13325241208076477], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ",", "self", "sh", "=", "self", ".", "#NEWLINE#", "sh", "self", "addHandler", "(", "self", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", "addHandler", "(", "sh", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 9, 19], "repair_candidates": [0, 3, 6, 10, 13, 4, 9, 19, 15, 16]}}
+{"prediction": {"error_location": 0.5478971004486084, "repair_targets": [0.2749379575252533, 0.598220705986023, 0.0020854510366916656], "repair_candidates": [0.007030709180980921, 0.09078674763441086, 0.2749379575252533, 0.0068538738414645195, 0.598220705986023, 0.001935223350301385, 9.783465065993369e-05, 0.017009543254971504, 0.0010419287718832493, 0.0020854510366916656], "target_probs": 0.875244140625}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.704275", "n_pass": [152, 27, 21], "n_token": 19, "loss": [0.3409215807914734, 0.08780813962221146], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ",", "self", "sh", "=", "self", ".", "#NEWLINE#", "sh", "self", "addHandler", "(", "self", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", "sh", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4, 9, 17], "repair_candidates": [0, 3, 6, 10, 13, 4, 9, 17, 15, 16]}}
+{"prediction": {"error_location": 0.7111145853996277, "repair_targets": [0.5787020325660706, 0.30422496795654297, 0.03300957381725311], "repair_candidates": [0.006153409834951162, 0.014551673084497452, 0.5787020325660706, 0.002853109035640955, 0.30422496795654297, 0.0009343352285213768, 3.866838596877642e-05, 0.035548772662878036, 0.02398345246911049, 0.03300957381725311], "target_probs": 0.9159365892410278}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.760768", "n_pass": [155, 28, 22], "n_token": 18, "loss": [0.5761829018592834, 0.07491698861122131], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "self", "sh", "=", "self", ".", "#NEWLINE#", "sh", "self", "addHandler", "(", "self", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", "sh", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [3, 8, 16], "repair_candidates": [0, 2, 5, 9, 12, 3, 8, 16, 14, 15]}}
+{"prediction": {"error_location": 0.5620396137237549, "repair_targets": [0.8137332797050476, 0.08007863163948059, 0.03400856629014015], "repair_candidates": [0.012029088102281094, 0.01942593604326248, 0.8137332797050476, 0.011290921829640865, 0.08007863163948059, 0.002993189264088869, 0.00022721706773154438, 0.013113508932292461, 0.013099635019898415, 0.03400856629014015], "target_probs": 0.9278205037117004}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.817384", "n_pass": [156, 29, 23], "n_token": 17, "loss": [0.03795614466071129, 0.08622312545776367], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "sh", "=", "self", ".", "#NEWLINE#", "sh", "self", "addHandler", "(", "self", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", "sh", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 7, 15], "repair_candidates": [0, 1, 4, 8, 11, 2, 7, 15, 13, 14]}}
+{"prediction": {"error_location": 0.9627551436424255, "repair_targets": [0.21710410714149475, 0.608913242816925, 0.09137212485074997], "repair_candidates": [0.008862380869686604, 0.01726621575653553, 0.21710410714149475, 0.00031179829966276884, 0.608913242816925, 3.826387910521589e-05, 2.365773980272934e-05, 0.027754008769989014, 0.028354251757264137, 0.09137212485074997], "target_probs": 0.9173895120620728}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.873877", "n_pass": [159, 30, 24], "n_token": 16, "loss": [0.12040294706821442, 0.09736195206642151], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "sh", "self", ".", "#NEWLINE#", "sh", "self", "addHandler", "(", "self", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", "sh", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 6, 14], "repair_candidates": [0, 1, 3, 7, 10, 2, 6, 14, 12, 13]}}
+{"prediction": {"error_location": 0.886563241481781, "repair_targets": [0.45432788133621216, 0.33040139079093933, 0.12249834835529327], "repair_candidates": [0.007181513588875532, 0.0373845100402832, 0.45432788133621216, 0.0006841456051915884, 0.33040139079093933, 0.00027447749744169414, 5.788871203549206e-05, 0.02640692889690399, 0.020782973617315292, 0.12249834835529327], "target_probs": 0.9072275757789612}}
+
+
+{"result": {"time": "2021-02-11 11:54:51.930069", "n_pass": [161, 31, 25], "n_token": 15, "loss": [0.11580017954111099, 0.12324198335409164], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "sh", "self", "#NEWLINE#", "sh", "self", "addHandler", "(", "self", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", "sh", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 5, 13], "repair_candidates": [0, 1, 3, 6, 9, 2, 5, 13, 11, 12]}}
+{"prediction": {"error_location": 0.8906532526016235, "repair_targets": [0.5382788181304932, 0.3222493529319763, 0.023521563038229942], "repair_candidates": [0.01904480904340744, 0.06180734187364578, 0.5382788181304932, 0.015180625021457672, 0.3222493529319763, 0.005242943298071623, 0.00010618747910484672, 0.007525900844484568, 0.0070424675941467285, 0.023521563038229942], "target_probs": 0.8840497136116028}}
+
+
+{"result": {"time": "2021-02-11 11:54:52.214127", "n_pass": [179, 36, 26], "n_token": 14, "loss": [0.11993316560983658, 0.01770830526947975], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "self", "sh", "self", "#NEWLINE#", "sh", "self", "addHandler", "(", "self", "#NEWLINE#", "sparts_tasks_logger", "sparts_tasks_logger", "sh"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 5, 13], "repair_candidates": [0, 1, 3, 6, 9, 2, 5, 13, 11, 12]}}
+{"prediction": {"error_location": 0.8869796395301819, "repair_targets": [0.33797910809516907, 0.6442255973815918, 0.00024290705914609134], "repair_candidates": [0.0006542698829434812, 0.007598922587931156, 0.33797910809516907, 0.006379472557455301, 0.6442255973815918, 0.0001765695633366704, 2.839382432284765e-05, 0.0026966172736138105, 1.823417733248789e-05, 0.00024290705914609134], "target_probs": 0.9824475646018982}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'self', 'sh', 'self', '#NEWLINE#', 'sh', 'self', 'addHandler', '(', 'self', '#NEWLINE#', 'sparts_tasks_logger', 'sparts_tasks_logger', 'sh']

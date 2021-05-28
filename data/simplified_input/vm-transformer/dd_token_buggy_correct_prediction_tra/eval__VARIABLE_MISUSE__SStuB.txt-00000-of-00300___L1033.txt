@@ -1,0 +1,157 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "[", "]", ")", ":", "#NEWLINE#", "#INDENT#", "'Confirm that the first email recipient @smtp_server_domain could correspond to a valid project (i.e., it a new project or an int) and return it'", "#NEWLINE#", "result", "=", "None", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "in", "action_mailboxes", ".", "keys", "(", ")", ")", "or", "(", "domain_recipients", "[", "0", "]", "in", "pass_through_mailboxes", ")", "or", "(", "default_mailbox", "is not", "None", ")", ")", ":", "#NEWLINE#", "#INDENT#", "result", "=", "domain_recipients", "[", "0", "]", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "IndexError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"], "error_location": [71], "repair_targets": [12, 53], "repair_candidates": [12, 53, 2, 23, 36, 55, 71], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "dpapathanasiou/intelligent-smtp-responder/utils/email_utils.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 1033, "results": {"model": "transformer", "prob": {"loc": [[0.00016346204211004078, 4.5879282595251425e-09, 9.512729270966247e-09, 2.712424729267582e-10, 2.120900538526982e-10, 1.6992060536402676e-10, 2.202193011280329e-10, 1.5990414548028298e-10, 1.9307264120804746e-10, 1.5695855726249874e-10, 6.974834598771906e-10, 1.771882640611011e-10, 2.6669138009083326e-08, 5.674979375314138e-10, 1.938646354560092e-09, 7.8456674490468e-10, 1.6628868282353437e-09, 1.1955071377300897e-09, 2.350159622466208e-09, 2.462584580698035e-09, 4.341947079655739e-10, 1.1956159673420785e-10, 3.2478602030039383e-09, 2.421097451588139e-05, 6.95414170692743e-09, 7.701483895061756e-09, 1.0589443766306772e-09, 6.920608530691652e-10, 2.890545858225124e-10, 1.0281427098579599e-10, 4.234630354704727e-11, 1.054170417624789e-09, 1.3938903364874022e-09, 3.652278202093129e-10, 6.605123392677825e-11, 8.276251906025323e-10, 9.59771455200098e-07, 1.2977081631504461e-09, 5.601618280337561e-09, 8.528009548536275e-11, 8.35023231116061e-11, 2.7556520763027947e-06, 3.0040644971585095e-10, 2.6041535594600873e-10, 6.9297223515008e-10, 1.633702481740329e-06, 1.807430649591879e-09, 1.219242151684341e-09, 1.6743090247572923e-09, 8.729783562699822e-10, 1.953940564902723e-09, 3.1535347666533653e-09, 3.895313849255899e-09, 1.1575887981507549e-07, 2.9963291847678875e-09, 5.78456410949002e-06, 5.840583838789826e-08, 2.1441705939651e-06, 1.5240376072256367e-08, 1.6775704381188916e-08, 2.0270011447109937e-08, 1.8886666452999634e-08, 6.091690352150181e-07, 6.692827980714355e-08, 4.6683560128713e-08, 2.5051951624277535e-08, 2.402972221204891e-08, 3.4178390251327073e-07, 3.201517628781403e-08, 4.2074006501024996e-08, 8.959479202985676e-08, 0.9997974038124084]], "pointer": [[0.0, 0.0, 9.9066091934219e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.01299903355538845, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.995910423602254e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.1128041655392735e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9869903922080994, 0.0, 2.0967691227724572e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.9637545750915706e-08]], "target": [0.9999894499778748]}, "loss": [0.00020251607929822057, 1.0550077604420949e-05], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:15:57.064731", "n_pass": [1, 1, 1], "n_token": 72, "loss": [0.00020251607929822057, 1.0550077604420949e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "[", "]", ")", ":", "#NEWLINE#", "#INDENT#", "'Confirm that the first email recipient @smtp_server_domain could correspond to a valid project (i.e., it a new project or an int) and return it'", "#NEWLINE#", "result", "=", "None", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "in", "action_mailboxes", ".", "keys", "(", ")", ")", "or", "(", "domain_recipients", "[", "0", "]", "in", "pass_through_mailboxes", ")", "or", "(", "default_mailbox", "is not", "None", ")", ")", ":", "#NEWLINE#", "#INDENT#", "result", "=", "domain_recipients", "[", "0", "]", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "IndexError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 71, "repair_targets": [12, 53], "repair_candidates": [12, 53, 2, 23, 36, 55, 71]}}
+{"prediction": {"error_location": 0.9997974038124084, "repair_targets": [0.01299903355538845, 0.9869903922080994], "repair_candidates": [9.9066091934219e-06, 0.01299903355538845, 1.995910423602254e-07, 3.1128041655392735e-07, 0.9869903922080994, 2.0967691227724572e-07, 2.9637545750915706e-08], "target_probs": 0.9999894499778748}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.123232", "n_pass": [23, 2, 2], "n_token": 63, "loss": [0.00037043384509161115, 1.8000764612224884e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "[", "]", ")", ":", "#NEWLINE#", "#INDENT#", "'Confirm that the first email recipient @smtp_server_domain could correspond to a valid project (i.e., it a new project or an int) and return it'", "#NEWLINE#", "result", "=", "None", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "domain_recipients", "[", "0", "]", "in", "pass_through_mailboxes", ")", "or", "(", "default_mailbox", "is not", "None", ")", ")", ":", "#NEWLINE#", "#INDENT#", "result", "=", "domain_recipients", "[", "0", "]", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "IndexError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 62, "repair_targets": [12, 44], "repair_candidates": [12, 44, 2, 23, 27, 46, 62]}}
+{"prediction": {"error_location": 0.9996296167373657, "repair_targets": [0.02404700219631195, 0.9759349822998047], "repair_candidates": [1.3461075468512718e-05, 0.02404700219631195, 1.816351868910715e-07, 3.405029929126613e-07, 0.9759349822998047, 3.933951120416168e-06, 5.138228331702521e-08], "target_probs": 0.9999819993972778}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.179364", "n_pass": [45, 3, 3], "n_token": 58, "loss": [0.00401405431330204, 4.2022158595500514e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "[", "]", ")", ":", "#NEWLINE#", "#INDENT#", "'Confirm that the first email recipient @smtp_server_domain could correspond to a valid project (i.e., it a new project or an int) and return it'", "#NEWLINE#", "result", "=", "None", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "domain_recipients", ")", "or", "(", "default_mailbox", "is not", "None", ")", ")", ":", "#NEWLINE#", "#INDENT#", "result", "=", "domain_recipients", "[", "0", "]", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "IndexError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 57, "repair_targets": [12, 39], "repair_candidates": [12, 39, 2, 23, 27, 41, 57]}}
+{"prediction": {"error_location": 0.9959940910339355, "repair_targets": [0.03514699637889862, 0.9648109674453735], "repair_candidates": [4.0927843656390905e-05, 0.03514699637889862, 5.371506972551288e-07, 9.866027994576143e-08, 0.9648109674453735, 3.8440489902313857e-07, 3.4137073612328095e-08], "target_probs": 0.9999579787254333}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.234778", "n_pass": [46, 4, 4], "n_token": 53, "loss": [0.0042444858700037, 0.00010860556358238682], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "[", "]", ")", ":", "#NEWLINE#", "#INDENT#", "'Confirm that the first email recipient @smtp_server_domain could correspond to a valid project (i.e., it a new project or an int) and return it'", "#NEWLINE#", "result", "=", "None", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "domain_recipients", "None", ")", ")", ":", "#NEWLINE#", "#INDENT#", "result", "=", "domain_recipients", "[", "0", "]", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "IndexError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 52, "repair_targets": [12, 34], "repair_candidates": [12, 34, 2, 23, 27, 36, 52]}}
+{"prediction": {"error_location": 0.9957643747329712, "repair_targets": [0.051562968641519547, 0.94832843542099], "repair_candidates": [0.00010707319597713649, 0.051562968641519547, 1.810516891964653e-07, 1.5380148710164576e-08, 0.94832843542099, 1.4072572867007693e-06, 3.269144954742842e-08], "target_probs": 0.9998914003372192}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.290252", "n_pass": [47, 5, 5], "n_token": 48, "loss": [0.02596156671643257, 0.0001837183954194188], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "[", "]", ")", ":", "#NEWLINE#", "#INDENT#", "'Confirm that the first email recipient @smtp_server_domain could correspond to a valid project (i.e., it a new project or an int) and return it'", "#NEWLINE#", "result", "=", "None", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "[", "0", "]", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "IndexError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 47, "repair_targets": [12, 29], "repair_candidates": [12, 29, 2, 23, 27, 31, 47]}}
+{"prediction": {"error_location": 0.9743725657463074, "repair_targets": [0.1781190037727356, 0.8216972947120667], "repair_candidates": [0.00018299877410754561, 0.1781190037727356, 1.9799425388100644e-07, 2.9747878826924534e-08, 0.8216972947120667, 3.0680925533488335e-07, 2.2841739166779007e-07], "target_probs": 0.9998162984848022}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.345718", "n_pass": [49, 6, 6], "n_token": 43, "loss": [0.015551605261862278, 5.185738700674847e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "[", "]", ")", ":", "#NEWLINE#", "#INDENT#", "'Confirm that the first email recipient @smtp_server_domain could correspond to a valid project (i.e., it a new project or an int) and return it'", "#NEWLINE#", "result", "=", "None", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "[", "except", "IndexError", ":", "#NEWLINE#", "#INDENT#", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 42, "repair_targets": [12, 29], "repair_candidates": [12, 29, 2, 23, 27, 31, 42]}}
+{"prediction": {"error_location": 0.98456871509552, "repair_targets": [0.0701165497303009, 0.9298316240310669], "repair_candidates": [5.04736126458738e-05, 0.0701165497303009, 7.178635996751837e-08, 2.047437241969874e-08, 0.9298316240310669, 1.2686656418736675e-06, 6.77070559618187e-08], "target_probs": 0.9999481439590454}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.400568", "n_pass": [50, 7, 7], "n_token": 38, "loss": [0.013186980038881302, 1.09077091110521e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "[", "]", ")", ":", "#NEWLINE#", "#INDENT#", "'Confirm that the first email recipient @smtp_server_domain could correspond to a valid project (i.e., it a new project or an int) and return it'", "#NEWLINE#", "result", "=", "None", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "[", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 37, "repair_targets": [12, 29], "repair_candidates": [12, 29, 2, 23, 27, 31, 37]}}
+{"prediction": {"error_location": 0.9868996143341064, "repair_targets": [0.06125938892364502, 0.9387297034263611], "repair_candidates": [1.0887931239267346e-05, 0.06125938892364502, 1.8043341043494365e-08, 3.4715277319463667e-09, 0.9387297034263611, 5.2172104858527746e-08, 3.0687250074379335e-08], "target_probs": 0.9999890923500061}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.457411", "n_pass": [53, 8, 8], "n_token": 34, "loss": [0.0476594902575016, 6.9141628955549095e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "#NEWLINE#", "#INDENT#", "'Confirm that the first email recipient @smtp_server_domain could correspond to a valid project (i.e., it a new project or an int) and return it'", "#NEWLINE#", "result", "=", "None", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "[", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 33, "repair_targets": [8, 25], "repair_candidates": [8, 25, 2, 19, 23, 27, 33]}}
+{"prediction": {"error_location": 0.9534584879875183, "repair_targets": [0.3439907133579254, 0.6560023427009583], "repair_candidates": [6.10570077697048e-06, 0.3439907133579254, 1.4426599648231786e-07, 2.8388997819206452e-08, 0.6560023427009583, 4.3880996258849336e-07, 2.288043248199756e-07], "target_probs": 0.999993085861206}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.511708", "n_pass": [54, 9, 9], "n_token": 30, "loss": [0.06936850398778915, 1.6093266594907618e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "result", "=", "None", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "[", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 29, "repair_targets": [4, 21], "repair_candidates": [4, 21, 2, 15, 19, 23, 29]}}
+{"prediction": {"error_location": 0.9329828023910522, "repair_targets": [0.06957045942544937, 0.9304279088973999], "repair_candidates": [1.2851821793447016e-06, 0.06957045942544937, 3.566489681361418e-08, 1.1643807695804753e-08, 0.9304279088973999, 2.286460727418671e-07, 1.2341344302058133e-07], "target_probs": 0.9999983906745911}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.621365", "n_pass": [77, 11, 10], "n_token": 28, "loss": [0.1975570172071457, 2.622607780722319e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "result", "=", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "(", "domain_recipients", "[", "0", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "[", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 27, "repair_targets": [4, 19], "repair_candidates": [4, 19, 2, 13, 17, 21, 27]}}
+{"prediction": {"error_location": 0.820733368396759, "repair_targets": [0.17504088580608368, 0.824956476688385], "repair_candidates": [2.0525476429611444e-06, 0.17504088580608368, 3.733565279162576e-08, 9.510811693758114e-09, 0.824956476688385, 3.3384597486474377e-07, 2.653127069152106e-07], "target_probs": 0.9999973773956299}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.730935", "n_pass": [79, 13, 11], "n_token": 26, "loss": [1.0282635688781738, 2.235199099231977e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "result", "=", "try", ":", "if", "(", "(", "domain_recipients", "[", "0", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "[", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 25, "repair_targets": [4, 17], "repair_candidates": [4, 17, 2, 11, 15, 19, 25]}}
+{"prediction": {"error_location": 0.35762742161750793, "repair_targets": [0.6203334331512451, 0.3796442151069641], "repair_candidates": [1.859885742305778e-05, 0.6203334331512451, 1.8523272160564375e-07, 1.0317041443386188e-07, 0.3796442151069641, 5.783829806205176e-07, 2.7968387712462572e-06], "target_probs": 0.9999776482582092}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.787645", "n_pass": [80, 14, 12], "n_token": 24, "loss": [0.9150104522705078, 7.218382961582392e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "result", "=", "try", ":", "(", "domain_recipients", "[", "0", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "[", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 23, "repair_targets": [4, 15], "repair_candidates": [4, 15, 2, 9, 13, 17, 23]}}
+{"prediction": {"error_location": 0.4005124270915985, "repair_targets": [0.5027626156806946, 0.4971652030944824], "repair_candidates": [5.5537329899379984e-05, 0.5027626156806946, 1.915189159262809e-06, 3.8740625996069866e-07, 0.4971652030944824, 7.45733871099219e-07, 1.3592769391834736e-05], "target_probs": 0.999927818775177}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.842168", "n_pass": [82, 15, 13], "n_token": 22, "loss": [1.1692461967468262, 0.0001190971743199043], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "result", "=", "try", ":", "(", "domain_recipients", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "[", "pass", "#NEWLINE#", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 21, "repair_targets": [4, 13], "repair_candidates": [4, 13, 2, 9, 11, 15, 21]}}
+{"prediction": {"error_location": 0.31060096621513367, "repair_targets": [0.6323253512382507, 0.36755552887916565], "repair_candidates": [9.831460192799568e-05, 0.6323253512382507, 9.470633131059003e-07, 1.1454658306320198e-06, 0.36755552887916565, 4.1414793372496206e-07, 1.8342072507948615e-05], "target_probs": 0.9998809099197388}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.896832", "n_pass": [86, 16, 14], "n_token": 19, "loss": [0.21569178998470306, 0.00040575151797384024], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def domain_recipients_valid(", "domain_recipients", "=", "result", "=", "try", ":", "(", "domain_recipients", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 13], "repair_candidates": [4, 13, 2, 9, 11, 15, 18]}}
+{"prediction": {"error_location": 0.8059836626052856, "repair_targets": [0.33890819549560547, 0.6606861352920532], "repair_candidates": [0.00035466975532472134, 0.33890819549560547, 3.9497986108472105e-06, 1.3518015293811914e-06, 0.6606861352920532, 4.30479258284322e-06, 4.140125747653656e-05], "target_probs": 0.9995943307876587}}
+
+
+{"result": {"time": "2021-02-11 11:15:57.951483", "n_pass": [88, 17, 15], "n_token": 17, "loss": [0.14384432137012482, 0.006420677062124014], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["domain_recipients", "=", "result", "=", "try", ":", "(", "domain_recipients", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 16, "repair_targets": [2, 11], "repair_candidates": [2, 11, 0, 7, 9, 13, 16]}}
+{"prediction": {"error_location": 0.8660225868225098, "repair_targets": [0.4243786633014679, 0.5692211985588074], "repair_candidates": [0.006370948627591133, 0.4243786633014679, 1.8389775959803956e-06, 4.146421815676149e-06, 0.5692211985588074, 7.779550514896982e-07, 2.245817995571997e-05], "target_probs": 0.9935998916625977}}
+
+
+{"result": {"time": "2021-02-11 11:15:58.005554", "n_pass": [91, 18, 16], "n_token": 15, "loss": [0.009660636074841022, 0.002235107123851776], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["domain_recipients", "=", "result", "=", "(", "domain_recipients", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 14, "repair_targets": [2, 9], "repair_candidates": [2, 9, 0, 5, 7, 11, 14]}}
+{"prediction": {"error_location": 0.9903860092163086, "repair_targets": [0.1555396318435669, 0.8422277569770813], "repair_candidates": [0.0021276369225233793, 0.1555396318435669, 1.1297244782326743e-05, 9.133780258707702e-05, 0.8422277569770813, 2.7254037604507175e-07, 2.0486900211835746e-06], "target_probs": 0.9977673888206482}}
+
+
+{"result": {"time": "2021-02-11 11:15:58.060478", "n_pass": [113, 19, 17], "n_token": 14, "loss": [0.001384372473694384, 0.0010034110164269805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["domain_recipients", "=", "result", "=", "domain_recipients", "]", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 8], "repair_candidates": [2, 8, 0, 4, 6, 10, 13]}}
+{"prediction": {"error_location": 0.9986165761947632, "repair_targets": [0.04782987758517265, 0.9511672258377075], "repair_candidates": [0.0007944123935885727, 0.04782987758517265, 0.00010969604045385495, 9.851487266132608e-05, 0.9511672258377075, 7.028078385928893e-08, 1.8465944151557778e-07], "target_probs": 0.9989970922470093}}
+
+
+{"result": {"time": "2021-02-11 11:15:58.116927", "n_pass": [114, 20, 18], "n_token": 13, "loss": [0.0029848332051187754, 0.001723581925034523], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["domain_recipients", "=", "result", "=", "domain_recipients", "domain_recipients", "#INDENT#", "result", "=", "domain_recipients", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 7], "repair_candidates": [2, 7, 0, 4, 5, 9, 12]}}
+{"prediction": {"error_location": 0.9970195889472961, "repair_targets": [0.023592650890350342, 0.9746852517127991], "repair_candidates": [0.0015311321476474404, 0.023592650890350342, 7.739508873783052e-05, 0.0001132280522142537, 0.9746852517127991, 1.2209332567181264e-07, 2.3375825719540444e-07], "target_probs": 0.9982779026031494}}
+
+
+{"result": {"time": "2021-02-11 11:15:58.171281", "n_pass": [116, 21, 19], "n_token": 12, "loss": [0.08231467753648758, 0.013318382203578949], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["domain_recipients", "=", "result", "=", "domain_recipients", "domain_recipients", "result", "=", "domain_recipients", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 6], "repair_candidates": [2, 6, 0, 4, 5, 8, 11]}}
+{"prediction": {"error_location": 0.9209821224212646, "repair_targets": [0.6447951793670654, 0.34197476506233215], "repair_candidates": [0.010734780691564083, 0.6447951793670654, 0.0006904430920258164, 0.0018036449328064919, 0.34197476506233215, 9.908911806633114e-07, 1.248155285793473e-07], "target_probs": 0.9867699146270752}}
+
+
+{"result": {"time": "2021-02-11 11:15:58.225875", "n_pass": [118, 22, 20], "n_token": 11, "loss": [0.0641590803861618, 0.10995607078075409], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["domain_recipients", "=", "result", "=", "domain_recipients", "domain_recipients", "result", "domain_recipients", "#UNINDENT#", "return", "domain_recipients"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 6], "repair_candidates": [2, 6, 0, 4, 5, 7, 10]}}
+{"prediction": {"error_location": 0.9378557801246643, "repair_targets": [0.879284679889679, 0.016588835045695305], "repair_candidates": [0.013741358183324337, 0.879284679889679, 0.0457303486764431, 0.038439832627773285, 0.016588835045695305, 0.006180103402584791, 3.490181916276924e-05], "target_probs": 0.895873486995697}}
+
+
+{"result": {"time": "2021-02-11 11:15:58.280284", "n_pass": [120, 23, 21], "n_token": 10, "loss": [0.39909976720809937, 0.03393672779202461], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["domain_recipients", "=", "result", "=", "domain_recipients", "domain_recipients", "result", "domain_recipients", "return", "domain_recipients"]}}
+{"position": {"error_location": 9, "repair_targets": [2, 6], "repair_candidates": [2, 6, 0, 4, 5, 7, 9]}}
+{"prediction": {"error_location": 0.6709237694740295, "repair_targets": [0.9252581596374512, 0.04137450084090233], "repair_candidates": [0.007110146805644035, 0.9252581596374512, 0.012581439688801765, 0.013189781457185745, 0.04137450084090233, 0.00044957915088161826, 3.640754221123643e-05], "target_probs": 0.9666326642036438}}
+
+
+{"result": {"time": "2021-02-11 11:15:58.334736", "n_pass": [123, 24, 22], "n_token": 9, "loss": [0.5809876918792725, 0.3211052119731903], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["domain_recipients", "result", "=", "domain_recipients", "domain_recipients", "result", "domain_recipients", "return", "domain_recipients"]}}
+{"position": {"error_location": 8, "repair_targets": [1, 5], "repair_candidates": [1, 5, 0, 3, 4, 6, 8]}}
+{"prediction": {"error_location": 0.5593456029891968, "repair_targets": [0.7007983922958374, 0.024548551067709923], "repair_candidates": [0.24381935596466064, 0.7007983922958374, 0.012693389318883419, 0.014901991002261639, 0.024548551067709923, 0.00287125282920897, 0.0003670257574412972], "target_probs": 0.7253469228744507}}
+
+
+{"result": {"time": "2021-02-11 11:15:58.389179", "n_pass": [125, 25, 23], "n_token": 8, "loss": [0.6662072539329529, 0.10260814428329468], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["domain_recipients", "result", "domain_recipients", "domain_recipients", "result", "domain_recipients", "return", "domain_recipients"]}}
+{"position": {"error_location": 7, "repair_targets": [1, 4], "repair_candidates": [1, 4, 0, 2, 3, 5, 7]}}
+{"prediction": {"error_location": 0.5136530995368958, "repair_targets": [0.8970096111297607, 0.005470913834869862], "repair_candidates": [0.07861840724945068, 0.8970096111297607, 0.0082605741918087, 0.005745390430092812, 0.005470913834869862, 0.003797811921685934, 0.0010972549207508564], "target_probs": 0.9024805426597595}}
+
+
+{"result": {"time": "2021-02-11 11:15:58.574274", "n_pass": [135, 26, 24], "n_token": 7, "loss": [0.6711963415145874, 0.2812156677246094], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["domain_recipients", "result", "domain_recipients", "domain_recipients", "result", "domain_recipients", "domain_recipients"]}}
+{"position": {"error_location": 6, "repair_targets": [1, 4], "repair_candidates": [1, 4, 0, 2, 3, 5, 6]}}
+{"prediction": {"error_location": 0.5110967755317688, "repair_targets": [0.7114334106445312, 0.0434320867061615], "repair_candidates": [0.09597655385732651, 0.7114334106445312, 0.0727551057934761, 0.041371677070856094, 0.0434320867061615, 0.024626636877655983, 0.010404471307992935], "target_probs": 0.7548655271530151}}
+
+
+
+
+Minimal simplified tokens:
+
+['domain_recipients', 'result', 'domain_recipients', 'domain_recipients', 'result', 'domain_recipients', 'domain_recipients']

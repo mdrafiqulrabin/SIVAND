@@ -1,0 +1,139 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "data", "=", "b'--1234\\nContent-Disposition: form-data; filename=\"ab.txt\"\\n\\nFoo\\n--1234--'", ".", "replace", "(", "b'\\n'", ",", "b'\\r\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "with", "ExpectLog", "(", "gen_log", ",", "'multipart/form-data value missing name'", ")", ":", "#NEWLINE#", "#INDENT#", "parse_multipart_form_data", "(", "b'1234'", ",", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files", ",", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", ")"], "error_location": [52], "repair_targets": [18], "repair_candidates": [18, 7, 50, 27, 52, 54, 62, 2, 58], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "RobotWebTools/rosbridge_suite/rosbridge_server/src/tornado/test/httputil_test.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00006-of-00300", "js_count": 22558, "results": {"model": "transformer", "prob": {"loc": [[0.00012939768203068525, 3.341161791681202e-09, 1.0644605197285273e-09, 3.550524110829123e-11, 8.875425394627712e-11, 9.170567083494063e-11, 7.048155808986323e-11, 2.2820447753701956e-09, 7.394480860956065e-11, 2.0868948930052866e-11, 4.4166427459746416e-11, 1.8675611404561643e-11, 5.422731153004179e-10, 2.4468389536735913e-09, 1.5897115568375142e-10, 1.6161454396979025e-09, 1.6181959938688095e-10, 3.191921726930502e-11, 1.629176260564691e-08, 1.0003797096258538e-10, 4.3430650742415366e-10, 1.4160940475793637e-10, 1.185201103925948e-10, 1.4998415009959132e-10, 1.1983167236273573e-10, 9.316671045755953e-11, 1.1448253456336488e-10, 3.1233649000483865e-09, 4.83221129776723e-10, 9.009490931077835e-10, 4.753240023802618e-10, 4.99292995836953e-10, 6.410681430146781e-10, 5.449877216179289e-10, 5.060136198942189e-10, 3.661506098318057e-10, 3.182086538711104e-11, 2.6102662253890685e-09, 1.420926931672284e-09, 1.0869874245145184e-07, 7.641546284631318e-10, 7.670898583000962e-08, 1.5816303822191458e-10, 8.809452056723899e-10, 7.648019995087907e-10, 5.259049862260667e-10, 1.1822507417491579e-09, 1.0859776189420245e-08, 7.130034340718794e-09, 1.4885308541323639e-09, 1.3584647604147904e-05, 1.6974154304350009e-09, 0.4733390212059021, 1.2612267896727758e-09, 0.5047627687454224, 7.893323217267323e-10, 1.2319565367846508e-09, 5.312027484549731e-10, 9.021798585973073e-11, 2.341121185800432e-10, 4.798385022652951e-10, 4.442457512965348e-09, 0.021753916516900063, 2.5216513321879575e-09, 9.729481007525465e-07, 3.6965444039083195e-09, 5.786864321066787e-10, 5.344069076151925e-10, 4.746282811218805e-10, 6.744814484704875e-09, 3.1334372874169958e-09]], "pointer": [[0.0, 0.0, 1.3408573806827917e-07, 0.0, 0.0, 0.0, 0.0, 0.0002172657405026257, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9997385144233704, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.1022660803282633e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.191896368865855e-05, 0.0, 1.092511303646404e-09, 0.0, 1.3100587281655862e-09, 0.0, 0.0, 0.0, 9.797958888668745e-09, 0.0, 0.0, 0.0, 1.6836124716590462e-09, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9997385144233704]}, "loss": [0.7479432821273804, 0.00026151977363042533], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [54]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:19:47.084629", "n_pass": [1, 1, 1], "n_token": 71, "loss": [0.6836665868759155, 0.00026151977363042533], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "data", "=", "b'--1234\\nContent-Disposition: form-data; filename=\"ab.txt\"\\n\\nFoo\\n--1234--'", ".", "replace", "(", "b'\\n'", ",", "b'\\r\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "with", "ExpectLog", "(", "gen_log", ",", "'multipart/form-data value missing name'", ")", ":", "#NEWLINE#", "#INDENT#", "parse_multipart_form_data", "(", "b'1234'", ",", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files", ",", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", ")"]}}
+{"position": {"error_location": 54, "repair_targets": [18], "repair_candidates": [18, 7, 50, 27, 52, 54, 62, 2, 58]}}
+{"prediction": {"error_location": 0.5047627687454224, "repair_targets": [0.9997385144233704], "repair_candidates": [1.3408573806827917e-07, 0.0002172657405026257, 0.9997385144233704, 2.1022660803282633e-06, 4.191896368865855e-05, 1.092511303646404e-09, 1.3100587281655862e-09, 9.797958888668745e-09, 1.6836124716590462e-09], "target_probs": 0.9997385144233704}}
+
+
+{"result": {"time": "2021-02-21 06:19:47.200409", "n_pass": [24, 3, 2], "n_token": 62, "loss": [0.6233834624290466, 0.00010610189929138869], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "data", "=", "b'--1234\\nContent-Disposition: form-data; filename=\"ab.txt\"\\n\\nFoo\\n--1234--'", ".", "replace", "(", "b'\\n'", ",", "b'\\r\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "#INDENT#", "parse_multipart_form_data", "(", "b'1234'", ",", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files", ",", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", ")"]}}
+{"position": {"error_location": 45, "repair_targets": [18], "repair_candidates": [18, 7, 41, 27, 43, 45, 53, 2, 49]}}
+{"prediction": {"error_location": 0.5361273884773254, "repair_targets": [0.9998939037322998], "repair_candidates": [2.425188085908303e-07, 0.00010169162123929709, 0.9998939037322998, 2.9981740112816624e-07, 3.836008545476943e-06, 1.2820945416436302e-09, 1.007170569167215e-09, 3.175775420416471e-09, 2.0515811272048268e-09], "target_probs": 0.9998939037322998}}
+
+
+{"result": {"time": "2021-02-21 06:19:47.314461", "n_pass": [45, 5, 3], "n_token": 57, "loss": [0.5325722694396973, 6.354056677082554e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "data", "=", "b'--1234\\nContent-Disposition: form-data; filename=\"ab.txt\"\\n\\nFoo\\n--1234--'", ".", "replace", "(", "b'\\n'", ",", "b'\\r\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "=", "{", "#NEWLINE#", "#INDENT#", "parse_multipart_form_data", "(", "b'1234'", ",", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files", ",", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", ")"]}}
+{"position": {"error_location": 40, "repair_targets": [18], "repair_candidates": [18, 7, 36, 27, 38, 40, 48, 2, 44]}}
+{"prediction": {"error_location": 0.5870927572250366, "repair_targets": [0.9999364614486694], "repair_candidates": [3.1261868116416736e-07, 5.577045158133842e-05, 0.9999364614486694, 5.3285930334823206e-08, 7.485703008569544e-06, 6.263037866105492e-10, 5.33367183752631e-10, 4.012407739395485e-09, 1.649005154646943e-09], "target_probs": 0.9999364614486694}}
+
+
+{"result": {"time": "2021-02-21 06:19:47.371852", "n_pass": [50, 6, 4], "n_token": 52, "loss": [0.5808814167976379, 5.805660839541815e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "data", "=", "b'--1234\\nContent-Disposition: form-data; filename=\"ab.txt\"\\n\\nFoo\\n--1234--'", ".", "replace", "(", "b'\\n'", ",", "b'\\r\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "=", "{", "#NEWLINE#", "#INDENT#", "parse_multipart_form_data", "(", "b'1234'", ",", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files", ",", "{", "#NEWLINE#"]}}
+{"position": {"error_location": 40, "repair_targets": [18], "repair_candidates": [18, 7, 36, 27, 38, 40, 48, 2, 44]}}
+{"prediction": {"error_location": 0.5594050288200378, "repair_targets": [0.9999419450759888], "repair_candidates": [2.260460121306096e-07, 5.0804068450815976e-05, 0.9999419450759888, 4.4189736314592665e-08, 7.0548694566241466e-06, 5.346627030000661e-10, 1.0057138455366044e-09, 2.960211409330782e-09, 5.660524271533518e-10], "target_probs": 0.9999419450759888}}
+
+
+{"result": {"time": "2021-02-21 06:19:47.599757", "n_pass": [58, 10, 5], "n_token": 48, "loss": [0.6595619916915894, 0.0005668219528160989], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "data", "=", "b'--1234\\nContent-Disposition: form-data; filename=\"ab.txt\"\\n\\nFoo\\n--1234--'", ".", "replace", "(", "b'\\n'", ",", "b'\\r\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "b'1234'", ",", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files", ",", "{", "#NEWLINE#"]}}
+{"position": {"error_location": 36, "repair_targets": [18], "repair_candidates": [18, 7, 32, 27, 34, 36, 44, 2, 40]}}
+{"prediction": {"error_location": 0.5170778036117554, "repair_targets": [0.9994333386421204], "repair_candidates": [1.1794402610121324e-07, 0.00024622201453894377, 0.9994333386421204, 4.1472073775139506e-08, 0.00032027767156250775, 6.291342447006798e-10, 2.117668262968664e-09, 6.738142932505298e-09, 7.355395736929893e-10], "target_probs": 0.9994333386421204}}
+
+
+{"result": {"time": "2021-02-21 06:19:47.655802", "n_pass": [65, 11, 6], "n_token": 44, "loss": [0.6448236107826233, 0.001754630240611732], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "data", "(", "b'\\n'", ",", "b'\\r\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "b'1234'", ",", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files", ",", "{", "#NEWLINE#"]}}
+{"position": {"error_location": 32, "repair_targets": [14], "repair_candidates": [14, 7, 28, 23, 30, 32, 40, 2, 36]}}
+{"prediction": {"error_location": 0.5247551202774048, "repair_targets": [0.9982469081878662], "repair_candidates": [2.8772706173185725e-07, 0.00024893999216146767, 0.9982469081878662, 1.0306737863174931e-07, 0.0015036816475912929, 1.9249810634391906e-09, 3.678730653433604e-09, 1.5940559094929085e-08, 2.287973588366299e-09], "target_probs": 0.9982469081878662}}
+
+
+{"result": {"time": "2021-02-21 06:19:47.884298", "n_pass": [97, 15, 7], "n_token": 42, "loss": [0.6603434681892395, 0.0018357785884290934], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "data", "(", "b'\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "b'1234'", ",", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files", ",", "{", "#NEWLINE#"]}}
+{"position": {"error_location": 30, "repair_targets": [12], "repair_candidates": [12, 7, 26, 21, 28, 30, 38, 2, 34]}}
+{"prediction": {"error_location": 0.5166738629341125, "repair_targets": [0.9981659054756165], "repair_candidates": [2.5368757405885844e-07, 0.00037475008866749704, 0.9981659054756165, 5.899033794776187e-08, 0.0014589797938242555, 2.666367127091007e-09, 3.3886207173594585e-09, 1.3764036133068203e-08, 1.7636690996525317e-09], "target_probs": 0.9981659054756165}}
+
+
+{"result": {"time": "2021-02-21 06:19:48.223964", "n_pass": [105, 21, 8], "n_token": 40, "loss": [0.5270549058914185, 0.0017720058094710112], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "data", "(", "b'\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files", ",", "{", "#NEWLINE#"]}}
+{"position": {"error_location": 28, "repair_targets": [12], "repair_candidates": [12, 7, 24, 21, 26, 28, 36, 2, 32]}}
+{"prediction": {"error_location": 0.5903410315513611, "repair_targets": [0.9982295632362366], "repair_candidates": [2.56122120845248e-07, 0.00033116625854745507, 0.9982295632362366, 3.8509124777874604e-08, 0.0014388615963980556, 4.5176111740374836e-09, 4.4784291830524126e-09, 5.022488736017294e-08, 5.971418470807066e-09], "target_probs": 0.9982295632362366}}
+
+
+{"result": {"time": "2021-02-21 06:19:48.280506", "n_pass": [111, 22, 9], "n_token": 37, "loss": [0.5351948738098145, 0.0010628983145579696], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "data", "(", "b'\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files"]}}
+{"position": {"error_location": 28, "repair_targets": [12], "repair_candidates": [12, 7, 24, 21, 26, 28, 36, 2, 32]}}
+{"prediction": {"error_location": 0.5855551958084106, "repair_targets": [0.9989376664161682], "repair_candidates": [2.7133961566505604e-07, 0.000280181149719283, 0.9989376664161682, 5.20814280591253e-09, 0.0007817705627530813, 2.0602681782833088e-09, 1.1146964462582787e-09, 9.112572030289812e-08, 9.501179398796467e-09], "target_probs": 0.9989376664161682}}
+
+
+{"result": {"time": "2021-02-21 06:19:48.392109", "n_pass": [114, 24, 10], "n_token": 35, "loss": [0.6918733716011047, 6.795160152250901e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", "#INDENT#", "data", "(", "b'\\n'", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files"]}}
+{"position": {"error_location": 26, "repair_targets": [10], "repair_candidates": [10, 5, 22, 19, 24, 26, 34, 2, 30]}}
+{"prediction": {"error_location": 0.5006372928619385, "repair_targets": [0.999932050704956], "repair_candidates": [1.1294834223463113e-07, 3.720329550560564e-05, 0.999932050704956, 1.6426192628316016e-09, 3.063480835407972e-05, 9.085153185317552e-10, 4.713557877344954e-10, 2.9543175017465728e-08, 3.2621680912114925e-09], "target_probs": 0.999932050704956}}
+
+
+{"result": {"time": "2021-02-21 06:19:48.448057", "n_pass": [116, 25, 11], "n_token": 33, "loss": [0.6213346719741821, 9.739873348735273e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", "#INDENT#", "data", ")", "#NEWLINE#", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files"]}}
+{"position": {"error_location": 24, "repair_targets": [8], "repair_candidates": [8, 5, 20, 17, 22, 24, 32, 2, 28]}}
+{"prediction": {"error_location": 0.5372269749641418, "repair_targets": [0.999902606010437], "repair_candidates": [2.2754808526315173e-07, 2.0842806407017633e-05, 0.999902606010437, 2.535363474720498e-09, 7.630616164533421e-05, 1.756838341471223e-09, 1.212357547686338e-09, 2.4852688795817812e-08, 5.308456785257931e-09], "target_probs": 0.999902606010437}}
+
+
+{"result": {"time": "2021-02-21 06:19:48.507009", "n_pass": [117, 26, 12], "n_token": 31, "loss": [0.6186238527297974, 0.00023814891756046563], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", "#INDENT#", "data", "args", "=", "{", "#NEWLINE#", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files"]}}
+{"position": {"error_location": 22, "repair_targets": [6], "repair_candidates": [6, 5, 18, 15, 20, 22, 30, 2, 26]}}
+{"prediction": {"error_location": 0.5386852622032166, "repair_targets": [0.9997618794441223], "repair_candidates": [9.51037009144784e-07, 6.376083183567971e-05, 0.9997618794441223, 1.6811783964953975e-08, 0.00017324172949884087, 6.3058260835191504e-09, 5.107879452737052e-09, 7.923384970354164e-08, 6.854398293398845e-08], "target_probs": 0.9997618794441223}}
+
+
+{"result": {"time": "2021-02-21 06:19:48.563218", "n_pass": [119, 27, 13], "n_token": 29, "loss": [0.6770879030227661, 0.00044838705798611045], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", "#INDENT#", "data", "args", "=", "#INDENT#", "#NEWLINE#", "#UNINDENT#", "}", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files"]}}
+{"position": {"error_location": 20, "repair_targets": [6], "repair_candidates": [6, 5, 16, 13, 18, 20, 28, 2, 24]}}
+{"prediction": {"error_location": 0.5080944299697876, "repair_targets": [0.9995517134666443], "repair_candidates": [2.2274684852163773e-06, 0.000102904079540167, 0.9995517134666443, 3.358690747745641e-08, 0.0003425363393034786, 1.0371530301256371e-08, 9.788993615700292e-09, 2.798130935843801e-07, 2.4761146732998895e-07], "target_probs": 0.9995517134666443}}
+
+
+{"result": {"time": "2021-02-21 06:19:48.619532", "n_pass": [120, 28, 14], "n_token": 27, "loss": [0.6847696900367737, 0.00025555776664987206], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", "#INDENT#", "data", "args", "=", "#UNINDENT#", "}", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files"]}}
+{"position": {"error_location": 18, "repair_targets": [6], "repair_candidates": [6, 5, 14, 11, 16, 18, 26, 2, 22]}}
+{"prediction": {"error_location": 0.5042063593864441, "repair_targets": [0.9997444748878479], "repair_candidates": [2.513191475372878e-06, 5.6876266171457246e-05, 0.9997444748878479, 3.777330093157616e-08, 0.00019531157158780843, 9.031074554854968e-09, 7.79073960899268e-09, 6.513337211799808e-07, 1.5571347944387526e-07], "target_probs": 0.9997444748878479}}
+
+
+{"result": {"time": "2021-02-21 06:19:48.675563", "n_pass": [121, 29, 15], "n_token": 25, "loss": [0.5050705671310425, 0.000710024090949446], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", "#INDENT#", "data", "args", "=", "#NEWLINE#", "files", "parse_multipart_form_data", "(", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files"]}}
+{"position": {"error_location": 16, "repair_targets": [6], "repair_candidates": [6, 5, 12, 9, 14, 16, 24, 2, 20]}}
+{"prediction": {"error_location": 0.6034629940986633, "repair_targets": [0.9992902278900146], "repair_candidates": [9.245584806194529e-06, 0.00011726731463568285, 0.9992902278900146, 2.8099002236103843e-08, 0.0005831026355735958, 1.1923629195109697e-08, 5.541058278879518e-09, 7.331617979389193e-08, 2.133252507974248e-08], "target_probs": 0.9992902278900146}}
+
+
+{"result": {"time": "2021-02-21 06:19:48.731425", "n_pass": [123, 30, 16], "n_token": 23, "loss": [0.1167372614145279, 0.5123772025108337], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", "#INDENT#", "data", "args", "=", "#NEWLINE#", "files", "data", ",", "files", ",", "files", ")", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files"]}}
+{"position": {"error_location": 14, "repair_targets": [6], "repair_candidates": [6, 5, 10, 9, 12, 14, 22, 2, 18]}}
+{"prediction": {"error_location": 0.8898190259933472, "repair_targets": [0.5990697741508484], "repair_candidates": [0.0004950585425831378, 0.18003031611442566, 0.5990697741508484, 0.000244674738496542, 0.22006207704544067, 6.511900573968887e-05, 1.455919846193865e-05, 1.6718106053303927e-05, 1.6919974541451666e-06], "target_probs": 0.5990697741508484}}
+
+
+{"result": {"time": "2021-02-21 06:19:48.957973", "n_pass": [159, 34, 17], "n_token": 22, "loss": [0.0238471832126379, 0.2892889678478241], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", "#INDENT#", "data", "args", "=", "#NEWLINE#", "files", "data", ",", "files", ",", "files", "#NEWLINE#", "#UNINDENT#", "self", ".", "assertEqual", "(", "files"]}}
+{"position": {"error_location": 14, "repair_targets": [6], "repair_candidates": [6, 5, 10, 9, 12, 14, 21, 2, 17]}}
+{"prediction": {"error_location": 0.9764347076416016, "repair_targets": [0.7487958073616028], "repair_candidates": [0.00021876078972127289, 0.1787475049495697, 0.7487958073616028, 6.469686468335567e-06, 0.07222288101911545, 3.999569798907032e-06, 1.1402203625721086e-07, 4.093484221812105e-06, 3.916912589829735e-07], "target_probs": 0.7487958073616028}}
+
+
+{"result": {"time": "2021-02-21 06:19:49.013876", "n_pass": [160, 35, 18], "n_token": 21, "loss": [0.009980300441384315, 0.20210345089435577], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", "#INDENT#", "data", "args", "=", "#NEWLINE#", "files", "data", ",", "files", ",", "files", "#UNINDENT#", "self", ".", "assertEqual", "(", "files"]}}
+{"position": {"error_location": 14, "repair_targets": [6], "repair_candidates": [6, 5, 10, 9, 12, 14, 20, 2, 16]}}
+{"prediction": {"error_location": 0.9900693297386169, "repair_targets": [0.8170104026794434], "repair_candidates": [2.9881586669944227e-05, 0.1616344302892685, 0.8170104026794434, 6.808756438658747e-07, 0.021322792395949364, 5.278361072669213e-07, 1.918730418992709e-08, 1.2162985285613104e-06, 2.889070671585614e-08], "target_probs": 0.8170104026794434}}
+
+
+{"result": {"time": "2021-02-21 06:19:49.069867", "n_pass": [162, 36, 19], "n_token": 19, "loss": [0.05260592699050903, 0.26057732105255127], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", ")", "#INDENT#", "data", "args", "=", "#NEWLINE#", "files", "data", ",", "files", ",", "files", "#UNINDENT#", "self", "(", "files"]}}
+{"position": {"error_location": 14, "repair_targets": [6], "repair_candidates": [6, 5, 10, 9, 12, 14, 18, 2, 16]}}
+{"prediction": {"error_location": 0.9487539529800415, "repair_targets": [0.7706065773963928], "repair_candidates": [0.0003457332495599985, 0.16980703175067902, 0.7706065773963928, 0.00010180216486332938, 0.059058673679828644, 1.1769831871788483e-05, 1.2776256426150212e-06, 6.509729428216815e-05, 2.0175211830064654e-06], "target_probs": 0.7706065773963928}}
+
+
+{"result": {"time": "2021-02-21 06:19:49.240269", "n_pass": [167, 39, 20], "n_token": 18, "loss": [0.1586303561925888, 0.13713575899600983], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", "#INDENT#", "data", "args", "=", "#NEWLINE#", "files", "data", ",", "files", ",", "files", "#UNINDENT#", "self", "(", "files"]}}
+{"position": {"error_location": 13, "repair_targets": [5], "repair_candidates": [5, 4, 9, 8, 11, 13, 17, 2, 15]}}
+{"prediction": {"error_location": 0.8533117771148682, "repair_targets": [0.8718518614768982], "repair_candidates": [0.000145722646266222, 0.04358339682221413, 0.8718518614768982, 0.0001428838149877265, 0.08422524482011795, 1.0692980140447617e-05, 1.6216430367421708e-06, 3.650540020316839e-05, 2.043803988271975e-06], "target_probs": 0.8718518614768982}}
+
+
+{"result": {"time": "2021-02-21 06:19:49.463284", "n_pass": [175, 43, 21], "n_token": 17, "loss": [0.1080147847533226, 0.08511862903833389], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_content_disposition_header_without_name_parameter(", "self", "#INDENT#", "data", "args", "=", "#NEWLINE#", "files", "data", "files", ",", "files", "#UNINDENT#", "self", "(", "files"]}}
+{"position": {"error_location": 12, "repair_targets": [5], "repair_candidates": [5, 4, 9, 8, 10, 12, 16, 2, 14]}}
+{"prediction": {"error_location": 0.8976143002510071, "repair_targets": [0.9184033274650574], "repair_candidates": [0.000179349459358491, 0.03580863028764725, 0.9184033274650574, 0.00011713265121215954, 0.045435111969709396, 1.9368817447684705e-05, 6.16314537182916e-07, 3.4835193218896165e-05, 1.5018329122540308e-06], "target_probs": 0.9184033274650574}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def test_content_disposition_header_without_name_parameter(', 'self', '#INDENT#', 'data', 'args', '=', '#NEWLINE#', 'files', 'data', 'files', ',', 'files', '#UNINDENT#', 'self', '(', 'files']

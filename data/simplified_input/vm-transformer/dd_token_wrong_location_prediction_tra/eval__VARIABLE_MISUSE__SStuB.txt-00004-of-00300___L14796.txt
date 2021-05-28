@@ -1,0 +1,85 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def py_fn_to_vim_function(", "vimscript_fn_name", ",", "py_fn", ")", ":", "#NEWLINE#", "#INDENT#", "global", "WRAP_INDEX", "#NEWLINE#", "wrap_proxy", "[", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "#NEWLINE#", "vim", ".", "command", "(", "(", "'function! g:%s()\\npy venom.wrap_proxy[%d]()\\nendfunction'", "%", "(", "vimscript_fn_name", ",", "WRAP_INDEX", ")", ")", ")", "#NEWLINE#", "WRAP_INDEX", "+=", "1"], "error_location": [17], "repair_targets": [4], "repair_candidates": [10, 14, 17, 29, 34, 2, 27, 4], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "nielsmadan/venom/autoload/venom.py", "license": "isc", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00004-of-00300", "js_count": 14796, "results": {"model": "transformer", "prob": {"loc": [[0.06299904733896255, 6.788846462768561e-07, 2.8186295253362914e-07, 1.0146921169962297e-07, 1.1298537174297962e-05, 1.1447681202980675e-07, 1.469521748731495e-07, 1.2575253549584886e-07, 9.851328997001474e-08, 1.2128203934480553e-06, 1.8517808712203987e-05, 1.112535272795867e-07, 1.3205272807681467e-05, 4.813443297280173e-07, 0.06642112880945206, 9.052907756768036e-08, 3.4552425631773076e-07, 0.12118072062730789, 3.818179834524926e-07, 3.7339258796009744e-08, 1.1045598569126014e-07, 2.7129136270787058e-08, 8.65756106804838e-08, 1.6584500599492458e-06, 0.000662110629491508, 1.3448867548504495e-06, 1.346042722616403e-06, 0.08603561669588089, 9.298010809288826e-06, 0.5462285876274109, 1.3998063877806999e-05, 3.1777515232533915e-06, 1.256134282812127e-06, 3.3258135090363794e-07, 0.11633842438459396, 1.992542365769623e-06, 5.250994217931293e-05]], "pointer": [[0.0, 0.0, 0.009118329733610153, 0.0, 0.9826725721359253, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001718660001643002, 0.0, 0.0, 0.0, 0.00011358949996065348, 0.0, 0.0, 2.3092869014362805e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00623174337670207, 0.0, 5.841891834279522e-05, 0.0, 0.0, 0.0, 0.0, 6.367250898620114e-05, 0.0, 0.0]], "target": [0.9826725721359253]}, "loss": [2.1104722023010254, 0.0174793042242527], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [29]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:01:11.433117", "n_pass": [1, 1, 1], "n_token": 37, "loss": [0.6047177910804749, 0.0174793042242527], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def py_fn_to_vim_function(", "vimscript_fn_name", ",", "py_fn", ")", ":", "#NEWLINE#", "#INDENT#", "global", "WRAP_INDEX", "#NEWLINE#", "wrap_proxy", "[", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "#NEWLINE#", "vim", ".", "command", "(", "(", "'function! g:%s()\\npy venom.wrap_proxy[%d]()\\nendfunction'", "%", "(", "vimscript_fn_name", ",", "WRAP_INDEX", ")", ")", ")", "#NEWLINE#", "WRAP_INDEX", "+=", "1"]}}
+{"position": {"error_location": 29, "repair_targets": [4], "repair_candidates": [10, 14, 17, 29, 34, 2, 27, 4]}}
+{"prediction": {"error_location": 0.5462285876274109, "repair_targets": [0.9826725721359253], "repair_candidates": [0.009118329733610153, 0.9826725721359253, 0.001718660001643002, 0.00011358949996065348, 2.3092869014362805e-05, 0.00623174337670207, 5.841891834279522e-05, 6.367250898620114e-05], "target_probs": 0.9826725721359253}}
+
+
+{"result": {"time": "2021-02-21 06:01:11.488833", "n_pass": [10, 2, 2], "n_token": 28, "loss": [0.7262310981750488, 0.004028197377920151], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def py_fn_to_vim_function(", "vimscript_fn_name", ",", "py_fn", ")", ":", "#NEWLINE#", "#INDENT#", "global", "WRAP_INDEX", "#NEWLINE#", "wrap_proxy", "[", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", ",", "WRAP_INDEX", ")", ")", ")", "#NEWLINE#", "WRAP_INDEX", "+=", "1"]}}
+{"position": {"error_location": 20, "repair_targets": [4], "repair_candidates": [10, 14, 17, 20, 25, 2, 18, 4]}}
+{"prediction": {"error_location": 0.48372867703437805, "repair_targets": [0.995979905128479], "repair_candidates": [0.001486547407694161, 0.995979905128479, 0.00013392444816417992, 5.536010576179251e-06, 2.1758864932053257e-06, 0.002384152263402939, 2.4792686872388003e-06, 5.23471544511267e-06], "target_probs": 0.995979905128479}}
+
+
+{"result": {"time": "2021-02-21 06:01:11.545382", "n_pass": [39, 3, 3], "n_token": 25, "loss": [0.5703212022781372, 0.0019257718231528997], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def py_fn_to_vim_function(", "vimscript_fn_name", ",", "py_fn", ")", ":", "#NEWLINE#", "#INDENT#", "global", "WRAP_INDEX", "#NEWLINE#", "wrap_proxy", "[", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", ",", "WRAP_INDEX", ")", "WRAP_INDEX", "+=", "1"]}}
+{"position": {"error_location": 20, "repair_targets": [4], "repair_candidates": [10, 14, 17, 20, 22, 2, 18, 4]}}
+{"prediction": {"error_location": 0.5653439164161682, "repair_targets": [0.9980760812759399], "repair_candidates": [0.0005700192996300757, 0.9980760812759399, 1.478772537666373e-05, 6.23225162144081e-07, 6.677396982013306e-07, 0.001336404588073492, 3.9724156408738054e-07, 8.936776794143952e-07], "target_probs": 0.9980760812759399}}
+
+
+{"result": {"time": "2021-02-21 06:01:11.656934", "n_pass": [44, 5, 4], "n_token": 23, "loss": [0.7994703054428101, 0.00532930064946413], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def py_fn_to_vim_function(", "vimscript_fn_name", ",", "py_fn", ")", "#INDENT#", "global", "WRAP_INDEX", "#NEWLINE#", "wrap_proxy", "[", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", ",", "WRAP_INDEX", ")", "WRAP_INDEX", "+=", "1"]}}
+{"position": {"error_location": 18, "repair_targets": [4], "repair_candidates": [8, 12, 15, 18, 20, 2, 16, 4]}}
+{"prediction": {"error_location": 0.449567049741745, "repair_targets": [0.9946848750114441], "repair_candidates": [0.0012782502453774214, 0.9946848750114441, 1.822008562157862e-05, 3.104187499047839e-06, 2.2289814296527766e-06, 0.004008130636066198, 9.63966385825188e-07, 4.274380444257986e-06], "target_probs": 0.9946848750114441}}
+
+
+{"result": {"time": "2021-02-21 06:01:11.771556", "n_pass": [47, 7, 5], "n_token": 21, "loss": [0.533271849155426, 0.0005608581705018878], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def py_fn_to_vim_function(", "vimscript_fn_name", ",", "py_fn", ")", "#INDENT#", "global", "WRAP_INDEX", "#NEWLINE#", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", ",", "WRAP_INDEX", ")", "WRAP_INDEX", "+=", "1"]}}
+{"position": {"error_location": 16, "repair_targets": [4], "repair_candidates": [8, 10, 13, 16, 18, 2, 14, 4]}}
+{"prediction": {"error_location": 0.5866823196411133, "repair_targets": [0.9994392991065979], "repair_candidates": [0.00012592642451636493, 0.9994392991065979, 0.00017505258438177407, 0.00011510706826811656, 1.74342517311743e-06, 0.0001409979595337063, 6.75832040997193e-07, 1.1951741498705815e-06], "target_probs": 0.9994392991065979}}
+
+
+{"result": {"time": "2021-02-21 06:01:11.883051", "n_pass": [55, 9, 6], "n_token": 19, "loss": [0.8068966269493103, 0.020814187824726105], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def py_fn_to_vim_function(", "vimscript_fn_name", ",", "py_fn", ")", "WRAP_INDEX", "#NEWLINE#", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", ",", "WRAP_INDEX", ")", "WRAP_INDEX", "+=", "1"]}}
+{"position": {"error_location": 14, "repair_targets": [4], "repair_candidates": [6, 8, 11, 14, 16, 2, 12, 4]}}
+{"prediction": {"error_location": 0.44624078273773193, "repair_targets": [0.9794009327888489], "repair_candidates": [0.013125243596732616, 0.9794009327888489, 0.00018709534197114408, 0.00012884936586488038, 3.3084168080677046e-06, 0.007149893324822187, 8.799098054623755e-07, 3.862460744130658e-06], "target_probs": 0.9794009327888489}}
+
+
+{"result": {"time": "2021-02-21 06:01:11.939034", "n_pass": [61, 10, 7], "n_token": 17, "loss": [0.31092506647109985, 0.05888304114341736], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["vimscript_fn_name", ",", "py_fn", ")", "WRAP_INDEX", "#NEWLINE#", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", ",", "WRAP_INDEX", ")", "WRAP_INDEX", "+=", "1"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [4, 6, 9, 12, 14, 0, 10, 2]}}
+{"prediction": {"error_location": 0.7327688336372375, "repair_targets": [0.9428170323371887], "repair_candidates": [0.0038973591290414333, 0.9428170323371887, 0.012688029557466507, 0.00476404745131731, 0.0007544136606156826, 0.034897707402706146, 6.204926194186555e-06, 0.0001752334355842322], "target_probs": 0.9428170323371887}}
+
+
+{"result": {"time": "2021-02-21 06:01:12.108140", "n_pass": [88, 13, 8], "n_token": 16, "loss": [0.482732892036438, 0.11874130368232727], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["vimscript_fn_name", ",", "py_fn", ")", "WRAP_INDEX", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", ",", "WRAP_INDEX", ")", "WRAP_INDEX", "+=", "1"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [4, 5, 8, 11, 13, 0, 9, 2]}}
+{"prediction": {"error_location": 0.6170945763587952, "repair_targets": [0.8880375027656555], "repair_candidates": [0.0039867074228823185, 0.8880375027656555, 0.03400155156850815, 0.032424964010715485, 0.0014716152800247073, 0.039896417409181595, 1.448933471692726e-05, 0.00016680883709341288], "target_probs": 0.8880375027656555}}
+
+
+{"result": {"time": "2021-02-21 06:01:12.440590", "n_pass": [107, 19, 9], "n_token": 15, "loss": [0.8780880570411682, 0.013704135082662106], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["vimscript_fn_name", ",", "py_fn", ")", "WRAP_INDEX", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", "WRAP_INDEX", ")", "WRAP_INDEX", "+=", "1"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [4, 5, 8, 10, 12, 0, 9, 2]}}
+{"prediction": {"error_location": 0.41557666659355164, "repair_targets": [0.9863893389701843], "repair_candidates": [0.0007658127578906715, 0.9863893389701843, 0.006762964650988579, 0.005006367806345224, 0.00023541421978734434, 0.0008090477786026895, 1.5316794588215998e-06, 2.940908780146856e-05], "target_probs": 0.9863893389701843}}
+
+
+{"result": {"time": "2021-02-21 06:01:12.498464", "n_pass": [108, 20, 10], "n_token": 14, "loss": [0.5683659315109253, 0.003094748128205538], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["vimscript_fn_name", ",", "py_fn", ")", "WRAP_INDEX", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", "WRAP_INDEX", "WRAP_INDEX", "+=", "1"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [4, 5, 8, 10, 11, 0, 9, 2]}}
+{"prediction": {"error_location": 0.566450297832489, "repair_targets": [0.996910035610199], "repair_candidates": [0.00020719370513688773, 0.996910035610199, 0.0008321454515680671, 0.0009990055114030838, 5.3464173106476665e-06, 0.0010463375365361571, 5.84446944174033e-08, 4.7599748143056786e-08], "target_probs": 0.996910035610199}}
+
+
+{"result": {"time": "2021-02-21 06:01:12.608565", "n_pass": [111, 22, 11], "n_token": 13, "loss": [0.5117602944374084, 0.0030461405403912067], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["vimscript_fn_name", ",", "py_fn", ")", "WRAP_INDEX", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", "WRAP_INDEX", "WRAP_INDEX", "+="]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [4, 5, 8, 10, 11, 0, 9, 2]}}
+{"prediction": {"error_location": 0.5994395017623901, "repair_targets": [0.9969584941864014], "repair_candidates": [0.00024804341956041753, 0.9969584941864014, 0.0002676878357306123, 0.0003506627108436078, 6.8403887780732475e-06, 0.0021682861261069775, 3.8625788789659055e-08, 1.4572487216923946e-08], "target_probs": 0.9969584941864014}}
+
+
+{"result": {"time": "2021-02-21 06:01:12.719240", "n_pass": [115, 24, 12], "n_token": 12, "loss": [0.4009394645690918, 0.015636827796697617], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["vimscript_fn_name", ",", "py_fn", "WRAP_INDEX", "WRAP_INDEX", "]", "=", "WRAP_INDEX", "vimscript_fn_name", "WRAP_INDEX", "WRAP_INDEX", "+="]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [3, 4, 7, 9, 10, 0, 8, 2]}}
+{"prediction": {"error_location": 0.6696906089782715, "repair_targets": [0.9844847917556763], "repair_candidates": [0.002206343226134777, 0.9844847917556763, 0.003598362673074007, 0.0043001859448850155, 0.0007114165928214788, 0.004697426222264767, 1.2427273077264545e-06, 1.745153781484987e-07], "target_probs": 0.9844847917556763}}
+
+
+
+
+Minimal simplified tokens:
+
+['vimscript_fn_name', ',', 'py_fn', 'WRAP_INDEX', 'WRAP_INDEX', ']', '=', 'WRAP_INDEX', 'vimscript_fn_name', 'WRAP_INDEX', 'WRAP_INDEX', '+=']

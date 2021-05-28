@@ -1,0 +1,91 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_defaults_only_name(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "with", "patch", ".", "dict", "(", "config", ".", "DEFAULTS", ",", "DEFAULTS", ")", ":", "#NEWLINE#", "#INDENT#", "opt_name", "=", "'test.option'", "#NEWLINE#", "opt", "=", "config", ".", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", ".", "DEFAULTS", "[", "opt", "]", ")"], "error_location": [44], "repair_targets": [21, 31], "repair_candidates": [25, 38, 44, 2, 34, 21, 31], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "saltstack/salt/tests/unit/modules/config_test.py", "license": "apache-2.0", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00002-of-00300", "js_count": 6942, "results": {"model": "transformer", "prob": {"loc": [[0.014061778783798218, 5.120439539041399e-08, 5.350598542008811e-08, 3.1337327177638485e-10, 5.922612400510729e-10, 7.79258491068191e-10, 4.0850142712933746e-10, 4.059861127836406e-11, 2.8547383901234014e-10, 8.799085904342974e-10, 8.126248979278827e-11, 7.574096350104753e-10, 1.8710284876988226e-08, 3.3567517654375933e-09, 2.2927969245412072e-10, 1.554535805636803e-10, 2.629808038001613e-10, 2.023262807293591e-10, 1.664874765827662e-10, 8.094289821736211e-11, 9.533456662991213e-11, 3.0998225497569365e-07, 7.785304623197931e-10, 1.0282779072667836e-09, 2.8659336015479653e-10, 8.630912873286434e-08, 2.1616042289451798e-10, 2.5589125263181245e-10, 1.0626910462718797e-09, 1.40365608025661e-10, 4.180805035502999e-09, 4.83727126265876e-06, 6.247166672856963e-10, 1.8246966160262446e-09, 3.1061656358133405e-08, 1.721391140740991e-09, 1.9019703867417803e-10, 7.417890746097555e-09, 0.7439770698547363, 2.2951784917069062e-09, 1.1031833224706133e-07, 1.868382248915168e-08, 1.1711807079706205e-09, 1.2864873610851646e-08, 0.24195554852485657, 4.1527821181830404e-09, 1.1209304595638514e-08]], "pointer": [[0.0, 0.0, 1.0010055575548904e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9720205068588257, 0.0, 0.0, 0.0, 1.3298803423822392e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.027934903278946877, 0.0, 0.0, 2.645953429691872e-07, 0.0, 0.0, 0.0, 2.5491982569292304e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 2.9795193768222816e-05, 0.0, 0.0]], "target": [0.999955415725708]}, "loss": [1.4190013408660889, 4.4585267460206524e-05], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [38]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:43:28.382771", "n_pass": [1, 1, 1], "n_token": 47, "loss": [0.2957451343536377, 4.4585267460206524e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_defaults_only_name(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "with", "patch", ".", "dict", "(", "config", ".", "DEFAULTS", ",", "DEFAULTS", ")", ":", "#NEWLINE#", "#INDENT#", "opt_name", "=", "'test.option'", "#NEWLINE#", "opt", "=", "config", ".", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", ".", "DEFAULTS", "[", "opt", "]", ")"]}}
+{"position": {"error_location": 38, "repair_targets": [21, 31], "repair_candidates": [25, 38, 44, 2, 34, 21, 31]}}
+{"prediction": {"error_location": 0.7439770698547363, "repair_targets": [0.9720205068588257, 0.027934903278946877], "repair_candidates": [1.0010055575548904e-06, 0.9720205068588257, 1.3298803423822392e-05, 0.027934903278946877, 2.645953429691872e-07, 2.5491982569292304e-07, 2.9795193768222816e-05], "target_probs": 0.999955415725708}}
+
+
+{"result": {"time": "2021-02-21 05:43:28.438796", "n_pass": [21, 2, 2], "n_token": 41, "loss": [0.3603734076023102, 1.1980605449934956e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_defaults_only_name(", "self", ")", ":", "(", "config", ".", "DEFAULTS", ",", "DEFAULTS", ")", ":", "#NEWLINE#", "#INDENT#", "opt_name", "=", "'test.option'", "#NEWLINE#", "opt", "=", "config", ".", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", ".", "DEFAULTS", "[", "opt", "]", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [15, 25], "repair_candidates": [19, 32, 38, 2, 28, 15, 25]}}
+{"prediction": {"error_location": 0.6974158883094788, "repair_targets": [0.9402932524681091, 0.059694744646549225], "repair_candidates": [9.955313089449191e-07, 0.9402932524681091, 6.416416454158025e-06, 0.059694744646549225, 1.8262394974044582e-07, 8.162495390706681e-08, 4.314689249440562e-06], "target_probs": 0.9999880194664001}}
+
+
+{"result": {"time": "2021-02-21 05:43:28.494184", "n_pass": [22, 3, 3], "n_token": 35, "loss": [0.36820611357688904, 5.066407538834028e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_defaults_only_name(", "self", ")", ":", ")", ":", "#NEWLINE#", "#INDENT#", "opt_name", "=", "'test.option'", "#NEWLINE#", "opt", "=", "config", ".", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", ".", "DEFAULTS", "[", "opt", "]", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [9, 19], "repair_candidates": [13, 26, 32, 2, 22, 9, 19]}}
+{"prediction": {"error_location": 0.691974401473999, "repair_targets": [0.9704011082649231, 0.029593823477625847], "repair_candidates": [1.5512034678977216e-06, 0.9704011082649231, 2.0679035515058786e-06, 0.029593823477625847, 9.848297821690721e-08, 5.2478387857490816e-08, 1.3181878557588789e-06], "target_probs": 0.9999949336051941}}
+
+
+{"result": {"time": "2021-02-21 05:43:28.549999", "n_pass": [41, 4, 4], "n_token": 32, "loss": [0.6228836178779602, 0.00011444746633060277], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_defaults_only_name(", "self", ")", ":", "#INDENT#", "opt_name", "=", "'test.option'", "#NEWLINE#", "opt", "=", "config", ".", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", ".", "DEFAULTS", "[", "opt", "]", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [6, 16], "repair_candidates": [10, 23, 29, 2, 19, 6, 16]}}
+{"prediction": {"error_location": 0.5363954305648804, "repair_targets": [0.4463231861591339, 0.5535624027252197], "repair_candidates": [2.2332946173264645e-05, 0.4463231861591339, 5.326131940819323e-05, 0.5535624027252197, 1.4621637092204764e-06, 1.7019614233504399e-06, 3.56090058630798e-05], "target_probs": 0.9998855590820312}}
+
+
+{"result": {"time": "2021-02-21 05:43:28.608351", "n_pass": [43, 5, 5], "n_token": 29, "loss": [0.3757609724998474, 8.976862591225654e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_defaults_only_name(", "self", ")", ":", "#INDENT#", "opt_name", "=", "'test.option'", "#NEWLINE#", "opt", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", ".", "DEFAULTS", "[", "opt", "]", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [6, 13], "repair_candidates": [10, 20, 26, 2, 16, 6, 13]}}
+{"prediction": {"error_location": 0.6867664456367493, "repair_targets": [0.5019345283508301, 0.4979756772518158], "repair_candidates": [6.262218812480569e-05, 0.5019345283508301, 1.6799105651443824e-05, 0.4979756772518158, 8.443778824585024e-06, 3.7108151218490093e-07, 1.5099843722055084e-06], "target_probs": 0.9999102354049683}}
+
+
+{"result": {"time": "2021-02-21 05:43:28.773225", "n_pass": [50, 8, 6], "n_token": 27, "loss": [0.36911845207214355, 0.02020244486629963], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#INDENT#", "opt_name", "=", "'test.option'", "#NEWLINE#", "opt", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", ".", "DEFAULTS", "[", "opt", "]", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 11], "repair_candidates": [8, 18, 24, 0, 14, 4, 11]}}
+{"prediction": {"error_location": 0.6913434267044067, "repair_targets": [0.5689734816551208, 0.4110267758369446], "repair_candidates": [0.019603364169597626, 0.5689734816551208, 3.9797490899218246e-05, 0.4110267758369446, 0.00034958840114995837, 2.2030544641893357e-06, 4.817128683498595e-06], "target_probs": 0.9800002574920654}}
+
+
+{"result": {"time": "2021-02-21 05:43:28.882893", "n_pass": [58, 10, 7], "n_token": 24, "loss": [0.28471145033836365, 0.010606188327074051], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#INDENT#", "opt_name", "=", "'test.option'", "#NEWLINE#", "opt", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", "opt", "]", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 11], "repair_candidates": [8, 18, 21, 0, 14, 4, 11]}}
+{"prediction": {"error_location": 0.7522313594818115, "repair_targets": [0.7339559197425842, 0.2554939389228821], "repair_candidates": [0.010091965086758137, 0.7339559197425842, 1.1872543836943805e-05, 0.2554939389228821, 0.0004440619086381048, 8.043280672609399e-07, 1.5040330936244573e-06], "target_probs": 0.9894498586654663}}
+
+
+{"result": {"time": "2021-02-21 05:43:28.995349", "n_pass": [84, 12, 8], "n_token": 22, "loss": [0.15464262664318085, 0.0054794191382825375], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#INDENT#", "opt_name", "=", "'test.option'", "#NEWLINE#", "opt", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", "opt"]}}
+{"position": {"error_location": 18, "repair_targets": [4, 11], "repair_candidates": [8, 18, 21, 0, 14, 4, 11]}}
+{"prediction": {"error_location": 0.8567212820053101, "repair_targets": [0.9133819937705994, 0.08115354925394058], "repair_candidates": [0.005412963684648275, 0.9133819937705994, 6.494905392173678e-06, 0.08115354925394058, 4.3407468183431774e-05, 5.682089749825536e-07, 1.0613720178298536e-06], "target_probs": 0.9945355653762817}}
+
+
+{"result": {"time": "2021-02-21 05:43:29.050461", "n_pass": [86, 13, 9], "n_token": 21, "loss": [0.17739237844944, 0.0005172636592760682], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ":", "#INDENT#", "opt_name", "=", "'test.option'", "#NEWLINE#", "opt", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", "opt"]}}
+{"position": {"error_location": 17, "repair_targets": [3, 10], "repair_candidates": [7, 17, 20, 0, 13, 3, 10]}}
+{"prediction": {"error_location": 0.8374512195587158, "repair_targets": [0.9426172375679016, 0.05686565116047859], "repair_candidates": [0.0005136803374625742, 0.9426172375679016, 1.179944547402556e-06, 0.05686565116047859, 1.7473608977525146e-06, 3.1853625159783405e-07, 2.242003489527633e-07], "target_probs": 0.9994828701019287}}
+
+
+{"result": {"time": "2021-02-21 05:43:29.216368", "n_pass": [90, 16, 10], "n_token": 20, "loss": [0.09106428176164627, 0.0024137995205819607], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ":", "#INDENT#", "opt_name", "'test.option'", "#NEWLINE#", "opt", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", "opt"]}}
+{"position": {"error_location": 16, "repair_targets": [3, 9], "repair_candidates": [6, 16, 19, 0, 12, 3, 9]}}
+{"prediction": {"error_location": 0.912959098815918, "repair_targets": [0.6660064458847046, 0.3315826654434204], "repair_candidates": [0.0023808334954082966, 0.6660064458847046, 8.965295819507446e-06, 0.3315826654434204, 5.866992978553753e-06, 1.1325361811032053e-05, 3.819225639745127e-06], "target_probs": 0.997589111328125}}
+
+
+{"result": {"time": "2021-02-21 05:43:29.329382", "n_pass": [92, 18, 11], "n_token": 19, "loss": [0.04746965691447258, 0.00013972305168863386], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ":", "#INDENT#", "opt_name", "'test.option'", "opt", "option", "(", "opt_name", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "opt", ",", "config", "opt"]}}
+{"position": {"error_location": 15, "repair_targets": [3, 8], "repair_candidates": [5, 15, 18, 0, 11, 3, 8]}}
+{"prediction": {"error_location": 0.9536393880844116, "repair_targets": [0.9014489650726318, 0.09841129183769226], "repair_candidates": [0.0001351492537651211, 0.9014489650726318, 1.8882251424656715e-06, 0.09841129183769226, 1.7841324506662204e-07, 2.0510117337835254e-06, 4.48216155746195e-07], "target_probs": 0.9998602867126465}}
+
+
+{"result": {"time": "2021-02-21 05:43:29.384608", "n_pass": [95, 19, 12], "n_token": 17, "loss": [0.03138575330376625, 0.0002937152166850865], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ":", "#INDENT#", "opt_name", "'test.option'", "opt", "option", "(", "opt_name", "self", ".", "assertEqual", "(", "opt", ",", "config", "opt"]}}
+{"position": {"error_location": 13, "repair_targets": [3, 8], "repair_candidates": [5, 13, 16, 0, 9, 3, 8]}}
+{"prediction": {"error_location": 0.9691016674041748, "repair_targets": [0.9754828214645386, 0.024223482236266136], "repair_candidates": [0.00024233579460997134, 0.9754828214645386, 6.505320584437868e-07, 0.024223482236266136, 4.6222507080528885e-05, 3.899296643794514e-06, 5.701836016669404e-07], "target_probs": 0.9997063279151917}}
+
+
+{"result": {"time": "2021-02-21 05:43:29.494341", "n_pass": [101, 21, 13], "n_token": 16, "loss": [0.1532217115163803, 0.0004343141335994005], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "#INDENT#", "opt_name", "'test.option'", "opt", "option", "(", "opt_name", "self", ".", "assertEqual", "(", "opt", ",", "config", "opt"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 7], "repair_candidates": [4, 12, 15, 0, 8, 2, 7]}}
+{"prediction": {"error_location": 0.8579394817352295, "repair_targets": [0.7536004781723022, 0.24596530199050903], "repair_candidates": [0.00017480274254921824, 0.7536004781723022, 1.147190346273419e-06, 0.24596530199050903, 0.0002554778475314379, 2.4341391053894768e-06, 3.518662765600311e-07], "target_probs": 0.9995657801628113}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', '#INDENT#', 'opt_name', "'test.option'", 'opt', 'option', '(', 'opt_name', 'self', '.', 'assertEqual', '(', 'opt', ',', 'config', 'opt']

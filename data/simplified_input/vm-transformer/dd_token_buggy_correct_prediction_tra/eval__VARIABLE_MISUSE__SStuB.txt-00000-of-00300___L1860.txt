@@ -1,0 +1,169 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Read the actual file *as is* without parsing/modifiying it\\n    so that it can be written maintaining its same properties.\\n\\n    :param args: Will be used to infer the proper configuration name\\n    :paran path: alternatively, use a path for any configuration file loading\\n    '", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "'{cluster}.conf'", ".", "format", "(", "cluster", "=", "args", ".", "cluster", ")", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "with", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", ".", "read", "(", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "(", "IOError", ",", "OSError", ")", "as", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "exc", ".", "ConfigError", "(", "(", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"], "error_location": [35], "repair_targets": [9], "repair_candidates": [14, 38, 43, 9, 2, 12, 22, 35, 58, 70], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "ceph/ceph-deploy/ceph_deploy/conf/ceph.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 1860, "results": {"model": "transformer", "prob": {"loc": [[0.035581767559051514, 2.2295014332485152e-06, 1.9746016377553133e-08, 1.5728728541830606e-08, 2.3860437181610905e-08, 1.6474640318620004e-08, 1.3073393034801484e-08, 2.2770132446225944e-08, 1.1917316911080889e-08, 4.502956471696962e-06, 3.027319550596985e-08, 1.4609425669220855e-08, 1.5114758753043134e-05, 3.192392128426036e-08, 1.8039304450212512e-06, 3.035275142337923e-08, 2.549116402406071e-07, 6.13818684769285e-08, 6.315733713790905e-09, 2.0358760011163213e-08, 2.0031507119711023e-08, 5.522591095541429e-08, 4.9317473894916475e-05, 4.797799135758396e-08, 1.3808993060138164e-08, 6.356560788844945e-08, 1.9462447653495474e-07, 1.8004011792527308e-07, 2.7654978111968376e-06, 1.6094105376396328e-05, 1.4608493756895768e-06, 1.489480155214551e-06, 1.5527882979426977e-08, 6.92463544282873e-08, 1.3181875146983657e-06, 0.9279979467391968, 3.7750660339952447e-06, 1.0182497135247104e-05, 2.469262199156219e-06, 2.3969569156179205e-06, 9.213223961523909e-07, 1.8593606228023418e-06, 2.91432399990299e-07, 2.3979322577361017e-05, 1.0621739221505777e-07, 5.909570788276142e-08, 2.0058137124578934e-06, 8.296303712995723e-05, 2.6011392037617043e-05, 5.713563041354064e-06, 1.5669367030568537e-06, 2.390624331383151e-06, 5.607970706478227e-06, 4.6470810048049316e-05, 9.022426820592955e-05, 3.455684054642916e-05, 2.506867986085126e-06, 5.6706332543399185e-05, 5.490185685630422e-06, 5.434747890831204e-06, 7.006498208284029e-07, 4.365782615423086e-07, 5.03900494663867e-08, 7.470672471754369e-07, 1.1829657609041533e-07, 8.006434626395276e-09, 9.53695575844904e-07, 3.5425068745098542e-06, 2.3551508547825506e-06, 4.329104740463663e-06, 0.03589262813329697, 1.7642057628108887e-06, 1.6922278973652283e-06]], "pointer": [[0.0, 0.0, 0.00027505430625751615, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9994028806686401, 0.0, 0.0, 0.00010145148553419858, 0.0, 5.5625190725550056e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 8.308852557092905e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00011800709762610495, 0.0, 0.0, 1.1964621080551296e-05, 0.0, 0.0, 0.0, 0.0, 3.5107370877085486e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.5825596821960062e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.786277258972405e-07, 0.0, 0.0]], "target": [0.9994028806686401]}, "loss": [0.07472583651542664, 0.0005972976796329021], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:29:13.989403", "n_pass": [1, 1, 1], "n_token": 73, "loss": [0.07472583651542664, 0.0005972976796329021], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Read the actual file *as is* without parsing/modifiying it\\n    so that it can be written maintaining its same properties.\\n\\n    :param args: Will be used to infer the proper configuration name\\n    :paran path: alternatively, use a path for any configuration file loading\\n    '", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "'{cluster}.conf'", ".", "format", "(", "cluster", "=", "args", ".", "cluster", ")", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "with", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", ".", "read", "(", ")", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "(", "IOError", ",", "OSError", ")", "as", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "exc", ".", "ConfigError", "(", "(", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [9], "repair_candidates": [14, 38, 43, 9, 2, 12, 22, 35, 58, 70]}}
+{"prediction": {"error_location": 0.9279979467391968, "repair_targets": [0.9994028806686401], "repair_candidates": [0.00027505430625751615, 0.9994028806686401, 0.00010145148553419858, 5.5625190725550056e-05, 8.308852557092905e-06, 0.00011800709762610495, 1.1964621080551296e-05, 3.5107370877085486e-07, 2.5825596821960062e-05, 4.786277258972405e-07], "target_probs": 0.9994028806686401}}
+
+
+{"result": {"time": "2021-02-11 11:29:14.046433", "n_pass": [25, 2, 2], "n_token": 64, "loss": [0.03530478850007057, 0.0002569886564742774], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Read the actual file *as is* without parsing/modifiying it\\n    so that it can be written maintaining its same properties.\\n\\n    :param args: Will be used to infer the proper configuration name\\n    :paran path: alternatively, use a path for any configuration file loading\\n    '", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "'{cluster}.conf'", ".", "format", "(", "cluster", "=", "args", ".", "cluster", ")", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "with", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", ".", ",", "OSError", ")", "as", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "exc", ".", "ConfigError", "(", "(", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [9], "repair_candidates": [14, 38, 43, 9, 2, 12, 22, 35, 49, 61]}}
+{"prediction": {"error_location": 0.9653111696243286, "repair_targets": [0.9997430443763733], "repair_candidates": [9.782217239262536e-05, 0.9997430443763733, 7.143906987039372e-05, 3.754796489374712e-05, 3.3796586649259552e-06, 2.107206455548294e-05, 1.628083919058554e-05, 1.328469238615071e-06, 7.682730938540772e-06, 4.928892849420663e-07], "target_probs": 0.9997430443763733}}
+
+
+{"result": {"time": "2021-02-11 11:29:14.158489", "n_pass": [48, 4, 3], "n_token": 59, "loss": [0.03286604583263397, 0.00017626646149437875], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    Read the actual file *as is* without parsing/modifiying it\\n    so that it can be written maintaining its same properties.\\n\\n    :param args: Will be used to infer the proper configuration name\\n    :paran path: alternatively, use a path for any configuration file loading\\n    '", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "'{cluster}.conf'", ".", "format", "(", "cluster", "=", "args", ".", "cluster", ")", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "with", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", ".", ",", "OSError", ")", "as", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [9], "repair_candidates": [14, 38, 43, 9, 2, 12, 22, 35, 49, 56]}}
+{"prediction": {"error_location": 0.9676681756973267, "repair_targets": [0.9998237490653992], "repair_candidates": [7.865500083426014e-05, 0.9998237490653992, 4.627899033948779e-05, 2.4973403924377635e-05, 1.8636991399034741e-06, 9.194618542096578e-06, 1.214095846080454e-05, 7.440246463374933e-07, 2.1586508864857024e-06, 2.443107405269984e-07], "target_probs": 0.9998237490653992}}
+
+
+{"result": {"time": "2021-02-11 11:29:14.216043", "n_pass": [50, 5, 4], "n_token": 55, "loss": [0.1005493551492691, 0.0008266407530754805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "'{cluster}.conf'", ".", "format", "(", "cluster", "=", "args", ".", "cluster", ")", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "with", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", ".", ",", "OSError", ")", "as", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 31, "repair_targets": [5], "repair_candidates": [10, 34, 39, 5, 2, 8, 18, 31, 45, 52]}}
+{"prediction": {"error_location": 0.9043405652046204, "repair_targets": [0.9991737008094788], "repair_candidates": [0.00038604967994615436, 0.9991737008094788, 6.312716141110286e-05, 0.00020781354396604002, 6.519015641970327e-06, 0.00012481299927458167, 2.642698018462397e-05, 8.51634524678957e-07, 9.674827197159175e-06, 9.656948805059073e-07], "target_probs": 0.9991737008094788}}
+
+
+{"result": {"time": "2021-02-11 11:29:14.272073", "n_pass": [53, 6, 5], "n_token": 51, "loss": [0.0636887326836586, 0.0005560871213674545], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "cluster", "=", "args", ".", "cluster", ")", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "with", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", ".", ",", "OSError", ")", "as", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [5], "repair_candidates": [10, 30, 35, 5, 2, 8, 14, 27, 41, 48]}}
+{"prediction": {"error_location": 0.9382967948913574, "repair_targets": [0.9994440674781799], "repair_candidates": [0.00022096920292824507, 0.9994440674781799, 0.000201970266061835, 4.441765122464858e-05, 5.069552571512759e-06, 5.768356641056016e-05, 1.7978112737182528e-05, 2.481123715369904e-07, 7.164093858591514e-06, 3.822954681709234e-07], "target_probs": 0.9994440674781799}}
+
+
+{"result": {"time": "2021-02-11 11:29:14.327448", "n_pass": [55, 7, 6], "n_token": 46, "loss": [0.048030752688646317, 0.0004567950963973999], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "cluster", "=", "args", ".", ":", "#NEWLINE#", "#INDENT#", "with", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", ".", ",", "OSError", ")", "as", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [5], "repair_candidates": [10, 25, 30, 5, 2, 8, 14, 22, 36, 43]}}
+{"prediction": {"error_location": 0.9531044960021973, "repair_targets": [0.999543309211731], "repair_candidates": [0.00017746233788784593, 0.999543309211731, 0.00018610720871947706, 3.2383577490691096e-05, 2.315263554919511e-05, 1.0324050890631042e-05, 1.82558833330404e-05, 1.5959716392899281e-07, 8.644184163131285e-06, 2.7103536126560357e-07], "target_probs": 0.999543309211731}}
+
+
+{"result": {"time": "2021-02-11 11:29:14.438125", "n_pass": [59, 9, 7], "n_token": 41, "loss": [0.6975802779197693, 0.0008326658280566335], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "cluster", "=", "args", ".", ":", "#NEWLINE#", "#INDENT#", "with", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [5], "repair_candidates": [10, 25, 30, 5, 2, 8, 14, 22, 31, 38]}}
+{"prediction": {"error_location": 0.49778836965560913, "repair_targets": [0.9991676807403564], "repair_candidates": [0.00010490536806173623, 0.9991676807403564, 0.0001324775512330234, 2.033019882219378e-05, 4.8918398533714935e-05, 0.00015567761147394776, 0.00029769298271276057, 4.938343045068905e-05, 1.7105694496422075e-05, 5.681177299265983e-06], "target_probs": 0.9991676807403564}}
+
+
+{"result": {"time": "2021-02-11 11:29:14.772235", "n_pass": [97, 15, 8], "n_token": 39, "loss": [0.5838069319725037, 0.0011674420675262809], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", ":", "#NEWLINE#", "#INDENT#", "with", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [5], "repair_candidates": [10, 23, 28, 5, 2, 8, 12, 20, 29, 36]}}
+{"prediction": {"error_location": 0.5577707886695862, "repair_targets": [0.9988332390785217], "repair_candidates": [0.00012161160702817142, 0.9988332390785217, 0.00015606783563271165, 3.40418700943701e-05, 5.056344161857851e-05, 0.00018433319928590208, 0.0005534309893846512, 4.859504770138301e-05, 1.239241555595072e-05, 5.841483471158426e-06], "target_probs": 0.9988332390785217}}
+
+
+{"result": {"time": "2021-02-11 11:29:14.828176", "n_pass": [98, 16, 9], "n_token": 37, "loss": [0.9116690754890442, 0.0007888805121183395], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", "#INDENT#", "with", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [5], "repair_candidates": [10, 21, 26, 5, 2, 8, 12, 18, 27, 34]}}
+{"prediction": {"error_location": 0.40185290575027466, "repair_targets": [0.9992114305496216], "repair_candidates": [8.063734276220202e-05, 0.9992114305496216, 0.00011449439625721425, 1.5595318473060615e-05, 2.2473519493360072e-05, 0.0001024867597152479, 0.0004098589124623686, 3.557304080459289e-05, 4.396722488309024e-06, 3.0299522677523782e-06], "target_probs": 0.9992114305496216}}
+
+
+{"result": {"time": "2021-02-11 11:29:14.885809", "n_pass": [99, 17, 10], "n_token": 35, "loss": [0.8470053672790527, 0.0003097536973655224], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", "open", "(", "args", ")", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [10, 19, 24, 5, 2, 8, 12, 16, 25, 32]}}
+{"prediction": {"error_location": 0.42869681119918823, "repair_targets": [0.9996902942657471], "repair_candidates": [1.3150864106137305e-05, 0.9996902942657471, 3.2195068342844024e-05, 2.655747448443435e-05, 1.4610602192988154e-05, 1.23291538329795e-05, 0.00019620284729171544, 1.145384885603562e-05, 1.2973409866390284e-06, 1.922098590512178e-06], "target_probs": 0.9996902942657471}}
+
+
+{"result": {"time": "2021-02-11 11:29:15.383308", "n_pass": [148, 26, 11], "n_token": 34, "loss": [0.5264375805854797, 0.00025961193023249507], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", "open", "(", "args", "as", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [10, 18, 23, 5, 2, 8, 12, 16, 24, 31]}}
+{"prediction": {"error_location": 0.5907054543495178, "repair_targets": [0.9997404217720032], "repair_candidates": [1.6539466741960496e-05, 0.9997404217720032, 2.5062201530090533e-05, 5.958357724011876e-05, 2.1370027752709575e-05, 2.5174654183501843e-06, 0.00011422020907048136, 1.850727312557865e-05, 7.624141176165722e-07, 9.076178457689821e-07], "target_probs": 0.9997404217720032}}
+
+
+{"result": {"time": "2021-02-11 11:29:15.438322", "n_pass": [149, 27, 12], "n_token": 33, "loss": [0.061092596501111984, 0.0020468903239816427], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", "open", "(", "args", "ceph_conf", ":", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [10, 17, 22, 5, 2, 8, 12, 16, 23, 30]}}
+{"prediction": {"error_location": 0.9407361149787903, "repair_targets": [0.9979552030563354], "repair_candidates": [8.406473170907702e-06, 0.9979552030563354, 2.7046053219237365e-05, 0.00046823068987578154, 9.857760232989676e-06, 6.248197223612806e-06, 0.0011369951535016298, 0.0003842324367724359, 1.9595534013205906e-06, 1.811001652640698e-06], "target_probs": 0.9979552030563354}}
+
+
+{"result": {"time": "2021-02-11 11:29:15.494025", "n_pass": [151, 28, 13], "n_token": 32, "loss": [0.5877708196640015, 0.00048315274761989713], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", "open", "(", "args", "ceph_conf", "#NEWLINE#", "#INDENT#", "return", "ceph_conf", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [10, 17, 21, 5, 2, 8, 12, 16, 22, 29]}}
+{"prediction": {"error_location": 0.5555643439292908, "repair_targets": [0.9995169639587402], "repair_candidates": [2.2722833818988875e-05, 0.9995169639587402, 4.621592961484566e-05, 5.339838389772922e-05, 1.985700691875536e-05, 9.198214684147388e-06, 0.0001625132281333208, 0.0001658487890381366, 1.226080257765716e-06, 1.9429057829256635e-06], "target_probs": 0.9995169639587402}}
+
+
+{"result": {"time": "2021-02-11 11:29:15.551243", "n_pass": [152, 29, 14], "n_token": 31, "loss": [0.38296741247177124, 0.0010417163139209151], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", "open", "(", "args", "ceph_conf", "#INDENT#", "return", "ceph_conf", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [10, 17, 20, 5, 2, 8, 12, 16, 21, 28]}}
+{"prediction": {"error_location": 0.6818351745605469, "repair_targets": [0.9989588260650635], "repair_candidates": [1.1368253581167664e-05, 0.9989588260650635, 3.885820115101524e-05, 0.00010211639892077073, 1.3050981578999199e-05, 6.246309112611925e-06, 0.0006063189939595759, 0.00026123583666048944, 6.96026063451427e-07, 1.4005913726578e-06], "target_probs": 0.9989588260650635}}
+
+
+{"result": {"time": "2021-02-11 11:29:15.606355", "n_pass": [153, 30, 15], "n_token": 30, "loss": [0.44437581300735474, 0.016653213649988174], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", ":", "#NEWLINE#", "#INDENT#", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [10, 17, 19, 5, 2, 8, 12, 16, 20, 27]}}
+{"prediction": {"error_location": 0.6412243843078613, "repair_targets": [0.98348468542099], "repair_candidates": [7.69706275605131e-06, 0.98348468542099, 7.414390711346641e-05, 0.002255302621051669, 1.879793308035005e-05, 2.0859988580923527e-05, 0.009199528023600578, 0.004936511628329754, 6.566938282048795e-07, 1.812449795579596e-06], "target_probs": 0.98348468542099}}
+
+
+{"result": {"time": "2021-02-11 11:29:15.716463", "n_pass": [157, 32, 16], "n_token": 28, "loss": [0.5500015616416931, 0.018988585099577904], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", ")", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", ":", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [10, 17, 19, 5, 2, 8, 12, 16, 20, 25]}}
+{"prediction": {"error_location": 0.576948881149292, "repair_targets": [0.98119056224823], "repair_candidates": [5.2493119255814236e-06, 0.98119056224823, 8.968762995209545e-05, 0.002391754649579525, 1.6552980014239438e-05, 5.790906652691774e-05, 0.009502979926764965, 0.006741282530128956, 1.363299247714167e-06, 2.758464006547001e-06], "target_probs": 0.98119056224823}}
+
+
+{"result": {"time": "2021-02-11 11:29:15.992588", "n_pass": [164, 37, 17], "n_token": 27, "loss": [0.3597712218761444, 0.00620762025937438], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", "#NEWLINE#", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", ":", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [9, 16, 18, 4, 2, 7, 11, 15, 19, 24]}}
+{"prediction": {"error_location": 0.6978359818458557, "repair_targets": [0.9938116073608398], "repair_candidates": [2.7517202397575602e-05, 0.9938116073608398, 0.00018699334759730846, 0.0018779748352244496, 4.17348783230409e-05, 4.5089553168509156e-05, 0.0019978664349764585, 0.0019893478602170944, 6.101462986407569e-06, 1.570663516758941e-05], "target_probs": 0.9938116073608398}}
+
+
+{"result": {"time": "2021-02-11 11:29:16.047688", "n_pass": [165, 38, 18], "n_token": 26, "loss": [0.5572234392166138, 0.003930953331291676], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", "path", "=", "(", "args", ".", "ceph_conf", "or", "args", ".", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", ":", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [3], "repair_candidates": [8, 15, 17, 3, 2, 6, 10, 14, 18, 23]}}
+{"prediction": {"error_location": 0.5727972984313965, "repair_targets": [0.996076762676239], "repair_candidates": [5.31668629264459e-05, 0.996076762676239, 0.00022219636593945324, 0.0012710652081295848, 4.3684518459485844e-05, 8.741452802496497e-06, 0.0012782157864421606, 0.0010410668328404427, 7.957038974382158e-07, 4.297146915632766e-06], "target_probs": 0.996076762676239}}
+
+
+{"result": {"time": "2021-02-11 11:29:16.157428", "n_pass": [168, 40, 19], "n_token": 25, "loss": [0.7719818353652954, 0.002672783797606826], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", "path", "=", "args", ".", "ceph_conf", "or", "args", ".", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", ":", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [3], "repair_candidates": [7, 14, 16, 3, 2, 5, 9, 13, 17, 22]}}
+{"prediction": {"error_location": 0.46209630370140076, "repair_targets": [0.9973307847976685], "repair_candidates": [3.36381999659352e-05, 0.9973307847976685, 0.00012457446428015828, 0.001050257938914001, 6.702782411593944e-05, 1.7879125152830966e-05, 0.0007589835440739989, 0.0006145286606624722, 4.876958996646863e-07, 1.8295235122423037e-06], "target_probs": 0.9973307847976685}}
+
+
+{"result": {"time": "2021-02-11 11:29:16.324163", "n_pass": [174, 43, 20], "n_token": 24, "loss": [1.0765008926391602, 0.005059323273599148], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", "path", "=", "args", ".", "ceph_conf", "or", "args", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", ":", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [7, 13, 15, 3, 2, 5, 9, 12, 16, 21]}}
+{"prediction": {"error_location": 0.3407858908176422, "repair_targets": [0.994953453540802], "repair_candidates": [0.00013904651859775186, 0.994953453540802, 0.0005554050439968705, 0.002060463186353445, 0.00021461558935698122, 7.604702841490507e-05, 0.0009928856743499637, 0.0010045673698186874, 1.281896174987196e-06, 2.2981037091085454e-06], "target_probs": 0.994953453540802}}
+
+
+{"result": {"time": "2021-02-11 11:29:16.933117", "n_pass": [204, 54, 21], "n_token": 23, "loss": [0.5350189208984375, 0.004146817605942488], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", "path", "=", "args", ".", "ceph_conf", "or", "args", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", "raise", "'%s; has `ceph-deploy new` been run in this directory?'", "%", "e", ")", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [7, 13, 15, 3, 2, 5, 9, 12, 16, 20]}}
+{"prediction": {"error_location": 0.5856581926345825, "repair_targets": [0.9958617687225342], "repair_candidates": [0.0001191105111502111, 0.9958617687225342, 0.0006736390059813857, 0.0030179396271705627, 8.960221020970494e-05, 1.9079623143625213e-06, 0.00011118203838123009, 0.00012275644985493273, 2.024361265284824e-06, 1.545762415844365e-07], "target_probs": 0.9958617687225342}}
+
+
+{"result": {"time": "2021-02-11 11:29:17.042021", "n_pass": [206, 56, 22], "n_token": 22, "loss": [0.12869414687156677, 0.003514557844027877], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", "path", "=", "args", ".", "ceph_conf", "or", "args", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", "raise", "%", "e", ")", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [7, 13, 15, 3, 2, 5, 9, 12, 16, 19]}}
+{"prediction": {"error_location": 0.8792429566383362, "repair_targets": [0.9964916110038757], "repair_candidates": [5.6895394664024934e-05, 0.9964916110038757, 0.0003890871303156018, 0.0025555314496159554, 7.302156154764816e-05, 1.0030807970906608e-06, 0.00021392610506154597, 0.00021546045900322497, 3.270172101110802e-06, 1.65821234077157e-07], "target_probs": 0.9964916110038757}}
+
+
+{"result": {"time": "2021-02-11 11:29:17.097310", "n_pass": [207, 57, 23], "n_token": 21, "loss": [0.15489250421524048, 0.008362771943211555], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", "path", "=", "args", ".", "ceph_conf", "or", "args", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", "raise", "e", ")", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [7, 13, 15, 3, 2, 5, 9, 12, 16, 18]}}
+{"prediction": {"error_location": 0.8565072417259216, "repair_targets": [0.9916720986366272], "repair_candidates": [4.376828292151913e-05, 0.9916720986366272, 0.0002544218150433153, 0.0059675779193639755, 5.958876135991886e-05, 1.238722461494035e-06, 0.0008051671320572495, 0.0011955107329413295, 6.317225142993266e-07, 6.782109807090819e-08], "target_probs": 0.9916720986366272}}
+
+
+{"result": {"time": "2021-02-11 11:29:17.152341", "n_pass": [209, 58, 24], "n_token": 20, "loss": [0.12370652705430984, 0.009169107303023338], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", "path", "=", "args", ".", "ceph_conf", "or", "args", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", "raise", "e", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [7, 13, 15, 3, 2, 5, 9, 12, 16, 18]}}
+{"prediction": {"error_location": 0.8836392164230347, "repair_targets": [0.9908728003501892], "repair_candidates": [3.927265788661316e-05, 0.9908728003501892, 0.00042021056287921965, 0.006062026601284742, 3.887398634105921e-05, 1.4784965287617524e-06, 0.0007996150525286794, 0.0017651686212047935, 5.06080937157094e-07, 7.338081786656403e-08], "target_probs": 0.9908728003501892}}
+
+
+{"result": {"time": "2021-02-11 11:29:17.209567", "n_pass": [210, 59, 25], "n_token": 19, "loss": [0.47012239694595337, 0.0011282966006547213], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", "path", "=", "args", ".", "ceph_conf", "or", "args", "open", "(", "args", "ceph_conf", "return", "ceph_conf", "e", "raise", "e"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [7, 13, 15, 3, 2, 5, 9, 12, 16, 18]}}
+{"prediction": {"error_location": 0.6249257922172546, "repair_targets": [0.9988723397254944], "repair_candidates": [3.648348501883447e-05, 0.9988723397254944, 0.0003150264674331993, 0.0005170165095478296, 0.00011713580170180649, 9.190872333419975e-06, 1.2642839465115685e-05, 7.953100430313498e-05, 3.4229062293889e-05, 6.318131909210933e-06], "target_probs": 0.9988723397254944}}
+
+
+{"result": {"time": "2021-02-11 11:29:17.539003", "n_pass": [221, 65, 26], "n_token": 18, "loss": [0.8976039290428162, 0.0023606843315064907], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def load_raw(", "args", "path", "=", "args", ".", "ceph_conf", "or", "args", "(", "args", "ceph_conf", "return", "ceph_conf", "e", "raise", "e"]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [7, 12, 14, 3, 2, 5, 9, 11, 15, 17]}}
+{"prediction": {"error_location": 0.4075450301170349, "repair_targets": [0.9976420998573303], "repair_candidates": [0.00012464045721571892, 0.9976420998573303, 0.00104800914414227, 0.0007207055459730327, 0.00021999896853230894, 4.290068318368867e-05, 2.2658139641862363e-05, 8.012365287868306e-05, 8.18273110780865e-05, 1.6979940482997335e-05], "target_probs": 0.9976420998573303}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def load_raw(', 'args', 'path', '=', 'args', '.', 'ceph_conf', 'or', 'args', '(', 'args', 'ceph_conf', 'return', 'ceph_conf', 'e', 'raise', 'e']

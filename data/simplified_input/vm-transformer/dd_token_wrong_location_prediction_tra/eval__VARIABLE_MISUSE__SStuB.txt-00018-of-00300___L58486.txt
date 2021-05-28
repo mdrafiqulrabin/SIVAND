@@ -1,0 +1,37 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def __ge__(", "self", ",", "other", ")", ":", "#NEWLINE#", "#INDENT#", "return", "BinaryOp", "(", "operator", ".", "ge", ",", "'>='", ",", "other", ",", "other", ")"], "error_location": [18], "repair_targets": [2], "repair_candidates": [4, 18, 20, 2], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "ChrisBeaumont/soupy/soupy.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00018-of-00300", "js_count": 58486, "results": {"model": "transformer", "prob": {"loc": [[0.003808818757534027, 2.1014201934121957e-07, 2.4275564669551386e-07, 1.4883652532660108e-08, 1.779586114025733e-06, 2.498583029364454e-08, 3.710387375122082e-08, 3.280131011251797e-08, 2.836649137805125e-08, 6.0578027039071e-09, 1.8176963267890756e-09, 1.578324315687496e-08, 2.510188551241299e-06, 2.381320740596493e-07, 5.654867241133843e-09, 7.831634718513669e-08, 2.512121852760174e-07, 2.552422131429921e-07, 0.4756426513195038, 9.515422227934778e-09, 0.5205427408218384, 1.899567791951995e-08]], "pointer": [[0.0, 0.0, 0.9999992847442627, 0.0, 7.712676506343996e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 7.468576868063792e-09, 0.0, 6.795522811131605e-09, 0.0]], "target": [0.9999992847442627]}, "loss": [0.74308842420578, 7.152560215217818e-07], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [20]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:34:33.107110", "n_pass": [1, 1, 1], "n_token": 22, "loss": [0.6528832316398621, 7.152560215217818e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __ge__(", "self", ",", "other", ")", ":", "#NEWLINE#", "#INDENT#", "return", "BinaryOp", "(", "operator", ".", "ge", ",", "'>='", ",", "other", ",", "other", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [2], "repair_candidates": [4, 18, 20, 2]}}
+{"prediction": {"error_location": 0.5205427408218384, "repair_targets": [0.9999992847442627], "repair_candidates": [0.9999992847442627, 7.712676506343996e-07, 7.468576868063792e-09, 6.795522811131605e-09], "target_probs": 0.9999992847442627}}
+
+
+{"result": {"time": "2021-02-21 07:34:33.162222", "n_pass": [9, 2, 2], "n_token": 17, "loss": [0.3511089086532593, 7.033372639853042e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __ge__(", "self", ",", "other", "BinaryOp", "(", "operator", ".", "ge", ",", "'>='", ",", "other", ",", "other", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [2], "repair_candidates": [4, 13, 15, 2]}}
+{"prediction": {"error_location": 0.7039071321487427, "repair_targets": [0.9999929666519165], "repair_candidates": [0.9999929666519165, 2.9323975923034595e-06, 2.5112763069046196e-06, 1.5294571085178177e-06], "target_probs": 0.9999929666519165}}
+
+
+{"result": {"time": "2021-02-21 07:34:33.329426", "n_pass": [20, 5, 3], "n_token": 14, "loss": [0.22107824683189392, 9.572964336257428e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __ge__(", "self", ",", "other", "BinaryOp", "(", "operator", "'>='", ",", "other", ",", "other", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [4, 10, 12, 2]}}
+{"prediction": {"error_location": 0.8016539812088013, "repair_targets": [0.9999042749404907], "repair_candidates": [0.9999042749404907, 8.116884418996051e-05, 6.150811259431066e-06, 8.36085200717207e-06], "target_probs": 0.9999042749404907}}
+
+
+{"result": {"time": "2021-02-21 07:34:33.384079", "n_pass": [23, 6, 4], "n_token": 12, "loss": [0.015568623319268227, 0.5540369749069214], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "other", "BinaryOp", "(", "operator", "'>='", ",", "other", ",", "other", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [0], "repair_candidates": [2, 8, 10, 0]}}
+{"prediction": {"error_location": 0.9845519661903381, "repair_targets": [0.5746253728866577], "repair_candidates": [0.5746253728866577, 0.2757429778575897, 0.14729411900043488, 0.0023375367745757103], "target_probs": 0.5746253728866577}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ',', 'other', 'BinaryOp', '(', 'operator', "'>='", ',', 'other', ',', 'other', ')']

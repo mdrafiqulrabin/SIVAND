@@ -1,0 +1,133 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_centos_sequence_managed(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        ``task_enable_flocker_agent`` for the \\'centos-7\\' distribution\\n        returns a sequence of \\'service restart\\' commands for each agent\\n        when the action passed down is \"restart\" (used for managed provider).\\n        '", "#NEWLINE#", "distribution", "=", "'centos-7'", "#NEWLINE#", "commands", "=", "task_enable_flocker_agent", "(", "distribution", "=", "distribution", ",", "action", "=", "'restart'", ")", "#NEWLINE#", "expected_sequence", "=", "sequence", "(", "[", "run", "(", "command", "=", "'systemctl enable flocker-dataset-agent'", ")", ",", "run", "(", "command", "=", "'systemctl restart flocker-dataset-agent'", ")", ",", "run", "(", "command", "=", "'systemctl enable flocker-container-agent'", ")", ",", "run", "(", "command", "=", "'systemctl restart flocker-container-agent'", ")", "]", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"], "error_location": [67], "repair_targets": [26], "repair_candidates": [2, 61, 9, 17, 19, 26, 13, 65, 67], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "ClusterHQ/flocker/flocker/provision/test/test_install.py", "license": "apache-2.0", "note": "license: github_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00015-of-00300", "js_count": 49348, "results": {"model": "rnn", "prob": {"loc": [[0.007727989461272955, 4.442224721401544e-08, 5.402553515665431e-09, 3.7150488241266544e-10, 7.201374219167889e-11, 5.016251858336318e-10, 1.5058271296553016e-10, 1.3653900232668548e-10, 2.7286479742372194e-09, 3.715376672985826e-09, 6.014348463700969e-10, 9.10659458952523e-09, 7.08132441573639e-10, 4.9875090724071924e-09, 8.350748981200695e-10, 9.50232514895788e-09, 2.3745190258495086e-09, 3.352247688326315e-07, 3.7055837509569756e-08, 4.008455653092824e-05, 1.246134306853719e-09, 4.178734858140132e-10, 1.367092439252815e-09, 7.2602164280510806e-09, 1.4142760296209644e-09, 1.6242065470351008e-08, 5.1620201446667124e-09, 2.1709796627078504e-08, 9.298599223939163e-08, 1.2204647958924397e-08, 3.8147987879710854e-08, 2.8788250006073213e-08, 1.6042394079818223e-09, 1.559560836028595e-08, 6.168062505196303e-09, 5.46514047528035e-06, 1.7893442283423155e-09, 7.378300748150934e-10, 1.7613519531778365e-08, 1.544837857636594e-08, 9.298653225187081e-08, 5.389749535567034e-09, 2.815224604546529e-07, 1.9500356884805115e-09, 2.853489389220698e-10, 2.0142453038829444e-08, 9.451802895910077e-09, 1.2526668591306134e-08, 5.672982528182047e-09, 4.083410658495268e-06, 9.52362189110545e-10, 2.248066593990572e-10, 1.2129249604697634e-08, 1.768417590142235e-08, 1.9796955186279774e-08, 6.1118377026048165e-09, 3.35537606588332e-07, 3.5713807466919434e-09, 1.247307235274775e-08, 8.375685922601406e-09, 1.4694879979515463e-08, 3.193028730308356e-09, 1.805287308531689e-10, 2.1948987072306636e-09, 1.811953964647728e-08, 0.823283851146698, 1.2913562663641187e-08, 0.16893669962882996, 5.401814107131031e-08]], "pointer": [[0.0, 0.0, 2.2188780349097215e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0008012272301129997, 0.0, 0.0, 0.0, 0.006544623523950577, 0.0, 0.0, 0.0, 0.0007657163077965379, 0.0, 7.2740926952974405e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9918532967567444, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.6644894174078217e-07, 0.0, 0.0, 0.0, 1.9951788488015154e-07, 0.0, 5.365313882066403e-06, 0.0]], "target": [0.9918532967567444]}, "loss": [1.778231143951416, 0.00818006880581379], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [65]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 13:08:51.930291", "n_pass": [1, 1, 1], "n_token": 69, "loss": [0.19445423781871796, 0.00818006880581379], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_centos_sequence_managed(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        ``task_enable_flocker_agent`` for the \\'centos-7\\' distribution\\n        returns a sequence of \\'service restart\\' commands for each agent\\n        when the action passed down is \"restart\" (used for managed provider).\\n        '", "#NEWLINE#", "distribution", "=", "'centos-7'", "#NEWLINE#", "commands", "=", "task_enable_flocker_agent", "(", "distribution", "=", "distribution", ",", "action", "=", "'restart'", ")", "#NEWLINE#", "expected_sequence", "=", "sequence", "(", "[", "run", "(", "command", "=", "'systemctl enable flocker-dataset-agent'", ")", ",", "run", "(", "command", "=", "'systemctl restart flocker-dataset-agent'", ")", ",", "run", "(", "command", "=", "'systemctl enable flocker-container-agent'", ")", ",", "run", "(", "command", "=", "'systemctl restart flocker-container-agent'", ")", "]", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 65, "repair_targets": [26], "repair_candidates": [2, 61, 9, 17, 19, 26, 13, 65, 67]}}
+{"prediction": {"error_location": 0.823283851146698, "repair_targets": [0.9918532967567444], "repair_candidates": [2.2188780349097215e-05, 0.0008012272301129997, 0.006544623523950577, 0.0007657163077965379, 7.2740926952974405e-06, 0.9918532967567444, 1.6644894174078217e-07, 1.9951788488015154e-07, 5.365313882066403e-06], "target_probs": 0.9918532967567444}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.007763", "n_pass": [10, 2, 2], "n_token": 52, "loss": [0.10841211676597595, 0.013379090465605259], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_centos_sequence_managed(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        ``task_enable_flocker_agent`` for the \\'centos-7\\' distribution\\n        returns a sequence of \\'service restart\\' commands for each agent\\n        when the action passed down is \"restart\" (used for managed provider).\\n        '", "#NEWLINE#", "distribution", "=", "'centos-7'", "#NEWLINE#", "commands", "=", "task_enable_flocker_agent", "(", "distribution", "=", "distribution", ",", "action", "=", "'restart'", ")", "#NEWLINE#", "expected_sequence", "=", "sequence", "(", "[", "run", "(", "command", ",", "run", "(", "command", "=", "'systemctl restart flocker-container-agent'", ")", "]", ")", "#NEWLINE#", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 48, "repair_targets": [26], "repair_candidates": [2, 44, 9, 17, 19, 26, 13, 48, 50]}}
+{"prediction": {"error_location": 0.8972578644752502, "repair_targets": [0.9867100119590759], "repair_candidates": [2.1034285964560695e-05, 0.0005147879710420966, 0.012327765114605427, 0.00041744360351003706, 4.531637387117371e-06, 0.9867100119590759, 2.451642728829029e-07, 1.70117303355255e-07, 3.989438937423984e-06], "target_probs": 0.9867100119590759}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.081420", "n_pass": [19, 3, 3], "n_token": 43, "loss": [0.16641966998577118, 0.0016587417339906096], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_centos_sequence_managed(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        ``task_enable_flocker_agent`` for the \\'centos-7\\' distribution\\n        returns a sequence of \\'service restart\\' commands for each agent\\n        when the action passed down is \"restart\" (used for managed provider).\\n        '", "#NEWLINE#", "distribution", "=", "'centos-7'", "#NEWLINE#", "commands", "=", "task_enable_flocker_agent", "(", "distribution", "=", "distribution", ",", "action", "=", "'restart'", ")", "#NEWLINE#", "expected_sequence", "=", "sequence", "(", "[", "run", "(", "command", "#NEWLINE#", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 39, "repair_targets": [26], "repair_candidates": [2, 35, 9, 17, 19, 26, 13, 39, 41]}}
+{"prediction": {"error_location": 0.846690833568573, "repair_targets": [0.9983426332473755], "repair_candidates": [1.488005409555626e-06, 5.074555519968271e-05, 0.0015606118831783533, 4.2435578507138416e-05, 1.3370755596042727e-06, 0.9983426332473755, 1.7198987123379084e-08, 4.427762689829251e-08, 6.767742206648109e-07], "target_probs": 0.9983426332473755}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.152030", "n_pass": [37, 4, 4], "n_token": 39, "loss": [0.11088436096906662, 0.001355911255814135], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_centos_sequence_managed(", "self", ")", "#NEWLINE#", "distribution", "=", "'centos-7'", "#NEWLINE#", "commands", "=", "task_enable_flocker_agent", "(", "distribution", "=", "distribution", ",", "action", "=", "'restart'", ")", "#NEWLINE#", "expected_sequence", "=", "sequence", "(", "[", "run", "(", "command", "#NEWLINE#", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 35, "repair_targets": [22], "repair_candidates": [2, 31, 5, 13, 15, 22, 9, 35, 37]}}
+{"prediction": {"error_location": 0.895042359828949, "repair_targets": [0.998645007610321], "repair_candidates": [8.686965884407982e-07, 2.1199972252361476e-05, 0.001290792366489768, 3.932321124011651e-05, 2.3106749722501263e-06, 0.998645007610321, 8.078206548134403e-09, 3.186344699201982e-08, 4.318133903780108e-07], "target_probs": 0.998645007610321}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.219968", "n_pass": [41, 5, 5], "n_token": 35, "loss": [0.16732805967330933, 0.018926624208688736], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_centos_sequence_managed(", "self", ")", "#NEWLINE#", "distribution", "=", "'centos-7'", "#NEWLINE#", "commands", "=", "task_enable_flocker_agent", "(", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "sequence", "(", "[", "run", "(", "command", "#NEWLINE#", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 31, "repair_targets": [18], "repair_candidates": [2, 27, 5, 13, 15, 18, 9, 31, 33]}}
+{"prediction": {"error_location": 0.84592205286026, "repair_targets": [0.9812513589859009], "repair_candidates": [2.5665246994321933e-07, 2.8715319331240607e-06, 0.018742812797427177, 2.2348608581523877e-06, 2.2538469579558296e-07, 0.9812513589859009, 3.0696283292996895e-09, 1.6069840569343796e-08, 2.0987036464248376e-07], "target_probs": 0.9812513589859009}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.287787", "n_pass": [43, 6, 6], "n_token": 30, "loss": [0.1351933479309082, 0.025622332468628883], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_centos_sequence_managed(", "self", ")", "#NEWLINE#", "distribution", "=", "'centos-7'", "#NEWLINE#", "commands", "=", "task_enable_flocker_agent", "(", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "command", "#NEWLINE#", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 26, "repair_targets": [18], "repair_candidates": [2, 22, 5, 13, 15, 18, 9, 26, 28]}}
+{"prediction": {"error_location": 0.8735470175743103, "repair_targets": [0.9747031331062317], "repair_candidates": [2.1195479860125488e-07, 3.121888084933744e-06, 0.02528996393084526, 3.3125916161225177e-06, 1.0404239958461403e-07, 0.9747031331062317, 4.315715784741769e-09, 5.5022364442436356e-09, 8.421207553510612e-08], "target_probs": 0.9747031331062317}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.415697", "n_pass": [69, 8, 7], "n_token": 28, "loss": [0.2197866141796112, 0.00913169328123331], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "distribution", "=", "'centos-7'", "#NEWLINE#", "commands", "=", "task_enable_flocker_agent", "(", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "command", "#NEWLINE#", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [16], "repair_candidates": [0, 20, 3, 11, 13, 16, 7, 24, 26]}}
+{"prediction": {"error_location": 0.8026901483535767, "repair_targets": [0.9909098744392395], "repair_candidates": [4.430282933753915e-05, 2.856928176697693e-06, 0.009039518423378468, 2.306048600075883e-06, 7.422561338898959e-07, 0.9909098744392395, 6.18765039206437e-09, 1.3182594571503614e-08, 3.294721580004989e-07], "target_probs": 0.9909098744392395}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.478755", "n_pass": [71, 9, 8], "n_token": 26, "loss": [0.4203950762748718, 0.0030072801746428013], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "distribution", "#NEWLINE#", "commands", "=", "task_enable_flocker_agent", "(", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "command", "#NEWLINE#", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [14], "repair_candidates": [0, 18, 3, 9, 11, 14, 5, 22, 24]}}
+{"prediction": {"error_location": 0.6567872762680054, "repair_targets": [0.9969972372055054], "repair_candidates": [5.459233943838626e-05, 4.86275166622363e-06, 0.0029399427585303783, 2.0081970433238894e-06, 6.419985538741457e-07, 0.9969972372055054, 1.360523160798266e-08, 2.4403364662362037e-08, 6.429672794183716e-07], "target_probs": 0.9969972372055054}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.540502", "n_pass": [73, 10, 9], "n_token": 24, "loss": [0.3865948021411896, 0.007064621429890394], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "distribution", "#NEWLINE#", "commands", "(", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "command", "#NEWLINE#", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [12], "repair_candidates": [0, 16, 3, 7, 9, 12, 5, 20, 22]}}
+{"prediction": {"error_location": 0.6793663501739502, "repair_targets": [0.9929602742195129], "repair_candidates": [0.0053622485138475895, 0.0003411717480048537, 0.000296391430310905, 0.0009335584472864866, 8.081558917183429e-05, 0.9929602742195129, 1.4513093447021674e-06, 1.1799218100350117e-06, 2.278343526995741e-05], "target_probs": 0.9929602742195129}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.664427", "n_pass": [78, 12, 10], "n_token": 22, "loss": [0.35413849353790283, 0.0031369603238999844], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "distribution", "#NEWLINE#", "commands", "(", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "self", ".", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [12], "repair_candidates": [0, 14, 3, 7, 9, 12, 5, 18, 20]}}
+{"prediction": {"error_location": 0.7017778158187866, "repair_targets": [0.9968679547309875], "repair_candidates": [0.0019288607873022556, 0.0002484003489371389, 0.00010091323201777413, 0.0008071523043327034, 3.130075492663309e-05, 0.9968679547309875, 3.4091167435690295e-06, 7.815518756615347e-07, 1.1186104529770091e-05], "target_probs": 0.9968679547309875}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.785155", "n_pass": [110, 14, 11], "n_token": 21, "loss": [0.37214919924736023, 0.006902321241796017], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "distribution", "#NEWLINE#", "commands", "(", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "self", "assertEqual", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [12], "repair_candidates": [0, 14, 3, 7, 9, 12, 5, 17, 19]}}
+{"prediction": {"error_location": 0.6892514228820801, "repair_targets": [0.9931214451789856], "repair_candidates": [0.004085220396518707, 0.0005368389538489282, 0.00023082880943547934, 0.0018409579060971737, 0.00013142425450496376, 0.9931214451789856, 2.0307985323597677e-05, 3.1195086194202304e-06, 2.9780487238895148e-05], "target_probs": 0.9931214451789856}}
+
+
+{"result": {"time": "2021-02-21 13:08:52.845158", "n_pass": [111, 15, 12], "n_token": 20, "loss": [0.5169606804847717, 0.009931785985827446], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "distribution", "#NEWLINE#", "commands", "(", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "self", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [12], "repair_candidates": [0, 14, 3, 7, 9, 12, 5, 16, 18]}}
+{"prediction": {"error_location": 0.5963302254676819, "repair_targets": [0.9901173710823059], "repair_candidates": [0.004395297262817621, 0.0012012619990855455, 0.00037333506043069065, 0.003717617131769657, 9.743932605488226e-05, 0.9901173710823059, 3.471547461231239e-05, 4.35228002970689e-06, 5.858948497916572e-05], "target_probs": 0.9901173710823059}}
+
+
+{"result": {"time": "2021-02-21 13:08:53.026101", "n_pass": [117, 18, 13], "n_token": 19, "loss": [0.8145908117294312, 0.009662970900535583], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "distribution", "#NEWLINE#", "commands", "(", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "self", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [11], "repair_candidates": [0, 13, 2, 6, 8, 11, 4, 15, 17]}}
+{"prediction": {"error_location": 0.4428204298019409, "repair_targets": [0.9903835654258728], "repair_candidates": [0.0028682397678494453, 0.0021913594100624323, 0.0002551251382101327, 0.004160454496741295, 6.536003638757393e-05, 0.9903835654258728, 3.302104596514255e-05, 2.430873564662761e-06, 4.054343662573956e-05], "target_probs": 0.9903835654258728}}
+
+
+{"result": {"time": "2021-02-21 13:08:53.085302", "n_pass": [119, 19, 14], "n_token": 18, "loss": [0.5205647945404053, 0.1578032523393631], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "distribution", "commands", "(", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "self", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [10], "repair_candidates": [0, 12, 2, 5, 7, 10, 3, 14, 16]}}
+{"prediction": {"error_location": 0.5941847562789917, "repair_targets": [0.8540177941322327], "repair_candidates": [0.004513673018664122, 0.001496927230618894, 0.000262483605183661, 0.1395447701215744, 5.752214201493189e-05, 0.8540177941322327, 5.410718222265132e-05, 4.113108388992259e-06, 4.860388071392663e-05], "target_probs": 0.8540177941322327}}
+
+
+{"result": {"time": "2021-02-21 13:08:53.143887", "n_pass": [121, 20, 15], "n_token": 17, "loss": [0.4684792160987854, 0.24582621455192566], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "distribution", "commands", "distribution", "=", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "self", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [9], "repair_candidates": [0, 11, 2, 4, 6, 9, 3, 13, 15]}}
+{"prediction": {"error_location": 0.6259534955024719, "repair_targets": [0.7820581197738647], "repair_candidates": [0.04230064898729324, 0.09949200600385666, 0.043208010494709015, 0.03145096078515053, 0.0008698359597474337, 0.7820581197738647, 0.0004188133461866528, 1.932803752424661e-05, 0.00018230221758130938], "target_probs": 0.7820581197738647}}
+
+
+{"result": {"time": "2021-02-21 13:08:53.201550", "n_pass": [123, 21, 16], "n_token": 16, "loss": [0.23265191912651062, 0.0306671392172575], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "distribution", "commands", "distribution", "distribution", ")", "#NEWLINE#", "expected_sequence", "=", "self", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [8], "repair_candidates": [0, 10, 2, 4, 5, 8, 3, 12, 14]}}
+{"prediction": {"error_location": 0.7924292683601379, "repair_targets": [0.9697983264923096], "repair_candidates": [0.016402486711740494, 0.0024181916378438473, 0.00028017169097438455, 0.0003811494098044932, 0.009996292181313038, 0.9697983264923096, 0.0005473053897731006, 2.6273311959812418e-05, 0.00014984629524406046], "target_probs": 0.9697983264923096}}
+
+
+{"result": {"time": "2021-02-21 13:08:53.258587", "n_pass": [125, 22, 17], "n_token": 15, "loss": [0.3591979742050171, 0.05731326341629028], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "distribution", "commands", "distribution", "distribution", "#NEWLINE#", "expected_sequence", "=", "self", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [7], "repair_candidates": [0, 9, 2, 4, 5, 7, 3, 11, 13]}}
+{"prediction": {"error_location": 0.6982361078262329, "repair_targets": [0.9442982077598572], "repair_candidates": [0.028358489274978638, 0.002626939443871379, 0.00022634933702647686, 0.0003684161347337067, 0.023083867505192757, 0.9442982077598572, 0.000744165270589292, 3.1655643397243693e-05, 0.0002618079597596079], "target_probs": 0.9442982077598572}}
+
+
+{"result": {"time": "2021-02-21 13:08:53.487874", "n_pass": [134, 26, 18], "n_token": 14, "loss": [0.47160786390304565, 0.00942828319966793], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "distribution", "commands", "distribution", "distribution", "#NEWLINE#", "expected_sequence", "=", "self", "(", "commands", ",", "commands", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [6], "repair_candidates": [0, 8, 1, 3, 4, 6, 2, 10, 12]}}
+{"prediction": {"error_location": 0.6239981651306152, "repair_targets": [0.9906160235404968], "repair_candidates": [0.0038060550577938557, 0.0006464915350079536, 0.0001050057471729815, 9.089474770007655e-05, 0.004536045249551535, 0.9906160235404968, 0.00016985650290735066, 4.552337031782372e-06, 2.499124275345821e-05], "target_probs": 0.9906160235404968}}
+
+
+{"result": {"time": "2021-02-21 13:08:53.769768", "n_pass": [154, 31, 19], "n_token": 13, "loss": [0.11669854074716568, 0.024134766310453415], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "distribution", "commands", "distribution", "distribution", "#NEWLINE#", "expected_sequence", "=", "self", "(", "commands", ",", "commands"]}}
+{"position": {"error_location": 10, "repair_targets": [6], "repair_candidates": [0, 8, 1, 3, 4, 6, 2, 10, 12]}}
+{"prediction": {"error_location": 0.8898534178733826, "repair_targets": [0.9761541485786438], "repair_candidates": [0.0077470638789236546, 0.001358137815259397, 0.00021983834449201822, 0.00023568775213789195, 0.013881034217774868, 0.9761541485786438, 0.0003637624904513359, 8.753112524573226e-06, 3.1624782423023134e-05], "target_probs": 0.9761541485786438}}
+
+
+{"result": {"time": "2021-02-21 13:08:53.825872", "n_pass": [160, 32, 20], "n_token": 12, "loss": [0.29255372285842896, 0.6829763054847717], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "distribution", "commands", "distribution", "distribution", "expected_sequence", "=", "self", "(", "commands", ",", "commands"]}}
+{"position": {"error_location": 9, "repair_targets": [5], "repair_candidates": [0, 7, 1, 3, 4, 5, 2, 9, 11]}}
+{"prediction": {"error_location": 0.7463552355766296, "repair_targets": [0.5051113963127136], "repair_candidates": [0.10410961508750916, 0.013319923542439938, 0.0020254789851605892, 0.022480443120002747, 0.35043713450431824, 0.5051113963127136, 0.0020378686022013426, 0.000186296776519157, 0.00029180708224885166], "target_probs": 0.5051113963127136}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'distribution', 'commands', 'distribution', 'distribution', 'expected_sequence', '=', 'self', '(', 'commands', ',', 'commands']

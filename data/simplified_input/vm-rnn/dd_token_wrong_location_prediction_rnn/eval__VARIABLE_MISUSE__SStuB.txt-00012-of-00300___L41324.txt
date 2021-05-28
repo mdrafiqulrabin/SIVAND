@@ -1,0 +1,109 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def sort_stats(", "self", ",", "order", "=", "sortkeys", ".", "by_deep_time", ")", ":", "#NEWLINE#", "#INDENT#", "assert", "callable", "(", "order", ")", "#NEWLINE#", "if", "(", "order", "==", "order", ".", "order", ")", ":", "#NEWLINE#", "#INDENT#", "return", "#NEWLINE#", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", ".", "refresh", "(", ")"], "error_location": [23], "repair_targets": [2, 33, 39], "repair_candidates": [2, 33, 39, 4, 16, 21, 23, 25, 35, 37], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "what-studio/profiling/profiling/viewer.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00012-of-00300", "js_count": 41324, "results": {"model": "rnn", "prob": {"loc": [[0.1216525286436081, 1.1345432540110778e-06, 3.841100260615349e-05, 5.635118327518285e-08, 1.2439913632533717e-07, 1.1854077683892683e-06, 0.6420020461082458, 9.981176845030859e-06, 8.940428415371571e-07, 1.5623992055679992e-07, 9.206848261555933e-08, 1.0507188790143118e-06, 2.5234260192519287e-07, 2.0070332539035007e-05, 4.276608251529979e-06, 7.22552897514106e-07, 0.07258662581443787, 7.710828526796831e-07, 5.337369657354429e-06, 2.829919480973331e-07, 2.9746288419119082e-06, 0.07298281788825989, 2.134875558112981e-06, 0.08815950900316238, 5.06756407503417e-07, 8.100400918920059e-07, 4.239781503656559e-07, 5.820056117045169e-07, 3.511545116907655e-07, 8.08502278459855e-08, 6.31025068287272e-06, 2.2404596165870316e-05, 6.959052001320742e-08, 1.5466116565221455e-06, 1.045395947585348e-07, 4.362601391250109e-09, 2.6792807261699636e-07, 0.002404560102149844, 1.1916991127236543e-07, 8.495443637457356e-08, 6.722186185470491e-08, 2.1145480033624153e-08, 9.628105544834398e-06, 7.86708333180286e-05]], "pointer": [[0.0, 0.0, 0.9999736547470093, 0.0, 1.9454395442153327e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.611887452985684e-07, 0.0, 0.0, 0.0, 0.0, 3.802224455284886e-07, 0.0, 1.21438745281921e-06, 0.0, 3.3499309211038053e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.438350120177347e-07, 0.0, 9.442400141779217e-07, 0.0, 2.3199456222755543e-07, 0.0, 1.0535190853033782e-07, 0.0, 0.0, 0.0, 0.0]], "target": [0.9999741315841675]}, "loss": [2.42860746383667, 2.5868750526569784e-05], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [6]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:53:55.530527", "n_pass": [1, 1, 1], "n_token": 44, "loss": [0.4431638717651367, 2.5868750526569784e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def sort_stats(", "self", ",", "order", "=", "sortkeys", ".", "by_deep_time", ")", ":", "#NEWLINE#", "#INDENT#", "assert", "callable", "(", "order", ")", "#NEWLINE#", "if", "(", "order", "==", "order", ".", "order", ")", ":", "#NEWLINE#", "#INDENT#", "return", "#NEWLINE#", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", ".", "refresh", "(", ")"]}}
+{"position": {"error_location": 6, "repair_targets": [2, 33, 39], "repair_candidates": [2, 33, 39, 4, 16, 21, 23, 25, 35, 37]}}
+{"prediction": {"error_location": 0.6420020461082458, "repair_targets": [0.9999736547470093, 3.438350120177347e-07, 1.0535190853033782e-07], "repair_candidates": [0.9999736547470093, 1.9454395442153327e-05, 2.611887452985684e-07, 3.802224455284886e-07, 1.21438745281921e-06, 3.3499309211038053e-06, 3.438350120177347e-07, 9.442400141779217e-07, 2.3199456222755543e-07, 1.0535190853033782e-07], "target_probs": 0.9999741315841675}}
+
+
+{"result": {"time": "2021-02-21 12:53:55.670947", "n_pass": [25, 3, 2], "n_token": 38, "loss": [0.2710118591785431, 2.1159872630960308e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def sort_stats(", "self", ",", "order", "=", "sortkeys", ".", "by_deep_time", ")", ":", "#NEWLINE#", "#INDENT#", "assert", "callable", "(", "order", ")", "#NEWLINE#", "if", "(", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", ".", "refresh", "(", ")"]}}
+{"position": {"error_location": 6, "repair_targets": [2, 27, 33], "repair_candidates": [2, 27, 33, 4, 16, 21, 23, 25, 29, 31]}}
+{"prediction": {"error_location": 0.7626075148582458, "repair_targets": [0.9999783039093018, 4.700150668668357e-07, 8.435677756324367e-08], "repair_candidates": [0.9999783039093018, 1.8795448340824805e-05, 8.80650219414747e-08, 6.868656754477342e-08, 4.573542184971302e-07, 1.267302650376223e-06, 4.700150668668357e-07, 3.0946605988901865e-07, 5.904472288875695e-08, 8.435677756324367e-08], "target_probs": 0.9999788403511047}}
+
+
+{"result": {"time": "2021-02-21 12:53:55.804384", "n_pass": [50, 5, 3], "n_token": 35, "loss": [0.14516375958919525, 3.081607792410068e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def sort_stats(", "self", ",", "order", "=", "sortkeys", ".", "by_deep_time", ")", ":", "#NEWLINE#", "#INDENT#", "assert", "callable", "(", "order", ")", "#NEWLINE#", "if", "(", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 6, "repair_targets": [2, 27, 33], "repair_candidates": [2, 27, 33, 4, 16, 21, 23, 25, 29, 31]}}
+{"prediction": {"error_location": 0.8648806214332581, "repair_targets": [0.9999682903289795, 6.765999955860025e-07, 2.3317446107284923e-07], "repair_candidates": [0.9999682903289795, 2.555475293775089e-05, 2.1243191383746307e-07, 2.03533204512496e-07, 1.8472527472113143e-06, 2.2330259525915608e-06, 6.765999955860025e-07, 7.250749831655412e-07, 1.0972706121492593e-07, 2.3317446107284923e-07], "target_probs": 0.9999691843986511}}
+
+
+{"result": {"time": "2021-02-21 12:53:56.000865", "n_pass": [56, 8, 4], "n_token": 32, "loss": [0.1582559496164322, 2.3484506527893245e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def sort_stats(", "self", ",", "order", "=", "sortkeys", ".", "by_deep_time", ")", ":", "callable", "(", "order", ")", "#NEWLINE#", "if", "(", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 6, "repair_targets": [2, 24, 30], "repair_candidates": [2, 24, 30, 4, 13, 18, 20, 22, 26, 28]}}
+{"prediction": {"error_location": 0.8536313772201538, "repair_targets": [0.9999756813049316, 6.5670178628352e-07, 2.0508235820670961e-07], "repair_candidates": [0.9999756813049316, 1.8670574718271382e-05, 1.809470830949067e-07, 1.1291944446156776e-07, 1.251768253496266e-06, 2.2571014142158674e-06, 6.5670178628352e-07, 8.182346959983988e-07, 7.406060120729308e-08, 2.0508235820670961e-07], "target_probs": 0.9999765157699585}}
+
+
+{"result": {"time": "2021-02-21 12:53:56.067516", "n_pass": [58, 9, 5], "n_token": 29, "loss": [0.30130207538604736, 2.0742631022585556e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def sort_stats(", "self", ",", "order", "=", "sortkeys", ".", "by_deep_time", ")", ":", "callable", "(", "order", "(", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 6, "repair_targets": [2, 21, 27], "repair_candidates": [2, 21, 27, 4, 13, 15, 17, 19, 23, 25]}}
+{"prediction": {"error_location": 0.739854097366333, "repair_targets": [0.9999778270721436, 1.142431869993743e-06, 2.8816742769777193e-07], "repair_candidates": [0.9999778270721436, 1.3210114047979005e-05, 2.4000780740607297e-06, 8.797952233408068e-08, 8.891109928299556e-07, 2.9762479698547395e-06, 1.142431869993743e-06, 1.1300410278636264e-06, 4.8783771688931665e-08, 2.8816742769777193e-07], "target_probs": 0.9999792575836182}}
+
+
+{"result": {"time": "2021-02-21 12:53:56.255581", "n_pass": [92, 12, 6], "n_token": 28, "loss": [0.3774448037147522, 2.7060874344897456e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def sort_stats(", "self", ",", "order", "=", "sortkeys", ".", "by_deep_time", ")", ":", "callable", "order", "(", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 6, "repair_targets": [2, 20, 26], "repair_candidates": [2, 20, 26, 4, 12, 14, 16, 18, 22, 24]}}
+{"prediction": {"error_location": 0.6856109499931335, "repair_targets": [0.9999706745147705, 1.872534085123334e-06, 3.8112270317469665e-07], "repair_candidates": [0.9999706745147705, 1.8395507140667178e-05, 1.7571984471942415e-06, 2.485491847892263e-07, 1.225286382577906e-06, 3.6808316963288235e-06, 1.872534085123334e-06, 1.66705376614118e-06, 7.946442792672315e-08, 3.8112270317469665e-07], "target_probs": 0.999972939491272}}
+
+
+{"result": {"time": "2021-02-21 12:53:56.318065", "n_pass": [94, 13, 7], "n_token": 27, "loss": [0.27432864904403687, 4.4466054532676935e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def sort_stats(", "self", ",", "order", "=", "sortkeys", ".", "by_deep_time", ")", ":", "callable", "order", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 6, "repair_targets": [2, 19, 25], "repair_candidates": [2, 19, 25, 4, 12, 13, 15, 17, 21, 23]}}
+{"prediction": {"error_location": 0.7600820660591125, "repair_targets": [0.9999525547027588, 2.5197580271196784e-06, 4.411110978708166e-07], "repair_candidates": [0.9999525547027588, 2.452705302857794e-05, 4.0384162502959953e-07, 1.6379999578930438e-06, 9.367252459924202e-06, 4.7550079216307495e-06, 2.5197580271196784e-06, 3.5676082461577607e-06, 1.3430695844363072e-07, 4.411110978708166e-07], "target_probs": 0.9999555349349976}}
+
+
+{"result": {"time": "2021-02-21 12:53:56.381214", "n_pass": [102, 14, 8], "n_token": 26, "loss": [0.0412442684173584, 0.016021842136979103], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def sort_stats(", "self", ",", "order", "=", "sortkeys", ".", "by_deep_time", ")", ":", "callable", "order", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 5, "repair_targets": [1, 18, 24], "repair_candidates": [1, 18, 24, 3, 11, 12, 14, 16, 20, 22]}}
+{"prediction": {"error_location": 0.9595946073532104, "repair_targets": [0.9839255809783936, 0.00013791167293675244, 4.230696868035011e-05], "repair_candidates": [0.9839255809783936, 0.013567162677645683, 3.399434353923425e-05, 0.0001974269252968952, 0.0014007739955559373, 0.00043976493179798126, 0.00013791167293675244, 0.00023304810747504234, 2.1954552721581422e-05, 4.230696868035011e-05], "target_probs": 0.9841058254241943}}
+
+
+{"result": {"time": "2021-02-21 12:53:56.507017", "n_pass": [105, 16, 9], "n_token": 25, "loss": [1.1700539588928223, 0.28936100006103516], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def sort_stats(", "self", "order", "=", "sortkeys", ".", "by_deep_time", ")", ":", "callable", "order", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 4, "repair_targets": [1, 17, 23], "repair_candidates": [1, 17, 23, 2, 10, 11, 13, 15, 19, 21]}}
+{"prediction": {"error_location": 0.3103501796722412, "repair_targets": [0.7480286955833435, 0.00047011286369524896, 0.0002430308668408543], "repair_candidates": [0.7480286955833435, 0.2445952594280243, 5.680436879629269e-05, 0.0002749798586592078, 0.003934664651751518, 0.001560129108838737, 0.00047011286369524896, 0.0008068656898103654, 2.9416371035040356e-05, 0.0002430308668408543], "target_probs": 0.748741865158081}}
+
+
+{"result": {"time": "2021-02-21 12:53:56.750356", "n_pass": [111, 20, 10], "n_token": 24, "loss": [0.6252139806747437, 0.327386736869812], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def sort_stats(", "self", "order", "=", "sortkeys", ".", "by_deep_time", ":", "callable", "order", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 4, "repair_targets": [1, 16, 22], "repair_candidates": [1, 16, 22, 2, 9, 10, 12, 14, 18, 20]}}
+{"prediction": {"error_location": 0.5351468920707703, "repair_targets": [0.720221757888794, 0.00041793432319536805, 0.00016520915960427374], "repair_candidates": [0.720221757888794, 0.27405157685279846, 7.334091060329229e-05, 0.000359979021595791, 0.002964036539196968, 0.0011951037449762225, 0.00041793432319536805, 0.0005239282036200166, 2.712974492169451e-05, 0.00016520915960427374], "target_probs": 0.7208049297332764}}
+
+
+{"result": {"time": "2021-02-21 12:53:56.813362", "n_pass": [112, 21, 11], "n_token": 23, "loss": [0.5844624638557434, 0.6399512887001038], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def sort_stats(", "self", "order", "=", "sortkeys", ".", "by_deep_time", "callable", "order", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 4, "repair_targets": [1, 15, 21], "repair_candidates": [1, 15, 21, 2, 8, 9, 11, 13, 17, 19]}}
+{"prediction": {"error_location": 0.5574054718017578, "repair_targets": [0.526813268661499, 0.0003608690749388188, 0.00014398005441762507], "repair_candidates": [0.526813268661499, 0.4682869017124176, 0.00012867062469013035, 0.0003881286538671702, 0.002522922120988369, 0.0010172986658290029, 0.0003608690749388188, 0.0003176578029524535, 2.0386059986776672e-05, 0.00014398005441762507], "target_probs": 0.5273181200027466}}
+
+
+{"result": {"time": "2021-02-21 12:53:56.872946", "n_pass": [113, 22, 12], "n_token": 22, "loss": [0.2513181269168854, 0.6081324815750122], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def sort_stats(", "self", "order", "=", "sortkeys", ".", "by_deep_time", "order", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 4, "repair_targets": [1, 14, 20], "repair_candidates": [1, 14, 20, 2, 7, 8, 10, 12, 16, 18]}}
+{"prediction": {"error_location": 0.7777748107910156, "repair_targets": [0.5439575910568237, 0.000308007380226627, 0.0001009122934192419], "repair_candidates": [0.5439575910568237, 0.45310306549072266, 0.00012482056627050042, 0.00013256474630907178, 0.001262083649635315, 0.0007129368023015559, 0.000308007380226627, 0.00028624580590985715, 1.1796484614023939e-05, 0.0001009122934192419], "target_probs": 0.5443665385246277}}
+
+
+{"result": {"time": "2021-02-21 12:53:57.109979", "n_pass": [128, 26, 13], "n_token": 21, "loss": [0.3674112558364868, 0.6411018371582031], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def sort_stats(", "self", "order", "=", "sortkeys", ".", "order", "order", "==", "order", ".", "order", "#UNINDENT#", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 4, "repair_targets": [1, 13, 19], "repair_candidates": [1, 13, 19, 2, 6, 7, 9, 11, 15, 17]}}
+{"prediction": {"error_location": 0.6925247311592102, "repair_targets": [0.5261850953102112, 0.0004225832817610353, 0.00010407450463389978], "repair_candidates": [0.5261850953102112, 0.4713549315929413, 0.000623521686065942, 4.3001949961762875e-05, 0.0003526191576384008, 0.0005080026458017528, 0.0004225832817610353, 0.0003935758722946048, 1.261107263417216e-05, 0.00010407450463389978], "target_probs": 0.5267117619514465}}
+
+
+{"result": {"time": "2021-02-21 12:53:57.407183", "n_pass": [160, 31, 14], "n_token": 20, "loss": [0.5909950733184814, 0.6356462836265564], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def sort_stats(", "self", "order", "=", "sortkeys", ".", "order", "order", "==", "order", ".", "order", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 4, "repair_targets": [1, 12, 18], "repair_candidates": [1, 12, 18, 2, 6, 7, 9, 11, 14, 16]}}
+{"prediction": {"error_location": 0.55377596616745, "repair_targets": [0.5285027623176575, 0.0008978164405561984, 0.00019250123295933008], "repair_candidates": [0.5285027623176575, 0.4562259018421173, 0.000778710120357573, 4.482752410694957e-05, 0.0004891378921456635, 0.011903872713446617, 0.0008978164405561984, 0.0009571905247867107, 7.283199465746293e-06, 0.00019250123295933008], "target_probs": 0.5295931100845337}}
+
+
+{"result": {"time": "2021-02-21 12:53:57.878683", "n_pass": [177, 39, 15], "n_token": 19, "loss": [0.2042524814605713, 0.5520515441894531], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def sort_stats(", "self", "order", "=", "sortkeys", ".", "order", "order", "order", ".", "order", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 4, "repair_targets": [1, 11, 17], "repair_candidates": [1, 11, 17, 2, 6, 7, 8, 10, 13, 15]}}
+{"prediction": {"error_location": 0.8152565360069275, "repair_targets": [0.5748361945152283, 0.0007799961022101343, 0.00015119041199795902], "repair_candidates": [0.5748361945152283, 0.4146573543548584, 0.0007014306611381471, 0.0001740479638101533, 0.00018615635053720325, 0.008323609828948975, 0.0007799961022101343, 0.0001823260827222839, 7.631520929862745e-06, 0.00015119041199795902], "target_probs": 0.5757673978805542}}
+
+
+{"result": {"time": "2021-02-21 12:53:57.936456", "n_pass": [179, 40, 16], "n_token": 18, "loss": [0.17330971360206604, 0.6470898985862732], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def sort_stats(", "self", "order", "=", "sortkeys", ".", "order", "order", "order", "order", "self", ".", "order", "=", "order", "#NEWLINE#", "self", "."]}}
+{"position": {"error_location": 4, "repair_targets": [1, 10, 16], "repair_candidates": [1, 10, 16, 2, 6, 7, 8, 9, 12, 14]}}
+{"prediction": {"error_location": 0.8408772349357605, "repair_targets": [0.5230226516723633, 0.0004952695453539491, 4.93169754918199e-05], "repair_candidates": [0.5230226516723633, 0.4725213050842285, 0.0005860092351213098, 5.1701692427741364e-05, 3.550956171238795e-05, 0.003162532579153776, 0.0004952695453539491, 7.072312291711569e-05, 4.9938848860620055e-06, 4.93169754918199e-05], "target_probs": 0.5235671997070312}}
+
+
+
+
+Minimal simplified tokens:
+
+['def sort_stats(', 'self', 'order', '=', 'sortkeys', '.', 'order', 'order', 'order', 'order', 'self', '.', 'order', '=', 'order', '#NEWLINE#', 'self', '.']

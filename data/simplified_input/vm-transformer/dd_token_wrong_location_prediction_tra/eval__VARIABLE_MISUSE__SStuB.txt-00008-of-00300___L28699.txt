@@ -1,0 +1,91 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def make_remote_suite(", "app", ",", "suite_xml", ")", ":", "#NEWLINE#", "#INDENT#", "if", "app", ".", "manage_urls", ":", "#NEWLINE#", "#INDENT#", "suite", "=", "AutoSetVersions", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", ".", "render", "(", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "suite_xml"], "error_location": [20], "repair_targets": [4, 45], "repair_candidates": [2, 10, 20, 27, 4, 45, 16, 23, 33], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "dimagi/commcare-hq/corehq/apps/app_manager/remote_app.py", "license": "bsd-3-clause", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00008-of-00300", "js_count": 28699, "results": {"model": "transformer", "prob": {"loc": [[0.22719813883304596, 1.3239198779047001e-05, 4.4891389734402765e-06, 1.155151920784192e-07, 3.995844963355921e-05, 8.040392884822722e-08, 1.486076257606328e-07, 1.6906713540265628e-07, 1.6397271451751294e-07, 1.9808484807981586e-07, 0.07336916774511337, 5.973498105049657e-07, 3.2702021712793794e-07, 1.0310003517588484e-06, 7.501438972212782e-07, 1.705124503814659e-07, 1.1881673344760202e-05, 2.49177638522724e-08, 3.741334708706745e-08, 2.7999007556900324e-07, 0.17823414504528046, 1.190325178868079e-06, 9.488107366451004e-07, 3.258728384025744e-06, 3.0318670951601234e-07, 3.667585346533997e-08, 1.186470015568375e-07, 0.0594627670943737, 2.470730805725907e-06, 2.3732894760541967e-07, 2.692375346668996e-06, 6.577857902811957e-07, 4.590646085489425e-08, 1.346399585600011e-05, 1.6630349364277208e-07, 1.0461339115863666e-05, 4.954941687174141e-06, 2.044051825578208e-06, 1.1221028444197145e-06, 5.317176032804127e-07, 8.047746860029292e-07, 6.723099090777396e-07, 9.142052590505045e-07, 4.7301330141635844e-07, 2.9397526191132783e-07, 0.4616142809391022]], "pointer": [[0.0, 0.0, 0.01145175751298666, 0.0, 0.5161226987838745, 0.0, 0.0, 0.0, 0.0, 0.0, 0.003966951277107, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0709964856505394, 0.0, 0.0, 0.0, 0.0021000958513468504, 0.0, 0.0, 0.3342500627040863, 0.0, 0.0, 0.0, 0.03964865580201149, 0.0, 0.0, 0.0, 0.0, 0.0, 0.020824236795306206, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0006390762282535434]], "target": [0.5167617797851562]}, "loss": [1.7246571779251099, 0.6601732969284058], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [45]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:37:12.653727", "n_pass": [1, 1, 1], "n_token": 46, "loss": [0.773025631904602, 0.6601732969284058], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def make_remote_suite(", "app", ",", "suite_xml", ")", ":", "#NEWLINE#", "#INDENT#", "if", "app", ".", "manage_urls", ":", "#NEWLINE#", "#INDENT#", "suite", "=", "AutoSetVersions", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", ".", "render", "(", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 45, "repair_targets": [4, 45], "repair_candidates": [2, 10, 20, 27, 4, 45, 16, 23, 33]}}
+{"prediction": {"error_location": 0.4616142809391022, "repair_targets": [0.5161226987838745, 0.0006390762282535434], "repair_candidates": [0.01145175751298666, 0.5161226987838745, 0.003966951277107, 0.0709964856505394, 0.0021000958513468504, 0.3342500627040863, 0.03964865580201149, 0.020824236795306206, 0.0006390762282535434], "target_probs": 0.5167617797851562}}
+
+
+{"result": {"time": "2021-02-21 06:37:12.880755", "n_pass": [47, 5, 2], "n_token": 43, "loss": [1.1165235042572021, 0.3823714852333069], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def make_remote_suite(", "app", ",", "suite_xml", ")", ":", "app", ".", "manage_urls", ":", "#NEWLINE#", "#INDENT#", "suite", "=", "AutoSetVersions", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", ".", "render", "(", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 42, "repair_targets": [4, 42], "repair_candidates": [2, 7, 17, 24, 4, 42, 13, 20, 30]}}
+{"prediction": {"error_location": 0.3274160623550415, "repair_targets": [0.680114209651947, 0.002127373358234763], "repair_candidates": [0.02175808697938919, 0.680114209651947, 0.00950734131038189, 0.07851860672235489, 0.0018522535683587193, 0.14694750308990479, 0.016495391726493835, 0.042679209262132645, 0.002127373358234763], "target_probs": 0.6822415590286255}}
+
+
+{"result": {"time": "2021-02-21 06:37:13.051948", "n_pass": [56, 8, 3], "n_token": 40, "loss": [1.1067516803741455, 0.5818567872047424], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def make_remote_suite(", "app", ",", "suite_xml", ")", ":", "app", ".", "manage_urls", ":", "#NEWLINE#", "#INDENT#", "suite", "=", "AutoSetVersions", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 39, "repair_targets": [4, 39], "repair_candidates": [2, 7, 17, 24, 4, 39, 13, 20, 30]}}
+{"prediction": {"error_location": 0.33063119649887085, "repair_targets": [0.5566413998603821, 0.002218295354396105], "repair_candidates": [0.01871713623404503, 0.5566413998603821, 0.009838445112109184, 0.10836044698953629, 0.005711507983505726, 0.20638009905815125, 0.011097067967057228, 0.08103552460670471, 0.002218295354396105], "target_probs": 0.5588597059249878}}
+
+
+{"result": {"time": "2021-02-21 06:37:13.219383", "n_pass": [60, 11, 4], "n_token": 38, "loss": [0.9780341386795044, 0.423274427652359], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app", ",", "suite_xml", ")", ":", "app", ".", "manage_urls", ":", "#NEWLINE#", "#INDENT#", "suite", "=", "AutoSetVersions", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 37, "repair_targets": [2, 37], "repair_candidates": [0, 5, 15, 22, 2, 37, 11, 18, 28]}}
+{"prediction": {"error_location": 0.37604960799217224, "repair_targets": [0.6539211273193359, 0.0009777589002624154], "repair_candidates": [0.011423733085393906, 0.6539211273193359, 0.0005423070397228003, 0.09295125305652618, 0.0040183113887906075, 0.1675805002450943, 0.0025607647839933634, 0.06602415442466736, 0.0009777589002624154], "target_probs": 0.6548988819122314}}
+
+
+{"result": {"time": "2021-02-21 06:37:13.275999", "n_pass": [64, 12, 5], "n_token": 35, "loss": [1.0827763080596924, 0.17219103872776031], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app", ",", "suite_xml", ")", ":", "app", ".", "manage_urls", "suite", "=", "AutoSetVersions", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 34, "repair_targets": [2, 34], "repair_candidates": [0, 5, 12, 19, 2, 34, 8, 15, 25]}}
+{"prediction": {"error_location": 0.3386540114879608, "repair_targets": [0.8402615189552307, 0.0015568063827231526], "repair_candidates": [0.02937276102602482, 0.8402615189552307, 0.003260167082771659, 0.0035140332765877247, 0.006067562848329544, 0.05439309775829315, 0.013369113206863403, 0.0482049435377121, 0.0015568063827231526], "target_probs": 0.8418183326721191}}
+
+
+{"result": {"time": "2021-02-21 06:37:13.446704", "n_pass": [72, 15, 6], "n_token": 32, "loss": [0.8532413840293884, 0.28157374262809753], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app", ",", "suite_xml", ")", ":", "app", ".", "manage_urls", "suite", "=", "AutoSetVersions", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", ")", "#NEWLINE#", "#UNINDENT#", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 31, "repair_targets": [2, 31], "repair_candidates": [0, 5, 12, 19, 2, 31, 8, 15, 25]}}
+{"prediction": {"error_location": 0.42603176832199097, "repair_targets": [0.7530183792114258, 0.001576919574290514], "repair_candidates": [0.037745144218206406, 0.7530183792114258, 0.003228022251278162, 0.0024763892870396376, 0.006809139624238014, 0.12335797399282455, 0.021891482174396515, 0.04989655688405037, 0.001576919574290514], "target_probs": 0.7545952796936035}}
+
+
+{"result": {"time": "2021-02-21 06:37:13.558027", "n_pass": [83, 17, 7], "n_token": 29, "loss": [1.1743645668029785, 0.23996427655220032], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app", ",", "suite_xml", ")", ":", "app", ".", "manage_urls", "suite", "=", "AutoSetVersions", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 28, "repair_targets": [2, 28], "repair_candidates": [0, 5, 12, 19, 2, 28, 8, 15, 25]}}
+{"prediction": {"error_location": 0.30901527404785156, "repair_targets": [0.7815533876419067, 0.005102556198835373], "repair_candidates": [0.07418443262577057, 0.7815533876419067, 0.003889754181727767, 0.002633056603372097, 0.010112498886883259, 0.06597480177879333, 0.02450179122388363, 0.032047733664512634, 0.005102556198835373], "target_probs": 0.7866559624671936}}
+
+
+{"result": {"time": "2021-02-21 06:37:13.951692", "n_pass": [125, 24, 8], "n_token": 28, "loss": [0.9906834363937378, 0.3353409767150879], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app", ",", "suite_xml", ")", ":", "app", ".", "manage_urls", "suite", "AutoSetVersions", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 27, "repair_targets": [2, 27], "repair_candidates": [0, 5, 11, 18, 2, 27, 8, 14, 24]}}
+{"prediction": {"error_location": 0.3713228106498718, "repair_targets": [0.7092469334602356, 0.005847287364304066], "repair_candidates": [0.1043514832854271, 0.7092469334602356, 0.012105807662010193, 0.02349359355866909, 0.026386817917227745, 0.04517499357461929, 0.03741062805056572, 0.03598242625594139, 0.005847287364304066], "target_probs": 0.7150942087173462}}
+
+
+{"result": {"time": "2021-02-21 06:37:14.007203", "n_pass": [126, 25, 9], "n_token": 27, "loss": [0.9488565921783447, 0.4035673439502716], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app", ",", "suite_xml", ")", ":", "app", ".", "manage_urls", "suite", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 26, "repair_targets": [2, 26], "repair_candidates": [0, 5, 10, 17, 2, 26, 8, 13, 23]}}
+{"prediction": {"error_location": 0.3871834874153137, "repair_targets": [0.6636626124382019, 0.004270441364496946], "repair_candidates": [0.10340911895036697, 0.6636626124382019, 0.013339724391698837, 0.04028256982564926, 0.03612763434648514, 0.048908431082963943, 0.05114822834730148, 0.03885118290781975, 0.004270441364496946], "target_probs": 0.6679330468177795}}
+
+
+{"result": {"time": "2021-02-21 06:37:14.342869", "n_pass": [139, 31, 10], "n_token": 26, "loss": [0.8487900495529175, 0.5573969483375549], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app", ",", "suite_xml", ":", "app", ".", "manage_urls", "suite", "(", "app", ")", "#NEWLINE#", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 25, "repair_targets": [2, 25], "repair_candidates": [0, 4, 9, 16, 2, 25, 7, 12, 22]}}
+{"prediction": {"error_location": 0.42793238162994385, "repair_targets": [0.5696771144866943, 0.003020747797563672], "repair_candidates": [0.13371336460113525, 0.5696771144866943, 0.018871929496526718, 0.05206982418894768, 0.038344286382198334, 0.07039488852024078, 0.052601706236600876, 0.06130608916282654, 0.003020747797563672], "target_probs": 0.5726978778839111}}
+
+
+{"result": {"time": "2021-02-21 06:37:14.567701", "n_pass": [146, 35, 11], "n_token": 24, "loss": [0.6000322103500366, 0.4896021783351898], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app", ",", "suite_xml", ":", "app", ".", "manage_urls", "suite", "(", "app", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "#NEWLINE#", "return", "suite", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 23, "repair_targets": [2, 23], "repair_candidates": [0, 4, 9, 14, 2, 23, 7, 10, 20]}}
+{"prediction": {"error_location": 0.5487939119338989, "repair_targets": [0.6118892431259155, 0.0009809151524677873], "repair_candidates": [0.12569840252399445, 0.6118892431259155, 0.05655284225940704, 0.038139328360557556, 0.025959301739931107, 0.004307514987885952, 0.029155515134334564, 0.10731691122055054, 0.0009809151524677873], "target_probs": 0.6128701567649841}}
+
+
+{"result": {"time": "2021-02-21 06:37:14.736623", "n_pass": [151, 38, 12], "n_token": 22, "loss": [0.6374167799949646, 0.2630225419998169], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app", ",", "suite_xml", ":", "app", ".", "manage_urls", "suite", "(", "app", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "suite", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 21, "repair_targets": [2, 21], "repair_candidates": [0, 4, 9, 14, 2, 21, 7, 10, 18]}}
+{"prediction": {"error_location": 0.5286563038825989, "repair_targets": [0.7683387994766235, 0.0003857397532556206], "repair_candidates": [0.08762403577566147, 0.7683387994766235, 0.02137301117181778, 0.061340998858213425, 0.008936951868236065, 0.03163563460111618, 0.004922205116599798, 0.01544266939163208, 0.0003857397532556206], "target_probs": 0.7687245607376099}}
+
+
+{"result": {"time": "2021-02-21 06:37:14.958500", "n_pass": [160, 42, 13], "n_token": 21, "loss": [0.5559408068656921, 0.40442904829978943], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["app", ",", "suite_xml", ":", "app", ".", "suite", "(", "app", "suite", ".", "auto_set_versions", "(", "app", ".", "version", ")", "suite", "#INDENT#", "return", "suite_xml"]}}
+{"position": {"error_location": 20, "repair_targets": [2, 20], "repair_candidates": [0, 4, 8, 13, 2, 20, 6, 9, 17]}}
+{"prediction": {"error_location": 0.5735324025154114, "repair_targets": [0.6670116186141968, 0.00034615243203006685], "repair_candidates": [0.15679115056991577, 0.6670116186141968, 0.04941198602318764, 0.0380374975502491, 0.019699081778526306, 0.04484475776553154, 0.012590884231030941, 0.011266914196312428, 0.00034615243203006685], "target_probs": 0.6673577427864075}}
+
+
+
+
+Minimal simplified tokens:
+
+['app', ',', 'suite_xml', ':', 'app', '.', 'suite', '(', 'app', 'suite', '.', 'auto_set_versions', '(', 'app', '.', 'version', ')', 'suite', '#INDENT#', 'return', 'suite_xml']

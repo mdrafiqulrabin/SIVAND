@@ -1,0 +1,109 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", ")", ":", "#NEWLINE#", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ")", "#NEWLINE#", "return", "{", "#NEWLINE#", "#INDENT#", "'id'", ":", "next_id", ",", "#NEWLINE#", "'address'", ":", "(", "'10.10.10.%03d'", "%", "(", "next_id", "+", "99", ")", ")", ",", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id", ",", "#NEWLINE#", "'project_id'", ":", "None", ",", "#NEWLINE#", "'auto_assigned'", ":", "False", ",", "#NEWLINE#", "#UNINDENT#", "}"], "error_location": [38], "repair_targets": [2], "repair_candidates": [7, 20, 29, 38, 2], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "BU-NU-CLOUD-SP16/Trusted-Platform-Module-nova/nova/tests/unit/fake_network.py", "license": "apache-2.0", "note": "license: github_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00014-of-00300", "js_count": 45941, "results": {"model": "transformer", "prob": {"loc": [[0.0007253087824210525, 3.216339337086538e-07, 1.1475416386019788e-06, 2.9161709491631882e-08, 7.660464973469061e-08, 3.6145049620017744e-08, 3.126847047951742e-08, 1.6913958233999438e-07, 2.352058601218232e-07, 5.713106929761125e-07, 7.044670837785816e-06, 0.86353600025177, 1.12392933715455e-06, 7.868711691116914e-07, 9.242100418305199e-08, 9.333679372502957e-06, 2.913014895966626e-07, 1.725074980640784e-07, 2.0652046259783674e-06, 1.9146477825415786e-07, 0.10963121801614761, 4.6951370791248337e-07, 2.1273530137477792e-07, 4.7686000925750704e-08, 2.2504282526369934e-07, 2.3268472659765393e-07, 2.5592480596969835e-06, 3.665175825062761e-07, 2.070659547825926e-06, 0.021031254902482033, 9.753493941389024e-07, 4.5849537855247036e-05, 3.246639153076103e-07, 8.231358350485607e-08, 1.2888168043900805e-07, 1.0566990837901358e-08, 5.0453177635745305e-08, 2.2574431213229218e-08, 0.00499675702303648, 7.540952395856948e-08, 4.7856200779961e-08, 2.7999860208183236e-08, 5.130990743396069e-08, 8.635428372372189e-08, 3.7754183779270534e-08, 7.727471285079446e-08, 5.7884470550106926e-08, 2.8507102456387656e-08, 1.2548721315397415e-06, 3.8902957300024354e-08, 5.392730528797074e-08, 3.188646147123109e-08, 2.3442653684924153e-07]], "pointer": [[0.0, 0.0, 0.9999977350234985, 0.0, 0.0, 0.0, 0.0, 1.4014716498422786e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.0555113400841947e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0752790302603898e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.307980248086096e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9999977350234985]}, "loss": [5.298966407775879, 2.2649790025752736e-06], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [11]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:10:42.822846", "n_pass": [1, 1, 1], "n_token": 53, "loss": [0.14671969413757324, 2.2649790025752736e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", ")", ":", "#NEWLINE#", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ")", "#NEWLINE#", "return", "{", "#NEWLINE#", "#INDENT#", "'id'", ":", "next_id", ",", "#NEWLINE#", "'address'", ":", "(", "'10.10.10.%03d'", "%", "(", "next_id", "+", "99", ")", ")", ",", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id", ",", "#NEWLINE#", "'project_id'", ":", "None", ",", "#NEWLINE#", "'auto_assigned'", ":", "False", ",", "#NEWLINE#", "#UNINDENT#", "}"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [7, 20, 29, 38, 2]}}
+{"prediction": {"error_location": 0.86353600025177, "repair_targets": [0.9999977350234985], "repair_candidates": [0.9999977350234985, 1.4014716498422786e-06, 4.0555113400841947e-07, 1.0752790302603898e-07, 4.307980248086096e-07], "target_probs": 0.9999977350234985}}
+
+
+{"result": {"time": "2021-02-21 07:10:42.879429", "n_pass": [11, 2, 2], "n_token": 39, "loss": [0.09602010995149612, 1.5497220147153712e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", ")", ":", "#NEWLINE#", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ")", "#NEWLINE#", "return", "{", "#NEWLINE#", "#INDENT#", "'id'", ":", "next_id", ",", "#NEWLINE#", "'address'", ":", "(", "'10.10.10.%03d'", "%", "(", "next_id", "+", "99", ")", ")", ",", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [7, 20, 29, 38, 2]}}
+{"prediction": {"error_location": 0.9084457159042358, "repair_targets": [0.9999984502792358], "repair_candidates": [0.9999984502792358, 1.2284257309147506e-06, 8.707914389560756e-08, 9.441126280762546e-08, 8.444235533033861e-08], "target_probs": 0.9999984502792358}}
+
+
+{"result": {"time": "2021-02-21 07:10:42.992606", "n_pass": [39, 4, 3], "n_token": 36, "loss": [0.6212270259857178, 0.00012374689686112106], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ")", "#NEWLINE#", "return", "{", "#NEWLINE#", "#INDENT#", "'id'", ":", "next_id", ",", "#NEWLINE#", "'address'", ":", "(", "'10.10.10.%03d'", "%", "(", "next_id", "+", "99", ")", ")", ",", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 17, 26, 35, 2]}}
+{"prediction": {"error_location": 0.537284791469574, "repair_targets": [0.9998762607574463], "repair_candidates": [0.9998762607574463, 0.00011654560512397438, 1.0536842864894425e-06, 1.162692910838814e-06, 4.891843673249241e-06], "target_probs": 0.9998762607574463}}
+
+
+{"result": {"time": "2021-02-21 07:10:43.104987", "n_pass": [43, 6, 4], "n_token": 33, "loss": [0.2125105857849121, 0.0002857258659787476], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ")", "#NEWLINE#", "return", "'id'", ":", "next_id", ",", "#NEWLINE#", "'address'", ":", "(", "'10.10.10.%03d'", "%", "(", "next_id", "+", "99", ")", ")", ",", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 14, 23, 32, 2]}}
+{"prediction": {"error_location": 0.8085516691207886, "repair_targets": [0.9997143149375916], "repair_candidates": [0.9997143149375916, 0.00019877785234712064, 6.227187986951321e-05, 2.2643660486210138e-05, 1.9044001646761899e-06], "target_probs": 0.9997143149375916}}
+
+
+{"result": {"time": "2021-02-21 07:10:43.163632", "n_pass": [45, 7, 5], "n_token": 30, "loss": [0.31564095616340637, 0.00045637768926098943], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ")", "#NEWLINE#", "return", "'id'", ":", "next_id", ":", "(", "'10.10.10.%03d'", "%", "(", "next_id", "+", "99", ")", ")", ",", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 14, 20, 29, 2]}}
+{"prediction": {"error_location": 0.7293211817741394, "repair_targets": [0.9995437264442444], "repair_candidates": [0.9995437264442444, 0.0003357098321430385, 8.951993368100375e-05, 2.4618968382128514e-05, 6.5197391450055875e-06], "target_probs": 0.9995437264442444}}
+
+
+{"result": {"time": "2021-02-21 07:10:43.218911", "n_pass": [46, 8, 6], "n_token": 27, "loss": [0.46046996116638184, 9.525275527266786e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ")", "#NEWLINE#", "return", "'id'", ":", "next_id", "%", "(", "next_id", "+", "99", ")", ")", ",", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 14, 17, 26, 2]}}
+{"prediction": {"error_location": 0.6309871077537537, "repair_targets": [0.9999047517776489], "repair_candidates": [0.9999047517776489, 6.999852485023439e-05, 1.7824233509600163e-05, 5.080332357465522e-06, 2.289863232363132e-06], "target_probs": 0.9999047517776489}}
+
+
+{"result": {"time": "2021-02-21 07:10:43.275048", "n_pass": [48, 9, 7], "n_token": 23, "loss": [0.4568738639354706, 0.00028274478972889483], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ")", "#NEWLINE#", "return", "'id'", ":", "next_id", "%", "(", "next_id", "+", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 14, 17, 22, 2]}}
+{"prediction": {"error_location": 0.633260190486908, "repair_targets": [0.9997172951698303], "repair_candidates": [0.9997172951698303, 0.00026055629132315516, 1.0729057066782843e-05, 3.820200163318077e-06, 7.616890343342675e-06], "target_probs": 0.9997172951698303}}
+
+
+{"result": {"time": "2021-02-21 07:10:43.667725", "n_pass": [79, 16, 8], "n_token": 21, "loss": [0.24968013167381287, 0.00018508954963181168], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", "return", "'id'", ":", "next_id", "%", "(", "next_id", "+", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 12, 15, 20, 2]}}
+{"prediction": {"error_location": 0.7790499329566956, "repair_targets": [0.9998149275779724], "repair_candidates": [0.9998149275779724, 0.00012134157441323623, 6.077574653318152e-05, 2.0172635686321883e-06, 9.789835075935116e-07], "target_probs": 0.9998149275779724}}
+
+
+{"result": {"time": "2021-02-21 07:10:43.724306", "n_pass": [80, 17, 9], "n_token": 19, "loss": [0.15024365484714508, 0.0002187133504776284], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ":", "next_id", "%", "(", "next_id", "+", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 10, 13, 18, 2]}}
+{"prediction": {"error_location": 0.860498309135437, "repair_targets": [0.9997813105583191], "repair_candidates": [0.9997813105583191, 9.055979899130762e-05, 0.000127623847220093, 3.568948443444242e-07, 1.5289401744666975e-07], "target_probs": 0.9997813105583191}}
+
+
+{"result": {"time": "2021-02-21 07:10:43.780917", "n_pass": [82, 18, 10], "n_token": 17, "loss": [0.36702606081962585, 0.0003500597376842052], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ":", "next_id", "next_id", "+", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 10, 11, 16, 2]}}
+{"prediction": {"error_location": 0.6927915215492249, "repair_targets": [0.9996500015258789], "repair_candidates": [0.9996500015258789, 0.00013711814244743437, 0.00021135401038918644, 1.386052190355258e-06, 1.0149432227990474e-07], "target_probs": 0.9996500015258789}}
+
+
+{"result": {"time": "2021-02-21 07:10:44.116608", "n_pass": [106, 24, 11], "n_token": 16, "loss": [0.6988292336463928, 0.000786733056884259], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ":", "next_id", "next_id", "#NEWLINE#", "'fixed_ip_id'", ":", "next_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 10, 11, 15, 2]}}
+{"prediction": {"error_location": 0.49716705083847046, "repair_targets": [0.9992135763168335], "repair_candidates": [0.9992135763168335, 0.0007816583965905011, 2.812588490996859e-06, 1.4562934893547208e-06, 4.720080539755145e-07], "target_probs": 0.9992135763168335}}
+
+
+{"result": {"time": "2021-02-21 07:10:44.285213", "n_pass": [109, 27, 12], "n_token": 15, "loss": [0.8470696210861206, 0.00959472544491291], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "next", "(", "floating_ip_id", ":", "next_id", "next_id", "#NEWLINE#", "'fixed_ip_id'", "next_id"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [4, 10, 11, 14, 2]}}
+{"prediction": {"error_location": 0.4286692440509796, "repair_targets": [0.9904511570930481], "repair_candidates": [0.9904511570930481, 0.00953168049454689, 4.057642854604637e-06, 9.211803444486577e-06, 3.981806912634056e-06], "target_probs": 0.9904511570930481}}
+
+
+{"result": {"time": "2021-02-21 07:10:44.562039", "n_pass": [117, 32, 13], "n_token": 14, "loss": [0.294808566570282, 0.000829563825391233], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "(", "floating_ip_id", ":", "next_id", "next_id", "#NEWLINE#", "'fixed_ip_id'", "next_id"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [4, 9, 10, 13, 2]}}
+{"prediction": {"error_location": 0.7446741461753845, "repair_targets": [0.9991707801818848], "repair_candidates": [0.9991707801818848, 0.000816935847979039, 5.5130703913164325e-06, 5.3603916967404075e-06, 1.383825747325318e-06], "target_probs": 0.9991707801818848}}
+
+
+{"result": {"time": "2021-02-21 07:10:44.620403", "n_pass": [118, 33, 14], "n_token": 13, "loss": [0.1286274790763855, 0.0008675641729496419], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "floating_ip_id", ":", "next_id", "next_id", "#NEWLINE#", "'fixed_ip_id'", "next_id"]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 8, 9, 12, 2]}}
+{"prediction": {"error_location": 0.8793014287948608, "repair_targets": [0.9991328120231628], "repair_candidates": [0.9991328120231628, 0.0008398000500164926, 9.015102477860637e-06, 6.537687568197725e-06, 1.1890904715983197e-05], "target_probs": 0.9991328120231628}}
+
+
+{"result": {"time": "2021-02-21 07:10:44.676209", "n_pass": [120, 34, 15], "n_token": 12, "loss": [0.3571597635746002, 0.001096969237551093], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "floating_ip_id", "next_id", "next_id", "#NEWLINE#", "'fixed_ip_id'", "next_id"]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 7, 8, 11, 2]}}
+{"prediction": {"error_location": 0.6996607780456543, "repair_targets": [0.9989036321640015], "repair_candidates": [0.9989036321640015, 0.001031006802804768, 8.098208127194084e-06, 2.1553949409280904e-05, 3.577229654183611e-05], "target_probs": 0.9989036321640015}}
+
+
+{"result": {"time": "2021-02-21 07:10:44.787906", "n_pass": [124, 36, 16], "n_token": 11, "loss": [0.6684343814849854, 0.0008436422795057297], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def next_floating_ip(", "fixed_ip_id", "#INDENT#", "next_id", "=", "floating_ip_id", "next_id", "next_id", "#NEWLINE#", "next_id"]}}
+{"position": {"error_location": 6, "repair_targets": [2], "repair_candidates": [4, 7, 8, 10, 2]}}
+{"prediction": {"error_location": 0.5125102996826172, "repair_targets": [0.9991567134857178], "repair_candidates": [0.9991567134857178, 0.0008196760318242013, 1.8451559299137443e-05, 1.8951583342641243e-06, 3.2748523608461255e-06], "target_probs": 0.9991567134857178}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def next_floating_ip(', 'fixed_ip_id', '#INDENT#', 'next_id', '=', 'floating_ip_id', 'next_id', 'next_id', '#NEWLINE#', 'next_id']

@@ -1,0 +1,103 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def tree(", "path", "=", "'/'", ",", "profile", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    .. versionadded:: 2014.7.0\\n\\n    Recurse through etcd and return all values.  Returns None on failure.\\n\\n    CLI Example:\\n\\n\\n    .. code-block:: bash\\n\\n        salt myminion etcd.tree\\n        salt myminion etcd.tree profile=my_etcd_config\\n        salt myminion etcd.tree /path/to/keys profile=my_etcd_config\\n    '", "#NEWLINE#", "client", "=", "__utils__", "[", "'etcd_util.get_conn'", "]", "(", "__opts__", ",", "profile", ")", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"], "error_location": [32], "repair_targets": [2], "repair_candidates": [6, 24, 32, 2, 15, 28], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "saltstack/salt/salt/modules/etcd_mod.py", "license": "apache-2.0", "note": "license: manual_eval"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00012-of-00300", "js_count": 40165, "results": {"model": "rnn", "prob": {"loc": [[0.1054212749004364, 4.832139666177682e-07, 2.2169612634570512e-07, 2.8235650262331546e-08, 2.2632475804584828e-07, 4.3771675173331914e-09, 6.695096885778185e-07, 6.577857192269221e-08, 3.213764045995049e-07, 2.0102621789419572e-08, 1.528390747296271e-08, 1.6099629362997803e-07, 5.016985582528832e-08, 8.263241966233181e-07, 6.87034145130383e-08, 1.192705667563132e-07, 1.7980186228783168e-08, 0.00011283317144261673, 1.4371155376835532e-09, 1.3512818952676753e-07, 4.692612964873888e-09, 8.027261628740234e-07, 2.802339849949931e-06, 6.553499787287365e-08, 0.6638544201850891, 0.00014873524196445942, 3.398749015559588e-07, 2.236300566949012e-08, 2.1016999198764097e-06, 2.3135330096124562e-08, 2.1311150177893978e-08, 2.958392144591926e-07, 0.23044928908348083, 3.573026106096222e-06]], "pointer": [[0.0, 0.0, 0.8839428424835205, 0.0, 0.0, 0.0, 0.11398307234048843, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.001887839869596064, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00016138181672431529, 0.0, 0.0, 0.0, 2.8978142836422194e-06, 0.0, 0.0, 0.0, 2.1878575353184715e-05, 0.0]], "target": [0.8839428424835205]}, "loss": [1.4677245616912842, 0.12336287647485733], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [24]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:51:23.520378", "n_pass": [1, 1, 1], "n_token": 34, "loss": [0.4096924662590027, 0.12336287647485733], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def tree(", "path", "=", "'/'", ",", "profile", "=", "None", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n    .. versionadded:: 2014.7.0\\n\\n    Recurse through etcd and return all values.  Returns None on failure.\\n\\n    CLI Example:\\n\\n\\n    .. code-block:: bash\\n\\n        salt myminion etcd.tree\\n        salt myminion etcd.tree profile=my_etcd_config\\n        salt myminion etcd.tree /path/to/keys profile=my_etcd_config\\n    '", "#NEWLINE#", "client", "=", "__utils__", "[", "'etcd_util.get_conn'", "]", "(", "__opts__", ",", "profile", ")", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [2], "repair_candidates": [6, 24, 32, 2, 15, 28]}}
+{"prediction": {"error_location": 0.6638544201850891, "repair_targets": [0.8839428424835205], "repair_candidates": [0.8839428424835205, 0.11398307234048843, 0.001887839869596064, 0.00016138181672431529, 2.8978142836422194e-06, 2.1878575353184715e-05], "target_probs": 0.8839428424835205}}
+
+
+{"result": {"time": "2021-02-21 12:51:23.585109", "n_pass": [22, 2, 2], "n_token": 30, "loss": [0.128007173538208, 0.036322008818387985], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def tree(", "path", "=", "'/'", ",", "profile", "=", "#INDENT#", "'\\n    .. versionadded:: 2014.7.0\\n\\n    Recurse through etcd and return all values.  Returns None on failure.\\n\\n    CLI Example:\\n\\n\\n    .. code-block:: bash\\n\\n        salt myminion etcd.tree\\n        salt myminion etcd.tree profile=my_etcd_config\\n        salt myminion etcd.tree /path/to/keys profile=my_etcd_config\\n    '", "#NEWLINE#", "client", "=", "__utils__", "[", "'etcd_util.get_conn'", "]", "(", "__opts__", ",", "profile", ")", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [2], "repair_candidates": [6, 20, 28, 2, 11, 24]}}
+{"prediction": {"error_location": 0.8798468708992004, "repair_targets": [0.964329719543457], "repair_candidates": [0.964329719543457, 0.03538387641310692, 0.0001970952289411798, 8.068679017014802e-05, 9.59079670792562e-07, 7.538546924479306e-06], "target_probs": 0.964329719543457}}
+
+
+{"result": {"time": "2021-02-21 12:51:23.650097", "n_pass": [23, 3, 3], "n_token": 26, "loss": [0.0321718268096447, 0.010313523933291435], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def tree(", "path", "=", "'/'", ",", "profile", "=", "#INDENT#", "'\\n    .. versionadded:: 2014.7.0\\n\\n    Recurse through etcd and return all values.  Returns None on failure.\\n\\n    CLI Example:\\n\\n\\n    .. code-block:: bash\\n\\n        salt myminion etcd.tree\\n        salt myminion etcd.tree profile=my_etcd_config\\n        salt myminion etcd.tree /path/to/keys profile=my_etcd_config\\n    '", "#NEWLINE#", "client", "]", "(", "__opts__", ",", "profile", ")", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2], "repair_candidates": [6, 16, 24, 2, 11, 20]}}
+{"prediction": {"error_location": 0.9683400392532349, "repair_targets": [0.9897394776344299], "repair_candidates": [0.9897394776344299, 0.009832024574279785, 0.00035525584826245904, 6.0443762777140364e-05, 2.2466149403044255e-06, 1.0522590855543967e-05], "target_probs": 0.9897394776344299}}
+
+
+{"result": {"time": "2021-02-21 12:51:23.771731", "n_pass": [42, 5, 4], "n_token": 24, "loss": [0.02455069124698639, 0.0168867539614439], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def tree(", "path", "=", "'/'", ",", "profile", "=", "#INDENT#", "'\\n    .. versionadded:: 2014.7.0\\n\\n    Recurse through etcd and return all values.  Returns None on failure.\\n\\n    CLI Example:\\n\\n\\n    .. code-block:: bash\\n\\n        salt myminion etcd.tree\\n        salt myminion etcd.tree profile=my_etcd_config\\n        salt myminion etcd.tree /path/to/keys profile=my_etcd_config\\n    '", "#NEWLINE#", "client", "__opts__", ",", "profile", ")", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [2], "repair_candidates": [6, 14, 22, 2, 11, 18]}}
+{"prediction": {"error_location": 0.9757482409477234, "repair_targets": [0.9832550287246704], "repair_candidates": [0.9832550287246704, 0.016398360952734947, 0.00023980239348020405, 8.176024857675657e-05, 2.5450335670029745e-06, 2.2538060875376686e-05], "target_probs": 0.9832550287246704}}
+
+
+{"result": {"time": "2021-02-21 12:51:23.891930", "n_pass": [47, 7, 5], "n_token": 22, "loss": [0.5919812917709351, 0.05677177384495735], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", "'/'", ",", "profile", "=", "#INDENT#", "'\\n    .. versionadded:: 2014.7.0\\n\\n    Recurse through etcd and return all values.  Returns None on failure.\\n\\n    CLI Example:\\n\\n\\n    .. code-block:: bash\\n\\n        salt myminion etcd.tree\\n        salt myminion etcd.tree profile=my_etcd_config\\n        salt myminion etcd.tree /path/to/keys profile=my_etcd_config\\n    '", "#NEWLINE#", "client", "__opts__", ",", "profile", ")", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [0], "repair_candidates": [4, 12, 20, 0, 9, 16]}}
+{"prediction": {"error_location": 0.5532301068305969, "repair_targets": [0.9448096752166748], "repair_candidates": [0.9448096752166748, 0.050611406564712524, 0.0024033368099480867, 0.001536436378955841, 1.5076841009431519e-05, 0.0006240177899599075], "target_probs": 0.9448096752166748}}
+
+
+{"result": {"time": "2021-02-21 12:51:24.248641", "n_pass": [80, 13, 6], "n_token": 21, "loss": [0.5073317289352417, 0.3874471187591553], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", ",", "profile", "=", "#INDENT#", "'\\n    .. versionadded:: 2014.7.0\\n\\n    Recurse through etcd and return all values.  Returns None on failure.\\n\\n    CLI Example:\\n\\n\\n    .. code-block:: bash\\n\\n        salt myminion etcd.tree\\n        salt myminion etcd.tree profile=my_etcd_config\\n        salt myminion etcd.tree /path/to/keys profile=my_etcd_config\\n    '", "#NEWLINE#", "client", "__opts__", ",", "profile", ")", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [0], "repair_candidates": [3, 11, 19, 0, 8, 15]}}
+{"prediction": {"error_location": 0.602100133895874, "repair_targets": [0.6787875294685364], "repair_candidates": [0.6787875294685364, 0.3191559612751007, 0.0012254015309736133, 0.000576519058085978, 1.3156434761185665e-05, 0.00024144422786775976], "target_probs": 0.6787875294685364}}
+
+
+{"result": {"time": "2021-02-21 12:51:24.308046", "n_pass": [82, 14, 7], "n_token": 20, "loss": [0.32818666100502014, 0.01407528668642044], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", ",", "profile", "#INDENT#", "'\\n    .. versionadded:: 2014.7.0\\n\\n    Recurse through etcd and return all values.  Returns None on failure.\\n\\n    CLI Example:\\n\\n\\n    .. code-block:: bash\\n\\n        salt myminion etcd.tree\\n        salt myminion etcd.tree profile=my_etcd_config\\n        salt myminion etcd.tree /path/to/keys profile=my_etcd_config\\n    '", "#NEWLINE#", "client", "__opts__", ",", "profile", ")", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [0], "repair_candidates": [3, 10, 18, 0, 7, 14]}}
+{"prediction": {"error_location": 0.7202285528182983, "repair_targets": [0.9860233068466187], "repair_candidates": [0.9860233068466187, 0.01003181654959917, 0.002774525200948119, 0.0006947354995645583, 1.6365951523766853e-05, 0.00045925521408207715], "target_probs": 0.9860233068466187}}
+
+
+{"result": {"time": "2021-02-21 12:51:24.369233", "n_pass": [83, 15, 8], "n_token": 19, "loss": [0.5359567999839783, 0.12768912315368652], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", ",", "profile", "'\\n    .. versionadded:: 2014.7.0\\n\\n    Recurse through etcd and return all values.  Returns None on failure.\\n\\n    CLI Example:\\n\\n\\n    .. code-block:: bash\\n\\n        salt myminion etcd.tree\\n        salt myminion etcd.tree profile=my_etcd_config\\n        salt myminion etcd.tree /path/to/keys profile=my_etcd_config\\n    '", "#NEWLINE#", "client", "__opts__", ",", "profile", ")", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [0], "repair_candidates": [3, 9, 17, 0, 6, 13]}}
+{"prediction": {"error_location": 0.5851092338562012, "repair_targets": [0.880126953125], "repair_candidates": [0.880126953125, 0.11694253981113434, 0.0010311041260138154, 0.0014492610935121775, 2.6187914045294747e-05, 0.0004239178088027984], "target_probs": 0.880126953125}}
+
+
+{"result": {"time": "2021-02-21 12:51:24.426863", "n_pass": [84, 16, 9], "n_token": 18, "loss": [0.2516225576400757, 0.2867810130119324], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", ",", "profile", "#NEWLINE#", "client", "__opts__", ",", "profile", ")", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [0], "repair_candidates": [3, 8, 16, 0, 5, 12]}}
+{"prediction": {"error_location": 0.7775381803512573, "repair_targets": [0.7506760954856873], "repair_candidates": [0.7506760954856873, 0.24333257973194122, 0.0009665473480708897, 0.004344948101788759, 2.0220997612341307e-05, 0.0006595338927581906], "target_probs": 0.7506760954856873}}
+
+
+{"result": {"time": "2021-02-21 12:51:24.654309", "n_pass": [90, 20, 10], "n_token": 17, "loss": [0.6869524717330933, 0.2623003125190735], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", ",", "profile", "#NEWLINE#", "client", "__opts__", ",", "profile", "#NEWLINE#", "return", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [0], "repair_candidates": [3, 8, 15, 0, 5, 11]}}
+{"prediction": {"error_location": 0.503106951713562, "repair_targets": [0.769279956817627], "repair_candidates": [0.769279956817627, 0.22381986677646637, 0.0007454964215867221, 0.005083822179585695, 6.730892891937401e-06, 0.0010642001871019602], "target_probs": 0.769279956817627}}
+
+
+{"result": {"time": "2021-02-21 12:51:24.770336", "n_pass": [92, 22, 11], "n_token": 16, "loss": [0.6779809594154358, 0.29266756772994995], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", ",", "profile", "#NEWLINE#", "client", "__opts__", ",", "profile", "#NEWLINE#", "client", ".", "tree", "(", "profile", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [0], "repair_candidates": [3, 8, 14, 0, 5, 10]}}
+{"prediction": {"error_location": 0.5076409578323364, "repair_targets": [0.7462701797485352], "repair_candidates": [0.7462701797485352, 0.2482309341430664, 0.0028373058885335922, 0.0021110055968165398, 3.7473689644684782e-06, 0.0005469449097290635], "target_probs": 0.7462701797485352}}
+
+
+{"result": {"time": "2021-02-21 12:51:24.881519", "n_pass": [95, 24, 12], "n_token": 14, "loss": [0.09596715122461319, 0.25994983315467834], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", ",", "profile", "#NEWLINE#", "client", "__opts__", ",", "profile", "#NEWLINE#", "client", ".", "profile", ")"]}}
+{"position": {"error_location": 8, "repair_targets": [0], "repair_candidates": [3, 8, 12, 0, 5, 10]}}
+{"prediction": {"error_location": 0.9084939360618591, "repair_targets": [0.7710902690887451], "repair_candidates": [0.7710902690887451, 0.2151351273059845, 0.0005291221896186471, 0.0011930704349651933, 5.5216958571691066e-05, 0.011997165158390999], "target_probs": 0.7710902690887451}}
+
+
+{"result": {"time": "2021-02-21 12:51:25.048017", "n_pass": [101, 27, 13], "n_token": 13, "loss": [0.4763363003730774, 0.09666623175144196], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", ",", "profile", "client", "__opts__", ",", "profile", "#NEWLINE#", "client", ".", "profile", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [0], "repair_candidates": [3, 7, 11, 0, 4, 9]}}
+{"prediction": {"error_location": 0.6210546493530273, "repair_targets": [0.9078589677810669], "repair_candidates": [0.9078589677810669, 0.05663362890481949, 0.0019280780106782913, 0.0028763138689100742, 0.0002459229144733399, 0.030457088723778725], "target_probs": 0.9078589677810669}}
+
+
+{"result": {"time": "2021-02-21 12:51:25.432147", "n_pass": [117, 34, 14], "n_token": 12, "loss": [0.3555251657962799, 0.07742580771446228], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", ",", "profile", "client", "__opts__", ",", "profile", "#NEWLINE#", "client", ".", "profile"]}}
+{"position": {"error_location": 7, "repair_targets": [0], "repair_candidates": [3, 7, 11, 0, 4, 9]}}
+{"prediction": {"error_location": 0.7008052468299866, "repair_targets": [0.9254956841468811], "repair_candidates": [0.9254956841468811, 0.04631969705224037, 0.0012136000441387296, 0.003070589853450656, 0.00012323283590376377, 0.023777157068252563], "target_probs": 0.9254956841468811}}
+
+
+{"result": {"time": "2021-02-21 12:51:25.757710", "n_pass": [128, 40, 15], "n_token": 11, "loss": [0.666241466999054, 0.11081258207559586], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["path", "=", ",", "profile", "client", "__opts__", ",", "profile", "#NEWLINE#", "client", "profile"]}}
+{"position": {"error_location": 7, "repair_targets": [0], "repair_candidates": [3, 7, 10, 0, 4, 9]}}
+{"prediction": {"error_location": 0.5136354565620422, "repair_targets": [0.8951064944267273], "repair_candidates": [0.8951064944267273, 0.10098499059677124, 0.0018689979333430529, 0.0011733014835044742, 0.0003008577914442867, 0.0005653303815051913], "target_probs": 0.8951064944267273}}
+
+
+
+
+Minimal simplified tokens:
+
+['path', '=', ',', 'profile', 'client', '__opts__', ',', 'profile', '#NEWLINE#', 'client', 'profile']

@@ -1,0 +1,127 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", ":", "#NEWLINE#", "#INDENT#", "'Wait for pid to show up in the process list then return.\\n    Used in the test suite to give time the sub process to initialize.\\n    '", "#NEWLINE#", "raise_at", "=", "(", "time", ".", "time", "(", ")", "+", "pid", ")", "#NEWLINE#", "while", "1", ":", "#NEWLINE#", "#INDENT#", "if", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", ")", ")", ":", "#NEWLINE#", "#INDENT#", "time", ".", "sleep", "(", "0.01", ")", "#NEWLINE#", "return", "#NEWLINE#", "#UNINDENT#", "time", ".", "sleep", "(", "0.0001", ")", "#NEWLINE#", "if", "(", "time", ".", "time", "(", ")", ">=", "raise_at", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "RuntimeError", "(", "'Timed out'", ")"], "error_location": [22], "repair_targets": [4], "repair_candidates": [13, 68, 2, 22, 32, 4], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "packages/psutil/test/test_psutil.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00009-of-00300", "js_count": 29253, "results": {"model": "transformer", "prob": {"loc": [[0.03403520584106445, 1.6135683154061553e-06, 3.805480446317233e-06, 1.3526924647067062e-07, 3.3772917959140614e-05, 4.722806465906615e-07, 1.1372632798156701e-05, 1.373649638480856e-07, 2.8163429988126154e-07, 3.4484511957089126e-07, 1.778048499545548e-07, 1.6297108231810853e-06, 1.6132490543441236e-07, 3.3832784538390115e-05, 1.1931470567105862e-07, 2.2504971752823622e-07, 6.93684000907524e-07, 8.200387924262031e-08, 2.6785457407640934e-07, 4.786933800460247e-07, 1.1908967962881434e-06, 4.941846327710664e-07, 0.2595164477825165, 1.1630723975031287e-06, 2.571837853793113e-07, 4.6383982521547296e-07, 0.0009938196744769812, 4.5936201331642224e-07, 2.2884698580583063e-07, 2.386177015978319e-07, 1.118278987632948e-06, 1.5034567013572087e-07, 0.6968848705291748, 3.7960451209073653e-06, 2.817453470527198e-08, 5.058283392145313e-08, 5.281083659269825e-08, 6.54165523883421e-06, 1.340284939033154e-06, 9.210715745666676e-08, 1.1303199016765575e-06, 2.1406899008979963e-07, 1.0750850520935273e-07, 2.9384337185689446e-09, 2.87647736740837e-08, 1.0305777919938919e-07, 1.853655078321026e-07, 0.000782468356192112, 1.8099825638273614e-06, 6.561711870745057e-06, 2.7337948722561123e-06, 4.4122265308033093e-07, 2.3766293111293635e-07, 3.1518658794027488e-09, 4.8702496258101746e-08, 3.4762635436891287e-07, 2.184807499361341e-06, 0.0009165476658381522, 2.0427542040124536e-05, 1.0834179192897864e-05, 4.175191861577332e-06, 4.990361617274175e-07, 2.003705787956278e-07, 7.019128389629259e-08, 2.699090657642955e-07, 6.114630650699837e-06, 7.068748573146877e-07, 2.4438504624413326e-06, 0.006633424200117588, 5.799242899229284e-07, 7.343846277763078e-07, 1.280555608218492e-07, 6.926062212642137e-08, 8.754724056814212e-09, 1.9521228011853964e-07, 3.164129793731263e-07, 6.321024557109922e-05, 2.824960347425076e-06]], "pointer": [[0.0, 0.0, 0.0007159088272601366, 0.0, 0.9392267465591431, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.059825245290994644, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.924339686520398e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00013968342682346702, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.3214744942379184e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9392267465591431]}, "loss": [1.3489351272583008, 0.0626983493566513], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [32]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:37:58.389732", "n_pass": [1, 1, 1], "n_token": 78, "loss": [0.3611350655555725, 0.0626983493566513], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", ":", "#NEWLINE#", "#INDENT#", "'Wait for pid to show up in the process list then return.\\n    Used in the test suite to give time the sub process to initialize.\\n    '", "#NEWLINE#", "raise_at", "=", "(", "time", ".", "time", "(", ")", "+", "pid", ")", "#NEWLINE#", "while", "1", ":", "#NEWLINE#", "#INDENT#", "if", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", ")", ")", ":", "#NEWLINE#", "#INDENT#", "time", ".", "sleep", "(", "0.01", ")", "#NEWLINE#", "return", "#NEWLINE#", "#UNINDENT#", "time", ".", "sleep", "(", "0.0001", ")", "#NEWLINE#", "if", "(", "time", ".", "time", "(", ")", ">=", "raise_at", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "RuntimeError", "(", "'Timed out'", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [4], "repair_candidates": [13, 68, 2, 22, 32, 4]}}
+{"prediction": {"error_location": 0.6968848705291748, "repair_targets": [0.9392267465591431], "repair_candidates": [0.0007159088272601366, 0.9392267465591431, 0.059825245290994644, 6.924339686520398e-05, 0.00013968342682346702, 2.3214744942379184e-05], "target_probs": 0.9392267465591431}}
+
+
+{"result": {"time": "2021-02-21 06:37:58.450572", "n_pass": [10, 2, 2], "n_token": 58, "loss": [0.2731207311153412, 0.07379139959812164], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", ":", "#NEWLINE#", "#INDENT#", "'Wait for pid to show up in the process list then return.\\n    Used in the test suite to give time the sub process to initialize.\\n    '", "#NEWLINE#", "raise_at", "=", "(", "time", ".", "time", "(", ")", "+", "pid", ")", "#NEWLINE#", "while", "1", ":", "#NEWLINE#", "#INDENT#", "if", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", ")", "#NEWLINE#", "if", "(", "time", ".", "time", "(", ")", ">=", "raise_at", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "RuntimeError", "(", "'Timed out'", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [4], "repair_candidates": [13, 48, 2, 22, 32, 4]}}
+{"prediction": {"error_location": 0.7610008716583252, "repair_targets": [0.9288654327392578], "repair_candidates": [0.0001260270073544234, 0.9288654327392578, 0.070747509598732, 1.135488764703041e-05, 6.974566531425808e-06, 0.00024262358783744276], "target_probs": 0.9288654327392578}}
+
+
+{"result": {"time": "2021-02-21 06:37:58.507760", "n_pass": [20, 3, 3], "n_token": 48, "loss": [0.24795664846897125, 0.09451961517333984], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", ":", "#NEWLINE#", "#INDENT#", "'Wait for pid to show up in the process list then return.\\n    Used in the test suite to give time the sub process to initialize.\\n    '", "#NEWLINE#", "raise_at", "=", "(", "time", ".", "time", "(", ")", "+", "pid", ")", "#NEWLINE#", "while", "1", ":", "#NEWLINE#", "#INDENT#", "if", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", "raise_at", ")", ":", "#NEWLINE#", "#INDENT#", "raise", "RuntimeError", "(", "'Timed out'", ")"]}}
+{"position": {"error_location": 32, "repair_targets": [4], "repair_candidates": [13, 38, 2, 22, 32, 4]}}
+{"prediction": {"error_location": 0.7803937792778015, "repair_targets": [0.9098098874092102], "repair_candidates": [0.00011463512782938778, 0.9098098874092102, 0.08950869739055634, 1.0020068657468073e-05, 6.146925898065092e-06, 0.0005506809684447944], "target_probs": 0.9098098874092102}}
+
+
+{"result": {"time": "2021-02-21 06:37:58.565061", "n_pass": [36, 4, 4], "n_token": 43, "loss": [0.2684769034385681, 0.04286344721913338], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", ":", "#NEWLINE#", "#INDENT#", "'Wait for pid to show up in the process list then return.\\n    Used in the test suite to give time the sub process to initialize.\\n    '", "#NEWLINE#", "raise_at", "=", "(", "time", ".", "time", "(", ")", "+", "pid", ")", "#NEWLINE#", "while", "1", ":", "#NEWLINE#", "#INDENT#", "if", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", "raise_at", ")", ":", "#NEWLINE#", "#INDENT#"]}}
+{"position": {"error_location": 32, "repair_targets": [4], "repair_candidates": [13, 38, 2, 22, 32, 4]}}
+{"prediction": {"error_location": 0.7645431756973267, "repair_targets": [0.9580422043800354], "repair_candidates": [0.00010217579983873293, 0.9580422043800354, 0.04134121537208557, 7.0953356043901294e-06, 3.0347109714057297e-06, 0.0005043360870331526], "target_probs": 0.9580422043800354}}
+
+
+{"result": {"time": "2021-02-21 06:37:58.621564", "n_pass": [39, 5, 5], "n_token": 38, "loss": [0.24633166193962097, 0.005880565382540226], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", "raise_at", "=", "(", "time", ".", "time", "(", ")", "+", "pid", ")", "#NEWLINE#", "while", "1", ":", "#NEWLINE#", "#INDENT#", "if", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", "raise_at", ")", ":", "#NEWLINE#", "#INDENT#"]}}
+{"position": {"error_location": 27, "repair_targets": [4], "repair_candidates": [8, 33, 2, 17, 27, 4]}}
+{"prediction": {"error_location": 0.7816628813743591, "repair_targets": [0.9941366910934448], "repair_candidates": [0.00010035029117716476, 0.9941366910934448, 0.0057533360086381435, 1.7982355302592623e-06, 2.245054247396183e-06, 5.5935570344445296e-06], "target_probs": 0.9941366910934448}}
+
+
+{"result": {"time": "2021-02-21 06:37:58.678588", "n_pass": [42, 6, 6], "n_token": 33, "loss": [0.2897908687591553, 0.0018778181402012706], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", "raise_at", "=", "(", "time", ".", "time", "(", ")", "+", "pid", "#NEWLINE#", "#INDENT#", "if", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", "raise_at", ")", ":", "#NEWLINE#", "#INDENT#"]}}
+{"position": {"error_location": 22, "repair_targets": [4], "repair_candidates": [8, 28, 2, 17, 22, 4]}}
+{"prediction": {"error_location": 0.7484200596809387, "repair_targets": [0.9981239438056946], "repair_candidates": [4.482352960621938e-05, 0.9981239438056946, 0.0018286891281604767, 7.539134685430326e-07, 5.592717116087442e-07, 1.2364658914520987e-06], "target_probs": 0.9981239438056946}}
+
+
+{"result": {"time": "2021-02-21 06:37:58.794417", "n_pass": [65, 8, 7], "n_token": 30, "loss": [0.5226770639419556, 0.0014144644374027848], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", "raise_at", "=", "(", "time", ".", "time", "(", ")", "+", "pid", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", "raise_at", ")", ":", "#NEWLINE#", "#INDENT#"]}}
+{"position": {"error_location": 19, "repair_targets": [4], "repair_candidates": [8, 25, 2, 17, 19, 4]}}
+{"prediction": {"error_location": 0.5929311513900757, "repair_targets": [0.9985865354537964], "repair_candidates": [0.0012035162653774023, 0.9985865354537964, 0.0002032040065387264, 4.140521923545748e-06, 2.339044613108854e-06, 3.633150527093676e-07], "target_probs": 0.9985865354537964}}
+
+
+{"result": {"time": "2021-02-21 06:37:58.907100", "n_pass": [69, 10, 8], "n_token": 27, "loss": [0.5171520709991455, 0.0015927713830024004], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", "raise_at", "=", "(", "time", ".", "time", "(", ")", "+", "pid", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", "raise_at", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [4], "repair_candidates": [8, 25, 2, 17, 19, 4]}}
+{"prediction": {"error_location": 0.596216082572937, "repair_targets": [0.9984084963798523], "repair_candidates": [0.0014067741576582193, 0.9984084963798523, 0.00017672477406449616, 4.103365881746868e-06, 3.4768438581522787e-06, 4.4199143189871393e-07], "target_probs": 0.9984084963798523}}
+
+
+{"result": {"time": "2021-02-21 06:37:59.076237", "n_pass": [75, 13, 9], "n_token": 25, "loss": [0.29842615127563477, 0.0007070417632348835], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", "raise_at", "=", ".", "time", "(", ")", "+", "pid", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", "raise_at", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [4], "repair_candidates": [8, 23, 2, 15, 17, 4]}}
+{"prediction": {"error_location": 0.7419850826263428, "repair_targets": [0.9992932081222534], "repair_candidates": [0.0006481652962975204, 0.9992932081222534, 5.647680882248096e-05, 1.0357374549130327e-06, 9.750344815984135e-07, 1.2608590793661278e-07], "target_probs": 0.9992932081222534}}
+
+
+{"result": {"time": "2021-02-21 06:37:59.135489", "n_pass": [76, 14, 10], "n_token": 23, "loss": [0.1838350147008896, 0.00024709178251214325], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", "raise_at", "=", "(", ")", "+", "pid", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", "raise_at", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [8, 21, 2, 13, 15, 4]}}
+{"prediction": {"error_location": 0.8320732712745667, "repair_targets": [0.999752938747406], "repair_candidates": [0.00020406863768585026, 0.999752938747406, 4.0963306673802435e-05, 1.3470666999637615e-06, 5.987574240862159e-07, 8.498334835849164e-08], "target_probs": 0.999752938747406}}
+
+
+{"result": {"time": "2021-02-21 06:37:59.191982", "n_pass": [77, 15, 11], "n_token": 21, "loss": [0.20192790031433105, 0.0001541494857519865], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", "raise_at", "=", "+", "pid", "(", "pid", "in", "psutil", ".", "get_pid_list", "(", "raise_at", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [8, 19, 2, 11, 13, 4]}}
+{"prediction": {"error_location": 0.8171538710594177, "repair_targets": [0.9998458623886108], "repair_candidates": [0.0001386420481139794, 0.9998458623886108, 1.1828698916360736e-05, 2.9969364732096437e-06, 5.622287062578835e-07, 6.029219434822153e-08], "target_probs": 0.9998458623886108}}
+
+
+{"result": {"time": "2021-02-21 06:37:59.248289", "n_pass": [80, 16, 12], "n_token": 18, "loss": [0.5774544477462769, 0.0006767416489310563], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", ",", "timeout", "=", "1", ")", "raise_at", "=", "+", "pid", "(", "pid", "in", "(", "raise_at", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [4], "repair_candidates": [8, 16, 2, 11, 13, 4]}}
+{"prediction": {"error_location": 0.5613254308700562, "repair_targets": [0.9993234872817993], "repair_candidates": [0.0006675145123153925, 0.9993234872817993, 4.03176909458125e-06, 2.988300366268959e-06, 2.0574200334522175e-06, 4.4433111412445214e-08], "target_probs": 0.9993234872817993}}
+
+
+{"result": {"time": "2021-02-21 06:37:59.586446", "n_pass": [110, 22, 13], "n_token": 17, "loss": [0.18850234150886536, 0.0012788005406036973], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", "timeout", "=", "1", ")", "raise_at", "=", "+", "pid", "(", "pid", "in", "(", "raise_at", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [3], "repair_candidates": [7, 15, 2, 10, 12, 3]}}
+{"prediction": {"error_location": 0.8281985521316528, "repair_targets": [0.9987220168113708], "repair_candidates": [0.001186282024718821, 0.9987220168113708, 8.121657447190955e-05, 5.5856908147688955e-06, 4.756504040415166e-06, 8.159609876656759e-08], "target_probs": 0.9987220168113708}}
+
+
+{"result": {"time": "2021-02-21 06:37:59.697730", "n_pass": [113, 24, 14], "n_token": 16, "loss": [0.12779003381729126, 0.0011148108169436455], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", "timeout", "=", ")", "raise_at", "=", "+", "pid", "(", "pid", "in", "(", "raise_at", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [3], "repair_candidates": [6, 14, 2, 9, 11, 3]}}
+{"prediction": {"error_location": 0.8800381422042847, "repair_targets": [0.9988858103752136], "repair_candidates": [0.0009447938064113259, 0.9988858103752136, 0.0001572923647472635, 7.695412932662293e-06, 4.3610684770101216e-06, 7.665315848726095e-08], "target_probs": 0.9988858103752136}}
+
+
+{"result": {"time": "2021-02-21 06:37:59.753484", "n_pass": [114, 25, 15], "n_token": 15, "loss": [0.39024993777275085, 0.0004843454225920141], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", "timeout", "=", "raise_at", "=", "+", "pid", "(", "pid", "in", "(", "raise_at", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [3], "repair_candidates": [5, 13, 2, 8, 10, 3]}}
+{"prediction": {"error_location": 0.6768876910209656, "repair_targets": [0.9995157718658447], "repair_candidates": [0.00046406587352976203, 0.9995157718658447, 1.5297257050406188e-05, 3.5257010040368186e-06, 1.326116944255773e-06, 5.037801997787028e-08], "target_probs": 0.9995157718658447}}
+
+
+{"result": {"time": "2021-02-21 06:38:00.314662", "n_pass": [135, 35, 16], "n_token": 14, "loss": [0.25570860505104065, 0.0019773708190768957], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def wait_for_pid(", "pid", "timeout", "=", "raise_at", "=", "+", "pid", "(", "pid", "in", "(", "raise_at"]}}
+{"position": {"error_location": 10, "repair_targets": [3], "repair_candidates": [5, 13, 2, 8, 10, 3]}}
+{"prediction": {"error_location": 0.7743677496910095, "repair_targets": [0.998024582862854], "repair_candidates": [0.0001389809767715633, 0.998024582862854, 0.0018348752055317163, 7.476289738406194e-07, 4.2667855382205744e-07, 3.752373061161052e-07], "target_probs": 0.998024582862854}}
+
+
+{"result": {"time": "2021-02-21 06:38:00.370731", "n_pass": [136, 36, 17], "n_token": 13, "loss": [0.6727251410484314, 0.008718778379261494], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def wait_for_pid(", "pid", "timeout", "=", "raise_at", "=", "+", "pid", "(", "pid", "in", "(", "raise_at"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [4, 12, 1, 7, 9, 2]}}
+{"prediction": {"error_location": 0.510316014289856, "repair_targets": [0.9913191199302673], "repair_candidates": [0.006242875941097736, 0.9913191199302673, 0.002175610978156328, 0.0001708965573925525, 9.032649541040882e-05, 1.131853991864773e-06], "target_probs": 0.9913191199302673}}
+
+
+{"result": {"time": "2021-02-21 06:38:00.484088", "n_pass": [140, 38, 18], "n_token": 12, "loss": [1.045645833015442, 0.005520353559404612], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def wait_for_pid(", "pid", "timeout", "raise_at", "=", "+", "pid", "(", "pid", "in", "(", "raise_at"]}}
+{"position": {"error_location": 8, "repair_targets": [2], "repair_candidates": [3, 11, 1, 6, 8, 2]}}
+{"prediction": {"error_location": 0.35146477818489075, "repair_targets": [0.9944948554039001], "repair_candidates": [0.0027188726235181093, 0.9944948554039001, 0.0008016006322577596, 0.0019601264502853155, 2.404250335530378e-05, 3.5858940350408375e-07], "target_probs": 0.9944948554039001}}
+
+
+{"result": {"time": "2021-02-21 06:38:00.595476", "n_pass": [143, 40, 19], "n_token": 11, "loss": [0.4949365258216858, 0.011988270096480846], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def wait_for_pid(", "pid", "timeout", "raise_at", "=", "pid", "(", "pid", "in", "(", "raise_at"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [3, 10, 1, 5, 7, 2]}}
+{"prediction": {"error_location": 0.6096095442771912, "repair_targets": [0.9880833029747009], "repair_candidates": [0.0030225138179957867, 0.9880833029747009, 0.005692390725016594, 0.0031457957811653614, 4.85159398522228e-05, 7.489144536521053e-06], "target_probs": 0.9880833029747009}}
+
+
+
+
+Minimal simplified tokens:
+
+['def wait_for_pid(', 'pid', 'timeout', 'raise_at', '=', 'pid', '(', 'pid', 'in', '(', 'raise_at']

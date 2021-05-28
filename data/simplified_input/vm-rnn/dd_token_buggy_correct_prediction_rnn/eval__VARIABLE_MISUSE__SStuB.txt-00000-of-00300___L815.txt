@@ -1,0 +1,115 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", ":", "#NEWLINE#", "#INDENT#", "user", "=", "self", ".", "_get_user", "(", "username", ")", "#NEWLINE#", "if", "(", "user", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_session", ".", "delete", "(", "self", ")", "#NEWLINE#", "log", ".", "info", "(", "'User deleted: \"%s/%s\"'", ",", "self", ".", "_client", ".", "name", ",", "username", ")"], "error_location": [33], "repair_targets": [9, 20], "repair_candidates": [9, 20, 2, 11, 27, 33, 42, 4, 15, 48], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "Yubico/u2fval/u2fval/core/controller.py", "license": "bsd-2-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 815, "results": {"model": "rnn", "prob": {"loc": [[1.7869520888780244e-05, 1.270480609605329e-09, 2.581648783639423e-11, 1.0238359639258565e-12, 1.4448822346913026e-11, 1.7432710548541397e-13, 1.3018649743304356e-13, 1.0787848912785503e-11, 8.626617649387658e-12, 1.3126752289316368e-11, 2.2050436563475495e-12, 5.419726820110604e-11, 2.057545621511267e-13, 1.1632402940192632e-12, 1.057669229975744e-11, 7.221102293897275e-08, 1.7292274383240436e-12, 7.411690705616536e-11, 9.47488268399077e-12, 1.666349142004364e-10, 4.67529332581762e-07, 5.191543375748786e-11, 1.2779047264821486e-10, 2.4453657848644283e-11, 6.4601999964775114e-12, 2.416507445535121e-11, 1.8288439339320117e-12, 3.5714367574435357e-10, 3.132813561519676e-13, 1.2127392839955675e-11, 2.1753339147362327e-12, 2.81263315589364e-12, 1.1055652920921588e-10, 0.9999780654907227, 2.7733433398680063e-06, 3.9352551772786626e-10, 3.3799220366947935e-11, 1.4726739792914056e-12, 2.5785372101405635e-12, 8.202613067942455e-12, 5.782141258847684e-13, 2.917498057378176e-13, 1.4297597772383597e-08, 4.0398514069596436e-13, 3.049784780273512e-08, 1.1722877443082202e-12, 4.0972954196139e-11, 3.8996589291073747e-10, 7.498521767956845e-07, 1.3130683172712931e-11]], "pointer": [[0.0, 0.0, 1.5557048754999414e-05, 0.0, 0.01926124095916748, 0.0, 0.0, 0.0, 0.0, 0.9772342443466187, 0.0, 1.0545083569013514e-05, 0.0, 0.0, 0.0, 3.891708911396563e-05, 0.0, 0.0, 0.0, 0.0, 0.003383547766134143, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.21470443761973e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 3.368409124959726e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.004903535635094e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 5.02368675370235e-05, 0.0]], "target": [0.9806178212165833]}, "loss": [2.1934269170742482e-05, 0.01957247592508793], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 10:37:12.315256", "n_pass": [1, 1, 1], "n_token": 50, "loss": [2.1934269170742482e-05, 0.01957247592508793], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", ":", "#NEWLINE#", "#INDENT#", "user", "=", "self", ".", "_get_user", "(", "username", ")", "#NEWLINE#", "if", "(", "user", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_session", ".", "delete", "(", "self", ")", "#NEWLINE#", "log", ".", "info", "(", "'User deleted: \"%s/%s\"'", ",", "self", ".", "_client", ".", "name", ",", "username", ")"]}}
+{"position": {"error_location": 33, "repair_targets": [9, 20], "repair_candidates": [9, 20, 2, 11, 27, 33, 42, 4, 15, 48]}}
+{"prediction": {"error_location": 0.9999780654907227, "repair_targets": [0.9772342443466187, 0.003383547766134143], "repair_candidates": [1.5557048754999414e-05, 0.01926124095916748, 0.9772342443466187, 1.0545083569013514e-05, 3.891708911396563e-05, 0.003383547766134143, 2.21470443761973e-07, 3.368409124959726e-06, 2.004903535635094e-06, 5.02368675370235e-05], "target_probs": 0.9806178212165833}}
+
+
+{"result": {"time": "2021-02-11 10:37:12.389103", "n_pass": [46, 2, 2], "n_token": 47, "loss": [7.903263758635148e-05, 0.3412918150424957], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", "user", "=", "self", ".", "_get_user", "(", "username", ")", "#NEWLINE#", "if", "(", "user", "is not", "None", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "_session", ".", "delete", "(", "self", ")", "#NEWLINE#", "log", ".", "info", "(", "'User deleted: \"%s/%s\"'", ",", "self", ".", "_client", ".", "name", ",", "username", ")"]}}
+{"position": {"error_location": 30, "repair_targets": [6, 17], "repair_candidates": [6, 17, 2, 8, 24, 30, 39, 4, 12, 45]}}
+{"prediction": {"error_location": 0.9999208450317383, "repair_targets": [0.6901251077651978, 0.020726311951875687], "repair_candidates": [0.0001781852333806455, 0.2882803976535797, 0.6901251077651978, 8.58408930071164e-06, 0.00025126273976638913, 0.020726311951875687, 1.2314875448282692e-06, 4.5062635763315484e-05, 9.16168573894538e-06, 0.0003746750589925796], "target_probs": 0.7108514308929443}}
+
+
+{"result": {"time": "2021-02-11 10:37:12.602892", "n_pass": [51, 5, 3], "n_token": 44, "loss": [2.1576648578047752e-05, 0.1866125762462616], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", "user", "=", "self", ".", "_get_user", "(", "username", ")", "#NEWLINE#", "if", "(", "user", "is not", "None", ")", "self", ".", "_session", ".", "delete", "(", "self", ")", "#NEWLINE#", "log", ".", "info", "(", "'User deleted: \"%s/%s\"'", ",", "self", ".", "_client", ".", "name", ",", "username", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [6, 17], "repair_candidates": [6, 17, 2, 8, 21, 27, 36, 4, 12, 42]}}
+{"prediction": {"error_location": 0.9999785423278809, "repair_targets": [0.8296165466308594, 0.00014858586655464023], "repair_candidates": [3.6961686419090256e-05, 0.17001831531524658, 0.8296165466308594, 4.9143513933813665e-06, 5.0067665142705664e-05, 0.00014858586655464023, 1.8567263850854943e-06, 6.090433998906519e-06, 3.480446139292326e-06, 0.0001131472090492025], "target_probs": 0.8297651410102844}}
+
+
+{"result": {"time": "2021-02-11 10:37:12.672508", "n_pass": [53, 6, 4], "n_token": 41, "loss": [0.007061405573040247, 0.03657805919647217], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", "user", "=", "self", ".", "_get_user", "(", "username", ")", "#NEWLINE#", "if", "(", "user", "is not", "None", ")", "self", ".", "_session", "self", ")", "#NEWLINE#", "log", ".", "info", "(", "'User deleted: \"%s/%s\"'", ",", "self", ".", "_client", ".", "name", ",", "username", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [6, 17], "repair_candidates": [6, 17, 2, 8, 21, 24, 33, 4, 12, 39]}}
+{"prediction": {"error_location": 0.9929634928703308, "repair_targets": [0.9638973474502563, 0.00018547209037933499], "repair_candidates": [9.540977771393955e-05, 0.03566223382949829, 0.9638973474502563, 1.830171822803095e-05, 3.587997707654722e-05, 0.00018547209037933499, 6.948689133423613e-06, 4.332605385570787e-05, 2.696778892641305e-06, 5.232927287579514e-05], "target_probs": 0.9640828371047974}}
+
+
+{"result": {"time": "2021-02-11 10:37:12.740137", "n_pass": [55, 7, 5], "n_token": 38, "loss": [0.010902008041739464, 0.030554180964827538], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", "user", "=", "self", ".", "_get_user", "(", "username", ")", "#NEWLINE#", "if", "(", "user", "is not", "None", ")", "self", ".", "_session", "self", ")", "#NEWLINE#", "(", "'User deleted: \"%s/%s\"'", ",", "self", ".", "_client", ".", "name", ",", "username", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [6, 17], "repair_candidates": [6, 17, 2, 8, 21, 24, 30, 4, 12, 36]}}
+{"prediction": {"error_location": 0.9891573190689087, "repair_targets": [0.9697254300117493, 0.00018242585065308958], "repair_candidates": [9.543998021399602e-05, 0.0297989621758461, 0.9697254300117493, 1.7867465430754237e-05, 3.732959521585144e-05, 0.00018242585065308958, 5.5951231843209825e-06, 2.583812783996109e-05, 2.7716312160919188e-06, 0.00010836478759301826], "target_probs": 0.9699078798294067}}
+
+
+{"result": {"time": "2021-02-11 10:37:12.806070", "n_pass": [56, 8, 6], "n_token": 35, "loss": [0.07786710560321808, 0.03515826165676117], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", "user", "=", "self", ".", "_get_user", "(", "username", ")", "#NEWLINE#", "if", "(", "user", "is not", "None", ")", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "_client", ".", "name", ",", "username", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [6, 17], "repair_candidates": [6, 17, 2, 8, 21, 24, 27, 4, 12, 33]}}
+{"prediction": {"error_location": 0.925087571144104, "repair_targets": [0.9651870727539062, 0.00026555696967989206], "repair_candidates": [0.00029690947849303484, 0.03397596254944801, 0.9651870727539062, 3.2023745006881654e-05, 6.609529373236e-05, 0.00026555696967989206, 2.091649548674468e-05, 0.00012855954992119223, 2.020144393100054e-06, 2.4782331820460968e-05], "target_probs": 0.9654526114463806}}
+
+
+{"result": {"time": "2021-02-11 10:37:12.873352", "n_pass": [62, 9, 7], "n_token": 32, "loss": [0.6917856931686401, 0.4270786643028259], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", "user", "=", "self", "username", ")", "#NEWLINE#", "if", "(", "user", "is not", "None", ")", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "_client", ".", "name", ",", "username", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [6, 14], "repair_candidates": [6, 14, 2, 8, 18, 21, 24, 4, 9, 30]}}
+{"prediction": {"error_location": 0.5006812214851379, "repair_targets": [0.6520438194274902, 0.00036841051769442856], "repair_candidates": [1.9034476281376556e-05, 0.2812017500400543, 0.6520438194274902, 0.06431452929973602, 0.0009072985267266631, 0.00036841051769442856, 0.0001352882682112977, 0.0009365627774968743, 2.2919621187611483e-05, 5.045474608778022e-05], "target_probs": 0.6524122357368469}}
+
+
+{"result": {"time": "2021-02-11 10:37:12.936770", "n_pass": [65, 10, 8], "n_token": 29, "loss": [0.2771293520927429, 0.19643035531044006], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", "user", "=", "self", "username", ")", "#NEWLINE#", "if", "(", "user", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "_client", ".", "name", ",", "username", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [6, 14], "repair_candidates": [6, 14, 2, 8, 15, 18, 21, 4, 9, 27]}}
+{"prediction": {"error_location": 0.7579563856124878, "repair_targets": [0.8215886354446411, 6.989814573898911e-05], "repair_candidates": [6.940292678336846e-06, 0.16496923565864563, 0.8215886354446411, 0.013077251613140106, 0.00023412713198922575, 6.989814573898911e-05, 4.1635184970800765e-06, 3.308137456770055e-05, 3.961808943131473e-06, 1.2718624020635616e-05], "target_probs": 0.8216585516929626}}
+
+
+{"result": {"time": "2021-02-11 10:37:13.061618", "n_pass": [98, 12, 9], "n_token": 27, "loss": [0.7544392347335815, 0.2206641584634781], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", "user", "=", "self", "username", ")", "#NEWLINE#", "if", "(", "user", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "name", ",", "username", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [6, 14], "repair_candidates": [6, 14, 2, 8, 15, 18, 21, 4, 9, 25]}}
+{"prediction": {"error_location": 0.4702742397785187, "repair_targets": [0.8018366098403931, 0.00014935059880372137], "repair_candidates": [1.0686290806916077e-05, 0.16880230605602264, 0.8018366098403931, 0.028481438755989075, 0.00043762323912233114, 0.00014935059880372137, 5.721017714677146e-06, 7.46365258237347e-05, 5.93226395722013e-05, 0.0001422411296516657], "target_probs": 0.8019859790802002}}
+
+
+{"result": {"time": "2021-02-11 10:37:13.122890", "n_pass": [99, 13, 10], "n_token": 25, "loss": [0.6463552117347717, 0.23758378624916077], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", ",", "username", ")", "user", "=", "self", "username", ")", "#NEWLINE#", "if", "(", "user", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "username", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [6, 14], "repair_candidates": [6, 14, 2, 8, 15, 18, 21, 4, 9, 23]}}
+{"prediction": {"error_location": 0.5239520072937012, "repair_targets": [0.7883909344673157, 0.00013989048602525145], "repair_candidates": [8.53378060128307e-06, 0.2050313502550125, 0.7883909344673157, 0.0057904887944459915, 0.0002711289271246642, 0.00013989048602525145, 3.6842739064013585e-06, 2.4800483515718952e-05, 2.0773875803570263e-05, 0.0003183988155797124], "target_probs": 0.7885308265686035}}
+
+
+{"result": {"time": "2021-02-11 10:37:13.307123", "n_pass": [104, 16, 11], "n_token": 24, "loss": [0.6591495275497437, 0.07791539281606674], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", "username", ")", "user", "=", "self", "username", ")", "#NEWLINE#", "if", "(", "user", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "username", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [5, 13], "repair_candidates": [5, 13, 2, 7, 14, 17, 20, 3, 8, 22]}}
+{"prediction": {"error_location": 0.5172911286354065, "repair_targets": [0.9250049591064453, 3.77476098947227e-05], "repair_candidates": [1.905992212414276e-05, 0.07274205982685089, 0.9250049591064453, 0.001841505290940404, 0.0003106597578153014, 3.77476098947227e-05, 1.0284119298376027e-06, 8.242928743129596e-06, 4.146812898397911e-06, 3.057506910408847e-05], "target_probs": 0.9250426888465881}}
+
+
+{"result": {"time": "2021-02-11 10:37:13.367519", "n_pass": [106, 17, 12], "n_token": 23, "loss": [0.5084148645401001, 0.068211629986763], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", "username", "user", "=", "self", "username", ")", "#NEWLINE#", "if", "(", "user", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "username", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [4, 12], "repair_candidates": [4, 12, 2, 6, 13, 16, 19, 3, 7, 21]}}
+{"prediction": {"error_location": 0.6014481782913208, "repair_targets": [0.9340378642082214, 2.4906947146519087e-05], "repair_candidates": [4.204480865155347e-05, 0.06182321161031723, 0.9340378642082214, 0.003078000620007515, 0.0009692858438938856, 2.4906947146519087e-05, 5.113513452670304e-07, 8.395234544877894e-06, 2.5403460313100368e-06, 1.3269245755509473e-05], "target_probs": 0.9340627789497375}}
+
+
+{"result": {"time": "2021-02-11 10:37:13.426482", "n_pass": [110, 18, 13], "n_token": 21, "loss": [0.07367854565382004, 0.026513036340475082], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def delete_user(", "self", "username", "user", "=", "self", "username", ")", "(", "user", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "username", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [4, 10], "repair_candidates": [4, 10, 2, 6, 11, 14, 17, 3, 7, 19]}}
+{"prediction": {"error_location": 0.9289703965187073, "repair_targets": [0.9737953543663025, 4.001870911451988e-05], "repair_candidates": [1.087056352844229e-05, 0.025552330538630486, 0.9737953543663025, 0.0005119469133205712, 7.800106686772779e-05, 4.001870911451988e-05, 3.641309547219862e-07, 2.11926999327261e-06, 1.1601781579884118e-06, 7.849967914808076e-06], "target_probs": 0.9738353490829468}}
+
+
+{"result": {"time": "2021-02-11 10:37:13.543751", "n_pass": [117, 20, 14], "n_token": 20, "loss": [0.1479969024658203, 0.022628800943493843], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def delete_user(", "self", "username", "user", "=", "self", "username", ")", "(", "user", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "username", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [3, 9], "repair_candidates": [3, 9, 1, 5, 10, 13, 16, 2, 6, 18]}}
+{"prediction": {"error_location": 0.8624337911605835, "repair_targets": [0.977569043636322, 5.628415965475142e-05], "repair_candidates": [4.817421722691506e-05, 0.02096337266266346, 0.977569043636322, 0.0011819270439445972, 0.00016859076276887208, 5.628415965475142e-05, 4.1085357338488393e-07, 3.340772309456952e-06, 1.0019716683018487e-06, 7.831129551050253e-06], "target_probs": 0.97762531042099}}
+
+
+{"result": {"time": "2021-02-11 10:37:13.719675", "n_pass": [146, 23, 15], "n_token": 19, "loss": [0.7027400732040405, 0.24795259535312653], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def delete_user(", "self", "username", "user", "self", "username", ")", "(", "user", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "username", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [3, 8], "repair_candidates": [3, 8, 1, 4, 9, 12, 15, 2, 5, 17]}}
+{"prediction": {"error_location": 0.49522650241851807, "repair_targets": [0.7787877321243286, 0.0016091989818960428], "repair_candidates": [0.0034810311626642942, 0.15462292730808258, 0.7787877321243286, 0.043622128665447235, 0.01698850281536579, 0.0016091989818960428, 2.259777465951629e-05, 0.00027284532552585006, 0.00019373961549717933, 0.0003993567079305649], "target_probs": 0.7803969383239746}}
+
+
+{"result": {"time": "2021-02-11 10:37:13.834219", "n_pass": [149, 25, 16], "n_token": 18, "loss": [0.539452314376831, 0.43535691499710083], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def delete_user(", "self", "username", "user", "self", "username", ")", "user", "self", ".", "_session", "self", ")", "#NEWLINE#", "self", ".", "username", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [3, 7], "repair_candidates": [3, 7, 1, 4, 8, 11, 14, 2, 5, 16]}}
+{"prediction": {"error_location": 0.5830675959587097, "repair_targets": [0.6453624367713928, 0.001671269885264337], "repair_candidates": [0.005057759582996368, 0.2462351769208908, 0.6453624367713928, 0.06645574420690536, 0.03435754030942917, 0.001671269885264337, 1.4432384887186345e-05, 0.0003126092778984457, 0.00011859755613841116, 0.0004144652048125863], "target_probs": 0.64703369140625}}
+
+
+{"result": {"time": "2021-02-11 10:37:14.008200", "n_pass": [155, 28, 17], "n_token": 17, "loss": [0.7084090709686279, 0.6538422703742981], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def delete_user(", "self", "username", "user", "self", "username", ")", "user", "self", ".", "_session", "self", "#NEWLINE#", "self", ".", "username", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [3, 7], "repair_candidates": [3, 7, 1, 4, 8, 11, 13, 2, 5, 15]}}
+{"prediction": {"error_location": 0.4924269914627075, "repair_targets": [0.5188036561012268, 0.0012401134008541703], "repair_candidates": [0.006217914633452892, 0.2489096224308014, 0.5188036561012268, 0.10241041332483292, 0.11893633753061295, 0.0012401134008541703, 9.113473424804397e-06, 0.00019624792912509292, 0.001046827295795083, 0.0022297967225313187], "target_probs": 0.5200437903404236}}
+
+
+
+
+Minimal simplified tokens:
+
+['def delete_user(', 'self', 'username', 'user', 'self', 'username', ')', 'user', 'self', '.', '_session', 'self', '#NEWLINE#', 'self', '.', 'username', ')']

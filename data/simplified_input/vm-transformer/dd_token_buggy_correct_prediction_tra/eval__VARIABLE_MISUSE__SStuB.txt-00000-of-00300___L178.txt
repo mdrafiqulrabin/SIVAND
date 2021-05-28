@@ -1,0 +1,49 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def get(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Return the first matching object, or None if no objects\\n        match.\\n        '", "#NEWLINE#", "it", "=", "iter", "(", "it", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "it", ".", "next", "(", ")", "#NEWLINE#", "#UNINDENT#", "except", "StopIteration", ":", "#NEWLINE#", "#INDENT#", "return", "None"], "error_location": [13], "repair_targets": [2], "repair_candidates": [2, 9, 13, 21], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "beetbox/beets/beets/dbcore/db.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 178, "results": {"model": "transformer", "prob": {"loc": [[0.000126219485537149, 3.75000341890086e-09, 7.597093620859141e-09, 3.987234847846466e-11, 8.533881934447152e-11, 7.796983891861231e-11, 6.451671141771698e-11, 7.88735812773389e-11, 3.964991529548101e-11, 3.150151073327834e-08, 1.2264225746072555e-10, 4.009625964584984e-11, 3.862683506383746e-10, 0.9998733997344971, 4.4524134379386737e-10, 8.364481329792284e-11, 3.176446258801313e-11, 1.2861357812088414e-10, 1.428003548742396e-10, 8.948686236465164e-11, 2.5096289629766844e-11, 3.748291135252657e-07, 3.0615204815731545e-10, 2.7353131912266626e-11, 4.883050408466261e-09, 2.294499729105226e-10, 2.591661052431249e-10, 1.301326130187519e-10, 5.255639257129019e-10, 7.10635106315749e-10, 1.5862886004747168e-10, 1.2567355489601084e-10, 7.781800204220701e-11, 6.269296887184694e-11, 2.833350776221266e-10]], "pointer": [[0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.4861034947653025e-08, 0.0, 0.0, 0.0, 4.185557234137605e-09, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.043725728067102e-08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [1.0]}, "loss": [0.00012659224739763886, -0.0], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 11:27:38.204556", "n_pass": [1, 1, 1], "n_token": 35, "loss": [0.00012659224739763886, -0.0], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Return the first matching object, or None if no objects\\n        match.\\n        '", "#NEWLINE#", "it", "=", "iter", "(", "it", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "it", ".", "next", "(", ")", "#NEWLINE#", "#UNINDENT#", "except", "StopIteration", ":", "#NEWLINE#", "#INDENT#", "return", "None"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [2, 9, 13, 21]}}
+{"prediction": {"error_location": 0.9998733997344971, "repair_targets": [1.0], "repair_candidates": [1.0, 3.4861034947653025e-08, 4.185557234137605e-09, 1.043725728067102e-08], "target_probs": 1.0}}
+
+
+{"result": {"time": "2021-02-11 11:27:38.258758", "n_pass": [11, 2, 2], "n_token": 26, "loss": [0.00017510310863144696, -0.0], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "'Return the first matching object, or None if no objects\\n        match.\\n        '", "#NEWLINE#", "it", "=", "iter", "(", "it", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "it", ".", "next", "(", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [2, 9, 13, 21]}}
+{"prediction": {"error_location": 0.9998249411582947, "repair_targets": [1.0], "repair_candidates": [1.0, 1.2077700617396658e-08, 5.371799449704895e-09, 1.075036393238804e-09], "target_probs": 1.0}}
+
+
+{"result": {"time": "2021-02-11 11:27:38.313442", "n_pass": [21, 3, 3], "n_token": 22, "loss": [0.5184211134910583, 4.744642137666233e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get(", "self", ")", "#NEWLINE#", "it", "=", "iter", "(", "it", ")", "#NEWLINE#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "it", ".", "next", "(", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [2, 5, 9, 17]}}
+{"prediction": {"error_location": 0.5954599976539612, "repair_targets": [0.9999525547027588], "repair_candidates": [0.9999525547027588, 3.819487028522417e-05, 6.727164418407483e-06, 2.5915401238307822e-06], "target_probs": 0.9999525547027588}}
+
+
+{"result": {"time": "2021-02-11 11:27:38.367296", "n_pass": [24, 4, 4], "n_token": 17, "loss": [0.06884362548589706, 1.5497220147153712e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get(", "self", ")", "#NEWLINE#", "it", "=", "iter", "(", "it", ")", "#NEWLINE#", "it", ".", "next", "(", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [2, 5, 9, 12]}}
+{"prediction": {"error_location": 0.933472752571106, "repair_targets": [0.9999984502792358], "repair_candidates": [0.9999984502792358, 1.1144705922561116e-06, 2.998055776970432e-07, 1.3517870911528007e-07], "target_probs": 0.9999984502792358}}
+
+
+{"result": {"time": "2021-02-11 11:27:38.424230", "n_pass": [38, 5, 5], "n_token": 14, "loss": [0.5986763834953308, 0.0008562892326153815], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def get(", "self", ")", "#NEWLINE#", "it", "=", "iter", "(", "it", ")", "#NEWLINE#", "it", "."]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [2, 5, 9, 12]}}
+{"prediction": {"error_location": 0.5495384931564331, "repair_targets": [0.9991440773010254], "repair_candidates": [0.9991440773010254, 0.0008546013268642128, 1.2276477718842216e-06, 6.824848952646789e-08], "target_probs": 0.9991440773010254}}
+
+
+{"result": {"time": "2021-02-11 11:27:38.478005", "n_pass": [39, 6, 6], "n_token": 12, "loss": [0.9451018571853638, 0.20766930282115936], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "#NEWLINE#", "it", "=", "iter", "(", "it", ")", "#NEWLINE#", "it", "."]}}
+{"position": {"error_location": 7, "repair_targets": [0], "repair_candidates": [0, 3, 7, 10]}}
+{"prediction": {"error_location": 0.38864001631736755, "repair_targets": [0.8124756813049316], "repair_candidates": [0.8124756813049316, 0.185129776597023, 0.0011754611041396856, 0.001219073194079101], "target_probs": 0.8124756813049316}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ')', '#NEWLINE#', 'it', '=', 'iter', '(', 'it', ')', '#NEWLINE#', 'it', '.']

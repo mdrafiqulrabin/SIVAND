@@ -1,0 +1,43 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "contextlib", ".", "contextmanager", "#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", "=", "threading", ".", "current_thread", "(", ")", ".", "ident", "#NEWLINE#", "with", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"], "error_location": [25], "repair_targets": [7, 33], "repair_candidates": [7, 33, 14, 25, 37], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "beetbox/beets/beets/dbcore/db.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00001-of-00300", "js_count": 3477, "results": {"model": "transformer", "prob": {"loc": [[0.005234762094914913, 4.498685086673504e-07, 3.8201295460282836e-09, 7.1792523037572664e-09, 4.441802481380819e-09, 6.311280387194529e-09, 3.873751097671629e-09, 1.4002669104229426e-06, 2.2563304558076425e-09, 1.709970498531277e-09, 1.653691183989281e-09, 1.4257501845804654e-09, 7.081780051265696e-09, 1.5981661549702153e-09, 4.46517276486702e-08, 2.622846384525701e-09, 2.4100069495602838e-08, 3.6298670735845917e-09, 7.356932840707486e-10, 3.844156992727221e-08, 1.5577199519611895e-05, 8.861681521921128e-08, 7.682113611906516e-09, 2.894479100845615e-09, 1.62254673341522e-06, 0.992635190486908, 3.1444709946981675e-08, 2.6226263383222204e-09, 1.0529564775652034e-08, 7.935817336601758e-09, 5.039600736722605e-09, 5.250507251197689e-10, 3.560216121911708e-09, 0.0011171373771503568, 1.1728669591093421e-08, 3.753549693286118e-10, 1.3802573306520571e-08, 0.000993558089248836, 9.694407943072747e-09, 3.631018330452207e-08]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.39050978422164917, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0005450901226140559, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.8562124751042575e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6088981032371521, 0.0, 0.0, 0.0, 2.8408083380782045e-05, 0.0, 0.0]], "target": [0.9994078874588013]}, "loss": [0.007392196450382471, 0.0005922879208810627], "acc": [0.0, 1.0, 1.0, 1.0]}}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-11 12:02:16.065998", "n_pass": [1, 1, 1], "n_token": 40, "loss": [0.007392196450382471, 0.0005922879208810627], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "contextlib", ".", "contextmanager", "#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", "=", "threading", ".", "current_thread", "(", ")", ".", "ident", "#NEWLINE#", "with", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [7, 33], "repair_candidates": [7, 33, 14, 25, 37]}}
+{"prediction": {"error_location": 0.992635190486908, "repair_targets": [0.39050978422164917, 0.6088981032371521], "repair_candidates": [0.39050978422164917, 0.0005450901226140559, 1.8562124751042575e-05, 0.6088981032371521, 2.8408083380782045e-05], "target_probs": 0.9994078874588013}}
+
+
+{"result": {"time": "2021-02-11 12:02:16.121153", "n_pass": [20, 2, 2], "n_token": 35, "loss": [0.001437107683159411, 0.0001846722443588078], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", "=", "threading", ".", "current_thread", "(", ")", ".", "ident", "#NEWLINE#", "with", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"]}}
+{"position": {"error_location": 20, "repair_targets": [2, 28], "repair_candidates": [2, 28, 9, 20, 32]}}
+{"prediction": {"error_location": 0.9985639452934265, "repair_targets": [0.5681769251823425, 0.4316383898258209], "repair_candidates": [0.5681769251823425, 0.00016817932191770524, 1.2716560377157293e-05, 0.4316383898258209, 3.8072955703682965e-06], "target_probs": 0.9998153448104858}}
+
+
+{"result": {"time": "2021-02-11 12:02:16.176637", "n_pass": [22, 3, 3], "n_token": 30, "loss": [0.0013371107634156942, 9.059946933120955e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", ")", ".", "ident", "#NEWLINE#", "with", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [2, 23], "repair_candidates": [2, 23, 9, 15, 27]}}
+{"prediction": {"error_location": 0.9986637830734253, "repair_targets": [0.46329542994499207, 0.5366954803466797], "repair_candidates": [0.46329542994499207, 5.450241587823257e-06, 3.452197915976285e-06, 0.5366954803466797, 2.2326602788780292e-07], "target_probs": 0.9999909400939941}}
+
+
+{"result": {"time": "2021-02-11 12:02:16.231333", "n_pass": [23, 4, 4], "n_token": 25, "loss": [0.5097394585609436, 7.206461305031553e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", ":", "#NEWLINE#", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 18], "repair_candidates": [2, 18, 9, 10, 22]}}
+{"prediction": {"error_location": 0.6006519794464111, "repair_targets": [0.8085564374923706, 0.19137148559093475], "repair_candidates": [0.8085564374923706, 3.955389547627419e-05, 2.871830656658858e-05, 0.19137148559093475, 3.872414708894212e-06], "target_probs": 0.9999279379844666}}
+
+
+{"result": {"time": "2021-02-11 12:02:16.789440", "n_pass": [75, 14, 5], "n_token": 24, "loss": [0.8209758400917053, 7.170695607783273e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _tx_stack(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "\"A context manager providing access to the current thread's\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        \"", "#NEWLINE#", "thread_id", "thread_id", ".", "_shared_map_lock", ":", "#INDENT#", "(", "yield", "self", ".", "_tx_stacks", "[", "thread_id", "]", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 17], "repair_candidates": [2, 17, 9, 10, 21]}}
+{"prediction": {"error_location": 0.44000208377838135, "repair_targets": [0.8353467583656311, 0.1645815372467041], "repair_candidates": [0.8353467583656311, 3.5604080039775e-05, 2.762373333098367e-05, 0.1645815372467041, 8.510635780112352e-06], "target_probs": 0.9999282956123352}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def _tx_stack(', 'self', ')', ':', '#NEWLINE#', '#INDENT#', '"A context manager providing access to the current thread\'s\\n        transaction stack. The context manager synchronizes access to\\n        the stack map. Transactions should never migrate across threads.\\n        "', '#NEWLINE#', 'thread_id', 'thread_id', '.', '_shared_map_lock', ':', '#INDENT#', '(', 'yield', 'self', '.', '_tx_stacks', '[', 'thread_id', ']', ')']

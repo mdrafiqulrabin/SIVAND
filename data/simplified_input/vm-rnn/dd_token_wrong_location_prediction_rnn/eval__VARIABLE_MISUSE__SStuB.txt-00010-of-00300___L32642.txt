@@ -1,0 +1,73 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def _PrepareJobId(", "request_name", ",", "job_id", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "int", "(", "job_id", ")", "#NEWLINE#", "#UNINDENT#", "except", "ValueError", ":", "#NEWLINE#", "#INDENT#", "raise", "RequestError", "(", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "%", "(", "job_id", ",", "job_id", ")", ")", ")"], "error_location": [35], "repair_targets": [5], "repair_candidates": [5, 7, 19, 35, 37], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "ganeti/ganeti/lib/luxi.py", "license": "bsd-2-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00010-of-00300", "js_count": 32642, "results": {"model": "rnn", "prob": {"loc": [[0.09834592789411545, 7.68032890618997e-08, 6.463032775627653e-08, 4.57718485336045e-08, 8.365209219762804e-11, 1.589952205449663e-07, 1.0579285891765267e-08, 3.114430171535787e-07, 3.3875335869737455e-09, 1.6655684831334838e-08, 3.5228910633122723e-07, 2.0572488779180276e-07, 6.47425840725191e-05, 5.821497097713291e-07, 1.3853585301148996e-07, 5.939733327409158e-08, 1.988511542094784e-07, 2.3119376635349909e-07, 5.923910975980107e-06, 0.3096834719181061, 3.140424453818014e-08, 3.685534295527759e-07, 4.202629042993067e-06, 2.4347076532649226e-07, 1.3474056004270096e-06, 2.6674319087760523e-05, 1.3769366091764823e-07, 1.2914193803226226e-07, 5.425665221991949e-06, 1.1248116038586886e-07, 2.7770502342150394e-08, 8.555210229133081e-07, 1.375290992200462e-07, 1.868136045857227e-08, 5.22601624197705e-07, 0.11314087361097336, 1.027887037707842e-06, 0.47871133685112, 1.0791391105158255e-06, 1.6683300145814428e-06, 1.2111077012377791e-06]], "pointer": [[0.0, 0.0, 0.0, 0.0, 0.0, 0.9748791456222534, 0.0, 0.02505418285727501, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.088401394459652e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5332414477597922e-05, 0.0, 4.627781163435429e-05, 0.0, 0.0, 0.0]], "target": [0.9748791456222534]}, "loss": [2.179121494293213, 0.025441769510507584], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [37]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 12:36:05.104719", "n_pass": [1, 1, 1], "n_token": 41, "loss": [0.7366575002670288, 0.025441769510507584], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def _PrepareJobId(", "request_name", ",", "job_id", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "int", "(", "job_id", ")", "#NEWLINE#", "#UNINDENT#", "except", "ValueError", ":", "#NEWLINE#", "#INDENT#", "raise", "RequestError", "(", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "%", "(", "job_id", ",", "job_id", ")", ")", ")"]}}
+{"position": {"error_location": 37, "repair_targets": [5], "repair_candidates": [5, 7, 19, 35, 37]}}
+{"prediction": {"error_location": 0.47871133685112, "repair_targets": [0.9748791456222534], "repair_candidates": [0.9748791456222534, 0.02505418285727501, 5.088401394459652e-06, 1.5332414477597922e-05, 4.627781163435429e-05], "target_probs": 0.9748791456222534}}
+
+
+{"result": {"time": "2021-02-21 12:36:05.170289", "n_pass": [10, 2, 2], "n_token": 31, "loss": [0.32340627908706665, 0.012900717556476593], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def _PrepareJobId(", "request_name", ",", "job_id", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "return", "int", "(", "job_id", "(", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "%", "(", "job_id", ",", "job_id", ")", ")", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [5], "repair_candidates": [5, 7, 19, 25, 27]}}
+{"prediction": {"error_location": 0.723679780960083, "repair_targets": [0.9871821403503418], "repair_candidates": [0.9871821403503418, 0.012728113681077957, 2.5431996618863195e-05, 9.662300726631656e-06, 5.4574120440520346e-05], "target_probs": 0.9871821403503418}}
+
+
+{"result": {"time": "2021-02-21 12:36:05.360099", "n_pass": [23, 5, 3], "n_token": 26, "loss": [0.6819755434989929, 0.024093428626656532], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def _PrepareJobId(", "request_name", ",", "job_id", ")", ":", "#INDENT#", "return", "int", "(", "job_id", "(", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "%", "(", "job_id", ",", "job_id", ")", ")", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [5], "repair_candidates": [5, 7, 14, 20, 22]}}
+{"prediction": {"error_location": 0.5056171417236328, "repair_targets": [0.9761945009231567], "repair_candidates": [0.9761945009231567, 0.023174237459897995, 0.0001780375314410776, 5.357562986318953e-05, 0.0003997050516773015], "target_probs": 0.9761945009231567}}
+
+
+{"result": {"time": "2021-02-21 12:36:05.599338", "n_pass": [39, 9, 4], "n_token": 23, "loss": [0.6375030875205994, 0.007146501913666725], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def _PrepareJobId(", "request_name", ",", "job_id", ")", ":", "#INDENT#", "job_id", "(", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "%", "(", "job_id", ",", "job_id", ")", ")", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [5], "repair_candidates": [5, 7, 11, 17, 19]}}
+{"prediction": {"error_location": 0.5286107063293457, "repair_targets": [0.9928789734840393], "repair_candidates": [0.9928789734840393, 0.006905169226229191, 2.346997098356951e-05, 3.9074620872270316e-05, 0.00015335404896177351], "target_probs": 0.9928789734840393}}
+
+
+{"result": {"time": "2021-02-21 12:36:05.717204", "n_pass": [43, 11, 5], "n_token": 20, "loss": [0.7630748748779297, 0.0062055811285972595], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "@", "staticmethod", "#NEWLINE#", "def _PrepareJobId(", "request_name", ",", "job_id", ")", ":", "#INDENT#", "job_id", "(", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "%", "(", "job_id", ",", "job_id"]}}
+{"position": {"error_location": 19, "repair_targets": [5], "repair_candidates": [5, 7, 11, 17, 19]}}
+{"prediction": {"error_location": 0.466230571269989, "repair_targets": [0.9938136339187622], "repair_candidates": [0.9938136339187622, 0.006130554713308811, 7.382109743048204e-06, 9.503590263193473e-06, 3.892768654623069e-05], "target_probs": 0.9938136339187622}}
+
+
+{"result": {"time": "2021-02-21 12:36:05.778691", "n_pass": [44, 12, 6], "n_token": 18, "loss": [0.8082696199417114, 0.018233295530080795], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["staticmethod", "#NEWLINE#", "def _PrepareJobId(", "request_name", ",", "job_id", ")", ":", "#INDENT#", "job_id", "(", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "%", "(", "job_id", ",", "job_id"]}}
+{"position": {"error_location": 17, "repair_targets": [3], "repair_candidates": [3, 5, 9, 15, 17]}}
+{"prediction": {"error_location": 0.44562849402427673, "repair_targets": [0.9819319248199463], "repair_candidates": [0.9819319248199463, 0.017934758216142654, 2.784568459901493e-05, 3.302014374639839e-05, 7.247074245242402e-05], "target_probs": 0.9819319248199463}}
+
+
+{"result": {"time": "2021-02-21 12:36:05.835382", "n_pass": [45, 13, 7], "n_token": 16, "loss": [0.5486593246459961, 0.1584194302558899], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _PrepareJobId(", "request_name", ",", "job_id", ")", ":", "#INDENT#", "job_id", "(", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "%", "(", "job_id", ",", "job_id"]}}
+{"position": {"error_location": 15, "repair_targets": [1], "repair_candidates": [1, 3, 7, 13, 15]}}
+{"prediction": {"error_location": 0.5777238607406616, "repair_targets": [0.8534917235374451], "repair_candidates": [0.8534917235374451, 0.1464032530784607, 1.788641748134978e-05, 3.3940938010346144e-05, 5.317487375577912e-05], "target_probs": 0.8534917235374451}}
+
+
+{"result": {"time": "2021-02-21 12:36:05.891158", "n_pass": [48, 14, 8], "n_token": 13, "loss": [0.8715271949768066, 0.05260886251926422], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _PrepareJobId(", "request_name", ",", "job_id", "job_id", "(", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "%", "(", "job_id", ",", "job_id"]}}
+{"position": {"error_location": 12, "repair_targets": [1], "repair_candidates": [1, 3, 4, 10, 12]}}
+{"prediction": {"error_location": 0.4183122217655182, "repair_targets": [0.9487510323524475], "repair_candidates": [0.9487510323524475, 0.05028766766190529, 0.0005357920890673995, 0.0002378465433139354, 0.0001878037874121219], "target_probs": 0.9487510323524475}}
+
+
+{"result": {"time": "2021-02-21 12:36:06.332509", "n_pass": [81, 22, 9], "n_token": 12, "loss": [0.9529728889465332, 0.08092158287763596], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _PrepareJobId(", "request_name", ",", "job_id", "job_id", "(", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "(", "job_id", ",", "job_id"]}}
+{"position": {"error_location": 11, "repair_targets": [1], "repair_candidates": [1, 3, 4, 9, 11]}}
+{"prediction": {"error_location": 0.3855929672718048, "repair_targets": [0.9222660064697266], "repair_candidates": [0.9222660064697266, 0.07562737911939621, 0.0007385173812508583, 0.0011188398348167539, 0.0002493406645953655], "target_probs": 0.9222660064697266}}
+
+
+{"result": {"time": "2021-02-21 12:36:06.607433", "n_pass": [91, 27, 10], "n_token": 11, "loss": [1.0461974143981934, 0.05979122593998909], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def _PrepareJobId(", "request_name", ",", "job_id", "job_id", "(", "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", "(", "job_id", ",", "job_id"]}}
+{"position": {"error_location": 10, "repair_targets": [1], "repair_candidates": [1, 3, 4, 8, 10]}}
+{"prediction": {"error_location": 0.3512709438800812, "repair_targets": [0.9419611692428589], "repair_candidates": [0.9419611692428589, 0.05517035722732544, 0.0010562612442299724, 0.0014998422702774405, 0.00031232088804244995], "target_probs": 0.9419611692428589}}
+
+
+
+
+Minimal simplified tokens:
+
+['def _PrepareJobId(', 'request_name', ',', 'job_id', 'job_id', '(', "'Invalid parameter passed to %s as job id:  expected integer, got value %s'", '(', 'job_id', ',', 'job_id']

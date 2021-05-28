@@ -1,0 +1,127 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ")", ":", "#NEWLINE#", "#INDENT#", "'Attempts to resolve a class for the input XML type `typename`.\\n\\n    Args:\\n        typename: The name of an STIX XML type (e.g., TLPMarkingStructureType)\\n            without a namespace prefix.\\n\\n    Returns:\\n        A stix.Entity implementation class for the `typename`.\\n\\n\\n    Raises:\\n        ValueError: If no class has been registered for the input `typename`.\\n\\n    '", "#NEWLINE#", "for", "(", "xsi_type", ",", "klass", ")", "in", "_EXTENSION_MAP", ".", "iteritems", "(", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "xsi_type", "in", "xsi_type", ")", ":", "#NEWLINE#", "#INDENT#", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "=", "(", "'Unregistered extension type: %s'", "%", "typename", ")", "#NEWLINE#", "raise", "ValueError", "(", "error", ")"], "error_location": [26], "repair_targets": [2, 43], "repair_candidates": [11, 26, 28, 13, 34, 38, 49, 2, 43], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "STIXProject/python-stix/stix/__init__.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00017-of-00300", "js_count": 56336, "results": {"model": "transformer", "prob": {"loc": [[0.23450376093387604, 3.777075562538812e-06, 1.3755386135017034e-05, 2.6542485898062296e-07, 2.0198987726871565e-07, 2.080458614273084e-07, 1.594054168663206e-07, 5.937752689533227e-07, 1.3943476062650006e-07, 1.0072373868297291e-07, 2.982949709462446e-08, 3.1728848171042046e-06, 1.3185928082748433e-07, 8.738767064642161e-05, 1.8179079575020296e-07, 1.4369511802669876e-07, 4.670856128541345e-07, 1.9577230148115632e-07, 4.37884821735679e-08, 5.889982617190981e-07, 1.3953300594948814e-06, 2.039932041952852e-06, 1.2301736660447204e-06, 1.7382683381583774e-07, 3.077842904986028e-07, 9.267731826412273e-08, 0.07574860006570816, 5.213788085711712e-07, 0.6777461767196655, 2.1384308013239206e-07, 6.668803962384118e-07, 1.953632988715981e-07, 8.365913828356497e-08, 5.533588165462788e-08, 0.005567506887018681, 1.5111571372017352e-07, 1.3458159742185671e-07, 1.0848818021713669e-07, 6.057775294721068e-07, 3.550051630440976e-08, 3.702342610267806e-08, 8.524496593054209e-07, 3.073238019624114e-07, 0.006193139124661684, 5.21214758464339e-07, 1.5266390107626648e-07, 1.4917729274088742e-08, 4.0188837147070444e-07, 1.8174130644865727e-08, 0.00011825739056803286, 6.564042678292026e-07]], "pointer": [[0.0, 0.0, 0.7201231718063354, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.026113945990800858, 0.0, 0.2394731193780899, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.6496992581523955e-05, 0.0, 2.7192559173272457e-06, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0024496796540915966, 0.0, 0.0, 0.0, 0.00012521652388386428, 0.0, 0.0, 0.0, 0.0, 0.011664303950965405, 0.0, 0.0, 0.0, 0.0, 0.0, 1.3875533113605343e-06, 0.0]], "target": [0.7317875027656555]}, "loss": [2.5803351402282715, 0.3122650980949402], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [28]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 07:31:37.270806", "n_pass": [1, 1, 1], "n_token": 51, "loss": [0.388982355594635, 0.3122650980949402], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ")", ":", "#NEWLINE#", "#INDENT#", "'Attempts to resolve a class for the input XML type `typename`.\\n\\n    Args:\\n        typename: The name of an STIX XML type (e.g., TLPMarkingStructureType)\\n            without a namespace prefix.\\n\\n    Returns:\\n        A stix.Entity implementation class for the `typename`.\\n\\n\\n    Raises:\\n        ValueError: If no class has been registered for the input `typename`.\\n\\n    '", "#NEWLINE#", "for", "(", "xsi_type", ",", "klass", ")", "in", "_EXTENSION_MAP", ".", "iteritems", "(", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "xsi_type", "in", "xsi_type", ")", ":", "#NEWLINE#", "#INDENT#", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "=", "(", "'Unregistered extension type: %s'", "%", "typename", ")", "#NEWLINE#", "raise", "ValueError", "(", "error", ")"]}}
+{"position": {"error_location": 28, "repair_targets": [2, 43], "repair_candidates": [11, 26, 28, 13, 34, 38, 49, 2, 43]}}
+{"prediction": {"error_location": 0.6777461767196655, "repair_targets": [0.7201231718063354, 0.011664303950965405], "repair_candidates": [0.7201231718063354, 0.026113945990800858, 0.2394731193780899, 4.6496992581523955e-05, 2.7192559173272457e-06, 0.0024496796540915966, 0.00012521652388386428, 0.011664303950965405, 1.3875533113605343e-06], "target_probs": 0.7317875027656555}}
+
+
+{"result": {"time": "2021-02-21 07:31:37.443094", "n_pass": [46, 4, 2], "n_token": 48, "loss": [0.30300062894821167, 0.41983312368392944], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ")", ":", "#NEWLINE#", "for", "(", "xsi_type", ",", "klass", ")", "in", "_EXTENSION_MAP", ".", "iteritems", "(", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "xsi_type", "in", "xsi_type", ")", ":", "#NEWLINE#", "#INDENT#", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "=", "(", "'Unregistered extension type: %s'", "%", "typename", ")", "#NEWLINE#", "raise", "ValueError", "(", "error", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [2, 40], "repair_candidates": [8, 23, 25, 10, 31, 35, 46, 2, 40]}}
+{"prediction": {"error_location": 0.738598644733429, "repair_targets": [0.6297456622123718, 0.027410827577114105], "repair_candidates": [0.6297456622123718, 0.01684168353676796, 0.32175707817077637, 0.00013131523155607283, 6.908257546456298e-06, 0.003992791753262281, 0.00011182980961166322, 0.027410827577114105, 1.8062320350509253e-06], "target_probs": 0.6571564674377441}}
+
+
+{"result": {"time": "2021-02-21 07:31:37.499613", "n_pass": [48, 5, 3], "n_token": 45, "loss": [0.3373122811317444, 0.04491204768419266], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ")", ":", "#NEWLINE#", "for", "(", "xsi_type", ",", "klass", ")", "iteritems", "(", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "xsi_type", "in", "xsi_type", ")", ":", "#NEWLINE#", "#INDENT#", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "=", "(", "'Unregistered extension type: %s'", "%", "typename", ")", "#NEWLINE#", "raise", "ValueError", "(", "error", ")"]}}
+{"position": {"error_location": 22, "repair_targets": [2, 37], "repair_candidates": [8, 20, 22, 10, 28, 32, 43, 2, 37]}}
+{"prediction": {"error_location": 0.7136858105659485, "repair_targets": [0.9075784683227539, 0.04850310459733009], "repair_candidates": [0.9075784683227539, 0.014470795169472694, 0.024607928469777107, 0.0001322593161603436, 1.1376338079571724e-05, 0.004610410891473293, 8.418017387157306e-05, 0.04850310459733009, 1.4172339888318675e-06], "target_probs": 0.9560815691947937}}
+
+
+{"result": {"time": "2021-02-21 07:31:37.556004", "n_pass": [49, 6, 4], "n_token": 42, "loss": [0.14338429272174835, 0.577448308467865], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ")", ":", "#NEWLINE#", "for", "(", "xsi_type", ",", "klass", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "xsi_type", "in", "xsi_type", ")", ":", "#NEWLINE#", "#INDENT#", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "=", "(", "'Unregistered extension type: %s'", "%", "typename", ")", "#NEWLINE#", "raise", "ValueError", "(", "error", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [2, 34], "repair_candidates": [8, 17, 19, 10, 25, 29, 40, 2, 34]}}
+{"prediction": {"error_location": 0.8664208650588989, "repair_targets": [0.5446574687957764, 0.01667141355574131], "repair_candidates": [0.5446574687957764, 0.0057845101691782475, 0.4264430105686188, 5.022349068894982e-05, 3.3446692668803735e-06, 0.006361602805554867, 2.7608211894403212e-05, 0.01667141355574131, 8.117747256619623e-07], "target_probs": 0.5613288879394531}}
+
+
+{"result": {"time": "2021-02-21 07:31:37.612302", "n_pass": [50, 7, 5], "n_token": 39, "loss": [0.5045291781425476, 0.049542903900146484], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ")", ":", "#NEWLINE#", "for", "(", "xsi_type", ",", "klass", ")", "if", "(", "xsi_type", "in", "xsi_type", ")", ":", "#NEWLINE#", "#INDENT#", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "=", "(", "'Unregistered extension type: %s'", "%", "typename", ")", "#NEWLINE#", "raise", "ValueError", "(", "error", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2, 31], "repair_candidates": [8, 14, 16, 10, 22, 26, 37, 2, 31]}}
+{"prediction": {"error_location": 0.6037898063659668, "repair_targets": [0.9370650053024292, 0.014599301852285862], "repair_candidates": [0.9370650053024292, 0.01060437597334385, 0.03687768802046776, 8.634548430563882e-05, 3.0073106245254166e-06, 0.0007160739623941481, 4.551862002699636e-05, 0.014599301852285862, 2.539563411119161e-06], "target_probs": 0.9516643285751343}}
+
+
+{"result": {"time": "2021-02-21 07:31:37.727435", "n_pass": [56, 9, 6], "n_token": 35, "loss": [0.39096784591674805, 0.05528958514332771], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ")", ":", "#NEWLINE#", "for", "(", "xsi_type", ",", "klass", ")", "if", "(", "xsi_type", "in", "xsi_type", ")", ":", "#NEWLINE#", "#INDENT#", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "typename", ")", "#NEWLINE#", "raise", "ValueError", "(", "error", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2, 27], "repair_candidates": [8, 14, 16, 10, 22, 26, 33, 2, 27]}}
+{"prediction": {"error_location": 0.6764019131660461, "repair_targets": [0.8993658423423767, 0.04684525355696678], "repair_candidates": [0.8993658423423767, 0.007205672562122345, 0.042586833238601685, 9.176656749332324e-05, 2.3145262275647838e-06, 0.0005245811189524829, 0.0006421346915885806, 0.04684525355696678, 0.002735595917329192], "target_probs": 0.9462110996246338}}
+
+
+{"result": {"time": "2021-02-21 07:31:37.838353", "n_pass": [65, 11, 7], "n_token": 32, "loss": [0.7999356985092163, 0.02832656353712082], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ")", ":", "#NEWLINE#", "for", "(", "xsi_type", ",", "klass", ")", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "typename", ")", "#NEWLINE#", "raise", "ValueError", "(", "error", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2, 24], "repair_candidates": [8, 14, 16, 10, 19, 23, 30, 2, 24]}}
+{"prediction": {"error_location": 0.44935786724090576, "repair_targets": [0.9421101212501526, 0.02996075339615345], "repair_candidates": [0.9421101212501526, 0.006361278239637613, 0.019342487677931786, 0.0002980890858452767, 6.080001639929833e-06, 6.519466114696115e-05, 0.00034078408498317003, 0.02996075339615345, 0.0015152237610891461], "target_probs": 0.9720708727836609}}
+
+
+{"result": {"time": "2021-02-21 07:31:38.066030", "n_pass": [102, 15, 8], "n_token": 30, "loss": [0.7568543553352356, 0.030339913442730904], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ")", ":", "#NEWLINE#", "for", "(", "xsi_type", ",", "klass", ")", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "typename", ")", "#NEWLINE#", "raise", "error", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [2, 24], "repair_candidates": [8, 14, 16, 10, 19, 23, 28, 2, 24]}}
+{"prediction": {"error_location": 0.46913978457450867, "repair_targets": [0.9387041926383972, 0.0314115546643734], "repair_candidates": [0.9387041926383972, 0.0057123927399516106, 0.02273101545870304, 0.000370980822481215, 6.917467999301152e-06, 9.159057663055137e-05, 0.0005894319037906826, 0.0314115546643734, 0.00038197298999875784], "target_probs": 0.9701157212257385}}
+
+
+{"result": {"time": "2021-02-21 07:31:38.234583", "n_pass": [106, 18, 9], "n_token": 29, "loss": [0.5077739953994751, 0.014066098257899284], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "#NEWLINE#", "for", "(", "xsi_type", ",", "klass", ")", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "typename", ")", "#NEWLINE#", "raise", "error", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [2, 23], "repair_candidates": [7, 13, 15, 9, 18, 22, 27, 2, 23]}}
+{"prediction": {"error_location": 0.6018338203430176, "repair_targets": [0.9662631750106812, 0.019769184291362762], "repair_candidates": [0.9662631750106812, 0.0010571531020104885, 0.012488100677728653, 8.761168282944709e-05, 4.9169070734933484e-06, 4.542335227597505e-05, 0.00014856646885164082, 0.019769184291362762, 0.00013578521611634642], "target_probs": 0.9860323667526245}}
+
+
+{"result": {"time": "2021-02-21 07:31:38.405260", "n_pass": [109, 21, 10], "n_token": 28, "loss": [0.5567626357078552, 0.011419038288295269], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "#NEWLINE#", "(", "xsi_type", ",", "klass", ")", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "typename", ")", "#NEWLINE#", "raise", "error", ")"]}}
+{"position": {"error_location": 14, "repair_targets": [2, 22], "repair_candidates": [6, 12, 14, 8, 17, 21, 26, 2, 22]}}
+{"prediction": {"error_location": 0.5730613470077515, "repair_targets": [0.9763221740722656, 0.012323731556534767], "repair_candidates": [0.9763221740722656, 0.0022487554233521223, 0.008858873508870602, 5.43532041774597e-05, 4.46168041889905e-06, 2.3793823856976815e-05, 9.365213190903887e-05, 0.012323731556534767, 7.026117236819118e-05], "target_probs": 0.9886459112167358}}
+
+
+{"result": {"time": "2021-02-21 07:31:38.461302", "n_pass": [110, 22, 11], "n_token": 27, "loss": [0.32164207100868225, 0.012897094711661339], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "#NEWLINE#", "xsi_type", ",", "klass", ")", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "error", "typename", ")", "#NEWLINE#", "raise", "error", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 21], "repair_candidates": [5, 11, 13, 7, 16, 20, 25, 2, 21]}}
+{"prediction": {"error_location": 0.7249577641487122, "repair_targets": [0.970325767993927, 0.016859956085681915], "repair_candidates": [0.970325767993927, 0.001286823651753366, 0.011394387111067772, 1.988901749427896e-05, 1.6614275182291749e-06, 3.589413972804323e-05, 3.992802885477431e-05, 0.016859956085681915, 3.575229493435472e-05], "target_probs": 0.9871857166290283}}
+
+
+{"result": {"time": "2021-02-21 07:31:38.573228", "n_pass": [117, 24, 12], "n_token": 25, "loss": [0.40106400847435, 0.015303649939596653], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "#NEWLINE#", "xsi_type", ",", "klass", ")", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#UNINDENT#", "error", "typename", ")", "#NEWLINE#", "raise", "error", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 19], "repair_candidates": [5, 11, 13, 7, 16, 18, 23, 2, 19]}}
+{"prediction": {"error_location": 0.6696072220802307, "repair_targets": [0.9638411402702332, 0.020971722900867462], "repair_candidates": [0.9638411402702332, 0.0017769922269508243, 0.012813685461878777, 9.21942773857154e-05, 9.583775863575283e-06, 0.0002126806357409805, 0.00015067386266309768, 0.020971722900867462, 0.00013139564543962479], "target_probs": 0.98481285572052}}
+
+
+{"result": {"time": "2021-02-21 07:31:38.628997", "n_pass": [120, 25, 13], "n_token": 23, "loss": [0.6065537929534912, 0.04655956104397774], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "#NEWLINE#", "xsi_type", ",", "klass", ")", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#UNINDENT#", "error", "typename", ")", "error", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2, 19], "repair_candidates": [5, 11, 13, 7, 16, 18, 21, 2, 19]}}
+{"prediction": {"error_location": 0.5452265739440918, "repair_targets": [0.9231979846954346, 0.03130969777703285], "repair_candidates": [0.9231979846954346, 0.004496789071708918, 0.03654489666223526, 0.0002675839059520513, 6.338048115139827e-05, 0.0008051265613175929, 0.0014851713785901666, 0.03130969777703285, 0.0018294159090146422], "target_probs": 0.9545077085494995}}
+
+
+{"result": {"time": "2021-02-21 07:31:38.855905", "n_pass": [126, 29, 14], "n_token": 22, "loss": [0.6149952411651611, 0.12661662697792053], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "xsi_type", ",", "klass", ")", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#UNINDENT#", "error", "typename", ")", "error", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [2, 18], "repair_candidates": [4, 10, 12, 6, 15, 17, 20, 2, 18]}}
+{"prediction": {"error_location": 0.540643572807312, "repair_targets": [0.8662069439888, 0.014864454045891762], "repair_candidates": [0.8662069439888, 0.051586322486400604, 0.05806976929306984, 0.0021455136593431234, 0.00010160678357351571, 0.0025118582416325808, 0.002745242789387703, 0.014864454045891762, 0.0017683221958577633], "target_probs": 0.8810713887214661}}
+
+
+{"result": {"time": "2021-02-21 07:31:39.137693", "n_pass": [159, 34, 15], "n_token": 21, "loss": [0.764083981513977, 0.24966628849506378], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "xsi_type", ",", "klass", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#UNINDENT#", "error", "typename", ")", "error", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 17], "repair_candidates": [4, 9, 11, 6, 14, 16, 19, 2, 17]}}
+{"prediction": {"error_location": 0.4657604396343231, "repair_targets": [0.7526988983154297, 0.026361797004938126], "repair_candidates": [0.7526988983154297, 0.1445528119802475, 0.05957194045186043, 0.005096941255033016, 0.0011265428038313985, 0.0011910550529137254, 0.0058961473405361176, 0.026361797004938126, 0.003503838088363409], "target_probs": 0.7790607213973999}}
+
+
+{"result": {"time": "2021-02-21 07:31:39.531466", "n_pass": [171, 41, 16], "n_token": 20, "loss": [0.7170754671096802, 0.2904243767261505], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "xsi_type", ",", "klass", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#UNINDENT#", "error", "typename", "error", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 17], "repair_candidates": [4, 9, 11, 6, 14, 16, 18, 2, 17]}}
+{"prediction": {"error_location": 0.4881778061389923, "repair_targets": [0.7259644865989685, 0.02198157273232937], "repair_candidates": [0.7259644865989685, 0.13320139050483704, 0.03370802849531174, 0.0032716805581003428, 0.0005173319950699806, 0.00010399703751318157, 0.03390001878142357, 0.02198157273232937, 0.04735147953033447], "target_probs": 0.7479460835456848}}
+
+
+{"result": {"time": "2021-02-21 07:31:39.587286", "n_pass": [173, 42, 17], "n_token": 19, "loss": [0.5746574401855469, 0.14079205691814423], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "xsi_type", ",", "klass", "if", "(", "xsi_type", "in", "xsi_type", ")", "return", "klass", "#UNINDENT#", "error", "typename", "error"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 17], "repair_candidates": [4, 9, 11, 6, 14, 16, 18, 2, 17]}}
+{"prediction": {"error_location": 0.5628976821899414, "repair_targets": [0.8375962972640991, 0.031073641031980515], "repair_candidates": [0.8375962972640991, 0.02888478711247444, 0.0075455582700669765, 0.000997464288957417, 0.00015616898599546403, 1.5050334695843048e-05, 0.04698976129293442, 0.031073641031980515, 0.04674137383699417], "target_probs": 0.8686699271202087}}
+
+
+{"result": {"time": "2021-02-21 07:31:40.093427", "n_pass": [187, 51, 18], "n_token": 18, "loss": [0.5065418481826782, 0.05621708184480667], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "xsi_type", ",", "klass", "if", "(", "xsi_type", "in", "xsi_type", ")", "klass", "#UNINDENT#", "error", "typename", "error"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 16], "repair_candidates": [4, 9, 11, 6, 13, 15, 17, 2, 16]}}
+{"prediction": {"error_location": 0.6025757193565369, "repair_targets": [0.8717287182807922, 0.07360517978668213], "repair_candidates": [0.8717287182807922, 0.025714432820677757, 0.016827521845698357, 0.0001339481386821717, 4.530428122961894e-05, 0.0008416958735324442, 0.010994615033268929, 0.07360517978668213, 0.00010862069029826671], "target_probs": 0.9453338980674744}}
+
+
+{"result": {"time": "2021-02-21 07:31:40.149052", "n_pass": [189, 52, 19], "n_token": 17, "loss": [0.7192941308021545, 0.09380047023296356], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _lookup_unprefixed(", "typename", ":", "xsi_type", ",", "klass", "if", "(", "xsi_type", "in", "xsi_type", ")", "klass", "error", "typename", "error"]}}
+{"position": {"error_location": 11, "repair_targets": [2, 15], "repair_candidates": [4, 9, 11, 6, 13, 14, 16, 2, 15]}}
+{"prediction": {"error_location": 0.48709598183631897, "repair_targets": [0.9104596972465515, 4.694492417911533e-06], "repair_candidates": [0.9104596972465515, 0.02565474808216095, 0.020478399470448494, 0.00023783929646015167, 0.0003515442949719727, 0.03142104297876358, 0.011183273047208786, 4.694492417911533e-06, 0.00020867535204160959], "target_probs": 0.9104644060134888}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def _lookup_unprefixed(', 'typename', ':', 'xsi_type', ',', 'klass', 'if', '(', 'xsi_type', 'in', 'xsi_type', ')', 'klass', 'error', 'typename', 'error']

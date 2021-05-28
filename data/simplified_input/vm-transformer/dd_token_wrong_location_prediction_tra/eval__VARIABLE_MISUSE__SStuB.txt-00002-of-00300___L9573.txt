@@ -1,0 +1,103 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "issubclass", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", ".", "TestCase", ")", ")", ":", "#NEWLINE#", "#INDENT#", "return", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "Exception", ":", "#NEWLINE#", "#INDENT#", "return", "#NEWLINE#", "#UNINDENT#", "return", "UnitTestCase", "(", "name", ",", "parent", "=", "name", ")"], "error_location": [54], "repair_targets": [2], "repair_candidates": [2, 6, 20, 4, 50, 54], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "pytest-dev/pytest/_pytest/unittest.py", "license": "mit", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00002-of-00300", "js_count": 9573, "results": {"model": "transformer", "prob": {"loc": [[0.01305875089019537, 9.790920785235357e-07, 6.565440344274975e-06, 4.718228652222933e-08, 1.1401846222724998e-06, 5.319964913041986e-08, 4.891198841505684e-06, 2.5597820751954714e-08, 8.666670225920825e-08, 7.919478406392955e-08, 8.545326579678658e-08, 7.99847271082399e-07, 1.7563420442456845e-06, 3.616465278355463e-07, 2.7509415190252184e-07, 1.567747176522971e-07, 3.6246258332539583e-06, 1.6627158174742362e-06, 3.952687279706879e-07, 9.895823041006224e-07, 0.005417566280812025, 1.78629704805644e-06, 3.29799295286648e-05, 1.1478199724024307e-07, 8.954952335216149e-09, 1.2430875528934848e-07, 1.534418697701767e-05, 3.9942420698935166e-05, 4.7927193236319e-07, 6.086299322305422e-07, 1.5952079479575332e-07, 1.115456456091124e-07, 3.2547877708566375e-06, 2.9709872251260094e-07, 2.228124458270031e-07, 1.1488795053082868e-06, 2.7338552399669425e-07, 2.772702316633513e-07, 2.193492889546178e-07, 1.2073313655491802e-06, 7.421566010634706e-07, 1.6054267462095595e-06, 7.859988500058535e-07, 4.783258304996707e-07, 2.957933020297787e-06, 7.240228683258465e-07, 8.65004494698951e-07, 5.967810352558445e-07, 3.1438767678082513e-07, 3.099393097727443e-06, 0.5743306279182434, 6.01723854742886e-07, 4.8580947265008945e-08, 1.4200554687704425e-07, 0.40705713629722595, 5.270247243061021e-07]], "pointer": [[0.0, 0.0, 0.9348311424255371, 0.0, 0.0013513582525774837, 0.0, 0.053041763603687286, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.010769068263471127, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.4703990675334353e-06, 0.0, 0.0, 0.0, 4.188019374851137e-06, 0.0]], "target": [0.9348311424255371]}, "loss": [0.898801863193512, 0.0673893615603447], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [50]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 05:50:06.452664", "n_pass": [1, 1, 1], "n_token": 56, "loss": [0.5545502305030823, 0.0673893615603447], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "issubclass", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", ".", "TestCase", ")", ")", ":", "#NEWLINE#", "#INDENT#", "return", "#NEWLINE#", "#UNINDENT#", "#UNINDENT#", "except", "Exception", ":", "#NEWLINE#", "#INDENT#", "return", "#NEWLINE#", "#UNINDENT#", "return", "UnitTestCase", "(", "name", ",", "parent", "=", "name", ")"]}}
+{"position": {"error_location": 50, "repair_targets": [2], "repair_candidates": [2, 6, 20, 4, 50, 54]}}
+{"prediction": {"error_location": 0.5743306279182434, "repair_targets": [0.9348311424255371], "repair_candidates": [0.9348311424255371, 0.0013513582525774837, 0.053041763603687286, 0.010769068263471127, 2.4703990675334353e-06, 4.188019374851137e-06], "target_probs": 0.9348311424255371}}
+
+
+{"result": {"time": "2021-02-21 05:50:06.508605", "n_pass": [10, 2, 2], "n_token": 42, "loss": [0.5240134596824646, 0.1104789525270462], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "issubclass", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", "#NEWLINE#", "#INDENT#", "return", "#NEWLINE#", "#UNINDENT#", "return", "UnitTestCase", "(", "name", ",", "parent", "=", "name", ")"]}}
+{"position": {"error_location": 36, "repair_targets": [2], "repair_candidates": [2, 6, 20, 4, 36, 40]}}
+{"prediction": {"error_location": 0.5921392440795898, "repair_targets": [0.8954051733016968], "repair_candidates": [0.8954051733016968, 0.0011865441920235753, 0.07818840444087982, 0.025206660851836205, 6.942992058611708e-06, 6.2123267525748815e-06], "target_probs": 0.8954051733016968}}
+
+
+{"result": {"time": "2021-02-21 05:50:06.564118", "n_pass": [19, 3, 3], "n_token": 35, "loss": [0.715198814868927, 0.06698061525821686], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "issubclass", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", "(", "name", ",", "parent", "=", "name", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [2], "repair_candidates": [2, 6, 20, 4, 29, 33]}}
+{"prediction": {"error_location": 0.4890948235988617, "repair_targets": [0.9352133274078369], "repair_candidates": [0.9352133274078369, 0.003856640076264739, 0.052696630358695984, 0.008198941126465797, 7.303238817257807e-06, 2.7215164664085023e-05], "target_probs": 0.9352133274078369}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.009900", "n_pass": [66, 11, 4], "n_token": 33, "loss": [0.6078250408172607, 0.060780104249715805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", ")", ":", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "issubclass", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", "(", "name", ",", "name", ")"]}}
+{"position": {"error_location": 29, "repair_targets": [2], "repair_candidates": [2, 6, 20, 4, 29, 31]}}
+{"prediction": {"error_location": 0.5445339679718018, "repair_targets": [0.9410301446914673], "repair_candidates": [0.9410301446914673, 0.0037245287094265223, 0.04806949943304062, 0.007173324003815651, 1.3180907671994646e-06, 1.1815097877843073e-06], "target_probs": 0.9410301446914673}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.233239", "n_pass": [73, 15, 5], "n_token": 31, "loss": [0.5399515628814697, 0.030207518488168716], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "#NEWLINE#", "#INDENT#", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "issubclass", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", "(", "name", ",", "name", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [2], "repair_candidates": [2, 6, 18, 4, 27, 29]}}
+{"prediction": {"error_location": 0.5827763676643372, "repair_targets": [0.9702441692352295], "repair_candidates": [0.9702441692352295, 0.006396926939487457, 0.016281144693493843, 0.007072458975017071, 3.932029812858673e-06, 1.2738203167828033e-06], "target_probs": 0.9702441692352295}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.288568", "n_pass": [74, 16, 6], "n_token": 29, "loss": [0.3821934759616852, 0.0367262028157711], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "try", ":", "#NEWLINE#", "#INDENT#", "if", "(", "not", "issubclass", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", "(", "name", ",", "name", ")"]}}
+{"position": {"error_location": 25, "repair_targets": [2], "repair_candidates": [2, 6, 16, 4, 25, 27]}}
+{"prediction": {"error_location": 0.6823630332946777, "repair_targets": [0.9639400243759155], "repair_candidates": [0.9639400243759155, 0.0014189911307767034, 0.029540596529841423, 0.005099655594676733, 5.767112156718213e-07, 2.0048113924531208e-07], "target_probs": 0.9639400243759155}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.343879", "n_pass": [75, 17, 7], "n_token": 27, "loss": [0.5976998805999756, 0.03338777646422386], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "#NEWLINE#", "#INDENT#", "if", "(", "not", "issubclass", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", "(", "name", ",", "name", ")"]}}
+{"position": {"error_location": 23, "repair_targets": [2], "repair_candidates": [2, 6, 14, 4, 23, 25]}}
+{"prediction": {"error_location": 0.5500754117965698, "repair_targets": [0.9671634435653687], "repair_candidates": [0.9671634435653687, 0.0035949728917330503, 0.020404411479830742, 0.008833694271743298, 2.8640965865633916e-06, 6.101701615079946e-07], "target_probs": 0.9671634435653687}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.399103", "n_pass": [76, 18, 8], "n_token": 25, "loss": [0.674261748790741, 0.09722556918859482], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "if", "(", "not", "issubclass", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", "(", "name", ",", "name", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [2], "repair_candidates": [2, 6, 12, 4, 21, 23]}}
+{"prediction": {"error_location": 0.5095323920249939, "repair_targets": [0.9073513150215149], "repair_candidates": [0.9073513150215149, 0.0007194217178039253, 0.08724270761013031, 0.004685455467551947, 8.597987743996782e-07, 1.961689264362576e-07], "target_probs": 0.9073513150215149}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.457224", "n_pass": [77, 19, 9], "n_token": 23, "loss": [0.37711450457572937, 0.00864939484745264], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "not", "issubclass", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", "(", "name", ",", "name", ")"]}}
+{"position": {"error_location": 19, "repair_targets": [2], "repair_candidates": [2, 6, 10, 4, 19, 21]}}
+{"prediction": {"error_location": 0.6858375668525696, "repair_targets": [0.9913879036903381], "repair_candidates": [0.9913879036903381, 0.00019829240045510232, 0.007850518450140953, 0.0005626364727504551, 3.983902843174292e-07, 2.2110663167040912e-07], "target_probs": 0.9913879036903381}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.512588", "n_pass": [78, 20, 10], "n_token": 21, "loss": [0.4149147868156433, 0.011141927912831306], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "(", "obj", ",", "sys", ".", "modules", "[", "'unittest'", "]", "(", "name", ",", "name", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [2], "repair_candidates": [2, 6, 8, 4, 17, 19]}}
+{"prediction": {"error_location": 0.6603966355323792, "repair_targets": [0.9889199137687683], "repair_candidates": [0.9889199137687683, 8.624203474028036e-05, 0.001969239441677928, 0.009024132043123245, 3.0442299703281606e-07, 1.647773473223424e-07], "target_probs": 0.9889199137687683}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.568041", "n_pass": [80, 21, 11], "n_token": 19, "loss": [0.22501015663146973, 0.013933422043919563], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "(", "obj", ".", "modules", "[", "'unittest'", "]", "(", "name", ",", "name", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [2], "repair_candidates": [2, 6, 8, 4, 15, 17]}}
+{"prediction": {"error_location": 0.7985081672668457, "repair_targets": [0.9861631989479065], "repair_candidates": [0.9861631989479065, 7.80809477873845e-06, 0.012671343982219696, 0.0011575141688808799, 9.158942049225516e-08, 3.637655510146942e-08], "target_probs": 0.9861631989479065}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.623077", "n_pass": [81, 22, 12], "n_token": 17, "loss": [0.23757304251194, 0.0009291911264881492], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "(", "obj", "[", "'unittest'", "]", "(", "name", ",", "name", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [2, 6, 8, 4, 13, 15]}}
+{"prediction": {"error_location": 0.7885392904281616, "repair_targets": [0.9990712404251099], "repair_candidates": [0.9990712404251099, 1.8711862139753066e-05, 0.0003029527433682233, 0.0006068471120670438, 9.856349691972355e-08, 5.1585370641760164e-08], "target_probs": 0.9990712404251099}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.678681", "n_pass": [82, 23, 13], "n_token": 15, "loss": [0.11001568287611008, 0.004496835172176361], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "(", "obj", "]", "(", "name", ",", "name", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [2, 6, 8, 4, 11, 13]}}
+{"prediction": {"error_location": 0.8958202004432678, "repair_targets": [0.9955132603645325], "repair_candidates": [0.9955132603645325, 0.000243493021116592, 6.466422928497195e-05, 0.004178278613835573, 1.56429678099812e-07, 5.0420833730413506e-08], "target_probs": 0.9955132603645325}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.733999", "n_pass": [83, 24, 14], "n_token": 13, "loss": [0.07094980031251907, 0.10506673157215118], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "(", "obj", "name", ",", "name", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [2, 6, 8, 4, 9, 11]}}
+{"prediction": {"error_location": 0.9315086603164673, "repair_targets": [0.9002644419670105], "repair_candidates": [0.9002644419670105, 0.09468717128038406, 0.0034467587247490883, 0.001596991322003305, 3.2981242839014158e-06, 1.3824860616296064e-06], "target_probs": 0.9002644419670105}}
+
+
+{"result": {"time": "2021-02-21 05:50:07.957193", "n_pass": [101, 28, 15], "n_token": 12, "loss": [0.6031150221824646, 0.10338203608989716], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def pytest_pycollect_makeitem(", "collector", ",", "name", ",", "obj", "(", "obj", "name", "name", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [2, 6, 8, 4, 9, 10]}}
+{"prediction": {"error_location": 0.5471047759056091, "repair_targets": [0.9017823934555054], "repair_candidates": [0.9017823934555054, 0.08016857504844666, 0.017553206533193588, 0.0004655235097743571, 1.6264195437543094e-05, 1.4031956197868567e-05], "target_probs": 0.9017823934555054}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def pytest_pycollect_makeitem(', 'collector', ',', 'name', ',', 'obj', '(', 'obj', 'name', 'name', ')']

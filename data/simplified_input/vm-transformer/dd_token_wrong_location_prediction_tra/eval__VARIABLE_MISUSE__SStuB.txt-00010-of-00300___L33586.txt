@@ -1,0 +1,85 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def test_idst_complex(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "y", "=", "idst", "(", "(", "np", ".", "arange", "(", "5", ")", "*", "1j", ")", ")", "#NEWLINE#", "x", "=", "(", "1j", "*", "idst", "(", "np", ".", "arange", "(", "5", ")", ")", ")", "#NEWLINE#", "assert_array_almost_equal", "(", "x", ",", "x", ")"], "error_location": [43], "repair_targets": [7], "repair_candidates": [7, 23, 41, 43, 2], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "scipy/scipy/scipy/fftpack/tests/test_real_transforms.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00010-of-00300", "js_count": 33586, "results": {"model": "transformer", "prob": {"loc": [[2.9283377443789504e-05, 3.823098282396131e-09, 1.505747526664436e-08, 1.1825769530293684e-10, 2.0011572954281576e-10, 1.3490701611384992e-10, 7.67898938880407e-11, 2.1767544211570566e-08, 1.347496281223215e-10, 4.000711220641939e-11, 8.833962034104914e-11, 9.103054421366608e-11, 4.859678284785396e-11, 5.500091701526877e-11, 3.315306796453088e-12, 1.2753580136415366e-10, 1.065900923080676e-09, 9.553594026989742e-11, 6.611589054017486e-11, 3.3226994489155004e-09, 8.651130367631765e-10, 2.7931024160210427e-10, 1.383152897771467e-10, 4.1212238954813074e-08, 1.0749598988724074e-09, 3.37346683920714e-09, 1.5190600777259533e-08, 1.8311020477668194e-09, 4.479877024898826e-10, 7.661509759948615e-10, 2.0167677250437777e-10, 3.7511108108567726e-10, 1.3895248666961901e-11, 5.424077631488444e-09, 3.034583073713293e-08, 1.8478975016833488e-09, 1.3673575605110955e-09, 1.002112171022418e-09, 5.939788105813193e-10, 2.1140905692718093e-10, 3.371657675277362e-10, 0.7912864685058594, 2.8023141585009625e-09, 0.20868417620658875, 1.3536536336289373e-09]], "pointer": [[0.0, 0.0, 7.610673833369219e-07, 0.0, 0.0, 0.0, 0.0, 0.9999990463256836, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.0346959672679077e-07, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.149578565673437e-08, 0.0, 6.783633210716289e-09, 0.0]], "target": [0.9999990463256836]}, "loss": [1.566933274269104, 9.536747711536009e-07], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [41]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:49:14.981083", "n_pass": [1, 1, 1], "n_token": 45, "loss": [0.2340952455997467, 9.536747711536009e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_idst_complex(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "y", "=", "idst", "(", "(", "np", ".", "arange", "(", "5", ")", "*", "1j", ")", ")", "#NEWLINE#", "x", "=", "(", "1j", "*", "idst", "(", "np", ".", "arange", "(", "5", ")", ")", ")", "#NEWLINE#", "assert_array_almost_equal", "(", "x", ",", "x", ")"]}}
+{"position": {"error_location": 41, "repair_targets": [7], "repair_candidates": [7, 23, 41, 43, 2]}}
+{"prediction": {"error_location": 0.7912864685058594, "repair_targets": [0.9999990463256836], "repair_candidates": [7.610673833369219e-07, 0.9999990463256836, 2.0346959672679077e-07, 1.149578565673437e-08, 6.783633210716289e-09], "target_probs": 0.9999990463256836}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.037679", "n_pass": [9, 2, 2], "n_token": 34, "loss": [0.16970409452915192, 1.4305124977909145e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_idst_complex(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "y", "=", "idst", "(", "#NEWLINE#", "x", "=", "(", "1j", "*", "idst", "(", "np", ".", "arange", "(", "5", ")", ")", ")", "#NEWLINE#", "assert_array_almost_equal", "(", "x", ",", "x", ")"]}}
+{"position": {"error_location": 30, "repair_targets": [7], "repair_candidates": [7, 12, 30, 32, 2]}}
+{"prediction": {"error_location": 0.8439143896102905, "repair_targets": [0.9999985694885254], "repair_candidates": [1.4502553540296503e-06, 0.9999985694885254, 3.149439820049338e-08, 1.3064463955103633e-09, 1.0182147347492787e-09], "target_probs": 0.9999985694885254}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.093594", "n_pass": [19, 3, 3], "n_token": 28, "loss": [0.14597782492637634, 5.960466182841628e-07], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_idst_complex(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "y", "=", "idst", "(", "#NEWLINE#", "x", "=", "(", "1j", "(", "5", ")", ")", ")", "#NEWLINE#", "assert_array_almost_equal", "(", "x", ",", "x", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [7], "repair_candidates": [7, 12, 24, 26, 2]}}
+{"prediction": {"error_location": 0.8641769289970398, "repair_targets": [0.9999994039535522], "repair_candidates": [5.63441801659792e-07, 0.9999994039535522, 5.5542134447250646e-08, 1.2724017395271403e-09, 7.719848094112081e-10], "target_probs": 0.9999994039535522}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.153581", "n_pass": [20, 4, 4], "n_token": 22, "loss": [0.15629370510578156, 1.3113030945532955e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def test_idst_complex(", "self", ")", ":", "#NEWLINE#", "#INDENT#", "y", "=", "idst", "(", "#NEWLINE#", "x", "=", "(", "1j", "assert_array_almost_equal", "(", "x", ",", "x", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [7], "repair_candidates": [7, 12, 18, 20, 2]}}
+{"prediction": {"error_location": 0.855307936668396, "repair_targets": [0.9999986886978149], "repair_candidates": [1.3155053011359996e-06, 0.9999986886978149, 5.64027358151975e-09, 2.2935642718380223e-08, 5.213734777242962e-09], "target_probs": 0.9999986886978149}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.209993", "n_pass": [35, 5, 5], "n_token": 20, "loss": [0.180435910820961, 5.364432581700385e-06], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", ":", "#NEWLINE#", "#INDENT#", "y", "=", "idst", "(", "#NEWLINE#", "x", "=", "(", "1j", "assert_array_almost_equal", "(", "x", ",", "x", ")"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [5, 10, 16, 18, 0]}}
+{"prediction": {"error_location": 0.8349061012268066, "repair_targets": [0.9999946355819702], "repair_candidates": [5.294583388604224e-06, 0.9999946355819702, 1.1386923404188565e-07, 2.8372932447950916e-08, 2.541194810135039e-08], "target_probs": 0.9999946355819702}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.266399", "n_pass": [37, 6, 6], "n_token": 17, "loss": [0.28254204988479614, 3.659792128019035e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "y", "=", "idst", "(", "#NEWLINE#", "x", "=", "(", "1j", "assert_array_almost_equal", "(", "x", ",", "x", ")"]}}
+{"position": {"error_location": 13, "repair_targets": [2], "repair_candidates": [2, 7, 13, 15, 0]}}
+{"prediction": {"error_location": 0.7538650035858154, "repair_targets": [0.9999634027481079], "repair_candidates": [3.385173113201745e-05, 0.9999634027481079, 2.4339774427062366e-06, 1.3089895389839512e-07, 1.766567265804042e-07], "target_probs": 0.9999634027481079}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.377247", "n_pass": [57, 8, 7], "n_token": 16, "loss": [0.44415998458862305, 0.00011122845171485096], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "y", "idst", "(", "#NEWLINE#", "x", "=", "(", "1j", "assert_array_almost_equal", "(", "x", ",", "x", ")"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [2, 6, 12, 14, 0]}}
+{"prediction": {"error_location": 0.6413627862930298, "repair_targets": [0.9998887777328491], "repair_candidates": [0.00010057751933345571, 0.9998887777328491, 9.881598998617847e-06, 3.9137867702265794e-07, 3.7049477441541967e-07], "target_probs": 0.9998887777328491}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.432921", "n_pass": [58, 9, 8], "n_token": 15, "loss": [0.5206174254417419, 0.001081335823982954], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "y", "(", "#NEWLINE#", "x", "=", "(", "1j", "assert_array_almost_equal", "(", "x", ",", "x", ")"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [2, 5, 11, 13, 0]}}
+{"prediction": {"error_location": 0.5941535830497742, "repair_targets": [0.9989192485809326], "repair_candidates": [8.637383143650368e-05, 0.9989192485809326, 0.00099433702416718, 9.14075997116015e-08, 4.4993665682113715e-08], "target_probs": 0.9989192485809326}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.491548", "n_pass": [59, 10, 9], "n_token": 14, "loss": [0.26206305623054504, 0.010377482511103153], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "y", "#NEWLINE#", "x", "=", "(", "1j", "assert_array_almost_equal", "(", "x", ",", "x", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [2, 4, 10, 12, 0]}}
+{"prediction": {"error_location": 0.7694625854492188, "repair_targets": [0.9896761775016785], "repair_candidates": [0.000865782261826098, 0.9896761775016785, 0.009457975625991821, 5.523085988556886e-08, 4.403404929576027e-08], "target_probs": 0.9896761775016785}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.547443", "n_pass": [60, 11, 10], "n_token": 13, "loss": [0.2544410824775696, 0.006541980896145105], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "y", "x", "=", "(", "1j", "assert_array_almost_equal", "(", "x", ",", "x", ")"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [2, 3, 9, 11, 0]}}
+{"prediction": {"error_location": 0.7753497362136841, "repair_targets": [0.9934793710708618], "repair_candidates": [0.0011483074631541967, 0.9934793710708618, 0.005370900500565767, 6.494074114016257e-07, 7.455041668436024e-07], "target_probs": 0.9934793710708618}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.659287", "n_pass": [63, 13, 11], "n_token": 11, "loss": [0.15567216277122498, 0.05616752430796623], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "y", "x", "=", "(", "1j", "x", ",", "x", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [2, 3, 7, 9, 0]}}
+{"prediction": {"error_location": 0.855839729309082, "repair_targets": [0.9453807473182678], "repair_candidates": [0.006192217115312815, 0.9453807473182678, 0.0408417284488678, 0.003943998832255602, 0.003641341347247362], "target_probs": 0.9453807473182678}}
+
+
+{"result": {"time": "2021-02-21 06:49:15.829404", "n_pass": [80, 16, 12], "n_token": 10, "loss": [0.7597354650497437, 0.07493709772825241], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ")", "y", "x", "=", "(", "1j", "x", "x", ")"]}}
+{"position": {"error_location": 7, "repair_targets": [2], "repair_candidates": [2, 3, 7, 8, 0]}}
+{"prediction": {"error_location": 0.4677901864051819, "repair_targets": [0.9278018474578857], "repair_candidates": [0.02047819085419178, 0.9278018474578857, 0.048483237624168396, 0.0016780535224825144, 0.0015587258385494351], "target_probs": 0.9278018474578857}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', ')', 'y', 'x', '=', '(', '1j', 'x', 'x', ')']

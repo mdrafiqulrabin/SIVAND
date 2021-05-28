@@ -1,0 +1,163 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def InitPaths(", "self", ",", "Args", ")", ":", "#NEWLINE#", "#INDENT#", "MandatoryPaths", "=", "self", ".", "config", ".", "GetAsList", "(", "[", "'TOOL_SET_DIR'", ",", "'_PDF_TEMPLATE'", ",", "'_WORD_TEMPLATE'", ",", "'_EMAIL_TARGET'", "]", ")", "#NEWLINE#", "if", "(", "(", "not", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", ")", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler", ".", "FrameworkAbort", "(", "'USER ERROR: Some mandatory paths were not found your filesystem'", ",", "'user'", ")", "#NEWLINE#", "return", "False", "#NEWLINE#", "#UNINDENT#", "return", "True"], "error_location": [34], "repair_targets": [9], "repair_candidates": [2, 11, 42, 54, 9, 4, 34, 46], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "owtf/owtf/framework/wrappers/set/spear_phishing.py", "license": "bsd-3-clause", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00004-of-00300", "js_count": 15989, "results": {"model": "transformer", "prob": {"loc": [[0.07393819838762283, 1.7067426369976602e-06, 7.64775847983401e-07, 6.789078810243154e-08, 2.5386808033545094e-07, 6.055944368199562e-08, 8.316234101357622e-08, 4.1513953163985207e-08, 3.4807221993560233e-08, 2.1203475171205355e-06, 3.4873090726250666e-07, 4.1830350028249086e-07, 3.193645525811917e-08, 9.902268338635167e-09, 6.373493022238108e-08, 2.153197797838402e-08, 2.3058238696194167e-07, 6.451855733757839e-05, 1.0201300028711557e-05, 2.399629920546431e-06, 2.1218122583377408e-06, 1.2421152177921613e-06, 8.643488058623916e-07, 2.937485419352015e-07, 3.1011182954898686e-07, 1.7435806398680143e-07, 3.560854793249746e-07, 1.501194560660224e-06, 4.829798126593232e-05, 7.11684862153561e-08, 5.951160801487276e-06, 1.476280431234045e-05, 1.7653738382250594e-07, 1.7438475197195658e-06, 0.13376878201961517, 2.114992639690172e-05, 1.4862650459690485e-05, 7.883284069976071e-08, 6.256093456613598e-06, 2.2508784240926616e-05, 1.7250110886379844e-06, 8.274081437775749e-07, 0.0037938093300908804, 5.516328087651345e-07, 1.0505910097435844e-07, 6.410156743186235e-07, 0.7843477725982666, 0.00011292311683064327, 2.118339398293756e-05, 1.669763878453523e-05, 7.890521374065429e-06, 1.945230906130746e-05, 8.26599443826126e-06, 4.666938366426621e-06, 0.0010820756433531642, 1.2556822639453458e-06, 1.528242279391634e-07, 4.5428141675074585e-06, 4.293366146157496e-06, 0.00022903677017893642, 0.0005230006645433605, 6.894201214890927e-05, 0.00016540534852538258, 4.035158417536877e-05, 2.3459701878891792e-06, 6.1637902035727166e-06, 5.494266588357277e-05, 1.6386837842219393e-06, 1.6989363302855054e-06, 9.687492820376065e-06, 0.001534877228550613]], "pointer": [[0.0, 0.0, 0.00014856571215204895, 0.0, 0.00020369116100482643, 0.0, 0.0, 0.0, 0.0, 0.9991063475608826, 0.0, 4.9273665354121476e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00021491209918167442, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00020236795535311103, 0.0, 0.0, 0.0, 5.1527666073525324e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2.327778383914847e-05, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.9991063475608826]}, "loss": [2.0116424560546875, 0.0008940519765019417], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [46]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 06:02:55.543155", "n_pass": [1, 1, 1], "n_token": 71, "loss": [0.24290277063846588, 0.0008940519765019417], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def InitPaths(", "self", ",", "Args", ")", ":", "#NEWLINE#", "#INDENT#", "MandatoryPaths", "=", "self", ".", "config", ".", "GetAsList", "(", "[", "'TOOL_SET_DIR'", ",", "'_PDF_TEMPLATE'", ",", "'_WORD_TEMPLATE'", ",", "'_EMAIL_TARGET'", "]", ")", "#NEWLINE#", "if", "(", "(", "not", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", ")", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler", ".", "FrameworkAbort", "(", "'USER ERROR: Some mandatory paths were not found your filesystem'", ",", "'user'", ")", "#NEWLINE#", "return", "False", "#NEWLINE#", "#UNINDENT#", "return", "True"]}}
+{"position": {"error_location": 46, "repair_targets": [9], "repair_candidates": [2, 11, 42, 54, 9, 4, 34, 46]}}
+{"prediction": {"error_location": 0.7843477725982666, "repair_targets": [0.9991063475608826], "repair_candidates": [0.00014856571215204895, 0.00020369116100482643, 0.9991063475608826, 4.9273665354121476e-05, 0.00021491209918167442, 0.00020236795535311103, 5.1527666073525324e-05, 2.327778383914847e-05], "target_probs": 0.9991063475608826}}
+
+
+{"result": {"time": "2021-02-21 06:02:55.659808", "n_pass": [27, 3, 2], "n_token": 62, "loss": [0.18121184408664703, 0.0002896609075833112], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def InitPaths(", "self", ",", "Args", ")", ":", "#NEWLINE#", "#INDENT#", "MandatoryPaths", "=", "self", ".", "config", ".", "GetAsList", "(", "[", "'TOOL_SET_DIR'", ",", "'_PDF_TEMPLATE'", ",", "'_WORD_TEMPLATE'", ",", "'_EMAIL_TARGET'", "]", ")", "#NEWLINE#", "if", "(", "(", "not", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", ")", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler", ".", "FrameworkAbort", "(", "'USER ERROR: Some mandatory paths were not found your filesystem'", ","]}}
+{"position": {"error_location": 46, "repair_targets": [9], "repair_candidates": [2, 11, 42, 54, 9, 4, 34, 46]}}
+{"prediction": {"error_location": 0.8342585563659668, "repair_targets": [0.9997103810310364], "repair_candidates": [4.814967542188242e-05, 8.099946717265993e-05, 0.9997103810310364, 1.8044560420094058e-05, 5.61561573704239e-05, 6.396290700649843e-05, 1.684378003119491e-05, 5.4653455663356e-06], "target_probs": 0.9997103810310364}}
+
+
+{"result": {"time": "2021-02-21 06:02:55.773021", "n_pass": [51, 5, 3], "n_token": 58, "loss": [0.19220954179763794, 0.0006117307348176837], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def InitPaths(", "self", ",", "Args", ")", ":", "#NEWLINE#", "#INDENT#", "MandatoryPaths", "=", "self", "(", "[", "'TOOL_SET_DIR'", ",", "'_PDF_TEMPLATE'", ",", "'_WORD_TEMPLATE'", ",", "'_EMAIL_TARGET'", "]", ")", "#NEWLINE#", "if", "(", "(", "not", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", ")", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler", ".", "FrameworkAbort", "(", "'USER ERROR: Some mandatory paths were not found your filesystem'", ","]}}
+{"position": {"error_location": 42, "repair_targets": [9], "repair_candidates": [2, 11, 38, 50, 9, 4, 30, 42]}}
+{"prediction": {"error_location": 0.8251339793205261, "repair_targets": [0.9993884563446045], "repair_candidates": [7.297393312910572e-05, 0.00012360162509139627, 0.9993884563446045, 3.1830615625949576e-05, 0.0002167979400837794, 0.00011656921560643241, 3.9189042581710964e-05, 1.0612243386276532e-05], "target_probs": 0.9993884563446045}}
+
+
+{"result": {"time": "2021-02-21 06:02:55.885837", "n_pass": [53, 7, 4], "n_token": 54, "loss": [0.480593740940094, 0.0003553068090695888], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def InitPaths(", "self", ",", "Args", ")", ":", "#NEWLINE#", "#INDENT#", "MandatoryPaths", "=", "self", "(", "[", "'TOOL_SET_DIR'", ",", "'_EMAIL_TARGET'", "]", ")", "#NEWLINE#", "if", "(", "(", "not", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", ")", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler", ".", "FrameworkAbort", "(", "'USER ERROR: Some mandatory paths were not found your filesystem'", ","]}}
+{"position": {"error_location": 38, "repair_targets": [9], "repair_candidates": [2, 11, 34, 46, 9, 4, 26, 38]}}
+{"prediction": {"error_location": 0.6184161305427551, "repair_targets": [0.9996447563171387], "repair_candidates": [7.489591371268034e-05, 8.682165207574144e-05, 0.9996447563171387, 2.801355549308937e-05, 8.187264756998047e-05, 5.383613824960776e-05, 2.302059147041291e-05, 6.804866643506102e-06], "target_probs": 0.9996447563171387}}
+
+
+{"result": {"time": "2021-02-21 06:02:55.942329", "n_pass": [54, 8, 5], "n_token": 50, "loss": [0.21436326205730438, 0.0017846644623205066], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def InitPaths(", "self", ",", "Args", ")", ":", "#NEWLINE#", "#INDENT#", "MandatoryPaths", "=", "self", "(", "[", "'TOOL_SET_DIR'", ",", "if", "(", "(", "not", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", ")", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler", ".", "FrameworkAbort", "(", "'USER ERROR: Some mandatory paths were not found your filesystem'", ","]}}
+{"position": {"error_location": 34, "repair_targets": [9], "repair_candidates": [2, 11, 30, 42, 9, 4, 22, 34]}}
+{"prediction": {"error_location": 0.8070551753044128, "repair_targets": [0.9982169270515442], "repair_candidates": [0.00023794229491613805, 0.00038348929956555367, 0.9982169270515442, 9.753312770044431e-05, 0.0006963119958527386, 0.0002669942914508283, 7.862556958571076e-05, 2.218861300207209e-05], "target_probs": 0.9982169270515442}}
+
+
+{"result": {"time": "2021-02-21 06:02:56.001461", "n_pass": [55, 9, 6], "n_token": 46, "loss": [0.39739617705345154, 0.0012971226824447513], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def InitPaths(", "self", ",", "Args", ")", ":", "#NEWLINE#", "#INDENT#", "MandatoryPaths", "=", "self", "(", "[", "'TOOL_SET_DIR'", ",", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", ")", ")", ")", ")", ":", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler", ".", "FrameworkAbort", "(", "'USER ERROR: Some mandatory paths were not found your filesystem'", ","]}}
+{"position": {"error_location": 30, "repair_targets": [9], "repair_candidates": [2, 11, 26, 38, 9, 4, 18, 30]}}
+{"prediction": {"error_location": 0.6720677614212036, "repair_targets": [0.9987037181854248], "repair_candidates": [0.00055661954684183, 0.00026002046070061624, 0.9987037181854248, 6.795994704589248e-05, 6.404277519322932e-05, 0.00031220013624988496, 1.594981222297065e-05, 1.9530343706719577e-05], "target_probs": 0.9987037181854248}}
+
+
+{"result": {"time": "2021-02-21 06:02:56.113959", "n_pass": [59, 11, 7], "n_token": 41, "loss": [0.03433988615870476, 0.00014174988609738648], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def InitPaths(", "self", ",", "Args", ")", ":", "#NEWLINE#", "#INDENT#", "MandatoryPaths", "=", "self", "(", "[", "'TOOL_SET_DIR'", ",", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler", ".", "FrameworkAbort", "(", "'USER ERROR: Some mandatory paths were not found your filesystem'", ","]}}
+{"position": {"error_location": 30, "repair_targets": [9], "repair_candidates": [2, 11, 26, 33, 9, 4, 18, 30]}}
+{"prediction": {"error_location": 0.9662431478500366, "repair_targets": [0.9998582601547241], "repair_candidates": [4.9340804253006354e-05, 4.5163771574152634e-05, 0.9998582601547241, 5.84515828450094e-06, 2.398930746494443e-06, 3.5845157981384546e-05, 2.2806514152762247e-06, 8.265110409411136e-07], "target_probs": 0.9998582601547241}}
+
+
+{"result": {"time": "2021-02-21 06:02:56.170300", "n_pass": [61, 12, 8], "n_token": 36, "loss": [0.07126356661319733, 0.00010765178012661636], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def InitPaths(", "self", ",", "Args", ")", ":", "#NEWLINE#", "#INDENT#", "MandatoryPaths", "=", "self", "(", "[", "'TOOL_SET_DIR'", ",", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 30, "repair_targets": [9], "repair_candidates": [2, 11, 26, 33, 9, 4, 18, 30]}}
+{"prediction": {"error_location": 0.9312164187431335, "repair_targets": [0.9998923540115356], "repair_candidates": [3.942297553294338e-05, 3.426480179768987e-05, 0.9998923540115356, 4.537736003840109e-06, 1.8120925915354746e-06, 2.4200693587772548e-05, 2.4829175799823133e-06, 8.947218930188683e-07], "target_probs": 0.9998923540115356}}
+
+
+{"result": {"time": "2021-02-21 06:02:56.341341", "n_pass": [86, 15, 9], "n_token": 34, "loss": [0.01363864541053772, 0.00010121380910277367], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Args", ")", ":", "#NEWLINE#", "#INDENT#", "MandatoryPaths", "=", "self", "(", "[", "'TOOL_SET_DIR'", ",", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 28, "repair_targets": [7], "repair_candidates": [0, 9, 24, 31, 7, 2, 16, 28]}}
+{"prediction": {"error_location": 0.9864539504051208, "repair_targets": [0.9998987913131714], "repair_candidates": [7.106983684934676e-05, 6.345492238324368e-06, 0.9998987913131714, 1.8570604879641905e-05, 1.537080265734403e-06, 3.474463710517739e-06, 1.9779601245772938e-07, 8.038001197974154e-08], "target_probs": 0.9998987913131714}}
+
+
+{"result": {"time": "2021-02-21 06:02:56.397640", "n_pass": [88, 16, 10], "n_token": 32, "loss": [0.03132036328315735, 8.798032649792731e-05], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Args", ")", "#INDENT#", "MandatoryPaths", "=", "self", "(", "[", "'TOOL_SET_DIR'", ",", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 26, "repair_targets": [5], "repair_candidates": [0, 7, 22, 29, 5, 2, 14, 26]}}
+{"prediction": {"error_location": 0.969165027141571, "repair_targets": [0.9999120235443115], "repair_candidates": [5.093746949569322e-05, 9.487423085374758e-06, 0.9999120235443115, 2.4122018658090383e-05, 1.0460533985678921e-06, 2.0455688627407653e-06, 2.1970595298625994e-07, 8.336353829463405e-08], "target_probs": 0.9999120235443115}}
+
+
+{"result": {"time": "2021-02-21 06:02:56.453444", "n_pass": [91, 17, 11], "n_token": 30, "loss": [0.251783549785614, 0.000586681766435504], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Args", ")", "#INDENT#", "MandatoryPaths", "=", "self", "'TOOL_SET_DIR'", ",", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 24, "repair_targets": [5], "repair_candidates": [0, 7, 20, 27, 5, 2, 12, 24]}}
+{"prediction": {"error_location": 0.777413010597229, "repair_targets": [0.9994134902954102], "repair_candidates": [0.00018681635265238583, 0.00033753307070583105, 0.9994134902954102, 3.005204962391872e-05, 2.8129215934313834e-05, 1.7506641825093539e-06, 2.0401507754286285e-06, 3.01712788086661e-07], "target_probs": 0.9994134902954102}}
+
+
+{"result": {"time": "2021-02-21 06:02:56.509814", "n_pass": [92, 18, 12], "n_token": 28, "loss": [0.5783504247665405, 0.0005378380883485079], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Args", ")", "#INDENT#", "MandatoryPaths", "=", "self", "PathsExist", "(", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 22, "repair_targets": [5], "repair_candidates": [0, 7, 18, 25, 5, 2, 10, 22]}}
+{"prediction": {"error_location": 0.5608227849006653, "repair_targets": [0.9994623064994812], "repair_candidates": [0.00031942062196321785, 0.0001241381251020357, 0.9994623064994812, 5.3482712246477604e-05, 1.758206417434849e-05, 1.9402194084250368e-05, 2.6775373953569215e-06, 9.241195471076935e-07], "target_probs": 0.9994623064994812}}
+
+
+{"result": {"time": "2021-02-21 06:02:56.565609", "n_pass": [93, 19, 13], "n_token": 26, "loss": [0.9598636031150818, 0.0031111903954297304], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Args", ")", "#INDENT#", "MandatoryPaths", "=", "self", "Args", ")", ")", "or", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 20, "repair_targets": [5], "repair_candidates": [0, 7, 16, 23, 5, 2, 8, 20]}}
+{"prediction": {"error_location": 0.38294509053230286, "repair_targets": [0.9968936443328857], "repair_candidates": [0.0003954015264753252, 0.001430434174835682, 0.9968936443328857, 9.26035427255556e-05, 0.0011522846762090921, 1.269420772587182e-05, 1.905782482936047e-05, 3.877648396155564e-06], "target_probs": 0.9968936443328857}}
+
+
+{"result": {"time": "2021-02-21 06:02:56.621326", "n_pass": [95, 20, 14], "n_token": 24, "loss": [0.9234268069267273, 0.00354793481528759], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Args", ")", "#INDENT#", "MandatoryPaths", "=", "self", "Args", ")", "(", "not", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 18, "repair_targets": [5], "repair_candidates": [0, 7, 14, 21, 5, 2, 8, 18]}}
+{"prediction": {"error_location": 0.3971557319164276, "repair_targets": [0.9964583516120911], "repair_candidates": [0.0005473550409078598, 0.001191287999972701, 0.9964583516120911, 0.0003265899431426078, 0.0013989534927532077, 4.0835089748725295e-05, 3.017789640580304e-05, 6.429713721445296e-06], "target_probs": 0.9964583516120911}}
+
+
+{"result": {"time": "2021-02-21 06:02:56.679729", "n_pass": [96, 21, 15], "n_token": 22, "loss": [0.5166015625, 0.0012448426568880677], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", ",", "Args", ")", "#INDENT#", "MandatoryPaths", "=", "self", "Args", ")", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 16, "repair_targets": [5], "repair_candidates": [0, 7, 12, 19, 5, 2, 8, 16]}}
+{"prediction": {"error_location": 0.5965444445610046, "repair_targets": [0.998755931854248], "repair_candidates": [0.000137764829560183, 0.00022501085186377168, 0.998755931854248, 0.00021289302094373852, 0.0006186793325468898, 3.392992221051827e-05, 6.364259661495453e-06, 9.417111868970096e-06], "target_probs": 0.998755931854248}}
+
+
+{"result": {"time": "2021-02-21 06:02:57.071827", "n_pass": [133, 28, 16], "n_token": 21, "loss": [0.5640832185745239, 0.0072028739377856255], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Args", ")", "#INDENT#", "MandatoryPaths", "=", "self", "Args", ")", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 15, "repair_targets": [4], "repair_candidates": [0, 6, 11, 18, 4, 1, 7, 15]}}
+{"prediction": {"error_location": 0.5688813924789429, "repair_targets": [0.9928230047225952], "repair_candidates": [0.0010727591579779983, 0.002658902434632182, 0.9928230047225952, 0.002284756163135171, 7.896259376138914e-06, 0.0007883502403274179, 1.9817827705992386e-05, 0.00034447433426976204], "target_probs": 0.9928230047225952}}
+
+
+{"result": {"time": "2021-02-21 06:02:57.127029", "n_pass": [135, 29, 17], "n_token": 20, "loss": [0.5656914114952087, 0.005802565719932318], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Args", "#INDENT#", "MandatoryPaths", "=", "self", "Args", ")", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 14, "repair_targets": [3], "repair_candidates": [0, 5, 10, 17, 3, 1, 6, 14]}}
+{"prediction": {"error_location": 0.5679672956466675, "repair_targets": [0.9942142367362976], "repair_candidates": [0.00043972666026093066, 0.0025142342783510685, 0.9942142367362976, 0.0016453739954158664, 3.49502224707976e-05, 0.0009584036306478083, 1.3113848581269849e-05, 0.0001799614547053352], "target_probs": 0.9942142367362976}}
+
+
+{"result": {"time": "2021-02-21 06:02:57.294591", "n_pass": [141, 32, 18], "n_token": 19, "loss": [0.43483975529670715, 0.0017688411753624678], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Args", "#INDENT#", "MandatoryPaths", "=", "self", "Args", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 13, "repair_targets": [3], "repair_candidates": [0, 5, 9, 16, 3, 1, 6, 13]}}
+{"prediction": {"error_location": 0.647368311882019, "repair_targets": [0.9982327222824097], "repair_candidates": [0.00016800711455289274, 0.0014826173428446054, 0.9982327222824097, 5.3962732636136934e-05, 1.6272064385702834e-05, 3.106598160229623e-05, 7.989146979525685e-06, 7.328339052037336e-06], "target_probs": 0.9982327222824097}}
+
+
+{"result": {"time": "2021-02-21 06:02:57.630417", "n_pass": [152, 38, 19], "n_token": 18, "loss": [0.26924318075180054, 0.02056080475449562], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Args", "MandatoryPaths", "=", "self", "Args", "PathsExist", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 12, "repair_targets": [2], "repair_candidates": [0, 4, 8, 15, 2, 1, 5, 12]}}
+{"prediction": {"error_location": 0.7639574408531189, "repair_targets": [0.9796491265296936], "repair_candidates": [0.0013311018701642752, 0.016317429021000862, 0.9796491265296936, 0.0014850025763735175, 9.997198503697291e-05, 0.0009873625822365284, 6.785901496186852e-05, 6.214355380507186e-05], "target_probs": 0.9796491265296936}}
+
+
+{"result": {"time": "2021-02-21 06:02:57.743560", "n_pass": [157, 40, 20], "n_token": 17, "loss": [0.49212563037872314, 0.008796765469014645], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Args", "MandatoryPaths", "=", "self", "Args", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", ".", "error_handler"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [0, 4, 7, 14, 2, 1, 5, 11]}}
+{"prediction": {"error_location": 0.6113254427909851, "repair_targets": [0.9912418127059937], "repair_candidates": [0.0005829724250361323, 0.006202287040650845, 0.9912418127059937, 0.0011388299753889441, 0.00024478707928210497, 0.0005274055292829871, 3.205599932698533e-05, 2.9804567020619288e-05], "target_probs": 0.9912418127059937}}
+
+
+{"result": {"time": "2021-02-21 06:02:58.359931", "n_pass": [186, 51, 21], "n_token": 16, "loss": [0.7882561087608337, 0.010352609679102898], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Args", "MandatoryPaths", "=", "self", "Args", "(", "self", ".", "GetSETScripts", "(", "Args", "#NEWLINE#", "#INDENT#", "self", "."]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [0, 4, 7, 14, 2, 1, 5, 11]}}
+{"prediction": {"error_location": 0.45463693141937256, "repair_targets": [0.9897007942199707], "repair_candidates": [0.0007192967459559441, 0.007772514596581459, 0.9897007942199707, 0.001041122362948954, 0.0002030377509072423, 0.00048648196388967335, 7.376698340522125e-05, 2.8782119443349075e-06], "target_probs": 0.9897007942199707}}
+
+
+{"result": {"time": "2021-02-21 06:02:58.695894", "n_pass": [199, 57, 22], "n_token": 15, "loss": [0.6692011952400208, 0.056043580174446106], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Args", "MandatoryPaths", "=", "self", "Args", "(", "self", ".", "GetSETScripts", "(", "Args", "#INDENT#", "self", "."]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [0, 4, 7, 13, 2, 1, 5, 11]}}
+{"prediction": {"error_location": 0.5121175050735474, "repair_targets": [0.9454979300498962], "repair_candidates": [0.0017997929826378822, 0.03028487041592598, 0.9454979300498962, 0.008147705346345901, 0.0004926607944071293, 0.013522827066481113, 0.00010539162758504972, 0.00014888576697558165], "target_probs": 0.9454979300498962}}
+
+
+{"result": {"time": "2021-02-21 06:02:58.806193", "n_pass": [202, 59, 23], "n_token": 14, "loss": [0.4567462205886841, 0.050328679382801056], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Args", "MandatoryPaths", "=", "self", "Args", "(", "self", ".", "GetSETScripts", "(", "Args", "#INDENT#", "self"]}}
+{"position": {"error_location": 11, "repair_targets": [2], "repair_candidates": [0, 4, 7, 13, 2, 1, 5, 11]}}
+{"prediction": {"error_location": 0.6333410143852234, "repair_targets": [0.9509168267250061], "repair_candidates": [0.0010822147596627474, 0.026784691959619522, 0.9509168267250061, 0.007033104542642832, 0.003750234143808484, 0.009924214333295822, 1.8347525838180445e-05, 0.0004903181688860059], "target_probs": 0.9509168267250061}}
+
+
+{"result": {"time": "2021-02-21 06:02:58.972963", "n_pass": [211, 62, 24], "n_token": 13, "loss": [0.2609739303588867, 0.09467417001724243], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Args", "MandatoryPaths", "=", "self", "Args", "(", "self", "GetSETScripts", "(", "Args", "#INDENT#", "self"]}}
+{"position": {"error_location": 10, "repair_targets": [2], "repair_candidates": [0, 4, 7, 12, 2, 1, 5, 10]}}
+{"prediction": {"error_location": 0.770301103591919, "repair_targets": [0.9096692800521851], "repair_candidates": [0.002458113944157958, 0.0518646202981472, 0.9096692800521851, 0.012089064344763756, 0.01865120604634285, 0.000966933264862746, 7.666701276320964e-05, 0.004224126227200031], "target_probs": 0.9096692800521851}}
+
+
+{"result": {"time": "2021-02-21 06:02:59.030842", "n_pass": [212, 63, 25], "n_token": 12, "loss": [0.18675409257411957, 0.39117202162742615], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["self", "Args", "MandatoryPaths", "=", "self", "Args", "(", "self", "(", "Args", "#INDENT#", "self"]}}
+{"position": {"error_location": 9, "repair_targets": [2], "repair_candidates": [0, 4, 7, 11, 2, 1, 5, 9]}}
+{"prediction": {"error_location": 0.8296477198600769, "repair_targets": [0.6762638092041016], "repair_candidates": [0.010802531614899635, 0.13856831192970276, 0.6762638092041016, 0.12696346640586853, 0.0306900292634964, 0.0043861400336027145, 5.73110519326292e-05, 0.0122684296220541], "target_probs": 0.6762638092041016}}
+
+
+
+
+Minimal simplified tokens:
+
+['self', 'Args', 'MandatoryPaths', '=', 'self', 'Args', '(', 'self', '(', 'Args', '#INDENT#', 'self']

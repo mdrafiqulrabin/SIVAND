@@ -1,0 +1,133 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def __invariant__(", "dataset_id", ",", "lease", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        The UUID of the dataset (key) must match the dataset UUID of\\n        the Lease instance (value).\\n        '", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "return", "(", "False", ",", "'dataset_id {} does not match lease {}'", ".", "format", "(", "lease", ",", "lease", ".", "dataset_id", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "True", ",", "''", ")"], "error_location": [30], "repair_targets": [2, 13, 17, 34], "repair_candidates": [4, 15, 30, 32, 2, 13, 17, 34], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "ClusterHQ/flocker/flocker/control/_model.py", "license": "apache-2.0", "note": "license: github_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00015-of-00300", "js_count": 50617, "results": {"model": "rnn", "prob": {"loc": [[0.2738807797431946, 5.627391146845184e-06, 2.317273356311489e-06, 2.7793548795784773e-08, 5.5520899877592456e-06, 1.9489714020437532e-07, 2.2079264283547673e-07, 7.24382857697492e-07, 3.5155906630279787e-07, 2.4332214820788067e-07, 3.343595381011255e-06, 4.542150691122515e-07, 5.0988914154004306e-05, 0.04258731007575989, 2.9572765924967825e-06, 0.5407339930534363, 0.0002258453459944576, 2.7645102818496525e-05, 2.3742915800539777e-05, 2.9905438623245573e-06, 1.9629605958471075e-06, 2.408654836472124e-06, 1.6751404245951562e-06, 7.045901384117315e-06, 4.425767110660672e-05, 4.2623352669579617e-07, 1.3355453120311722e-05, 1.4892337276251055e-05, 6.721864451719739e-07, 7.608956593685434e-07, 0.053479984402656555, 1.3053510201643803e-06, 0.0888100415468216, 9.607324500393588e-06, 4.112092483410379e-06, 3.932645995519124e-06, 1.7170218598039355e-06, 1.3519966159947217e-06, 3.3432763757446082e-06, 6.627795414715365e-07, 4.178923973086057e-06, 2.188083999499213e-05, 2.6604234335536603e-06, 9.163911272480618e-06, 3.2027787710831035e-06]], "pointer": [[0.0, 0.0, 0.5332131385803223, 0.0, 0.4552297592163086, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.000593804637901485, 0.0, 0.004328473471105099, 0.0, 0.0030623856000602245, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0013920569326728582, 0.0, 0.001304761040955782, 0.0, 0.0008756050956435502, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]], "target": [0.5377448797225952]}, "loss": [2.928447723388672, 0.6203710436820984], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [15]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 13:11:02.927899", "n_pass": [1, 1, 1], "n_token": 45, "loss": [0.6148276329040527, 0.6203710436820984], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __invariant__(", "dataset_id", ",", "lease", ")", ":", "#NEWLINE#", "#INDENT#", "'\\n        The UUID of the dataset (key) must match the dataset UUID of\\n        the Lease instance (value).\\n        '", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "return", "(", "False", ",", "'dataset_id {} does not match lease {}'", ".", "format", "(", "lease", ",", "lease", ".", "dataset_id", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "True", ",", "''", ")"]}}
+{"position": {"error_location": 15, "repair_targets": [2, 13, 17, 34], "repair_candidates": [4, 15, 30, 32, 2, 13, 17, 34]}}
+{"prediction": {"error_location": 0.5407339930534363, "repair_targets": [0.5332131385803223, 0.000593804637901485, 0.0030623856000602245, 0.0008756050956435502], "repair_candidates": [0.5332131385803223, 0.4552297592163086, 0.000593804637901485, 0.004328473471105099, 0.0030623856000602245, 0.0013920569326728582, 0.001304761040955782, 0.0008756050956435502], "target_probs": 0.5377448797225952}}
+
+
+{"result": {"time": "2021-02-21 13:11:02.998030", "n_pass": [21, 2, 2], "n_token": 40, "loss": [0.5177587270736694, 0.24887007474899292], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __invariant__(", "dataset_id", ",", "lease", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "return", "(", "False", ",", "'dataset_id {} does not match lease {}'", ".", "format", "(", "lease", ",", "lease", ".", "dataset_id", ")", ")", "#NEWLINE#", "#UNINDENT#", "return", "(", "True", ",", "''", ")"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 8, 12, 29], "repair_candidates": [4, 10, 25, 27, 2, 8, 12, 29]}}
+{"prediction": {"error_location": 0.5958544611930847, "repair_targets": [0.7714232802391052, 0.005226537119597197, 0.0023000172805041075, 0.0007314282702282071], "repair_candidates": [0.7714232802391052, 0.21801257133483887, 0.005226537119597197, 0.001368565484881401, 0.0023000172805041075, 0.0006251278682611883, 0.0003124387876596302, 0.0007314282702282071], "target_probs": 0.7796812653541565}}
+
+
+{"result": {"time": "2021-02-21 13:11:03.131483", "n_pass": [27, 4, 3], "n_token": 34, "loss": [0.6417423486709595, 0.3023342490196228], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __invariant__(", "dataset_id", ",", "lease", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "return", "(", "False", ",", "'dataset_id {} does not match lease {}'", ".", "format", "(", "lease", ",", "lease", ".", "dataset_id", ")", ")", "#NEWLINE#", "#UNINDENT#"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 8, 12, 29], "repair_candidates": [4, 10, 25, 27, 2, 8, 12, 29]}}
+{"prediction": {"error_location": 0.5263744592666626, "repair_targets": [0.7297263145446777, 0.0066664251498878, 0.0019157620845362544, 0.00078247778583318], "repair_candidates": [0.7297263145446777, 0.257113516330719, 0.0066664251498878, 0.0021891670767217875, 0.0019157620845362544, 0.000982316443696618, 0.000624052423518151, 0.00078247778583318], "target_probs": 0.7390909790992737}}
+
+
+{"result": {"time": "2021-02-21 13:11:03.458660", "n_pass": [53, 9, 4], "n_token": 31, "loss": [0.6503881216049194, 0.28934046626091003], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __invariant__(", "dataset_id", ",", "lease", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "return", "(", ".", "format", "(", "lease", ",", "lease", ".", "dataset_id", ")", ")", "#NEWLINE#", "#UNINDENT#"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 8, 12, 26], "repair_candidates": [4, 10, 22, 24, 2, 8, 12, 26]}}
+{"prediction": {"error_location": 0.5218432545661926, "repair_targets": [0.739634096622467, 0.006219783332198858, 0.0018625331576913595, 0.0010407870868220925], "repair_candidates": [0.739634096622467, 0.24844536185264587, 0.006219783332198858, 0.0018133525736629963, 0.0018625331576913595, 0.0003687301941681653, 0.0006153816357254982, 0.0010407870868220925], "target_probs": 0.7487572431564331}}
+
+
+{"result": {"time": "2021-02-21 13:11:03.842173", "n_pass": [87, 15, 5], "n_token": 29, "loss": [0.8019373416900635, 0.281675785779953], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __invariant__(", "dataset_id", ",", "lease", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", ".", "format", "(", "lease", ",", "lease", ".", "dataset_id", ")", ")", "#NEWLINE#", "#UNINDENT#"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 8, 12, 24], "repair_candidates": [4, 10, 20, 22, 2, 8, 12, 24]}}
+{"prediction": {"error_location": 0.44845935702323914, "repair_targets": [0.7454259991645813, 0.006038192193955183, 0.001833283226005733, 0.001220827572979033], "repair_candidates": [0.7454259991645813, 0.24245931208133698, 0.006038192193955183, 0.0010497112525627017, 0.001833283226005733, 0.0011205743066966534, 0.0008521027630195022, 0.001220827572979033], "target_probs": 0.7545182704925537}}
+
+
+{"result": {"time": "2021-02-21 13:11:03.905613", "n_pass": [88, 16, 6], "n_token": 27, "loss": [0.3405379056930542, 0.3168308138847351], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __invariant__(", "dataset_id", ",", "lease", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "(", "lease", ",", "lease", ".", "dataset_id", ")", ")", "#NEWLINE#", "#UNINDENT#"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 8, 12, 22], "repair_candidates": [4, 10, 18, 20, 2, 8, 12, 22]}}
+{"prediction": {"error_location": 0.711387574672699, "repair_targets": [0.7209815382957458, 0.004346576053649187, 0.0014550170162692666, 0.00167083612177521], "repair_candidates": [0.7209815382957458, 0.24992813169956207, 0.004346576053649187, 0.0009142966591753066, 0.0014550170162692666, 0.018672889098525047, 0.0020307106897234917, 0.00167083612177521], "target_probs": 0.7284539937973022}}
+
+
+{"result": {"time": "2021-02-21 13:11:03.967788", "n_pass": [92, 17, 7], "n_token": 25, "loss": [0.3023177683353424, 0.29258993268013], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __invariant__(", "dataset_id", ",", "lease", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "(", "lease", ",", "lease", ".", "dataset_id", "#NEWLINE#", "#UNINDENT#"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 8, 12, 22], "repair_candidates": [4, 10, 18, 20, 2, 8, 12, 22]}}
+{"prediction": {"error_location": 0.7391030788421631, "repair_targets": [0.7384976148605347, 0.0040955012664198875, 0.0017394785536453128, 0.0019954778254032135], "repair_candidates": [0.7384976148605347, 0.2347249537706375, 0.0040955012664198875, 0.0012148520909249783, 0.0017394785536453128, 0.01653135009109974, 0.0012007777113467455, 0.0019954778254032135], "target_probs": 0.7463281154632568}}
+
+
+{"result": {"time": "2021-02-21 13:11:04.031341", "n_pass": [93, 18, 8], "n_token": 23, "loss": [0.40807271003723145, 0.26304566860198975], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def __invariant__(", "dataset_id", ",", "lease", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "(", "lease", ",", "lease", ".", "dataset_id"]}}
+{"position": {"error_location": 10, "repair_targets": [2, 8, 12, 22], "repair_candidates": [4, 10, 18, 20, 2, 8, 12, 22]}}
+{"prediction": {"error_location": 0.664930522441864, "repair_targets": [0.7573601603507996, 0.0043118237517774105, 0.0023834439925849438, 0.004651378374546766], "repair_candidates": [0.7573601603507996, 0.2035844475030899, 0.0043118237517774105, 0.0011584657477214932, 0.0023834439925849438, 0.025143269449472427, 0.001407008501701057, 0.004651378374546766], "target_probs": 0.7687067985534668}}
+
+
+{"result": {"time": "2021-02-21 13:11:04.091448", "n_pass": [94, 19, 9], "n_token": 22, "loss": [0.4478480815887451, 0.3541250228881836], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __invariant__(", "dataset_id", ",", "lease", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "(", "lease", ",", "lease", ".", "dataset_id"]}}
+{"position": {"error_location": 9, "repair_targets": [1, 7, 11, 21], "repair_candidates": [3, 9, 17, 19, 1, 7, 11, 21]}}
+{"prediction": {"error_location": 0.6390016674995422, "repair_targets": [0.6893216967582703, 0.0050499397329986095, 0.002278293948620558, 0.005137328989803791], "repair_candidates": [0.6893216967582703, 0.27476850152015686, 0.0050499397329986095, 0.0011669063242152333, 0.002278293948620558, 0.020810045301914215, 0.0014673236291855574, 0.005137328989803791], "target_probs": 0.7017872333526611}}
+
+
+{"result": {"time": "2021-02-21 13:11:04.210721", "n_pass": [97, 21, 10], "n_token": 21, "loss": [0.48740354180336, 0.5592896342277527], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __invariant__(", "dataset_id", "lease", "#NEWLINE#", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "(", "lease", ",", "lease", ".", "dataset_id"]}}
+{"position": {"error_location": 8, "repair_targets": [1, 6, 10, 20], "repair_candidates": [2, 8, 16, 18, 1, 6, 10, 20]}}
+{"prediction": {"error_location": 0.6142191886901855, "repair_targets": [0.5415342450141907, 0.014102047309279442, 0.005219585727900267, 0.010759115219116211], "repair_candidates": [0.5415342450141907, 0.37274307012557983, 0.014102047309279442, 0.004081639926880598, 0.005219585727900267, 0.04711252450942993, 0.004447778686881065, 0.010759115219116211], "target_probs": 0.5716149806976318}}
+
+
+{"result": {"time": "2021-02-21 13:11:04.269813", "n_pass": [99, 22, 11], "n_token": 20, "loss": [0.6270985007286072, 0.4042271077632904], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __invariant__(", "dataset_id", "lease", "if", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "(", "lease", ",", "lease", ".", "dataset_id"]}}
+{"position": {"error_location": 7, "repair_targets": [1, 5, 9, 19], "repair_candidates": [2, 7, 15, 17, 1, 5, 9, 19]}}
+{"prediction": {"error_location": 0.5341393947601318, "repair_targets": [0.6092437505722046, 0.02332919090986252, 0.016235612332820892, 0.01868397556245327], "repair_candidates": [0.6092437505722046, 0.21194858849048615, 0.02332919090986252, 0.013886128552258015, 0.016235612332820892, 0.09732591360807419, 0.009346827864646912, 0.01868397556245327], "target_probs": 0.6674925088882446}}
+
+
+{"result": {"time": "2021-02-21 13:11:04.328052", "n_pass": [100, 23, 12], "n_token": 19, "loss": [0.6781274676322937, 0.38295266032218933], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __invariant__(", "dataset_id", "lease", "(", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "(", "lease", ",", "lease", ".", "dataset_id"]}}
+{"position": {"error_location": 6, "repair_targets": [1, 4, 8, 18], "repair_candidates": [2, 6, 14, 16, 1, 4, 8, 18]}}
+{"prediction": {"error_location": 0.507566511631012, "repair_targets": [0.47105103731155396, 0.1410350799560547, 0.034767597913742065, 0.034991513937711716], "repair_candidates": [0.47105103731155396, 0.1625220626592636, 0.1410350799560547, 0.0179317407310009, 0.034767597913742065, 0.12333713471889496, 0.01436382345855236, 0.034991513937711716], "target_probs": 0.6818451881408691}}
+
+
+{"result": {"time": "2021-02-21 13:11:04.386200", "n_pass": [101, 24, 13], "n_token": 18, "loss": [0.2636531591415405, 0.47961127758026123], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __invariant__(", "dataset_id", "lease", "dataset_id", "!=", "lease", ".", "dataset_id", ")", ":", "#NEWLINE#", "#INDENT#", "(", "lease", ",", "lease", ".", "dataset_id"]}}
+{"position": {"error_location": 5, "repair_targets": [1, 3, 7, 17], "repair_candidates": [2, 5, 13, 15, 1, 3, 7, 17]}}
+{"prediction": {"error_location": 0.7682400345802307, "repair_targets": [0.5444326400756836, 0.050479404628276825, 0.015484413132071495, 0.008627538569271564], "repair_candidates": [0.5444326400756836, 0.3250356614589691, 0.050479404628276825, 0.015709256753325462, 0.015484413132071495, 0.03672575578093529, 0.0035053410101681948, 0.008627538569271564], "target_probs": 0.6190239787101746}}
+
+
+{"result": {"time": "2021-02-21 13:11:04.560083", "n_pass": [107, 27, 14], "n_token": 16, "loss": [0.3816598653793335, 0.42169487476348877], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __invariant__(", "dataset_id", "lease", "dataset_id", "!=", "lease", ".", "dataset_id", "#NEWLINE#", "#INDENT#", "(", "lease", ",", "lease", ".", "dataset_id"]}}
+{"position": {"error_location": 5, "repair_targets": [1, 3, 7, 15], "repair_candidates": [2, 5, 11, 13, 1, 3, 7, 15]}}
+{"prediction": {"error_location": 0.6827271580696106, "repair_targets": [0.5785038471221924, 0.04161612689495087, 0.023533711209893227, 0.012280442751944065], "repair_candidates": [0.5785038471221924, 0.3010999858379364, 0.04161612689495087, 0.00353333936072886, 0.023533711209893227, 0.035056617110967636, 0.0043759411200881, 0.012280442751944065], "target_probs": 0.6559341549873352}}
+
+
+{"result": {"time": "2021-02-21 13:11:04.844593", "n_pass": [128, 32, 15], "n_token": 15, "loss": [0.08713783323764801, 0.5515267848968506], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __invariant__(", "dataset_id", "lease", "dataset_id", "!=", "lease", ".", "dataset_id", "#NEWLINE#", "#INDENT#", "lease", ",", "lease", ".", "dataset_id"]}}
+{"position": {"error_location": 5, "repair_targets": [1, 3, 7, 14], "repair_candidates": [2, 5, 10, 12, 1, 3, 7, 14]}}
+{"prediction": {"error_location": 0.916550874710083, "repair_targets": [0.4879329800605774, 0.053015876561403275, 0.027428055182099342, 0.007692723069339991], "repair_candidates": [0.4879329800605774, 0.3882467746734619, 0.053015876561403275, 0.005594269838184118, 0.027428055182099342, 0.025879550725221634, 0.004209752194583416, 0.007692723069339991], "target_probs": 0.5760695934295654}}
+
+
+{"result": {"time": "2021-02-21 13:11:04.901211", "n_pass": [129, 33, 16], "n_token": 14, "loss": [0.012919766828417778, 0.47142064571380615], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __invariant__(", "dataset_id", "lease", "dataset_id", "!=", "lease", ".", "dataset_id", "#NEWLINE#", "#INDENT#", "lease", "lease", ".", "dataset_id"]}}
+{"position": {"error_location": 5, "repair_targets": [1, 3, 7, 13], "repair_candidates": [2, 5, 10, 11, 1, 3, 7, 13]}}
+{"prediction": {"error_location": 0.9871633052825928, "repair_targets": [0.5186924338340759, 0.05547037348151207, 0.0361420102417469, 0.013810193166136742], "repair_candidates": [0.5186924338340759, 0.34405064582824707, 0.05547037348151207, 0.003534266259521246, 0.0361420102417469, 0.026554718613624573, 0.0017453774344176054, 0.013810193166136742], "target_probs": 0.624114990234375}}
+
+
+{"result": {"time": "2021-02-21 13:11:04.957206", "n_pass": [131, 34, 17], "n_token": 13, "loss": [0.01236181240528822, 0.3084159791469574], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["def __invariant__(", "dataset_id", "lease", "dataset_id", "!=", "lease", ".", "dataset_id", "#NEWLINE#", "#INDENT#", "lease", "lease", "dataset_id"]}}
+{"position": {"error_location": 5, "repair_targets": [1, 3, 7, 12], "repair_candidates": [2, 5, 10, 11, 1, 3, 7, 12]}}
+{"prediction": {"error_location": 0.987714409828186, "repair_targets": [0.6774040460586548, 0.03365219384431839, 0.02175547555088997, 0.0017979476833716035], "repair_candidates": [0.6774040460586548, 0.24603936076164246, 0.03365219384431839, 0.0050618816167116165, 0.02175547555088997, 0.013459917157888412, 0.0008291854755952954, 0.0017979476833716035], "target_probs": 0.7346096634864807}}
+
+
+{"result": {"time": "2021-02-21 13:11:05.012197", "n_pass": [133, 35, 18], "n_token": 12, "loss": [0.011970116756856441, 0.460450679063797], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["dataset_id", "lease", "dataset_id", "!=", "lease", ".", "dataset_id", "#NEWLINE#", "#INDENT#", "lease", "lease", "dataset_id"]}}
+{"position": {"error_location": 4, "repair_targets": [0, 2, 6, 11], "repair_candidates": [1, 4, 9, 10, 0, 2, 6, 11]}}
+{"prediction": {"error_location": 0.9881011247634888, "repair_targets": [0.45887491106987, 0.15919533371925354, 0.009467419236898422, 0.00346153206191957], "repair_candidates": [0.45887491106987, 0.3425387442111969, 0.15919533371925354, 0.009671698324382305, 0.009467419236898422, 0.014557591639459133, 0.0022328633349388838, 0.00346153206191957], "target_probs": 0.6309992074966431}}
+
+
+{"result": {"time": "2021-02-21 13:11:05.066843", "n_pass": [137, 36, 19], "n_token": 11, "loss": [0.17561998963356018, 0.3798520565032959], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["dataset_id", "lease", "dataset_id", "lease", ".", "dataset_id", "#NEWLINE#", "#INDENT#", "lease", "lease", "dataset_id"]}}
+{"position": {"error_location": 3, "repair_targets": [0, 2, 5, 10], "repair_candidates": [1, 3, 8, 9, 0, 2, 5, 10]}}
+{"prediction": {"error_location": 0.8389367461204529, "repair_targets": [0.45554056763648987, 0.20042483508586884, 0.01742262952029705, 0.010574571788311005], "repair_candidates": [0.45554056763648987, 0.26278120279312134, 0.20042483508586884, 0.03380950167775154, 0.01742262952029705, 0.014652763493359089, 0.0047939615324139595, 0.010574571788311005], "target_probs": 0.6839625835418701}}
+
+
+{"result": {"time": "2021-02-21 13:11:05.231393", "n_pass": [142, 39, 20], "n_token": 10, "loss": [0.13651634752750397, 0.37673404812812805], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["dataset_id", "lease", "dataset_id", "lease", ".", "dataset_id", "#NEWLINE#", "lease", "lease", "dataset_id"]}}
+{"position": {"error_location": 3, "repair_targets": [0, 2, 5, 9], "repair_candidates": [1, 3, 7, 8, 0, 2, 5, 9]}}
+{"prediction": {"error_location": 0.8723921775817871, "repair_targets": [0.4744953513145447, 0.17766964435577393, 0.022033849731087685, 0.011899622157216072], "repair_candidates": [0.4744953513145447, 0.2653731405735016, 0.17766964435577393, 0.02321275696158409, 0.022033849731087685, 0.019416924566030502, 0.005898789968341589, 0.011899622157216072], "target_probs": 0.6860985159873962}}
+
+
+
+
+Minimal simplified tokens:
+
+['dataset_id', 'lease', 'dataset_id', 'lease', '.', 'dataset_id', '#NEWLINE#', 'lease', 'lease', 'dataset_id']

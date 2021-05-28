@@ -1,0 +1,73 @@
+
+Original sample:
+
+{"has_bug": true, "bug_kind": 1, "bug_kind_name": "VARIABLE_MISUSE", "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "filename", "is", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "(", "' at line: %d char: %d'", "%", "(", "pos", ",", "pos", ")", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "\" in file '%s' at line: %d char: %d\"", "%", "(", "filename", ",", "lineno", ",", "pos", ")", ")"], "error_location": [25], "repair_targets": [2, 43], "repair_candidates": [4, 25, 27, 45, 2, 43, 6, 13, 41], "provenances": [{"datasetProvenance": {"datasetName": "ETHPy150Open", "filepath": "sfstpala/Victory-Chat/mako/exceptions.py", "license": "isc", "note": "license: bigquery_api"}}], "txt_file": "eval__VARIABLE_MISUSE__SStuB.txt-00000-of-00300", "js_count": 261, "results": {"model": "rnn", "prob": {"loc": [[0.30849599838256836, 2.2901151908172324e-07, 4.1521972889313474e-05, 4.5689962036021825e-08, 3.3083784956033924e-07, 5.740908548546031e-08, 1.2127435411457554e-06, 5.2077510304116004e-08, 7.344512908957768e-08, 3.8690296833010507e-07, 1.4709519291500328e-06, 2.610708520478511e-07, 7.1366821430274285e-06, 0.07639511674642563, 1.506111857452197e-06, 1.0651208413037239e-06, 2.103955239363131e-06, 3.0192811095730576e-07, 2.00105461090061e-07, 1.0452652787762418e-07, 1.2749777056342282e-07, 6.700888093291724e-07, 7.83103587309597e-06, 5.922788659518119e-08, 1.4012102838023566e-06, 0.11778420209884644, 2.1606342670565937e-06, 0.46022048592567444, 2.508653551558382e-06, 5.956205768598011e-07, 5.757689223173657e-07, 2.0202971427352168e-05, 3.235819860947231e-07, 4.941794486512663e-06, 5.111909331390052e-07, 4.7355698029605264e-08, 4.34627480672134e-08, 1.8840003690456797e-07, 1.715803499280355e-08, 1.5008316722742165e-07, 3.564600774552673e-06, 0.01741475611925125, 5.362985575629864e-07, 0.0010539761278778315, 2.108674692635759e-07, 0.01853005215525627, 2.632713176353718e-07, 4.3214080847064906e-07]], "pointer": [[0.0, 0.0, 0.6504966020584106, 0.0, 0.1546076238155365, 0.0, 0.19064557552337646, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001293059904128313, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0006804758450016379, 0.0, 0.00029225312755443156, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00011784204980358481, 0.0, 0.0028057359158992767, 0.0, 0.00022455796715803444, 0.0, 0.0]], "target": [0.6533023118972778]}, "loss": [2.1389012336730957, 0.42571529746055603], "acc": [0.0, 0.0, 1.0, 0.0]}, "wrong_error_location": [27]}
+
+
+Trace of simplified code(s):
+
+{"result": {"time": "2021-02-21 11:25:33.004427", "n_pass": [1, 1, 1], "n_token": 48, "loss": [0.7760496139526367, 0.42571529746055603], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "#NEWLINE#", "#INDENT#", "if", "(", "filename", "is", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "(", "' at line: %d char: %d'", "%", "(", "pos", ",", "pos", ")", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "\" in file '%s' at line: %d char: %d\"", "%", "(", "filename", ",", "lineno", ",", "pos", ")", ")"]}}
+{"position": {"error_location": 27, "repair_targets": [2, 43], "repair_candidates": [4, 25, 27, 45, 2, 43, 6, 13, 41]}}
+{"prediction": {"error_location": 0.46022048592567444, "repair_targets": [0.6504966020584106, 0.0028057359158992767], "repair_candidates": [0.6504966020584106, 0.1546076238155365, 0.19064557552337646, 0.0001293059904128313, 0.0006804758450016379, 0.00029225312755443156, 0.00011784204980358481, 0.0028057359158992767, 0.00022455796715803444], "target_probs": 0.6533023118972778}}
+
+
+{"result": {"time": "2021-02-21 11:25:33.218209", "n_pass": [47, 4, 2], "n_token": 45, "loss": [0.5947116613388062, 0.6782137155532837], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "(", "filename", "is", "None", ")", ":", "#NEWLINE#", "#INDENT#", "return", "(", "' at line: %d char: %d'", "%", "(", "pos", ",", "pos", ")", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "\" in file '%s' at line: %d char: %d\"", "%", "(", "filename", ",", "lineno", ",", "pos", ")", ")"]}}
+{"position": {"error_location": 24, "repair_targets": [2, 40], "repair_candidates": [4, 22, 24, 42, 2, 40, 6, 10, 38]}}
+{"prediction": {"error_location": 0.5517215728759766, "repair_targets": [0.5034299492835999, 0.004092811606824398], "repair_candidates": [0.5034299492835999, 0.18050895631313324, 0.3079059422016144, 0.00252297380939126, 0.0007564606494270265, 0.0002908826863858849, 0.0001575750793563202, 0.004092811606824398, 0.00033442321000620723], "target_probs": 0.5075227618217468}}
+
+
+{"result": {"time": "2021-02-21 11:25:33.287841", "n_pass": [49, 5, 3], "n_token": 42, "loss": [0.7301959991455078, 0.508892297744751], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "(", "filename", "is", "#NEWLINE#", "#INDENT#", "return", "(", "' at line: %d char: %d'", "%", "(", "pos", ",", "pos", ")", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "\" in file '%s' at line: %d char: %d\"", "%", "(", "filename", ",", "lineno", ",", "pos", ")", ")"]}}
+{"position": {"error_location": 21, "repair_targets": [2, 37], "repair_candidates": [4, 19, 21, 39, 2, 37, 6, 10, 35]}}
+{"prediction": {"error_location": 0.48181453347206116, "repair_targets": [0.5962889194488525, 0.004872189834713936], "repair_candidates": [0.5962889194488525, 0.15443339943885803, 0.24173855781555176, 0.0008703527273610234, 0.0007819489692337811, 0.000365816435078159, 0.00021896623366046697, 0.004872189834713936, 0.0004298683488741517], "target_probs": 0.6011611223220825}}
+
+
+{"result": {"time": "2021-02-21 11:25:33.424008", "n_pass": [51, 7, 4], "n_token": 39, "loss": [0.8531085252761841, 0.5211368203163147], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "(", "filename", "is", "#NEWLINE#", "#INDENT#", "return", "(", "pos", ",", "pos", ")", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "\" in file '%s' at line: %d char: %d\"", "%", "(", "filename", ",", "lineno", ",", "pos", ")", ")"]}}
+{"position": {"error_location": 18, "repair_targets": [2, 34], "repair_candidates": [4, 16, 18, 36, 2, 34, 6, 10, 32]}}
+{"prediction": {"error_location": 0.4260883629322052, "repair_targets": [0.5888596177101135, 0.004985474050045013], "repair_candidates": [0.5888596177101135, 0.15312418341636658, 0.24987521767616272, 0.0009020641446113586, 0.0008394769974984229, 0.000644225103314966, 0.00023324241919908673, 0.004985474050045013, 0.0005364984972402453], "target_probs": 0.5938450694084167}}
+
+
+{"result": {"time": "2021-02-21 11:25:33.759835", "n_pass": [92, 12, 5], "n_token": 38, "loss": [0.7570586800575256, 0.5433990955352783], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "(", "filename", "#NEWLINE#", "#INDENT#", "return", "(", "pos", ",", "pos", ")", ")", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "\" in file '%s' at line: %d char: %d\"", "%", "(", "filename", ",", "lineno", ",", "pos", ")", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [2, 33], "repair_candidates": [4, 15, 17, 35, 2, 33, 6, 10, 31]}}
+{"prediction": {"error_location": 0.4690439999103546, "repair_targets": [0.5776195526123047, 0.0031512542627751827], "repair_candidates": [0.5776195526123047, 0.18300920724868774, 0.23406587541103363, 0.0008745869854465127, 0.00039865932194516063, 0.0003677198546938598, 0.00015350175090134144, 0.0031512542627751827, 0.00035957287764176726], "target_probs": 0.5807707905769348}}
+
+
+{"result": {"time": "2021-02-21 11:25:33.963158", "n_pass": [97, 15, 6], "n_token": 36, "loss": [0.8528459668159485, 0.33897992968559265], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "(", "filename", "#NEWLINE#", "#INDENT#", "return", "(", "pos", ",", "pos", "#NEWLINE#", "#UNINDENT#", "else", ":", "#NEWLINE#", "#INDENT#", "return", "(", "\" in file '%s' at line: %d char: %d\"", "%", "(", "filename", ",", "lineno", ",", "pos", ")", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [2, 31], "repair_candidates": [4, 15, 17, 33, 2, 31, 6, 10, 29]}}
+{"prediction": {"error_location": 0.4262002408504486, "repair_targets": [0.7105935215950012, 0.0019032423151656985], "repair_candidates": [0.7105935215950012, 0.13480015099048615, 0.15168030560016632, 0.00037778745172545314, 0.00019516970496624708, 0.00013276253594085574, 0.00010598701192066073, 0.0019032423151656985, 0.0002110176719725132], "target_probs": 0.7124967575073242}}
+
+
+{"result": {"time": "2021-02-21 11:25:34.094016", "n_pass": [99, 17, 7], "n_token": 34, "loss": [0.7875942587852478, 0.0929625928401947], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "(", "filename", "#NEWLINE#", "#INDENT#", "return", "(", "pos", ",", "pos", "#NEWLINE#", "#UNINDENT#", "#NEWLINE#", "#INDENT#", "return", "(", "\" in file '%s' at line: %d char: %d\"", "%", "(", "filename", ",", "lineno", ",", "pos", ")", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [2, 29], "repair_candidates": [4, 15, 17, 31, 2, 29, 6, 10, 27]}}
+{"prediction": {"error_location": 0.4549379348754883, "repair_targets": [0.9106253385543823, 0.0006022387533448637], "repair_candidates": [0.9106253385543823, 0.042156025767326355, 0.046211738139390945, 0.00017669654334895313, 9.311076428275555e-05, 4.582143810694106e-05, 1.595817411725875e-05, 0.0006022387533448637, 7.306312909349799e-05], "target_probs": 0.9112275838851929}}
+
+
+{"result": {"time": "2021-02-21 11:25:34.158768", "n_pass": [100, 18, 8], "n_token": 32, "loss": [0.8089055418968201, 0.21359552443027496], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "(", "filename", "#NEWLINE#", "#INDENT#", "return", "(", "pos", ",", "pos", "#NEWLINE#", "#UNINDENT#", "return", "(", "\" in file '%s' at line: %d char: %d\"", "%", "(", "filename", ",", "lineno", ",", "pos", ")", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [2, 27], "repair_candidates": [4, 15, 17, 29, 2, 27, 6, 10, 25]}}
+{"prediction": {"error_location": 0.4453452229499817, "repair_targets": [0.8060505390167236, 0.0016244504367932677], "repair_candidates": [0.8060505390167236, 0.086709164083004, 0.10461477935314178, 0.0003850490029435605, 0.00025196632486768067, 9.629566920921206e-05, 6.94579939590767e-05, 0.0016244504367932677, 0.0001983196852961555], "target_probs": 0.8076750040054321}}
+
+
+{"result": {"time": "2021-02-21 11:25:34.222085", "n_pass": [101, 19, 9], "n_token": 30, "loss": [0.8226579427719116, 0.23275861144065857], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "(", "filename", "#NEWLINE#", "#INDENT#", "return", "(", "pos", ",", "pos", "#NEWLINE#", "#UNINDENT#", "\" in file '%s' at line: %d char: %d\"", "%", "(", "filename", ",", "lineno", ",", "pos", ")", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [2, 25], "repair_candidates": [4, 15, 17, 27, 2, 25, 6, 10, 23]}}
+{"prediction": {"error_location": 0.4392624795436859, "repair_targets": [0.7720726728439331, 0.020272156223654747], "repair_candidates": [0.7720726728439331, 0.08884084224700928, 0.11443380266427994, 0.0005946262390352786, 0.0004205428995192051, 0.0001370539393974468, 0.0014046942815184593, 0.020272156223654747, 0.0018236340256407857], "target_probs": 0.7923448085784912}}
+
+
+{"result": {"time": "2021-02-21 11:25:34.286993", "n_pass": [102, 20, 10], "n_token": 28, "loss": [1.231458067893982, 0.1409362256526947], "accuracy": [0.0, 1.0, 1.0, 1.0]}}
+{"sample": {"has_bug": true, "source_tokens": ["#NEWLINE#", "def _format_filepos(", "lineno", ",", "pos", ",", "filename", ")", ":", "(", "filename", "#NEWLINE#", "#INDENT#", "return", "(", "pos", ",", "pos", "#NEWLINE#", "#UNINDENT#", "(", "filename", ",", "lineno", ",", "pos", ")", ")"]}}
+{"position": {"error_location": 17, "repair_targets": [2, 23], "repair_candidates": [4, 15, 17, 25, 2, 23, 6, 10, 21]}}
+{"prediction": {"error_location": 0.2918666899204254, "repair_targets": [0.8435013294219971, 0.025043383240699768], "repair_candidates": [0.8435013294219971, 0.06259748339653015, 0.06604892015457153, 0.00023088525631465018, 0.00017792783910408616, 6.616904283873737e-05, 0.0016698299441486597, 0.025043383240699768, 0.00066408357815817], "target_probs": 0.8685446977615356}}
+
+
+
+
+Minimal simplified tokens:
+
+['#NEWLINE#', 'def _format_filepos(', 'lineno', ',', 'pos', ',', 'filename', ')', ':', '(', 'filename', '#NEWLINE#', '#INDENT#', 'return', '(', 'pos', ',', 'pos', '#NEWLINE#', '#UNINDENT#', '(', 'filename', ',', 'lineno', ',', 'pos', ')', ')']
