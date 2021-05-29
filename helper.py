@@ -6,13 +6,13 @@ import json
 
 ###############################################################
 
-g_test_file = "data/selected_file/mn_c2x/c2x_jl_test_correct_prediction_samefile.txt"
-g_simp_file = "data/tmp/sm_test.java"
-
 g_deltas_types = ["token", "char"]
-g_deltas_type = g_deltas_types[0]
-
+g_simp_file = "data/tmp/sm_test.java"
 JAR_LOAD_JAVA_METHOD = "others/LoadJavaMethod/target/jar/LoadJavaMethod.jar"
+
+# TODO - update file_path and delta_type
+g_test_file = "data/selected_file/mn_c2x/c2x_jl_test_correct_prediction_samefile.txt"
+g_deltas_type = g_deltas_types[0]
 
 ###############################################################
 

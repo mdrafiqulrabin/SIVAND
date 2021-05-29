@@ -8,31 +8,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Input: .../file.java
- * Output: "method_name" "method_body"
+ * Input: <file_path>.java
+ * Output: "method_name" "single_line"
  */
 public class Main {
 
     public static void main(String[] args) {
         File inputFile = new File(args[0]);
-        //System.out.println(inputFile);
         CompilationUnit root = getParseUnit(inputFile);
         List<String> contents = loadJavaMethod(root);
         System.out.print(String.join(" ", contents));
     }
 
     static List<String> loadJavaMethod(CompilationUnit root) {
-        List<String> contents = new ArrayList<String>();
+        List<String> contents = new ArrayList<>();
         if (root != null) {
             try {
                 MethodDeclaration methodDec = root.findAll(MethodDeclaration.class).get(0);
                 String method_name = methodDec.getName().toString();
                 contents.add(method_name);
-//                methodDec.setName("f"); // keep original name
-                String method_body = methodDec.toString()
+                String single_line = methodDec.toString()
                         .replaceAll("\\n", " ")
                         .replaceAll("\\r", " ");
-                contents.add(method_body);
+                contents.add(single_line);
             } catch (Exception ignore){}
         }
         return contents;
@@ -42,8 +40,11 @@ public class Main {
         CompilationUnit root = null;
         try {
             String txtCode = new String(Files.readAllBytes(javaFile.toPath()));
-            if(!txtCode.startsWith("class")) txtCode = "class T { \n" + txtCode + "\n}"; // add tmp class to parse
-            StaticJavaParser.getConfiguration().setAttributeComments(false); // remove comments
+            // add tmp class to parse
+            if(!txtCode.startsWith("class")) txtCode = "class T { \n" + txtCode + "\n}";
+            // remove comments
+            StaticJavaParser.getConfiguration().setAttributeComments(false);
+            // parse code
             root = StaticJavaParser.parse(txtCode);
         } catch (Exception ignore) {}
         return root;
