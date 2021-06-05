@@ -1,0 +1,36 @@
+Usage Instructions:
+-------------------
+For MethodName task as an example,
+
+- Clone `SIVAND` from "https://github.com/mdrafiqulrabin/SIVAND". Here, we need DD.py, helper.py, and MyDD.py files.
+- In `helper.py`, update `<g_test_file>` (path to a file that contains all selected inputs) and `<g_deltas_type>` (select token or char type delta for DD).
+    - Then, have to modify "load_model_M()" to load a target model (i.e., code2seq) from `<model_path>`, and "prediction_with_M()" to get the predicted name, score, and loss value with `<model>` for an input `<file_path>`.
+    - Also, need to check whether `<code>` is parsable into "is_parsable()" and load method by language (i.e. Java) from "load_method()".
+- Finally, run `MyDD.py` that will simplify programs one by one and save all simplified traces in the `dd_data/` folder.
+
+
+Usage Example:
+--------------
+Here is an example of simplification using code2seq model for MethodName task.
+
+path = <..>/java-large/test/pnikosis__materialish-progress/library/src/main/java/com/pnikosis/materialishprogress/ProgressWheel_setRimColor.java
+method_name = setRimColor
+method_body = public void setRimColor(int rimColor) { this.rimColor = rimColor; setupPaints(); if (!isSpinning) { invalidate(); } }
+predict, score, loss = setRimColor, 0.9996458292007446, 0.0015064467443153262
+
+Trace of simplified code(s):
+{"time": "2021-02-13 03:39:54.916934", "score": "0.9996", "loss": "0.0015", "code": "public void setRimColor(int rimColor) { this.rimColor = rimColor; setupPaints(); if (!isSpinning) { invalidate(); } }", "n_tokens": 44, "n_pass": [1, 1, 1]}
+{"time": "2021-02-13 03:39:56.577097", "score": "0.9999", "loss": "0.0006", "code": "public void setRimColor(int rimColor) { this.rimColor = rimColor;  { invalidate(); } }", "n_tokens": 33, "n_pass": [10, 2, 2]}
+{"time": "2021-02-13 03:39:58.246853", "score": "0.9999", "loss": "0.0006", "code": "void setRimColor(int rimColor) { this.rimColor = rimColor;  { invalidate(); } }", "n_tokens": 31, "n_pass": [41, 3, 3]}
+{"time": "2021-02-13 03:39:59.928924", "score": "0.8938", "loss": "0.6254", "code": "void setRimColor() { this.rimColor = rimColor;  { invalidate(); } }", "n_tokens": 28, "n_pass": [44, 4, 4]}
+{"time": "2021-02-13 03:40:01.244292", "score": "0.8657", "loss": "0.7068", "code": "void setRimColor() {rimColor = rimColor;  { invalidate(); } }", "n_tokens": 25, "n_pass": [46, 5, 5]}
+{"time": "2021-02-13 03:40:02.544957", "score": "0.767", "loss": "1.726", "code": "void setRimColor() { rimColor;  { invalidate(); } }", "n_tokens": 22, "n_pass": [47, 6, 6]}
+{"time": "2021-02-13 03:40:07.090771", "score": "0.767", "loss": "1.726", "code": "void setRimColor() {rimColor;  { invalidate(); } }", "n_tokens": 21, "n_pass": [73, 8, 7]}
+{"time": "2021-02-13 03:40:09.673635", "score": "0.767", "loss": "1.726", "code": "void setRimColor() {rimColor;{ invalidate(); } }", "n_tokens": 19, "n_pass": [76, 10, 8]}
+{"time": "2021-02-13 03:40:11.640979", "score": "0.767", "loss": "1.726", "code": "void setRimColor(){rimColor;{ invalidate(); } }", "n_tokens": 18, "n_pass": [87, 11, 9]}
+{"time": "2021-02-13 03:40:16.230386", "score": "0.767", "loss": "1.726", "code": "void setRimColor(){rimColor;{invalidate(); } }", "n_tokens": 17, "n_pass": [112, 13, 10]}
+{"time": "2021-02-13 03:40:17.521532", "score": "0.767", "loss": "1.726", "code": "void setRimColor(){rimColor;{invalidate();} }", "n_tokens": 16, "n_pass": [117, 14, 11]}
+{"time": "2021-02-13 03:40:18.838683", "score": "0.767", "loss": "1.726", "code": "void setRimColor(){rimColor;{invalidate();}}", "n_tokens": 15, "n_pass": [119, 15, 12]}
+
+Minimal simplified code:
+void setRimColor(){rimColor;{invalidate();}}

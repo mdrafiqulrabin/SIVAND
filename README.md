@@ -1,6 +1,6 @@
 ## SIVAND: Prediction-Preserving Program Simplification
 
-This repository contains the code of prediction-preserving simplification and the simplified data using DD module for our paper '[Understanding Neural Code Intelligence Through Program Simplification](https://github.com/mdrafiqulrabin/SIVAND/)' accepted at ESEC/FSE'21.
+This repository contains the code of prediction-preserving simplification, and the simplified data using DD module for our paper 'Understanding Neural Code Intelligence Through Program Simplification' accepted at ESEC/FSE'21.
 
 ---
 
@@ -27,11 +27,17 @@ This repository contains the code of prediction-preserving simplification and th
 |<img src="./save/sivand.png" alt="Workflow in SIVAND"/>|
 :-------------------------:
 
-[Delta Debugging (DD)](https://www.st.cs.uni-saarland.de/dd/) was implemented with Python 2. We have modified the core modules ([DD.py](https://www.st.cs.uni-saarland.de/dd/DD.py), [MyDD.py](https://www.st.cs.uni-saarland.de/dd/MyDD.py)) to run in [Python 3](https://github.com/mdrafiqulrabin/dd-py3), and then adopted the DD modules for prediction-preserving program simplification using different models. The approach, SIVAND, is model-agnostic and can be applied to any model, but by loading a model and making a prediction with the model for a task.
+[Delta Debugging (DD)](https://www.st.cs.uni-saarland.de/dd/) was implemented with Python 2. We have modified the core modules ([DD.py](https://www.st.cs.uni-saarland.de/dd/DD.py), [MyDD.py](https://www.st.cs.uni-saarland.de/dd/MyDD.py)) to run in [Python 3 (we use Python 3.7.3)](https://github.com/mdrafiqulrabin/dd-py3), and then adopted the DD modules for prediction-preserving program simplification using different models. The approach, SIVAND, is model-agnostic and can be applied to any model by loading a model and making a prediction with the model for a task.
 
-**How to Start**: To apply SIVAND (for MethodName task as an example), first update `<g_test_file>` (path to a file that contains all selected inputs) and `<g_deltas_type>` (select token or char type delta for DD) in `helper.py`. Then, write your code into `load_model_M()` to load a target model from `<model_path>`, and into `prediction_with_M()` to get the predicted name, score, and loss value with `<model>` for an input `<file_path>`. Also, load method by language (i.e. Java) from `load_method()` and check whether `<code>` is parsable into `is_parsable()`. Finally, run `MyDD.py` that will simplify programs one by one and save all simplified traces in the `dd_data/` folder. 
+**How to Start**: 
+To apply SIVAND (for MethodName task as an example), first update `<g_test_file>` (path to a file that contains all selected inputs) and `<g_deltas_type>` (select token or char type delta for DD) in `helper.py`. 
+Then, modify `load_model_M()` to load a target model (i.e., code2vec/code2seq) from `<model_path>`, and `prediction_with_M()` to get the predicted name, score, and loss value with `<model>` for an input `<file_path>`. 
+Also, check whether `<code>` is parsable into `is_parsable()`, and load method by language (i.e. Java) from `load_method()`.
+Finally, run `MyDD.py` that will simplify programs one by one and save all simplified traces in the `dd_data/` folder. 
 
-**Check More**: For more detailed code, check `models/dd-code2vec/` and `models/dd-code2seq/` folders to see how SIVAND works with code2vec and code2seq models for MethodName task on Java program. Similarly, for VarMisuse task (RNN & Transformer models, Python program), check the `models/dd-great/` folder for our modified code.
+**More Details**: 
+Check `models/dd-code2vec/` and `models/dd-code2seq/` folders to see how SIVAND works with code2vec and code2seq models for MethodName task on Java program. 
+Similarly, for VarMisuse task (RNN & Transformer models, Python program), check the `models/dd-great/` folder for our modified code.
 
 ---
 
