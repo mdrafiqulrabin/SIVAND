@@ -1,6 +1,6 @@
 ## SIVAND: Prediction-Preserving Program Simplification
 
-This repository contains the code of prediction-preserving simplification, and the simplified data using DD module for our paper 'Understanding Neural Code Intelligence Through Program Simplification' accepted at ESEC/FSE'21.
+This repository contains the code of prediction-preserving simplification and the simplified data using DD module for our paper '[Understanding Neural Code Intelligence Through Program Simplification](https://arxiv.org/abs/2106.03353)' accepted at [ESEC/FSE'21](https://2021.esec-fse.org/details/fse-2021-papers/9/Understanding-Neural-Code-Intelligence-through-Program-Simplification).
 
 ---
 
