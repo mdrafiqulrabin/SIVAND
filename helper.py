@@ -58,8 +58,7 @@ def deltas_to_code(d):
 
 def is_parsable(code):
     try:
-        # TODO: check whether <code> is parsable
-        #  [this one is for JAVA program]
+        # Example: check whether <code> (JAVA program) is parsable
         tree = javalang.parse.parse("class Test { " + code + " }")
         assert tree is not None
     except Exception:
@@ -84,7 +83,7 @@ def get_json_data(time, score, loss, code, tokens=None, n_pass=None):
 def load_model_M(model_path=""):
     model = None
     # TODO: load target model from <model_path>
-    #  Example: check <others/DD-Models/dd-M/dd_M.py>
+    #  Example: check <models/dd-M/dd_M.py>
     return model
 
 
@@ -92,7 +91,7 @@ def prediction_with_M(model, file_path):
     pred, score, loss = None, None, None
     # TODO: preprocess <file_path> and evaluate with <model>
     #  and get predicted name, score, and loss
-    #  Example: check <others/DD-Models/dd-M/sm_helper.py>
+    #  Example: check <models/dd-M/sm_helper.py>
     return pred, score, loss
 
 
@@ -101,8 +100,7 @@ def prediction_with_M(model, file_path):
 
 def load_method(file_path):
     try:
-        # TODO: extract name and body from method
-        #  [this one is for JAVA program]
+        # Example: extract name and body from method of JAVA program.
         cmd = ['java', '-jar', JAR_LOAD_JAVA_METHOD, file_path]
         contents = subprocess.check_output(cmd, encoding="utf-8", close_fds=True)
         contents = contents.split()

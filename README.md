@@ -27,7 +27,7 @@ This repository contains the code of prediction-preserving simplification, and t
 |<img src="./save/sivand.png" alt="Workflow in SIVAND"/>|
 :-------------------------:
 
-[Delta Debugging (DD)](https://www.st.cs.uni-saarland.de/dd/) was implemented with Python 2. We have modified the core modules ([DD.py](https://www.st.cs.uni-saarland.de/dd/DD.py), [MyDD.py](https://www.st.cs.uni-saarland.de/dd/MyDD.py)) to run in [Python 3 (we use Python 3.7.3)](https://github.com/mdrafiqulrabin/dd-py3), and then adopted the DD modules for prediction-preserving program simplification using different models. The approach, SIVAND, is model-agnostic and can be applied to any model by loading a model and making a prediction with the model for a task.
+[Delta Debugging (DD)](https://www.st.cs.uni-saarland.de/dd/) was implemented with Python 2. We have modified the core modules ([DD.py](https://www.st.cs.uni-saarland.de/dd/DD.py), [MyDD.py](https://www.st.cs.uni-saarland.de/dd/MyDD.py)) to run in [Python 3](https://github.com/mdrafiqulrabin/dd-py3) (i.e., Python 3.7.3), and then adopted the DD modules for prediction-preserving program simplification using different models. The approach, SIVAND, is model-agnostic and can be applied to any model by loading a model and making a prediction with the model for a task.
 
 **How to Start**: 
 To apply SIVAND (for MethodName task as an example), first update `<g_test_file>` (path to a file that contains all selected inputs) and `<g_deltas_type>` (select token or char type delta for DD) in `helper.py`. 
