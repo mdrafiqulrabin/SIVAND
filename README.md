@@ -2,6 +2,8 @@
 
 This repository contains the code of prediction-preserving simplification and the simplified data using DD module for our paper '[Understanding Neural Code Intelligence Through Program Simplification](https://arxiv.org/abs/2106.03353)' accepted at [ESEC/FSE'21](https://2021.esec-fse.org/details/fse-2021-papers/9/Understanding-Neural-Code-Intelligence-through-Program-Simplification).
 
+Artifact for Article (SIVAND): https://dl.acm.org/do/10.1145/3462296/
+
 ---
 
 ## Structure
@@ -111,3 +113,26 @@ Note that the `<null>`, `-1`, or `<empty>` value represents that the value is no
 :-------------------------:
 |Summary of reduction results in correctly predicted samples.|
 
+---
+
+# Citation:
+
+[Understanding Neural Code Intelligence through Program Simplification](https://dl.acm.org/doi/10.1145/3468264.3468539)
+
+```
+@inproceedings{rabin2021sivand,
+  author = {Rabin, Md Rafiqul Islam and Hellendoorn, Vincent J. and Alipour, Mohammad Amin},
+  title = {Understanding Neural Code Intelligence through Program Simplification},
+  year = {2021},
+  isbn = {9781450385626},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3468264.3468539},
+  doi = {10.1145/3468264.3468539},
+  booktitle = {Proceedings of the 29th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
+  pages = {441–452},
+  numpages = {12},
+  location = {Athens, Greece},
+  series = {ESEC/FSE 2021}
+}
+```
