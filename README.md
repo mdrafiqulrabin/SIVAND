@@ -138,3 +138,10 @@ Note that the `<null>`, `-1`, or `<empty>` value represents that the value is no
   series = {ESEC/FSE 2021}
 }
 ```
+
+---
+
+## Other Works:
+
+- [Syntax-Guided Program Reduction for Understanding Neural Code Intelligence Models](https://doi.org/10.1145/3520312.3534869) [[arXiv](https://arxiv.org/abs/2205.14374), [GitHub](https://github.com/mdrafiqulrabin/CI-DD-Perses)]
+
