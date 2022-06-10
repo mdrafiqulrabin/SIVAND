@@ -2,7 +2,9 @@
 
 This repository contains the code of prediction-preserving simplification and the simplified data using DD module for our paper '[Understanding Neural Code Intelligence Through Program Simplification](https://arxiv.org/abs/2106.03353)' accepted at [ESEC/FSE'21](https://2021.esec-fse.org/details/fse-2021-papers/9/Understanding-Neural-Code-Intelligence-through-Program-Simplification).
 
-Artifact for Article (SIVAND): https://dl.acm.org/do/10.1145/3462296/
+Artifact for Article (SIVAND):   
+- ACM DL: https://dl.acm.org/do/10.1145/3462296
+- Zenodo: https://doi.org/10.5281/zenodo.5154090
 
 ---
 
