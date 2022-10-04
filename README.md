@@ -6,6 +6,9 @@ Artifact for Article (SIVAND):
 - ACM DL: https://dl.acm.org/do/10.1145/3462296
 - Zenodo: https://doi.org/10.5281/zenodo.5154090
 
+Reproducible Capsule of FeatureExtractor:
+- CodeOcean: https://codeocean.com/capsule/7985340/tree/v1
+
 ---
 
 ## Structure
